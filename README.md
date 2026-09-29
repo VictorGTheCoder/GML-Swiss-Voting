@@ -13,29 +13,36 @@ La problématique exacte et les modèles définitifs sont encore en cours de dé
 - `notebooks/` : notebooks d'exploration, EDA et essais.
 - `docs/` : cahier des charges, notes méthodologiques et documentation du projet.
 
+## Prérequis
+
+Conda doit être installé au préalable. Vous pouvez installer
+[Miniconda](https://docs.conda.io/projects/miniconda/en/latest/) ou Anaconda.
+
+Vérifiez l'installation avec :
+
+```bash
+conda --version
+```
+
 ## Setup
 
-```bash
-python -m venv .venv
-```
+L'environnement Conda du projet est défini dans `environment.yml`.
 
-Linux/macOS :
+Première installation :
 
 ```bash
-source .venv/bin/activate
+conda env create -f environment.yml
+conda activate swiss-votes-ml
 ```
 
-Windows :
-
-```powershell
-.venv\Scripts\activate
-```
-
-Installer les dépendances :
+Mise à jour de l'environnement :
 
 ```bash
-pip install -r requirements.txt
+conda env update -f environment.yml --prune
+conda activate swiss-votes-ml
 ```
+
+L'option `--prune` supprime également les paquets qui ne figurent plus dans `environment.yml`.
 
 ## Data
 
