@@ -1,33 +1,56 @@
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
 
 # Virtual environments
 .venv/
 venv/
+env/
+.conda/
 
-# Secrets
+# Secrets and local configuration
 .env
 .env.*
 !.env.example
+.streamlit/secrets.toml
 
 # Jupyter
 .ipynb_checkpoints/
 
-# Data
+# Tests and code quality
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.ruff_cache/
+.mypy_cache/
+
+# Data generated locally
 data/raw/*
-!data/raw/.gitkeep
+data/interim/*
 data/processed/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
 !data/processed/.gitkeep
 
-# IDE / OS
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-# Generated files
-*.log
+# Models and experiment artifacts
+models/
+artifacts/
+mlruns/
+mlflow.db
+outputs/
+*.joblib
 *.pkl
 *.pickle
-*.joblib
+
+# Logs
+*.log
+
+# Editors
+.vscode/
+.idea/
+
+# Operating systems
+.DS_Store
+Thumbs.db
