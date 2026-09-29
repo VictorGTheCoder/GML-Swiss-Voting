@@ -42,7 +42,7 @@ Livrables à suivre dès le début, en plus du code : cahier des charges et orga
 
 - Mettre à jour l'issue de cahier des charges [#1](https://github.com/VictorGTheCoder/GML-Swiss-Voting/issues/1) et faire approuver le changement de sujet ; remplacer le document fédéral/communal, sans écraser l'historique de ses travaux.
 - Classer [#3](https://github.com/VictorGTheCoder/GML-Swiss-Voting/issues/3) comme **audit terminé de l'ancien périmètre** ; conserver la trace de la PR fusionnée. Fermer [#6](https://github.com/VictorGTheCoder/GML-Swiss-Voting/issues/6) comme abandonnée après pivot, si aucun travail communal n'est encore attendu.
-- Adapter [#5](https://github.com/VictorGTheCoder/GML-Swiss-Voting/issues/5) au socle Streamlit puis ouvrir des issues ciblées pour C2D/audit, validation et modèles, intégration de la prédiction, analyse et livraison. Les extensions restent séparées du MVP.
+- Suivre [#9 — données C2D](https://github.com/VictorGTheCoder/GML-Swiss-Voting/issues/9), [#10 — évaluation ML](https://github.com/VictorGTheCoder/GML-Swiss-Voting/issues/10), [#5 — socle Streamlit](https://github.com/VictorGTheCoder/GML-Swiss-Voting/issues/5), [#11 — prédiction réelle](https://github.com/VictorGTheCoder/GML-Swiss-Voting/issues/11) et [#12 — livraison](https://github.com/VictorGTheCoder/GML-Swiss-Voting/issues/12). Les analyses avancées et extensions restent séparées du MVP.
 - Les scripts OFS sous `scripts/` et l'audit communal sous `docs/` sont des **artefacts historiques**. Ne pas les présenter comme une implémentation C2D ; décider en équipe s'il faut les archiver ou les déplacer avant de construire le nouveau pipeline.
 
 ## Références
