@@ -1,53 +1,34 @@
-# Swiss Voting ML
+# Swiss Voting ML — projet GML
 
-## Project
+## Sujet en cours de cadrage
 
-Projet GML HEIG-VD portant sur l'analyse et la modélisation des votations fédérales suisses au niveau communal avec des méthodes de Machine Learning.
+Projet HEIG-VD : prédire la part de « oui » d'un objet de votation **cantonale** suisse à partir de son titre et de caractéristiques institutionnelles disponibles avant le scrutin, puis évaluer cette prédiction sur des dates ultérieures.
 
-La problématique exacte et les modèles définitifs sont encore en cours de définition.
+Le [plan de travail cantonal](docs/plan-votations-cantonales.md) détaille les étapes, critères de sortie, exigences du cours et points méthodologiques. Le cahier des charges doit encore être actualisé et validé par l'équipe et les enseignants.
+
+**État du dépôt :** les scripts actuels `scripts/download_votes.py`, `scripts/build_dataset.py` et associés traitent l'**ancien sujet fédéral/communal** fondé sur l'OFS. L'audit `docs/communal_features_audit.md` conserve la trace de ce travail. Ces scripts ne produisent pas le dataset C2D cantonal annoncé dans le nouveau plan.
 
 ## Structure
 
-- `data/` : datasets bruts ou transformés, non versionnés.
-- `scripts/` : scripts Python exécutables pour récupérer et préparer les données.
-- `notebooks/` : notebooks d'exploration, EDA et essais.
-- `docs/` : cahier des charges, notes méthodologiques et documentation du projet.
+- `data/` : données brutes et transformées, non versionnées.
+- `scripts/` : scripts de l'ancien pipeline OFS, à classer lors du pivot.
+- `notebooks/` : exploration et essais.
+- `docs/` : plan, audits et documentation.
 
-## Prérequis
+## Prérequis et environnement
 
-Conda doit être installé au préalable. Vous pouvez installer
-[Miniconda](https://docs.conda.io/projects/miniconda/en/latest/) ou Anaconda.
-
-Vérifiez l'installation avec :
-
-```bash
-conda --version
-```
-
-## Setup
-
-L'environnement Conda du projet est défini dans `environment.yml`.
-
-Première installation :
+Conda doit être installé. L'environnement est défini dans `environment.yml`.
 
 ```bash
 conda env create -f environment.yml
 conda activate swiss-votes-ml
 ```
 
-Mise à jour de l'environnement :
+Mise à jour :
 
 ```bash
 conda env update -f environment.yml --prune
 conda activate swiss-votes-ml
 ```
 
-L'option `--prune` supprime également les paquets qui ne figurent plus dans `environment.yml`.
-
-## Data
-
-Les datasets ne sont pas versionnés dans Git. Ils devront être récupérés ou reconstruits via les scripts du projet.
-
-## Development
-
-Le développement se fait par branches, avec des pull requests avant toute intégration importante.
+Les données ne sont pas versionnées dans Git. La procédure reproductible de collecte C2D reste à réaliser. Le développement se fait par branches et pull requests.
