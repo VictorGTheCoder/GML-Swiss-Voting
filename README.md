@@ -8,7 +8,7 @@ La problématique exacte et les modèles définitifs sont encore en cours de dé
 
 ## Structure
 
-- `data/` : données brutes, intermédiaires et transformées, non versionnées.
+- `data/` : données brutes, intermédiaires et transformées ; les sources raw restent hors Git, certains snapshots processed validés sont partagés.
 - `scripts/` : pipelines reproductibles de collecte, préparation et audit.
 - `notebooks/datasets/` : EDA et exploration par source de données.
 - `docs/project/` : décisions et documentation transversales au projet.
@@ -50,7 +50,9 @@ L'option `--prune` supprime également les paquets qui ne figurent plus dans `en
 
 ## Data
 
-Les datasets et artefacts générés ne sont pas versionnés dans Git. Ils doivent être récupérés ou reconstruits via les scripts du projet.
+Les données brutes et caches ne sont pas versionnés et doivent être récupérés ou reconstruits via les scripts du projet.
+
+Des **snapshots processed validés et utiles au travail d'équipe** peuvent en revanche être versionnés sous `data/processed/<dataset>/`. Le snapshot Chancellerie 2011–2026 est disponible dans `data/processed/federal_explanations/`.
 
 ## Development
 

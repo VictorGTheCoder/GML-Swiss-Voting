@@ -34,6 +34,10 @@ data/processed/*
 !data/interim/.gitkeep
 !data/processed/.gitkeep
 
+# Curated processed snapshots shared by the team
+!data/processed/federal_explanations/
+!data/processed/federal_explanations/**
+
 # Generated reports and figures
 reports/generated/
 

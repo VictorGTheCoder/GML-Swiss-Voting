@@ -21,9 +21,11 @@ Le pipeline écrit ses données dans `data/processed/federal_explanations/` :
 - `votes_intermediate.parquet` — objets avant filtrage ML ;
 - `model.parquet` — sous-ensemble strictement éligible au modèle ;
 - `model_exclusions.parquet` — exclusions et motifs ;
-- `report.md` et fichiers JSON d'audit — contrôles détaillés.
+- `document_audit.parquet`, fichiers JSON et `audit_report.md` — contrôles et provenance détaillés.
 
-Ces fichiers sont générés et ne sont pas versionnés dans Git. Le rapport humain daté est conservé dans `reports/datasets/federal_explanations/`.
+Un **snapshot processed 2011–2026 est versionné dans Git** afin que toute l'équipe puisse utiliser immédiatement les données et exécuter l'EDA sans reconstruire les PDF. Les PDF bruts, le cache et le CSV source Swissvotes restent hors Git et permettent de reproduire ce snapshot.
+
+Le rapport humain daté est conservé séparément dans `reports/datasets/federal_explanations/`.
 
 ## Collecte et reproduction
 
@@ -116,7 +118,9 @@ L'EDA est présentée dans :
 
 `notebooks/datasets/federal_explanations/eda.ipynb`
 
-Le notebook réutilise `scripts/federal_explanations_eda.py` afin de garder une seule logique testable. Les figures générées vont dans `reports/generated/federal_explanations/eda/` et ne sont pas versionnées.
+Le notebook réutilise `scripts/federal_explanations_eda.py` afin de garder une seule logique testable. Grâce au snapshot processed versionné, il peut être exécuté directement après un clone et l'installation de l'environnement.
+
+Les figures générées vont dans `reports/generated/federal_explanations/eda/` et ne sont pas versionnées.
 
 ## Audit de référence
 
