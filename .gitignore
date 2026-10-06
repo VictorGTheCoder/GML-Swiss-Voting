@@ -34,6 +34,9 @@ data/processed/*
 !data/interim/.gitkeep
 !data/processed/.gitkeep
 
+# Generated reports and figures
+reports/generated/
+
 # Models and experiment artifacts
 models/
 artifacts/
