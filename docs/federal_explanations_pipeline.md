@@ -34,3 +34,26 @@ Scanned PDFs/OCR, multi-object or older layouts, archive crawling, and versioned
 human review decisions are later extensions. Each run writes deterministic
 tables and does not overwrite original content: the SHA-256 names each retained
 PDF version.
+
+## Linked OFS objects
+
+Use `scripts/federal_explanations_relations.py` when a brochure contains linked
+objects such as an initiative, counterproposal, and subsidiary question. Its
+`build_related_vote_data(ofs_objects, sections, section_links)` API accepts one
+row per OFS `vote_id`, preserves `related_vote_ids` and the authoritative
+`is_tiebreak_question` value, and returns `votes_intermediate`, deduplicated
+`sections`, `section_links`, `related_votes`, and `model` tables. A section is
+stored once by `section_id`; multiple vote links may point to it, and each vote
+may point to multiple sections. The subsidiary question and its extracted
+content remain in `votes_intermediate`; only the model table filters out rows
+marked as tie-break questions. The model table also applies the existing
+pre-vote availability, validated correspondence, and extraction eligibility
+conditions.
+
+Each authority's `*_recommendation_raw` value is preserved. The corresponding
+`*_recommendation_target` is populated only when one action and one proposal
+target are clear; otherwise it stays null and `*_recommendation_reason` records
+why, including explicit no-recommendation and unextracted cases. An empty or
+ambiguous recommendation is never converted to an assumed position. The
+returned report states why section counts may differ from OFS question counts:
+several votes can share one section, and a vote can link to several sections.
