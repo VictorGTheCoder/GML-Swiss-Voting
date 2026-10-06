@@ -6,12 +6,11 @@ Swissvotes est utilisé dans le pipeline comme **outil auxiliaire de contrôle d
 
 ## Snapshot versionné
 
-Le dossier \`data/processed/federal_explanations/\` contient uniquement cinq tables :
+Le dossier \`data/processed/federal_explanations/\` contient uniquement quatre tables :
 
-- \`objects.parquet\` — raccordement minimal entre les objets OFS et les brochures/sections ;
-- \`sections.parquet\` — texte des sections extraites, résumés et recommandations ;
+- \`sources.parquet\` — provenance et statut des 48 brochures ;
 - \`pages.parquet\` — texte extrait page par page et méthode native/OCR ;
-- \`sources.parquet\` — provenance des brochures ;
+- \`sections.parquet\` — texte des sections extraites, résumés et recommandations ;
 - \`section_links.parquet\` — liens candidats entre sections et \`vote_id\` OFS.
 
 Il ne contient **ni résultats communaux OFS, ni features Swissvotes, ni rapports, ni JSON d'audit, ni tables de debug**.
@@ -29,7 +28,7 @@ python scripts/audit_federal_explanations_period.py \
   --output data/interim/federal_explanations_audit
 \`\`\`
 
-On construit ensuite le snapshot propre et partagé :
+On publie ensuite uniquement les quatre tables Chancellerie :
 
 \`\`\`bash
 python scripts/build_federal_explanations_snapshot.py \
@@ -39,7 +38,7 @@ python scripts/build_federal_explanations_snapshot.py \
 
 ## EDA
 
-Le notebook \`notebooks/datasets/federal_explanations/eda.ipynb\` lit directement ces cinq tables. Les figures générées restent dans \`reports/generated/\` et ne sont pas versionnées.
+Le notebook \`notebooks/datasets/federal_explanations/eda.ipynb\` lit directement ces quatre tables. Les figures générées restent dans \`reports/generated/\` et ne sont pas versionnées.
 
 ## Audit
 
