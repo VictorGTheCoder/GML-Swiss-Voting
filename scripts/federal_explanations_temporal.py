@@ -94,6 +94,8 @@ def filter_model_eligible(rows: Iterable[Mapping[str, object]]) -> tuple[list[di
             reasons.append("OFS correspondence is not validated")
         if row.get("extraction_status") != "EXTRACTED":
             reasons.append("source extraction is not validated")
+        if row.get("semantic_status") != "VALIDATED":
+            reasons.append("semantic extraction is not validated")
         if bool(row.get("is_tiebreak_question", False)):
             reasons.append("subsidiary question is excluded from the main model")
         if reasons:

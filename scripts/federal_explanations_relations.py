@@ -125,7 +125,8 @@ def build_related_vote_data(
     model_rows = [item for item in objects if not bool(item.get("is_tiebreak_question", False))
                   and item.get("availability_status") == "CONFIRMED_PRE_VOTE"
                   and item.get("match_status") == "VALIDATED"
-                  and item.get("extraction_status") == "EXTRACTED"]
+                  and item.get("extraction_status") == "EXTRACTED"
+                  and item.get("semantic_status") == "VALIDATED"]
     report = (
         f"OFS objects/questions: {len(objects)}\n"
         f"Source sections: {len(section_rows)}\n"

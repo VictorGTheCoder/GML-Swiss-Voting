@@ -5,13 +5,13 @@ def test_linked_votes_keep_subsidiary_in_intermediate_and_exclude_it_from_model(
     objects = [
         {"vote_id": "100", "vote_date": "2026-01-01", "question_fr": "Initiative", "is_tiebreak_question": False,
          "related_vote_ids": ["101", "102"], "availability_status": "CONFIRMED_PRE_VOTE",
-         "match_status": "VALIDATED", "extraction_status": "EXTRACTED"},
+         "match_status": "VALIDATED", "extraction_status": "EXTRACTED", "semantic_status": "VALIDATED"},
         {"vote_id": "101", "vote_date": "2026-01-01", "question_fr": "Contre-projet", "is_tiebreak_question": False,
          "related_vote_ids": ["100", "102"], "availability_status": "CONFIRMED_PRE_VOTE",
-         "match_status": "VALIDATED", "extraction_status": "EXTRACTED"},
+         "match_status": "VALIDATED", "extraction_status": "EXTRACTED", "semantic_status": "VALIDATED"},
         {"vote_id": "102", "vote_date": "2026-01-01", "question_fr": "Question subsidiaire", "is_tiebreak_question": True,
          "related_vote_ids": ["100", "101"], "availability_status": "CONFIRMED_PRE_VOTE",
-         "match_status": "VALIDATED", "extraction_status": "EXTRACTED"},
+         "match_status": "VALIDATED", "extraction_status": "EXTRACTED", "semantic_status": "VALIDATED"},
     ]
     sections = [
         {"section_id": "common", "title": "Propositions", "summary_official": "Résumé partagé"},

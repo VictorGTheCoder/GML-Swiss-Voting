@@ -51,39 +51,51 @@ def extract_pdf_pages(
     page_ocr = ocr_page or _local_ocr_page
     records: list[dict[str, int | str | None]] = []
 
-    with pdfplumber.open(path) as pdf:
-        for page_number, page in enumerate(pdf.pages, start=1):
-            native_text = page.extract_text() or ""
-            if native_text.strip():
-                records.append({
-                    "page_number": page_number,
-                    "text": native_text,
-                    "method": "native",
-                    "status": "EXTRACTED",
-                    "error": None,
-                    "semantic_status": "NOT_VALIDATED",
-                })
-                continue
+    try:
+        import fitz
+    except ImportError:
+        fitz = None
 
-            try:
-                text = page_ocr(path, page_number) or ""
-            except Exception as exc:
-                records.append({
-                    "page_number": page_number,
-                    "text": "",
-                    "method": "ocr",
-                    "status": "FAILED",
-                    "error": str(exc),
-                    "semantic_status": "NOT_VALIDATED",
-                })
-            else:
-                records.append({
-                    "page_number": page_number,
-                    "text": text,
-                    "method": "ocr",
-                    "status": "EXTRACTED",
-                    "error": None,
-                    "semantic_status": "NOT_VALIDATED",
-                })
+    if fitz is not None:
+        document = fitz.open(path)
+        page_count = document.page_count
+        native_pages = [(document[index].get_text() or "").rstrip() for index in range(page_count)]
+        document.close()
+    else:
+        with pdfplumber.open(path) as pdf:
+            native_pages = [page.extract_text() or "" for page in pdf.pages]
+
+    for page_number, native_text in enumerate(native_pages, start=1):
+        if native_text.strip():
+            records.append({
+                "page_number": page_number,
+                "text": native_text,
+                "method": "native",
+                "status": "EXTRACTED",
+                "error": None,
+                "semantic_status": "NOT_VALIDATED",
+            })
+            continue
+
+        try:
+            text = page_ocr(path, page_number) or ""
+        except Exception as exc:
+            records.append({
+                "page_number": page_number,
+                "text": "",
+                "method": "ocr",
+                "status": "FAILED",
+                "error": str(exc),
+                "semantic_status": "NOT_VALIDATED",
+            })
+        else:
+            records.append({
+                "page_number": page_number,
+                "text": text,
+                "method": "ocr",
+                "status": "EXTRACTED",
+                "error": None,
+                "semantic_status": "NOT_VALIDATED",
+            })
 
     return records

@@ -51,13 +51,13 @@ def test_changed_pdf_hash_invalidates_previous_confirmation():
 def test_model_gate_requires_temporal_match_extraction_and_non_tiebreak():
     rows = [
         {"vote_id": "1", "availability_status": "CONFIRMED_PRE_VOTE", "source_sha256": HASH, "decision_source_sha256": HASH,
-         "match_status": "VALIDATED", "extraction_status": "EXTRACTED", "is_tiebreak_question": False},
-        {"vote_id": "2", "availability_status": "INVESTIGATE", "match_status": "VALIDATED", "extraction_status": "EXTRACTED"},
-        {"vote_id": "3", "availability_status": "CONFIRMED_PRE_VOTE", "match_status": "PROPOSED", "extraction_status": "EXTRACTED"},
-        {"vote_id": "4", "availability_status": "CONFIRMED_PRE_VOTE", "match_status": "VALIDATED", "extraction_status": "FAILED"},
-        {"vote_id": "5", "availability_status": "CONFIRMED_PRE_VOTE", "match_status": "VALIDATED", "extraction_status": "EXTRACTED", "is_tiebreak_question": True},
+         "match_status": "VALIDATED", "extraction_status": "EXTRACTED", "semantic_status": "VALIDATED", "is_tiebreak_question": False},
+        {"vote_id": "2", "availability_status": "INVESTIGATE", "match_status": "VALIDATED", "extraction_status": "EXTRACTED", "semantic_status": "VALIDATED"},
+        {"vote_id": "3", "availability_status": "CONFIRMED_PRE_VOTE", "match_status": "PROPOSED", "extraction_status": "EXTRACTED", "semantic_status": "VALIDATED"},
+        {"vote_id": "4", "availability_status": "CONFIRMED_PRE_VOTE", "match_status": "VALIDATED", "extraction_status": "FAILED", "semantic_status": "VALIDATED"},
+        {"vote_id": "5", "availability_status": "CONFIRMED_PRE_VOTE", "match_status": "VALIDATED", "extraction_status": "EXTRACTED", "semantic_status": "VALIDATED", "is_tiebreak_question": True},
         {"vote_id": "6", "availability_status": "CONFIRMED_PRE_VOTE", "source_sha256": HASH, "decision_source_sha256": "b" * 64,
-         "match_status": "VALIDATED", "extraction_status": "EXTRACTED"},
+         "match_status": "VALIDATED", "extraction_status": "EXTRACTED", "semantic_status": "VALIDATED"},
     ]
     eligible, exclusions = filter_model_eligible(rows)
     assert [row["vote_id"] for row in eligible] == ["1"]

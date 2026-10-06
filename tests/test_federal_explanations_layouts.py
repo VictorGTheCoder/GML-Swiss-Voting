@@ -45,6 +45,42 @@ def test_pre_2018_layout_is_recognized_with_distinct_object_order():
     assert parsed["objects"][1]["source_pages"] == [2]
 
 
+def test_legacy_heading_with_title_wrapped_to_following_lines():
+    parsed = extract_objects(["\n".join([
+        "Votation populaire du 28 février 2016",
+        "Premier objet",
+        "Initiative populaire « Pour le couple",
+        "et la famille – Non à la pénalisation",
+        "du mariage »",
+        "La question à laquelle vous devez répondre est la suivante :",
+        "Acceptez-vous l’initiative ?",
+    ])])
+    assert parsed["layout"] == "LEGACY"
+    assert parsed["objects"][0]["title"] == "Initiative populaire « Pour le couple et la famille – Non à la pénalisation du mariage »"
+    assert "La question à laquelle" in parsed["objects"][0]["passages"][0]["text"]
+
+
+def test_bare_objet_heading_uses_following_title():
+    parsed = extract_objects(["\n".join([
+        "Objet",
+        "Initiative populaire « Pour la sortie programmée de l’énergie nucléaire »",
+        "La question à laquelle vous devez répondre est la suivante :",
+        "Acceptez-vous l’initiative ?",
+    ])])
+    assert parsed["objects"][0]["title"].startswith("Initiative populaire")
+
+
+def test_single_object_without_explicit_objet_label_uses_question_section():
+    parsed = extract_objects(["\n".join([
+        "Initiative populaire",
+        "« Pour la protection face à la violence des armes »",
+        "La question à laquelle vous devez répondre est la suivante:",
+        "Acceptez-vous l’initiative populaire ?",
+    ])])
+    assert parsed["objects"][0]["title"] == "Initiative populaire « Pour la protection face à la violence des armes »"
+    assert "La question à laquelle" in parsed["objects"][0]["passages"][0]["text"]
+
+
 def test_object_ids_are_bound_to_source_version():
     pages = ["Objet 1: Loi test"]
 

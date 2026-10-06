@@ -21,27 +21,131 @@ _ORDINALS = {
 }
 _MODERN = re.compile(r"^\s*Objet\s+(\d+)\s*:\s*(.*?)\s*$", re.IGNORECASE)
 _LEGACY = re.compile(r"^\s*(Premier|Première|Premiere|Deuxième|Deuxieme|Second|Seconde|Troisième|Troisieme|Quatrième|Quatrieme|Cinquième|Cinquieme|Sixième|Sixieme|\d+(?:er|e|ème|eme))\s+objet\s*:?\s*(.*?)\s*$", re.IGNORECASE)
+_BARE_OBJECT = re.compile(r"^\s*Objet\s*(?:[-–:]\s*(.*?))?\s*$", re.IGNORECASE)
+_ORDINAL = re.compile(r"^\s*(Premier|Première|Premiere|Deuxième|Deuxieme|Second|Seconde|Troisième|Troisieme|Quatrième|Quatrieme|Cinquième|Cinquieme|Sixième|Sixieme|\d+(?:er|e|ème|eme))\s*$", re.IGNORECASE)
 
 
 def _headings(pages: list[str]) -> tuple[list[dict], set[str]]:
     found: list[dict] = []
+    bare: list[dict] = []
     formats: set[str] = set()
+    flat = [(page_number, line) for page_number, page in enumerate(pages, 1)
+            for line in (page or "").splitlines()]
+    offsets = []
+    offset = 0
+    for page in pages:
+        offsets.append(offset)
+        offset += len((page or "").splitlines())
     for page_number, page in enumerate(pages, 1):
         for line_number, line in enumerate((page or "").splitlines()):
             modern = _MODERN.match(line)
             legacy = _LEGACY.match(line)
+            plain = _BARE_OBJECT.match(line)
+            ordinal_line = _ORDINAL.match(line)
             if modern:
                 formats.add("MODERN")
                 found.append({"order": int(modern.group(1)), "title": modern.group(2).strip(),
-                              "page": page_number, "line": line_number, "layout": "MODERN"})
+                              "page": page_number, "line": line_number,
+                              "flat_index": offsets[page_number - 1] + line_number, "layout": "MODERN"})
             elif legacy:
                 formats.add("LEGACY")
                 ordinal = legacy.group(1).casefold()
                 numeric = re.match(r"\d+", ordinal)
                 order = int(numeric.group()) if numeric else _ORDINALS.get(ordinal, 0)
                 title = legacy.group(2).strip()
+                flat_index = offsets[page_number - 1] + line_number
+                body_start = flat_index + 1
+                if not title:
+                    title_lines = []
+                    marker = re.compile(r"(?i)^(?:la question|le conseil fédéral|le conseil federal|résumé|resume|sur quoi vote-t-on|arguments|texte soumis|l’objet soumis|l'objet soumis|explications pages|§)")
+                    while body_start < len(flat) and len(title_lines) < 8:
+                        candidate = flat[body_start][1].strip()
+                        if not candidate or marker.search(candidate) or re.fullmatch(r"\d+", candidate):
+                            break
+                        if re.match(r"(?i)^(?:premier|première|premiere|deuxième|deuxieme|troisième|troisieme|\d+(?:er|e|ème|eme))\s+objet\b", candidate):
+                            break
+                        title_lines.append(candidate)
+                        body_start += 1
+                    title = " ".join(title_lines)
+                if not title:
+                    ordinal = legacy.group(1).casefold()
+                    numeric = re.match(r"\d+", ordinal)
+                    order = int(numeric.group()) if numeric else _ORDINALS.get(ordinal, order)
+                    prior = [candidate.strip() for candidate in (page or "").splitlines()[:line_number]
+                             if candidate.strip() and not re.fullmatch(r"\d+", candidate.strip())]
+                    if prior and not re.match(r"(?i)^(?:votation populaire|le conseil|la question|arguments|objet)\b", prior[-1]):
+                        title = prior[-1]
                 found.append({"order": order, "title": title, "page": page_number,
-                              "line": line_number, "layout": "LEGACY"})
+                              "line": line_number, "flat_index": flat_index,
+                              "body_start": body_start, "layout": "LEGACY"})
+            elif ordinal_line and line_number + 1 < len((page or "").splitlines()) and re.match(r"(?i)^\s*objet\s*$", (page or "").splitlines()[line_number + 1]):
+                ordinal = ordinal_line.group(1).casefold()
+                numeric = re.match(r"\d+", ordinal)
+                order = int(numeric.group()) if numeric else _ORDINALS.get(ordinal, 0)
+                flat_index = offsets[page_number - 1] + line_number
+                body_start = flat_index + 2
+                title_lines = []
+                while body_start < len(flat) and len(title_lines) < 8:
+                    candidate = flat[body_start][1].strip()
+                    if not candidate or re.match(r"(?i)^(?:premier|première|premiere|deuxième|deuxieme|troisième|troisieme|quatrième|quatrieme|cinquième|cinquieme|sixième|sixieme)\s*$", candidate):
+                        break
+                    if re.match(r"(?i)^(?:la question|le conseil|arguments|objet|résumé|resume)\b", candidate):
+                        break
+                    title_lines.append(candidate)
+                    body_start += 1
+                if title_lines:
+                    formats.add("LEGACY")
+                    found.append({"order": order, "title": " ".join(title_lines), "page": page_number,
+                                  "line": line_number, "flat_index": flat_index,
+                                  "body_start": body_start, "layout": "LEGACY"})
+            elif plain:
+                formats.add("LEGACY")
+                bare.append({"order": 1, "title": (plain.group(1) or "").strip(),
+                             "page": page_number, "line": line_number,
+                             "flat_index": offsets[page_number - 1] + line_number,
+                             "body_start": offsets[page_number - 1] + line_number + 1,
+                             "layout": "LEGACY", "bare": True})
+    # Prefer explicit numbered/titled headings over standalone `Objet` labels
+    # in tables of contents. Keep bare labels only when no stronger heading exists.
+    if not found and bare:
+        titled_bare = [heading for heading in bare if heading["title"]]
+        found.extend(titled_bare or bare[:1])
+        for heading in found:
+            if heading.get("bare") and not heading["title"]:
+                marker = re.compile(r"(?i)^(?:la question|le conseil fédéral|le conseil federal|résumé|resume|arguments|texte soumis|l’objet soumis|l'objet soumis|explications pages|§)")
+                title_lines = []
+                while heading["body_start"] < len(flat) and len(title_lines) < 8:
+                    candidate = flat[heading["body_start"]][1].strip()
+                    if not candidate or marker.search(candidate) or re.fullmatch(r"\d+", candidate):
+                        break
+                    title_lines.append(candidate)
+                    heading["body_start"] += 1
+                heading["title"] = " ".join(title_lines)
+    # Some 2011-era brochures have no object label. A question block is an
+    # explicit content boundary; use its preceding page title as a single object.
+    if not found:
+        for page_number, page in enumerate(pages, 1):
+            lines = (page or "").splitlines()
+            marker_index = next((i for i, line in enumerate(lines) if re.match(r"(?i)^\s*la question à laquelle", line)), None)
+            if marker_index is None:
+                continue
+            title_lines = [line.strip() for line in lines[:marker_index]
+                           if line.strip() and not re.fullmatch(r"\d+", line.strip())]
+            if title_lines:
+                formats.add("LEGACY")
+                found.append({"order": 1, "title": " ".join(title_lines), "page": page_number,
+                              "line": 0, "flat_index": offsets[page_number - 1],
+                              "body_start": offsets[page_number - 1] + marker_index,
+                              "layout": "LEGACY"})
+                break
+    question_orders = {
+        heading["order"] for heading in found
+        if re.search(r"(?i)(?:la question à laquelle|acceptez-vous)", pages[heading["page"] - 1] or "")
+    }
+    if question_orders:
+        found = [heading for heading in found
+                 if heading["order"] not in question_orders
+                 or re.search(r"(?i)(?:la question à laquelle|acceptez-vous)", pages[heading["page"] - 1] or "")]
     return found, formats
 
 
@@ -61,14 +165,14 @@ def extract_objects(pages: list[str], *, source_id: str = "source", source_sha25
     for index, heading in enumerate(headings):
         page_lines = [(page_number, line) for page_number, page in enumerate(pages, 1)
                       for line in (page or "").splitlines()]
-        start = sum(len((page or "").splitlines()) for page in pages[:heading["page"] - 1]) + heading["line"]
+        start = heading.get("body_start", heading["flat_index"] + 1)
         if index + 1 < len(headings):
             next_heading = headings[index + 1]
-            end = sum(len((page or "").splitlines()) for page in pages[:next_heading["page"] - 1]) + next_heading["line"]
+            end = next_heading["flat_index"]
         else:
             end = len(page_lines)
-        body = [line for _, line in page_lines[start + 1:end] if line.strip()]
-        passage_pages = sorted({number for number, line in page_lines[start:end] if line.strip()})
+        body = [line for _, line in page_lines[start:end] if line.strip()]
+        passage_pages = sorted({heading["page"]} | {number for number, line in page_lines[start:end] if line.strip()})
         passage = {"pages": passage_pages, "text": "\n".join(body).strip()}
         obj = objects_by_order.setdefault(heading["order"], {
             "object_id": f"{source_id}:{source_sha256[:12] or 'unversioned'}:{heading['order']}",

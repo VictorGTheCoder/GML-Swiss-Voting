@@ -58,6 +58,7 @@ def _run_pipeline(tmp_path: Path, *, confirmed: bool = True, ambiguous: bool = F
         "language": "fr", "collected_at": "2026-10-06T10:00:00Z",
         "availability_status": "CONFIRMED_PRE_VOTE" if confirmed else "INVESTIGATE",
         "availability_evidence": "Brochure archived before voting day" if confirmed else "No pre-vote publication proof",
+        "semantic_status": "VALIDATED",
         "ofs_vote_id": "6021", "match_status": "PROPOSED" if ambiguous else "VALIDATED",
         "match_justification": "Official question title matches the section title",
     }]}), encoding="utf-8")
@@ -102,6 +103,21 @@ def test_pipeline_excludes_unproven_or_ambiguous_object(tmp_path):
         report = (output / "report.md").read_text(encoding="utf-8")
         assert model.empty
         assert label in report.lower() or ("pre-vote" if label == "unproven" else "ambiguous") in report.lower()
+
+
+def test_pipeline_does_not_treat_technical_extraction_as_semantic_validation(tmp_path):
+    result, output, _ = _run_pipeline(tmp_path)
+    assert result.returncode == 0, result.stderr
+    manifest_path = tmp_path / "sources.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["documents"][0].pop("semantic_status")
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    result = subprocess.run(
+        [sys.executable, str(ENTRYPOINT), "--ofs", str(tmp_path / "ofs.csv"), "--sources", str(manifest_path), "--output", str(output)],
+        capture_output=True, text=True,
+    )
+    assert result.returncode == 0, result.stderr
+    assert pd.read_parquet(output / "model.parquet").empty
 
 
 def test_pipeline_is_offline_idempotent_and_preserves_pdf_versions(tmp_path):

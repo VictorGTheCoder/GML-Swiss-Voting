@@ -12,7 +12,6 @@ import hashlib
 import json
 import re
 import shutil
-from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
@@ -111,6 +110,7 @@ def build(ofs_path: Path, sources_path: Path, output: Path) -> None:
             "vote_date": str(doc["vote_date"]), "language": doc["language"],
             "collected_at": doc["collected_at"], "availability_status": doc.get("availability_status", "INVESTIGATE"),
             "availability_evidence": doc.get("availability_evidence", ""),
+            "semantic_status": doc.get("semantic_status", "NOT_VALIDATED"),
             "match_status": match_status, "match_justification": match_reason,
             "council_recommendation_target": _recommendation_target(extracted["council_recommendation_raw"]),
             "parliament_recommendation_target": _recommendation_target(extracted["parliament_recommendation_raw"]),
@@ -141,9 +141,11 @@ def build(ofs_path: Path, sources_path: Path, output: Path) -> None:
                     reasons.append(f"ambiguous OFS correspondence ({doc['match_status']})")
                 else:
                     reasons.append(f"OFS correspondence not validated ({doc['match_status']})")
+            if doc.get("semantic_status") != "VALIDATED":
+                reasons.append("semantic extraction is not validated")
             if bool(row["is_tiebreak_question"]):
                 reasons.append("tie-break question excluded from model")
-            if not reasons:
+        if not reasons:
                 eligible_ids.add(vote_id)
         coverage.append({"vote_id": vote_id, "vote_date": str(row["vote_date"]), "question_fr": row["question_fr"],
                          "coverage_status": status, "source_id": doc.get("source_id") if doc else None,
@@ -163,7 +165,9 @@ def build(ofs_path: Path, sources_path: Path, output: Path) -> None:
     model.to_parquet(output / "model.parquet", index=False)
     report = ["# Federal explanations pipeline report", "", f"OFS objects: {len(coverage_frame)}",
               f"Sections extracted: {len(section_frame)}", f"Eligible model rows: {len(model)}", "",
-              "## Coverage and exclusions", ""]
+              "## Coverage and exclusions", "",
+              "Brochure text is sourced from the Chancellerie PDF; Swissvotes metadata is supplemental. "
+              "Automated extraction does not constitute semantic validation.", ""]
     for item in coverage:
         report.append(f"- `{item['vote_id']}` {item['coverage_status']}: {item['exclusion_reasons'] or 'eligible'}")
     (output / "report.md").write_text("\n".join(report) + "\n", encoding="utf-8")
