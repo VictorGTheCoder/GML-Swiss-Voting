@@ -1,9 +1,0 @@
-[
-  {
-    "source":"Swissvotes",
-    "source_version":"DATASET CSV 28-09-2026",
-    "source_sha256":"594dbafb5c9ae8f7563f1e0e3de00cac561993cdfd53034e86ed8bce1ddc3a35",
-    "license":"CC BY 4.0",
-    "source_url":"https:\/\/swissvotes.ch\/page\/dataset\/swissvotes_dataset.csv"
-  }
-]
