@@ -273,7 +273,7 @@ def main() -> None:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=Path("reports/federal_explanations_eda"),
+        default=Path("reports/generated/federal_explanations/eda"),
         help="Directory where PNG figures and report.md are written",
     )
     args = parser.parse_args()
