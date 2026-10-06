@@ -90,3 +90,56 @@ def test_full_period_audit_keeps_missing_brochure_rows_and_empty_model(tmp_path)
     assert "OFS brochure correspondence is not validated" in coverage.loc[0, "exclusion_reasons"]
     report = (output / "report.md").read_text(encoding="utf-8")
     assert "no French Chancellerie brochure" in report
+
+
+def test_full_period_sections_include_official_fields_and_related_vote_export(tmp_path, monkeypatch):
+    import pandas as pd
+    import scripts.audit_federal_explanations_period as audit
+
+    ofs = tmp_path / "ofs.csv"
+    pd.DataFrame([
+        {"vote_id": "420", "vote_date": "2016-02-28", "is_tiebreak_question": False,
+         "related_vote_ids": ["421"]},
+        {"vote_id": "421", "vote_date": "2016-02-28", "is_tiebreak_question": True,
+         "related_vote_ids": []},
+    ]).to_csv(ofs, index=False)
+    swiss = tmp_path / "swissvotes.csv"
+    pd.DataFrame([{"anr": "42", "titel_fr": "Titre fourni"},
+                  {"anr": "42.1", "titel_fr": "Second titre"}]).to_csv(swiss, index=False)
+    pdf = tmp_path / "brochure.pdf"
+    pdf.write_bytes(b"fixture")
+    sources = tmp_path / "sources.json"
+    sources.write_text(
+        '{"documents":[{"source_id":"s1","pdf_path":"' + str(pdf) + '",'
+        '"vote_date":"2016-02-28","ofs_vote_ids":["420","421"],'
+        '"match_status":"UNRESOLVED"}]}', encoding="utf-8")
+    monkeypatch.setattr(audit, "extract_pdf_pages", lambda _path: [{
+        "page": 1, "text": "Objet 1: Titre fourni\nRésumé officiel: Résumé déclaré.\n"
+        "Conseil fédéral: Le Conseil fédéral et le Parlement vous recommandent de rejeter l’initiative.\n"
+        "Objet 2: Titre sans champs",
+        "method": "native", "status": "OK",
+    }])
+    output = tmp_path / "out"
+    audit.run_audit(ofs, swiss, sources, output, source_version="fixture")
+
+    sections = pd.read_parquet(output / "sections.parquet")
+    section = sections.loc[sections.section_order == 1].iloc[0]
+    assert section["summary_official"] == "Résumé déclaré."
+    assert section["summary_missing_reason"] is None
+    assert section["council_recommendation_raw"].startswith("Le Conseil fédéral")
+    assert section["council_recommendation_target"] == "REJECT_INITIATIVE"
+    assert section["council_recommendation_reason"] == "clear_single_target"
+    assert section["council_recommendation_position"] == "REJECT"
+    assert section["council_recommendation_type"] == "INITIATIVE"
+    assert section["parliament_recommendation_target"] == "REJECT_INITIATIVE"
+    assert section["object_type"] == "INITIATIVE"
+    missing = sections.loc[sections.section_order == 2].iloc[0]
+    assert pd.isna(missing["summary_official"])
+    assert "absent" in missing["summary_missing_reason"]
+    assert missing["council_recommendation_reason"] == "not_extracted"
+
+    related = pd.read_parquet(output / "related_votes.parquet")
+    assert related.to_dict("records") == [{"vote_id": "420", "related_vote_id": "421"}]
+    intermediate = pd.read_parquet(output / "votes_intermediate.parquet")
+    assert intermediate.set_index("vote_id").loc["420", "related_vote_ids"] == ["421"]
+    assert "related_votes.parquet" in (output / "report.md").read_text(encoding="utf-8")

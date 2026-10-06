@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import argparse
+import ast
 import hashlib
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -16,12 +18,123 @@ try:  # Support both `python scripts/...py` and package imports in tests.
     from .federal_explanations_swissvotes import join_swissvotes
     from .federal_explanations_temporal import apply_temporal_decision, filter_model_eligible
     from .federal_explanations_corrections import replay_corrections
+    from .federal_explanations import _section_fields
+    from .federal_explanations_relations import _recommendation, build_related_vote_data
 except ImportError:
     from federal_explanations_layouts import extract_objects
     from federal_explanations_ocr import extract_pdf_pages
     from federal_explanations_swissvotes import join_swissvotes
     from federal_explanations_temporal import apply_temporal_decision, filter_model_eligible
     from federal_explanations_corrections import replay_corrections
+    from federal_explanations import _section_fields
+    from federal_explanations_relations import _recommendation, build_related_vote_data
+
+
+def _list_value(value: object) -> list[str]:
+    """Decode an explicitly supplied list field without inferring relations."""
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return []
+    if isinstance(value, (list, tuple, set)):
+        return [str(item) for item in value if str(item)]
+    text = str(value).strip()
+    if not text or text.casefold() in {"nan", "none", "null", "[]"}:
+        return []
+    try:
+        parsed = ast.literal_eval(text)
+    except (SyntaxError, ValueError):
+        parsed = [item.strip() for item in text.split(";") if item.strip()]
+    return [str(item) for item in parsed] if isinstance(parsed, (list, tuple, set)) else [text]
+
+
+def _official_fields(section: dict, vote_rows: list[dict]) -> dict:
+    """Extract labeled summary/recommendations and annotate unresolved values."""
+    full_text = "\n".join(passage["text"] for passage in section["passages"])
+    try:
+        parsed = _section_fields([f"Objet {section['order']}: {section['title']}\n{full_text}"])
+    except ValueError:  # Legacy layouts do not use the modern object heading.
+        parsed = {"summary_official": "", "council_recommendation_raw": "",
+                  "parliament_recommendation_raw": ""}
+
+    def labeled_value(label: str) -> str:
+        aliases = {
+            "Résumé officiel": r"Résumé officiel|Resume officiel|Résumé|Resume",
+            "Conseil fédéral": r"Conseil fédéral|Conseil federal",
+            "Parlement": r"Parlement",
+        }
+        pattern = aliases[label]
+        boundary = r"(?=^(?:Résumé officiel|Resume officiel|Résumé|Resume|Texte complet|Conseil fédéral|Conseil federal|Parlement)\s*:|\Z)"
+        found = re.search(rf"(?ims)^(?:{pattern})\s*:\s*(.*?){boundary}", full_text)
+        return " ".join((found.group(1) or "").split()) if found else ""
+
+    for field, label in (("summary_official", "Résumé officiel"),
+                         ("council_recommendation_raw", "Conseil fédéral"),
+                         ("parliament_recommendation_raw", "Parlement")):
+        if not parsed.get(field):
+            parsed[field] = labeled_value(label)
+
+    if not parsed.get("summary_official"):
+        lines = full_text.splitlines()
+        start = next((i for i, line in enumerate(lines)
+                      if re.match(r"(?i)^\s*(?:L’essentiel en bref|L'essentiel en bref|En bref)\s*$", line)), None)
+        if start is not None:
+            end = next((i for i in range(start + 1, len(lines))
+                        if re.match(r"(?i)^\s*(?:Le projet en détail|Le texte en détail|En détail)\s*$", lines[i])), len(lines))
+            parsed["summary_official"] = " ".join(" ".join(lines[start + 1:end]).split())
+
+    joined_text = re.sub(r"-\s*\n\s*", "", full_text)
+    joined_text = " ".join(joined_text.split())
+    if not parsed.get("council_recommendation_raw") and not parsed.get("parliament_recommendation_raw"):
+        recommendation = re.search(
+            r"((?:Le Conseil fédéral et le Parlement|Le Conseil fédéral|Le Parlement)\s+"
+            r"vous recommand(?:e|ent)\b.{0,250}?[.!])", joined_text, re.IGNORECASE
+        )
+        if recommendation:
+            raw = recommendation.group(1).strip()
+            if re.search(r"(?i)conseil fédéral.*parlement", raw):
+                parsed["council_recommendation_raw"] = raw
+                parsed["parliament_recommendation_raw"] = raw
+            elif re.search(r"(?i)conseil fédéral", raw):
+                parsed["council_recommendation_raw"] = raw
+            else:
+                parsed["parliament_recommendation_raw"] = raw
+    summary = parsed["summary_official"] or None
+    council_raw = parsed["council_recommendation_raw"] or None
+    parliament_raw = parsed["parliament_recommendation_raw"] or None
+    joint = council_raw and re.search(r"(?i)conseil fédéral et le parlement", council_raw)
+    if joint and not parliament_raw:
+        parliament_raw = council_raw
+    context = vote_rows[0] if len(vote_rows) == 1 else {"related_vote_ids": []}
+    result = {
+        "summary_official": summary,
+        "summary_missing_reason": None if summary else "official summary label not extracted or absent",
+        "council_recommendation_raw": council_raw,
+        "parliament_recommendation_raw": parliament_raw,
+        "object_type": None,
+        "object_type_reason": "object type not identifiable from extracted title",
+    }
+    for label, raw in (("council", council_raw), ("parliament", parliament_raw)):
+        target, reason = _recommendation(raw, context)
+        result[f"{label}_recommendation_target"] = target
+        result[f"{label}_recommendation_reason"] = reason
+        result[f"{label}_recommendation_position"] = (
+            target.split("_", 1)[0] if target else None
+        )
+        result[f"{label}_recommendation_type"] = (
+            target.split("_", 1)[1] if target and "_" in target else None
+        )
+    title = (section["title"] + "\n" + full_text).casefold()
+    known_types = [("INITIATIVE", r"\binitiative\b"),
+                   ("COUNTERPROPOSAL", r"contre[- ]projet"),
+                   ("REFERENDUM", r"\bréférendum\b|\breferendum\b"),
+                   ("LAW", r"\bloi fédérale\b|\bloi\b"),
+                   ("DECREE", r"\barrêté fédéral\b|\barrete federal\b")]
+    types = [name for name, pattern in known_types if re.search(pattern, title)]
+    if len(types) == 1:
+        result["object_type"] = types[0]
+        result["object_type_reason"] = "identified from explicit title wording"
+    elif len(types) > 1:
+        result["object_type_reason"] = "ambiguous title contains multiple recognized object types"
+    return result
 
 
 def run_audit(ofs_path: Path, swissvotes_path: Path, sources_path: Path, output: Path,
@@ -64,11 +177,16 @@ def run_audit(ofs_path: Path, swissvotes_path: Path, sources_path: Path, output:
             for (object_id, field), value in replayed["applied"].items():
                 if object_id == section["object_id"] and field in {"title", "text"}:
                     section[field] = value
+            refs = doc.get("ofs_vote_ids", [doc.get("ofs_vote_id", "")])
+            if isinstance(refs, str):
+                refs = [refs]
+            linked_votes = [row for row in expected.to_dict("records") if str(row["vote_id"]) in {str(v) for v in refs}]
             section_rows.append({"source_id": doc.get("source_id"), "pdf_sha256": digest,
                                  "object_id": section["object_id"], "section_order": section["order"],
                                  "title": section["title"], "source_pages": section["source_pages"],
                                  "layout": section["layout"], "structure_status": structure["structure_status"],
                                  "full_text": "\n".join(p["text"] for p in section["passages"]),
+                                 **_official_fields(section, linked_votes),
                                  "semantic_status": doc.get("semantic_status", "NOT_VALIDATED"),
                                  "correction_status": "APPLIED" if replayed["applied"] else "NONE"})
         source_rows.append({**doc, "pdf_sha256": digest, "extraction_status": "EXTRACTED",
@@ -139,6 +257,25 @@ def run_audit(ofs_path: Path, swissvotes_path: Path, sources_path: Path, output:
     pd.DataFrame(page_rows).to_parquet(output / "pages.parquet", index=False)
     pd.DataFrame(section_rows).to_parquet(output / "sections.parquet", index=False)
     pd.DataFrame(section_links, columns=["vote_id", "object_id", "source_id", "pdf_sha256", "match_status", "justification"]).to_parquet(output / "section_links.parquet", index=False)
+    ofs_objects = []
+    expected_records = expected.to_dict("records")
+    for row in expected_records:
+        row["related_vote_ids"] = _list_value(row.get("related_vote_ids"))
+        row["is_tiebreak_question"] = bool(row.get("is_tiebreak_question", False))
+        row["match_status"] = "UNRESOLVED"
+        row["availability_status"] = "INVESTIGATE"
+        row["extraction_status"] = "EXTRACTED" if docs_by_vote.get(str(row["vote_id"])) else "MISSING"
+        row["semantic_status"] = "NOT_VALIDATED"
+        raw_sections = [item for item in section_rows if any(link["vote_id"] == str(row["vote_id"]) and link["object_id"] == item["object_id"] for link in section_links)]
+        row["council_recommendation_raw"] = raw_sections[0].get("council_recommendation_raw") if len(raw_sections) == 1 else None
+        row["parliament_recommendation_raw"] = raw_sections[0].get("parliament_recommendation_raw") if len(raw_sections) == 1 else None
+        ofs_objects.append(row)
+    relation_sections = [{**item, "section_id": item["object_id"]} for item in section_rows]
+    relation_links = [{"vote_id": item["vote_id"], "section_id": item["object_id"]}
+                      for item in section_links]
+    related = build_related_vote_data(ofs_objects, relation_sections, relation_links)
+    related["related_votes"].to_parquet(output / "related_votes.parquet", index=False)
+    related["votes_intermediate"].to_parquet(output / "votes_intermediate.parquet", index=False)
     expected_by_date = expected.groupby("vote_date").vote_id.apply(lambda values: sorted(values.astype(str))).to_dict()
     document_audit = []
     for doc in source_rows:
@@ -184,6 +321,7 @@ def run_audit(ofs_path: Path, swissvotes_path: Path, sources_path: Path, output:
               f"Native extracted pages: {sum(int(x.get('native_pages', 0)) for x in source_rows)}",
               f"OCR fallback pages: {sum(int(x.get('ocr_pages', 0)) for x in source_rows)}",
               f"OCR failed pages: {sum(int(x.get('failed_pages', 0)) for x in source_rows)}",
+              f"Vote-to-vote relation edges supplied by OFS input: {len(related['related_votes'])} (see `related_votes.parquet`; IDs retained in `votes_intermediate.parquet`)",
               f"Model-eligible rows: {len(eligible)}", "",
               "Swissvotes provides structured metadata only; summary and explanatory text are from the Chancellerie PDF. "
               "Join key rule: `str(int(Decimal(anr) * 10))` must map to one unique OFS `vote_id`, with vote date agreement; "

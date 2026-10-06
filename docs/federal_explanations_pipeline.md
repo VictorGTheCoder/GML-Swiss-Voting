@@ -1,9 +1,10 @@
 # Federal explanations pipeline (first modern object)
 
-This local, offline entry point reconstructs one modern French one-object
-brochure against a small OFS reference. It preserves source PDFs by SHA-256 and
-writes `coverage.parquet`, `sections.parquet`, `section_links.parquet`, the
-strictly filtered `model.parquet`, and `report.md`.
+The local entry points reconstruct modern and legacy French brochures against
+the OFS vote reference. The full-period audit preserves source PDFs by SHA-256
+and writes `coverage.parquet`, `sections.parquet`, `section_links.parquet`,
+`related_votes.parquet`, `votes_intermediate.parquet`, the strictly filtered
+`model.parquet`, and `report.md`.
 
 Install the dependencies in `environment.yml`, then run:
 
@@ -80,6 +81,17 @@ why, including explicit no-recommendation and unextracted cases. An empty or
 ambiguous recommendation is never converted to an assumed position. The
 returned report states why section counts may differ from OFS question counts:
 several votes can share one section, and a vote can link to several sections.
+
+In the full-period export, `sections.parquet` carries `summary_official`,
+authority-specific raw recommendations, parsed target, position, target type,
+and an explicit reason when a summary is absent or a recommendation is
+unextracted or ambiguous. Object type is populated only when the extracted
+title/text contains one recognized explicit type; otherwise the field is null
+with a reason. `related_votes.parquet` is the source-provided vote-to-vote edge
+table (`vote_id`, `related_vote_id`); `votes_intermediate.parquet` retains each
+vote's original `related_vote_ids` array and tie-break flag. The audit does not
+infer links from shared ballot dates or brochure titles. Missing source
+relationships therefore yield an empty edge table, not invented edges.
 
 ## Temporal review and model eligibility
 

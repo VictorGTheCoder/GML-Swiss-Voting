@@ -17,6 +17,11 @@ from pathlib import Path
 import pandas as pd
 import pdfplumber
 
+try:
+    from .federal_explanations_relations import _recommendation
+except ImportError:
+    from federal_explanations_relations import _recommendation
+
 
 def _pdf_pages(path: Path) -> list[str]:
     with pdfplumber.open(path) as pdf:
@@ -54,12 +59,8 @@ def _section_fields(pages: list[str]) -> dict:
 
 
 def _recommendation_target(value: str) -> str | None:
-    lower = value.casefold()
-    if any(word in lower for word in ("accepter", "approuver", "oui")):
-        return "ACCEPT"
-    if any(word in lower for word in ("rejeter", "refuser", "non")):
-        return "REJECT"
-    return None
+    target, _ = _recommendation(value, {"related_vote_ids": []})
+    return target.split("_", 1)[0] if target else None
 
 
 def build(ofs_path: Path, sources_path: Path, output: Path) -> None:
@@ -114,6 +115,8 @@ def build(ofs_path: Path, sources_path: Path, output: Path) -> None:
             "match_status": match_status, "match_justification": match_reason,
             "council_recommendation_target": _recommendation_target(extracted["council_recommendation_raw"]),
             "parliament_recommendation_target": _recommendation_target(extracted["parliament_recommendation_raw"]),
+            "council_recommendation_reason": _recommendation(extracted["council_recommendation_raw"], {})[1],
+            "parliament_recommendation_reason": _recommendation(extracted["parliament_recommendation_raw"], {})[1],
         }
         sections.append(section)
         links.append({"section_id": section_id, "ofs_vote_id": vote_id, "match_status": match_status,

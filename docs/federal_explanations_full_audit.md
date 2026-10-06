@@ -40,8 +40,11 @@ python scripts/audit_federal_explanations_period.py \
 After collection, replay requires only the cached PDF files, manifest, OFS
 reference, and Swissvotes CSV; no network access is used. Parquet exports keep
 one coverage row per expected vote, source and page audits, extracted sections,
-strict model rows, model exclusions, and a per-vote report. A missing PDF or
-failed page remains visible in the audit.
+vote-to-section links, source-provided vote-to-vote relations, intermediate
+vote rows preserving relation IDs, strict model rows, model exclusions, and a
+per-vote report. The reproducible 2011–2026 snapshot and artifact hashes are
+tracked in `reports/federal_explanations_2011_2026.md`. A missing PDF or failed
+page remains visible in the audit.
 
 ## Identifier and eligibility rules
 

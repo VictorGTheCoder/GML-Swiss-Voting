@@ -17,7 +17,11 @@ matched to the French Federal Chancellery archive. **LLM budget:** 0 CHF.
 | Native text pages | 2,435 |
 | Local French OCR fallback pages, successful / failed | 24 / 0 |
 | Parsed brochure sections | 137 |
+| Sections with extracted official summary | 127 / 137 |
+| Sections with authority recommendation text (both authority fields) | 128 / 137 |
+| Parsed recommendation target/position/type | 123 clear single-target; 5 ambiguous or unclear; 9 not extracted |
 | Candidate section-to-vote links, all unresolved pending review | 444 |
+| Source-provided vote-to-vote relation edges | 0 (OFS input has no relation IDs) |
 | Model-eligible rows | 0 |
 
 Swissvotes uses a numeric BFS number, while the local OFS key encodes tenths.
@@ -59,6 +63,18 @@ authority positions with per-field provenance. It does not supply the
 Chancellery brochure summary, arguments, or explanatory text; those remain
 derived from the official PDF. Structured campaign arguments are deferred.
 
+The full-period section export now includes `summary_official` and its missing
+reason, each authority's raw recommendation, parsed action (`position`),
+target type, and parser reason. Of 137 sections, 127 have a detected summary;
+128 have a detected authority recommendation. Among council recommendation
+fields, 123 parse to one target, five remain ambiguous or unclear, and nine
+were not extracted. Recommendation types such as `INITIATIVE` and `QUESTION`
+describe the parser's target classification; they do not validate the source
+text. `related_votes.parquet` is an empty two-column edge table because the
+read-only OFS input contains no `related_vote_ids`; `votes_intermediate.parquet`
+preserves the input relation lists (empty for these 136 rows). The pipeline
+does not infer relations from shared vote dates or brochure content.
+
 ## Sources and provenance
 
 - OFS reference: `data/processed/votes_communes.parquet`, SHA-256
@@ -87,11 +103,14 @@ SHA-256 hashes:
 | `coverage.parquet` | `e163b5d2f39c26ed0ac49e6875327ac06266342248278da76e52e41881df0320` |
 | `sources.parquet` | `6b6176e4d09431a463e37f9e344e7ae895d348bf5373ebf220c24e38cca9785b` |
 | `pages.parquet` | `5b8b9c06e5f67822823ec37f0c75106167ff7ca257f664960d409b165e72996f` |
-| `sections.parquet` | `821daa4c9d37ce34fa5efdfb79b11e633e1effe567bd6b130e30decc3e2426af` |
+| `sections.parquet` | `5eff1efa9d0f94f3ddb9d6cbecd7d3e3f99557f4a24eae90eb4f415d05b95d58` |
 | `section_links.parquet` | `d938c30663fcc5b2699ac44251543a2e5119f0793bc9eb519257979ed3642433` |
+| `related_votes.parquet` | `4df5c24a939917f33c5fd80e4a9a4e173d9153e0f2b481658f28a4e981d17ee2` |
+| `votes_intermediate.parquet` | `919d45655f2ce24cde90284a58a5e45991affb5b923b61e5403b51f7c50d5dc2` |
 | `document_audit.parquet` | `67191d40152cc655d675cf40de5de631cc940b022c7168d7aa2e64f6b03b46fe` |
 | `model.parquet` | `d5d43c89560dfd381902292e0bd746902176676e6e62e5266c08582ce281e630` |
 | `model_exclusions.parquet` | `a6bf27ba450f2a42b291a6370355d4f70cecae1c74aeb4f3aaa26914ee2ad228` |
+| `audit_report.md` | `89354efef64a16be03fc98732bd22a16d7c6533c7b5bed946e033c9c613694af` |
 
 Reproduction and offline replay instructions are in
 [`docs/federal_explanations_full_audit.md`](../../docs/federal_explanations_full_audit.md).

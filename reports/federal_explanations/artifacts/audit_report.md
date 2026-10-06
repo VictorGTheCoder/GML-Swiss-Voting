@@ -13,6 +13,7 @@ Distinct Chancellery brochure dates: 48
 Native extracted pages: 2435
 OCR fallback pages: 24
 OCR failed pages: 0
+Vote-to-vote relation edges supplied by OFS input: 0 (see `related_votes.parquet`; IDs retained in `votes_intermediate.parquet`)
 Model-eligible rows: 0
 
 Swissvotes provides structured metadata only; summary and explanatory text are from the Chancellerie PDF. Join key rule: `str(int(Decimal(anr) * 10))` must map to one unique OFS `vote_id`, with vote date agreement; unconvertible, colliding, date-mismatched, and out-of-scope rows remain reported. Section counts are not expected to equal question counts. OCR success is technical only; semantic validation must be explicitly reviewed. No LLM is used (0 CHF).
