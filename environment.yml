@@ -1,0 +1,42 @@
+name: swiss-votes-ml
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.12
+  - pip
+
+  # Data processing
+  - pandas
+  - numpy
+  - scipy
+  - pyarrow
+  - openpyxl
+  - requests
+  - tabulate
+
+  # Machine learning
+  - scikit-learn
+  - joblib
+  - catboost
+
+  # Exploration and visualisation
+  - jupyterlab
+  - ipykernel
+  - matplotlib
+  - seaborn
+  - plotly
+
+  # Application
+  - streamlit
+
+  # Tests and code quality
+  - pytest
+  - pytest-cov
+  - ruff
+
+  # Packages not guaranteed through the selected Conda channels
+  - pip:
+      - pyaxis

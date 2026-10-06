@@ -12,7 +12,8 @@ Les chiffres détaillés sont dans les rapports **générés automatiquement** (
 ## 1. Reconstruire le dataset
 
 ```bash
-pip install -r requirements.txt
+conda env update -f environment.yml --prune
+conda activate swiss-votes-ml
 python scripts/build_dataset.py            # télécharge si data/raw est vide, puis audit -> nettoyage -> validation
 python scripts/build_dataset.py --force-download   # re-télécharge la dernière version OFS
 python -m pytest                           # tests unitaires (sans réseau, sur un mini-cube synthétique)
