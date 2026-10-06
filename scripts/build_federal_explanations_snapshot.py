@@ -25,7 +25,6 @@ OBJECT_COLUMNS = [
     "semantic_status",
     "object_ids",
     "section_count",
-    "exclusion_reasons",
 ]
 
 PASSTHROUGH_TABLES = [
