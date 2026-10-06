@@ -80,3 +80,25 @@ why, including explicit no-recommendation and unextracted cases. An empty or
 ambiguous recommendation is never converted to an assumed position. The
 returned report states why section counts may differ from OFS question counts:
 several votes can share one section, and a vote can link to several sections.
+
+## Temporal review and model eligibility
+
+`scripts/federal_explanations_temporal.py` provides a version-bound review
+contract independent of the extraction CLI. `decide_temporal_status(vote_date,
+source_sha256, evidence)` returns one of `CONFIRMED_PRE_VOTE`, `INVESTIGATE`, or
+`POST_VOTE`, together with the selected evidence kind, reference, evidence date,
+justification, and exact PDF SHA-256. Supported evidence kinds are
+`public_release`/`public_availability` before the vote and
+`public_publication`/`content_change` after it. Collection, document closing,
+archive migration, and page-update dates are insufficient by themselves.
+Evidence on the vote date, missing dates, and contradictory qualifying evidence
+remain `INVESTIGATE`. A page update cannot establish a post-vote content change.
+
+Use `apply_temporal_decision(decision, current_source_sha256)` before applying a
+saved review. A different PDF hash marks the decision stale and resets its
+status to `INVESTIGATE`. To build the main model subset,
+`filter_model_eligible(rows)` returns `(eligible, exclusions)`. Rows require a
+confirmed decision bound to the current source hash, validated OFS matching,
+validated extraction (`EXTRACTED`), and a non-subsidiary question. Every
+excluded row is retained with an `exclusion_reason`; an empty eligible list is
+valid and should be reported as an empty model export.
