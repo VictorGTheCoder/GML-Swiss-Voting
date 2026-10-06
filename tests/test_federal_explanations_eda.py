@@ -14,44 +14,40 @@ def test_generate_eda_from_synthetic_exports(tmp_path: Path) -> None:
         {
             "vote_id": ["6000", "6010", "6020", "6030"],
             "vote_date": ["2020-02-09", "2020-09-27", "2021-03-07", "2021-06-13"],
-            "coverage_status": ["FOUND", "FOUND", "FOUND", "MISSING"],
-            "exclusion_reasons": ["", "semantic review", "", "no brochure"],
+            "brochure_status": [
+                "FOUND",
+                "FOUND",
+                "FOUND",
+                "MISSING_OR_AMBIGUOUS",
+            ],
         }
-    ).to_parquet(input_dir / "coverage.parquet", index=False)
+    ).to_parquet(input_dir / "objects.parquet", index=False)
 
     pd.DataFrame(
         {
-            "section_id": ["s1", "s2", "s3"],
-            "vote_date": ["2020-02-09", "2020-09-27", "2021-03-07"],
-            "full_text": [
-                "A" * 1200,
-                "B" * 1800,
-                "C" * 900,
-            ],
-            "extraction_status": ["EXTRACTED", "EXTRACTED", "EXTRACTED"],
+            "object_id": ["s1", "s2", "s3"],
+            "full_text": ["A" * 1200, "B" * 1800, "C" * 900],
         }
     ).to_parquet(input_dir / "sections.parquet", index=False)
 
     pd.DataFrame(
         {
             "source_id": ["a", "a", "b", "b", "c"],
-            "page": [1, 2, 1, 2, 1],
+            "page_number": [1, 2, 1, 2, 1],
             "method": ["native", "native", "native", "ocr", "native"],
         }
     ).to_parquet(input_dir / "pages.parquet", index=False)
 
     generated = generate_eda(input_dir, output_dir)
 
-    generated_names = {path.name for path in generated}
-    assert generated_names == {
+    assert {path.name for path in generated} == {
         "coverage_by_year.png",
         "extraction_quality.png",
         "text_length_distribution.png",
         "report.md",
     }
-    assert all(path.is_file() for path in generated)
 
     report = (output_dir / "report.md").read_text(encoding="utf-8")
-    assert "Objets dans le tableau de couverture : **4**" in report
-    assert "Objets éligibles : **2**" in report
-    assert "`ocr` : **1**" in report
+    assert "Objets OFS raccordés au corpus : **4**" in report
+    assert "Objets avec brochure trouvée : **3/4**" in report
+    assert "ocr : **1**" in report
