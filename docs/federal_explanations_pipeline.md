@@ -30,8 +30,31 @@ The first parser supports a modern text PDF containing one section with these
 line labels: `Objet N: title`, `Résumé officiel: ...`, `Texte complet: ...`,
 `Conseil fédéral: ...`, and `Parlement: ...`. Missing optional fields are
 exported as empty text. Page references are one-based PDF pages containing text.
-Scanned PDFs/OCR, multi-object or older layouts, archive crawling, and versioned
-human review decisions are later extensions. Each run writes deterministic
+Scanned pages are supported by the optional page-level extractor in
+`scripts/federal_explanations_ocr.py`. It uses native PDF text when a page has
+usable text and invokes local Tesseract OCR only for pages without it. Each page
+record has the same fields (`page_number`, `text`, `method`, `status`, `error`,
+and `semantic_status`), including failed OCR pages so callers can report exact
+page references. A successful OCR transcription has
+`semantic_status: NOT_VALIDATED`; a person must still check the words,
+section boundaries, vote correspondence, and eligibility. No LLM or remote
+service is called. The original PDF is only read, not rewritten.
+
+OCR is optional and is not installed by the standard Conda environment. Install
+the Python bindings in that environment:
+
+```bash
+python -m pip install pymupdf pytesseract Pillow
+```
+
+Then install the Tesseract OCR executable and French language data (`fra`)
+using your operating system's package manager. Confirm the executable is on
+`PATH` and that `tesseract --list-langs` includes `fra`.
+Without these optional components, native text extraction still works; pages
+needing OCR receive a page-level `FAILED` status with the dependency error.
+
+Multi-object or older layouts, archive crawling, and versioned human review
+decisions remain later extensions. Each pipeline run writes deterministic
 tables and does not overwrite original content: the SHA-256 names each retained
 PDF version.
 
