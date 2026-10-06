@@ -4,7 +4,7 @@ name: Clean federal explanations snapshot
 on:
   push:
     branches:
-      - cleanup/federal-explanations-processed
+      - cleanup-federal-processed
 
 permissions:
   contents: write
