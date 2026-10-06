@@ -8,15 +8,19 @@ La problématique exacte et les modèles définitifs sont encore en cours de dé
 
 ## Structure
 
-- `data/` : datasets bruts ou transformés, non versionnés.
-- `scripts/` : scripts Python exécutables pour récupérer et préparer les données.
-- `notebooks/` : notebooks d'exploration, EDA et essais.
-- `docs/` : cahier des charges, notes méthodologiques et documentation du projet.
+- `data/` : données brutes, intermédiaires et transformées, non versionnées.
+- `scripts/` : pipelines reproductibles de collecte, préparation et audit.
+- `notebooks/datasets/` : EDA et exploration par source de données.
+- `docs/project/` : décisions et documentation transversales au projet.
+- `docs/datasets/<dataset>/README.md` : documentation de référence de chaque source.
+- `reports/datasets/` : audits et synthèses humaines versionnés.
+- `reports/generated/` : figures et rapports régénérables, non versionnés.
+
+Voir [docs/README.md](docs/README.md) pour l'index de documentation.
 
 ## Prérequis
 
-Conda doit être installé au préalable. Vous pouvez installer
-[Miniconda](https://docs.conda.io/projects/miniconda/en/latest/) ou Anaconda.
+Conda doit être installé au préalable. Vous pouvez installer Miniconda ou Anaconda.
 
 Vérifiez l'installation avec :
 
@@ -46,7 +50,7 @@ L'option `--prune` supprime également les paquets qui ne figurent plus dans `en
 
 ## Data
 
-Les datasets ne sont pas versionnés dans Git. Ils devront être récupérés ou reconstruits via les scripts du projet.
+Les datasets et artefacts générés ne sont pas versionnés dans Git. Ils doivent être récupérés ou reconstruits via les scripts du projet.
 
 ## Development
 
