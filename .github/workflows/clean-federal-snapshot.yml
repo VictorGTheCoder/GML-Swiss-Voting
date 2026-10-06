@@ -1,4 +1,5 @@
 name: Clean federal explanations snapshot
+# One-off cleanup workflow.
 
 on:
   push:
