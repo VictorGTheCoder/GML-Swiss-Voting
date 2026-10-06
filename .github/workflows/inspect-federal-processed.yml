@@ -1,0 +1,37 @@
+name: Inspect federal processed snapshot
+
+on:
+  push:
+    branches:
+      - cleanup/federal-explanations-processed
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pandas pyarrow
+      - name: Inspect parquet schemas
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+
+          root = Path("data/processed/federal_explanations")
+          for path in sorted(root.glob("*.parquet")):
+              df = pd.read_parquet(path)
+              print(f"\n=== {path.name} ===")
+              print(f"rows={len(df)} cols={len(df.columns)}")
+              print("columns:")
+              for c in df.columns:
+                  print(f"  - {c}")
+              swiss = [c for c in df.columns if "swiss" in c.lower() or c.lower() in {
+                  "anr","titel_fr","titel_de","titel_it","d1e1","d1e2","d1e3","d1e4",
+                  "position_bundesrat","position_parlament"
+              }]
+              if swiss:
+                  print("possible_swissvotes_columns:", swiss)
+          PY
