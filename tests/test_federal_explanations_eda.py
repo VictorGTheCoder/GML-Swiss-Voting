@@ -12,16 +12,10 @@ def test_generate_eda_from_synthetic_exports(tmp_path: Path) -> None:
 
     pd.DataFrame(
         {
-            "vote_id": ["6000", "6010", "6020", "6030"],
-            "vote_date": ["2020-02-09", "2020-09-27", "2021-03-07", "2021-06-13"],
-            "brochure_status": [
-                "FOUND",
-                "FOUND",
-                "FOUND",
-                "MISSING_OR_AMBIGUOUS",
-            ],
+            "source_id": ["src-a", "src-b", "src-c"],
+            "vote_date": ["2020-02-09", "2020-09-27", "2021-03-07"],
         }
-    ).to_parquet(input_dir / "objects.parquet", index=False)
+    ).to_parquet(input_dir / "sources.parquet", index=False)
 
     pd.DataFrame(
         {
@@ -32,11 +26,19 @@ def test_generate_eda_from_synthetic_exports(tmp_path: Path) -> None:
 
     pd.DataFrame(
         {
-            "source_id": ["a", "a", "b", "b", "c"],
+            "source_id": ["src-a", "src-a", "src-b", "src-b", "src-c"],
             "page_number": [1, 2, 1, 2, 1],
             "method": ["native", "native", "native", "ocr", "native"],
         }
     ).to_parquet(input_dir / "pages.parquet", index=False)
+
+    pd.DataFrame(
+        {
+            "vote_id": ["6000", "6010", "6020", "6030"],
+            "object_id": ["s1", "s2", "s3", "s3"],
+            "source_id": ["src-a", "src-b", "src-c", "src-c"],
+        }
+    ).to_parquet(input_dir / "section_links.parquet", index=False)
 
     generated = generate_eda(input_dir, output_dir)
 
@@ -48,6 +50,6 @@ def test_generate_eda_from_synthetic_exports(tmp_path: Path) -> None:
     }
 
     report = (output_dir / "report.md").read_text(encoding="utf-8")
-    assert "Objets OFS raccordés au corpus : **4**" in report
-    assert "Objets avec brochure trouvée : **3/4**" in report
+    assert "Brochures : **3**" in report
+    assert "Objets OFS reliés au corpus : **4**" in report
     assert "ocr : **1**" in report
