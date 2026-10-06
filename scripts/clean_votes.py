@@ -14,8 +14,12 @@ from dataclasses import dataclass, field
 
 import pandas as pd
 
-from votes_config import COUNT_COLUMNS, INTERIM_DIR, INTERIM_PATH, REPORTS_DIR, RESULT_COLUMNS, SPECIAL_UNIT_MIN_CODE
+from parse_votes import map_categories
+from votes_config import COUNT_COLUMNS, INTERIM_DIR, INTERIM_PATH, REPORTS_DIR, RESULT_COLUMNS, is_special_code
 
+# Text columns repeat heavily (511 votes, 2151 units): categoricals keep the 1M-row table
+# small in memory and are dictionary-encoded in parquet.
+TEXT = "category"
 CLEAN_PATH = INTERIM_DIR / "votes_communes_clean.parquet"
 CLEANING_LOG_PATH = REPORTS_DIR / "cleaning_log.md"
 
@@ -69,8 +73,9 @@ def parse_provisional_months(note_fr: str) -> set[tuple[int, int]]:
 
 def split_vote_label(labels: pd.Series) -> tuple[pd.Series, pd.Series]:
     """'2024-11-24 Titre' -> (date, 'Titre'). Unparseable dates become NaT (caught by validation)."""
-    parts = labels.astype(str).str.extract(r"^(\S+)\s+(.*)$")
-    return pd.to_datetime(parts[0], format="%Y-%m-%d", errors="coerce"), parts[1]
+    dates = map_categories(labels, lambda s: s.split(" ", 1)[0])
+    titles = map_categories(labels, lambda s: s.split(" ", 1)[-1].strip())
+    return pd.to_datetime(dates, format="%Y-%m-%d", errors="coerce"), titles.astype(TEXT)
 
 
 def clean_votes(frame: pd.DataFrame, provisional_months: set[tuple[int, int]] | None = None) -> tuple[pd.DataFrame, CleaningLog]:
@@ -97,23 +102,23 @@ def clean_votes(frame: pd.DataFrame, provisional_months: set[tuple[int, int]] | 
     log.record("drop_zero_yes_plus_no", n, len(df), "Yes + No = 0: yes_share undefined (division by zero).")
 
     out = pd.DataFrame(index=df.index)
-    out["vote_id"] = df["vote_id"].astype("string")
+    out["vote_id"] = df["vote_id"].astype(TEXT)
     out["vote_date"], out["vote_title_de"] = split_vote_label(df["vote_label_de"])
     fr_date, out["vote_title_fr"] = split_vote_label(df["vote_label_fr"])
     if not out["vote_date"].equals(fr_date):
         raise ValueError("German and French vote labels disagree on the vote date")
     # Tie-break questions: yes = prefers the initiative, no = prefers the counter-proposal (PX NOTE).
-    out["is_tiebreak_question"] = out["vote_title_de"].str.contains("Stichfrage", regex=False)
+    out["is_tiebreak_question"] = map_categories(df["vote_label_de"], lambda s: "Stichfrage" in s).astype(bool)
     months = provisional_months or set()
     out["is_provisional"] = [(d.year, d.month) in months if pd.notna(d) else False for d in out["vote_date"]]
 
-    out["municipality_id"] = df["location_code"].astype("string")
-    out["municipality_name"] = df["location_name_fr"].astype("string")
-    out["municipality_name_de"] = df["location_name_de"].astype("string")
-    out["canton"] = df["canton"].astype("string")
-    out["district_id"] = df["district_code"].astype("string")
-    out["district_name"] = df["district_name"].astype("string")
-    out["is_special_unit"] = out["municipality_id"].astype(int) >= SPECIAL_UNIT_MIN_CODE
+    out["municipality_id"] = df["location_code"].astype(TEXT)
+    out["municipality_name"] = df["location_name_fr"].astype(TEXT)
+    out["municipality_name_de"] = df["location_name_de"].astype(TEXT)
+    out["canton"] = df["canton"].astype(TEXT)
+    out["district_id"] = df["district_code"].astype(TEXT)
+    out["district_name"] = df["district_name"].astype(TEXT)
+    out["is_special_unit"] = map_categories(df["location_code"], is_special_code).astype(bool)
 
     for column in COUNT_COLUMNS:
         out[column] = df[column].round().astype("Int64") if (df[column].dropna() % 1 == 0).all() else df[column]

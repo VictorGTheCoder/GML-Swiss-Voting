@@ -1,0 +1,8 @@
+# Cleaning log
+
+| step                  |   rows_before |   rows_removed |   rows_after | reason                                                                                                                                                                                         |
+|:----------------------|--------------:|---------------:|-------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| keep_commune_level    |       1207493 |         108332 |      1099161 | Country/canton/district rows are aggregates of the commune rows (kept in data/interim).                                                                                                        |
+| drop_empty_cells      |       1099161 |          73254 |      1025907 | All 7 measures missing ('...'): the cube is a full commune x vote grid; no result was published for that unit and vote (pre-1981 gaps, communes without own ballot box, unused special units). |
+| drop_missing_yes_no   |       1025907 |              3 |      1025904 | Yes or No count missing: target cannot be computed.                                                                                                                                            |
+| drop_zero_yes_plus_no |       1025904 |              1 |      1025903 | Yes + No = 0: yes_share undefined (division by zero).                                                                                                                                          |

@@ -3,3 +3,8 @@ numpy
 scikit-learn
 matplotlib
 requests
+catboost
+pyaxis
+pyarrow
+tabulate
+pytest

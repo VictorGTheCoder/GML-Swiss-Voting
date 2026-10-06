@@ -45,3 +45,8 @@ COUNT_COLUMNS = ["eligible_voters", "ballots_cast", "valid_ballots", "votes_yes"
 # Codes >= 9000 are "special communes" of political statistics
 # (Swiss abroad, correspondence votes, unassigned ballots), see PX NOTE.
 SPECIAL_UNIT_MIN_CODE = 9000
+
+
+def is_special_code(code: str) -> bool:
+    """True for commune-level special units; False for communes and aggregate levels."""
+    return len(code) == 4 and code.isdigit() and int(code) >= SPECIAL_UNIT_MIN_CODE

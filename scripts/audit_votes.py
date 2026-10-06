@@ -14,19 +14,27 @@ import re
 import numpy as np
 import pandas as pd
 
+from parse_votes import map_categories
 from votes_config import (
     DIM_LOCATION, DIM_RESULT, DIM_VOTE, INTERIM_PATH, PROVENANCE_PATH, RAW_PX_PATH, REPORTS_DIR,
-    RESULT_COLUMNS, SPECIAL_UNIT_MIN_CODE,
+    RESULT_COLUMNS, SPECIAL_UNIT_MIN_CODE, is_special_code,
 )
 
 AUDIT_PATH = REPORTS_DIR / "data_audit.md"
 RESULTS = list(RESULT_COLUMNS.values())
 # First year the OFS says commune-level data are complete (1960-1980 come from sotomo).
 COMPLETE_FROM_YEAR = 1981
+# A few well-known mergers used as spot checks of the harmonisation (code as of 01.01.2026).
+KNOWN_MERGERS = [
+    ("1630", "Glarus Nord", "2011-01-01"),
+    ("6487", "Val-de-Ruz", "2013-01-01"),
+    ("5002", "Bellinzona", "2017-04-02"),
+    ("0292", "Stammheim", "2019-01-01"),
+]
 
 
 def _md(frame: pd.DataFrame, index: bool = False) -> str:
-    return frame.to_markdown(index=index, floatfmt=".4g")
+    return frame.to_markdown(index=index, floatfmt=".6g")
 
 
 def _pct(part: float, whole: float) -> str:
@@ -35,7 +43,10 @@ def _pct(part: float, whole: float) -> str:
 
 def _with_dates(frame: pd.DataFrame) -> pd.DataFrame:
     frame = frame.copy()
-    frame["vote_date"] = pd.to_datetime(frame["vote_label_de"].astype(str).str[:10], format="%Y-%m-%d", errors="coerce")
+    frame["vote_date"] = pd.to_datetime(map_categories(frame["vote_label_de"], lambda s: s[:10]),
+                                        format="%Y-%m-%d", errors="coerce")
+    frame["is_special"] = map_categories(frame["location_code"], is_special_code).astype(bool)
+    frame["is_tiebreak"] = map_categories(frame["vote_label_de"], lambda s: "Stichfrage" in s).astype(bool)
     frame["year"] = frame["vote_date"].dt.year
     frame["has_result"] = frame[RESULTS].notna().any(axis=1)
     frame["has_yes_no"] = frame["votes_yes"].notna() & frame["votes_no"].notna()
@@ -115,7 +126,7 @@ def section_statistics(df: pd.DataFrame) -> str:
     missing["share_cells_with_result"] = (missing["n_missing_cells_with_any_result"] / len(with_result)).map("{:.2%}".format)
     duplicates = communes.duplicated(["location_code", "vote_id"], keep=False).sum()
     name_dups = communes.groupby("location_name_fr", observed=True)["location_code"].nunique().gt(1).sum()
-    special = communes["location_code"].astype(str).astype(int) >= SPECIAL_UNIT_MIN_CODE
+    special = communes["is_special"]
     stats = pd.DataFrame([
         ("commune-level rows (full grid)", f"{len(communes):,}"),
         ("rows with at least one result", _pct(len(with_result), len(communes))),
@@ -139,7 +150,7 @@ def section_statistics(df: pd.DataFrame) -> str:
 
 def section_coverage(df: pd.DataFrame) -> str:
     communes = df[(df["level"] == "commune") & df["has_result"]]
-    regular = communes[communes["location_code"].astype(str).astype(int) < SPECIAL_UNIT_MIN_CODE]
+    regular = communes[~communes["is_special"]]
     per_year = communes.groupby("year").agg(dates=("vote_date", "nunique"), vote_objects=("vote_id", "nunique"),
                                              rows=("vote_id", "size"))
     per_vote = regular.groupby(["year", "vote_id"], observed=True)["location_code"].nunique()
@@ -165,7 +176,7 @@ def section_consistency(df: pd.DataFrame) -> str:
     turnout = c["ballots_cast"] / c["eligible_voters"].where(c["eligible_voters"] != 0)
     checks = pd.DataFrame([
         ("negative counts", int((counts < 0).sum().sum())),
-        ("non-integer counts", int(((counts % 1) != 0).sum().sum())),
+        ("non-integer counts", int((((counts % 1) != 0) & counts.notna()).sum().sum())),
         ("yes + no == 0", int((yes_no == 0).sum())),
         ("yes_share < 0 or > 1", int(((share < 0) | (share > 1)).sum())),
         ("ballots_cast > eligible_voters", int((c["ballots_cast"] > c["eligible_voters"]).sum())),
@@ -195,7 +206,7 @@ def section_target(df: pd.DataFrame) -> str:
     c = df[df["level"] == "commune"]
     yes_no = c["votes_yes"] + c["votes_no"]
     share = (c["votes_yes"] / yes_no.where(yes_no != 0)).dropna()
-    tie = c[c["vote_label_de"].astype(str).str.contains("Stichfrage")]
+    tie = c[c["is_tiebreak"]]
     return "\n".join([
         "## 7. Target `yes_share = votes_yes / (votes_yes + votes_no)`", "",
         f"- computable rows: {len(share):,} of {len(c):,} commune cells",
@@ -210,9 +221,12 @@ def section_target(df: pd.DataFrame) -> str:
 
 def section_special_units(df: pd.DataFrame) -> str:
     c = df[df["level"] == "commune"]
-    special = c[c["location_code"].astype(str).astype(int) >= SPECIAL_UNIT_MIN_CODE]
-    table = special.groupby(["location_code", "location_name_fr"], observed=True).agg(
-        vote_objects_with_result=("has_result", "sum"), first_year=("year", lambda y: y[special.loc[y.index, "has_result"]].min()))
+    special = c[c["is_special"]]
+    keys = ["location_code", "location_name_fr"]
+    table = special.groupby(keys, observed=True).agg(vote_objects_with_result=("has_result", "sum"))
+    years = special[special["has_result"]].groupby(keys, observed=True)["year"]
+    table["first_year"] = years.min().astype("Int64")
+    table["last_year"] = years.max().astype("Int64")
     table = table.reset_index()
     no_result = c.groupby(["location_code", "location_name_fr"], observed=True)["has_result"].any()
     no_result = no_result[~no_result].reset_index()[["location_code", "location_name_fr"]]
@@ -232,32 +246,50 @@ def section_harmonisation(df: pd.DataFrame, meta: dict[str, list[str]]) -> str:
     cantons = df[df["level"] == "canton"].set_index(["canton", "vote_id"], verify_integrity=True)
     sums = communes.groupby(["canton", "vote_id"], observed=True)["votes_yes"].sum(min_count=1)
     comparison = cantons[["votes_yes", "year"]].join(sums.rename("sum_communes")).dropna(subset=["votes_yes"])
-    comparison["diff"] = comparison["votes_yes"] - comparison["sum_communes"]
     comparison["period"] = np.where(comparison["year"] < COMPLETE_FROM_YEAR, "1960-1980", "1981+")
-    mism = comparison[comparison["diff"] != 0]
-    by_canton = mism.groupby(["period", "canton"], observed=True)["diff"].agg(["size", "min", "max"])
-    by_canton.columns = ["mismatched_votes", "min_diff", "max_diff"]
-    first_year = communes[communes["has_result"]].groupby(["location_code", "location_name_fr"], observed=True)["year"].min()
-    first_year = first_year[first_year.index.get_level_values(0).astype(str).astype(int) < SPECIAL_UNIT_MIN_CODE]
+    comparison["diff"] = comparison["votes_yes"] - comparison["sum_communes"]
+    grouped = comparison.groupby(["period", "canton"], observed=True)
+    by_canton = pd.DataFrame({
+        "votes_with_canton_row": grouped.size(),
+        "no_commune_data": grouped["sum_communes"].apply(lambda s: int(s.isna().sum())),
+        "sum_differs": grouped["diff"].apply(lambda d: int((d.notna() & (d != 0)).sum())),
+        "min_diff": grouped["diff"].min(), "max_diff": grouped["diff"].max(),
+    })
+    by_canton = by_canton[(by_canton["no_commune_data"] > 0) | (by_canton["sum_differs"] > 0)]
+
+    has_result = communes[communes["has_result"]]
+    first_year = has_result.groupby(["location_code", "location_name_fr"], observed=True)["year"].min()
+    first_year = first_year[[not is_special_code(code) for code in first_year.index.get_level_values(0)]]
     late = first_year[first_year > COMPLETE_FROM_YEAR].sort_values().rename("first_year_with_data").reset_index()
+    merged = pd.DataFrame(KNOWN_MERGERS, columns=["location_code", "commune", "created_by_merger"])
+    merged["first_year_with_data"] = merged["location_code"].map(first_year.droplevel(1)).astype("Int64")
+    merged["vote_objects_with_data"] = merged["location_code"].map(
+        has_result.groupby("location_code", observed=True)["vote_id"].nunique())
+    pre1981 = by_canton.loc["1960-1980"] if "1960-1980" in by_canton.index.get_level_values(0) else by_canton.iloc[:0]
+    missing_cantons = ", ".join(pre1981.index[pre1981["no_commune_data"] > pre1981["votes_with_canton_row"] / 2])
     return "\n".join([
         "## 9. Municipal mergers / harmonisation", "",
-        f"OFS statement: > {spatial.strip()}", "",
+        "OFS statement (NOTE[fr]):", "", f"> {spatial.strip()}", "",
         "Implications, checked in the data:", "",
-        "- Commune codes are the BFS numbers valid on 01.01.2026. Historical results of communes that later "
-        "merged are **re-attributed to today's commune** (a merged commune has a single row per vote back "
-        "to 1960/1981). Former communes do not appear as separate units. The cube therefore cannot show "
-        "results on historical boundaries.",
-        "- Canton totals keep their *original* state, while commune rows are harmonised. The sum of a canton's "
-        "communes differs from the canton row wherever a commune changed canton (Moutier BE -> JU; Laufental "
-        "BE -> BL in 1994). Per-canton aggregates must be computed from commune rows, not mixed with canton rows.", "",
-        "Canton row minus sum of its commune rows (`votes_yes`), votes with a non-zero difference:", "",
+        "- Commune codes are the BFS numbers valid on 01.01.2026. Results of communes that later merged are "
+        "**re-attributed to today's commune**: a merged commune has one row per vote going back before its "
+        "creation, and former communes do not appear as separate units. The cube cannot show results on "
+        "historical boundaries. Examples (merger dates from the official commune register, not from this cube):", "",
+        _md(merged), "",
+        "- Canton totals keep their *original* state, while commune rows are harmonised. So the sum of a canton's "
+        "communes differs from the canton row wherever communes changed canton: Moutier BE -> JU (effective "
+        "2026, mirror-image BE/JU differences), the Laufental BE -> BL (1994), and before 1979 the communes of "
+        "today's canton of Jura (counted in BE at the time). Per-canton aggregates must be computed from commune "
+        "rows and never mixed with canton rows.", "",
+        "Canton row minus sum of its commune rows (`votes_yes`). `no_commune_data`: the canton row exists but no "
+        "commune of that canton has data for the vote:", "",
         _md(by_canton, index=True), "",
-        f"- {len(late)} regular communes only have data from after {COMPLETE_FROM_YEAR}. These are typically "
-        "communes created by a **split** (e.g. Ittigen and Ostermundigen, separated from Bolligen in 1983). "
-        "Splits are not back-cast, so these communes have a shorter history:", "", _md(late), "",
-        "Before 1981 coverage is partial (sotomo base); the OFS note says FR, AG and TI are missing, but the "
-        "canton table in section 5 shows which cantons actually have pre-1981 commune data in this release.",
+        f"- The OFS note says 1960-1980 data are incomplete, with FR, AG and TI missing. Confirmed: cantons with "
+        f"no commune data for most pre-1981 votes: **{missing_cantons or 'none'}**.",
+        f"- {len(late)} regular communes only have data from after {COMPLETE_FROM_YEAR}. Some were created by a "
+        "**split** that is not back-cast (e.g. Ittigen and Ostermundigen, separated from Bolligen in 1983). For "
+        "others the likely reason is that they previously shared a ballot box with another commune. This was "
+        "not verified case by case:", "", _md(late),
     ])
 
 
