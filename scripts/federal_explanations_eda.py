@@ -19,34 +19,42 @@ def _save(fig: plt.Figure, path: Path) -> None:
     plt.close(fig)
 
 
-def plot_coverage_by_year(objects: pd.DataFrame, output_dir: Path) -> Path | None:
-    if objects.empty or "vote_date" not in objects.columns:
+def _vote_index(
+    sources: pd.DataFrame,
+    section_links: pd.DataFrame,
+) -> pd.DataFrame:
+    """Build a minimal vote/date index from Chancellery sources and link candidates."""
+    if section_links.empty:
+        return pd.DataFrame(columns=["vote_id", "vote_date"])
+
+    links = section_links[["vote_id", "source_id"]].drop_duplicates()
+    source_dates = sources[["source_id", "vote_date"]].drop_duplicates()
+    votes = links.merge(source_dates, on="source_id", how="left")
+    return votes[["vote_id", "vote_date"]].drop_duplicates()
+
+
+def plot_coverage_by_year(
+    sources: pd.DataFrame,
+    section_links: pd.DataFrame,
+    output_dir: Path,
+) -> Path | None:
+    votes = _vote_index(sources, section_links)
+    if votes.empty:
         return None
 
-    frame = objects.copy()
-    frame["vote_date"] = pd.to_datetime(frame["vote_date"], errors="coerce")
-    frame = frame.dropna(subset=["vote_date"])
-    if frame.empty:
+    votes["vote_date"] = pd.to_datetime(votes["vote_date"], errors="coerce")
+    votes = votes.dropna(subset=["vote_date"])
+    if votes.empty:
         return None
 
-    frame["year"] = frame["vote_date"].dt.year
+    votes["year"] = votes["vote_date"].dt.year
+    counts = votes.groupby("year")["vote_id"].nunique().sort_index()
+
     fig, ax = plt.subplots(figsize=(11, 5.5))
-
-    if "brochure_status" in frame.columns:
-        counts = (
-            frame.groupby(["year", "brochure_status"], dropna=False)
-            .size()
-            .unstack(fill_value=0)
-            .sort_index()
-        )
-        counts.plot(kind="bar", stacked=True, ax=ax)
-        ax.legend(title="Statut")
-    else:
-        frame.groupby("year").size().sort_index().plot(kind="bar", ax=ax)
-
-    ax.set_title("Objets de votation couverts par année")
+    counts.plot(kind="bar", ax=ax)
+    ax.set_title("Objets de votation reliés au corpus par année")
     ax.set_xlabel("Année")
-    ax.set_ylabel("Nombre d'objets")
+    ax.set_ylabel("Nombre d'objets OFS")
     ax.tick_params(axis="x", rotation=45)
 
     path = output_dir / "coverage_by_year.png"
@@ -64,7 +72,7 @@ def plot_extraction_quality(pages: pd.DataFrame, output_dir: Path) -> Path | Non
     counts.plot(kind="bar", ax=ax)
     ax.set_title("Méthode d'extraction des pages")
     ax.set_xlabel("")
-    ax.set_ylabel("Nombre")
+    ax.set_ylabel("Nombre de pages")
     ax.tick_params(axis="x", rotation=0)
 
     path = output_dir / "extraction_quality.png"
@@ -97,30 +105,28 @@ def plot_text_length_distribution(
 
 
 def write_report(
-    objects: pd.DataFrame,
+    sources: pd.DataFrame,
     sections: pd.DataFrame,
     pages: pd.DataFrame,
+    section_links: pd.DataFrame,
     figures: list[Path],
     output_dir: Path,
 ) -> Path:
+    votes = _vote_index(sources, section_links)
     lines = [
         "# EDA — Explications du Conseil fédéral",
         "",
-        f"- Objets OFS raccordés au corpus : **{len(objects)}**",
+        f"- Brochures : **{len(sources)}**",
+        f"- Objets OFS reliés au corpus : **{votes['vote_id'].nunique()}**",
         f"- Sections extraites : **{len(sections)}**",
         f"- Pages extraites : **{len(pages)}**",
     ]
 
-    if "vote_date" in objects.columns:
-        dates = pd.to_datetime(objects["vote_date"], errors="coerce").dropna()
-        if not dates.empty:
-            lines.append(
-                f"- Période couverte : **{dates.min().date()} → {dates.max().date()}**"
-            )
-
-    if "brochure_status" in objects.columns:
-        found = int((objects["brochure_status"] == "FOUND").sum())
-        lines.append(f"- Objets avec brochure trouvée : **{found}/{len(objects)}**")
+    dates = pd.to_datetime(sources["vote_date"], errors="coerce").dropna()
+    if not dates.empty:
+        lines.append(
+            f"- Période couverte : **{dates.min().date()} → {dates.max().date()}**"
+        )
 
     if "method" in pages.columns:
         lines.extend(["", "## Extraction des pages", ""])
@@ -152,23 +158,31 @@ def write_report(
 
 
 def generate_eda(input_dir: Path, output_dir: Path) -> list[Path]:
-    objects = pd.read_parquet(input_dir / "objects.parquet")
+    sources = pd.read_parquet(input_dir / "sources.parquet")
     sections = pd.read_parquet(input_dir / "sections.parquet")
     pages = pd.read_parquet(input_dir / "pages.parquet")
+    section_links = pd.read_parquet(input_dir / "section_links.parquet")
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
     figures = [
         figure
         for figure in (
-            plot_coverage_by_year(objects, output_dir),
+            plot_coverage_by_year(sources, section_links, output_dir),
             plot_extraction_quality(pages, output_dir),
             plot_text_length_distribution(sections, output_dir),
         )
         if figure is not None
     ]
 
-    report = write_report(objects, sections, pages, figures, output_dir)
+    report = write_report(
+        sources,
+        sections,
+        pages,
+        section_links,
+        figures,
+        output_dir,
+    )
     return [*figures, report]
 
 
