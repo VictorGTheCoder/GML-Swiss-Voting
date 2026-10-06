@@ -34,9 +34,14 @@ data/processed/*
 !data/interim/.gitkeep
 !data/processed/.gitkeep
 
-# Curated processed snapshots shared by the team
+# Curated Federal Council explanations snapshot
 !data/processed/federal_explanations/
-!data/processed/federal_explanations/**
+!data/processed/federal_explanations/README.md
+!data/processed/federal_explanations/objects.parquet
+!data/processed/federal_explanations/sources.parquet
+!data/processed/federal_explanations/pages.parquet
+!data/processed/federal_explanations/sections.parquet
+!data/processed/federal_explanations/section_links.parquet
 
 # Generated reports and figures
 reports/generated/
