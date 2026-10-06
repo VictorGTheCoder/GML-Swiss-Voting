@@ -245,6 +245,7 @@ jobs:
               src = src.replace('print(f"Coverage rows: {len(coverage)}")', 'print(f"Objects:       {len(objects)}")')
               src = src.replace('print(f"Model rows:    {len(model)}")\n', "")
               src = src.replace("coverage_preview = coverage[[", "coverage_preview = objects[[")
+              src = src.replace("if column in coverage.columns", "if column in objects.columns")
               cell["source"] = src.splitlines(keepends=True)
           path.write_text(json.dumps(nb, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
           PY
