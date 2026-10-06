@@ -1,0 +1,38 @@
+name: Verify versioned federal snapshot
+
+on:
+  push:
+    branches:
+      - data/version-federal-explanations-snapshot
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install EDA dependencies
+        run: python -m pip install pandas pyarrow matplotlib jupyter nbconvert ipykernel
+
+      - name: Verify snapshot files
+        run: |
+          test -s data/processed/federal_explanations/coverage.parquet
+          test -s data/processed/federal_explanations/pages.parquet
+          test -s data/processed/federal_explanations/sections.parquet
+          test -s data/processed/federal_explanations/model.parquet
+
+      - name: Execute EDA notebook from versioned snapshot
+        run: |
+          jupyter nbconvert \
+            --to notebook \
+            --execute notebooks/datasets/federal_explanations/eda.ipynb \
+            --output /tmp/federal_explanations_eda.executed.ipynb \
+            --ExecutePreprocessor.timeout=300
+          test -s reports/generated/federal_explanations/eda/coverage_by_year.png
+          test -s reports/generated/federal_explanations/eda/extraction_quality.png
+          test -s reports/generated/federal_explanations/eda/text_length_distribution.png
+          test -s reports/generated/federal_explanations/eda/report.md
