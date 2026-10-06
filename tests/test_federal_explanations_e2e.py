@@ -125,7 +125,7 @@ def test_full_period_sections_include_official_fields_and_related_vote_export(tm
     sections = pd.read_parquet(output / "sections.parquet")
     section = sections.loc[sections.section_order == 1].iloc[0]
     assert section["summary_official"] == "Résumé déclaré."
-    assert section["summary_missing_reason"] is None
+    assert pd.isna(section["summary_missing_reason"])
     assert section["council_recommendation_raw"].startswith("Le Conseil fédéral")
     assert section["council_recommendation_target"] == "REJECT_INITIATIVE"
     assert section["council_recommendation_reason"] == "clear_single_target"
