@@ -23,7 +23,6 @@ def test_build_snapshot_keeps_only_source_specific_tables(tmp_path: Path) -> Non
             "semantic_status": ["NOT_VALIDATED"],
             "object_ids": [["src-1-object-1"]],
             "section_count": [1],
-            "exclusion_reasons": ["semantic extraction not validated"],
             "swissvotes_topic": ["health"],
             "swissvotes_federal_council_position": ["YES"],
             "municipality_id": [5586],
@@ -71,5 +70,4 @@ def test_build_snapshot_keeps_only_source_specific_tables(tmp_path: Path) -> Non
         "semantic_status",
         "object_ids",
         "section_count",
-        "exclusion_reasons",
     ]
