@@ -1,4 +1,5 @@
 name: Verify federal explanations EDA
+# Temporary verification workflow for branch-local EDA validation.
 
 on:
   push:
