@@ -8,11 +8,12 @@ from sklearn.linear_model import Ridge
 from scipy.sparse import csr_matrix, hstack
 
 from scripts.federal_explanations_temporal import build_forecast_text_export
+from scripts.final_evaluation import TEXT_POLICY
 from scripts.regularized_votes import _pipeline, _window_dates, historical_features
 
 
 def text_experiment(rows, config, baseline, design, blocks, records):
-    export = build_forecast_text_export(records, text_field='summary_official')
+    export = build_forecast_text_export(records, text_field=TEXT_POLICY['summary_field'])
     documents = {}
     known_objects = set(rows.vote_id)
     mismatches = list(dict.fromkeys(str(record.get('vote_id')) for record in export['exclusions']
@@ -26,10 +27,10 @@ def text_experiment(rows, config, baseline, design, blocks, records):
         if (pd.to_datetime(document['forecast_at'], utc=True, errors='coerce') != group.forecast_at.iloc[0]
                 or pd.to_datetime(document['voting_date'], utc=True, errors='coerce') != group.voting_date.iloc[0]):
             mismatches.append(vote)
-        elif document.get('text_source_field') == 'summary_official':
+        elif document.get('text_source_field') == TEXT_POLICY['summary_field']:
             documents[vote] = document
     languages = sorted({str(doc.get('language') or '').strip().lower() for doc in documents.values()})
-    selected_language = 'fr' if 'fr' in languages else None
+    selected_language = TEXT_POLICY['language'] if TEXT_POLICY['language'] in languages else None
     language_exclusions = sorted(vote for vote, doc in documents.items()
         if selected_language is None or str(doc.get('language') or '').strip().lower() != selected_language)
     documents = {vote: doc for vote, doc in documents.items() if vote not in language_exclusions}
@@ -105,12 +106,13 @@ def text_experiment(rows, config, baseline, design, blocks, records):
                 'validation_row_keys': list(map(list, zip(window_eval.municipality_id,window_eval.vote_id)))})
             continue
         objects = sorted(train.vote_id.unique())
-        initial_min_df = 2
+        initial_min_df = TEXT_POLICY['min_df']
         effective_min_df = 1 if len(objects) < initial_min_df else initial_min_df
-        initial_max_df = 0.95
+        initial_max_df = TEXT_POLICY['max_df']
         effective_max_df = 1.0 if initial_max_df * len(objects) < effective_min_df else initial_max_df
-        vectorizer = TfidfVectorizer(ngram_range=(1,2), norm='l2', min_df=effective_min_df,
-                                     max_df=effective_max_df, max_features=2000)
+        vectorizer = TfidfVectorizer(ngram_range=tuple(TEXT_POLICY['ngram_range']),
+            norm=TEXT_POLICY['norm'], min_df=effective_min_df,
+            max_df=effective_max_df, max_features=TEXT_POLICY['max_features'])
         try:
             object_vectors = vectorizer.fit_transform([documents[vote]['text'] for vote in objects])
         except ValueError as error:
@@ -129,9 +131,9 @@ def text_experiment(rows, config, baseline, design, blocks, records):
             'first_forecast_at': str(first_forecast),
             'fit_cutoff': str(train.result_available_at.max()),
             'refit_schedule': 'fit vectorizer, preprocessing and estimator once at window start; fixed within window',
-            'tfidf': {'ngram_range': [1,2], 'norm': 'l2', 'min_df': effective_min_df,
+            'tfidf': {'ngram_range': TEXT_POLICY['ngram_range'], 'norm': TEXT_POLICY['norm'], 'min_df': effective_min_df,
                 'max_df': effective_max_df, 'initial_max_df': initial_max_df,
-                'max_features': 2000,
+                'max_features': TEXT_POLICY['max_features'],
                 'initial_min_df': initial_min_df,
                 'adjustment': ('min_df reduced to 1 because fewer than two unique training objects were available'
                     if effective_min_df != initial_min_df else None),

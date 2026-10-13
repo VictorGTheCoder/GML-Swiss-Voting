@@ -1,7 +1,7 @@
 """Publication-aware municipal evaluation; see docs/project/municipal_evaluation.md."""
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 import hashlib
 import platform
 from pathlib import Path
@@ -170,6 +170,10 @@ def _apply_geography(rows, config, crosswalk, exclusions):
 
 def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None, feature_blocks: tuple = (), text_records=None, frozen_experiment=None) -> dict:
     """Run the complete evaluation seam on prepared rows, returning auditable artifacts."""
+    if (frozen_experiment is not None and config.mode == 'final_test'
+            and config.selected_hist_gradient_boosting is None):
+        config = replace(config, selected_hist_gradient_boosting=
+            frozen_experiment.get('selected_hist_gradient_boosting', {}))
     missing = set(REQUIRED) - set(prepared.columns)
     if missing:
         raise ValueError(f'Missing prepared columns: {sorted(missing)}')
@@ -197,6 +201,8 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
         raise ValueError('Invalid evaluation mode')
     if config.mode == 'final_test' and not config.choices_frozen:
         raise ValueError('Final test requires frozen choices')
+    if config.mode == 'validation' and config.selected_hist_gradient_boosting is not None:
+        raise ValueError('selected_hist_gradient_boosting may only be loaded in final_test mode')
     if config.geography_mode not in ['historically_existing', 'retrospective_fixed']:
         raise ValueError('Invalid geography_mode')
     if config.audit_flag_policy != 'exclude':
@@ -255,13 +261,14 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
                           'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
                           'geography': geography, 'feature_blocks': block_manifest, 'regularized': {},
                           'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
-                          'implementation_sha256': {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','federal_explanations_temporal.py']},
+                          'implementation_sha256': {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','boosting_votes.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','federal_explanations_temporal.py']},
                           'versions': {'python': platform.python_version(), 'pandas': pd.__version__, 'numpy': np.__version__, 'scikit-learn': sklearn.__version__},
                           'weight_origin': config.evaluation_weight_origin,
                           'experiment_configuration': asdict(config),
                           'prepared_availability_sha256': hashlib.sha256(rows[KEYS + ['voting_date','source_version','geography_id','forecast_at','forecast_evidence','result_available_at','result_availability_evidence']].to_json(orient='split',date_format='iso').encode()).hexdigest(),
                           'partition_keys_sha256': hashlib.sha256(rows[KEYS+['voting_date','partition']].to_json(orient='split',date_format='iso').encode()).hexdigest(),
                           'text_records_sha256': _digest(text_records),
+                          'text_records_requested': text_records is not None,
                           'forecast_cutoffs': {vote: str(group.forecast_at.iloc[0]) for vote, group in rows.groupby('vote_id')}}
     if frozen_experiment is not None:
         if config.mode != 'final_test':
@@ -414,7 +421,9 @@ def main():
         from dataclasses import replace
         if args.synthetic:
             config = EvaluationConfig(**frozen['signature']['configuration'])
-        config = replace(config,mode='final_test',choices_frozen=True,selected_ridge_alphas=frozen['selected_ridge_alphas'])
+        config = replace(config,mode='final_test',choices_frozen=True,
+            selected_ridge_alphas=frozen['selected_ridge_alphas'],
+            selected_hist_gradient_boosting=frozen.get('selected_hist_gradient_boosting', {}))
     elif config.mode == 'final_test':
         parser.error('Final config requires explicit --final-test and --frozen-experiment')
     try:
