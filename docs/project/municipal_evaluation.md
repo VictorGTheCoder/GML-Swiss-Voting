@@ -266,3 +266,37 @@ Use `python3 -m scripts.evaluate_votes --input votes_prepared.csv --config exper
 manifests, matched publication evidence, coverage and paired prediction keys are reproducible
 artifacts. The source CSV must already include the record contract; the CLI does not guess how to
 join an unevidenced raw population file.
+
+### Paired brochure text experiment
+
+Supply `--text-records reviewed-records.json` (a JSON list using the reviewed
+record contract in `federal_explanations_temporal.py`), or pass `text_records`
+to `evaluate`. The evaluator reruns the version-bound export gate; unknown
+availability, stale source decisions, ambiguous correspondence and invalid
+extractions cannot enter the experiment. It additionally requires the document's
+voting date and exact brochure forecast instant to match the prepared object.
+Language metadata is retained in the training representation manifest.
+
+`text_experiment` reports a paired regularized nontext reference and additive
+TF-IDF model on identical municipal row keys, using history and every supplied
+admissible feature block. Both fit the same eligible training rows. Vocabulary
+and IDF are fitted on one document per distinct eligible training object, then
+joined to municipal observations. Held-out objects cannot influence vocabulary,
+IDF, imputation, scaling or categorical encoding. Repeated municipal instances
+therefore do not change the brochure text representation. Model fitting remains
+at the municipal observation level. Text contributes a shared object shift
+across municipalities before predictions are clipped to [0, 1].
+
+Each model selects its own ridge alpha on chronological validation. Freeze the
+returned `models.*.selected_alpha` values as `selected_ridge_alphas` keys
+`paired_nontext` and `paired_text` for final-test runs. Final-test mode requires
+these choices and never selects using test targets. Empty eligible training or
+evaluation corpora, including texts without vocabulary tokens, explicitly skip
+the text experiment while broader nontext evaluation continues.
+
+The separate text report includes rows, distinct objects and dates; paired MAE;
+errors by object/date; excluded document reasons; forecast mismatches; and rows
+and objects lost relative to broader nontext predictions. Broader nontext metrics
+remain in the main report. `text_predictions.csv` contains paired predictions;
+`summary.json` records vocabulary, IDF, per-training-object vectors, settings,
+source hashes and frozen choices for auditing and repeat-instance checks.
