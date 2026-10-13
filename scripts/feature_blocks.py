@@ -67,7 +67,7 @@ def join_feature_blocks(rows, blocks, geography_mode):
         missing = set(required) - set(block.records)
         if missing:
             raise ValueError(f'Missing prepared feature columns: {sorted(missing)}')
-        source = block.records.copy()
+        source = block.records.copy().reset_index(drop=True)
         if block.scope == 'object':
             if {'object_match_status','object_match_evidence'} - set(source):
                 raise ValueError('Object metadata requires validated correspondence columns')
@@ -86,38 +86,39 @@ def join_feature_blocks(rows, blocks, geography_mode):
             source.loc[~np.isfinite(source[name]),name] = np.nan
         for name in block.categorical_features:
             source[name] = source[name].map(lambda value: np.nan if pd.isna(value) else str(value))
-        counts = {'matched_rows': 0, 'missing_values': {name: 0 for name in names}}
-        for index, row in rows.iterrows():
-            candidates = source.loc[source[entity].eq(row[entity])]
+        verified = (source.published_at.notna() & source.reference_date.notna()
+                              & source.availability_status.eq('verified') & source.availability_evidence.notna()
+                              & source.availability_evidence.astype('string').str.strip().ne('').fillna(False))
+        if block.scope == 'object':
+            verified &= (source.object_match_status.eq('validated') & source.object_match_evidence.notna()
+                                   & source.object_match_evidence.astype('string').str.strip().ne('').fillna(False))
+        source = source.sort_values(['published_at','reference_date'])
+        releases = {key:group.loc[verified.loc[group.index]] for key,group in source.groupby(entity,sort=False)}
+        counts = {'matched_rows': 0}
+        context_columns = [entity,'forecast_at'] + (['geography_id'] if block.scope == 'municipality' else [])
+        for context,targets in rows.groupby(context_columns,sort=False):
+            entity_id,cutoff = context[:2]
+            candidates = releases.get(entity_id)
             selected_publication, selected_reference, selected_evidence = None, None, None
             status = 'missing_entity'
-            if not candidates.empty:
-                known = (candidates.published_at.notna() & candidates.reference_date.notna()
-                         & candidates.availability_status.eq('verified') & candidates.availability_evidence.notna()
-                         & candidates.availability_evidence.astype(str).str.strip().ne(''))
-                if block.scope == 'object':
-                    known &= (candidates.object_match_status.eq('validated')
-                              & candidates.object_match_evidence.notna()
-                              & candidates.object_match_evidence.astype(str).str.strip().ne(''))
-                verified = candidates.loc[known]
-                timely = verified.loc[verified.published_at.le(row.forecast_at) & verified.reference_date.le(row.forecast_at)]
-                status = 'unknown_availability' if verified.empty else 'unavailable_at_forecast'
+            if candidates is not None:
+                timely = candidates.loc[candidates.published_at.le(cutoff) & candidates.reference_date.le(cutoff)]
+                status = 'unknown_availability' if candidates.empty else 'unavailable_at_forecast'
                 if not timely.empty:
                     if block.scope == 'municipality':
-                        timely = timely.loc[timely.geography_id.eq(row.geography_id)] if block.geography_mode == geography_mode else timely.iloc[:0]
+                        timely = timely.loc[timely.geography_id.eq(context[2])] if block.geography_mode == geography_mode else timely.iloc[:0]
                     status = 'incompatible_geography' if timely.empty else 'matched'
                     if not timely.empty:
-                        selected = timely.sort_values(['published_at','reference_date']).iloc[-1]
+                        selected = timely.iloc[-1]
                         for name in names:
-                            joined.loc[index, f'{block.block_id}__{name}'] = selected[name]
-                        selected_publication, selected_reference, selected_evidence = str(selected.published_at), str(selected.reference_date), selected.availability_evidence
-                        counts['matched_rows'] += 1
-            counts[status + '_rows'] = counts.get(status + '_rows', 0) + (status != 'matched')
-            for name in names:
-                counts['missing_values'][name] += int(pd.isna(joined.loc[index, f'{block.block_id}__{name}']))
-            report.append({'municipality_id': row.municipality_id, 'vote_id': row.vote_id,
-                           'block_id': block.block_id, 'status': status, 'published_at': selected_publication,
-                           'reference_date': selected_reference, 'availability_evidence': selected_evidence})
+                            joined.loc[targets.index,f'{block.block_id}__{name}'] = selected[name]
+                        selected_publication,selected_reference,selected_evidence = str(selected.published_at),str(selected.reference_date),selected.availability_evidence
+                        counts['matched_rows'] += len(targets)
+            counts[status+'_rows'] = counts.get(status+'_rows',0) + (len(targets) if status != 'matched' else 0)
+            context_report = targets[['municipality_id','vote_id']].assign(block_id=block.block_id,status=status,
+                published_at=selected_publication,reference_date=selected_reference,availability_evidence=selected_evidence)
+            report.extend(context_report.to_dict('records'))
+        counts['missing_values'] = {name:int(joined[f'{block.block_id}__{name}'].isna().sum()) for name in names}
         counts['input_records'] = len(source)
         counts['eligible_rows'] = len(rows)
         counts['prerequisite_status'] = 'usable' if counts['matched_rows'] else 'no_admissible_matches'

@@ -146,6 +146,7 @@ def build_forecast_text_export(rows: Iterable[Mapping[str, object]], output_dir=
             reasons.append("forecast publication evidence is unknown")
         if not row.get("availability_reference"):
             reasons.append("exact-version availability evidence is unknown")
+        cutoff = None
         try:
             cutoff = _instant(row.get("forecast_at"))
             available = _instant(row.get("availability_at"))
@@ -154,6 +155,13 @@ def build_forecast_text_export(rows: Iterable[Mapping[str, object]], output_dir=
         except (ValueError, TypeError):
             reasons.append("forecast or availability instant is unknown or invalid")
         row["voting_date"] = row.get("voting_date") or row.get("vote_date")
+        try:
+            vote_day = _instant(row['voting_date']).replace(hour=0,minute=0,second=0,microsecond=0)
+            row['voting_date'] = vote_day.date().isoformat()
+            if cutoff is not None and cutoff >= vote_day:
+                reasons.append('forecast cutoff is not before voting day')
+        except (ValueError,TypeError):
+            reasons.append('voting date is invalid')
         row["text"] = row.get("text") or row.get("full_text")
         row["forecast_evidence"] = forecast_evidence
         if not row.get("vote_id") or not row["voting_date"]:

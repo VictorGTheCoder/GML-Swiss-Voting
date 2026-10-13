@@ -22,7 +22,7 @@ The orchestrator copies inputs and never reads arbitrary numerical columns as pr
 | Column | Meaning |
 | --- | --- |
 | `municipality_id`, `vote_id` | Stable string keys; preserve leading zeros during ingestion |
-| `voting_date` | Whole date, normalized to UTC; one date per object |
+| `voting_date` | Whole UTC calendar date; timestamps normalize to midnight before partition checks; one date per object |
 | `yes_count`, `no_count` | Nonnegative finite counts; target is yes/(yes+no), in [0,1] |
 | `geography_id` | Comparable territorial reference, not merely municipality identifier |
 | `source_version` | Identifies the prepared outcome source/version |
@@ -48,7 +48,8 @@ must not be reported as historical territorial availability.
 ## Experiment configuration and leakage policy
 
 `EvaluationConfig` declares nonempty `train_dates`, `validation_dates`, and `test_dates` as lists or
-tuples of ISO dates. Dates must be unique, disjoint, and chronological. Every object and municipality
+tuples of ISO dates. Voting timestamps are normalized to whole UTC calendar dates before checks,
+so different instants on the same voting day cannot cross partitions. Dates must be unique, disjoint, and chronological. Every object and municipality
 on a declared date receives the same partition; undeclared dates are excluded. Exact real boundaries
 must be established from verified coverage before tuning. Missing eligible partitions are reported
 rather than populated with invented rows.

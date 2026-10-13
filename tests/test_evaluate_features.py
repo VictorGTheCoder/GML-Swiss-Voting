@@ -145,3 +145,40 @@ def test_asof_join_selects_latest_verified_version_before_forecast():
     assert features.loc[('a','next'),'statpop__population'] == 150
     report = result['join_report'].set_index(['municipality_id','vote_id'])
     assert report.loc[('a','next'),'published_at'] == '2020-02-01 00:00:00+00:00'
+
+
+def test_shared_history_respects_forecast_context_geography_and_training_fallback():
+    from dataclasses import replace
+    rows,config = synthetic_example()
+    # Two objects on the same voting day have different forecast cutoffs.
+    other = rows.loc[rows.vote_id.eq('next')].copy()
+    other['vote_id'] = 'early-brochure'
+    other['forecast_at'] = '2019-12-15'
+    rows = pd.concat([rows,other],ignore_index=True)
+    rows.loc[rows.municipality_id.eq('b'),'result_available_at'] = '2020-12-24'
+    rows.loc[rows.vote_id.eq('early-brochure'),'geography_id'] = 'different-boundary'
+    result = evaluate(rows,config,feature_blocks=(block(),))
+    # At the early brochure neither historical result exists; both baselines abstain.
+    assert set(result['predictions'].vote_id) == {'next'}
+    values = result['joined_features'].set_index(['municipality_id','vote_id'])
+    assert values.loc[('a','early-brochure'),'municipal_history'] == pytest.approx(.5)
+    assert values.loc[('a','early-brochure'),'history_missing'] == 1
+    # B's late publication cannot enter the next forecast's global fallback.
+    assert values.loc[('c','next'),'municipal_history'] == pytest.approx(.2)
+    assert result['predictions'].query("model == 'constant'").prediction.tolist() == pytest.approx([.2,.2])
+    rows.loc[rows.vote_id.eq('next'),'geography_id'] = 'different-boundary'
+    result = evaluate(rows,replace(config,history_policy='rolling'),feature_blocks=(block(),))
+    values = result['joined_features'].query("vote_id == 'next'")
+    assert values.history_missing.tolist() == [1.,1.]
+    assert values.municipal_history.tolist() == pytest.approx([.2,.2])
+
+
+def test_release_indexing_preserves_allowed_feature_named_verified():
+    from dataclasses import replace
+    rows,config = synthetic_example()
+    source = block()
+    source = replace(source,records=source.records.assign(verified=42),
+                     numeric_features=source.numeric_features+('verified',),
+                     definitions=source.definitions|{'verified':'fixture numerical feature'})
+    result = evaluate(rows,config,feature_blocks=(source,))
+    assert result['joined_features'].statpop__verified.tolist() == [42]*5

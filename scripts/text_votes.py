@@ -14,7 +14,10 @@ from scripts.regularized_votes import _pipeline, historical_features
 def text_experiment(rows, config, baseline, design, blocks, records):
     export = build_forecast_text_export(records)
     documents = {}
-    mismatches = []
+    known_objects = set(rows.vote_id)
+    mismatches = list(dict.fromkeys(str(record.get('vote_id')) for record in export['exclusions']
+        if str(record.get('vote_id')) in known_objects and any(reason in record['exclusion_reason'] for reason in
+            ['voting date is invalid','forecast cutoff is not before voting day'])))
     for document in export['documents']:
         vote = str(document['vote_id'])
         group = rows.loc[rows.vote_id.eq(vote)]
@@ -103,12 +106,8 @@ def text_experiment(rows, config, baseline, design, blocks, records):
     result.update(status='evaluated', reason=None, models=selected, predictions=pd.DataFrame(predictions))
     for name, group in result['predictions'].groupby('model'):
         def score(frame):
-            errors = (frame.prediction-frame.target_share).abs()*100
-            weights = pd.to_numeric(frame.get('evaluation_weight',pd.Series(np.nan,index=frame.index)),errors='coerce')
-            valid = np.isfinite(weights) & weights.gt(0)
-            return {**counts(frame), 'mae_pp':float(errors.mean()),
-                    'electorate_weighted_mae_pp':float(np.average(errors[valid],weights=weights[valid])) if valid.any() else None,
-                    'weighted_rows':int(valid.sum()),'weight_origin':config.evaluation_weight_origin}
+            from scripts.vote_metrics import score_predictions
+            return {**counts(frame),**score_predictions(frame),'weight_origin':config.evaluation_weight_origin}
         result['metrics'][name] = score(group)
         for vote, subgroup in group.groupby('vote_id'):
             result['by_object'].append({'model':name, 'vote_id':vote, **score(subgroup)})

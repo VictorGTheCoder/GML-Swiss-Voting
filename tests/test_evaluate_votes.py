@@ -131,3 +131,17 @@ def test_audit_flags_and_missing_real_contract_are_explicit():
     assert result['exclusions']['audit_flag_yes_no_gt_valid'] == 1
     with pytest.raises(ValueError, match='forecast_evidence'):
         evaluate(data.drop(columns='forecast_evidence'), config())
+
+
+def test_calendar_day_cannot_cross_partitions_even_when_timestamps_differ():
+    options = dict(train_dates=('2020-01-01T00:00:00',),
+                   validation_dates=('2020-01-01T12:00:00',),test_dates=('2022-01-01',))
+    with pytest.raises(ValueError,match='disjoint'):
+        evaluate(prepared(),EvaluationConfig(**options))
+    data = prepared()
+    data.loc[data.municipality_id.eq('b'),'voting_date'] = '2020-01-01T12:00:00Z'
+    data.loc[data.vote_id.eq('next'),'voting_date'] = '2021-01-01T12:00:00Z'
+    result = evaluate(data,config())
+    assert result['coverage']['partitions']['train']['rows'] == 2
+    assert result['coverage']['partitions']['validation']['rows'] == 2
+    assert result['partitions'].groupby('voting_date').partition.nunique().max() == 1
