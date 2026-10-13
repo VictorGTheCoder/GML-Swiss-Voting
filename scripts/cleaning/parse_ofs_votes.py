@@ -9,7 +9,7 @@ unique, and codes are what other OFS datasets use for joins.
 This step only reshapes: no row is dropped and no value is changed. Missing-value
 symbols (e.g. ``"..."``) become NaN and are counted in ``attrs["missing_symbols"]``.
 
-Usage: python scripts/parse_votes.py  (reads data/raw, writes data/interim)
+Usage: python -m scripts.cleaning.parse_ofs_votes  (reads data/raw, writes data/interim)
 """
 
 from __future__ import annotations
@@ -22,9 +22,15 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from votes_config import (
-    DIM_LOCATION, DIM_LOCATION_FR, DIM_RESULT, DIM_VOTE, DIM_VOTE_FR,
-    INTERIM_PATH, RAW_PX_PATH, RESULT_COLUMNS,
+from scripts.votes_config import (
+    DIM_LOCATION,
+    DIM_LOCATION_FR,
+    DIM_RESULT,
+    DIM_VOTE,
+    DIM_VOTE_FR,
+    INTERIM_PATH,
+    RAW_PX_PATH,
+    RESULT_COLUMNS,
 )
 
 
@@ -74,7 +80,13 @@ def read_px(path: Path) -> PxFile:
 
 def read_px_metadata(path: Path) -> dict[str, list[str]]:
     """Header only (fast): skips tokenising the DATA section."""
-    return parse_px_header(path.read_text(encoding="utf-8-sig").partition("\nDATA=")[0])
+    lines = []
+    with path.open(encoding="utf-8-sig") as handle:
+        for line in handle:
+            if line.startswith("DATA="):
+                return parse_px_header("".join(lines))
+            lines.append(line)
+    raise ValueError("Not a PX file: no DATA= section")
 
 
 def data_cube(px: PxFile, dimensions: list[str]) -> np.ndarray:
@@ -102,7 +114,7 @@ def location_hierarchy(codes: list[str], labels_de: list[str], labels_fr: list[s
     label prefix '......').
     """
     rows, canton, district_code, district_name = [], None, None, None
-    for code, de, fr in zip(codes, labels_de, labels_fr):
+    for code, de, fr in zip(codes, labels_de, labels_fr, strict=True):
         name_fr = clean_location_label(fr)
         if code == "CH":
             level = "country"
@@ -162,7 +174,7 @@ def px_to_long(px: PxFile) -> pd.DataFrame:
 
 def main() -> None:
     if not RAW_PX_PATH.exists():
-        raise SystemExit(f"{RAW_PX_PATH} not found; run scripts/download_votes.py first")
+        raise SystemExit(f"{RAW_PX_PATH} not found; run python -m scripts.download.download_ofs_votes first")
     frame = px_to_long(read_px(RAW_PX_PATH))
     INTERIM_PATH.parent.mkdir(parents=True, exist_ok=True)
     frame.to_parquet(INTERIM_PATH, index=False)

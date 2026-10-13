@@ -15,6 +15,7 @@ dependencies:
   - pyarrow
   - openpyxl
   - requests
+  - tabulate
 
   # Machine learning
   - scikit-learn

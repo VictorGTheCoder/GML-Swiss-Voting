@@ -5,7 +5,7 @@
 data/processed. "warning" checks count known, documented inconsistencies that are
 kept and flagged rather than dropped.
 
-Usage: python scripts/validate_votes.py  (reads data/interim/votes_communes_clean.parquet,
+Usage: python -m scripts.cleaning.validate_ofs_votes  (reads data/interim/ofs-votes/votes_communes_clean.parquet,
 writes reports/validation_report.md and, if all error checks pass, data/processed/)
 """
 
@@ -13,13 +13,14 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 
-from votes_config import COUNT_COLUMNS, PROCESSED_PATH, REPORTS_DIR
+from scripts.votes_config import COUNT_COLUMNS, PROCESSED_PATH, REPORTS_DIR
 
 VALIDATION_REPORT_PATH = REPORTS_DIR / "validation_report.md"
-REQUIRED_NON_NULL = ["vote_id", "vote_date", "municipality_id", "municipality_name", "canton",
+REQUIRED_NON_NULL = ["vote_id", "vote_key", "vote_date", "municipality_id", "municipality_name", "canton",
                      "votes_yes", "votes_no", "yes_share"]
 FIRST_POSSIBLE_DATE = pd.Timestamp("1960-01-01")
 # OFS percentages carry 7 decimals, i.e. an absolute error below 1e-7 on a 0-100 scale.
@@ -48,12 +49,16 @@ def _check(name: str, failed: pd.Series | int, detail: str = "", severity: str =
 
 
 def run_checks(df: pd.DataFrame, today: date | None = None) -> list[CheckResult]:
-    last_possible = pd.Timestamp(today or date.today())
+    last_possible = pd.Timestamp(today or pd.Timestamp.now(tz=ZoneInfo("Europe/Zurich")).date())
     yes_no = df["votes_yes"] + df["votes_no"]
-    checks = [_check(f"not_null:{c}", df[c].isna()) for c in REQUIRED_NON_NULL]
+    checks = [_check("non_empty", int(df.empty))]
+    checks += [_check(f"not_null:{c}", df[c].isna()) for c in REQUIRED_NON_NULL]
     checks += [
         _check("unique:vote_id x municipality_id", df.duplicated(["vote_id", "municipality_id"], keep=False),
                "the unit of observation must be unique"),
+        _check("vote_key equals OFS vote_id", df["vote_key"].ne(df["vote_id"])),
+        _check("vote_key is a positive integer identifier",
+               ~df["vote_key"].astype("string").str.fullmatch(r"[1-9][0-9]*", na=False)),
         _check("vote_date in [1960-01-01, today]",
                ~df["vote_date"].between(FIRST_POSSIBLE_DATE, last_possible) & df["vote_date"].notna()),
         _check("one date per vote_id", df.groupby("vote_id", observed=True)["vote_date"].nunique().gt(1)),
@@ -62,6 +67,11 @@ def run_checks(df: pd.DataFrame, today: date | None = None) -> list[CheckResult]
         _check("one canton per municipality_id", df.groupby("municipality_id", observed=True)["canton"].nunique().gt(1)),
     ]
     checks += [_check(f"non_negative:{c}", df[c] < 0) for c in COUNT_COLUMNS]
+    checks += [_check(f"integer:{c}", df[c].notna() & df[c].mod(1).ne(0)) for c in COUNT_COLUMNS]
+    checks += [
+        _check("yes_share agrees with counts", (df["yes_share"] - df["votes_yes"] / yes_no).abs().gt(1e-12)),
+        _check("positive yes + no", yes_no.le(0)),
+    ]
     checks += [
         _check("yes_share in [0, 1]", ~df["yes_share"].between(0, 1) & df["yes_share"].notna()),
         _check("yes_share == OFS 'Oui en %' / 100",
@@ -99,7 +109,7 @@ def assert_valid(checks: list[CheckResult]) -> None:
 
 
 def main() -> None:
-    from clean_votes import CLEAN_PATH
+    from scripts.cleaning.clean_ofs_votes import CLEAN_PATH
 
     df = pd.read_parquet(CLEAN_PATH)
     checks = run_checks(df)

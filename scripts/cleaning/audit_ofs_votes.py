@@ -1,9 +1,9 @@
 """Audit the raw vote cube BEFORE cleaning and write reports/data_audit.md.
 
-Runs on the lossless long table produced by parse_votes.py (all levels, all cells,
+Runs on the lossless long table produced by parse_ofs_votes.py (all levels, all cells,
 missing values untouched). Every number in the report is computed here.
 
-Usage: python scripts/audit_votes.py  (reads data/interim/votes_all_levels.parquet)
+Usage: python -m scripts.cleaning.audit_ofs_votes  (reads data/interim/ofs-votes/votes_all_levels.parquet)
 """
 
 from __future__ import annotations
@@ -14,9 +14,16 @@ import re
 import numpy as np
 import pandas as pd
 
-from votes_config import (
-    DIM_LOCATION, DIM_RESULT, DIM_VOTE, INTERIM_PATH, PROVENANCE_PATH, RAW_PX_PATH, REPORTS_DIR,
-    RESULT_COLUMNS, SPECIAL_UNIT_MIN_CODE,
+from scripts.votes_config import (
+    DIM_LOCATION,
+    DIM_RESULT,
+    DIM_VOTE,
+    INTERIM_PATH,
+    PROVENANCE_PATH,
+    RAW_PX_PATH,
+    REPORTS_DIR,
+    RESULT_COLUMNS,
+    SPECIAL_UNIT_MIN_CODE,
 )
 
 AUDIT_PATH = REPORTS_DIR / "data_audit.md"
@@ -71,15 +78,15 @@ def section_structure(meta: dict[str, list[str]], frame: pd.DataFrame) -> str:
     symbols = frame.attrs.get("missing_symbols") or {}
     return "\n".join([
         "## 2. Raw structure", "",
-        "The PX file is a 3-dimensional cube (location x vote object x result measure). "
-        "`parse_votes.py` reshapes it without loss: one row per location x vote, one column per result measure.", "",
+        ("The PX file is a 3-dimensional cube (location x vote object x result measure). "
+        "`parse_ofs_votes.py` reshapes it without loss: one row per location x vote, one column per result measure."), "",
         _md(dim_table), "",
         f"- Values in DATA: {n_cells:,} (= product of the dimensions; checked at parse time)",
         f"- Missing-value symbols in DATA: {symbols if symbols else 'n/a'}",
         f"- Long table: {len(frame):,} rows x {frame.shape[1]} columns", "",
         "Result measures (meaning taken from the PX labels, not guessed from names):", "", _md(result_table), "",
-        "There is **no separate count of blank or invalid ballots**; only `ballots_cast - valid_ballots` "
-        "(blank + invalid combined) can be derived.", "",
+        ("There is **no separate count of blank or invalid ballots**; only `ballots_cast - valid_ballots` "
+        "(blank + invalid combined) can be derived."), "",
         "Location levels (hierarchy from the ordered location list: canton code, district `>>`, commune `......`):", "",
         _md(levels), "", "Column types:", "", _md(dtypes, index=True), "",
         "Missing values per result column (all levels):", "", _md(missing, index=True), "",
@@ -90,8 +97,8 @@ def section_structure(meta: dict[str, list[str]], frame: pd.DataFrame) -> str:
 def section_identifiers() -> str:
     return "\n".join([
         "## 3. Unit of observation and identifiers", "",
-        "After reshaping, a commune-level row is one **commune x vote object** (each OFS vote code is one "
-        "question; several questions share a date). No further pivot is needed.", "",
+        ("After reshaping, a commune-level row is one **commune x vote object** (each OFS vote code is one "
+        "question; several questions share a date). No further pivot is needed."), "",
         "| concept | source field | notes |", "|---|---|---|",
         "| vote object id | `CODES(\"Datum und Vorlage\")` -> `vote_id` | OFS numeric code, unique per question |",
         "| vote date | first 10 chars of the vote label (`YYYY-MM-DD`) | no separate date field in the cube |",
@@ -165,7 +172,7 @@ def section_consistency(df: pd.DataFrame) -> str:
     turnout = c["ballots_cast"] / c["eligible_voters"].where(c["eligible_voters"] != 0)
     checks = pd.DataFrame([
         ("negative counts", int((counts < 0).sum().sum())),
-        ("non-integer counts", int(((counts % 1) != 0).sum().sum())),
+        ("non-integer counts", int((counts.notna() & ((counts % 1) != 0)).sum().sum())),
         ("yes + no == 0", int((yes_no == 0).sum())),
         ("yes_share < 0 or > 1", int(((share < 0) | (share > 1)).sum())),
         ("ballots_cast > eligible_voters", int((c["ballots_cast"] > c["eligible_voters"]).sum())),
@@ -183,9 +190,9 @@ def section_consistency(df: pd.DataFrame) -> str:
                       ["location_code", "location_name_fr", "vote_label_fr", "ballots_cast", "valid_ballots"]]
     return "\n".join([
         "## 6. Internal consistency of results", "", _md(checks), "",
-        "`yes + no < valid_ballots` by date (top 8). These are dates where one ballot carried an initiative, "
+        ("`yes + no < valid_ballots` by date (top 8). These are dates where one ballot carried an initiative, "
         "its counter-proposal and a tie-break question: a voter may leave one question blank, so the "
-        "per-question yes + no is below the per-ballot valid count. Structural, not an error:", "", _md(lt_dates), "",
+        "per-question yes + no is below the per-ballot valid count. Structural, not an error:"), "", _md(lt_dates), "",
         "`yes + no > valid_ballots` by year (inconsistent, kept and flagged):", "", _md(gt), "",
         "`valid_ballots > ballots_cast` (inconsistent, kept and flagged):", "", _md(bad_valid),
     ])
@@ -202,9 +209,9 @@ def section_target(df: pd.DataFrame) -> str:
         f"- rows with yes/no missing: {int(yes_no.isna().sum()):,}; rows with yes + no = 0: {int((yes_no == 0).sum())}",
         f"- range: [{share.min():.4f}, {share.max():.4f}], mean {share.mean():.4f}, median {share.median():.4f}",
         f"- exactly 0: {int((share == 0).sum())}, exactly 1: {int((share == 1).sum())} (small communes)",
-        f"- tie-break questions (`Stichfrage`): {tie['vote_id'].nunique()} vote objects. "
+        (f"- tie-break questions (`Stichfrage`): {tie['vote_id'].nunique()} vote objects. "
         "OFS: *yes = for the initiative, no = for the counter-proposal*, so `yes_share` there is **not** "
-        "an approval share. Flagged `is_tiebreak_question`.",
+        "an approval share. Flagged `is_tiebreak_question`."),
     ])
 
 
@@ -218,10 +225,10 @@ def section_special_units(df: pd.DataFrame) -> str:
     no_result = no_result[~no_result].reset_index()[["location_code", "location_name_fr"]]
     return "\n".join([
         "## 8. Special units and communes without own results", "",
-        f"{table['location_code'].nunique()} special units (code >= {SPECIAL_UNIT_MIN_CODE}); they are not "
-        "communes and cannot be joined to commune characteristics. Kept, flagged `is_special_unit`.", "",
-        _md(table), "", "Location codes that never have a result (communes counted with another commune's "
-        "ballot box, and unused special units):", "", _md(no_result),
+        (f"{table['location_code'].nunique()} special units (code >= {SPECIAL_UNIT_MIN_CODE}); they are not "
+        "communes and cannot be joined to commune characteristics. Kept, flagged `is_special_unit`."), "",
+        _md(table), "", ("Location codes that never have a result (communes counted with another commune's "
+        "ballot box, and unused special units):"), "", _md(no_result),
     ])
 
 
@@ -244,20 +251,20 @@ def section_harmonisation(df: pd.DataFrame, meta: dict[str, list[str]]) -> str:
         "## 9. Municipal mergers / harmonisation", "",
         f"OFS statement: > {spatial.strip()}", "",
         "Implications, checked in the data:", "",
-        "- Commune codes are the BFS numbers valid on 01.01.2026. Historical results of communes that later "
+        ("- Commune codes are the BFS numbers valid on 01.01.2026. Historical results of communes that later "
         "merged are **re-attributed to today's commune** (a merged commune has a single row per vote back "
         "to 1960/1981). Former communes do not appear as separate units. The cube therefore cannot show "
-        "results on historical boundaries.",
-        "- Canton totals keep their *original* state, while commune rows are harmonised. The sum of a canton's "
+        "results on historical boundaries."),
+        ("- Canton totals keep their *original* state, while commune rows are harmonised. The sum of a canton's "
         "communes differs from the canton row wherever a commune changed canton (Moutier BE -> JU; Laufental "
-        "BE -> BL in 1994). Per-canton aggregates must be computed from commune rows, not mixed with canton rows.", "",
+        "BE -> BL in 1994). Per-canton aggregates must be computed from commune rows, not mixed with canton rows."), "",
         "Canton row minus sum of its commune rows (`votes_yes`), votes with a non-zero difference:", "",
         _md(by_canton, index=True), "",
-        f"- {len(late)} regular communes only have data from after {COMPLETE_FROM_YEAR}. These are typically "
+        (f"- {len(late)} regular communes only have data from after {COMPLETE_FROM_YEAR}. These are typically "
         "communes created by a **split** (e.g. Ittigen and Ostermundigen, separated from Bolligen in 1983). "
-        "Splits are not back-cast, so these communes have a shorter history:", "", _md(late), "",
-        "Before 1981 coverage is partial (sotomo base); the OFS note says FR, AG and TI are missing, but the "
-        "canton table in section 5 shows which cantons actually have pre-1981 commune data in this release.",
+        "Splits are not back-cast, so these communes have a shorter history:"), "", _md(late), "",
+        ("Before 1981 coverage is partial (sotomo base); the OFS note says FR, AG and TI are missing, but the "
+        "canton table in section 5 shows which cantons actually have pre-1981 commune data in this release."),
     ])
 
 
@@ -265,7 +272,7 @@ def build_audit(frame: pd.DataFrame, meta: dict[str, list[str]]) -> str:
     df = _with_dates(frame)
     sections = [
         "# Data audit: OFS federal vote results by commune (px-x-1703030000_101)",
-        "*Generated by `scripts/audit_votes.py` from the raw cube before any cleaning. Do not edit by hand.*",
+        "*Generated by `scripts/cleaning/audit_ofs_votes.py` from the raw cube before any cleaning. Do not edit by hand.*",
         section_provenance(meta), section_structure(meta, frame), section_identifiers(), section_statistics(df),
         section_coverage(df), section_consistency(df), section_target(df), section_special_units(df),
         section_harmonisation(df, meta),
@@ -274,7 +281,7 @@ def build_audit(frame: pd.DataFrame, meta: dict[str, list[str]]) -> str:
 
 
 def main() -> None:
-    from parse_votes import read_px_metadata
+    from scripts.cleaning.parse_ofs_votes import read_px_metadata
 
     frame = pd.read_parquet(INTERIM_PATH)
     AUDIT_PATH.parent.mkdir(parents=True, exist_ok=True)

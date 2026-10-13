@@ -9,7 +9,7 @@ An existing file is never replaced unless --force is given. A provenance sidecar
 (<table>.provenance.json) records URL, retrieval time, size, SHA-256 and the cube's
 own LAST-UPDATED stamp.
 
-Usage: python scripts/download_votes.py [--force]
+Usage: python -m scripts.download.download_ofs_votes [--force]
 """
 
 from __future__ import annotations
@@ -23,9 +23,15 @@ from pathlib import Path
 
 import requests
 
-from parse_votes import read_px_metadata
-from votes_config import (
-    DATASET_NAME_FR, DOWNLOAD_URL, OFS_TABLE_ID, PROVENANCE_PATH, RAW_PX_PATH, ROOT, SOURCE_PAGE_URL,
+from scripts.cleaning.parse_ofs_votes import read_px_metadata
+from scripts.votes_config import (
+    DATASET_NAME_FR,
+    DOWNLOAD_URL,
+    OFS_TABLE_ID,
+    PROVENANCE_PATH,
+    RAW_PX_PATH,
+    ROOT,
+    SOURCE_PAGE_URL,
 )
 
 TIMEOUT_SECONDS = 600
@@ -41,9 +47,13 @@ def download(url: str, destination: Path) -> None:
             with partial.open("wb") as handle:
                 for chunk in response.iter_content(chunk_size=1 << 20):
                     handle.write(chunk)
-        head = partial.read_bytes()[:200].decode("utf-8-sig", errors="replace")
+        with partial.open("rb") as handle:
+            head = handle.read(200).decode("utf-8-sig", errors="replace")
         if "AXIS-VERSION" not in head and "CHARSET" not in head:
             raise RuntimeError(f"Response from {url} is not a PX file (starts with {head[:80]!r})")
+        matrix = read_px_metadata(partial).get("MATRIX", [""])[0]
+        if matrix != OFS_TABLE_ID:
+            raise RuntimeError(f"Downloaded cube is {matrix!r}, expected {OFS_TABLE_ID}")
         partial.replace(destination)
     finally:
         partial.unlink(missing_ok=True)
@@ -66,7 +76,7 @@ def write_provenance(px_path: Path, provenance_path: Path, url: str) -> dict:
         "px_matrix": meta.get("MATRIX", [""])[0],
         "px_last_updated": meta.get("LAST-UPDATED", [""])[0],
         "px_creation_date": meta.get("CREATION-DATE", [""])[0],
-        "script": "scripts/download_votes.py",
+        "script": "scripts/download/download_ofs_votes.py",
     }
     if provenance["px_matrix"] != OFS_TABLE_ID:
         raise RuntimeError(f"Downloaded cube is {provenance['px_matrix']!r}, expected {OFS_TABLE_ID}")

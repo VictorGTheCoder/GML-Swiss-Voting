@@ -3,8 +3,8 @@
 Every row removal is a named step recorded in the returned log; nothing is corrected
 silently. Rows that are kept but look inconsistent get a ``flag_*`` column instead.
 
-Usage: python scripts/clean_votes.py  (reads data/interim/votes_all_levels.parquet,
-writes data/interim/votes_communes_clean.parquet and reports/cleaning_log.md)
+Usage: python -m scripts.cleaning.clean_ofs_votes  (reads data/interim/ofs-votes/votes_all_levels.parquet,
+writes data/interim/ofs-votes/votes_communes_clean.parquet and reports/cleaning_log.md)
 """
 
 from __future__ import annotations
@@ -14,9 +14,17 @@ from dataclasses import dataclass, field
 
 import pandas as pd
 
-from votes_config import COUNT_COLUMNS, INTERIM_DIR, INTERIM_PATH, REPORTS_DIR, RESULT_COLUMNS, SPECIAL_UNIT_MIN_CODE
+from scripts.vote_keys import ofs_keys
+from scripts.votes_config import (
+    COUNT_COLUMNS,
+    INTERIM_DIR,
+    INTERIM_PATH,
+    REPORTS_DIR,
+    RESULT_COLUMNS,
+    SPECIAL_UNIT_MIN_CODE,
+)
 
-CLEAN_PATH = INTERIM_DIR / "votes_communes_clean.parquet"
+CLEAN_PATH = INTERIM_DIR / "ofs-votes" / "votes_communes_clean.parquet"
 CLEANING_LOG_PATH = REPORTS_DIR / "cleaning_log.md"
 
 FRENCH_MONTHS = {
@@ -25,7 +33,7 @@ FRENCH_MONTHS = {
 }
 
 PROCESSED_COLUMNS = [
-    "vote_id", "vote_date", "vote_title_fr", "vote_title_de", "is_tiebreak_question", "is_provisional",
+    "vote_id", "vote_key", "vote_date", "vote_title_fr", "vote_title_de", "is_tiebreak_question", "is_provisional",
     "municipality_id", "municipality_name", "municipality_name_de", "canton", "district_id", "district_name",
     "is_special_unit",
     "eligible_voters", "ballots_cast", "valid_ballots", "blank_invalid_ballots", "votes_yes", "votes_no",
@@ -98,6 +106,7 @@ def clean_votes(frame: pd.DataFrame, provisional_months: set[tuple[int, int]] | 
 
     out = pd.DataFrame(index=df.index)
     out["vote_id"] = df["vote_id"].astype("string")
+    out["vote_key"] = ofs_keys(out["vote_id"])
     out["vote_date"], out["vote_title_de"] = split_vote_label(df["vote_label_de"])
     fr_date, out["vote_title_fr"] = split_vote_label(df["vote_label_fr"])
     if not out["vote_date"].equals(fr_date):
@@ -131,8 +140,8 @@ def clean_votes(frame: pd.DataFrame, provisional_months: set[tuple[int, int]] | 
 
 
 def main() -> None:
-    from parse_votes import read_px_metadata
-    from votes_config import RAW_PX_PATH
+    from scripts.cleaning.parse_ofs_votes import read_px_metadata
+    from scripts.votes_config import RAW_PX_PATH
 
     frame = pd.read_parquet(INTERIM_PATH)
     months = parse_provisional_months("".join(read_px_metadata(RAW_PX_PATH).get("NOTE[fr]", [])))
