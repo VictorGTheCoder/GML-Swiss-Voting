@@ -68,6 +68,7 @@ def text_experiment(rows, config, baseline, design, blocks, records):
     text_eval = vectorizer.transform([documents[vote]['text'] for vote in paired.vote_id])
     if design.empty:
         design = historical_features(rows, config)
+    blocks = tuple(block for block in blocks if block.prerequisite_reason is None)
     numeric = ['municipal_history','history_missing'] + [f'{b.block_id}__{n}' for b in blocks for n in b.numeric_features]
     categorical = [f'{b.block_id}__{n}' for b in blocks for n in b.categorical_features]
     preprocess = _pipeline(numeric, categorical, 1.).named_steps['prepare']

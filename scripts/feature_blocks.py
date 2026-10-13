@@ -19,6 +19,7 @@ class FeatureBlock:
     source_url: str
     source_version: str
     geography_mode: str = 'historically_existing'
+    prerequisite_reason: str | None = None
 
 
 def join_feature_blocks(rows, blocks, geography_mode):
@@ -39,11 +40,26 @@ def join_feature_blocks(rows, blocks, geography_mode):
         if not names or len(names) != len(set(names)) or any(name not in block.definitions or not block.definitions[name] for name in names):
             raise ValueError('Feature allowlists must be unique, nonempty, and documented')
         outcomes = {'yes_count','no_count','votes_yes','votes_no','target_share','yes_share',
-                    'turnout','ballot_total','eligible_voters','prediction','municipality_id','vote_id'}
+                    'turnout','ballot_total','eligible_voters','prediction','municipality_id','vote_id',
+                    'ballots_cast','valid_ballots','blank_invalid_ballots','yes_pct_ofs','turnout_pct_ofs'}
         if any(name.lower() in outcomes for name in names):
             raise ValueError('Same-object outcome/key fields cannot be predictors')
         for name in names:
             joined[f'{block.block_id}__{name}'] = np.nan if name in block.numeric_features else None
+        if block.prerequisite_reason is not None:
+            if not block.prerequisite_reason.strip() or not block.records.empty:
+                raise ValueError('Skipped blocks require a prerequisite reason and no records')
+            coverage[block.block_id] = {'matched_rows': 0, 'eligible_rows': len(rows),
+                'missing_values': {name: len(rows) for name in names}, 'skipped_rows': len(rows),
+                'prerequisite_status': 'skipped', 'prerequisite_reason': block.prerequisite_reason}
+            manifests[block.block_id] = {'scope': block.scope, 'source_url': block.source_url,
+                'source_version': block.source_version, 'geography_mode': block.geography_mode,
+                'numeric_features': list(block.numeric_features), 'categorical_features': list(block.categorical_features),
+                'definitions': block.definitions}
+            for _, row in rows.iterrows():
+                report.append({'municipality_id': row.municipality_id, 'vote_id': row.vote_id,
+                               'block_id': block.block_id, 'status': 'skipped'})
+            continue
         entity = 'municipality_id' if block.scope == 'municipality' else 'vote_id'
         required = [entity,'reference_date','published_at','availability_status','availability_evidence','source_version'] + names
         if block.scope == 'municipality':
@@ -52,6 +68,9 @@ def join_feature_blocks(rows, blocks, geography_mode):
         if missing:
             raise ValueError(f'Missing prepared feature columns: {sorted(missing)}')
         source = block.records.copy()
+        if block.scope == 'object':
+            if {'object_match_status','object_match_evidence'} - set(source):
+                raise ValueError('Object metadata requires validated correspondence columns')
         if source[entity].isna().any() or source[entity].astype(str).str.strip().eq('').any():
             raise ValueError('Feature records need entity identifiers')
         if source.source_version.isna().any() or source.source_version.ne(block.source_version).any():
@@ -76,6 +95,10 @@ def join_feature_blocks(rows, blocks, geography_mode):
                 known = (candidates.published_at.notna() & candidates.reference_date.notna()
                          & candidates.availability_status.eq('verified') & candidates.availability_evidence.notna()
                          & candidates.availability_evidence.astype(str).str.strip().ne(''))
+                if block.scope == 'object':
+                    known &= (candidates.object_match_status.eq('validated')
+                              & candidates.object_match_evidence.notna()
+                              & candidates.object_match_evidence.astype(str).str.strip().ne(''))
                 verified = candidates.loc[known]
                 timely = verified.loc[verified.published_at.le(row.forecast_at) & verified.reference_date.le(row.forecast_at)]
                 status = 'unknown_availability' if verified.empty else 'unavailable_at_forecast'
@@ -103,6 +126,7 @@ def join_feature_blocks(rows, blocks, geography_mode):
             'source_version': block.source_version, 'geography_mode': block.geography_mode,
             'numeric_features': list(block.numeric_features), 'categorical_features': list(block.categorical_features),
             'definitions': block.definitions,
+            'object_correspondence': 'validated object_match_status and nonempty object_match_evidence required' if block.scope == 'object' else None,
             'records_sha256': hashlib.sha256(block.records.to_json(orient='split',date_format='iso').encode()).hexdigest()}
     return joined, pd.DataFrame(report), manifests, coverage
 
@@ -165,8 +189,8 @@ def load_feature_blocks(manifest_path):
     blocks = []
     for descriptor in descriptors:
         parameters = descriptor.copy()
-        records_path = path.parent / parameters.pop('records_path')
-        parameters['records'] = pd.read_csv(records_path,dtype={'municipality_id':str,'vote_id':str,'geography_id':str})
+        records_path = parameters.pop('records_path', None)
+        parameters['records'] = pd.read_csv(path.parent / records_path,dtype={'municipality_id':str,'vote_id':str,'geography_id':str}) if records_path else pd.DataFrame()
         blocks.append(FeatureBlock(**parameters))
     return tuple(blocks)
 

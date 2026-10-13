@@ -252,7 +252,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     design = pd.concat([historical_features(rows, config), joined], axis=1) if feature_blocks else joined
     regularized_manifest = {}
     if feature_blocks:
-        regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, feature_blocks)
+        regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, tuple(block for block in feature_blocks if block.prerequisite_reason is None))
         predictions = pd.concat([predictions, regularized], ignore_index=True)
     if unpredictable:
         exclusions['no_admissible_training_history'] = unpredictable
@@ -283,7 +283,9 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     if text_records is not None:
         from scripts.text_votes import text_experiment
         text_result = text_experiment(rows, config, predictions, design, feature_blocks, text_records)
-    return {'text_experiment': text_result, 'manifest': {**asdict(config), 'input_rows': len(prepared),
+    from scripts.feature_ablations import ablation_reports
+    ablations = ablation_reports(predictions, feature_blocks, block_manifest, block_coverage, regularized_manifest, config.mode)
+    return {'text_experiment': text_result, 'ablations': ablations, 'manifest': {**asdict(config), 'input_rows': len(prepared),
                           'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
                           'geography': geography, 'feature_blocks': block_manifest, 'regularized': regularized_manifest,
                           'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
