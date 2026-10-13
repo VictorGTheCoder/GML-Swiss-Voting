@@ -97,7 +97,13 @@ def freeze_experiment(validation_result):
     manifest = validation_result['manifest']
     if manifest['mode'] != 'validation':
         raise ValueError('Only a validation run may freeze experiment choices')
-    selected = {name:run['selected_alpha'] for name,run in manifest['regularized'].items()}
+    skipped_regularized = sorted(name for name, run in manifest['regularized'].items()
+                                 if run.get('status') == 'no_evaluable_windows')
+    evaluated_regularized = {name: run for name, run in manifest['regularized'].items()
+                             if name not in skipped_regularized}
+    if any(run.get('selected_alpha') is None for run in evaluated_regularized.values()):
+        raise ValueError('Cannot freeze a Ridge model without an evaluated selected_alpha')
+    selected = {name: run['selected_alpha'] for name, run in evaluated_regularized.items()}
     text = validation_result.get('text_experiment') or {}
     selected.update({name:run['selected_alpha'] for name,run in text.get('models',{}).items()})
     boosting = {name:run['settings'] for name,run in manifest.get('hist_gradient_boosting',{}).items()
@@ -105,8 +111,9 @@ def freeze_experiment(validation_result):
     frozen = {'schema_version':2,'signature':experiment_signature(manifest),
               'selected_ridge_alphas':selected,
               'selected_hist_gradient_boosting':boosting,
+              'skipped_regularized': skipped_regularized,
               'nontext_choices':{name:{key:run[key] for key in ['selected_alpha','features','preprocessing']}
-                                 for name,run in manifest['regularized'].items()},
+                                 for name,run in evaluated_regularized.items()},
               'text_choices':{'status':text.get('status','not_requested'),'models':text.get('models',{}),
                               'representation_settings':text.get('representation',{}).get('settings',{})},
               'validation_metrics':validation_result['metrics'],
