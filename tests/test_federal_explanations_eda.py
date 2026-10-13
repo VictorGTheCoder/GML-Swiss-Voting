@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from scripts.federal_explanations_eda import generate_eda
+from scripts.federal_explanations.federal_explanations_eda import generate_eda
 
 
 def test_generate_eda_from_synthetic_exports(tmp_path: Path) -> None:

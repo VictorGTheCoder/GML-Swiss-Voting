@@ -12,7 +12,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 OBJECT_COLUMNS = [
     "vote_id",
     "vote_date",

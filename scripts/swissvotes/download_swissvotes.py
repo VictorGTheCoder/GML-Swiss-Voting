@@ -1,6 +1,6 @@
 ﻿"""Download the Swissvotes dataset independently of the OFS results.
 
-Usage: python -m scripts.download.download_swissvotes [--force]
+Usage: python -m scripts.swissvotes.download_swissvotes [--force]
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 
-from scripts.votes_config import SWISSVOTES_PATH, SWISSVOTES_URL
+from scripts.common.config import SWISSVOTES_PATH, SWISSVOTES_URL
 
 
 def download_swissvotes(force: bool = False, output: Path = SWISSVOTES_PATH) -> Path:
@@ -39,7 +39,7 @@ def download_swissvotes(force: bool = False, output: Path = SWISSVOTES_PATH) -> 
     provenance = {
         "source": "Swissvotes",
         "url": SWISSVOTES_URL,
-        "script": "scripts/download/download_swissvotes.py",
+        "script": "scripts/swissvotes/download_swissvotes.py",
         "retrieved_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "bytes": len(response.content),
         "sha256": hashlib.sha256(response.content).hexdigest(),

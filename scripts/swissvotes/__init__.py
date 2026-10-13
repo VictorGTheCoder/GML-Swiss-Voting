@@ -1,0 +1,1 @@
+"""swissvotes pipeline modules."""

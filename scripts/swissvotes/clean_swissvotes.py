@@ -1,6 +1,6 @@
 """Clean Swissvotes without conflating missing values and documented category codes.
 
-Usage: python -m scripts.cleaning.clean_swissvotes
+Usage: python -m scripts.swissvotes.clean_swissvotes
 Codebook: https://swissvotes.ch/page/dataset/codebook-de.pdf
 All source columns are retained; only explicitly identified measures are numeric.
 """
@@ -12,12 +12,12 @@ from datetime import date
 import numpy as np
 import pandas as pd
 
-from scripts.vote_keys import swissvotes_key
-from scripts.votes_config import (
+from scripts.common.config import (
     SWISSVOTES_CLEAN_PATH,
     SWISSVOTES_PATH,
     SWISSVOTES_REPORT_PATH,
 )
+from scripts.common.vote_keys import swissvotes_key
 
 REQUIRED = {"anr", "datum", "titel_kurz_d", "titel_kurz_f", "rechtsform"}
 CANTONS = ["zh", "be", "lu", "ur", "sz", "ow", "nw", "gl", "zg", "fr", "so", "bs", "bl", "sh", "ar", "ai", "sg", "gr", "ag", "tg", "ti", "vd", "vs", "ne", "ge", "ju"]

@@ -10,7 +10,6 @@ from __future__ import annotations
 import re
 from difflib import SequenceMatcher
 
-
 _ORDINALS = {
     "premier": 1, "première": 1, "premiere": 1,
     "deuxième": 2, "deuxieme": 2, "second": 2, "seconde": 2,

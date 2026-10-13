@@ -6,12 +6,11 @@ validation of a brochure or its correspondence to an OFS vote.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from io import BytesIO
 from pathlib import Path
-from typing import Callable
 
 import pdfplumber
-
 
 PageOcr = Callable[[Path, int], str]
 
@@ -79,7 +78,7 @@ def extract_pdf_pages(
 
         try:
             text = page_ocr(path, page_number) or ""
-        except Exception as exc:
+        except Exception as exc:  # noqa: BLE001 - isolate failures from injected OCR engines per page
             records.append({
                 "page_number": page_number,
                 "text": "",

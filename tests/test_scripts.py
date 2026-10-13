@@ -9,14 +9,15 @@ import pytest
 import requests
 
 from scripts import run_pipeline
-from scripts import votes_config as config
-from scripts.cleaning import (
+from scripts.common import config
+from scripts.ofs_votes import (
     audit_ofs_votes,
     clean_ofs_votes,
+    download_ofs_votes,
     parse_ofs_votes,
     validate_ofs_votes,
 )
-from scripts.download import download_ofs_votes, download_swissvotes
+from scripts.swissvotes import download_swissvotes
 
 
 @pytest.fixture(autouse=True)
@@ -30,6 +31,20 @@ def no_network(monkeypatch):
 def test_imports_have_no_side_effects():
     for module in (download_ofs_votes, download_swissvotes, run_pipeline):
         importlib.reload(module)
+
+
+def test_default_pipeline_does_not_prepare_or_merge_datasets(monkeypatch):
+    from scripts.integration import prepare_join
+    from scripts.swissvotes import clean_swissvotes
+
+    monkeypatch.setattr(download_ofs_votes, "ensure_raw_data", Mock())
+    monkeypatch.setattr(download_swissvotes, "download_swissvotes", Mock())
+    for module in (parse_ofs_votes, audit_ofs_votes, clean_ofs_votes, validate_ofs_votes, clean_swissvotes):
+        monkeypatch.setattr(module, "main", Mock())
+    prepare = Mock(side_effect=AssertionError("Join preparation must be explicitly requested"))
+    monkeypatch.setattr(prepare_join, "main", prepare)
+    run_pipeline.run_pipeline()
+    prepare.assert_not_called()
 
 
 def test_paths_are_under_project_data():
@@ -191,8 +206,9 @@ def test_cached_px_never_contacts_network(tmp_path, monkeypatch):
 @pytest.mark.parametrize("invalid", [False, True])
 def test_pipeline_px_to_validated_parquet(tmp_path, monkeypatch, px_cube, invalid):
     # Execute every processing stage on a small local PX cube; only HTTP is mocked.
-    from scripts import prepare_join, run_pipeline
-    from scripts.cleaning import clean_swissvotes
+    from scripts import run_pipeline
+    from scripts.integration import prepare_join
+    from scripts.swissvotes import clean_swissvotes
 
     if invalid:
         px_cube.data_tokens[-1] = "10"  # Published percentage disagrees with yes/no counts.
@@ -231,10 +247,10 @@ def test_pipeline_px_to_validated_parquet(tmp_path, monkeypatch, px_cube, invali
 
     if invalid:
         with pytest.raises(validate_ofs_votes.ValidationError):
-            run_pipeline.run_pipeline(force=True)
+            run_pipeline.run_pipeline(force=True, prepare_joins=True)
         assert not paths["PROCESSED_PATH"].exists()
     else:
-        run_pipeline.run_pipeline(force=True)
+        run_pipeline.run_pipeline(force=True, prepare_joins=True)
         result = pd.read_parquet(paths["PROCESSED_PATH"])
         assert len(result) == 1
         assert result.loc[0, "municipality_id"] == "0001"

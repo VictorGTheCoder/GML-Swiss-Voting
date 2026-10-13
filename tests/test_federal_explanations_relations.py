@@ -1,4 +1,6 @@
-from scripts.federal_explanations_relations import build_related_vote_data
+from scripts.federal_explanations.federal_explanations_relations import (
+    build_related_vote_data,
+)
 
 
 def test_linked_votes_keep_subsidiary_in_intermediate_and_exclude_it_from_model():

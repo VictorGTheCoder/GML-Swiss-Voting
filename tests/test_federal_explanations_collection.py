@@ -1,4 +1,6 @@
-from scripts.collect_federal_explanations import parse_archive_entries
+from scripts.federal_explanations.collect_federal_explanations import (
+    parse_archive_entries,
+)
 
 
 def test_archive_parser_keeps_pdf_links_and_ballot_dates_in_period():

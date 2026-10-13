@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-
 _REQUIRED = ("decision_id", "source_sha256", "object_id", "field", "value", "justification")
 
 

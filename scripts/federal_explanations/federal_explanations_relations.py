@@ -8,7 +8,6 @@ from collections.abc import Iterable, Mapping
 
 import pandas as pd
 
-
 _AUTHORITIES = ("council", "parliament")
 _NO_RECOMMENDATION = re.compile(
     r"\b(?:pas de recommandation|ne (?:formule|donne|fait) pas de recommandation|"

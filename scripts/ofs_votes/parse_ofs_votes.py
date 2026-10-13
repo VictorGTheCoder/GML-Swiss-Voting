@@ -9,7 +9,7 @@ unique, and codes are what other OFS datasets use for joins.
 This step only reshapes: no row is dropped and no value is changed. Missing-value
 symbols (e.g. ``"..."``) become NaN and are counted in ``attrs["missing_symbols"]``.
 
-Usage: python -m scripts.cleaning.parse_ofs_votes  (reads data/raw, writes data/interim)
+Usage: python -m scripts.ofs_votes.parse_ofs_votes  (reads data/raw, writes data/interim)
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from scripts.votes_config import (
+from scripts.common.config import (
     DIM_LOCATION,
     DIM_LOCATION_FR,
     DIM_RESULT,
@@ -174,7 +174,7 @@ def px_to_long(px: PxFile) -> pd.DataFrame:
 
 def main() -> None:
     if not RAW_PX_PATH.exists():
-        raise SystemExit(f"{RAW_PX_PATH} not found; run python -m scripts.download.download_ofs_votes first")
+        raise SystemExit(f"{RAW_PX_PATH} not found; run python -m scripts.ofs_votes.download_ofs_votes first")
     frame = px_to_long(read_px(RAW_PX_PATH))
     INTERIM_PATH.parent.mkdir(parents=True, exist_ok=True)
     frame.to_parquet(INTERIM_PATH, index=False)

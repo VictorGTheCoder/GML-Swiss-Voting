@@ -84,8 +84,7 @@ Les données brutes et les caches ne sont pas versionnés : ils doivent être r�
 
 ### Pipeline OFS et Swissvotes
 
-Un seul pipeline télécharge le cube PX complet OFS et Swissvotes, nettoie et valide
-les deux sources, puis prépare et contrôle leur clé de jointure :
+La pipeline nettoie et valide OFS et Swissvotes dans deux tables distinctes. Elle ne fusionne pas les datasets :
 
 ```bash
 python scripts/run_pipeline.py
@@ -100,8 +99,8 @@ python scripts/run_pipeline.py --force
 Les fichiers bruts présents sont réutilisés sans accès réseau, sauf avec `--force`.
 Le pipeline travaille sur l'historique complet du cube, depuis 1960 ; aucun filtre
 2010–2026 n'est appliqué. Swissvotes est téléchargé au format CSV puis nettoyé en
-Parquet. Les deux tables et leur correspondance sont prêtes pour une jointure ;
-les centaines de colonnes Swissvotes ne sont pas encore recopiées dans chaque ligne communale.
+Parquet. Les deux tables restent séparées. Leur correspondance peut être préparée
+explicitement avec `--prepare-joins`, sans recopier les variables entre sources.
 
 Fichiers produits :
 
@@ -111,30 +110,40 @@ Fichiers produits :
 - `data/interim/ofs-votes/votes_communes_clean.parquet` : résultats communaux nettoyés.
 - `data/processed/ofs-votes/votes_communes.parquet` : résultats ayant passé la validation.
 - `data/processed/swissvotes/swissvotes_clean.parquet` : objets Swissvotes nettoyés, une ligne par objet.
-- `data/processed/ofs-votes/vote_crosswalk.parquet` : correspondance vérifiée OFS ↔ Swissvotes, une ligne par objet OFS.
+- `data/interim/integration/ofs_swissvotes_crosswalk.parquet` : correspondance vérifiée OFS ↔ Swissvotes, une ligne par objet OFS, uniquement si la préparation est demandée.
 - `reports/` : audit OFS, journaux de nettoyage, validation et diagnostic de jointure générés localement, non versionnés.
 
 Les étapes peuvent se lancer individuellement, **depuis la racine du dépôt** :
 
 ```bash
-python -m scripts.download.download_ofs_votes
-python -m scripts.download.download_swissvotes
-python -m scripts.cleaning.parse_ofs_votes
-python -m scripts.cleaning.audit_ofs_votes
-python -m scripts.cleaning.clean_ofs_votes
-python -m scripts.cleaning.validate_ofs_votes
-python -m scripts.cleaning.clean_swissvotes
-python -m scripts.prepare_join
+python -m scripts.ofs_votes.download_ofs_votes
+python -m scripts.swissvotes.download_swissvotes
+python -m scripts.ofs_votes.parse_ofs_votes
+python -m scripts.ofs_votes.audit_ofs_votes
+python -m scripts.ofs_votes.clean_ofs_votes
+python -m scripts.ofs_votes.validate_ofs_votes
+python -m scripts.swissvotes.clean_swissvotes
+python -m scripts.integration.prepare_join
 ```
 
 Organisation de `scripts/` :
 
-- `download/` : un téléchargement OFS par cube PX et un téléchargement Swissvotes.
-- `cleaning/` : parsing PX, audit, nettoyage et validation.
-- `votes_config.py` : chemins, sources et définitions des mesures.
-- `vote_keys.py` : normalisation exacte des identifiants des deux sources.
-- `prepare_join.py` : contrôle des correspondances, des dates, des types de question et de la cardinalité.
-- `run_pipeline.py` : unique orchestrateur, qui appelle les étapes de la chaîne.
+- `ofs_votes/` : collecte PX, parsing, audit, nettoyage et validation OFS.
+- `swissvotes/` : collecte et nettoyage Swissvotes.
+- `federal_explanations/` : collecte, extraction, audit et export des brochures.
+- `common/` : configuration et construction unique des identifiants.
+- `integration/` : préparation des correspondances entre sources, sans fusion des variables.
+- `run_pipeline.py` : orchestration OFS et Swissvotes.
+
+La préparation des correspondances est optionnelle :
+
+```bash
+python -m scripts.integration.prepare_join
+# Ou nettoyage suivi du contrôle des clés :
+python -m scripts.run_pipeline --prepare-joins
+```
+
+Seuls les identifiants, dates et types de question sont comparés. La table de correspondance est un artefact intermédiaire ; les datasets restent séparés jusqu'à l'intégration des autres sources.
 
 Le pipeline historique produit les rapports dans `reports/` et refuse d'écrire le Parquet final si un contrôle bloquant échoue. Les unités spéciales et les questions subsidiaires restent présentes avec leurs indicateurs ; leur exclusion éventuelle dépendra de l'analyse.
 
@@ -166,19 +175,6 @@ liste les objets Swissvotes absents du jeu OFS nettoyé, notamment hors de sa co
 Une clé OFS sans correspondance, une date incompatible ou un type de question
 contradictoire bloque la publication de la table de correspondance. Les doublons
 qui transformeraient la jointure en plusieurs-à-plusieurs sont également bloquants.
-
-Après un pipeline réussi, une jointure sur des **colonnes Swissvotes choisies** utilise :
-
-```python
-import pandas as pd
-
-ofs = pd.read_parquet("data/processed/ofs-votes/votes_communes.parquet")
-swissvotes = pd.read_parquet("data/processed/swissvotes/swissvotes_clean.parquet")
-dataset = ofs.merge(
-    swissvotes[["vote_key", "titel_kurz_f", "rechtsform"]],
-    on="vote_key", how="left", validate="many_to_one",
-)
-```
 
 Les résultats nationaux et les variables connues après le scrutin ne doivent pas
 être utilisés comme prédicteurs d'un résultat à prévoir avant le vote. Les lignes

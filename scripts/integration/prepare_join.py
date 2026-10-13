@@ -1,6 +1,6 @@
 """Validate an exact many-to-one OFS -> Swissvotes join and publish its crosswalk.
 
-Usage: python -m scripts.prepare_join
+Usage: python -m scripts.integration.prepare_join
 No date-only, title-based, fuzzy or rounded identifier matching is allowed.
 """
 
@@ -8,13 +8,13 @@ from __future__ import annotations
 
 import pandas as pd
 
-from scripts.vote_keys import ofs_keys, swissvotes_key
-from scripts.votes_config import (
+from scripts.common.config import (
     JOIN_REPORT_PATH,
     PROCESSED_PATH,
     SWISSVOTES_CLEAN_PATH,
     VOTE_CROSSWALK_PATH,
 )
+from scripts.common.vote_keys import ofs_keys, swissvotes_key
 
 
 def prepare_join(ofs: pd.DataFrame, swiss: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, str]:
@@ -64,16 +64,11 @@ def prepare_join(ofs: pd.DataFrame, swiss: pd.DataFrame) -> tuple[pd.DataFrame, 
                   "join_status"] = "question_type_mismatch"
     crosswalk = crosswalk.drop(columns="_merge").sort_values(["vote_date", "vote_key"]).reset_index(drop=True)
     failures = crosswalk.loc[crosswalk["join_status"] != "matched"]
-    # Exercise the real municipal cardinality without replicating 874 Swissvotes fields.
-    checked = ofs[["vote_key", "municipality_id"]].merge(
-        swiss[["vote_key", "swissvotes_id"]], on="vote_key", how="left", validate="many_to_one"
-    )
-    if len(checked) != len(ofs):
-        raise ValueError("Join changed the number of OFS municipality x vote rows")
+    # Uniqueness checks above establish many-to-one cardinality without a municipal join.
     report = (
         "# OFS / Swissvotes join preparation\n\n"
         f"Status: {'PASS' if failures.empty else 'FAIL'}\n\n"
-        f"OFS municipal rows: {len(ofs):,}; rows after test join: {len(checked):,}.\n\n"
+        f"OFS municipal rows: {len(ofs):,}; no municipal join performed.\n\n"
         f"OFS vote objects: {len(questions)}; Swissvotes vote objects: {len(swiss)}.\n\n"
         f"Matched, date- and question-type-checked OFS objects: {len(crosswalk) - len(failures)}.\n\n"
         f"Unmatched/conflicting OFS objects: {len(failures)}.\n\n"

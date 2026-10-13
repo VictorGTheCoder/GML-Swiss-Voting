@@ -9,7 +9,7 @@ An existing file is never replaced unless --force is given. A provenance sidecar
 (<table>.provenance.json) records URL, retrieval time, size, SHA-256 and the cube's
 own LAST-UPDATED stamp.
 
-Usage: python -m scripts.download.download_ofs_votes [--force]
+Usage: python -m scripts.ofs_votes.download_ofs_votes [--force]
 """
 
 from __future__ import annotations
@@ -23,8 +23,7 @@ from pathlib import Path
 
 import requests
 
-from scripts.cleaning.parse_ofs_votes import read_px_metadata
-from scripts.votes_config import (
+from scripts.common.config import (
     DATASET_NAME_FR,
     DOWNLOAD_URL,
     OFS_TABLE_ID,
@@ -33,6 +32,7 @@ from scripts.votes_config import (
     ROOT,
     SOURCE_PAGE_URL,
 )
+from scripts.ofs_votes.parse_ofs_votes import read_px_metadata
 
 TIMEOUT_SECONDS = 600
 
@@ -76,7 +76,7 @@ def write_provenance(px_path: Path, provenance_path: Path, url: str) -> dict:
         "px_matrix": meta.get("MATRIX", [""])[0],
         "px_last_updated": meta.get("LAST-UPDATED", [""])[0],
         "px_creation_date": meta.get("CREATION-DATE", [""])[0],
-        "script": "scripts/download/download_ofs_votes.py",
+        "script": "scripts/ofs_votes/download_ofs_votes.py",
     }
     if provenance["px_matrix"] != OFS_TABLE_ID:
         raise RuntimeError(f"Downloaded cube is {provenance['px_matrix']!r}, expected {OFS_TABLE_ID}")

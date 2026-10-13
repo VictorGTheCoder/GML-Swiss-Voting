@@ -1,6 +1,6 @@
-from scripts.federal_explanations_temporal import (
-    decide_temporal_status,
+from scripts.federal_explanations.federal_explanations_temporal import (
     apply_temporal_decision,
+    decide_temporal_status,
     filter_model_eligible,
 )
 

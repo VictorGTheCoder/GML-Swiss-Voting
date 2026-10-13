@@ -1,7 +1,7 @@
 """Download sources and build the validated OFS commune x vote dataset.
 
 OFS PX -> parsing -> audit -> cleaning -> validation -> Parquet.
-Swissvotes is cleaned and the exact join keys are checked against the OFS results.
+Swissvotes is cleaned separately. Optional key checks prepare a future join only.
 Use ``--force`` to refresh both sources; cached downloads are otherwise reused.
 """
 
@@ -14,17 +14,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def run_pipeline(force: bool = False) -> None:
-    from scripts import prepare_join
-    from scripts.cleaning import (
+def run_pipeline(force: bool = False, prepare_joins: bool = False) -> None:
+    from scripts.integration import prepare_join
+    from scripts.ofs_votes import (
         audit_ofs_votes,
         clean_ofs_votes,
-        clean_swissvotes,
         parse_ofs_votes,
         validate_ofs_votes,
     )
-    from scripts.download.download_ofs_votes import ensure_raw_data
-    from scripts.download.download_swissvotes import download_swissvotes
+    from scripts.ofs_votes.download_ofs_votes import ensure_raw_data
+    from scripts.swissvotes import clean_swissvotes
+    from scripts.swissvotes.download_swissvotes import download_swissvotes
 
     ensure_raw_data(force=force)
     download_swissvotes(force=force)
@@ -33,15 +33,17 @@ def run_pipeline(force: bool = False) -> None:
     clean_ofs_votes.main()
     validate_ofs_votes.main()
     clean_swissvotes.main()
-    prepare_join.main()
+    if prepare_joins:
+        prepare_join.main()
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Download and prepare the project datasets")
     parser.add_argument("--force", action="store_true", help="redownload OFS and Swissvotes")
+    parser.add_argument("--prepare-joins", action="store_true", help="check identifier correspondences only; no merged dataset")
     args = parser.parse_args()
 
-    run_pipeline(force=args.force)
+    run_pipeline(force=args.force, prepare_joins=args.prepare_joins)
 
 
 if __name__ == "__main__":

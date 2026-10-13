@@ -5,7 +5,7 @@
 data/processed. "warning" checks count known, documented inconsistencies that are
 kept and flagged rather than dropped.
 
-Usage: python -m scripts.cleaning.validate_ofs_votes  (reads data/interim/ofs-votes/votes_communes_clean.parquet,
+Usage: python -m scripts.ofs_votes.validate_ofs_votes  (reads data/interim/ofs-votes/votes_communes_clean.parquet,
 writes reports/validation_report.md and, if all error checks pass, data/processed/)
 """
 
@@ -17,7 +17,7 @@ from zoneinfo import ZoneInfo
 
 import pandas as pd
 
-from scripts.votes_config import COUNT_COLUMNS, PROCESSED_PATH, REPORTS_DIR
+from scripts.common.config import COUNT_COLUMNS, PROCESSED_PATH, REPORTS_DIR
 
 VALIDATION_REPORT_PATH = REPORTS_DIR / "validation_report.md"
 REQUIRED_NON_NULL = ["vote_id", "vote_key", "vote_date", "municipality_id", "municipality_name", "canton",
@@ -109,7 +109,7 @@ def assert_valid(checks: list[CheckResult]) -> None:
 
 
 def main() -> None:
-    from scripts.cleaning.clean_ofs_votes import CLEAN_PATH
+    from scripts.ofs_votes.clean_ofs_votes import CLEAN_PATH
 
     df = pd.read_parquet(CLEAN_PATH)
     checks = run_checks(df)

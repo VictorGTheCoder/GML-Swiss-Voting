@@ -14,7 +14,6 @@ from urllib.request import Request, urlopen
 
 import pandas as pd
 
-
 ARCHIVE_URL = "https://www.bk.admin.ch/fr/compilation-des-explications-du-conseil-federal-depuis-1978"
 _DATE = re.compile(r"20\d{2}-\d{2}-\d{2}")
 

@@ -2,7 +2,9 @@ from pathlib import Path
 
 import pandas as pd
 
-from scripts.build_federal_explanations_snapshot import build_snapshot
+from scripts.federal_explanations.build_federal_explanations_snapshot import (
+    build_snapshot,
+)
 
 
 def test_build_snapshot_keeps_only_source_specific_tables(tmp_path: Path) -> None:

@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from datetime import date
 from collections.abc import Iterable, Mapping
+from datetime import date
 
 STATUSES = ("CONFIRMED_PRE_VOTE", "INVESTIGATE", "POST_VOTE")
 _PRE_VOTE_KINDS = {"public_release", "public_availability"}

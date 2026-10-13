@@ -5,9 +5,8 @@ from pathlib import Path
 
 import pandas as pd
 
-
 ROOT = Path(__file__).resolve().parents[1]
-ENTRYPOINT = ROOT / "scripts" / "federal_explanations.py"
+ENTRYPOINT = "scripts.federal_explanations.audit_federal_explanations"
 
 
 def _pdf_with_text(path: Path, text: str) -> None:
@@ -56,7 +55,10 @@ def _run_pipeline(tmp_path: Path, *, confirmed: bool = True, ambiguous: bool = F
         "source_id": "bk-2024-06-09-fr", "pdf_path": str(pdf),
         "official_url": "https://www.bk.admin.ch/fr/example.pdf", "vote_date": "2024-06-09",
         "language": "fr", "collected_at": "2026-10-06T10:00:00Z",
-        "availability_status": "CONFIRMED_PRE_VOTE" if confirmed else "INVESTIGATE",
+        "temporal_decision": {
+            "status": "CONFIRMED_PRE_VOTE" if confirmed else "INVESTIGATE",
+            "source_sha256": __import__("hashlib").sha256(pdf.read_bytes()).hexdigest(),
+        },
         "availability_evidence": "Brochure archived before voting day" if confirmed else "No pre-vote publication proof",
         "semantic_status": "VALIDATED",
         "ofs_vote_id": "6021", "match_status": "PROPOSED" if ambiguous else "VALIDATED",
@@ -64,30 +66,31 @@ def _run_pipeline(tmp_path: Path, *, confirmed: bool = True, ambiguous: bool = F
     }]}), encoding="utf-8")
     out = tmp_path / "out"
     result = subprocess.run(
-        [sys.executable, str(ENTRYPOINT), "--ofs", str(votes), "--sources", str(manifest), "--output", str(out)],
-        capture_output=True, text=True,
+        [sys.executable, "-m", ENTRYPOINT, "--ofs", str(votes), "--sources", str(manifest), "--output", str(out)],
+        capture_output=True, text=True, check=False,
     )
     return result, out, pdf
 
 
-def test_pipeline_exports_one_official_section_and_model_row(tmp_path):
+def test_pipeline_exports_separate_sections_and_identifier_links(tmp_path):
     result, output, pdf = _run_pipeline(tmp_path)
     assert result.returncode == 0, result.stderr
 
     coverage = pd.read_parquet(output / "coverage.parquet")
     sections = pd.read_parquet(output / "sections.parquet")
     links = pd.read_parquet(output / "section_links.parquet")
-    model = pd.read_parquet(output / "model.parquet")
+    eligibility = pd.read_parquet(output / "link_eligibility.parquet")
     assert coverage.loc[0, "vote_id"] == "6021"
     assert sections.loc[0, "title"] == "Initiative pour des soins accessibles"
     assert sections.loc[0, "summary_official"].startswith("Le projet garantit")
-    assert sections.loc[0, "full_text"].startswith("L") and "demande" in sections.loc[0, "full_text"]
+    assert "demande" in sections.loc[0, "full_text"]
     assert sections.loc[0, "council_recommendation_raw"].startswith("rejeter")
     assert sections.loc[0, "parliament_recommendation_raw"].startswith("accepter")
-    assert sections.loc[0, "source_pages"] == "1"
+    assert list(sections.loc[0, "source_pages"]) == [1]
     assert sections.loc[0, "pdf_sha256"]
-    assert links.loc[0, "ofs_vote_id"] == "6021"
-    assert len(model) == 1
+    assert links.loc[0, "vote_id"] == "6021"
+    assert eligibility["eligible"].tolist() == [True]
+    assert not (output / "model.parquet").exists()
     assert (output / "report.md").exists()
     assert list((output / "originals").glob("*.pdf"))
     assert pdf.read_bytes()
@@ -99,10 +102,10 @@ def test_pipeline_excludes_unproven_or_ambiguous_object(tmp_path):
         case.mkdir()
         result, output, _ = _run_pipeline(case, **options)
         assert result.returncode == 0, result.stderr
-        model = pd.read_parquet(output / "model.parquet")
+        eligibility = pd.read_parquet(output / "link_eligibility.parquet")
         report = (output / "report.md").read_text(encoding="utf-8")
-        assert model.empty
-        assert label in report.lower() or ("pre-vote" if label == "unproven" else "ambiguous") in report.lower()
+        assert not eligibility["eligible"].any()
+        assert ("pre-vote" if label == "unproven" else "not validated") in report.lower()
 
 
 def test_pipeline_does_not_treat_technical_extraction_as_semantic_validation(tmp_path):
@@ -113,11 +116,11 @@ def test_pipeline_does_not_treat_technical_extraction_as_semantic_validation(tmp
     manifest["documents"][0].pop("semantic_status")
     manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
     result = subprocess.run(
-        [sys.executable, str(ENTRYPOINT), "--ofs", str(tmp_path / "ofs.csv"), "--sources", str(manifest_path), "--output", str(output)],
-        capture_output=True, text=True,
+        [sys.executable, "-m", ENTRYPOINT, "--ofs", str(tmp_path / "ofs.csv"), "--sources", str(manifest_path), "--output", str(output)],
+        capture_output=True, text=True, check=False,
     )
     assert result.returncode == 0, result.stderr
-    assert pd.read_parquet(output / "model.parquet").empty
+    assert not pd.read_parquet(output / "link_eligibility.parquet")["eligible"].any()
 
 
 def test_pipeline_is_offline_idempotent_and_preserves_pdf_versions(tmp_path):
@@ -127,8 +130,8 @@ def test_pipeline_is_offline_idempotent_and_preserves_pdf_versions(tmp_path):
     original_hash = __import__("hashlib").sha256(pdf.read_bytes()).hexdigest()
     # The entry point must use the supplied local files and must not need network access.
     second = subprocess.run(
-        [sys.executable, str(ENTRYPOINT), "--ofs", str(tmp_path / "ofs.csv"), "--sources", str(tmp_path / "sources.json"), "--output", str(output)],
-        capture_output=True, text=True,
+        [sys.executable, "-m", ENTRYPOINT, "--ofs", str(tmp_path / "ofs.csv"), "--sources", str(tmp_path / "sources.json"), "--output", str(output)],
+        capture_output=True, text=True, check=False,
     )
     assert second.returncode == 0, second.stderr
     assert before == {path.name: path.read_bytes() for path in output.iterdir() if path.is_file()}

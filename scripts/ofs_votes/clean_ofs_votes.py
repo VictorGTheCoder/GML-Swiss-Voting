@@ -3,7 +3,7 @@
 Every row removal is a named step recorded in the returned log; nothing is corrected
 silently. Rows that are kept but look inconsistent get a ``flag_*`` column instead.
 
-Usage: python -m scripts.cleaning.clean_ofs_votes  (reads data/interim/ofs-votes/votes_all_levels.parquet,
+Usage: python -m scripts.ofs_votes.clean_ofs_votes  (reads data/interim/ofs-votes/votes_all_levels.parquet,
 writes data/interim/ofs-votes/votes_communes_clean.parquet and reports/cleaning_log.md)
 """
 
@@ -14,8 +14,7 @@ from dataclasses import dataclass, field
 
 import pandas as pd
 
-from scripts.vote_keys import ofs_keys
-from scripts.votes_config import (
+from scripts.common.config import (
     COUNT_COLUMNS,
     INTERIM_DIR,
     INTERIM_PATH,
@@ -23,6 +22,7 @@ from scripts.votes_config import (
     RESULT_COLUMNS,
     SPECIAL_UNIT_MIN_CODE,
 )
+from scripts.common.vote_keys import ofs_keys
 
 CLEAN_PATH = INTERIM_DIR / "ofs-votes" / "votes_communes_clean.parquet"
 CLEANING_LOG_PATH = REPORTS_DIR / "cleaning_log.md"
@@ -140,8 +140,8 @@ def clean_votes(frame: pd.DataFrame, provisional_months: set[tuple[int, int]] | 
 
 
 def main() -> None:
-    from scripts.cleaning.parse_ofs_votes import read_px_metadata
-    from scripts.votes_config import RAW_PX_PATH
+    from scripts.common.config import RAW_PX_PATH
+    from scripts.ofs_votes.parse_ofs_votes import read_px_metadata
 
     frame = pd.read_parquet(INTERIM_PATH)
     months = parse_provisional_months("".join(read_px_metadata(RAW_PX_PATH).get("NOTE[fr]", [])))

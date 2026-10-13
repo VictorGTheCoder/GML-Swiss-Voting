@@ -1,4 +1,4 @@
-"""Replay cached Swissvotes and Chancellerie inputs against OFS vote coverage."""
+"""Extract brochure data and prepare identifier links, without merging datasets."""
 
 from __future__ import annotations
 
@@ -12,22 +12,17 @@ from pathlib import Path
 
 import pandas as pd
 
-try:  # Support both `python scripts/...py` and package imports in tests.
-    from .federal_explanations_layouts import extract_objects
-    from .federal_explanations_ocr import extract_pdf_pages
-    from .federal_explanations_swissvotes import join_swissvotes
-    from .federal_explanations_temporal import apply_temporal_decision, filter_model_eligible
-    from .federal_explanations_corrections import replay_corrections
-    from .federal_explanations import _section_fields
-    from .federal_explanations_relations import _recommendation, build_related_vote_data
-except ImportError:
-    from federal_explanations_layouts import extract_objects
-    from federal_explanations_ocr import extract_pdf_pages
-    from federal_explanations_swissvotes import join_swissvotes
-    from federal_explanations_temporal import apply_temporal_decision, filter_model_eligible
-    from federal_explanations_corrections import replay_corrections
-    from federal_explanations import _section_fields
-    from federal_explanations_relations import _recommendation, build_related_vote_data
+from scripts.common.vote_keys import ofs_keys
+
+from .federal_explanations_corrections import replay_corrections
+from .federal_explanations_fields import _section_fields
+from .federal_explanations_layouts import extract_objects
+from .federal_explanations_ocr import extract_pdf_pages
+from .federal_explanations_relations import _recommendation, build_related_vote_data
+from .federal_explanations_temporal import (
+    apply_temporal_decision,
+    filter_model_eligible,
+)
 
 
 def _list_value(value: object) -> list[str]:
@@ -137,20 +132,19 @@ def _official_fields(section: dict, vote_rows: list[dict]) -> dict:
     return result
 
 
-def run_audit(ofs_path: Path, swissvotes_path: Path, sources_path: Path, output: Path,
-              *, source_version: str, source_license: str = "CC BY 4.0") -> None:
+def run_audit(ofs_path: Path, sources_path: Path, output: Path) -> None:
     ofs_frame = pd.read_parquet(ofs_path) if ofs_path.suffix == ".parquet" else pd.read_csv(ofs_path, dtype={"vote_id": "string"})
     needed = {"vote_id", "vote_date", "is_tiebreak_question"}
     if not needed.issubset(ofs_frame.columns):
         raise ValueError(f"OFS input missing columns: {', '.join(sorted(needed - set(ofs_frame.columns)))}")
-    expected = ofs_frame.drop_duplicates("vote_id").copy()
-    expected["vote_id"] = expected.vote_id.astype(str)
+    # Only identifiers and consistency fields may enter the linkage audit.
+    columns = ["vote_id", "vote_date", "is_tiebreak_question"]
+    if "related_vote_ids" in ofs_frame:
+        columns.append("related_vote_ids")
+    expected = ofs_frame[columns].drop_duplicates("vote_id").copy()
+    expected["vote_id"] = ofs_keys(expected["vote_id"])
     expected["vote_date"] = pd.to_datetime(expected.vote_date).dt.strftime("%Y-%m-%d")
     expected = expected[expected.vote_date.between("2011-01-01", "2026-12-31")]
-    swiss = pd.read_csv(swissvotes_path, sep=None, engine="python", encoding="utf-8-sig", dtype=str, keep_default_na=False).to_dict("records")
-    swiss_hash = hashlib.sha256(swissvotes_path.read_bytes()).hexdigest()
-    joined = join_swissvotes(expected.to_dict("records"), swiss, source_version=source_version,
-                             source_sha256=swiss_hash, license=source_license)
     manifest = json.loads(sources_path.read_text(encoding="utf-8"))
     documents = manifest.get("documents", [])
     output.mkdir(parents=True, exist_ok=True)
@@ -220,7 +214,7 @@ def run_audit(ofs_path: Path, swissvotes_path: Path, sources_path: Path, output:
                                       "source_id": doc.get("source_id"), "pdf_sha256": doc.get("pdf_sha256"),
                                       "match_status": doc.get("match_status", "UNRESOLVED"),
                                       "justification": doc.get("match_justification", "Section-to-vote correspondence requires review.")})
-    for vote in joined["votes"]:
+    for vote in expected.to_dict("records"):
         candidates = docs_by_vote.get(vote["vote_id"], [])
         source = candidates[0] if len(candidates) == 1 else None
         reasons = []
@@ -230,8 +224,6 @@ def run_audit(ofs_path: Path, swissvotes_path: Path, sources_path: Path, output:
             reasons.append("brochure PDF unavailable or extraction failed")
         elif source.get("semantic_status", "NOT_VALIDATED") != "VALIDATED":
             reasons.append("semantic extraction not validated")
-        if vote.get("swissvotes_status") != "MATCHED":
-            reasons.append(f"Swissvotes metadata {vote.get('swissvotes_status')}")
         if not source or source.get("match_status") != "VALIDATED":
             reasons.append("OFS brochure correspondence is not validated")
         if not source or source.get("availability_status") != "CONFIRMED_PRE_VOTE":
@@ -266,16 +258,12 @@ def run_audit(ofs_path: Path, swissvotes_path: Path, sources_path: Path, output:
         row["availability_status"] = "INVESTIGATE"
         row["extraction_status"] = "EXTRACTED" if docs_by_vote.get(str(row["vote_id"])) else "MISSING"
         row["semantic_status"] = "NOT_VALIDATED"
-        raw_sections = [item for item in section_rows if any(link["vote_id"] == str(row["vote_id"]) and link["object_id"] == item["object_id"] for link in section_links)]
-        row["council_recommendation_raw"] = raw_sections[0].get("council_recommendation_raw") if len(raw_sections) == 1 else None
-        row["parliament_recommendation_raw"] = raw_sections[0].get("parliament_recommendation_raw") if len(raw_sections) == 1 else None
         ofs_objects.append(row)
     relation_sections = [{**item, "section_id": item["object_id"]} for item in section_rows]
     relation_links = [{"vote_id": item["vote_id"], "section_id": item["object_id"]}
                       for item in section_links]
     related = build_related_vote_data(ofs_objects, relation_sections, relation_links)
     related["related_votes"].to_parquet(output / "related_votes.parquet", index=False)
-    related["votes_intermediate"].to_parquet(output / "votes_intermediate.parquet", index=False)
     expected_by_date = expected.groupby("vote_date").vote_id.apply(lambda values: sorted(values.astype(str))).to_dict()
     document_audit = []
     for doc in source_rows:
@@ -290,44 +278,32 @@ def run_audit(ofs_path: Path, swissvotes_path: Path, sources_path: Path, output:
                                                  "section count differs from question count; related questions may share sections and mapping remains unresolved" if found_count != len(expected_ids) else
                                                  "counts agree; object-to-vote match still requires validation")})
     pd.DataFrame(document_audit).to_parquet(output / "document_audit.parquet", index=False)
-    metadata = [{"source": "Swissvotes", **joined["source_provenance"]}]
-    metadata[0]["source_url"] = "https://swissvotes.ch/page/dataset/swissvotes_dataset.csv"
-    pd.DataFrame(metadata).to_json(output / "source_provenance.json", orient="records", indent=2)
-    (output / "swissvotes_join_audit.json").write_text(json.dumps({
-        "duplicate_anr_vote_ids": joined["duplicate_anr"],
-        "unconvertible_anr_raw": joined["unconvertible_anr"],
-        "unmatched_normalized_ids": joined["unmatched_swissvotes"],
-        "out_of_scope_vote_ids": joined["out_of_scope_swissvotes"],
-        "before_result_period_vote_ids": joined["before_result_period_vote_ids"],
-        "future_after_local_results_vote_ids": joined["future_after_local_results_vote_ids"],
-        "in_period_unmatched_vote_ids": joined["in_period_unmatched_vote_ids"],
-        "expected_local_vote_ids": len(expected),
-        "matched_vote_ids": sum(row["swissvotes_status"] == "MATCHED" for row in coverage),
-    }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (output / "correction_audit.json").write_text(json.dumps(correction_audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     frame = pd.DataFrame(coverage)
     eligible, excluded = filter_model_eligible(coverage)
-    pd.DataFrame(eligible).to_parquet(output / "model.parquet", index=False)
-    pd.DataFrame(excluded).to_parquet(output / "model_exclusions.parquet", index=False)
+    # Eligibility is a diagnostic on keys, never a merged modelling dataset.
+    eligibility = [
+        {"vote_id": row["vote_id"], "eligible": True, "exclusion_reason": ""}
+        for row in eligible
+    ] + [
+        {"vote_id": row["vote_id"], "eligible": False, "exclusion_reason": row["exclusion_reason"]}
+        for row in excluded
+    ]
+    pd.DataFrame(eligibility, columns=["vote_id", "eligible", "exclusion_reason"]).to_parquet(
+        output / "link_eligibility.parquet", index=False
+    )
     report = ["# Full-period federal explanations audit", "", "Period: French-language sources for 2011–2026.",
               f"Expected OFS vote objects: {len(frame)}", f"Chancellerie PDFs supplied: {len(source_rows)}",
-              f"Swissvotes exact matches: {(frame.swissvotes_status == 'MATCHED').sum()}",
-              f"Swissvotes IDs outside OFS result period: {len(joined['out_of_scope_swissvotes'])}",
-              f"Swissvotes entries before local result period: {len(joined['before_result_period_vote_ids'])}",
-              f"Swissvotes future entries after local result cutoff: {len(joined['future_after_local_results_vote_ids'])}",
-              f"Swissvotes unmatched inside local period: {len(joined['in_period_unmatched_vote_ids'])}",
               f"Vote IDs associated with official brochure dates: {(frame.brochure_status == 'FOUND').sum()}",
               f"Distinct Chancellery brochure dates: {len(source_rows)}",
               f"Native extracted pages: {sum(int(x.get('native_pages', 0)) for x in source_rows)}",
               f"OCR fallback pages: {sum(int(x.get('ocr_pages', 0)) for x in source_rows)}",
               f"OCR failed pages: {sum(int(x.get('failed_pages', 0)) for x in source_rows)}",
-              f"Vote-to-vote relation edges supplied by OFS input: {len(related['related_votes'])} (see `related_votes.parquet`; IDs retained in `votes_intermediate.parquet`)",
+              f"Vote-to-vote relation edges supplied by OFS input: {len(related['related_votes'])} (see `related_votes.parquet`)",
               f"Model-eligible rows: {len(eligible)}", "",
-              "Swissvotes provides structured metadata only; summary and explanatory text are from the Chancellerie PDF. "
-              "Join key rule: `str(int(Decimal(anr) * 10))` must map to one unique OFS `vote_id`, with vote date agreement; "
-              "unconvertible, colliding, date-mismatched, and out-of-scope rows remain reported. "
+              ("Datasets remain separate. Only identifier links and validation diagnostics are prepared. "
               "Section counts are not expected to equal question counts. OCR success is technical only; semantic validation "
-              "must be explicitly reviewed. No LLM is used (0 CHF).", "", "## Per-vote coverage and exclusions", ""]
+              "must be explicitly reviewed. No LLM is used (0 CHF)."), "", "## Per-vote coverage and exclusions", ""]
     for row in coverage:
         report.append(f"- {row['vote_id']} ({row['vote_date']}): {row['exclusion_reasons'] or 'eligible'}")
     report.extend(["", "## Document-level count differences", ""])
@@ -336,20 +312,18 @@ def run_audit(ofs_path: Path, swissvotes_path: Path, sources_path: Path, output:
             report.append(f"- {doc['vote_date']}: {doc['expected_vote_count']} OFS vote questions; "
                           f"{doc['extracted_section_count']} extracted brochure sections. {doc['coverage_note']}. "
                           f"OFS vote IDs: {', '.join(doc['ofs_vote_ids']) or 'none'}.")
-    report.extend(["", "A section-count difference does not establish a missing brochure passage or a vote match. "
-                   "No document-to-vote links are automatically validated; review the source section, date, and OFS question together."])
+    report.extend(["", ("A section-count difference does not establish a missing brochure passage or a vote match. "
+                   "No document-to-vote links are automatically validated; review the source section, date, and OFS question together.")])
     (output / "report.md").write_text("\n".join(report) + "\n", encoding="utf-8")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ofs", type=Path, required=True, help="Read-only OFS vote reference CSV or communal parquet")
-    parser.add_argument("--swissvotes", type=Path, required=True, help="Cached Swissvotes CSV")
     parser.add_argument("--sources", type=Path, required=True, help="Local PDF manifest JSON")
-    parser.add_argument("--source-version", required=True, help="Swissvotes release identifier/date")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    run_audit(args.ofs, args.swissvotes, args.sources, args.output, source_version=args.source_version)
+    run_audit(args.ofs, args.sources, args.output)
 
 
 if __name__ == "__main__":

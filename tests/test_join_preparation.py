@@ -5,9 +5,9 @@ from datetime import date
 import pandas as pd
 import pytest
 
-from scripts.cleaning.clean_swissvotes import clean_swissvotes
-from scripts.prepare_join import prepare_join
-from scripts.vote_keys import swissvotes_key
+from scripts.common.vote_keys import swissvotes_key
+from scripts.integration.prepare_join import prepare_join
+from scripts.swissvotes.clean_swissvotes import clean_swissvotes
 
 
 @pytest.fixture
@@ -93,7 +93,7 @@ def test_same_day_questions_join_without_multiplying_communes(join_frames):
     assert crosswalk["swissvotes_id"].tolist() == ["682.1", "682.2", "682.3"]
     assert crosswalk["join_status"].eq("matched").all()
     assert extras.empty
-    assert "rows after test join: 6" in report
+    assert "no municipal join performed" in report
 
 
 def test_missing_match_does_not_disappear(join_frames):
@@ -133,3 +133,17 @@ def test_swissvotes_only_objects_are_reported(join_frames):
     assert extras["swissvotes_id"].tolist() == ["682.3"]
     assert extras["reason"].tolist() == ["not_in_clean_ofs"]
     assert "Status: PASS" in report
+
+
+def test_preparation_keeps_features_separate_and_inputs_unchanged(join_frames):
+    ofs, swiss = join_frames
+    ofs["votes_yes"] = 123
+    swiss["topic"] = "health"
+    original_ofs, original_swiss = ofs.copy(deep=True), swiss.copy(deep=True)
+    crosswalk, extras, _ = prepare_join(ofs, swiss)
+    for frame in (crosswalk, extras):
+        assert "votes_yes" not in frame
+        assert "topic" not in frame
+        assert "municipality_id" not in frame
+    pd.testing.assert_frame_equal(ofs, original_ofs)
+    pd.testing.assert_frame_equal(swiss, original_swiss)

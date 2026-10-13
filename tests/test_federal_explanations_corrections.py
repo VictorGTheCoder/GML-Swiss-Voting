@@ -3,7 +3,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from scripts.federal_explanations_corrections import replay_corrections
+from scripts.federal_explanations.federal_explanations_corrections import (
+    replay_corrections,
+)
 
 
 def test_replay_applies_only_decisions_bound_to_current_source_version():

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 RAW_DIR = ROOT / "data" / "raw"
 INTERIM_DIR = ROOT / "data" / "interim"
 PROCESSED_DIR = ROOT / "data" / "processed"
@@ -15,7 +15,7 @@ SWISSVOTES_PATH = RAW_DIR / "swissvotes" / "swissvotes.csv"
 SWISSVOTES_CLEAN_PATH = PROCESSED_DIR / "swissvotes" / "swissvotes_clean.parquet"
 SWISSVOTES_REPORT_PATH = REPORTS_DIR / "swissvotes_cleaning.md"
 # One row per OFS question, with its Swissvotes correspondence.
-VOTE_CROSSWALK_PATH = PROCESSED_DIR / "ofs-votes" / "vote_crosswalk.parquet"
+VOTE_CROSSWALK_PATH = INTERIM_DIR / "integration" / "ofs_swissvotes_crosswalk.parquet"
 JOIN_REPORT_PATH = REPORTS_DIR / "join_preparation.md"
 
 OFS_TABLE_ID = "px-x-1703030000_101"
