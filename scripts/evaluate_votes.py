@@ -214,7 +214,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     exclude(rows.geography_id.isna() | rows.geography_id.astype(str).str.strip().eq(''), 'geography_missing')
     # CSV inference and in-memory/Parquet inputs must use the same crosswalk key type.
     rows['geography_id'] = rows.geography_id.astype(str)
-    exclude(rows.source_version.isna(), 'source_version_missing')
+    exclude(rows.source_version.isna() | rows.source_version.astype(str).str.strip().eq(''), 'source_version_missing')
     for name in ['voting_date', 'forecast_at', 'result_available_at']:
         rows[name] = pd.to_datetime(rows[name], errors='coerce', utc=True, format='mixed')
     rows['voting_date'] = rows.voting_date.dt.normalize()
@@ -272,6 +272,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     predictions['prediction'] = np.column_stack([history.loc[targets.index,'training_mean'],history.loc[targets.index,'municipal_history']]).ravel()
     predictions['fallback'] = np.column_stack([np.zeros(len(targets),dtype=bool),history.loc[targets.index,'history_missing'].astype(bool)]).ravel()
     regularized_manifest = {}
+    admissible_blocks = ()
     if feature_blocks:
         admissible_blocks = tuple(block for block in feature_blocks
                                   if block.prerequisite_reason is None
@@ -301,7 +302,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     if text_records is not None:
         from scripts.text_votes import text_experiment
         text_frozen_skipped = frozen_experiment is not None and frozen_experiment['text_choices']['status'] != 'evaluated'
-        text_result = text_experiment(rows, config, predictions, design, feature_blocks, [] if text_frozen_skipped else text_records)
+        text_result = text_experiment(rows, config, predictions, design, admissible_blocks, [] if text_frozen_skipped else text_records)
         if text_frozen_skipped:
             text_result['reason'] = 'Text branch was skipped in frozen validation; final nontext evaluation proceeds'
             text_result['frozen_validation_status'] = frozen_experiment['text_choices']['status']
