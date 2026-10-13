@@ -12,5 +12,8 @@ La documentation est organisée pour rester lisible à mesure que les six source
 Chaque source dispose d'un dossier unique sous `docs/datasets/<dataset>/` avec un `README.md` de référence.
 
 - [Explications du Conseil fédéral](datasets/federal_explanations/README.md)
+- [Répertoire historique des communes](datasets/repertoire_communes/README.md)
+- [STATPOP](datasets/statpop/README.md)
+- [Typologies territoriales et régions linguistiques](datasets/typologies/README.md)
 
 Les rapports de résultats et audits datés ne sont pas stockés ici : voir `reports/datasets/`.

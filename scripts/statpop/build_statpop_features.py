@@ -14,24 +14,23 @@ latest observed day plus one to every year; earlier years (2010-2018) are assume
 the same calendar. The files hold the vintage of 2026-08-20, in which earlier years may have
 been revised after their first publication.
 
-Usage: python scripts/build_statpop_features.py
-Writes data/processed/statpop_features.parquet
+Usage: python -m scripts.statpop.build_statpop_features
+Writes data/processed/statpop/statpop_features.parquet
 """
 
 from __future__ import annotations
 
-import re
 from datetime import date
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-from commune_crosswalk import load_mutations, load_snapshot_codes, resolve
+from scripts.common.communes import ROOT, STATPOP_PROCESSED_DIR
+from scripts.common.communes import STATPOP_RAW_DIR as RAW_DIR
+from scripts.repertoire_communes.commune_crosswalk import load_mutations, load_snapshot_codes, resolve
 
-ROOT = Path(__file__).resolve().parents[1]
-RAW_DIR = ROOT / "data" / "raw" / "statpop"
-OUTPUT_PATH = ROOT / "data" / "processed" / "statpop_features.parquet"
+OUTPUT_PATH = STATPOP_PROCESSED_DIR / "statpop_features.parquet"
 
 REFERENCE_DATE = date(2026, 1, 1)
 STATPOP_GEOGRAPHY_DATE = date(2025, 12, 31)  # last boundaries of the STATPOP files
