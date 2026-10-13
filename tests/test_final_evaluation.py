@@ -144,3 +144,56 @@ def test_validation_skipped_text_stays_skipped_after_declared_refit_without_losi
     assert final['text_experiment']['status'] == 'skipped'
     assert final['metrics']['ridge_history']['rows'] == 1
     assert final['paired_uncertainty'][0]['interval_status'] == 'insufficient_dates'
+
+
+def test_freeze_hashes_expanding_window_implementation(monkeypatch):
+    from pathlib import Path
+
+    from scripts.final_evaluation import freeze_experiment
+
+    rows, config = synthetic_example()
+    blocks = (synthetic_feature_example(),)
+    frozen = freeze_experiment(evaluate(rows, config, feature_blocks=blocks))
+    assert 'expanding_windows.py' in frozen['signature']['implementation_sha256']
+
+    original_read_bytes = Path.read_bytes
+
+    def modified_read_bytes(path):
+        content = original_read_bytes(path)
+        return content + b'\\n# altered publication window logic' if path.name == 'expanding_windows.py' else content
+
+    monkeypatch.setattr(Path, 'read_bytes', modified_read_bytes)
+    final_config = replace(config, mode='final_test', choices_frozen=True,
+                           selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    with pytest.raises(ValueError, match='frozen'):
+        evaluate(rows, final_config, feature_blocks=blocks, frozen_experiment=frozen)
+
+
+def test_freeze_skips_unvalidated_ridge_models_in_final_test(monkeypatch):
+    from scripts import regularized_votes
+    from scripts.final_evaluation import freeze_experiment
+
+    rows, config = synthetic_example()
+    blocks = (synthetic_feature_example(),)
+    # Simulate a publication window without an eligible Ridge training target
+    # while the baseline evaluation can still report predictions.
+    with monkeypatch.context() as patch:
+        patch.setattr(regularized_votes, 'select_training_rows',
+                      lambda *args, **kwargs: rows.iloc[0:0])
+        validation = evaluate(rows, config, feature_blocks=blocks)
+
+    regularized = validation['manifest']['regularized']
+    assert regularized
+    assert all(run['status'] == 'no_evaluable_windows' for run in regularized.values())
+
+    frozen = freeze_experiment(validation)
+    assert frozen['selected_ridge_alphas'] == {}
+    assert frozen['nontext_choices'] == {}
+    assert set(frozen['skipped_regularized']) == set(regularized)
+
+    final_config = replace(config, mode='final_test', choices_frozen=True,
+                           selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    final = evaluate(rows, final_config, feature_blocks=blocks, frozen_experiment=frozen)
+    assert not any(name.startswith('ridge_') for name in final['predictions'].model)
+    assert set(final['manifest']['regularized']) == set(regularized)
+    assert all(run['status'] == 'skipped' for run in final['manifest']['regularized'].values())
