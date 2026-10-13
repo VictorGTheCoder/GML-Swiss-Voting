@@ -39,14 +39,6 @@ Une variable utilisée pour prédire un scrutin doit avoir été **disponible av
 
 Les partitions, les références historiques et les métriques définitives sont à documenter dans le protocole d'évaluation, sans reprendre automatiquement celles d'une ancienne étude cantonale.
 
-## État du projet
-
-- **Pipeline OFS communal :** scripts de téléchargement, préparation, contrôle et construction présents dans `scripts/`.
-- **Explications du Conseil fédéral :** pipeline d'extraction et snapshot Parquet 2011–2026 présents dans le dépôt. L'[audit du 6 octobre 2026](reports/datasets/federal_explanations/audit_2011_2026.md) indique que les liens entre sections et objets, la disponibilité pré-scrutin et la validation sémantique doivent encore être confirmés : **aucune ligne n'était alors éligible au modèle**. Le snapshot existant ne doit pas être confondu avec des features ML validées.
-- **Prochaines étapes :** consolider les jointures et les contrôles temporels, implémenter et évaluer une baseline communale reproductible, puis comparer les modèles et intégrer les résultats dans l'application.
-
-Les résultats ML et l'application finale ne sont pas présentés ici comme déjà livrés. Le jalon intermédiaire oriente les priorités, mais ses modalités et sa date restent à confirmer auprès de l'enseignant.
-
 ## Structure du dépôt
 
 - `data/` : sources brutes, données intermédiaires et données préparées ; les données brutes et caches restent hors Git.
