@@ -269,7 +269,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
                           'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
                           'geography': geography, 'feature_blocks': block_manifest, 'regularized': {},
                           'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
-                          'implementation_sha256': {name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','boosting_votes.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','forecast_text_export.py','federal_explanations/federal_explanations_temporal.py']},
+                          'implementation_sha256': {name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','boosting_votes.py','expanding_windows.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','forecast_text_export.py','federal_explanations/federal_explanations_temporal.py']},
                           'versions': {'python': platform.python_version(), 'pandas': pd.__version__, 'numpy': np.__version__, 'scikit-learn': sklearn.__version__},
                           'weight_origin': config.evaluation_weight_origin,
                           'experiment_configuration': asdict(config),
