@@ -6,7 +6,7 @@ The temporal-decision logic is maintained in the federal_explanations package.
 from __future__ import annotations
 
 from collections.abc import Iterable, Mapping
-from scripts.federal_explanations.federal_explanations_temporal import filter_model_eligible
+from scripts.federal_explanations.federal_explanations_temporal import _date, filter_model_eligible
 
 
 def _instant(value: object):
