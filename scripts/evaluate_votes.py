@@ -157,7 +157,7 @@ def _apply_geography(rows, config, crosswalk, exclusions):
     return output, manifest
 
 
-def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None, feature_blocks: tuple = ()) -> dict:
+def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None, feature_blocks: tuple = (), text_records=None) -> dict:
     """Run the complete evaluation seam on prepared rows, returning auditable artifacts."""
     missing = set(REQUIRED) - set(prepared.columns)
     if missing:
@@ -279,7 +279,11 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
             by_date.append({'model': model, 'voting_date': date, **score(subgroup)})
         for vote, subgroup in group.groupby('vote_id'):
             by_object.append({'model': model, 'vote_id': vote, **score(subgroup)})
-    return {'manifest': {**asdict(config), 'input_rows': len(prepared),
+    text_result = {}
+    if text_records is not None:
+        from scripts.text_votes import text_experiment
+        text_result = text_experiment(rows, config, predictions, design, feature_blocks, text_records)
+    return {'text_experiment': text_result, 'manifest': {**asdict(config), 'input_rows': len(prepared),
                           'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
                           'geography': geography, 'feature_blocks': block_manifest, 'regularized': regularized_manifest,
                           'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
@@ -303,6 +307,9 @@ def write_artifacts(result: dict, output_dir) -> None:
         if isinstance(artifact, pd.DataFrame):
             artifact.to_csv(output / f'{name}.csv', index=False)
         else:
+            if name == 'text_experiment' and artifact:
+                artifact = dict(artifact)
+                artifact.pop('predictions').to_csv(output / 'text_predictions.csv', index=False)
             summary[name] = artifact
     (output / 'summary.json').write_text(json.dumps(summary, indent=2, allow_nan=False) + '\n')
 
@@ -331,6 +338,7 @@ def main():
     parser.add_argument('--synthetic-features', action='store_true', help='Include an illustrative prepared STATPOP block with --synthetic')
     parser.add_argument('--input', type=Path, help='Prepared CSV or Parquet; raw cleaned outcomes alone are insufficient')
     parser.add_argument('--blocks', type=Path, help='JSON descriptors of prepared feature blocks')
+    parser.add_argument('--text-records', type=Path, help='JSON list of reviewed version-bound brochure records; eligibility is rechecked')
     parser.add_argument('--crosswalk', type=Path, help='Optional prepared geography crosswalk CSV')
     parser.add_argument('--config', type=Path, help='JSON EvaluationConfig with date partitions and policies')
     parser.add_argument('--output', type=Path, default=Path('reports/generated/municipal_evaluation'))
@@ -349,7 +357,7 @@ def main():
     try:
         from scripts.feature_blocks import load_feature_blocks, synthetic_feature_example
         blocks = (synthetic_feature_example(),) if args.synthetic_features else load_feature_blocks(args.blocks) if args.blocks else ()
-        result = evaluate(rows, config, feature_blocks=blocks, geography_crosswalk=pd.read_csv(args.crosswalk, dtype=str) if args.crosswalk else None)
+        result = evaluate(rows, config, text_records=json.loads(args.text_records.read_text()) if args.text_records else None, feature_blocks=blocks, geography_crosswalk=pd.read_csv(args.crosswalk, dtype=str) if args.crosswalk else None)
     except ValueError as error:
         parser.error(str(error))
     write_artifacts(result, args.output)
