@@ -145,3 +145,15 @@ def test_calendar_day_cannot_cross_partitions_even_when_timestamps_differ():
     assert result['coverage']['partitions']['train']['rows'] == 2
     assert result['coverage']['partitions']['validation']['rows'] == 2
     assert result['partitions'].groupby('voting_date').partition.nunique().max() == 1
+
+
+def test_blank_source_versions_are_excluded_from_prepared_outcomes():
+    from scripts.evaluate_votes import evaluate, synthetic_example
+
+    rows, config = synthetic_example()
+    rows.loc[(rows.vote_id == 'old') & (rows.municipality_id == 'a'), 'source_version'] = ''
+    rows.loc[(rows.vote_id == 'next') & (rows.municipality_id == 'a'), 'source_version'] = '  '
+    result = evaluate(rows, config)
+    assert result['exclusions']['source_version_missing'] == 2
+    assert len(result['eligible_rows']) == len(rows) - 2
+    assert result['eligible_rows'].source_version.str.strip().ne('').all()
