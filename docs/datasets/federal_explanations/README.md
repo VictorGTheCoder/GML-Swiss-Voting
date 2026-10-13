@@ -11,7 +11,7 @@ Tous les modules sont dans `scripts/federal_explanations/` :
 - `collect_federal_explanations.py` : collecte des PDF et de leur provenance.
 - `audit_federal_explanations.py` : unique pipeline d'extraction et de préparation des correspondances.
 - `federal_explanations_ocr.py`, `federal_explanations_layouts.py`, `federal_explanations_fields.py` : extraction du texte, découpage et lecture des champs officiels.
-- `federal_explanations_corrections.py`, `federal_explanations_relations.py`, `federal_explanations_temporal.py` : corrections traçables, relations entre objets et contrôles temporels.
+- `federal_explanations_corrections.py`, `federal_explanations_relations.py`, `federal_explanations_temporal.py` : corrections traçables, relations entre objets et contrôles temporels, y compris l'export de texte à la date de prévision.
 - `build_federal_explanations_snapshot.py` : export des cinq tables propres à cette source.
 - `federal_explanations_eda.py` : graphiques et rapport exploratoire.
 

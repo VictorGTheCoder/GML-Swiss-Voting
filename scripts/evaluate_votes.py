@@ -1,7 +1,7 @@
 """Publication-aware municipal evaluation; see docs/project/municipal_evaluation.md."""
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 import hashlib
 import platform
 from pathlib import Path
@@ -23,6 +23,7 @@ class EvaluationConfig:
     train_dates: tuple[str, ...]
     validation_dates: tuple[str, ...]
     test_dates: tuple[str, ...]
+    validation_windows: tuple[tuple[str, ...], ...] | None = None
     history_policy: str = 'frozen'
     mode: str = 'validation'
     seed: int = 0
@@ -30,8 +31,12 @@ class EvaluationConfig:
     predictor_allowlist: tuple[str, ...] = ('municipal_history', 'history_missing')
     geography_mode: str = 'historically_existing'
     audit_flag_policy: str = 'exclude'
-    ridge_alphas: tuple[float, ...] = (0.1, 1.0, 10.0)
+    ridge_alphas: tuple[float, ...] = (0.1, 1.0, 10.0, 100.0)
     selected_ridge_alphas: dict[str, float] | None = None
+    hist_gradient_boosting_candidates: tuple[tuple[int, int, float, int], ...] = tuple(
+        (leaves, minimum, rate, 100)
+        for leaves in (7, 15) for minimum in (50, 200) for rate in (0.05, 0.1))
+    selected_hist_gradient_boosting: dict[str, dict] | None = None
     bootstrap_replicates: int = 1000
     evaluation_weight_origin: str = 'not supplied; evaluation-only weights have unspecified provenance'
     refit_train_validation: bool = False
@@ -165,6 +170,12 @@ def _apply_geography(rows, config, crosswalk, exclusions):
 
 def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None, feature_blocks: tuple = (), text_records=None, frozen_experiment=None) -> dict:
     """Run the complete evaluation seam on prepared rows, returning auditable artifacts."""
+    if config.mode == 'final_test' and config.choices_frozen and frozen_experiment is None:
+        raise ValueError('Final test requires a frozen experiment artifact')
+    if (frozen_experiment is not None and config.mode == 'final_test'
+            and config.selected_hist_gradient_boosting is None):
+        config = replace(config, selected_hist_gradient_boosting=
+            frozen_experiment.get('selected_hist_gradient_boosting', {}))
     missing = set(REQUIRED) - set(prepared.columns)
     if missing:
         raise ValueError(f'Missing prepared columns: {sorted(missing)}')
@@ -177,12 +188,23 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
         raise ValueError('All three date partitions must be declared')
     if not (max(date_groups[0]) < min(date_groups[1]) and max(date_groups[1]) < min(date_groups[2])):
         raise ValueError('Partitions must be chronological')
+    window_groups = ([pd.to_datetime(list(group), utc=True, format='mixed').normalize() for group in config.validation_windows]
+                     if config.validation_windows is not None else [date_groups[1]])
+    window_dates = [date for group in window_groups for date in group]
+    if (any(len(group) == 0 for group in window_groups)
+            or len(window_dates) != len(set(window_dates))
+            or set(window_dates) != set(date_groups[1])
+            or any(window_groups[i].max() >= window_groups[i+1].min()
+                   for i in range(len(window_groups)-1))):
+        raise ValueError('validation window dates must cover each validation date exactly once in chronological order')
     if config.history_policy not in ['frozen', 'rolling']:
         raise ValueError('Invalid history_policy')
     if config.mode not in ['validation', 'final_test']:
         raise ValueError('Invalid evaluation mode')
     if config.mode == 'final_test' and not config.choices_frozen:
         raise ValueError('Final test requires frozen choices')
+    if config.mode == 'validation' and config.selected_hist_gradient_boosting is not None:
+        raise ValueError('selected_hist_gradient_boosting may only be loaded in final_test mode')
     if config.geography_mode not in ['historically_existing', 'retrospective_fixed']:
         raise ValueError('Invalid geography_mode')
     if config.audit_flag_policy != 'exclude':
@@ -212,7 +234,6 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     exclude(~(np.isfinite(rows.yes_count) & np.isfinite(rows.no_count)
               & rows.yes_count.ge(0) & rows.no_count.ge(0) & total.gt(0)), 'undefined_target')
     exclude(rows.geography_id.isna() | rows.geography_id.astype(str).str.strip().eq(''), 'geography_missing')
-    # CSV inference and in-memory/Parquet inputs must use the same crosswalk key type.
     rows['geography_id'] = rows.geography_id.astype(str)
     exclude(rows.source_version.isna() | rows.source_version.astype(str).str.strip().eq(''), 'source_version_missing')
     for name in ['voting_date', 'forecast_at', 'result_available_at']:
@@ -232,7 +253,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     rows['partition'] = rows.voting_date.map(mapping)
     exclude(rows.partition.isna(), 'unassigned_date')
     rows = rows.sort_values(['voting_date', 'vote_id', 'municipality_id']).reset_index(drop=True)
-    # Pin all labels used for fitting or selecting models, but never held-out test labels.
+    # Pin every label available for fitting/model selection, excluding reserved test labels.
     pretest_labels = rows.loc[rows.partition.isin(['train', 'validation']),
                               KEYS + ['voting_date', 'partition', 'yes_count', 'no_count']]
     pretest_labels_sha256 = hashlib.sha256(
@@ -248,7 +269,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
                           'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
                           'geography': geography, 'feature_blocks': block_manifest, 'regularized': {},
                           'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
-                          'implementation_sha256': {name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','forecast_text_export.py','federal_explanations/federal_explanations_temporal.py']},
+                          'implementation_sha256': {name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','boosting_votes.py','expanding_windows.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','forecast_text_export.py','federal_explanations/federal_explanations_temporal.py']},
                           'versions': {'python': platform.python_version(), 'pandas': pd.__version__, 'numpy': np.__version__, 'scikit-learn': sklearn.__version__},
                           'weight_origin': config.evaluation_weight_origin,
                           'experiment_configuration': asdict(config),
@@ -256,6 +277,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
                           'partition_keys_sha256': hashlib.sha256(rows[KEYS+['voting_date','partition']].to_json(orient='split',date_format='iso').encode()).hexdigest(),
                           'pretest_labels_sha256': pretest_labels_sha256,
                           'text_records_sha256': _digest(text_records),
+                          'text_records_requested': text_records is not None,
                           'forecast_cutoffs': {vote: str(group.forecast_at.iloc[0]) for vote, group in rows.groupby('vote_id')}}
     if frozen_experiment is not None:
         if config.mode != 'final_test':
@@ -270,15 +292,23 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     predictions = targets.loc[targets.index.repeat(2)].reset_index(drop=True)
     predictions['model'] = np.tile(['constant','municipal_history'],len(targets))
     predictions['prediction'] = np.column_stack([history.loc[targets.index,'training_mean'],history.loc[targets.index,'municipal_history']]).ravel()
+    predictions['raw_prediction'] = predictions['prediction']
+    predictions['clipped'] = False
     predictions['fallback'] = np.column_stack([np.zeros(len(targets),dtype=bool),history.loc[targets.index,'history_missing'].astype(bool)]).ravel()
     regularized_manifest = {}
-    admissible_blocks = ()
+    admissible_blocks = tuple(block for block in feature_blocks
+                              if block.prerequisite_reason is None
+                              and block_coverage[block.block_id]['matched_rows'] > 0)
     if feature_blocks:
-        admissible_blocks = tuple(block for block in feature_blocks
-                                  if block.prerequisite_reason is None
-                                  and block_coverage[block.block_id]['matched_rows'] > 0)
         regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, admissible_blocks)
         predictions = pd.concat([predictions, regularized], ignore_index=True)
+    hist_gradient_boosting_manifest = {}
+    if feature_blocks:
+        from scripts.boosting_votes import hist_gradient_boosting_predictions
+        boosted, hist_gradient_boosting_manifest = hist_gradient_boosting_predictions(
+            rows, config, predictions, design,
+            admissible_blocks)
+        predictions = pd.concat([predictions, boosted], ignore_index=True)
     if unpredictable:
         exclusions['no_admissible_training_history'] = unpredictable
     metrics, coverage = {}, {'unpredictable_rows': unpredictable,
@@ -309,6 +339,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     from scripts.feature_ablations import ablation_reports
     ablations = ablation_reports(predictions, feature_blocks, block_manifest, block_coverage, regularized_manifest, config.mode)
     run_manifest['regularized'] = regularized_manifest
+    run_manifest['hist_gradient_boosting'] = hist_gradient_boosting_manifest
     result = {'text_experiment': text_result, 'ablations': ablations, 'manifest': run_manifest, 'partitions': rows[KEYS + ['voting_date','partition']],
             'eligible_rows': rows, 'predictions': predictions, 'coverage': coverage,
             'exclusions': exclusions, 'metrics': metrics,
@@ -402,7 +433,9 @@ def main():
         from dataclasses import replace
         if args.synthetic:
             config = EvaluationConfig(**frozen['signature']['configuration'])
-        config = replace(config,mode='final_test',choices_frozen=True,selected_ridge_alphas=frozen['selected_ridge_alphas'])
+        config = replace(config,mode='final_test',choices_frozen=True,
+            selected_ridge_alphas=frozen['selected_ridge_alphas'],
+            selected_hist_gradient_boosting=frozen.get('selected_hist_gradient_boosting', {}))
     elif config.mode == 'final_test':
         parser.error('Final config requires explicit --final-test and --frozen-experiment')
     try:

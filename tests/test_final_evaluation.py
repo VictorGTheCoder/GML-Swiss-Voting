@@ -46,6 +46,27 @@ def test_validation_freeze_controls_final_features_sources_and_refit():
         freeze_experiment(final)
 
 
+@pytest.mark.parametrize('refit', [False, True])
+@pytest.mark.parametrize('changed_vote, should_reject', [('old', True), ('next', True), ('final', False)])
+def test_frozen_signature_pins_pretest_labels_but_not_reserved_test_labels(refit, changed_vote, should_reject):
+    from scripts.final_evaluation import freeze_experiment
+
+    rows, config = synthetic_example()
+    config = replace(config, refit_train_validation=refit)
+    blocks = (synthetic_feature_example(),)
+    frozen = freeze_experiment(evaluate(rows, config, feature_blocks=blocks))
+    final_config = replace(config, mode='final_test', choices_frozen=True,
+                           selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    rows.loc[rows.vote_id.eq(changed_vote), 'yes_count'] += 1
+
+    if should_reject:
+        with pytest.raises(ValueError, match='frozen'):
+            evaluate(rows, final_config, feature_blocks=blocks, frozen_experiment=frozen)
+    else:
+        final = evaluate(rows, final_config, feature_blocks=blocks, frozen_experiment=frozen)
+        assert final['manifest']['pretest_labels_sha256'] == frozen['signature']['pretest_labels_sha256']
+
+
 def test_declared_final_refit_adds_validation_labels_and_rolling_test_history_uses_only_published_past():
     from scripts.final_evaluation import freeze_experiment
     rows, config = synthetic_example()
@@ -69,7 +90,9 @@ def test_declared_final_refit_adds_validation_labels_and_rolling_test_history_us
     rows.loc[rows.vote_id.eq('final'),'result_available_at'] = '2022-07-01'
     with pytest.raises(ValueError,match='frozen'):
         evaluate(rows,final_config,feature_blocks=blocks,frozen_experiment=frozen)
-    final = evaluate(rows,final_config,feature_blocks=blocks)
+    revised_frozen = freeze_experiment(evaluate(rows,config,feature_blocks=blocks))
+    revised_config = replace(final_config,selected_ridge_alphas=revised_frozen['selected_ridge_alphas'])
+    final = evaluate(rows,revised_config,feature_blocks=blocks,frozen_experiment=revised_frozen)
     assert final['predictions'].query("vote_id == 'test-later' and model == 'municipal_history'").prediction.iloc[0] == pytest.approx(.5)
 
 
@@ -123,25 +146,54 @@ def test_validation_skipped_text_stays_skipped_after_declared_refit_without_losi
     assert final['paired_uncertainty'][0]['interval_status'] == 'insufficient_dates'
 
 
-@pytest.mark.parametrize('refit', [False, True])
-@pytest.mark.parametrize('changed_vote, should_reject', [
-    ('old', True), ('next', True), ('final', False),
-])
-def test_frozen_signature_pins_pretest_labels_but_not_reserved_test_labels(refit, changed_vote, should_reject):
+def test_freeze_hashes_expanding_window_implementation(monkeypatch):
+    from pathlib import Path
+
     from scripts.final_evaluation import freeze_experiment
 
     rows, config = synthetic_example()
-    config = replace(config, refit_train_validation=refit)
     blocks = (synthetic_feature_example(),)
     frozen = freeze_experiment(evaluate(rows, config, feature_blocks=blocks))
+    assert 'expanding_windows.py' in frozen['signature']['implementation_sha256']
+
+    original_read_bytes = Path.read_bytes
+
+    def modified_read_bytes(path):
+        content = original_read_bytes(path)
+        return content + b'\\n# altered publication window logic' if path.name == 'expanding_windows.py' else content
+
+    monkeypatch.setattr(Path, 'read_bytes', modified_read_bytes)
     final_config = replace(config, mode='final_test', choices_frozen=True,
                            selected_ridge_alphas=frozen['selected_ridge_alphas'])
-    rows.loc[rows.vote_id.eq(changed_vote), 'yes_count'] += 1
+    with pytest.raises(ValueError, match='frozen'):
+        evaluate(rows, final_config, feature_blocks=blocks, frozen_experiment=frozen)
 
-    if should_reject:
-        with pytest.raises(ValueError, match='frozen'):
-            evaluate(rows, final_config, feature_blocks=blocks, frozen_experiment=frozen)
-    else:
-        final = evaluate(rows, final_config, feature_blocks=blocks, frozen_experiment=frozen)
-        assert final['manifest']['pretest_labels_sha256'] == frozen['signature']['pretest_labels_sha256']
-        assert set(final['predictions'].vote_id) == {'final'}
+
+def test_freeze_skips_unvalidated_ridge_models_in_final_test(monkeypatch):
+    from scripts import regularized_votes
+    from scripts.final_evaluation import freeze_experiment
+
+    rows, config = synthetic_example()
+    blocks = (synthetic_feature_example(),)
+    # Simulate a publication window without an eligible Ridge training target
+    # while the baseline evaluation can still report predictions.
+    with monkeypatch.context() as patch:
+        patch.setattr(regularized_votes, 'select_training_rows',
+                      lambda *args, **kwargs: rows.iloc[0:0])
+        validation = evaluate(rows, config, feature_blocks=blocks)
+
+    regularized = validation['manifest']['regularized']
+    assert regularized
+    assert all(run['status'] == 'no_evaluable_windows' for run in regularized.values())
+
+    frozen = freeze_experiment(validation)
+    assert frozen['selected_ridge_alphas'] == {}
+    assert frozen['nontext_choices'] == {}
+    assert set(frozen['skipped_regularized']) == set(regularized)
+
+    final_config = replace(config, mode='final_test', choices_frozen=True,
+                           selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    final = evaluate(rows, final_config, feature_blocks=blocks, frozen_experiment=frozen)
+    assert not any(name.startswith('ridge_') for name in final['predictions'].model)
+    assert set(final['manifest']['regularized']) == set(regularized)
+    assert all(run['status'] == 'skipped' for run in final['manifest']['regularized'].values())

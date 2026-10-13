@@ -77,6 +77,9 @@ def join_feature_blocks(rows, blocks, geography_mode):
         if block.scope == 'object':
             if {'object_match_status','object_match_evidence'} - set(source):
                 raise ValueError('Object metadata requires validated correspondence columns')
+        if block.scope == 'municipality':
+            # Match the evaluator's string reference IDs for CSV, Parquet and in-memory blocks.
+            source['geography_id'] = source.geography_id.astype('string')
         if source[entity].isna().any() or source[entity].astype(str).str.strip().eq('').any():
             raise ValueError('Feature records need entity identifiers')
         if source.source_version.isna().any() or source.source_version.ne(block.source_version).any():
@@ -84,9 +87,6 @@ def join_feature_blocks(rows, blocks, geography_mode):
         source['published_at'] = pd.to_datetime(source.published_at, errors='coerce', utc=True, format='mixed')
         source['reference_date'] = pd.to_datetime(source.reference_date, errors='coerce', utc=True, format='mixed')
         source[entity] = source[entity].astype(str)
-        if block.scope == 'municipality':
-            # Match the evaluator's string reference IDs for CSV, Parquet and in-memory blocks.
-            source['geography_id'] = source.geography_id.astype('string')
         duplicate_keys = [entity,'reference_date','published_at'] + (['geography_id'] if block.scope == 'municipality' else [])
         if source.duplicated(duplicate_keys,keep=False).any():
             raise ValueError('Feature release keys contain duplicate records')

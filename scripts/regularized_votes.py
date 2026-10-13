@@ -6,6 +6,7 @@ import hashlib
 import numpy as np
 import pandas as pd
 import sklearn
+from scripts.expanding_windows import select_training_rows, window_dates
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import MissingIndicator, SimpleImputer
 from sklearn.linear_model import Ridge
@@ -29,29 +30,45 @@ def _pipeline(numeric, categorical, alpha):
 
 
 def regularized_predictions(rows, config, baseline, design, blocks):
+    """Fit Ridge once per declared validation window and keep each fit fixed within it."""
     partition = 'test' if config.mode == 'final_test' else 'validation'
     keys = set(zip(baseline.municipality_id,baseline.vote_id))
-    evaluation = rows.loc[rows.partition.eq(partition) & pd.Series([(m,v) in keys for m,v in zip(rows.municipality_id,rows.vote_id)],index=rows.index)]
-    expected_models = ['ridge_history'] + [f'ridge_{block.block_id}' for block in blocks]
-    if config.mode == 'final_test' and (not config.selected_ridge_alphas or any(name not in config.selected_ridge_alphas for name in expected_models)):
-        raise ValueError('Final test requires selected_ridge_alphas for every regularized model')
+    evaluation_rows = rows.loc[rows.partition.eq(partition) & pd.Series(
+        [(m,v) in keys for m,v in zip(rows.municipality_id,rows.vote_id)],index=rows.index)]
+    if config.mode == 'final_test' and config.selected_ridge_alphas is None:
+        raise ValueError('Final test requires frozen selected_ridge_alphas')
     if not config.ridge_alphas or any(not np.isfinite(alpha) or alpha <= 0 for alpha in config.ridge_alphas):
         raise ValueError('ridge_alphas must be finite positive candidates')
-    if evaluation.empty:
+    if evaluation_rows.empty:
         return pd.DataFrame(columns=baseline.columns), {}
-    fitting_partitions = ['train','validation'] if config.mode == 'final_test' and config.refit_train_validation else ['train']
-    train = rows.loc[rows.partition.isin(fitting_partitions) & rows.result_available_at.le(evaluation.forecast_at.min())
-                     & rows.result_availability_evidence.notna()
-                     & rows.result_availability_evidence.astype(str).str.strip().ne('')]
-    if train.empty:
-        return pd.DataFrame(columns=baseline.columns), {}
+
     feature_sets = {'ridge_history': (['municipal_history','history_missing'],[])}
     for block in blocks:
-        feature_sets[f'ridge_{block.block_id}'] = (['municipal_history','history_missing'] + [f'{block.block_id}__{name}' for name in block.numeric_features],
-                                                  [f'{block.block_id}__{name}' for name in block.categorical_features])
+        feature_sets[f'ridge_{block.block_id}'] = (
+            ['municipal_history','history_missing'] + [f'{block.block_id}__{name}' for name in block.numeric_features],
+            [f'{block.block_id}__{name}' for name in block.categorical_features])
+    if len(blocks) > 1:
+        feature_sets['ridge_combined'] = (
+            ['municipal_history','history_missing'] + [f'{block.block_id}__{name}'
+                for block in blocks for name in block.numeric_features],
+            [f'{block.block_id}__{name}' for block in blocks for name in block.categorical_features])
+
+    if config.mode == 'final_test':
+        # The validation freeze may deliberately exclude models with no evaluable
+        # windows. Do not select their hyperparameters using reserved test rows.
+        selected_models = {name for name in config.selected_ridge_alphas
+                           if name.startswith('ridge_')}
+        unknown = selected_models - feature_sets.keys()
+        if unknown:
+            raise ValueError(f'Frozen Ridge models have no matching feature sets: {sorted(unknown)}')
+
+    declared_windows = window_dates(config, partition)
     output, manifest = [], {}
     for name, (numeric,categorical) in feature_sets.items():
-        scores, fits = {}, {}
+        if config.mode == 'final_test' and name not in selected_models:
+            manifest[name] = {'status': 'skipped',
+                              'reason': 'No validated Ridge alpha was frozen for this model'}
+            continue
         frozen_alpha = config.selected_ridge_alphas.get(name) if config.selected_ridge_alphas else None
         if frozen_alpha is not None and (not np.isfinite(frozen_alpha) or frozen_alpha <= 0):
             raise ValueError('selected_ridge_alphas must be finite positive values')
@@ -59,22 +76,83 @@ def regularized_predictions(rows, config, baseline, design, blocks):
         matrix = design[numeric+categorical].copy()
         for column in categorical:
             matrix[column] = matrix[column].where(matrix[column].notna(),np.nan)
-        for alpha in candidates:
-            fit = _pipeline(numeric,categorical,alpha)
-            fit.fit(matrix.loc[train.index],train.target_share)
-            prediction = np.clip(fit.predict(matrix.loc[evaluation.index]),0,1)
-            if frozen_alpha is None:
-                scores[alpha] = float(np.mean(np.abs(prediction-evaluation.target_share))*100)
-            fits[alpha] = (fit,prediction)
-        selected = frozen_alpha if frozen_alpha is not None else min(scores,key=lambda alpha:(scores[alpha],alpha))
-        fit,prediction = fits[selected]
-        for (_,row),value in zip(evaluation.iterrows(),prediction):
-            output.append({**row.to_dict(),'model':name,'prediction':float(value),'fallback':False})
-        manifest[name] = {'selected_alpha': selected, 'validation_scores_pp': {str(k):v for k,v in scores.items()},
-                          'training_dates': sorted(train.voting_date.dt.strftime('%Y-%m-%d').unique().tolist()),
-                          'validation_dates': sorted(evaluation.voting_date.dt.strftime('%Y-%m-%d').unique().tolist()) if frozen_alpha is None else [],
-                          'preprocessing': 'training-only median imputation, scaling, categorical encoding; all-feature missingness indicators',
-                          'training_history_cold_start_share': .5, 'training_history_fallback': 'admissible earlier training-only global mean; 0.5 prior if empty',
-                          'sklearn_version': sklearn.__version__, 'training_rows': len(train), 'training_design_sha256': hashlib.sha256(matrix.loc[train.index].to_json(orient='split').encode()).hexdigest(), 'features': numeric+categorical,
-                          'selection': 'frozen alpha; no evaluation targets used in fitting/selection' if frozen_alpha is not None else 'chronological validation; reported scores used for selection'}
-    return pd.DataFrame(output,columns=baseline.columns), manifest
+        candidate_predictions = {alpha: [] for alpha in candidates}
+        window_manifest = []
+
+        for index, dates in enumerate(declared_windows):
+            window_eval = evaluation_rows.loc[evaluation_rows.voting_date.isin(dates)]
+            if window_eval.empty:
+                window_manifest.append({'window': index + 1,
+                    'validation_dates': dates.strftime('%Y-%m-%d').tolist(),
+                    'status': 'no_eligible_evaluation_rows', 'training_dates': [],
+                    'training_row_keys': [], 'validation_row_keys': []})
+                continue
+            first_forecast = window_eval.forecast_at.min()
+            train = select_training_rows(rows, config, partition, declared_windows,
+                index, first_forecast)
+            if train.empty:
+                window_manifest.append({'window': index + 1,
+                    'validation_dates': sorted(window_eval.voting_date.dt.strftime('%Y-%m-%d').unique().tolist()),
+                    'status': 'no_published_training_targets', 'first_forecast_at': str(first_forecast),
+                    'fit_cutoff': None, 'training_dates': [], 'training_row_keys': [],
+                    'validation_row_keys': list(map(list, zip(window_eval.municipality_id,window_eval.vote_id)))})
+                continue
+            fit_cutoff = train.result_available_at.max()
+            if fit_cutoff > first_forecast:
+                raise ValueError('Training target availability exceeds the first forecast instant of its window')
+            for alpha in candidates:
+                fit = _pipeline(numeric,categorical,alpha)
+                fit.fit(matrix.loc[train.index],train.target_share)
+                raw = fit.predict(matrix.loc[window_eval.index])
+                clipped = np.clip(raw,0,1)
+                frame = window_eval.copy()
+                frame['model'] = name
+                frame['raw_prediction'] = raw.astype(float)
+                frame['prediction'] = clipped.astype(float)
+                frame['clipped'] = ~np.isclose(raw,clipped)
+                frame['fallback'] = False
+                frame['validation_window'] = index + 1
+                candidate_predictions[alpha].append(frame)
+            window_manifest.append({'window': index + 1,
+                'status': 'evaluated', 'validation_dates': sorted(window_eval.voting_date.dt.strftime('%Y-%m-%d').unique().tolist()),
+                'training_dates': sorted(train.voting_date.dt.strftime('%Y-%m-%d').unique().tolist()),
+                'first_forecast_at': str(first_forecast), 'fit_cutoff': str(fit_cutoff),
+                'training_partitions': sorted(train.partition.unique().tolist()),
+                'training_rows': len(train),
+                'training_row_keys': list(map(list, zip(train.municipality_id,train.vote_id))),
+                'training_design_sha256': hashlib.sha256(matrix.loc[train.index].to_json(orient='split').encode()).hexdigest(),
+                'validation_row_keys': list(map(list, zip(window_eval.municipality_id,window_eval.vote_id))),
+                'refit_schedule': 'fit estimator and preprocessing once at window start; fixed for every row in this window'})
+
+        scores = {}
+        for alpha, frames in candidate_predictions.items():
+            joined = pd.concat(frames,ignore_index=True) if frames else pd.DataFrame()
+            scores[alpha] = float(np.mean(np.abs(joined.prediction-joined.target_share))*100) if len(joined) else None
+        available_scores = {alpha:score for alpha,score in scores.items() if score is not None}
+        if not available_scores:
+            manifest[name] = {'selected_alpha': frozen_alpha,
+                'validation_scores_pp': {str(k):v for k,v in scores.items()},
+                'windows': window_manifest, 'status': 'no_evaluable_windows'}
+            continue
+        selected = frozen_alpha if frozen_alpha is not None else min(available_scores,key=lambda alpha:(available_scores[alpha],alpha))
+        if selected not in available_scores:
+            raise ValueError('Selected Ridge alpha has no eligible window scores')
+        chosen = pd.concat(candidate_predictions[selected],ignore_index=True)
+        output.extend(chosen.to_dict('records'))
+        fitted_dates = sorted({date for window in window_manifest
+            for date in window.get('training_dates', [])})
+        manifest[name] = {'selected_alpha': selected,
+            'candidate_alphas': list(candidates),
+            'validation_scores_pp': {str(k):v for k,v in scores.items()} if frozen_alpha is None else {},
+            'training_dates': fitted_dates,
+            'validation_dates': sorted(evaluation_rows.voting_date.dt.strftime('%Y-%m-%d').unique().tolist()) if frozen_alpha is None else [],
+            'preprocessing': 'training-only median imputation, scaling, categorical encoding; all-feature missingness indicators',
+            'training_history_cold_start_share': .5, 'training_history_fallback': 'admissible earlier training-only global mean; 0.5 prior if empty',
+            'sklearn_version': sklearn.__version__, 'training_rows': max((window.get('training_rows',0) for window in window_manifest),default=0),
+            'training_design_sha256': hashlib.sha256('|'.join(window.get('training_design_sha256','')
+                for window in window_manifest).encode()).hexdigest(),
+            'features': numeric+categorical,
+            'selection': 'frozen alpha; no evaluation targets used in fitting/selection' if frozen_alpha is not None else 'aggregate chronological expanding-window validation; scores used for selection',
+            'refit_schedule': 'one estimator and preprocessing fit at each validation-window boundary; no within-window refit',
+            'windows': window_manifest}
+    return pd.DataFrame(output), manifest

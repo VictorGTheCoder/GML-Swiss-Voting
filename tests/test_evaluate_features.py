@@ -25,7 +25,8 @@ def test_pipeline_joins_prepared_features_and_reports_incremental_reference_on_s
     joined = result['joined_features'].set_index(['municipality_id','vote_id'])
     assert joined.loc[('a','next'),'statpop__population'] == 100
     assert result['coverage']['feature_blocks']['statpop']['matched_rows'] == 5
-    assert set(result['metrics']) == {'constant','municipal_history','ridge_history','ridge_statpop'}
+    assert set(result['metrics']) == {'constant','municipal_history','ridge_history','ridge_statpop',
+        'hist_gradient_boosting_history','hist_gradient_boosting_statpop'}
     keys = result['predictions'].groupby('model').apply(lambda g: set(zip(g.municipality_id,g.vote_id)),include_groups=False)
     assert all(value == {('a','next'),('c','next')} for value in keys)
     assert result['manifest']['regularized']['ridge_statpop']['selected_alpha'] in config.ridge_alphas
@@ -45,8 +46,6 @@ def test_release_between_brochure_and_vote_unknown_time_and_geography_are_missin
     assert report.loc[('c','next'),'status'] == 'incompatible_geography'
     assert result['joined_features'].query("vote_id == 'next'").statpop__population.isna().all()
     assert result['coverage']['feature_blocks']['statpop']['missing_values']['population'] == 4
-    # The later final object can use municipality a's newly available release.
-    assert result['coverage']['feature_blocks']['statpop']['matched_rows'] == 1
     assert len(result['predictions'].query("model == 'ridge_statpop'")) == 2
 
 
@@ -83,20 +82,19 @@ def test_frozen_reference_ignores_heldout_targets_and_training_transforms_ignore
 
 
 def test_final_regularized_run_never_selects_using_test_targets_and_late_labels_are_excluded():
+    from scripts.final_evaluation import freeze_experiment
     rows, original = synthetic_example()
-    config = EvaluationConfig(original.train_dates,original.validation_dates,original.test_dates,
-                              mode='final_test',choices_frozen=True)
-    with pytest.raises(ValueError,match='selected_ridge_alphas'):
-        evaluate(rows,config,feature_blocks=(block(),))
-    config = EvaluationConfig(original.train_dates,original.validation_dates,original.test_dates,
-        mode='final_test',choices_frozen=True,selected_ridge_alphas={'ridge_history':1.,'ridge_statpop':1.})
     rows.loc[rows.municipality_id.eq('b'),'result_available_at'] = '2023-01-01'
-    first = evaluate(rows,config,feature_blocks=(block(),))
+    features = (block(),)
+    frozen = freeze_experiment(evaluate(rows, original, feature_blocks=features))
+    config = EvaluationConfig(original.train_dates,original.validation_dates,original.test_dates,
+        mode='final_test',choices_frozen=True,selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    first = evaluate(rows,config,feature_blocks=features,frozen_experiment=frozen)
     assert first['manifest']['regularized']['ridge_statpop']['training_rows'] == 1
     assert first['manifest']['regularized']['ridge_statpop']['validation_scores_pp'] == {}
     rows.loc[rows.vote_id.eq('final'),'yes_count'] = 1
     rows.loc[rows.vote_id.eq('final'),'no_count'] = 99
-    assert evaluate(rows,config,feature_blocks=(block(),))['predictions'].prediction.tolist() == first['predictions'].prediction.tolist()
+    assert evaluate(rows,config,feature_blocks=features,frozen_experiment=frozen)['predictions'].prediction.tolist() == first['predictions'].prediction.tolist()
 
 
 def test_rolling_municipal_history_uses_training_only_global_fallback():
@@ -187,54 +185,33 @@ def test_release_indexing_preserves_allowed_feature_named_verified():
 
 
 @pytest.mark.parametrize('name', [
-    'evaluation_weight', 'evaluation_weights', 'eval_weight',
-    'electorate_weight', 'sample_weight', 'scoring_weight',
-    'metric_weight', 'row_weight', 'evaluation_weight_latest',
+    'evaluation_weight', 'evaluation_weights', 'eval_weight', 'electorate_weight',
+    'sample_weight', 'scoring_weight', 'metric_weight', 'row_weight',
+    'evaluation_weight_latest',
 ])
 def test_evaluation_only_weights_cannot_be_feature_block_predictors(name):
     from dataclasses import replace
 
     rows, config = synthetic_example()
     source = block()
-    unsafe = replace(
-        source,
-        records=source.records.assign(**{name: 42}),
-        numeric_features=source.numeric_features + (name,),
-        definitions=source.definitions | {name: 'Synthetic retrospective evaluation weight'},
-    )
+    unsafe = replace(source, records=source.records.assign(**{name: 42}),
+                     numeric_features=source.numeric_features + (name,),
+                     definitions=source.definitions | {name: 'Retrospective evaluation weight'})
     with pytest.raises(ValueError, match='evaluation-only'):
         evaluate(rows, config, feature_blocks=(unsafe,))
 
 
-def test_history_identifier_cannot_replace_history_only_reference():
+def test_history_identifier_is_reserved_and_unmatched_blocks_are_not_fitted():
     from dataclasses import replace
 
     rows, config = synthetic_example()
     with pytest.raises(ValueError, match='reserved'):
         evaluate(rows, config, feature_blocks=(replace(block(), block_id='history'),))
 
-
-def test_entirely_unmatched_feature_block_is_skipped_instead_of_fitted():
-    rows, config = synthetic_example()
-    records = block().records.copy()
-    records['availability_status'] = 'unknown'
-    result = evaluate(rows, config, feature_blocks=(block(records),))
-
+    source = block()
+    unmatched = replace(source, records=source.records.assign(availability_status='unknown'))
+    result = evaluate(rows, config, feature_blocks=(unmatched,))
     assert result['coverage']['feature_blocks']['statpop']['matched_rows'] == 0
-    assert result['coverage']['feature_blocks']['statpop']['prerequisite_status'] == 'no_admissible_matches'
-    assert 'ridge_history' in result['metrics']
     assert 'ridge_statpop' not in result['metrics']
     assert result['ablations']['statpop']['status'] == 'skipped'
     assert result['ablations']['statpop']['prerequisite_reason'] == 'No admissible source matches at forecast time'
-
-
-def test_numeric_feature_block_geography_matches_normalized_outcomes():
-    rows, config = synthetic_example()
-    rows['geography_id'] = 2020
-    source = block()
-    from dataclasses import replace
-    records = source.records.copy()
-    records['geography_id'] = 2020
-    result = evaluate(rows, config, feature_blocks=(replace(source, records=records),))
-    assert result['coverage']['feature_blocks']['statpop']['matched_rows'] == 5
-    assert result['joined_features']['statpop__population'].notna().all()

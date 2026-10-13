@@ -54,6 +54,13 @@ on a declared date receives the same partition; undeclared dates are excluded. E
 must be established from verified coverage before tuning. Missing eligible partitions are reported
 rather than populated with invented rows.
 
+`validation_windows` may split `validation_dates` into nonempty chronological groups. Every
+validation date must appear exactly once; each window keeps complete dates together. If omitted,
+the declared validation dates form one window for backward compatibility. Ridge uses an expanding
+fit pool: the initial training dates plus earlier validation windows whose outcomes are published
+by the first forecast instant in the current window. The reserved test remains disjoint and is never
+scored during validation.
+
 `history_policy='frozen'` restricts municipal history to training rows. `rolling` additionally admits
 earlier held-out outcomes for subsequent predictions, including earlier test dates in an explicit final run. Both require an earlier voting date and
 result publication evidence at or before the individual forecast instant. Unknown or late publication
@@ -225,19 +232,52 @@ training date, where no earlier training observation exists, the regressor's fea
 50% cold-start prior, recorded separately in its manifest. This prior does not replace the baseline's
 abstention when an evaluation forecast has no admissible training labels.
 
-Ridge fitting uses only training labels published by the earliest scored forecast. Late/unknown
-training labels cannot enter fitting. Numeric median imputation and scaling, categorical imputation
-and one-hot encoding are fit on those training rows only. All input columns have explicit missingness
-indicators, including missingness first encountered in held-out rows. Unknown held-out categories
-are handled without fitting an encoder on them. Predictions are clipped to the target share range.
+Ridge fitting uses only fit-pool labels published by the first forecast instant in that window.
+Late/unknown labels cannot enter fitting. Each window fits a new estimator and preprocessing once;
+the estimator, imputation, scaling and encoding stay fixed for all predictions in that window.
+Numeric median imputation and scaling, categorical imputation and one-hot encoding are fit on those
+training rows only. All input columns have explicit missingness indicators, including missingness
+first encountered in held-out rows. Unknown held-out categories are handled without fitting an
+encoder on them. Rolling history features may update after earlier outcomes are published, without
+refitting the estimator. The manifest records each window's boundaries, training and validation row
+keys, fitting cutoff and refit schedule.
 
-`ridge_alphas` declares positive candidate regularization strengths (default 0.1, 1, 10). Each model
-fits candidates on the training period and selects the lowest equal-row chronological validation
-MAE, breaking ties toward the smaller alpha. All validation objects and municipalities on a date
-stay held out together. The selected validation score is a **selection score**, not an independent
-post-selection performance estimate. Manifests record candidate scores, training/validation dates,
+`ridge_alphas` declares positive candidate regularization strengths (default 0.1, 1, 10, 100); the
+configuration and per-model manifest record the exact grid used. Each model
+fits candidates in every expanding window and selects the lowest equal-row MAE aggregated across
+out-of-window validation predictions, breaking ties toward the smaller alpha. All validation objects
+and municipalities on a date stay held out together. The selected validation score is a **selection
+score**, not an independent post-selection performance estimate. Prediction artifacts retain raw
+estimator outputs in `raw_prediction`, clipped reported shares in `prediction`, and a `clipped` flag.
+Shared metrics report clipping frequency and raw prediction range alongside equal-row and
+electorate-weighted MAE. Manifests record per-window candidate fits, boundaries, row keys, cutoffs,
 training row counts, feature allowlists, preprocessing policy, training-design content hashes and
 scikit-learn version.
+
+### Histogram gradient boosting comparator (#44)
+
+When prepared nontext feature blocks are supplied, the same evaluation seam adds
+`hist_gradient_boosting_history`, one `hist_gradient_boosting_<block_id>` model per block, and
+`hist_gradient_boosting_combined` when multiple blocks are available. Each model uses the same
+history and allowlisted feature columns as its paired Ridge reference. Predictions are restricted
+to the same baseline-eligible evaluation keys; raw values, clipped shares, object/date errors,
+equal-row MAE, and electorate-weighted MAE use the common reporting path.
+
+The starting validation grid contains all combinations of `max_leaf_nodes` 7/15,
+`min_samples_leaf` 50/200, `learning_rate` 0.05/0.1, and `max_iter` 100. It is declared by
+`EvaluationConfig.hist_gradient_boosting_candidates` and can be reduced or adjusted for verified
+coverage; adjustments remain visible in the run configuration and model manifest. Settings are
+selected by aggregate equal-row validation MAE across chronological windows, with deterministic
+tuple ordering for ties. Automatic internal early stopping is disabled. `seed` is passed as the
+estimator random state and recorded.
+
+Boosting uses a dense allowlist-driven preparation: numeric columns receive training-only median
+imputation; categorical columns receive training-only missing-value imputation and dense one-hot
+encoding; all allowlisted columns receive missingness indicators. No text representation is passed
+to this model. The manifest records the selected settings, candidate scores, per-window training
+and evaluation keys, fitting cutoff, preprocessing, seed, scikit-learn version, and training-design
+hash. A nonlinear model is a predictive comparator only; it does not support causal or individual
+voter claims. Synthetic fixtures check deterministic output and pairing, not model superiority.
 
 `selected_ridge_alphas={'ridge_history': 1.0, 'ridge_statpop_nationality': 1.0}` freezes strengths;
 these runs do not use held-out targets for fitting or selection. Final-test mode requires this explicit
@@ -272,22 +312,38 @@ join an unevidenced raw population file.
 ### Paired brochure text experiment
 
 Supply `--text-records reviewed-records.json` (a JSON list using the reviewed
-record contract in `forecast_text_export.py`), or pass `text_records`
+record contract in `scripts/forecast_text_export.py`), or pass `text_records`
 to `evaluate`. The evaluator reruns the version-bound export gate; unknown
 availability, stale source decisions, ambiguous correspondence and invalid
 extractions cannot enter the experiment. It additionally requires the document's
 voting date and exact brochure forecast instant to match the prepared object.
-Language metadata is retained in the training representation manifest.
+The text branch explicitly selects `summary_official` from each validated
+object record; generic text and full-text fields are never fallback sources.
+Object mapping, semantic validity, source hash and exact-version availability
+remain enforced by the export gate. French is the selected language. Non-French
+records are excluded and reported; when no French summary or no eligible summary
+exists, the text branch records a prerequisite skip while nontext results remain.
 
 `text_experiment` reports a paired regularized nontext reference and additive
 TF-IDF model on identical municipal row keys, using history and every supplied
-admissible feature block. Both fit the same eligible training rows. Vocabulary
-and IDF are fitted on one document per distinct eligible training object, then
-joined to municipal observations. Held-out objects cannot influence vocabulary,
-IDF, imputation, scaling or categorical encoding. Repeated municipal instances
-therefore do not change the brochure text representation. Model fitting remains
-at the municipal observation level. Text contributes a shared object shift
-across municipalities before predictions are clipped to [0, 1].
+admissible feature block. Both fit the same eligible training rows. At each
+shared chronological window, vocabulary and IDF are fitted on one summary per
+distinct eligible training object, then joined to municipal observations.
+Vectorizer, preprocessing and estimator stay fixed within the window. Held-out
+objects cannot influence vocabulary, IDF, imputation, scaling or categorical
+encoding. Repeated municipal instances do not change the brochure text
+representation. Model fitting remains at the municipal observation level. Text
+contributes a shared object shift across municipalities before predictions are
+clipped to [0, 1].
+
+Initial word TF-IDF settings are unigrams and bigrams, L2 normalization,
+`min_df=2` objects, `max_df=0.95`, and at most 2,000 features. Each window
+records its vocabulary, IDF, training object keys, exact source hashes, and
+effective settings. If a small training corpus makes those minimum/maximum
+frequency cutoffs incompatible, the recorded fold adjustment raises `max_df`
+to 1.0; with fewer than two training objects, it also lowers `min_df` to 1.
+Empty vocabularies are reported per window. Held-out vocabulary never enters
+fitting.
 
 Each model selects its own ridge alpha on chronological validation. Freeze the
 returned `models.*.selected_alpha` values as `selected_ridge_alphas` keys
