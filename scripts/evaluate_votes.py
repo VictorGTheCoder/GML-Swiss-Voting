@@ -29,7 +29,133 @@ class EvaluationConfig:
     audit_flag_policy: str = 'exclude'
 
 
-def evaluate(prepared: pd.DataFrame, config: EvaluationConfig) -> dict:
+def _apply_geography(rows, config, crosswalk, exclusions):
+    """Apply a validated many-to-one mapping before deriving shares."""
+    manifest = {'mode': config.geography_mode,
+                'input_references': sorted(rows.geography_id.astype(str).unique().tolist()),
+                'crosswalk_versions': [], 'crosswalk_evidence': [],
+                'policy': 'prepared reference identity; municipality identifiers alone are insufficient'}
+    if crosswalk is None:
+        already_harmonized = rows.get('harmonization_applied', pd.Series(False, index=rows.index)).eq(True)
+        if already_harmonized.any():
+            if any(name not in rows for name in ['crosswalk_version', 'crosswalk_evidence']):
+                raise ValueError('Prepared harmonization requires crosswalk provenance')
+            provenance = rows.loc[already_harmonized, ['crosswalk_version', 'crosswalk_evidence']]
+            if provenance.isna().any().any() or provenance.astype(str).apply(lambda c: c.str.strip().eq('')).any().any():
+                raise ValueError('Prepared harmonization requires crosswalk provenance')
+            manifest['crosswalk_versions'] = sorted(provenance.crosswalk_version.astype(str).unique().tolist())
+            manifest['crosswalk_evidence'] = sorted(provenance.crosswalk_evidence.astype(str).unique().tolist())
+        manifest['output_references'] = manifest['input_references']
+        return rows, manifest
+    required = ['source_municipality_id', 'source_geography_id', 'target_municipality_id',
+                'target_geography_id', 'mapping_type', 'crosswalk_version', 'crosswalk_evidence',
+                'mapping_available_at', 'target_valid_from']
+    missing = set(required) - set(crosswalk.columns)
+    if missing:
+        raise ValueError(f'Missing crosswalk columns: {sorted(missing)}')
+    mapping = crosswalk.copy()
+    for name in ['source_municipality_id', 'source_geography_id', 'target_municipality_id', 'target_geography_id']:
+        if mapping[name].isna().any() or mapping[name].astype(str).str.strip().eq('').any():
+            raise ValueError('Crosswalk requires nonempty source and target identifiers/references')
+        mapping[name] = mapping[name].astype(str)
+    manifest['crosswalk_sha256'] = hashlib.sha256(crosswalk.to_json(orient='split', date_format='iso').encode()).hexdigest()
+    manifest['crosswalk_versions'] = sorted(mapping.crosswalk_version.dropna().astype(str).unique().tolist())
+    manifest['crosswalk_evidence'] = sorted(mapping.crosswalk_evidence.dropna().astype(str).unique().tolist())
+    manifest['policy'] = 'count aggregation with explicit crosswalk; no allocation across splits'
+    source_keys = ['source_municipality_id', 'source_geography_id']
+    for _, group in mapping.groupby(source_keys):
+        if len(group) > 1 and not (group.mapping_type.eq('split').all() and not group.duplicated().any()):
+            raise ValueError('Crosswalk source cardinality must be many-to-one; explicit splits are excluded')
+    if mapping.source_geography_id.eq(mapping.target_geography_id).any():
+        raise ValueError('Crosswalk cannot harmonize within the same reference state')
+    for date in ['mapping_available_at', 'target_valid_from', 'target_valid_to']:
+        mapping[date] = pd.to_datetime(mapping[date] if date in mapping else pd.Series(pd.NaT, index=mapping.index), errors='coerce', utc=True)
+    for _, target_group in mapping.groupby(['target_municipality_id', 'target_geography_id']):
+        supported = target_group.loc[target_group.mapping_type.isin(['identity', 'merger'])]
+        if len(supported) > 1 and not supported.mapping_type.eq('merger').all():
+            raise ValueError('Many-to-one target cardinality requires explicit merger mappings')
+        if any(target_group[date].nunique(dropna=False) > 1 for date in ['target_valid_from', 'target_valid_to']):
+            raise ValueError('Target lifetime must agree across crosswalk constituents')
+    rows = rows.copy()
+    transformed = []
+    def exclude(reason):
+        exclusions[reason] = exclusions.get(reason, 0) + 1
+    for _, original in rows.iterrows():
+        candidate = mapping.loc[mapping.source_municipality_id.eq(original.municipality_id)
+                                & mapping.source_geography_id.eq(original.geography_id)]
+        if candidate.empty:
+            target_links = mapping.loc[mapping.target_municipality_id.eq(original.municipality_id)
+                                       & mapping.target_geography_id.eq(original.geography_id)]
+            if not target_links.empty and config.geography_mode == 'historically_existing':
+                link = target_links.iloc[0]
+                if pd.isna(link.target_valid_from) or original.forecast_at < link.target_valid_from or (pd.notna(link.target_valid_to) and original.forecast_at >= link.target_valid_to):
+                    exclude('target_not_existing_at_forecast')
+                    continue
+            if original.geography_id in set(mapping.source_geography_id):
+                exclude('geography_mapping_missing')
+            else:
+                transformed.append(original.to_dict())
+            continue
+        if pd.notna(original.get('harmonization_applied')) and bool(original.get('harmonization_applied')):
+            raise ValueError('Cannot apply harmonization twice')
+        link = candidate.iloc[0]
+        if link.mapping_type not in ['identity', 'merger']:
+            exclude('unsupported_geography_mapping')
+            continue
+        if pd.isna(link.crosswalk_version) or pd.isna(link.crosswalk_evidence) or not str(link.crosswalk_evidence).strip() or not str(link.crosswalk_version).strip():
+            exclude('geography_evidence_missing')
+            continue
+        if config.geography_mode == 'historically_existing':
+            if pd.isna(link.mapping_available_at) or link.mapping_available_at > original.forecast_at:
+                exclude('geography_mapping_unavailable')
+                continue
+            if pd.isna(link.target_valid_from) or original.forecast_at < link.target_valid_from or (pd.notna(link.target_valid_to) and original.forecast_at >= link.target_valid_to):
+                exclude('target_not_existing_at_forecast')
+                continue
+        transformed.append({**original.to_dict(), 'municipality_id': link.target_municipality_id,
+                            'geography_id': link.target_geography_id, 'source_municipalities': original.municipality_id,
+                            'harmonization_applied': True, 'crosswalk_version': link.crosswalk_version,
+                            'crosswalk_evidence': link.crosswalk_evidence})
+    output = pd.DataFrame(transformed, columns=list(dict.fromkeys(list(rows.columns) +
+        ['source_municipalities', 'harmonization_applied', 'crosswalk_version', 'crosswalk_evidence'])))
+    aggregated = []
+    for _, group in output.groupby(KEYS + ['geography_id'], dropna=False):
+        if group.harmonization_applied.eq(True).any():
+            reference = group.iloc[0]
+            links = mapping.loc[mapping.target_municipality_id.eq(reference.municipality_id)
+                                & mapping.target_geography_id.eq(reference.geography_id)
+                                & mapping.mapping_type.eq('merger')]
+            expected = set(links.source_municipality_id)
+            actual = set(group.source_municipalities.dropna())
+            if expected and actual != expected:
+                exclusions['incomplete_geography_merger'] = exclusions.get('incomplete_geography_merger', 0) + len(group)
+                continue
+        combined = group.iloc[0].to_dict()
+        if len(group) > 1:
+            if (~group.harmonization_applied.eq(True)).any():
+                raise ValueError('Mapped and already-target rows overlap; cardinality is ambiguous')
+            if group.crosswalk_version.nunique() != 1:
+                raise ValueError('Mixed crosswalk versions in one target group')
+            combined['yes_count'] = group.yes_count.sum()
+            combined['no_count'] = group.no_count.sum()
+            combined['result_available_at'] = group.result_available_at.max()
+            if group.result_available_at.isna().any() or group.result_availability_evidence.isna().any() or group.result_availability_evidence.astype(str).str.strip().eq('').any():
+                combined['result_available_at'] = pd.NaT
+                combined['result_availability_evidence'] = None
+            else:
+                combined['result_availability_evidence'] = '|'.join(sorted(group.result_availability_evidence.astype(str).unique()))
+            combined['source_version'] = '|'.join(sorted(group.source_version.astype(str).unique()))
+            combined['source_municipalities'] = '|'.join(sorted(group.source_municipalities.astype(str)))
+            if 'evaluation_weight' in group:
+                weights = pd.to_numeric(group.evaluation_weight, errors='coerce')
+                combined['evaluation_weight'] = weights.sum() if np.isfinite(weights).all() and weights.gt(0).all() else np.nan
+        aggregated.append(combined)
+    output = pd.DataFrame(aggregated, columns=output.columns)
+    manifest['output_references'] = sorted(output.geography_id.astype(str).unique().tolist())
+    return output, manifest
+
+
+def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None) -> dict:
     """Run the complete evaluation seam on prepared rows, returning auditable artifacts."""
     missing = set(REQUIRED) - set(prepared.columns)
     if missing:
@@ -89,6 +215,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig) -> dict:
         raise ValueError('An object must have one voting date')
     if rows.groupby('vote_id').forecast_at.nunique().gt(1).any():
         raise ValueError('An object must have one forecast instant')
+    rows, geography = _apply_geography(rows, config, geography_crosswalk, exclusions)
     rows['target_share'] = rows.yes_count / (rows.yes_count + rows.no_count)
     mapping = {pd.Timestamp(date, tz='UTC'): name for name, dates in [('train', config.train_dates),
                ('validation', config.validation_dates), ('test', config.test_dates)] for date in dates}
@@ -144,6 +271,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig) -> dict:
             by_object.append({'model': model, 'vote_id': vote, **score(subgroup)})
     return {'manifest': {**asdict(config), 'input_rows': len(prepared),
                           'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
+                          'geography': geography,
                           'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
                           'versions': {'python': platform.python_version(), 'pandas': pd.__version__, 'numpy': np.__version__},
                           'weight_origin': 'prepared evaluation_weight; retrospective weights are evaluation only',
@@ -190,11 +318,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--synthetic', action='store_true')
     parser.add_argument('--input', type=Path, help='Prepared CSV or Parquet; raw cleaned outcomes alone are insufficient')
+    parser.add_argument('--crosswalk', type=Path, help='Optional prepared geography crosswalk CSV')
     parser.add_argument('--config', type=Path, help='JSON EvaluationConfig with date partitions and policies')
     parser.add_argument('--output', type=Path, default=Path('reports/generated/municipal_evaluation'))
     args = parser.parse_args()
     if args.synthetic:
-        if args.input or args.config:
+        if args.input or args.config or args.crosswalk:
             parser.error('--synthetic cannot be combined with --input/--config')
         rows, config = synthetic_example()
     else:
@@ -203,7 +332,7 @@ def main():
         rows = pd.read_parquet(args.input) if args.input.suffix == '.parquet' else pd.read_csv(args.input, dtype={key: str for key in KEYS})
         config = EvaluationConfig(**json.loads(args.config.read_text()))
     try:
-        result = evaluate(rows, config)
+        result = evaluate(rows, config, geography_crosswalk=pd.read_csv(args.crosswalk, dtype=str) if args.crosswalk else None)
     except ValueError as error:
         parser.error(str(error))
     write_artifacts(result, args.output)

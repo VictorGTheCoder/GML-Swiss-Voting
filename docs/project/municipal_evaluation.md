@@ -108,3 +108,47 @@ explicit evidence, auditable eligibility and configurable rolling history requir
 `victor`, `origin/victor` and `origin/exploration` were also inspected for baseline artifacts;
 source research is retained outside the repository by the integration task. Previous retrospective
 scores are not re-labelled as forecast scores.
+
+## Geography crosswalks (#35)
+
+Pass an optional `geography_crosswalk` DataFrame to the same `evaluate` seam, or use
+`--crosswalk crosswalk.csv` in the CLI. Each row declares `source_municipality_id`,
+`source_geography_id`, `target_municipality_id`, `target_geography_id`, `mapping_type`,
+`crosswalk_version`, `crosswalk_evidence`, `mapping_available_at`, and `target_valid_from`.
+Optional `target_valid_to` is an exclusive end instant. Identifiers and reference states are strings;
+all times are normalized to UTC. Evidence is an auditable documentary pointer supplied by the
+preparer; the evaluator does not infer territorial history from numeric municipality codes.
+
+Supported mapping types are `identity` between different reference states and `merger`. A source
+may have only one supported destination. Explicit `split` rows (including multiple destinations)
+and other unsupported mapping types exclude the source observation once. Duplicate mapping rows,
+ambiguous supported source cardinality, inconsistent target lifetimes, and many-to-one mappings
+without an explicit merger raise errors. Source-reference rows without a mapping are excluded
+rather than assumed compatible. References not involved in a crosswalk remain prepared identities.
+
+For each merger and object, all declared constituents must be present after eligibility checks.
+An incomplete merger excludes the remaining constituents; it cannot silently redefine the target
+territory. Supported mergers sum **yes and no counts before computing the target share**. For
+example, 20 yes/80 no plus 90 yes/210 no becomes 110 yes/290 no = 27.5%, rather than the
+unweighted average of 20% and 30%. Electorate evaluation weights are also summed, only when all
+constituent weights are valid. Result availability is the latest constituent publication; any missing
+publication instant or evidence leaves aggregate history unavailable. Source versions, evidence,
+and constituent municipality IDs are retained. Already-target rows overlapping mapped constituents
+raise an error; no prepared result can be counted twice.
+
+`historically_existing` conservatively requires mapping publication no later than each row's
+forecast instant and target existence at that instant (`valid_from <= forecast < valid_to`). It
+excludes future, unknown, or abolished target states with explicit reasons. This conservative
+preparation policy may discard historical merger records whose territorial mapping became known
+only later; they do not silently reappear in the global fallback. `retrospective_fixed` permits a
+later mapping/reference state for retrospective analysis, labels that mode in the manifest, and
+still requires crosswalk version/evidence and historical **result** publication cutoffs. It does not
+claim historical operational geography.
+
+Outputs add `source_municipalities`, `harmonization_applied`, `crosswalk_version`, and
+`crosswalk_evidence` for mapped rows. The manifest's `geography` block lists input/output reference
+states, crosswalk versions, documentary evidence, the exact crosswalk content hash, and the mode.
+Prepared harmonized rows can be evaluated without another crosswalk only when their provenance
+is retained. Attempting to map a row with `harmonization_applied=True` again raises an error.
+Geography exclusions appear alongside other eligibility exclusions; fallback coverage and baseline
+errors are calculated only after these checks.
