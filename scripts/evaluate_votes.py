@@ -168,7 +168,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     missing = set(REQUIRED) - set(prepared.columns)
     if missing:
         raise ValueError(f'Missing prepared columns: {sorted(missing)}')
-    date_groups = [pd.to_datetime(list(dates), utc=True) for dates in
+    date_groups = [pd.to_datetime(list(dates), utc=True, format='mixed').normalize() for dates in
                    [config.train_dates, config.validation_dates, config.test_dates]]
     all_dates = [date for group in date_groups for date in group]
     if len(all_dates) != len(set(all_dates)):
@@ -215,6 +215,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     exclude(rows.source_version.isna(), 'source_version_missing')
     for name in ['voting_date', 'forecast_at', 'result_available_at']:
         rows[name] = pd.to_datetime(rows[name], errors='coerce', utc=True, format='mixed')
+    rows['voting_date'] = rows.voting_date.dt.normalize()
     exclude(rows.voting_date.isna(), 'voting_date_missing')
     exclude(rows.forecast_at.isna() | rows.forecast_evidence.isna()
             | rows.forecast_evidence.astype(str).str.strip().eq(''), 'forecast_evidence_missing')
@@ -225,21 +226,22 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
         raise ValueError('An object must have one forecast instant')
     rows, geography = _apply_geography(rows, config, geography_crosswalk, exclusions)
     rows['target_share'] = rows.yes_count / (rows.yes_count + rows.no_count)
-    mapping = {pd.Timestamp(date, tz='UTC'): name for name, dates in [('train', config.train_dates),
-               ('validation', config.validation_dates), ('test', config.test_dates)] for date in dates}
+    mapping = {date: name for name, dates in zip(['train','validation','test'],date_groups) for date in dates}
     rows['partition'] = rows.voting_date.map(mapping)
     exclude(rows.partition.isna(), 'unassigned_date')
     rows = rows.sort_values(['voting_date', 'vote_id', 'municipality_id']).reset_index(drop=True)
     from scripts.feature_blocks import join_feature_blocks
-    from scripts.regularized_votes import historical_features, regularized_predictions
+    from scripts.regularized_votes import regularized_predictions
+    from scripts.voting_history import build_historical_features
+    history = build_historical_features(rows,config)
     joined, join_report, block_manifest, block_coverage = join_feature_blocks(rows, feature_blocks, config.geography_mode)
-    design = pd.concat([historical_features(rows, config), joined], axis=1) if feature_blocks else joined
+    design = pd.concat([history[['municipal_history','history_missing']], joined], axis=1)
     from scripts.final_evaluation import _digest, verify_frozen_experiment
     run_manifest = {**asdict(config), 'input_rows': len(prepared),
                           'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
                           'geography': geography, 'feature_blocks': block_manifest, 'regularized': {},
                           'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
-                          'implementation_sha256': {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','feature_blocks.py','text_votes.py','final_evaluation.py']},
+                          'implementation_sha256': {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','federal_explanations_temporal.py']},
                           'versions': {'python': platform.python_version(), 'pandas': pd.__version__, 'numpy': np.__version__, 'scikit-learn': sklearn.__version__},
                           'weight_origin': config.evaluation_weight_origin,
                           'experiment_configuration': asdict(config),
@@ -252,31 +254,15 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
             raise ValueError('A frozen experiment artifact is loaded only in final_test mode')
         verify_frozen_experiment(run_manifest,frozen_experiment)
         run_manifest['frozen_experiment_sha256'] = frozen_experiment['sha256']
-    train = rows.loc[rows.partition.eq('train')]
-    predictions = []
-    unpredictable = 0
     evaluation_partition = 'test' if config.mode == 'final_test' else 'validation'
-    for _, target in rows.loc[rows.partition.eq(evaluation_partition)].iterrows():
-        available = (rows.result_available_at.notna() & rows.result_available_at.le(target.forecast_at)
-                     & rows.result_availability_evidence.notna()
-                     & rows.result_availability_evidence.astype(str).str.strip().ne('')
-                     & rows.voting_date.lt(target.voting_date))
-        training_pool = rows.loc[available & rows.partition.eq('train')]
-        if training_pool.empty:
-            unpredictable += 1
-            continue
-        fallback = float(training_pool.target_share.mean())
-        history_partitions = ['train','validation'] if config.history_policy == 'rolling' or (config.mode == 'final_test' and config.refit_train_validation) else ['train']
-        if config.history_policy == 'rolling' and config.mode == 'final_test':
-            history_partitions.append('test')
-        history_pool = rows.loc[available & rows.partition.isin(history_partitions)]
-        local = history_pool.loc[history_pool.municipality_id.eq(target.municipality_id)
-                                 & history_pool.geography_id.eq(target.geography_id)]
-        history = float(local.target_share.mean()) if not local.empty else fallback
-        for model, prediction in [('constant', fallback), ('municipal_history', history)]:
-            predictions.append({**target.to_dict(), 'model': model, 'prediction': prediction,
-                                'fallback': model == 'municipal_history' and local.empty})
-    predictions = pd.DataFrame(predictions, columns=list(rows.columns) + ['model','prediction','fallback'])
+    evaluation = rows.partition.eq(evaluation_partition)
+    predictable = history.training_mean.notna()
+    unpredictable = int((evaluation & ~predictable).sum())
+    targets = rows.loc[evaluation & predictable]
+    predictions = targets.loc[targets.index.repeat(2)].reset_index(drop=True)
+    predictions['model'] = np.tile(['constant','municipal_history'],len(targets))
+    predictions['prediction'] = np.column_stack([history.loc[targets.index,'training_mean'],history.loc[targets.index,'municipal_history']]).ravel()
+    predictions['fallback'] = np.column_stack([np.zeros(len(targets),dtype=bool),history.loc[targets.index,'history_missing'].astype(bool)]).ravel()
     regularized_manifest = {}
     if feature_blocks:
         regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, tuple(block for block in feature_blocks if block.prerequisite_reason is None))
@@ -288,13 +274,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
         'partitions': {name: {'rows': len(group), 'objects': int(group.vote_id.nunique()),
                               'dates': int(group.voting_date.nunique())}
                        for name, group in rows.groupby('partition')}}
-    def score(group):
-        errors = (group.prediction - group.target_share).abs() * 100
-        weights = pd.to_numeric(group.get('evaluation_weight', pd.Series(np.nan, index=group.index)), errors='coerce')
-        valid = np.isfinite(weights) & weights.gt(0)
-        return {'mae_pp': float(errors.mean()), 'rows': len(group),
-                'electorate_weighted_mae_pp': float(np.average(errors[valid], weights=weights[valid])) if valid.any() else None,
-                'weighted_rows': int(valid.sum())}
+    from scripts.vote_metrics import score_predictions as score
     by_date, by_object = [], []
     for model, group in predictions.groupby('model'):
         metrics[model] = score(group)

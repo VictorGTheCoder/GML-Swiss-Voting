@@ -31,3 +31,7 @@ objects, distinct dates, documents, and exclusions by reason. An empty result
 writes an empty documents file and `empty_eligible_corpus`; nontext evaluation
 can continue independently. Exclusions retain source fields, including ambiguous
 object relationships, for review.
+
+Strict export validates the voting calendar date and requires the forecast instant to be strictly
+before its start in UTC. Invalid voting dates and cutoffs on/after voting day remain audited
+exclusions, even when the other text/version gates pass.

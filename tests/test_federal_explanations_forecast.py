@@ -46,3 +46,15 @@ def test_conflicting_documents_for_one_object_are_retained_for_review():
     assert result["documents"] == []
     assert len(result["exclusions"]) == 2
     assert all("multiple" in row["exclusion_reason"] for row in result["exclusions"])
+
+
+def test_export_rejects_invalid_voting_day_and_cutoffs_on_or_after_voting():
+    result = build_forecast_text_export([
+        reviewed(vote_id='invalid',vote_date='not-a-date'),
+        reviewed(vote_id='on',forecast_at='2025-06-01T00:00:00Z',availability_at='2025-05-01'),
+        reviewed(vote_id='after',forecast_at='2026-01-01T00:00:00Z',availability_at='2025-05-01')])
+    assert result['documents'] == []
+    reasons = {row['vote_id']:row['exclusion_reason'] for row in result['exclusions']}
+    assert 'voting date is invalid' in reasons['invalid']
+    assert 'forecast cutoff is not before voting day' in reasons['on']
+    assert 'forecast cutoff is not before voting day' in reasons['after']
