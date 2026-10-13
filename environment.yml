@@ -13,6 +13,7 @@ dependencies:
   - numpy
   - scipy
   - pyarrow
+  - pdfplumber
   - openpyxl
   - requests
   - tabulate
