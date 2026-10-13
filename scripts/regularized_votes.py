@@ -6,6 +6,7 @@ import hashlib
 import numpy as np
 import pandas as pd
 import sklearn
+from scripts.expanding_windows import select_training_rows, window_dates
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import MissingIndicator, SimpleImputer
 from sklearn.linear_model import Ridge
@@ -26,15 +27,6 @@ def _pipeline(numeric, categorical, alpha):
         transforms.append(('categorical', Pipeline([('impute',SimpleImputer(strategy='constant',fill_value='missing',keep_empty_features=True)),
                                                     ('encode',OneHotEncoder(handle_unknown='ignore',sparse_output=False))]), categorical))
     return Pipeline([('prepare',ColumnTransformer(transforms)), ('ridge',Ridge(alpha=alpha))])
-
-
-def _window_dates(config, partition):
-    if partition == 'test':
-        return [pd.to_datetime(list(config.test_dates), utc=True, format='mixed').normalize()]
-    if config.validation_windows is None:
-        return [pd.to_datetime(list(config.validation_dates), utc=True, format='mixed').normalize()]
-    return [pd.to_datetime(list(window), utc=True, format='mixed').normalize()
-            for window in config.validation_windows]
 
 
 def regularized_predictions(rows, config, baseline, design, blocks):
@@ -62,7 +54,7 @@ def regularized_predictions(rows, config, baseline, design, blocks):
                 for block in blocks for name in block.numeric_features],
             [f'{block.block_id}__{name}' for block in blocks for name in block.categorical_features])
 
-    declared_windows = _window_dates(config, partition)
+    declared_windows = window_dates(config, partition)
     output, manifest = [], {}
     for name, (numeric,categorical) in feature_sets.items():
         frozen_alpha = config.selected_ridge_alphas.get(name) if config.selected_ridge_alphas else None
@@ -84,17 +76,8 @@ def regularized_predictions(rows, config, baseline, design, blocks):
                     'training_row_keys': [], 'validation_row_keys': []})
                 continue
             first_forecast = window_eval.forecast_at.min()
-            if partition == 'test':
-                fit_partitions = ['train','validation'] if config.refit_train_validation else ['train']
-                fit_dates = rows.loc[rows.partition.isin(fit_partitions), 'voting_date']
-            else:
-                prior_validation = [date for previous in declared_windows[:index] for date in previous]
-                fit_dates = rows.loc[rows.partition.eq('train') | rows.voting_date.isin(prior_validation), 'voting_date']
-            allowed_dates = set(fit_dates)
-            train = rows.loc[rows.voting_date.isin(allowed_dates)
-                & rows.result_available_at.le(first_forecast)
-                & rows.result_availability_evidence.notna()
-                & rows.result_availability_evidence.astype(str).str.strip().ne('')]
+            train = select_training_rows(rows, config, partition, declared_windows,
+                index, first_forecast)
             if train.empty:
                 window_manifest.append({'window': index + 1,
                     'validation_dates': sorted(window_eval.voting_date.dt.strftime('%Y-%m-%d').unique().tolist()),

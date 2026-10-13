@@ -69,7 +69,9 @@ def test_declared_final_refit_adds_validation_labels_and_rolling_test_history_us
     rows.loc[rows.vote_id.eq('final'),'result_available_at'] = '2022-07-01'
     with pytest.raises(ValueError,match='frozen'):
         evaluate(rows,final_config,feature_blocks=blocks,frozen_experiment=frozen)
-    final = evaluate(rows,final_config,feature_blocks=blocks)
+    revised_frozen = freeze_experiment(evaluate(rows,config,feature_blocks=blocks))
+    revised_config = replace(final_config,selected_ridge_alphas=revised_frozen['selected_ridge_alphas'])
+    final = evaluate(rows,revised_config,feature_blocks=blocks,frozen_experiment=revised_frozen)
     assert final['predictions'].query("vote_id == 'test-later' and model == 'municipal_history'").prediction.iloc[0] == pytest.approx(.5)
 
 

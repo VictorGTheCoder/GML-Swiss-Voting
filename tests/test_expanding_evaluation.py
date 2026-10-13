@@ -43,12 +43,17 @@ def config(**changes):
 
 
 def test_declared_expanding_windows_refit_only_at_boundaries_and_exclude_test_scores():
-    settings = config(validation_windows=(('2022-01-01',), ('2023-01-01',)))
-    result = evaluate(rows_for_windows(), settings, feature_blocks=(feature_block(),))
+    rows = rows_for_windows()
+    # This result is published after the first window's brochure, then eligible
+    # for the second window's later forecast.
+    rows.loc[rows.vote_id.eq('train-b'), 'result_available_at'] = '2022-02-01'
+    settings = config(validation_windows=(('2022-01-01',), ('2023-01-01',)),
+        hist_gradient_boosting_candidates=((5, 1, .1, 10),))
+    result = evaluate(rows, settings, feature_blocks=(feature_block(),))
 
     regularized = result['manifest']['regularized']['ridge_population']
     assert [window['training_dates'] for window in regularized['windows']] == [
-        ['2020-01-01', '2021-01-01'],
+        ['2020-01-01'],
         ['2020-01-01', '2021-01-01', '2022-01-01'],
     ]
     assert [window['validation_dates'] for window in regularized['windows']] == [
@@ -60,6 +65,16 @@ def test_declared_expanding_windows_refit_only_at_boundaries_and_exclude_test_sc
     assert result['predictions'].raw_prediction.notna().all()
     assert result['predictions'].prediction.between(0, 1).all()
     assert 'clipping_fraction' in result['metrics']['ridge_population']
+
+    boosted = result['manifest']['hist_gradient_boosting']['hist_gradient_boosting_population']
+    assert [window['training_dates'] for window in boosted['windows']] == [
+        ['2020-01-01'], ['2020-01-01', '2021-01-01', '2022-01-01']]
+    assert [window['validation_dates'] for window in boosted['windows']] == [
+        ['2022-01-01'], ['2023-01-01']]
+    assert [window['fit_cutoff'] for window in boosted['windows']] == [
+        '2020-01-02 00:00:00+00:00', '2022-02-01 00:00:00+00:00']
+    assert all('fixed for every row in this window' in window['refit_schedule']
+        for window in regularized['windows'] + boosted['windows'])
 
 
 def test_available_nontext_blocks_have_a_common_comparison_model_and_keep_individual_blocks():

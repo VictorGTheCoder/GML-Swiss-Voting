@@ -103,14 +103,25 @@ def test_invalid_experiment_configuration_fails_before_scoring(changes, message)
 def test_final_test_requires_frozen_choices_and_audits_coverage_and_weights():
     data = prepared()
     data['evaluation_weight'] = [1, 1, 1, 3, 2]
-    result = evaluate(data, config(mode='final_test', choices_frozen=True))
+    from scripts.final_evaluation import freeze_experiment
+    frozen = freeze_experiment(evaluate(data, config()))
+    final_config = config(mode='final_test', choices_frozen=True,
+                          selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    result = evaluate(data, final_config, frozen_experiment=frozen)
     assert set(result['predictions'].vote_id) == {'final'}
     assert result['metrics']['municipal_history']['mae_pp'] == pytest.approx(70)
     assert result['metrics']['municipal_history']['electorate_weighted_mae_pp'] == pytest.approx(70)
     assert result['coverage']['partitions']['validation'] == {'rows': 2, 'objects': 1, 'dates': 1}
     assert result['manifest']['predictor_allowlist'] == ('municipal_history','history_missing')
-    assert result['manifest']['input_sha256'] == evaluate(data, config(mode='final_test', choices_frozen=True))['manifest']['input_sha256']
+    assert result['manifest']['input_sha256'] == evaluate(
+        data, final_config, frozen_experiment=frozen)['manifest']['input_sha256']
     assert not result['by_date'].empty
+
+
+def test_final_test_requires_frozen_artifact_before_prepared_data_processing():
+    final_config = config(mode='final_test', choices_frozen=True)
+    with pytest.raises(ValueError, match='frozen experiment artifact'):
+        evaluate(pd.DataFrame(), final_config)
 
 
 def test_multiple_objects_stay_on_one_date_and_extra_outcomes_are_not_predictors():

@@ -7,9 +7,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import Ridge
 from scipy.sparse import csr_matrix, hstack
 
+from scripts.expanding_windows import select_training_rows, window_dates
 from scripts.federal_explanations_temporal import build_forecast_text_export
 from scripts.final_evaluation import TEXT_POLICY
-from scripts.regularized_votes import _pipeline, _window_dates, historical_features
+from scripts.regularized_votes import _pipeline, historical_features
 
 
 def text_experiment(rows, config, baseline, design, blocks, records):
@@ -72,7 +73,7 @@ def text_experiment(rows, config, baseline, design, blocks, records):
     matrix = design[numeric+categorical].copy()
     for column in categorical:
         matrix[column] = matrix[column].where(matrix[column].notna(), np.nan)
-    declared_windows = _window_dates(config, partition)
+    declared_windows = window_dates(config, partition)
     window_eval_frames = []
     for dates in declared_windows:
         window_eval_frames.append(paired.loc[paired.voting_date.isin(dates)])
@@ -81,24 +82,14 @@ def text_experiment(rows, config, baseline, design, blocks, records):
     if design.empty:
         design = historical_features(rows, config)
     selected, predictions, fold_reports = {}, [], []
-    fitting_partitions = ['train','validation'] if config.mode == 'final_test' and config.refit_train_validation else ['train']
     for index, window_eval in enumerate(window_eval_frames):
         if window_eval.empty:
             fold_reports.append({'window': index+1, 'status': 'no_eligible_evaluation_rows',
                 'validation_dates': declared_windows[index].strftime('%Y-%m-%d').tolist()})
             continue
-        if partition == 'test':
-            fit_partitions = fitting_partitions
-            fit_dates = rows.loc[rows.partition.isin(fit_partitions), 'voting_date']
-        else:
-            prior_validation = [date for previous in declared_windows[:index] for date in previous]
-            fit_partitions = ['train']
-            fit_dates = rows.loc[rows.partition.eq('train') | rows.voting_date.isin(prior_validation), 'voting_date']
         first_forecast = window_eval.forecast_at.min()
-        train = rows.loc[rows.voting_date.isin(set(fit_dates)) & rows.vote_id.isin(documents)
-            & rows.result_available_at.le(first_forecast)
-            & rows.result_availability_evidence.notna()
-            & rows.result_availability_evidence.astype(str).str.strip().ne('')]
+        train = select_training_rows(rows, config, partition, declared_windows,
+            index, first_forecast, eligible_vote_ids=documents)
         if train.empty:
             fold_reports.append({'window': index+1, 'status': 'no_published_training_summaries',
                 'validation_dates': sorted(window_eval.voting_date.dt.strftime('%Y-%m-%d').unique().tolist()),
