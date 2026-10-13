@@ -20,4 +20,4 @@ jobs:
       - name: Install test dependencies
         run: python -m pip install numpy pandas scipy scikit-learn pytest
       - name: Run municipal evaluation regressions
-        run: python -m pytest -q tests/test_evaluate_features.py tests/test_evaluate_geography.py tests/test_final_evaluation.py
+        run: python -m pytest -q tests/test_evaluate_*.py tests/test_feature_ablations.py tests/test_federal_explanations_forecast.py tests/test_federal_explanations_temporal.py tests/test_final_evaluation.py
