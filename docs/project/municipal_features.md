@@ -1,0 +1,6 @@
+
+## Independent ablations and unavailable sources
+
+Every prepared block runs independently as `ridge_<block_id>` against `ridge_history`, using the same chronological selection and training-only preprocessing. `ablations` in `summary.json` records compared municipality/object keys, paired rows/objects/dates, feature names, provenance, missingness and join losses, and paired candidate-minus-reference MAE in percentage points. Positive changes are degradations and are retained. Wider nontext reference coverage is reported separately. Inputs unavailable at a forecast remain missing and receive indicators; imputation preserves wider evaluation coverage rather than silently discarding municipalities.
+
+A descriptor may omit `records_path` and set `prerequisite_reason`, for example `Historical release archive not prepared`. Such sources produce a skipped experiment with their prerequisite explanation while available blocks continue. A skipped descriptor must contain no records. Object-scoped metadata requires `object_match_status=validated` and nonempty `object_match_evidence` alongside the common publication fields. The exact record hash preserves the reviewed correspondence provenance. Canonical same-object ballot totals, turnout and yes percentages are forbidden predictor names; no electorate exception is currently supported.
