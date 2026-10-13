@@ -54,6 +54,13 @@ on a declared date receives the same partition; undeclared dates are excluded. E
 must be established from verified coverage before tuning. Missing eligible partitions are reported
 rather than populated with invented rows.
 
+`validation_windows` may split `validation_dates` into nonempty chronological groups. Every
+validation date must appear exactly once; each window keeps complete dates together. If omitted,
+the declared validation dates form one window for backward compatibility. Ridge uses an expanding
+fit pool: the initial training dates plus earlier validation windows whose outcomes are published
+by the first forecast instant in the current window. The reserved test remains disjoint and is never
+scored during validation.
+
 `history_policy='frozen'` restricts municipal history to training rows. `rolling` additionally admits
 earlier held-out outcomes for subsequent predictions, including earlier test dates in an explicit final run. Both require an earlier voting date and
 result publication evidence at or before the individual forecast instant. Unknown or late publication
@@ -225,17 +232,25 @@ training date, where no earlier training observation exists, the regressor's fea
 50% cold-start prior, recorded separately in its manifest. This prior does not replace the baseline's
 abstention when an evaluation forecast has no admissible training labels.
 
-Ridge fitting uses only training labels published by the earliest scored forecast. Late/unknown
-training labels cannot enter fitting. Numeric median imputation and scaling, categorical imputation
-and one-hot encoding are fit on those training rows only. All input columns have explicit missingness
-indicators, including missingness first encountered in held-out rows. Unknown held-out categories
-are handled without fitting an encoder on them. Predictions are clipped to the target share range.
+Ridge fitting uses only fit-pool labels published by the first forecast instant in that window.
+Late/unknown labels cannot enter fitting. Each window fits a new estimator and preprocessing once;
+the estimator, imputation, scaling and encoding stay fixed for all predictions in that window.
+Numeric median imputation and scaling, categorical imputation and one-hot encoding are fit on those
+training rows only. All input columns have explicit missingness indicators, including missingness
+first encountered in held-out rows. Unknown held-out categories are handled without fitting an
+encoder on them. Rolling history features may update after earlier outcomes are published, without
+refitting the estimator. The manifest records each window's boundaries, training and validation row
+keys, fitting cutoff and refit schedule.
 
-`ridge_alphas` declares positive candidate regularization strengths (default 0.1, 1, 10). Each model
-fits candidates on the training period and selects the lowest equal-row chronological validation
-MAE, breaking ties toward the smaller alpha. All validation objects and municipalities on a date
-stay held out together. The selected validation score is a **selection score**, not an independent
-post-selection performance estimate. Manifests record candidate scores, training/validation dates,
+`ridge_alphas` declares positive candidate regularization strengths (default 0.1, 1, 10, 100); the
+configuration and per-model manifest record the exact grid used. Each model
+fits candidates in every expanding window and selects the lowest equal-row MAE aggregated across
+out-of-window validation predictions, breaking ties toward the smaller alpha. All validation objects
+and municipalities on a date stay held out together. The selected validation score is a **selection
+score**, not an independent post-selection performance estimate. Prediction artifacts retain raw
+estimator outputs in `raw_prediction`, clipped reported shares in `prediction`, and a `clipped` flag.
+Shared metrics report clipping frequency and raw prediction range alongside equal-row and
+electorate-weighted MAE. Manifests record per-window candidate fits, boundaries, row keys, cutoffs,
 training row counts, feature allowlists, preprocessing policy, training-design content hashes and
 scikit-learn version.
 

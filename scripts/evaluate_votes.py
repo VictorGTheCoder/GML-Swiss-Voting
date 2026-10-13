@@ -23,6 +23,7 @@ class EvaluationConfig:
     train_dates: tuple[str, ...]
     validation_dates: tuple[str, ...]
     test_dates: tuple[str, ...]
+    validation_windows: tuple[tuple[str, ...], ...] | None = None
     history_policy: str = 'frozen'
     mode: str = 'validation'
     seed: int = 0
@@ -30,7 +31,7 @@ class EvaluationConfig:
     predictor_allowlist: tuple[str, ...] = ('municipal_history', 'history_missing')
     geography_mode: str = 'historically_existing'
     audit_flag_policy: str = 'exclude'
-    ridge_alphas: tuple[float, ...] = (0.1, 1.0, 10.0)
+    ridge_alphas: tuple[float, ...] = (0.1, 1.0, 10.0, 100.0)
     selected_ridge_alphas: dict[str, float] | None = None
     bootstrap_replicates: int = 1000
     evaluation_weight_origin: str = 'not supplied; evaluation-only weights have unspecified provenance'
@@ -177,6 +178,15 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
         raise ValueError('All three date partitions must be declared')
     if not (max(date_groups[0]) < min(date_groups[1]) and max(date_groups[1]) < min(date_groups[2])):
         raise ValueError('Partitions must be chronological')
+    window_groups = ([pd.to_datetime(list(group), utc=True, format='mixed').normalize() for group in config.validation_windows]
+                     if config.validation_windows is not None else [date_groups[1]])
+    window_dates = [date for group in window_groups for date in group]
+    if (any(len(group) == 0 for group in window_groups)
+            or len(window_dates) != len(set(window_dates))
+            or set(window_dates) != set(date_groups[1])
+            or any(window_groups[i].max() >= window_groups[i+1].min()
+                   for i in range(len(window_groups)-1))):
+        raise ValueError('validation window dates must cover each validation date exactly once in chronological order')
     if config.history_policy not in ['frozen', 'rolling']:
         raise ValueError('Invalid history_policy')
     if config.mode not in ['validation', 'final_test']:
@@ -262,6 +272,8 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     predictions = targets.loc[targets.index.repeat(2)].reset_index(drop=True)
     predictions['model'] = np.tile(['constant','municipal_history'],len(targets))
     predictions['prediction'] = np.column_stack([history.loc[targets.index,'training_mean'],history.loc[targets.index,'municipal_history']]).ravel()
+    predictions['raw_prediction'] = predictions['prediction']
+    predictions['clipped'] = False
     predictions['fallback'] = np.column_stack([np.zeros(len(targets),dtype=bool),history.loc[targets.index,'history_missing'].astype(bool)]).ravel()
     regularized_manifest = {}
     if feature_blocks:

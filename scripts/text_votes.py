@@ -93,16 +93,18 @@ def text_experiment(rows, config, baseline, design, blocks, records):
         fits, scores = {}, {}
         for alpha in candidates:
             fit = Ridge(alpha=alpha, solver='lsqr').fit(xtrain, train.target_share)
-            prediction = np.clip(fit.predict(xeval), 0, 1)
-            fits[alpha] = prediction
+            raw_prediction = fit.predict(xeval)
+            prediction = np.clip(raw_prediction, 0, 1)
+            fits[alpha] = (raw_prediction, prediction)
             if frozen is None:
                 scores[alpha] = float(np.abs(prediction-paired.target_share).mean()*100)
         alpha = frozen if frozen is not None else min(scores, key=lambda a:(scores[a],a))
         selected[name] = {'selected_alpha': alpha, 'validation_scores_pp': {str(a):s for a,s in scores.items()},
             'training': counts(train), 'features': numeric+categorical,
             'selection': 'frozen; no held-out targets' if frozen is not None else 'chronological validation'}
-        for (_, row), value in zip(paired.iterrows(),fits[alpha]):
-            predictions.append({**row.to_dict(), 'model': name, 'prediction':float(value)})
+        for (_, row), (raw_value,value) in zip(paired.iterrows(),zip(*fits[alpha])):
+            predictions.append({**row.to_dict(), 'model': name, 'raw_prediction':float(raw_value),
+                'prediction':float(value), 'clipped':bool(not np.isclose(raw_value,value))})
     result.update(status='evaluated', reason=None, models=selected, predictions=pd.DataFrame(predictions))
     for name, group in result['predictions'].groupby('model'):
         def score(frame):
