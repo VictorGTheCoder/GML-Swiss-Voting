@@ -11,7 +11,7 @@ From the repository root in its Python environment:
 ```bash
 python3 -m scripts.evaluate_votes --synthetic --synthetic-features --synthetic-text --output /tmp/swiss-voting/validation --freeze-output /tmp/swiss-voting/frozen.json
 python3 -m scripts.evaluate_votes --synthetic --synthetic-features --synthetic-text --final-test --frozen-experiment /tmp/swiss-voting/frozen.json --output /tmp/swiss-voting/final
-python3 -m pytest -q tests/test_final_evaluation.py
+python3 -m pytest -q tests/test_final_evaluation.py tests/test_hist_gradient_boosting.py
 ```
 
 Synthetic brochure evidence, source versions and geography are illustrative fixtures. These commands
@@ -34,30 +34,43 @@ without `--config`; supplying a different config is rejected by the freeze check
 ## What is frozen before final testing
 
 `freeze_experiment(validation_result)` creates an integrity-checked JSON artifact only from a
-validation run. It records date partitions, predictor allowlists, block definitions and hashes,
-selected Ridge strengths for each nontext and paired-text variant, preprocessing policies,
-TF-IDF settings, geographical mode/crosswalk provenance, source versions, forecast cutoffs,
-prepared publication metadata, rolling-history policy, fit-period policy, evaluation weight origin,
-seed and uncertainty settings. It also pins implementation file hashes and environment versions.
+validation run. It records the complete expanding validation-window schedule, predictor allowlists,
+block definitions and hashes, selected Ridge strengths for each nontext and paired-text variant,
+selected HistGradientBoosting settings for every evaluated nontext model, preprocessing policies,
+the validated summary field/language and TF-IDF configuration, geographical mode/crosswalk
+provenance, source versions, forecast cutoffs, prepared publication metadata, rolling-history policy,
+fit-period policy, evaluation weight origin, seed and uncertainty settings. It also pins implementation
+file hashes and environment versions. A change to the windows, family, candidates, preprocessing,
+language or text representation invalidates the frozen signature. A changed selected Ridge strength
+or boosting setting is rejected before fitting.
 Outcome values are excluded from the prepared metadata signature; fitting and model selection still
 never read test targets. Feature source data, text records and territorial/publication evidence are
 pinned separately. Changing those inputs requires a fresh validation/freeze cycle.
 
-The CLI requires both `--final-test` and `--frozen-experiment`. It verifies the artifact integrity and
-source/configuration compatibility **before** final fitting or scoring. Strengths come from the
-validation artifact; no test error is used to choose them. Direct Python callers may still supply an
-explicit final configuration with `choices_frozen=True` and the selected strengths, for compatibility
-with the existing evaluation API. Supplying `frozen_experiment=artifact` adds the full integrity and
-source-policy guards and is the reproducible final workflow.
+The CLI requires both `--final-test` and `--frozen-experiment`. It loads Ridge and boosting choices
+from the artifact, then verifies integrity and source/configuration compatibility **before** final
+fitting or scoring. No test error selects or changes a setting. Direct Python callers can use the same
+contract by supplying frozen choices in `EvaluationConfig` and `frozen_experiment=artifact`.
+
+Before opening final scores, apply the documented judgment: prefer Ridge unless nonlinear validation
+improvements are consistent and supported by paired voting-date errors and uncertainty. This is a
+selection judgment, not an automatic significance threshold. Preserve negative results. Aggregate
+municipal associations do not establish causal effects or individual voter behavior.
 
 ## Fit periods and rolling history
 
-`refit_train_validation=False` retains training-only fitting. Set `refit_train_validation=True` in the
-configuration **before validation and freezing** to declare a final training-plus-validation refit.
-Validation fitting remains training-only. In the final run, only declared training/validation labels
-published by the earliest scored forecast can enter fitting. Test labels never fit imputers, scalers,
-encoders, coefficients or vocabulary. Text refit uses one document per eligible training/validation
-object before repeating vectors for municipal observations. Candidate strengths remain frozen.
+The confirmed publication study uses `history_policy="rolling"` and
+`refit_train_validation=true`, declared **before validation and freezing**. Estimators and learned
+transforms are fitted on the eligible training pool at each declared window boundary and stay fixed
+within that window. Final fitting admits training and validation outcomes only when publication
+evidence is no later than the first test forecast instant. The reserved test is never part of fitting,
+preprocessing, text vocabulary fitting or selection. TF-IDF uses one validated summary per eligible
+unique object in the declared fitting pool. Ridge strengths, boosting settings, feature allowlists,
+transformations and text representation remain fixed during final testing.
+
+Set `refit_train_validation=false` only for a separately declared training-only experiment. Validation
+fitting remains training-only either way. In final rolling mode, earlier test outcomes can enter later
+history features after evidenced publication, while all estimators and transforms remain fixed.
 
 Frozen history admits the declared fit-period history and never earlier test targets. Rolling history
 may additionally use results of earlier held-out objects, including earlier test dates, only after
@@ -70,10 +83,14 @@ histories update predictors, not the fitted regression or preprocessing between 
 
 ## Scores, weights, uncertainty and artifacts
 
-Top-level metrics and errors by object/date cover the wider nontext population. Nested
+Top-level metrics and errors by object/date cover the wider nontext population, including Ridge and
+HistGradientBoosting on their shared nontext rows. Predictions retain raw estimator values, clipped
+shares and clipping flags. Nested
 `text_experiment` metrics and errors cover identical rows for `paired_nontext` and `paired_text`.
 Text coverage reports losses relative to the wider nontext population. `paired_uncertainty` compares
-model pairs on their shared municipality/object keys and states paired row, object and date counts.
+model pairs on shared municipality/object keys and reports paired row, object and date counts; its
+intervals resample complete dates. Weighted and equal-row metrics, object/date errors, raw/clipped
+diagnostics and coverage are retained for each evaluated family.
 Cross-population comparisons therefore disclose their restricted population.
 
 MAE is in percentage points, with equal municipal-observation weight. Complementary

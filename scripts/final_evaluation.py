@@ -9,6 +9,13 @@ import numpy as np
 import pandas as pd
 
 
+TEXT_POLICY = {
+    'summary_field': 'summary_official', 'language': 'fr',
+    'ngram_range': [1, 2], 'norm': 'l2', 'min_df': 2,
+    'max_df': 0.95, 'max_features': 2000,
+}
+
+
 def _digest(value):
     return hashlib.sha256(json.dumps(value,sort_keys=True,default=str,separators=(',',':')).encode()).hexdigest()
 
@@ -60,14 +67,29 @@ def paired_uncertainty(predictions, *, seed, replicates):
 
 def experiment_signature(manifest):
     config = manifest['experiment_configuration'].copy()
-    for key in ['mode','choices_frozen','selected_ridge_alphas']:
+    for key in ['mode','choices_frozen','selected_ridge_alphas','selected_hist_gradient_boosting']:
         config.pop(key,None)
+    windows = [list(window) for window in (config.get('validation_windows') or [config['validation_dates']])]
+    blocks = manifest['feature_blocks']
+    block_ids = sorted(blocks)
+    selected_families = {
+        'baselines': ['constant', 'municipal_history'],
+        'ridge': ['ridge_history'] + [f'ridge_{block_id}' for block_id in block_ids],
+        'hist_gradient_boosting': bool(block_ids),
+        'paired_text': (['paired_nontext', 'paired_text']
+            if manifest.get('text_records_requested', False) else []),
+    }
     return {'configuration':config,'implementation_sha256':manifest['implementation_sha256'],
             'versions':manifest['versions'],'source_versions':manifest['source_versions'],
             'geography':manifest['geography'],'feature_blocks':manifest['feature_blocks'],
             'forecast_cutoffs':manifest['forecast_cutoffs'],'partition_keys_sha256':manifest['partition_keys_sha256'],
             'prepared_availability_sha256':manifest['prepared_availability_sha256'],
-            'text_records_sha256':manifest.get('text_records_sha256')}
+            'text_records_sha256':manifest.get('text_records_sha256'),
+            'validation_windows':windows,
+            'final_refit_schedule':('training_plus_validation_before_first_test_forecast'
+                if config.get('refit_train_validation') else 'training_only_before_first_test_forecast'),
+            'selected_model_families':selected_families,
+            'text_policy':TEXT_POLICY}
 
 
 def freeze_experiment(validation_result):
@@ -77,20 +99,26 @@ def freeze_experiment(validation_result):
     selected = {name:run['selected_alpha'] for name,run in manifest['regularized'].items()}
     text = validation_result.get('text_experiment') or {}
     selected.update({name:run['selected_alpha'] for name,run in text.get('models',{}).items()})
-    frozen = {'schema_version':1,'signature':experiment_signature(manifest),
+    boosting = {name:run['settings'] for name,run in manifest.get('hist_gradient_boosting',{}).items()
+                if run.get('status') == 'evaluated' and run.get('settings') is not None}
+    frozen = {'schema_version':2,'signature':experiment_signature(manifest),
               'selected_ridge_alphas':selected,
+              'selected_hist_gradient_boosting':boosting,
               'nontext_choices':{name:{key:run[key] for key in ['selected_alpha','features','preprocessing']}
                                  for name,run in manifest['regularized'].items()},
               'text_choices':{'status':text.get('status','not_requested'),'models':text.get('models',{}),
                               'representation_settings':text.get('representation',{}).get('settings',{})},
               'validation_metrics':validation_result['metrics'],
+              'selection_judgment':('Prefer Ridge unless nonlinear validation improvements are consistent '
+                  'and supported by paired date errors and uncertainty; this is a documented judgment, '
+                  'not an automatic significance threshold.'),
               'final_policy':'Only declared fit periods; no test-driven fitting or selection'}
     frozen['sha256'] = _digest(frozen)
     return frozen
 
 
 def verify_frozen_experiment(manifest,frozen):
-    if frozen.get('schema_version') != 1:
+    if frozen.get('schema_version') != 2:
         raise ValueError('Unsupported frozen experiment schema')
     payload = {key:value for key,value in frozen.items() if key != 'sha256'}
     if frozen.get('sha256') != _digest(payload):
@@ -99,3 +127,6 @@ def verify_frozen_experiment(manifest,frozen):
         raise ValueError('Run sources, features, partitions or configuration differ from frozen experiment')
     if _digest(manifest['selected_ridge_alphas'] or {}) != _digest(frozen['selected_ridge_alphas']):
         raise ValueError('Run alphas differ from frozen experiment')
+    if _digest(manifest.get('selected_hist_gradient_boosting') or {}) != _digest(
+            frozen.get('selected_hist_gradient_boosting') or {}):
+        raise ValueError('Run histogram gradient boosting settings differ from frozen experiment')

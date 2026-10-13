@@ -101,3 +101,77 @@ def test_unseen_heldout_category_does_not_change_training_transform_or_other_pre
 def test_invalid_histogram_boosting_configuration_fails_at_evaluation_seam():
     with pytest.raises(ValueError, match='hist_gradient_boosting_candidates'):
         evaluate(prepared_rows(), config(hist_gradient_boosting_candidates=()), feature_blocks=(population_block(),))
+    with pytest.raises(ValueError, match='only be loaded in final_test'):
+        evaluate(prepared_rows(), config(selected_hist_gradient_boosting={}), feature_blocks=(population_block(),))
+
+
+def test_frozen_choices_cover_boosting_windows_and_explicit_text_policy():
+    from scripts.final_evaluation import freeze_experiment
+
+    rows = prepared_rows()
+    settings = config(validation_windows=(('2022-01-01',), ('2023-01-01',)))
+    validation = evaluate(rows, settings, feature_blocks=(population_block(),), text_records=[])
+    frozen = freeze_experiment(validation)
+
+    model = 'hist_gradient_boosting_population'
+    assert frozen['selected_hist_gradient_boosting'][model] == {
+        'max_leaf_nodes': 7, 'min_samples_leaf': 2, 'learning_rate': .1, 'max_iter': 10,
+    }
+    assert frozen['selection_judgment'].startswith('Prefer Ridge unless')
+    assert frozen['signature']['validation_windows'] == [['2022-01-01'], ['2023-01-01']]
+    assert frozen['signature']['text_policy'] == {
+        'summary_field': 'summary_official', 'language': 'fr',
+        'ngram_range': [1, 2], 'norm': 'l2', 'min_df': 2, 'max_df': .95,
+        'max_features': 2000,
+    }
+
+    final_settings = replace(settings, mode='final_test', choices_frozen=True,
+        selected_ridge_alphas=frozen['selected_ridge_alphas'],
+        selected_hist_gradient_boosting=frozen['selected_hist_gradient_boosting'])
+    final = evaluate(rows, final_settings, feature_blocks=(population_block(),),
+        text_records=[], frozen_experiment=frozen)
+    assert model in set(final['predictions'].model)
+    assert any({pair['left_model'], pair['right_model']} == {model, 'ridge_population'}
+        for pair in final['paired_uncertainty'])
+    assert final['coverage'][model]['rows'] == 2
+    assert {'clipped_rows', 'clipping_fraction', 'raw_prediction_min', 'raw_prediction_max'} <= set(final['metrics'][model])
+    assert model in set(final['by_date'].model) and model in set(final['by_object'].model)
+
+    changed_settings = replace(final_settings, selected_hist_gradient_boosting={
+        **frozen['selected_hist_gradient_boosting'],
+        model: {'max_leaf_nodes': 15, 'min_samples_leaf': 2, 'learning_rate': .1, 'max_iter': 10},
+    })
+    with pytest.raises(ValueError, match='frozen'):
+        evaluate(rows, changed_settings, feature_blocks=(population_block(),),
+            text_records=[], frozen_experiment=frozen)
+
+    changed_schedule = replace(final_settings, validation_windows=(('2022-01-01', '2023-01-01'),))
+    with pytest.raises(ValueError, match='frozen'):
+        evaluate(rows, changed_schedule, feature_blocks=(population_block(),),
+            text_records=[], frozen_experiment=frozen)
+
+
+def test_final_boosting_fit_and_first_test_prediction_ignore_reserved_test_targets():
+    from scripts.final_evaluation import freeze_experiment
+
+    rows, block = prepared_rows(), population_block()
+    settings = config(refit_train_validation=True)
+    frozen = freeze_experiment(evaluate(rows, settings, feature_blocks=(block,)))
+    final_settings = replace(settings, mode='final_test', choices_frozen=True,
+        selected_ridge_alphas=frozen['selected_ridge_alphas'],
+        selected_hist_gradient_boosting=frozen['selected_hist_gradient_boosting'])
+    first = evaluate(rows, final_settings, feature_blocks=(block,), frozen_experiment=frozen)
+
+    changed = rows.copy()
+    changed.loc[changed.vote_id.eq('test'), 'yes_count'] = 99
+    changed.loc[changed.vote_id.eq('test'), 'no_count'] = 1
+    changed_validation = freeze_experiment(evaluate(changed, settings, feature_blocks=(block,)))
+    assert changed_validation['selected_hist_gradient_boosting'] == frozen['selected_hist_gradient_boosting']
+    assert changed_validation['selected_ridge_alphas'] == frozen['selected_ridge_alphas']
+    second = evaluate(changed, final_settings, feature_blocks=(block,), frozen_experiment=frozen)
+    model = 'hist_gradient_boosting_population'
+    first_predictions = first['predictions'].query('model == @model').prediction.tolist()
+    second_predictions = second['predictions'].query('model == @model').prediction.tolist()
+    assert second_predictions == pytest.approx(first_predictions)
+    fit = first['manifest']['hist_gradient_boosting'][model]
+    assert all('test' not in window.get('training_partitions', []) for window in fit['windows'])
