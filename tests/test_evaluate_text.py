@@ -31,14 +31,16 @@ def test_text_comparison_is_paired_and_document_frequencies_count_objects():
 
 
 def test_frozen_text_choices_and_predictions_ignore_test_targets():
+    from scripts.final_evaluation import freeze_experiment
     rows, config = synthetic_example()
-    config = replace(config, mode='final_test', choices_frozen=True,
-        selected_ridge_alphas={'paired_nontext':1.,'paired_text':1.})
     records = documents(rows)
-    first = evaluate(rows, config, text_records=records)['text_experiment']
+    frozen = freeze_experiment(evaluate(rows, config, text_records=records))
+    config = replace(config, mode='final_test', choices_frozen=True,
+        selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    first = evaluate(rows, config, text_records=records, frozen_experiment=frozen)['text_experiment']
     changed = rows.copy()
     changed.loc[changed.vote_id.eq('final'), ['yes_count','no_count']] = [1,99]
-    second = evaluate(changed, config, text_records=records)['text_experiment']
+    second = evaluate(changed, config, text_records=records, frozen_experiment=frozen)['text_experiment']
     assert first['predictions'].prediction.tolist() == second['predictions'].prediction.tolist()
     assert first['models'] == second['models']
     assert first['models']['paired_text']['validation_scores_pp'] == {}
@@ -154,7 +156,7 @@ def test_text_vocabulary_and_preprocessing_follow_shared_expanding_windows():
     rows = []
     for vote, date, available, shares in [
         ('train-a', '2020-01-01', '2020-01-02', [.2, .4]),
-        ('train-b', '2021-01-01', '2021-01-02', [.3, .5]),
+        ('train-b', '2021-01-01', '2022-02-01', [.3, .5]),
         ('valid-a', '2022-01-01', '2022-01-02', [.8, .6]),
         ('valid-b', '2023-01-01', '2023-01-02', [.9, .7]),
         ('test', '2024-01-01', '2024-01-02', [.1, .9]),
@@ -180,7 +182,9 @@ def test_text_vocabulary_and_preprocessing_follow_shared_expanding_windows():
 
     assert result['status'] == 'evaluated'
     assert [fold['training_objects'] for fold in result['windows']] == [
-        ['train-a', 'train-b'], ['train-a', 'train-b', 'valid-a']]
+        ['train-a'], ['train-a', 'train-b', 'valid-a']]
+    assert [fold['fit_cutoff'] for fold in result['windows']] == [
+        '2020-01-02 00:00:00+00:00', '2022-02-01 00:00:00+00:00']
     assert 'futureword' not in result['windows'][0]['tfidf']['vocabulary']
     assert 'futureword' not in result['windows'][1]['tfidf']['vocabulary']
     assert result['windows'][0]['validation_row_keys'] == [['a', 'valid-a'], ['b', 'valid-a']]

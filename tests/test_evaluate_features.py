@@ -82,20 +82,19 @@ def test_frozen_reference_ignores_heldout_targets_and_training_transforms_ignore
 
 
 def test_final_regularized_run_never_selects_using_test_targets_and_late_labels_are_excluded():
+    from scripts.final_evaluation import freeze_experiment
     rows, original = synthetic_example()
-    config = EvaluationConfig(original.train_dates,original.validation_dates,original.test_dates,
-                              mode='final_test',choices_frozen=True)
-    with pytest.raises(ValueError,match='selected_ridge_alphas'):
-        evaluate(rows,config,feature_blocks=(block(),))
-    config = EvaluationConfig(original.train_dates,original.validation_dates,original.test_dates,
-        mode='final_test',choices_frozen=True,selected_ridge_alphas={'ridge_history':1.,'ridge_statpop':1.})
     rows.loc[rows.municipality_id.eq('b'),'result_available_at'] = '2023-01-01'
-    first = evaluate(rows,config,feature_blocks=(block(),))
+    features = (block(),)
+    frozen = freeze_experiment(evaluate(rows, original, feature_blocks=features))
+    config = EvaluationConfig(original.train_dates,original.validation_dates,original.test_dates,
+        mode='final_test',choices_frozen=True,selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    first = evaluate(rows,config,feature_blocks=features,frozen_experiment=frozen)
     assert first['manifest']['regularized']['ridge_statpop']['training_rows'] == 1
     assert first['manifest']['regularized']['ridge_statpop']['validation_scores_pp'] == {}
     rows.loc[rows.vote_id.eq('final'),'yes_count'] = 1
     rows.loc[rows.vote_id.eq('final'),'no_count'] = 99
-    assert evaluate(rows,config,feature_blocks=(block(),))['predictions'].prediction.tolist() == first['predictions'].prediction.tolist()
+    assert evaluate(rows,config,feature_blocks=features,frozen_experiment=frozen)['predictions'].prediction.tolist() == first['predictions'].prediction.tolist()
 
 
 def test_rolling_municipal_history_uses_training_only_global_fallback():

@@ -170,6 +170,8 @@ def _apply_geography(rows, config, crosswalk, exclusions):
 
 def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None, feature_blocks: tuple = (), text_records=None, frozen_experiment=None) -> dict:
     """Run the complete evaluation seam on prepared rows, returning auditable artifacts."""
+    if config.mode == 'final_test' and config.choices_frozen and frozen_experiment is None:
+        raise ValueError('Final test requires a frozen experiment artifact')
     if (frozen_experiment is not None and config.mode == 'final_test'
             and config.selected_hist_gradient_boosting is None):
         config = replace(config, selected_hist_gradient_boosting=
