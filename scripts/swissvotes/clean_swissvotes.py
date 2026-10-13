@@ -2,7 +2,7 @@
 
 Usage: python -m scripts.swissvotes.clean_swissvotes
 Codebook: https://swissvotes.ch/page/dataset/codebook-de.pdf
-All source columns are retained; only explicitly identified measures are numeric.
+All source columns are retained in interim; processed contains the project subset.
 """
 
 from __future__ import annotations
@@ -14,10 +14,12 @@ import pandas as pd
 
 from scripts.common.config import (
     SWISSVOTES_CLEAN_PATH,
+    SWISSVOTES_INTERIM_PATH,
     SWISSVOTES_PATH,
     SWISSVOTES_REPORT_PATH,
 )
 from scripts.common.vote_keys import swissvotes_key
+from scripts.swissvotes.select_swissvotes_columns import select_swissvotes_columns
 
 REQUIRED = {"anr", "datum", "titel_kurz_d", "titel_kurz_f", "rechtsform"}
 CANTONS = ["zh", "be", "lu", "ur", "sz", "ow", "nw", "gl", "zg", "fr", "so", "bs", "bl", "sh", "ar", "ai", "sg", "gr", "ag", "tg", "ti", "vd", "vs", "ne", "ge", "ju"]
@@ -119,6 +121,20 @@ def main() -> None:
     except ValueError as error:
         SWISSVOTES_REPORT_PATH.write_text(f"# Swissvotes validation FAILED\n\n{error}\n", encoding="utf-8")
         raise
+    selected, selection_log = select_swissvotes_columns(clean)
+    SWISSVOTES_INTERIM_PATH.parent.mkdir(parents=True, exist_ok=True)
+    clean.to_parquet(SWISSVOTES_INTERIM_PATH, index=False)
+    selection_log.to_csv(SWISSVOTES_REPORT_PATH.with_name("swissvotes_column_selection.csv"), index=False)
+    summary = selection_log.groupby(["kept", "reason"]).size().rename("columns").reset_index()
+    report += (
+        "\n## Processed column selection\n\n"
+        f"Interim: {clean.shape[1]} columns. Processed: {selected.shape[1]} columns. "
+        f"All {len(clean)} rows retained.\n\n"
+        "Complete decisions: `swissvotes_column_selection.csv`. No sparse-column threshold is used. "
+        "Retained columns are candidates, not automatically approved pre-vote predictors; "
+        "temporal availability and encoding must still be reviewed before modelling.\n\n"
+        + summary.to_markdown(index=False) + "\n"
+    )
     SWISSVOTES_REPORT_PATH.write_text(report, encoding="utf-8")
     flagged = clean[clean["flag_national_counts_inconsistent"] | clean["flag_national_pct_mismatch"]]
     issue_columns = ["swissvotes_id", "vote_key", "vote_date", "titel_kurz_f", "rechtsform",
@@ -128,8 +144,9 @@ def main() -> None:
         SWISSVOTES_REPORT_PATH.with_name("swissvotes_quality_issues.csv"), index=False
     )
     SWISSVOTES_CLEAN_PATH.parent.mkdir(parents=True, exist_ok=True)
-    clean.to_parquet(SWISSVOTES_CLEAN_PATH, index=False)
-    print(f"Swissvotes: {len(clean):,} validated votes -> {SWISSVOTES_CLEAN_PATH}")
+    selected.to_parquet(SWISSVOTES_CLEAN_PATH, index=False)
+    print(f"Swissvotes interim: {len(clean):,} votes, {clean.shape[1]} columns -> {SWISSVOTES_INTERIM_PATH}")
+    print(f"Swissvotes processed: {len(selected):,} votes, {selected.shape[1]} columns -> {SWISSVOTES_CLEAN_PATH}")
 
 
 if __name__ == "__main__":
