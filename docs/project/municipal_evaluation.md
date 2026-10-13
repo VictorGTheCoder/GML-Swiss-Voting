@@ -292,17 +292,33 @@ to `evaluate`. The evaluator reruns the version-bound export gate; unknown
 availability, stale source decisions, ambiguous correspondence and invalid
 extractions cannot enter the experiment. It additionally requires the document's
 voting date and exact brochure forecast instant to match the prepared object.
-Language metadata is retained in the training representation manifest.
+The text branch explicitly selects `summary_official` from each validated
+object record; generic text and full-text fields are never fallback sources.
+Object mapping, semantic validity, source hash and exact-version availability
+remain enforced by the export gate. French is the selected language. Non-French
+records are excluded and reported; when no French summary or no eligible summary
+exists, the text branch records a prerequisite skip while nontext results remain.
 
 `text_experiment` reports a paired regularized nontext reference and additive
 TF-IDF model on identical municipal row keys, using history and every supplied
-admissible feature block. Both fit the same eligible training rows. Vocabulary
-and IDF are fitted on one document per distinct eligible training object, then
-joined to municipal observations. Held-out objects cannot influence vocabulary,
-IDF, imputation, scaling or categorical encoding. Repeated municipal instances
-therefore do not change the brochure text representation. Model fitting remains
-at the municipal observation level. Text contributes a shared object shift
-across municipalities before predictions are clipped to [0, 1].
+admissible feature block. Both fit the same eligible training rows. At each
+shared chronological window, vocabulary and IDF are fitted on one summary per
+distinct eligible training object, then joined to municipal observations.
+Vectorizer, preprocessing and estimator stay fixed within the window. Held-out
+objects cannot influence vocabulary, IDF, imputation, scaling or categorical
+encoding. Repeated municipal instances do not change the brochure text
+representation. Model fitting remains at the municipal observation level. Text
+contributes a shared object shift across municipalities before predictions are
+clipped to [0, 1].
+
+Initial word TF-IDF settings are unigrams and bigrams, L2 normalization,
+`min_df=2` objects, `max_df=0.95`, and at most 2,000 features. Each window
+records its vocabulary, IDF, training object keys, exact source hashes, and
+effective settings. If a small training corpus makes those minimum/maximum
+frequency cutoffs incompatible, the recorded fold adjustment raises `max_df`
+to 1.0; with fewer than two training objects, it also lowers `min_df` to 1.
+Empty vocabularies are reported per window. Held-out vocabulary never enters
+fitting.
 
 Each model selects its own ridge alpha on chronological validation. Freeze the
 returned `models.*.selected_alpha` values as `selected_ridge_alphas` keys

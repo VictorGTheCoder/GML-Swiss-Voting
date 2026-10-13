@@ -119,7 +119,9 @@ def _instant(value: object):
     return parsed.astimezone(timezone.utc)
 
 
-def build_forecast_text_export(rows: Iterable[Mapping[str, object]], output_dir=None) -> dict:
+def build_forecast_text_export(
+    rows: Iterable[Mapping[str, object]], output_dir=None, *, text_field: str | None = None
+) -> dict:
     """Export reviewed object texts at an evidenced brochure-publication instant.
 
     Input retains the existing brochure review fields. Publication evidence must
@@ -162,12 +164,21 @@ def build_forecast_text_export(rows: Iterable[Mapping[str, object]], output_dir=
                 reasons.append('forecast cutoff is not before voting day')
         except (ValueError,TypeError):
             reasons.append('voting date is invalid')
-        row["text"] = row.get("text") or row.get("full_text")
+        source_field = text_field or "text"
+        if text_field is None:
+            text = row.get("text") or row.get("full_text")
+            source_field = "text" if row.get("text") else "full_text"
+        else:
+            # An explicitly requested representation never falls back to a
+            # generic or fuller text field when it is absent.
+            text = row.get(text_field)
+        row["text"] = text
+        row["text_source_field"] = source_field
         row["forecast_evidence"] = forecast_evidence
         if not row.get("vote_id") or not row["voting_date"]:
             reasons.append("object identifier or voting date is missing")
         if not isinstance(row["text"], str) or not row["text"].strip():
-            reasons.append("validated object text is empty")
+            reasons.append(f"requested text field {source_field!r} is empty or missing")
         if reasons:
             row["exclusion_reason"] = "; ".join(reasons)
             exclusions.append(row)
