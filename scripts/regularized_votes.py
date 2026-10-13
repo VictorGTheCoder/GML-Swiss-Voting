@@ -35,9 +35,8 @@ def regularized_predictions(rows, config, baseline, design, blocks):
     keys = set(zip(baseline.municipality_id,baseline.vote_id))
     evaluation_rows = rows.loc[rows.partition.eq(partition) & pd.Series(
         [(m,v) in keys for m,v in zip(rows.municipality_id,rows.vote_id)],index=rows.index)]
-    expected_models = ['ridge_history'] + [f'ridge_{block.block_id}' for block in blocks]
-    if config.mode == 'final_test' and (not config.selected_ridge_alphas or any(name not in config.selected_ridge_alphas for name in expected_models)):
-        raise ValueError('Final test requires selected_ridge_alphas for every regularized model')
+    if config.mode == 'final_test' and config.selected_ridge_alphas is None:
+        raise ValueError('Final test requires frozen selected_ridge_alphas')
     if not config.ridge_alphas or any(not np.isfinite(alpha) or alpha <= 0 for alpha in config.ridge_alphas):
         raise ValueError('ridge_alphas must be finite positive candidates')
     if evaluation_rows.empty:
@@ -54,9 +53,22 @@ def regularized_predictions(rows, config, baseline, design, blocks):
                 for block in blocks for name in block.numeric_features],
             [f'{block.block_id}__{name}' for block in blocks for name in block.categorical_features])
 
+    if config.mode == 'final_test':
+        # The validation freeze may deliberately exclude models with no evaluable
+        # windows. Do not select their hyperparameters using reserved test rows.
+        selected_models = {name for name in config.selected_ridge_alphas
+                           if name.startswith('ridge_')}
+        unknown = selected_models - feature_sets.keys()
+        if unknown:
+            raise ValueError(f'Frozen Ridge models have no matching feature sets: {sorted(unknown)}')
+
     declared_windows = window_dates(config, partition)
     output, manifest = [], {}
     for name, (numeric,categorical) in feature_sets.items():
+        if config.mode == 'final_test' and name not in selected_models:
+            manifest[name] = {'status': 'skipped',
+                              'reason': 'No validated Ridge alpha was frozen for this model'}
+            continue
         frozen_alpha = config.selected_ridge_alphas.get(name) if config.selected_ridge_alphas else None
         if frozen_alpha is not None and (not np.isfinite(frozen_alpha) or frozen_alpha <= 0):
             raise ValueError('selected_ridge_alphas must be finite positive values')
