@@ -152,3 +152,117 @@ Prepared harmonized rows can be evaluated without another crosswalk only when th
 is retained. Attempting to map a row with `harmonization_applied=True` again raises an error.
 Geography exclusions appear alongside other eligibility exclusions; fallback coverage and baseline
 errors are calculated only after these checks.
+
+## Prepared communal blocks and regularized references (#36)
+
+```bash
+python3 -m scripts.evaluate_votes --synthetic --synthetic-features --output /tmp/swiss-voting-features
+python3 -m pytest -q tests/test_evaluate_features.py
+```
+
+This remains the same evaluation entry point. It adds an explicitly illustrative STATPOP fixture
+and compares `ridge_history` with `ridge_statpop_nationality` on the same validation keys as both
+baselines. A source block is not required to improve error. These small synthetic scores establish
+reproducibility, not Swiss predictive performance.
+
+`evaluate(..., feature_blocks=(FeatureBlock(...),))` accepts `scripts.feature_blocks.FeatureBlock`:
+`block_id`, `scope` (`municipality` or `object`), `records` (DataFrame), `numeric_features`,
+`categorical_features`, `definitions`, `source_url`, `source_version`, and `geography_mode`.
+All features need documented definitions/units; allowlists are the only columns supplied to a
+model. Known same-object outcome and target fields are rejected. Each block creates one independent
+reference (`ridge_<block_id>`), plus the history-only regularized comparator; multiple blocks are
+not silently pooled into an unexplained combined experiment.
+
+Prepared feature records carry their scope's `municipality_id` or `vote_id`, `reference_date`,
+`published_at`, `availability_status='verified'`, `availability_evidence`, `source_version`, and
+allowed values. Municipality blocks also require `geography_id`. Record source versions must agree
+with the block version. Statistical reference date is distinct from publication date. A value is
+admissible only when both are no later than its object's forecast and publication evidence is
+verified/nonempty. Municipal geography reference and experiment mode must agree. Most recent
+admissible publication wins, breaking same-publication ties by reference date. Duplicate entity ×
+reference × publication × geography release keys raise an error; joins retain one observation row.
+
+Unavailable sources do not remove an otherwise eligible voting target. `joined_features` contains
+allowlisted, namespaced columns (`<block_id>__<feature>`) and historical predictors. `join_report`
+records each block/observation's status and, for matches, the selected reference date, publication
+and evidence. Coverage records missing entity, unknown availability, unavailable-at-forecast,
+incompatible-geography and matched rows, plus per-feature missing-value counts. Nonfinite numeric
+values become explicit missingness. A block with no admissible matches is labelled
+`no_admissible_matches`; its reference contains no communal information and cannot support an
+incremental source-value claim. Its history-only comparator remains usable.
+
+### STATPOP nationality adapter and real prerequisites
+
+The existing teammates' `data/raw/features/statpop_nationality.csv` is the selected prepared source:
+`year`, `code`, `population`, and `foreign`. Its population definition is permanent resident
+population; `foreign_share` is foreign permanent residents divided by total permanent residents.
+`prepare_statpop_nationality(frame, source_version=..., geography_id=..., source_url=...,
+publication_evidence=..., geography_mode=...)` adapts this table without downloading or rebuilding
+collection. Read `code` as a string to retain leading zeros. Nonpositive/nonfinite populations,
+negative foreign counts or foreign counts exceeding the population yield missing feature values.
+The annual statistical reference is 31 December, **not** a publication instant.
+
+Evidence is a separate table with `year`, `code`, `published_at`, `availability_evidence`, and
+`source_version`; it must identify the exact prepared source version and have unique municipality/
+year keys. Missing evidence remains unknown; dates are never invented as `year+1`. Pass only
+municipalities and geographical references whose prepared-source compatibility has been verified.
+Unknown identifiers or special geographic aggregate codes must be checked by source preparation;
+matching string identifiers cannot establish membership on its own.
+
+The local sidecar identifies the nationality source cube `px-x-0102010000_101` and a 2026 update,
+but lacks original historical publication/version evidence and an independently validated territorial
+reference. It therefore cannot establish that this version was available in past brochure forecasts.
+The adapter can expose its unknown-release coverage while the synthetic block runs populated
+comparisons. Real strict forecast scores remain conditional on these missing prerequisites.
+
+### Fitting, selection, and reservation
+
+Historical model inputs are rebuilt at each row's own forecast: only earlier voting dates whose
+results had been published with evidence are eligible. Missing comparable municipal history uses
+the **admissible earlier training-only** global mean, including under rolling policy. At the first
+training date, where no earlier training observation exists, the regressor's feature uses an explicit
+50% cold-start prior, recorded separately in its manifest. This prior does not replace the baseline's
+abstention when an evaluation forecast has no admissible training labels.
+
+Ridge fitting uses only training labels published by the earliest scored forecast. Late/unknown
+training labels cannot enter fitting. Numeric median imputation and scaling, categorical imputation
+and one-hot encoding are fit on those training rows only. All input columns have explicit missingness
+indicators, including missingness first encountered in held-out rows. Unknown held-out categories
+are handled without fitting an encoder on them. Predictions are clipped to the target share range.
+
+`ridge_alphas` declares positive candidate regularization strengths (default 0.1, 1, 10). Each model
+fits candidates on the training period and selects the lowest equal-row chronological validation
+MAE, breaking ties toward the smaller alpha. All validation objects and municipalities on a date
+stay held out together. The selected validation score is a **selection score**, not an independent
+post-selection performance estimate. Manifests record candidate scores, training/validation dates,
+training row counts, feature allowlists, preprocessing policy, training-design content hashes and
+scikit-learn version.
+
+`selected_ridge_alphas={'ridge_history': 1.0, 'ridge_statpop_nationality': 1.0}` freezes strengths;
+these runs do not use held-out targets for fitting or selection. Final-test mode requires this explicit
+mapping for every reference, in addition to `choices_frozen=True`. It never selects an alpha from
+test errors or emits validation-selection scores derived from test targets. Current references fit
+only the declared training period, without an implicit training-plus-validation refit.
+
+### CLI source-block manifests
+
+`--blocks blocks.json` accepts a JSON list of descriptors. Each supplies the FeatureBlock fields
+above except `records`, replaced by `records_path` pointing to a prepared CSV relative to the JSON
+file. The evaluator preserves municipal/object identifier strings. Example descriptor:
+
+```json
+[{
+  "block_id": "statpop_nationality", "scope": "municipality",
+  "records_path": "statpop_prepared_with_evidence.csv",
+  "numeric_features": ["population", "foreign_share"], "categorical_features": [],
+  "definitions": {"population": "Permanent resident population, persons", "foreign_share": "Foreign / total permanent residents, share"},
+  "source_url": "https://www.pxweb.bfs.admin.ch/", "source_version": "sha256:<exact-source-hash>",
+  "geography_mode": "historically_existing"
+}]
+```
+
+Use `python3 -m scripts.evaluate_votes --input votes_prepared.csv --config experiment.json
+--blocks blocks.json --output /tmp/run` (on one command line). All joined features, selection
+manifests, matched publication evidence, coverage and paired prediction keys are reproducible
+artifacts. The source CSV must already include the record contract; the CLI does not guess how to
+join an unevidenced raw population file.

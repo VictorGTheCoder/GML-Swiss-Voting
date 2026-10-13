@@ -27,6 +27,8 @@ class EvaluationConfig:
     predictor_allowlist: tuple[str, ...] = ('municipal_history', 'history_missing')
     geography_mode: str = 'historically_existing'
     audit_flag_policy: str = 'exclude'
+    ridge_alphas: tuple[float, ...] = (0.1, 1.0, 10.0)
+    selected_ridge_alphas: dict[str, float] | None = None
 
 
 def _apply_geography(rows, config, crosswalk, exclusions):
@@ -69,7 +71,7 @@ def _apply_geography(rows, config, crosswalk, exclusions):
     if mapping.source_geography_id.eq(mapping.target_geography_id).any():
         raise ValueError('Crosswalk cannot harmonize within the same reference state')
     for date in ['mapping_available_at', 'target_valid_from', 'target_valid_to']:
-        mapping[date] = pd.to_datetime(mapping[date] if date in mapping else pd.Series(pd.NaT, index=mapping.index), errors='coerce', utc=True)
+        mapping[date] = pd.to_datetime(mapping[date] if date in mapping else pd.Series(pd.NaT, index=mapping.index), errors='coerce', utc=True, format='mixed')
     for _, target_group in mapping.groupby(['target_municipality_id', 'target_geography_id']):
         supported = target_group.loc[target_group.mapping_type.isin(['identity', 'merger'])]
         if len(supported) > 1 and not supported.mapping_type.eq('merger').all():
@@ -155,7 +157,7 @@ def _apply_geography(rows, config, crosswalk, exclusions):
     return output, manifest
 
 
-def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None) -> dict:
+def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None, feature_blocks: tuple = ()) -> dict:
     """Run the complete evaluation seam on prepared rows, returning auditable artifacts."""
     missing = set(REQUIRED) - set(prepared.columns)
     if missing:
@@ -206,7 +208,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     exclude(rows.geography_id.isna() | rows.geography_id.astype(str).str.strip().eq(''), 'geography_missing')
     exclude(rows.source_version.isna(), 'source_version_missing')
     for name in ['voting_date', 'forecast_at', 'result_available_at']:
-        rows[name] = pd.to_datetime(rows[name], errors='coerce', utc=True)
+        rows[name] = pd.to_datetime(rows[name], errors='coerce', utc=True, format='mixed')
     exclude(rows.voting_date.isna(), 'voting_date_missing')
     exclude(rows.forecast_at.isna() | rows.forecast_evidence.isna()
             | rows.forecast_evidence.astype(str).str.strip().eq(''), 'forecast_evidence_missing')
@@ -244,10 +246,18 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
             predictions.append({**target.to_dict(), 'model': model, 'prediction': prediction,
                                 'fallback': model == 'municipal_history' and local.empty})
     predictions = pd.DataFrame(predictions, columns=list(rows.columns) + ['model','prediction','fallback'])
+    from scripts.feature_blocks import join_feature_blocks
+    from scripts.regularized_votes import historical_features, regularized_predictions
+    joined, join_report, block_manifest, block_coverage = join_feature_blocks(rows, feature_blocks, config.geography_mode)
+    design = pd.concat([historical_features(rows, config), joined], axis=1) if feature_blocks else joined
+    regularized_manifest = {}
+    if feature_blocks:
+        regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, feature_blocks)
+        predictions = pd.concat([predictions, regularized], ignore_index=True)
     if unpredictable:
         exclusions['no_admissible_training_history'] = unpredictable
     metrics, coverage = {}, {'unpredictable_rows': unpredictable,
-        'input_rows': len(prepared), 'eligible_rows': len(rows),
+        'input_rows': len(prepared), 'eligible_rows': len(rows), 'feature_blocks': block_coverage,
         'partitions': {name: {'rows': len(group), 'objects': int(group.vote_id.nunique()),
                               'dates': int(group.voting_date.nunique())}
                        for name, group in rows.groupby('partition')}}
@@ -271,14 +281,15 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
             by_object.append({'model': model, 'vote_id': vote, **score(subgroup)})
     return {'manifest': {**asdict(config), 'input_rows': len(prepared),
                           'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
-                          'geography': geography,
+                          'geography': geography, 'feature_blocks': block_manifest, 'regularized': regularized_manifest,
                           'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
                           'versions': {'python': platform.python_version(), 'pandas': pd.__version__, 'numpy': np.__version__},
                           'weight_origin': 'prepared evaluation_weight; retrospective weights are evaluation only',
                           'forecast_cutoffs': {vote: str(group.forecast_at.iloc[0]) for vote, group in rows.groupby('vote_id')}}, 'partitions': rows[KEYS + ['voting_date','partition']],
             'eligible_rows': rows, 'predictions': predictions, 'coverage': coverage,
             'exclusions': exclusions, 'metrics': metrics,
-            'by_date': pd.DataFrame(by_date), 'by_object': pd.DataFrame(by_object)}
+            'by_date': pd.DataFrame(by_date), 'by_object': pd.DataFrame(by_object),
+            'joined_features': pd.concat([rows[KEYS], design],axis=1), 'join_report': join_report}
 
 
 def write_artifacts(result: dict, output_dir) -> None:
@@ -317,13 +328,17 @@ def main():
     from pathlib import Path
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--synthetic', action='store_true')
+    parser.add_argument('--synthetic-features', action='store_true', help='Include an illustrative prepared STATPOP block with --synthetic')
     parser.add_argument('--input', type=Path, help='Prepared CSV or Parquet; raw cleaned outcomes alone are insufficient')
+    parser.add_argument('--blocks', type=Path, help='JSON descriptors of prepared feature blocks')
     parser.add_argument('--crosswalk', type=Path, help='Optional prepared geography crosswalk CSV')
     parser.add_argument('--config', type=Path, help='JSON EvaluationConfig with date partitions and policies')
     parser.add_argument('--output', type=Path, default=Path('reports/generated/municipal_evaluation'))
     args = parser.parse_args()
+    if args.synthetic_features and not args.synthetic:
+        parser.error('--synthetic-features requires --synthetic')
     if args.synthetic:
-        if args.input or args.config or args.crosswalk:
+        if args.input or args.config or args.crosswalk or args.blocks:
             parser.error('--synthetic cannot be combined with --input/--config')
         rows, config = synthetic_example()
     else:
@@ -332,7 +347,9 @@ def main():
         rows = pd.read_parquet(args.input) if args.input.suffix == '.parquet' else pd.read_csv(args.input, dtype={key: str for key in KEYS})
         config = EvaluationConfig(**json.loads(args.config.read_text()))
     try:
-        result = evaluate(rows, config, geography_crosswalk=pd.read_csv(args.crosswalk, dtype=str) if args.crosswalk else None)
+        from scripts.feature_blocks import load_feature_blocks, synthetic_feature_example
+        blocks = (synthetic_feature_example(),) if args.synthetic_features else load_feature_blocks(args.blocks) if args.blocks else ()
+        result = evaluate(rows, config, feature_blocks=blocks, geography_crosswalk=pd.read_csv(args.crosswalk, dtype=str) if args.crosswalk else None)
     except ValueError as error:
         parser.error(str(error))
     write_artifacts(result, args.output)
