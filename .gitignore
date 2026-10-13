@@ -28,22 +28,11 @@ htmlcov/
 .ruff_cache/
 .mypy_cache/
 
-# Data generated locally
+# Raw and intermediate data stay local; data/processed is versioned
 data/raw/*
 data/interim/*
-data/processed/*
 !data/raw/.gitkeep
 !data/interim/.gitkeep
-!data/processed/.gitkeep
-
-# Curated Federal Council explanations snapshot
-!data/processed/federal_explanations/
-!data/processed/federal_explanations/README.md
-!data/processed/federal_explanations/objects.parquet
-!data/processed/federal_explanations/sources.parquet
-!data/processed/federal_explanations/pages.parquet
-!data/processed/federal_explanations/sections.parquet
-!data/processed/federal_explanations/section_links.parquet
 
 # Generated reports and figures
 reports/generated/

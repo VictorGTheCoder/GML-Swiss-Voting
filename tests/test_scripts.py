@@ -229,6 +229,7 @@ def test_pipeline_px_to_validated_parquet(tmp_path, monkeypatch, px_cube, invali
         "VALIDATION_REPORT_PATH": tmp_path / "reports" / "validation.md",
         "SWISSVOTES_PATH": tmp_path / "swissvotes.csv",
         "SWISSVOTES_CLEAN_PATH": tmp_path / "processed" / "swissvotes.parquet",
+        "SWISSVOTES_INTERIM_PATH": tmp_path / "interim" / "swissvotes.parquet",
         "SWISSVOTES_REPORT_PATH": tmp_path / "reports" / "swissvotes.md",
         "JOIN_REPORT_PATH": tmp_path / "reports" / "join.md",
         "VOTE_CROSSWALK_PATH": tmp_path / "processed" / "crosswalk.parquet",
@@ -258,6 +259,7 @@ def test_pipeline_px_to_validated_parquet(tmp_path, monkeypatch, px_cube, invali
         crosswalk = pd.read_parquet(paths["VOTE_CROSSWALK_PATH"])
         assert crosswalk["join_status"].tolist() == ["matched"]
         assert paths["SWISSVOTES_CLEAN_PATH"].is_file()
+        assert paths["SWISSVOTES_INTERIM_PATH"].is_file()
     ofs_download.assert_called_once_with(force=True)
     swiss_download.assert_called_once_with(force=True)
     for name in ("INTERIM_PATH", "CLEAN_PATH", "AUDIT_PATH", "CLEANING_LOG_PATH", "VALIDATION_REPORT_PATH"):

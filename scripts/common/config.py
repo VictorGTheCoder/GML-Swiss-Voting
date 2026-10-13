@@ -12,6 +12,7 @@ REPORTS_DIR = ROOT / "reports"
 
 SWISSVOTES_URL = "https://swissvotes.ch/page/dataset/swissvotes_dataset.csv"
 SWISSVOTES_PATH = RAW_DIR / "swissvotes" / "swissvotes.csv"
+SWISSVOTES_INTERIM_PATH = INTERIM_DIR / "swissvotes" / "swissvotes_clean.parquet"
 SWISSVOTES_CLEAN_PATH = PROCESSED_DIR / "swissvotes" / "swissvotes_clean.parquet"
 SWISSVOTES_REPORT_PATH = REPORTS_DIR / "swissvotes_cleaning.md"
 # One row per OFS question, with its Swissvotes correspondence.

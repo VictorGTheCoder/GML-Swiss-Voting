@@ -109,7 +109,8 @@ Fichiers produits :
 - `data/interim/ofs-votes/votes_all_levels.parquet` : cube OFS mis à plat, tous niveaux territoriaux.
 - `data/interim/ofs-votes/votes_communes_clean.parquet` : résultats communaux nettoyés.
 - `data/processed/ofs-votes/votes_communes.parquet` : résultats ayant passé la validation.
-- `data/processed/swissvotes/swissvotes_clean.parquet` : objets Swissvotes nettoyés, une ligne par objet.
+- `data/interim/swissvotes/swissvotes_clean.parquet` : Swissvotes nettoyé complet, toutes les colonnes source conservées.
+- `data/processed/swissvotes/swissvotes_clean.parquet` : Swissvotes allégé pour le projet, une ligne par objet.
 - `data/interim/integration/ofs_swissvotes_crosswalk.parquet` : correspondance vérifiée OFS ↔ Swissvotes, une ligne par objet OFS, uniquement si la préparation est demandée.
 - `reports/` : audit OFS, journaux de nettoyage, validation et diagnostic de jointure générés localement, non versionnés.
 
@@ -169,8 +170,24 @@ une sélection et une interprétation selon le codebook. Aucune imputation autom
 
 Les votes futurs de Swissvotes restent présents avec `is_future_vote`. Les anomalies
 de comptage et les écarts de pourcentages sont signalés par des colonnes `flag_*`
-et détaillés dans `reports/swissvotes_quality_issues.csv` ; les valeurs publiées ne
+dans la table complète `interim/` et détaillés dans `reports/swissvotes_quality_issues.csv` ; les valeurs publiées ne
 sont pas remplacées. Un écart de pourcentage peut refléter un dénominateur différent.
+
+La sélection Swissvotes est appliquée automatiquement après le nettoyage : le fichier
+`raw/` reste original, `interim/` conserve la table nettoyée complète, et `processed/`
+contient la sélection. Les colonnes entièrement nulles, résultats nationaux/cantonaux,
+indicateurs de qualité de ces résultats, date d'entrée en vigueur (`dat-force`), liens
+documentaires secondaires et doublons `anr`/`datum` sont exclus de `processed/`.
+`swissvotes_id`, `vote_key`, `vote_date` et le lien `swissvoteslink` sont conservés.
+Les thèmes, recommandations, variables de campagne et champs peu renseignés ne sont
+pas exclus automatiquement : aucun seuil de valeurs manquantes n'est appliqué.
+
+Les décisions pour chaque colonne sont enregistrées dans
+`reports/swissvotes_column_selection.csv`, avec motif et taux de valeurs manquantes.
+Les règles sont dans `scripts/swissvotes/select_swissvotes_columns.py`.
+Cette sélection ne constitue pas une liste de prédicteurs prêts à l'emploi : il reste
+à vérifier la disponibilité avant la date de prédiction et à encoder les catégories.
+La suppression des colonnes vides est recalculée sur chaque nouvelle version des données.
 
 `reports/join_preparation.md` résume les contrôles. `reports/join_crosswalk.csv`
 permet de vérifier chaque correspondance, et `reports/swissvotes_without_ofs.csv`
