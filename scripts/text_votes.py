@@ -42,7 +42,8 @@ def text_experiment(rows, config, baseline, design, blocks, records):
         'predictions': pd.DataFrame(), 'metrics': {}, 'by_object': [], 'by_date': []}
     if paired.empty:
         return result
-    train = rows.loc[rows.partition.eq('train') & rows.vote_id.isin(documents)
+    fitting_partitions = ['train','validation'] if config.mode == 'final_test' and config.refit_train_validation else ['train']
+    train = rows.loc[rows.partition.isin(fitting_partitions) & rows.vote_id.isin(documents)
         & rows.result_available_at.le(paired.forecast_at.min())
         & rows.result_availability_evidence.notna()
         & rows.result_availability_evidence.astype(str).str.strip().ne('')]
@@ -102,10 +103,29 @@ def text_experiment(rows, config, baseline, design, blocks, records):
     result.update(status='evaluated', reason=None, models=selected, predictions=pd.DataFrame(predictions))
     for name, group in result['predictions'].groupby('model'):
         def score(frame):
-            return {**counts(frame), 'mae_pp':float((frame.prediction-frame.target_share).abs().mean()*100)}
+            errors = (frame.prediction-frame.target_share).abs()*100
+            weights = pd.to_numeric(frame.get('evaluation_weight',pd.Series(np.nan,index=frame.index)),errors='coerce')
+            valid = np.isfinite(weights) & weights.gt(0)
+            return {**counts(frame), 'mae_pp':float(errors.mean()),
+                    'electorate_weighted_mae_pp':float(np.average(errors[valid],weights=weights[valid])) if valid.any() else None,
+                    'weighted_rows':int(valid.sum()),'weight_origin':config.evaluation_weight_origin}
         result['metrics'][name] = score(group)
         for vote, subgroup in group.groupby('vote_id'):
             result['by_object'].append({'model':name, 'vote_id':vote, **score(subgroup)})
         for date, subgroup in group.groupby('voting_date'):
             result['by_date'].append({'model':name, 'voting_date':str(date), **score(subgroup)})
     return result
+
+
+def synthetic_text_example(rows):
+    """Illustrative reviewed-record fixture; no claims about real Swiss brochure evidence."""
+    records = []
+    for row in rows.drop_duplicates('vote_id').itertuples():
+        forecast = str(pd.Timestamp(row.forecast_at,tz='UTC'))
+        records.append(dict(vote_id=row.vote_id,voting_date=str(row.voting_date),forecast_at=forecast,
+            forecast_evidence='synthetic-brochure-release',availability_at=forecast,
+            availability_reference='synthetic-archive',availability_status='CONFIRMED_PRE_VOTE',
+            source_sha256=f'synthetic-{row.vote_id}',decision_source_sha256=f'synthetic-{row.vote_id}',
+            match_status='VALIDATED',extraction_status='EXTRACTED',semantic_status='VALIDATED',
+            text='synthetic municipal history apples oranges' if row.vote_id == 'old' else 'synthetic heldout public policy bananas'))
+    return records

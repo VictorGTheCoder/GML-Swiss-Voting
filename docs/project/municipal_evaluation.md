@@ -54,7 +54,7 @@ must be established from verified coverage before tuning. Missing eligible parti
 rather than populated with invented rows.
 
 `history_policy='frozen'` restricts municipal history to training rows. `rolling` additionally admits
-earlier validation outcomes for subsequent predictions. Both require an earlier voting date and
+earlier held-out outcomes for subsequent predictions, including earlier test dates in an explicit final run. Both require an earlier voting date and
 result publication evidence at or before the individual forecast instant. Unknown or late publication
 never enters either baseline. Same-date results are excluded even for multiple objects.
 
@@ -241,8 +241,9 @@ scikit-learn version.
 `selected_ridge_alphas={'ridge_history': 1.0, 'ridge_statpop_nationality': 1.0}` freezes strengths;
 these runs do not use held-out targets for fitting or selection. Final-test mode requires this explicit
 mapping for every reference, in addition to `choices_frozen=True`. It never selects an alpha from
-test errors or emits validation-selection scores derived from test targets. Current references fit
-only the declared training period, without an implicit training-plus-validation refit.
+test errors or emits validation-selection scores derived from test targets. References fit the declared training period by default. Setting `refit_train_validation=True` before
+validation/freezing explicitly declares a final training-plus-validation refit; see
+[the controlled final protocol](final_evaluation.md).
 
 ### CLI source-block manifests
 
