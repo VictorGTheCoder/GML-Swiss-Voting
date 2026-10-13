@@ -25,7 +25,8 @@ def test_pipeline_joins_prepared_features_and_reports_incremental_reference_on_s
     joined = result['joined_features'].set_index(['municipality_id','vote_id'])
     assert joined.loc[('a','next'),'statpop__population'] == 100
     assert result['coverage']['feature_blocks']['statpop']['matched_rows'] == 5
-    assert set(result['metrics']) == {'constant','municipal_history','ridge_history','ridge_statpop'}
+    assert set(result['metrics']) == {'constant','municipal_history','ridge_history','ridge_statpop',
+        'hist_gradient_boosting_history','hist_gradient_boosting_statpop'}
     keys = result['predictions'].groupby('model').apply(lambda g: set(zip(g.municipality_id,g.vote_id)),include_groups=False)
     assert all(value == {('a','next'),('c','next')} for value in keys)
     assert result['manifest']['regularized']['ridge_statpop']['selected_alpha'] in config.ridge_alphas
