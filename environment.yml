@@ -16,6 +16,7 @@ dependencies:
   - pdfplumber
   - openpyxl
   - requests
+  - tabulate
 
   # Machine learning
   - scikit-learn

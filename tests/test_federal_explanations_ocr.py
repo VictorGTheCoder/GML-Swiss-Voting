@@ -1,10 +1,10 @@
-from pathlib import Path
 import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from scripts.federal_explanations_ocr import extract_pdf_pages  # noqa: E402
+from scripts.federal_explanations.federal_explanations_ocr import extract_pdf_pages
 
 
 def _pdf_with_text(path: Path, text: str) -> None:

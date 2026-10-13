@@ -312,7 +312,7 @@ join an unevidenced raw population file.
 ### Paired brochure text experiment
 
 Supply `--text-records reviewed-records.json` (a JSON list using the reviewed
-record contract in `federal_explanations_temporal.py`), or pass `text_records`
+record contract in `scripts/forecast_text_export.py`), or pass `text_records`
 to `evaluate`. The evaluator reruns the version-bound export gate; unknown
 availability, stale source decisions, ambiguous correspondence and invalid
 extractions cannot enter the experiment. It additionally requires the document's

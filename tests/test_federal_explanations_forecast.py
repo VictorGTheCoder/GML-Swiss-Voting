@@ -1,6 +1,6 @@
 import json
 
-from scripts.federal_explanations_temporal import build_forecast_text_export
+from scripts.forecast_text_export import build_forecast_text_export
 
 
 def reviewed(**changes):

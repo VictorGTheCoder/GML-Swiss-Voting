@@ -234,7 +234,8 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     exclude(~(np.isfinite(rows.yes_count) & np.isfinite(rows.no_count)
               & rows.yes_count.ge(0) & rows.no_count.ge(0) & total.gt(0)), 'undefined_target')
     exclude(rows.geography_id.isna() | rows.geography_id.astype(str).str.strip().eq(''), 'geography_missing')
-    exclude(rows.source_version.isna(), 'source_version_missing')
+    rows['geography_id'] = rows.geography_id.astype(str)
+    exclude(rows.source_version.isna() | rows.source_version.astype(str).str.strip().eq(''), 'source_version_missing')
     for name in ['voting_date', 'forecast_at', 'result_available_at']:
         rows[name] = pd.to_datetime(rows[name], errors='coerce', utc=True, format='mixed')
     rows['voting_date'] = rows.voting_date.dt.normalize()
@@ -252,6 +253,11 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     rows['partition'] = rows.voting_date.map(mapping)
     exclude(rows.partition.isna(), 'unassigned_date')
     rows = rows.sort_values(['voting_date', 'vote_id', 'municipality_id']).reset_index(drop=True)
+    # Pin every label available for fitting/model selection, excluding reserved test labels.
+    pretest_labels = rows.loc[rows.partition.isin(['train', 'validation']),
+                              KEYS + ['voting_date', 'partition', 'yes_count', 'no_count']]
+    pretest_labels_sha256 = hashlib.sha256(
+        pretest_labels.to_json(orient='split', date_format='iso').encode()).hexdigest()
     from scripts.feature_blocks import join_feature_blocks
     from scripts.regularized_votes import regularized_predictions
     from scripts.voting_history import build_historical_features
@@ -263,12 +269,13 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
                           'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
                           'geography': geography, 'feature_blocks': block_manifest, 'regularized': {},
                           'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
-                          'implementation_sha256': {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','boosting_votes.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','federal_explanations_temporal.py']},
+                          'implementation_sha256': {name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','boosting_votes.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','forecast_text_export.py','federal_explanations/federal_explanations_temporal.py']},
                           'versions': {'python': platform.python_version(), 'pandas': pd.__version__, 'numpy': np.__version__, 'scikit-learn': sklearn.__version__},
                           'weight_origin': config.evaluation_weight_origin,
                           'experiment_configuration': asdict(config),
                           'prepared_availability_sha256': hashlib.sha256(rows[KEYS + ['voting_date','source_version','geography_id','forecast_at','forecast_evidence','result_available_at','result_availability_evidence']].to_json(orient='split',date_format='iso').encode()).hexdigest(),
                           'partition_keys_sha256': hashlib.sha256(rows[KEYS+['voting_date','partition']].to_json(orient='split',date_format='iso').encode()).hexdigest(),
+                          'pretest_labels_sha256': pretest_labels_sha256,
                           'text_records_sha256': _digest(text_records),
                           'text_records_requested': text_records is not None,
                           'forecast_cutoffs': {vote: str(group.forecast_at.iloc[0]) for vote, group in rows.groupby('vote_id')}}
@@ -289,15 +296,18 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     predictions['clipped'] = False
     predictions['fallback'] = np.column_stack([np.zeros(len(targets),dtype=bool),history.loc[targets.index,'history_missing'].astype(bool)]).ravel()
     regularized_manifest = {}
+    admissible_blocks = tuple(block for block in feature_blocks
+                              if block.prerequisite_reason is None
+                              and block_coverage[block.block_id]['matched_rows'] > 0)
     if feature_blocks:
-        regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, tuple(block for block in feature_blocks if block.prerequisite_reason is None))
+        regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, admissible_blocks)
         predictions = pd.concat([predictions, regularized], ignore_index=True)
     hist_gradient_boosting_manifest = {}
     if feature_blocks:
         from scripts.boosting_votes import hist_gradient_boosting_predictions
         boosted, hist_gradient_boosting_manifest = hist_gradient_boosting_predictions(
             rows, config, predictions, design,
-            tuple(block for block in feature_blocks if block.prerequisite_reason is None))
+            admissible_blocks)
         predictions = pd.concat([predictions, boosted], ignore_index=True)
     if unpredictable:
         exclusions['no_admissible_training_history'] = unpredictable
@@ -322,7 +332,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     if text_records is not None:
         from scripts.text_votes import text_experiment
         text_frozen_skipped = frozen_experiment is not None and frozen_experiment['text_choices']['status'] != 'evaluated'
-        text_result = text_experiment(rows, config, predictions, design, feature_blocks, [] if text_frozen_skipped else text_records)
+        text_result = text_experiment(rows, config, predictions, design, admissible_blocks, [] if text_frozen_skipped else text_records)
         if text_frozen_skipped:
             text_result['reason'] = 'Text branch was skipped in frozen validation; final nontext evaluation proceeds'
             text_result['frozen_validation_status'] = frozen_experiment['text_choices']['status']
@@ -417,7 +427,7 @@ def main():
     else:
         if args.input is None or (args.config is None and frozen is None):
             parser.error('Real evaluation requires --input and --config with publication and geography evidence; use --synthetic for the reproducible example')
-        rows = pd.read_parquet(args.input) if args.input.suffix == '.parquet' else pd.read_csv(args.input, dtype={key: str for key in KEYS})
+        rows = pd.read_parquet(args.input) if args.input.suffix == '.parquet' else pd.read_csv(args.input, dtype={key: str for key in KEYS + ['geography_id']})
         config = EvaluationConfig(**(json.loads(args.config.read_text()) if args.config else frozen['signature']['configuration']))
     if args.final_test:
         from dataclasses import replace

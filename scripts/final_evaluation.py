@@ -84,6 +84,7 @@ def experiment_signature(manifest):
             'geography':manifest['geography'],'feature_blocks':manifest['feature_blocks'],
             'forecast_cutoffs':manifest['forecast_cutoffs'],'partition_keys_sha256':manifest['partition_keys_sha256'],
             'prepared_availability_sha256':manifest['prepared_availability_sha256'],
+            'pretest_labels_sha256':manifest['pretest_labels_sha256'],
             'text_records_sha256':manifest.get('text_records_sha256'),
             'validation_windows':windows,
             'final_refit_schedule':('training_plus_validation_before_first_test_forecast'

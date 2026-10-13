@@ -82,8 +82,7 @@ def test_available_nontext_blocks_have_a_common_comparison_model_and_keep_indivi
     second = FeatureBlock('second', second.scope, second.records.assign(population=second.records.population * 2),
         second.numeric_features, second.categorical_features, second.definitions,
         second.source_url, second.source_version)
-    from scripts.evaluate_votes import synthetic_example
-    rows, settings = synthetic_example()
+    rows, settings = rows_for_windows(), config()
     result = evaluate(rows, settings, feature_blocks=(feature_block(), second))
 
     models = set(result['predictions'].model)

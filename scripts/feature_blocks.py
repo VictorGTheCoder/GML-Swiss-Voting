@@ -29,6 +29,8 @@ def join_feature_blocks(rows, blocks, geography_mode):
     identifiers = [block.block_id for block in blocks]
     if len(identifiers) != len(set(identifiers)):
         raise ValueError('Feature block identifiers must be unique')
+    if 'history' in identifiers:
+        raise ValueError("Feature block identifier 'history' is reserved for the history-only model")
     for block in blocks:
         if block.geography_mode not in ['historically_existing','retrospective_fixed']:
             raise ValueError('Feature block geography_mode must be declared')
@@ -42,8 +44,12 @@ def join_feature_blocks(rows, blocks, geography_mode):
         outcomes = {'yes_count','no_count','votes_yes','votes_no','target_share','yes_share',
                     'turnout','ballot_total','eligible_voters','prediction','municipality_id','vote_id',
                     'ballots_cast','valid_ballots','blank_invalid_ballots','yes_pct_ofs','turnout_pct_ofs'}
-        if any(name.lower() in outcomes for name in names):
-            raise ValueError('Same-object outcome/key fields cannot be predictors')
+        evaluation_only = {'evaluation_weight', 'evaluation_weights', 'eval_weight',
+                           'electorate_weight', 'sample_weight', 'scoring_weight',
+                           'metric_weight', 'row_weight'}
+        if any(name.lower() in outcomes or name.lower() in evaluation_only or
+               name.lower().startswith(('evaluation_weight_', 'eval_weight_')) for name in names):
+            raise ValueError('Same-object outcome/key or evaluation-only fields cannot be predictors')
         for name in names:
             joined[f'{block.block_id}__{name}'] = np.nan if name in block.numeric_features else None
         if block.prerequisite_reason is not None:
@@ -71,6 +77,9 @@ def join_feature_blocks(rows, blocks, geography_mode):
         if block.scope == 'object':
             if {'object_match_status','object_match_evidence'} - set(source):
                 raise ValueError('Object metadata requires validated correspondence columns')
+        if block.scope == 'municipality':
+            # Match the evaluator's string reference IDs for CSV, Parquet and in-memory blocks.
+            source['geography_id'] = source.geography_id.astype('string')
         if source[entity].isna().any() or source[entity].astype(str).str.strip().eq('').any():
             raise ValueError('Feature records need entity identifiers')
         if source.source_version.isna().any() or source.source_version.ne(block.source_version).any():

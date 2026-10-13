@@ -46,6 +46,27 @@ def test_validation_freeze_controls_final_features_sources_and_refit():
         freeze_experiment(final)
 
 
+@pytest.mark.parametrize('refit', [False, True])
+@pytest.mark.parametrize('changed_vote, should_reject', [('old', True), ('next', True), ('final', False)])
+def test_frozen_signature_pins_pretest_labels_but_not_reserved_test_labels(refit, changed_vote, should_reject):
+    from scripts.final_evaluation import freeze_experiment
+
+    rows, config = synthetic_example()
+    config = replace(config, refit_train_validation=refit)
+    blocks = (synthetic_feature_example(),)
+    frozen = freeze_experiment(evaluate(rows, config, feature_blocks=blocks))
+    final_config = replace(config, mode='final_test', choices_frozen=True,
+                           selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    rows.loc[rows.vote_id.eq(changed_vote), 'yes_count'] += 1
+
+    if should_reject:
+        with pytest.raises(ValueError, match='frozen'):
+            evaluate(rows, final_config, feature_blocks=blocks, frozen_experiment=frozen)
+    else:
+        final = evaluate(rows, final_config, feature_blocks=blocks, frozen_experiment=frozen)
+        assert final['manifest']['pretest_labels_sha256'] == frozen['signature']['pretest_labels_sha256']
+
+
 def test_declared_final_refit_adds_validation_labels_and_rolling_test_history_uses_only_published_past():
     from scripts.final_evaluation import freeze_experiment
     rows, config = synthetic_example()

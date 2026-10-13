@@ -82,6 +82,130 @@ L'option `--prune` supprime les paquets absents de `environment.yml`.
 
 Les données brutes et les caches ne sont pas versionnés : ils doivent être récupérés ou reconstruits à l'aide des scripts du projet. Des **snapshots `processed` validés et utiles au travail d'équipe** peuvent être conservés sous `data/processed/<dataset>/`.
 
+### Pipeline OFS et Swissvotes
+
+La pipeline nettoie et valide OFS et Swissvotes dans deux tables distinctes. Elle ne fusionne pas les datasets :
+
+```bash
+python scripts/run_pipeline.py
+```
+
+Pour renouveler les deux sources avant la reconstruction :
+
+```bash
+python scripts/run_pipeline.py --force
+```
+
+Les fichiers bruts présents sont réutilisés sans accès réseau, sauf avec `--force`.
+Le pipeline travaille sur l'historique complet du cube, depuis 1960 ; aucun filtre
+2010–2026 n'est appliqué. Swissvotes est téléchargé au format CSV puis nettoyé en
+Parquet. Les deux tables restent séparées. Leur correspondance peut être préparée
+explicitement avec `--prepare-joins`, sans recopier les variables entre sources.
+
+Fichiers produits :
+
+- `data/raw/ofs-votes/px-x-1703030000_101.px` : cube OFS brut et provenance associée.
+- `data/raw/swissvotes/swissvotes.csv` : données Swissvotes et provenance associée.
+- `data/interim/ofs-votes/votes_all_levels.parquet` : cube OFS mis à plat, tous niveaux territoriaux.
+- `data/interim/ofs-votes/votes_communes_clean.parquet` : résultats communaux nettoyés.
+- `data/processed/ofs-votes/votes_communes.parquet` : résultats ayant passé la validation.
+- `data/processed/swissvotes/swissvotes_clean.parquet` : objets Swissvotes nettoyés, une ligne par objet.
+- `data/interim/integration/ofs_swissvotes_crosswalk.parquet` : correspondance vérifiée OFS ↔ Swissvotes, une ligne par objet OFS, uniquement si la préparation est demandée.
+- `reports/` : audit OFS, journaux de nettoyage, validation et diagnostic de jointure générés localement, non versionnés.
+
+Les étapes peuvent se lancer individuellement, **depuis la racine du dépôt** :
+
+```bash
+python -m scripts.ofs_votes.download_ofs_votes
+python -m scripts.swissvotes.download_swissvotes
+python -m scripts.ofs_votes.parse_ofs_votes
+python -m scripts.ofs_votes.audit_ofs_votes
+python -m scripts.ofs_votes.clean_ofs_votes
+python -m scripts.ofs_votes.validate_ofs_votes
+python -m scripts.swissvotes.clean_swissvotes
+python -m scripts.integration.prepare_join
+```
+
+Organisation de `scripts/` :
+
+- `ofs_votes/` : collecte PX, parsing, audit, nettoyage et validation OFS.
+- `swissvotes/` : collecte et nettoyage Swissvotes.
+- `federal_explanations/` : collecte, extraction, audit et export des brochures.
+- `repertoire_communes/` : répertoire historique des communes, correspondance de codes et contrôle des codes de votation.
+- `statpop/` : population résidante par commune (collecte, conversion Parquet, features démographiques).
+- `typologies/` : typologies territoriales et régions linguistiques (collecte, table des communes).
+- `common/` : configuration et construction unique des identifiants.
+- `integration/` : préparation des correspondances entre sources, sans fusion des variables.
+- `run_pipeline.py` : orchestration OFS et Swissvotes ; avec `--with-communes`, répertoire des communes, STATPOP et typologies.
+
+La préparation des correspondances est optionnelle :
+
+```bash
+python -m scripts.integration.prepare_join
+# Ou nettoyage suivi du contrôle des clés :
+python -m scripts.run_pipeline --prepare-joins
+```
+
+Seuls les identifiants, dates et types de question sont comparés. La table de correspondance est un artefact intermédiaire ; les datasets restent séparés jusqu'à l'intégration des autres sources.
+
+Le pipeline historique produit les rapports dans `reports/` et refuse d'écrire le Parquet final si un contrôle bloquant échoue. Les unités spéciales et les questions subsidiaires restent présentes avec leurs indicateurs ; leur exclusion éventuelle dépendra de l'analyse.
+
+### Nettoyage et clé de jointure
+
+La colonne commune `vote_key` est une **chaîne de caractères** : le code OFS est
+conservé, et le numéro Swissvotes `anr` est multiplié exactement par 10 avec
+`Decimal`. Par exemple, `687` devient `6870` ; `682.1`, `682.2` et `682.3`
+deviennent trois clés distinctes. Le [codebook Swissvotes](https://swissvotes.ch/page/dataset/codebook-de.pdf)
+définit `anr` comme le numéro de votation OFS ; la représentation multipliée par 10
+a été vérifiée sur les codes du cube PX. Les dates et les indicateurs de question
+subsidiaire sont contrôlés indépendamment. Aucun rapprochement par titre ou date seule n'est effectué.
+
+Pour Swissvotes, les espaces périphériques et Unicode sont normalisés, les cellules
+vides et `.` deviennent nulles. Les codes `0` et `9999` sont conservés selon leur
+signification dans chaque variable. La date de votation, la forme juridique,
+les nombres de bulletins et les pourcentages nationaux/cantonaux sont typés et contrôlés.
+Les autres variables restent des chaînes : leur encodage pour le modèle nécessite
+une sélection et une interprétation selon le codebook. Aucune imputation automatique n'est faite.
+
+Les votes futurs de Swissvotes restent présents avec `is_future_vote`. Les anomalies
+de comptage et les écarts de pourcentages sont signalés par des colonnes `flag_*`
+et détaillés dans `reports/swissvotes_quality_issues.csv` ; les valeurs publiées ne
+sont pas remplacées. Un écart de pourcentage peut refléter un dénominateur différent.
+
+`reports/join_preparation.md` résume les contrôles. `reports/join_crosswalk.csv`
+permet de vérifier chaque correspondance, et `reports/swissvotes_without_ofs.csv`
+liste les objets Swissvotes absents du jeu OFS nettoyé, notamment hors de sa couverture.
+Une clé OFS sans correspondance, une date incompatible ou un type de question
+contradictoire bloque la publication de la table de correspondance. Les doublons
+qui transformeraient la jointure en plusieurs-à-plusieurs sont également bloquants.
+
+Les résultats nationaux et les variables connues après le scrutin ne doivent pas
+être utilisés comme prédicteurs d'un résultat à prévoir avant le vote. Les lignes
+signalées et les unités spéciales doivent être traitées explicitement lors du choix
+de la population d'analyse. Les sorties d'une exécution antérieure ne sont pas une
+preuve de réussite si la dernière commande du pipeline a échoué : consulter ses rapports.
+
+La dépendance `tabulate`, utilisée pour les rapports Markdown, est incluse dans `environment.yml`. Mettre à jour l'environnement existant avec la commande de la section Installation.
+
+Vérifications locales, sans téléchargement :
+
+```bash
+python -m pytest tests -q
+python -m ruff check scripts tests
+```
+
+### Explications du Conseil fédéral
+
+### Datasets communaux (STATPOP, typologies, répertoire des communes)
+
+Ces trois sources se construisent à part, sans fusion avec les résultats de votations :
+
+```bash
+python -m scripts.run_pipeline --with-communes
+```
+
+Le premier téléchargement de STATPOP prend environ une heure à cause de la limite de débit de l'OFS ; les fichiers présents sont ensuite réutilisés. Chaque dataset écrit sous `data/<étape>/<dataset>/` (`repertoire_communes`, `statpop`, `typologies`). Pour leur contenu, leurs règles de disponibilité avant scrutin et leur reconstruction, voir la documentation de [STATPOP](docs/datasets/statpop/README.md), des [typologies](docs/datasets/typologies/README.md) et du [répertoire des communes](docs/datasets/repertoire_communes/README.md).
+
 Le snapshot des explications du Conseil fédéral est disponible dans `data/processed/federal_explanations/`. Pour son contenu, ses limites et sa reconstruction, voir la [documentation du dataset](docs/datasets/federal_explanations/README.md).
 
 ## Collaboration

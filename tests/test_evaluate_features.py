@@ -182,3 +182,36 @@ def test_release_indexing_preserves_allowed_feature_named_verified():
                      definitions=source.definitions|{'verified':'fixture numerical feature'})
     result = evaluate(rows,config,feature_blocks=(source,))
     assert result['joined_features'].statpop__verified.tolist() == [42]*5
+
+
+@pytest.mark.parametrize('name', [
+    'evaluation_weight', 'evaluation_weights', 'eval_weight', 'electorate_weight',
+    'sample_weight', 'scoring_weight', 'metric_weight', 'row_weight',
+    'evaluation_weight_latest',
+])
+def test_evaluation_only_weights_cannot_be_feature_block_predictors(name):
+    from dataclasses import replace
+
+    rows, config = synthetic_example()
+    source = block()
+    unsafe = replace(source, records=source.records.assign(**{name: 42}),
+                     numeric_features=source.numeric_features + (name,),
+                     definitions=source.definitions | {name: 'Retrospective evaluation weight'})
+    with pytest.raises(ValueError, match='evaluation-only'):
+        evaluate(rows, config, feature_blocks=(unsafe,))
+
+
+def test_history_identifier_is_reserved_and_unmatched_blocks_are_not_fitted():
+    from dataclasses import replace
+
+    rows, config = synthetic_example()
+    with pytest.raises(ValueError, match='reserved'):
+        evaluate(rows, config, feature_blocks=(replace(block(), block_id='history'),))
+
+    source = block()
+    unmatched = replace(source, records=source.records.assign(availability_status='unknown'))
+    result = evaluate(rows, config, feature_blocks=(unmatched,))
+    assert result['coverage']['feature_blocks']['statpop']['matched_rows'] == 0
+    assert 'ridge_statpop' not in result['metrics']
+    assert result['ablations']['statpop']['status'] == 'skipped'
+    assert result['ablations']['statpop']['prerequisite_reason'] == 'No admissible source matches at forecast time'

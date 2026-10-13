@@ -20,7 +20,9 @@ def ablation_reports(predictions, blocks, manifests, coverage, regularized, mode
                   'paired_objects': int(paired.vote_id.nunique()),
                   'paired_dates': int(paired.voting_date_reference.nunique()),
                   'status': 'completed' if len(paired) else 'skipped',
-                  'prerequisite_reason': block.prerequisite_reason or ('No paired admissible observations' if paired.empty else None),
+                  'prerequisite_reason': (block.prerequisite_reason or
+                      ('No admissible source matches at forecast time' if coverage[block.block_id]['matched_rows'] == 0
+                       else 'No paired admissible observations' if paired.empty else None)),
                   'paired_reference_mae_pp': None, 'paired_candidate_mae_pp': None, 'paired_mae_change_pp': None}
         if not paired.empty:
             reference_mae = float((paired.prediction_reference-paired.target_share_reference).abs().mean()*100)

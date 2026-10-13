@@ -100,6 +100,18 @@ def test_invalid_experiment_configuration_fails_before_scoring(changes, message)
         evaluate(prepared(), EvaluationConfig(**(options | changes)))
 
 
+def test_blank_source_versions_are_excluded_from_prepared_outcomes():
+    from scripts.evaluate_votes import synthetic_example
+
+    rows, config = synthetic_example()
+    rows.loc[(rows.vote_id == 'old') & (rows.municipality_id == 'a'), 'source_version'] = ''
+    rows.loc[(rows.vote_id == 'next') & (rows.municipality_id == 'a'), 'source_version'] = '  '
+    result = evaluate(rows, config)
+    assert result['exclusions']['source_version_missing'] == 2
+    assert len(result['eligible_rows']) == len(rows) - 2
+    assert result['eligible_rows'].source_version.str.strip().ne('').all()
+
+
 def test_final_test_requires_frozen_choices_and_audits_coverage_and_weights():
     data = prepared()
     data['evaluation_weight'] = [1, 1, 1, 3, 2]

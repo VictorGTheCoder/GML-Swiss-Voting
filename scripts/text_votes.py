@@ -8,7 +8,7 @@ from sklearn.linear_model import Ridge
 from scipy.sparse import csr_matrix, hstack
 
 from scripts.expanding_windows import select_training_rows, window_dates
-from scripts.federal_explanations_temporal import build_forecast_text_export
+from scripts.forecast_text_export import build_forecast_text_export
 from scripts.final_evaluation import TEXT_POLICY
 from scripts.regularized_votes import _pipeline, historical_features
 
