@@ -33,6 +33,10 @@ class EvaluationConfig:
     audit_flag_policy: str = 'exclude'
     ridge_alphas: tuple[float, ...] = (0.1, 1.0, 10.0, 100.0)
     selected_ridge_alphas: dict[str, float] | None = None
+    hist_gradient_boosting_candidates: tuple[tuple[int, int, float, int], ...] = tuple(
+        (leaves, minimum, rate, 100)
+        for leaves in (7, 15) for minimum in (50, 200) for rate in (0.05, 0.1))
+    selected_hist_gradient_boosting: dict[str, dict] | None = None
     bootstrap_replicates: int = 1000
     evaluation_weight_origin: str = 'not supplied; evaluation-only weights have unspecified provenance'
     refit_train_validation: bool = False
@@ -279,6 +283,13 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     if feature_blocks:
         regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, tuple(block for block in feature_blocks if block.prerequisite_reason is None))
         predictions = pd.concat([predictions, regularized], ignore_index=True)
+    hist_gradient_boosting_manifest = {}
+    if feature_blocks:
+        from scripts.boosting_votes import hist_gradient_boosting_predictions
+        boosted, hist_gradient_boosting_manifest = hist_gradient_boosting_predictions(
+            rows, config, predictions, design,
+            tuple(block for block in feature_blocks if block.prerequisite_reason is None))
+        predictions = pd.concat([predictions, boosted], ignore_index=True)
     if unpredictable:
         exclusions['no_admissible_training_history'] = unpredictable
     metrics, coverage = {}, {'unpredictable_rows': unpredictable,
@@ -309,6 +320,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     from scripts.feature_ablations import ablation_reports
     ablations = ablation_reports(predictions, feature_blocks, block_manifest, block_coverage, regularized_manifest, config.mode)
     run_manifest['regularized'] = regularized_manifest
+    run_manifest['hist_gradient_boosting'] = hist_gradient_boosting_manifest
     result = {'text_experiment': text_result, 'ablations': ablations, 'manifest': run_manifest, 'partitions': rows[KEYS + ['voting_date','partition']],
             'eligible_rows': rows, 'predictions': predictions, 'coverage': coverage,
             'exclusions': exclusions, 'metrics': metrics,

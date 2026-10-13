@@ -254,6 +254,31 @@ electorate-weighted MAE. Manifests record per-window candidate fits, boundaries,
 training row counts, feature allowlists, preprocessing policy, training-design content hashes and
 scikit-learn version.
 
+### Histogram gradient boosting comparator (#44)
+
+When prepared nontext feature blocks are supplied, the same evaluation seam adds
+`hist_gradient_boosting_history`, one `hist_gradient_boosting_<block_id>` model per block, and
+`hist_gradient_boosting_combined` when multiple blocks are available. Each model uses the same
+history and allowlisted feature columns as its paired Ridge reference. Predictions are restricted
+to the same baseline-eligible evaluation keys; raw values, clipped shares, object/date errors,
+equal-row MAE, and electorate-weighted MAE use the common reporting path.
+
+The starting validation grid contains all combinations of `max_leaf_nodes` 7/15,
+`min_samples_leaf` 50/200, `learning_rate` 0.05/0.1, and `max_iter` 100. It is declared by
+`EvaluationConfig.hist_gradient_boosting_candidates` and can be reduced or adjusted for verified
+coverage; adjustments remain visible in the run configuration and model manifest. Settings are
+selected by aggregate equal-row validation MAE across chronological windows, with deterministic
+tuple ordering for ties. Automatic internal early stopping is disabled. `seed` is passed as the
+estimator random state and recorded.
+
+Boosting uses a dense allowlist-driven preparation: numeric columns receive training-only median
+imputation; categorical columns receive training-only missing-value imputation and dense one-hot
+encoding; all allowlisted columns receive missingness indicators. No text representation is passed
+to this model. The manifest records the selected settings, candidate scores, per-window training
+and evaluation keys, fitting cutoff, preprocessing, seed, scikit-learn version, and training-design
+hash. A nonlinear model is a predictive comparator only; it does not support causal or individual
+voter claims. Synthetic fixtures check deterministic output and pairing, not model superiority.
+
 `selected_ridge_alphas={'ridge_history': 1.0, 'ridge_statpop_nationality': 1.0}` freezes strengths;
 these runs do not use held-out targets for fitting or selection. Final-test mode requires this explicit
 mapping for every reference, in addition to `choices_frozen=True`. It never selects an alpha from
