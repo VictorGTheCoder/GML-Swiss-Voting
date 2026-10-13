@@ -16,7 +16,10 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 def historical_features(rows, config):
     design = pd.DataFrame(index=rows.index, columns=['municipal_history','history_missing'], dtype=float)
     for index, target in rows.iterrows():
-        partitions = ['train','validation'] if config.history_policy == 'rolling' and target.partition != 'train' else ['train']
+        refit = config.mode == 'final_test' and config.refit_train_validation
+        partitions = ['train','validation'] if refit or (config.history_policy == 'rolling' and target.partition != 'train') else ['train']
+        if config.history_policy == 'rolling' and target.partition == 'test':
+            partitions.append('test')
         past = rows.loc[rows.partition.isin(partitions) & rows.voting_date.lt(target.voting_date)
                         & rows.result_available_at.le(target.forecast_at)
                         & rows.result_availability_evidence.notna()
@@ -49,7 +52,8 @@ def regularized_predictions(rows, config, baseline, design, blocks):
         raise ValueError('ridge_alphas must be finite positive candidates')
     if evaluation.empty:
         return pd.DataFrame(columns=baseline.columns), {}
-    train = rows.loc[rows.partition.eq('train') & rows.result_available_at.le(evaluation.forecast_at.min())
+    fitting_partitions = ['train','validation'] if config.mode == 'final_test' and config.refit_train_validation else ['train']
+    train = rows.loc[rows.partition.isin(fitting_partitions) & rows.result_available_at.le(evaluation.forecast_at.min())
                      & rows.result_availability_evidence.notna()
                      & rows.result_availability_evidence.astype(str).str.strip().ne('')]
     if train.empty:

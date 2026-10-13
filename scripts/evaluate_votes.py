@@ -4,6 +4,9 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 import hashlib
 import platform
+from pathlib import Path
+
+import sklearn
 
 import numpy as np
 import pandas as pd
@@ -29,6 +32,9 @@ class EvaluationConfig:
     audit_flag_policy: str = 'exclude'
     ridge_alphas: tuple[float, ...] = (0.1, 1.0, 10.0)
     selected_ridge_alphas: dict[str, float] | None = None
+    bootstrap_replicates: int = 1000
+    evaluation_weight_origin: str = 'not supplied; evaluation-only weights have unspecified provenance'
+    refit_train_validation: bool = False
 
 
 def _apply_geography(rows, config, crosswalk, exclusions):
@@ -157,7 +163,7 @@ def _apply_geography(rows, config, crosswalk, exclusions):
     return output, manifest
 
 
-def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None, feature_blocks: tuple = (), text_records=None) -> dict:
+def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None, feature_blocks: tuple = (), text_records=None, frozen_experiment=None) -> dict:
     """Run the complete evaluation seam on prepared rows, returning auditable artifacts."""
     missing = set(REQUIRED) - set(prepared.columns)
     if missing:
@@ -224,6 +230,28 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     rows['partition'] = rows.voting_date.map(mapping)
     exclude(rows.partition.isna(), 'unassigned_date')
     rows = rows.sort_values(['voting_date', 'vote_id', 'municipality_id']).reset_index(drop=True)
+    from scripts.feature_blocks import join_feature_blocks
+    from scripts.regularized_votes import historical_features, regularized_predictions
+    joined, join_report, block_manifest, block_coverage = join_feature_blocks(rows, feature_blocks, config.geography_mode)
+    design = pd.concat([historical_features(rows, config), joined], axis=1) if feature_blocks else joined
+    from scripts.final_evaluation import _digest, verify_frozen_experiment
+    run_manifest = {**asdict(config), 'input_rows': len(prepared),
+                          'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
+                          'geography': geography, 'feature_blocks': block_manifest, 'regularized': {},
+                          'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
+                          'implementation_sha256': {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','feature_blocks.py','text_votes.py','final_evaluation.py']},
+                          'versions': {'python': platform.python_version(), 'pandas': pd.__version__, 'numpy': np.__version__, 'scikit-learn': sklearn.__version__},
+                          'weight_origin': config.evaluation_weight_origin,
+                          'experiment_configuration': asdict(config),
+                          'prepared_availability_sha256': hashlib.sha256(rows[KEYS + ['voting_date','source_version','geography_id','forecast_at','forecast_evidence','result_available_at','result_availability_evidence']].to_json(orient='split',date_format='iso').encode()).hexdigest(),
+                          'partition_keys_sha256': hashlib.sha256(rows[KEYS+['voting_date','partition']].to_json(orient='split',date_format='iso').encode()).hexdigest(),
+                          'text_records_sha256': _digest(text_records),
+                          'forecast_cutoffs': {vote: str(group.forecast_at.iloc[0]) for vote, group in rows.groupby('vote_id')}}
+    if frozen_experiment is not None:
+        if config.mode != 'final_test':
+            raise ValueError('A frozen experiment artifact is loaded only in final_test mode')
+        verify_frozen_experiment(run_manifest,frozen_experiment)
+        run_manifest['frozen_experiment_sha256'] = frozen_experiment['sha256']
     train = rows.loc[rows.partition.eq('train')]
     predictions = []
     unpredictable = 0
@@ -238,7 +266,10 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
             unpredictable += 1
             continue
         fallback = float(training_pool.target_share.mean())
-        history_pool = rows.loc[available & rows.partition.isin(['train', 'validation'])] if config.history_policy == 'rolling' else training_pool
+        history_partitions = ['train','validation'] if config.history_policy == 'rolling' or (config.mode == 'final_test' and config.refit_train_validation) else ['train']
+        if config.history_policy == 'rolling' and config.mode == 'final_test':
+            history_partitions.append('test')
+        history_pool = rows.loc[available & rows.partition.isin(history_partitions)]
         local = history_pool.loc[history_pool.municipality_id.eq(target.municipality_id)
                                  & history_pool.geography_id.eq(target.geography_id)]
         history = float(local.target_share.mean()) if not local.empty else fallback
@@ -246,10 +277,6 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
             predictions.append({**target.to_dict(), 'model': model, 'prediction': prediction,
                                 'fallback': model == 'municipal_history' and local.empty})
     predictions = pd.DataFrame(predictions, columns=list(rows.columns) + ['model','prediction','fallback'])
-    from scripts.feature_blocks import join_feature_blocks
-    from scripts.regularized_votes import historical_features, regularized_predictions
-    joined, join_report, block_manifest, block_coverage = join_feature_blocks(rows, feature_blocks, config.geography_mode)
-    design = pd.concat([historical_features(rows, config), joined], axis=1) if feature_blocks else joined
     regularized_manifest = {}
     if feature_blocks:
         regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, tuple(block for block in feature_blocks if block.prerequisite_reason is None))
@@ -282,20 +309,32 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     text_result = {}
     if text_records is not None:
         from scripts.text_votes import text_experiment
-        text_result = text_experiment(rows, config, predictions, design, feature_blocks, text_records)
+        text_frozen_skipped = frozen_experiment is not None and frozen_experiment['text_choices']['status'] != 'evaluated'
+        text_result = text_experiment(rows, config, predictions, design, feature_blocks, [] if text_frozen_skipped else text_records)
+        if text_frozen_skipped:
+            text_result['reason'] = 'Text branch was skipped in frozen validation; final nontext evaluation proceeds'
+            text_result['frozen_validation_status'] = frozen_experiment['text_choices']['status']
     from scripts.feature_ablations import ablation_reports
     ablations = ablation_reports(predictions, feature_blocks, block_manifest, block_coverage, regularized_manifest, config.mode)
-    return {'text_experiment': text_result, 'ablations': ablations, 'manifest': {**asdict(config), 'input_rows': len(prepared),
-                          'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
-                          'geography': geography, 'feature_blocks': block_manifest, 'regularized': regularized_manifest,
-                          'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
-                          'versions': {'python': platform.python_version(), 'pandas': pd.__version__, 'numpy': np.__version__},
-                          'weight_origin': 'prepared evaluation_weight; retrospective weights are evaluation only',
-                          'forecast_cutoffs': {vote: str(group.forecast_at.iloc[0]) for vote, group in rows.groupby('vote_id')}}, 'partitions': rows[KEYS + ['voting_date','partition']],
+    run_manifest['regularized'] = regularized_manifest
+    result = {'text_experiment': text_result, 'ablations': ablations, 'manifest': run_manifest, 'partitions': rows[KEYS + ['voting_date','partition']],
             'eligible_rows': rows, 'predictions': predictions, 'coverage': coverage,
             'exclusions': exclusions, 'metrics': metrics,
             'by_date': pd.DataFrame(by_date), 'by_object': pd.DataFrame(by_object),
             'joined_features': pd.concat([rows[KEYS], design],axis=1), 'join_report': join_report}
+    from scripts.final_evaluation import paired_uncertainty, verify_frozen_experiment
+    combined_predictions = predictions
+    if text_result.get('status') == 'evaluated':
+        combined_predictions = pd.concat([predictions,text_result['predictions']],ignore_index=True)
+    summaries = [{'model':name,'population':'wider_nontext',**score,**coverage.get(name,{})}
+                 for name,score in metrics.items()]
+    summaries.extend({'model':name,'population':'paired_text_eligible',**score}
+                     for name,score in text_result.get('metrics',{}).items())
+    if text_result.get('status') == 'skipped':
+        summaries.append({'model':'paired_text','population':'paired_text_eligible','status':'skipped','reason':text_result['reason']})
+    result['model_summary'] = pd.DataFrame(summaries)
+    result['paired_uncertainty'] = paired_uncertainty(combined_predictions,seed=config.seed,replicates=config.bootstrap_replicates)
+    return result
 
 
 def write_artifacts(result: dict, output_dir) -> None:
@@ -337,6 +376,10 @@ def main():
     from pathlib import Path
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--synthetic', action='store_true')
+    parser.add_argument('--synthetic-text', action='store_true', help='Include illustrative validated text records with --synthetic')
+    parser.add_argument('--freeze-output', type=Path, help='Write integrity-checked frozen choices after validation')
+    parser.add_argument('--final-test', action='store_true', help='Explicit final-test mode; requires frozen experiment')
+    parser.add_argument('--frozen-experiment', type=Path, help='Previously saved validation freeze artifact')
     parser.add_argument('--synthetic-features', action='store_true', help='Include an illustrative prepared STATPOP block with --synthetic')
     parser.add_argument('--input', type=Path, help='Prepared CSV or Parquet; raw cleaned outcomes alone are insufficient')
     parser.add_argument('--blocks', type=Path, help='JSON descriptors of prepared feature blocks')
@@ -345,6 +388,13 @@ def main():
     parser.add_argument('--config', type=Path, help='JSON EvaluationConfig with date partitions and policies')
     parser.add_argument('--output', type=Path, default=Path('reports/generated/municipal_evaluation'))
     args = parser.parse_args()
+    if args.synthetic_text and not args.synthetic:
+        parser.error('--synthetic-text requires --synthetic')
+    if args.final_test != bool(args.frozen_experiment):
+        parser.error('--final-test and --frozen-experiment must be supplied together')
+    if args.final_test and args.freeze_output:
+        parser.error('--freeze-output is only for validation')
+    frozen = json.loads(args.frozen_experiment.read_text()) if args.frozen_experiment else None
     if args.synthetic_features and not args.synthetic:
         parser.error('--synthetic-features requires --synthetic')
     if args.synthetic:
@@ -352,16 +402,29 @@ def main():
             parser.error('--synthetic cannot be combined with --input/--config')
         rows, config = synthetic_example()
     else:
-        if args.input is None or args.config is None:
+        if args.input is None or (args.config is None and frozen is None):
             parser.error('Real evaluation requires --input and --config with publication and geography evidence; use --synthetic for the reproducible example')
         rows = pd.read_parquet(args.input) if args.input.suffix == '.parquet' else pd.read_csv(args.input, dtype={key: str for key in KEYS})
-        config = EvaluationConfig(**json.loads(args.config.read_text()))
+        config = EvaluationConfig(**(json.loads(args.config.read_text()) if args.config else frozen['signature']['configuration']))
+    if args.final_test:
+        from dataclasses import replace
+        if args.synthetic:
+            config = EvaluationConfig(**frozen['signature']['configuration'])
+        config = replace(config,mode='final_test',choices_frozen=True,selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    elif config.mode == 'final_test':
+        parser.error('Final config requires explicit --final-test and --frozen-experiment')
     try:
         from scripts.feature_blocks import load_feature_blocks, synthetic_feature_example
         blocks = (synthetic_feature_example(),) if args.synthetic_features else load_feature_blocks(args.blocks) if args.blocks else ()
-        result = evaluate(rows, config, text_records=json.loads(args.text_records.read_text()) if args.text_records else None, feature_blocks=blocks, geography_crosswalk=pd.read_csv(args.crosswalk, dtype=str) if args.crosswalk else None)
+        from scripts.text_votes import synthetic_text_example
+        records = synthetic_text_example(rows) if args.synthetic_text else json.loads(args.text_records.read_text()) if args.text_records else None
+        result = evaluate(rows, config, frozen_experiment=frozen, text_records=records, feature_blocks=blocks, geography_crosswalk=pd.read_csv(args.crosswalk, dtype=str) if args.crosswalk else None)
     except ValueError as error:
         parser.error(str(error))
+    if args.freeze_output:
+        from scripts.final_evaluation import freeze_experiment
+        args.freeze_output.parent.mkdir(parents=True,exist_ok=True)
+        args.freeze_output.write_text(json.dumps(freeze_experiment(result),indent=2,allow_nan=False)+'\n')
     write_artifacts(result, args.output)
     print(json.dumps({'mode': config.mode, 'metrics': result['metrics'], 'output': str(args.output)}, indent=2))
 
