@@ -43,6 +43,7 @@ outputs/
 *.joblib
 *.pkl
 *.pickle
+reports/*
 
 # Logs
 *.log
