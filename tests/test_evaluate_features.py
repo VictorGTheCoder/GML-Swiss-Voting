@@ -226,3 +226,15 @@ def test_entirely_unmatched_feature_block_is_skipped_instead_of_fitted():
     assert 'ridge_statpop' not in result['metrics']
     assert result['ablations']['statpop']['status'] == 'skipped'
     assert result['ablations']['statpop']['prerequisite_reason'] == 'No admissible source matches at forecast time'
+
+
+def test_numeric_feature_block_geography_matches_normalized_outcomes():
+    rows, config = synthetic_example()
+    rows['geography_id'] = 2020
+    source = block()
+    from dataclasses import replace
+    records = source.records.copy()
+    records['geography_id'] = 2020
+    result = evaluate(rows, config, feature_blocks=(replace(source, records=records),))
+    assert result['coverage']['feature_blocks']['statpop']['matched_rows'] == 5
+    assert result['joined_features']['statpop__population'].notna().all()
