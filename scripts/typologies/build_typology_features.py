@@ -1,31 +1,30 @@
 """Build the commune territorial context table from the OFS typologies Excel export.
 
-Input: data/raw/communes/typologies_2026-01-01.xlsx (written by download_commune_refs.py):
+Input: data/raw/typologies/typologies_2026-01-01.xlsx (written by download_typologies.py):
 sheet "Données" with one row per commune of the 2026 register (two header rows and one row of
 nomenclature identifiers), and one lookup sheet per nomenclature (code -> label).
 
-Output: data/processed/commune_typologies.parquet, one row per commune (BFS code of the 2026
+Output: data/processed/typologies/commune_typologies.parquet, one row per commune (BFS code of the 2026
 register, the geography of the vote cube) with codes and labels of
 - urban_rural: typologie urbain-rural (3 classes)
 - commune_type_9 / commune_type_25: typologie des communes
 - language_region: région linguistique
 The typology is static (a single vintage), so it is not a time-varying feature.
 
-Usage: python scripts/build_typology_features.py
+Usage: python -m scripts.typologies.build_typology_features
 """
 
 from __future__ import annotations
 
 from datetime import date
-from pathlib import Path
 
 import pandas as pd
 
-from commune_crosswalk import load_snapshot_codes
+from scripts.common.communes import ROOT, TYPOLOGIES_PROCESSED_DIR, TYPOLOGIES_RAW_DIR
+from scripts.repertoire_communes.commune_crosswalk import load_snapshot_codes
 
-ROOT = Path(__file__).resolve().parents[1]
-INPUT_PATH = ROOT / "data" / "raw" / "communes" / "typologies_2026-01-01.xlsx"
-OUTPUT_PATH = ROOT / "data" / "processed" / "commune_typologies.parquet"
+INPUT_PATH = TYPOLOGIES_RAW_DIR / "typologies_2026-01-01.xlsx"
+OUTPUT_PATH = TYPOLOGIES_PROCESSED_DIR / "commune_typologies.parquet"
 REFERENCE_DATE = date(2026, 1, 1)
 DATA_SHEET = "Données"
 NOMENCLATURE_ROW = 2  # identifiers such as CH1+CL_GDET9+2012.1, one per classified column

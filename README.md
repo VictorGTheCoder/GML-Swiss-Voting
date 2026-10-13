@@ -131,9 +131,12 @@ Organisation de `scripts/` :
 - `ofs_votes/` : collecte PX, parsing, audit, nettoyage et validation OFS.
 - `swissvotes/` : collecte et nettoyage Swissvotes.
 - `federal_explanations/` : collecte, extraction, audit et export des brochures.
+- `repertoire_communes/` : répertoire historique des communes, correspondance de codes et contrôle des codes de votation.
+- `statpop/` : population résidante par commune (collecte, conversion Parquet, features démographiques).
+- `typologies/` : typologies territoriales et régions linguistiques (collecte, table des communes).
 - `common/` : configuration et construction unique des identifiants.
 - `integration/` : préparation des correspondances entre sources, sans fusion des variables.
-- `run_pipeline.py` : orchestration OFS et Swissvotes.
+- `run_pipeline.py` : orchestration OFS et Swissvotes ; avec `--with-communes`, répertoire des communes, STATPOP et typologies.
 
 La préparation des correspondances est optionnelle :
 
@@ -192,6 +195,16 @@ python -m ruff check scripts tests
 ```
 
 ### Explications du Conseil fédéral
+
+### Datasets communaux (STATPOP, typologies, répertoire des communes)
+
+Ces trois sources se construisent à part, sans fusion avec les résultats de votations :
+
+```bash
+python -m scripts.run_pipeline --with-communes
+```
+
+Le premier téléchargement de STATPOP prend environ une heure à cause de la limite de débit de l'OFS ; les fichiers présents sont ensuite réutilisés. Chaque dataset écrit sous `data/<étape>/<dataset>/` (`repertoire_communes`, `statpop`, `typologies`). Pour leur contenu, leurs règles de disponibilité avant scrutin et leur reconstruction, voir la documentation de [STATPOP](docs/datasets/statpop/README.md), des [typologies](docs/datasets/typologies/README.md) et du [répertoire des communes](docs/datasets/repertoire_communes/README.md).
 
 Le snapshot des explications du Conseil fédéral est disponible dans `data/processed/federal_explanations/`. Pour son contenu, ses limites et sa reconstruction, voir la [documentation du dataset](docs/datasets/federal_explanations/README.md).
 

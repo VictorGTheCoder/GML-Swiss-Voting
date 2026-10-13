@@ -1,15 +1,15 @@
 """Check that commune codes of the vote results match the commune register at each vote date.
 
-For every vote date of the interim table (data/interim/votes_all_levels.parquet, built by
-parse_votes.py) the register snapshot at that date is downloaded (cached in
-data/raw/communes/vote_snapshots/) and compared with the communes that have results.
+For every vote date of the interim table (data/interim/ofs-votes/votes_all_levels.parquet, built by
+scripts.ofs_votes.parse_ofs_votes) the register snapshot at that date is downloaded (cached in
+data/raw/repertoire_communes/vote_snapshots/) and compared with the communes that have results.
 Every code is followed to the reference date with commune_crosswalk.resolve(). The cube
 does not use the codes of the vote date: early votes carry later codes (e.g. Zürich is 261
 in 1960, a code assigned in 1990), so a code missing from the register is only a problem
 when its descendants are not among those of the register's communes ("lineage mismatch").
 
-Usage: python scripts/check_vote_codes.py [--to 2026-01-01]
-Writes reports/vote_code_check.csv (one row per vote date) and prints a summary.
+Usage: python -m scripts.repertoire_communes.check_vote_codes [--to 2026-01-01]
+Writes reports/datasets/repertoire_communes/vote_code_check.csv (one row per vote date) and prints a summary.
 """
 
 from __future__ import annotations
@@ -22,12 +22,20 @@ from pathlib import Path
 import pandas as pd
 import requests
 
-from commune_crosswalk import COMMUNES_DIR, ROOT, load_mutations, load_snapshot_codes, resolve
-from download_commune_refs import AGVCH_BASE, fr_date, request_with_retry, write_atomic
+from scripts.common.communes import (
+    AGVCH_BASE,
+    REGISTER_RAW_DIR,
+    REGISTER_REPORTS_DIR,
+    ROOT,
+    fr_date,
+    request_with_retry,
+    write_atomic,
+)
+from scripts.common.config import INTERIM_PATH
+from scripts.repertoire_communes.commune_crosswalk import load_mutations, load_snapshot_codes, resolve
 
-INTERIM_PATH = ROOT / "data" / "interim" / "votes_all_levels.parquet"
-SNAPSHOT_DIR = COMMUNES_DIR / "vote_snapshots"
-REPORT_PATH = ROOT / "reports" / "vote_code_check.csv"
+SNAPSHOT_DIR = REGISTER_RAW_DIR / "vote_snapshots"
+REPORT_PATH = REGISTER_REPORTS_DIR / "vote_code_check.csv"
 SPECIAL_UNIT_MIN_CODE = 9000  # Swiss abroad, correspondence votes, unassigned ballots
 PAUSE_SECONDS = 0.5
 
