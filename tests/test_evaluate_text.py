@@ -84,3 +84,23 @@ def test_invalid_document_voting_date_is_an_auditable_mismatch():
     experiment = evaluate(rows, config, text_records=records)['text_experiment']
     assert experiment['status'] == 'skipped'
     assert experiment['forecast_or_date_mismatches'] == ['next']
+
+
+def test_text_experiment_excludes_feature_blocks_with_zero_admissible_matches():
+    from dataclasses import replace
+    from scripts.evaluate_votes import evaluate, synthetic_example
+    from scripts.feature_blocks import synthetic_feature_example
+    from scripts.text_votes import synthetic_text_example
+
+    rows, config = synthetic_example()
+    block = synthetic_feature_example()
+    records = block.records.assign(availability_status='unknown')
+    result = evaluate(rows, config,
+                      feature_blocks=(replace(block, records=records),),
+                      text_records=synthetic_text_example(rows))
+    assert result['coverage']['feature_blocks'][block.block_id]['matched_rows'] == 0
+    assert result['ablations'][block.block_id]['status'] == 'skipped'
+    text = result['text_experiment']
+    assert text['status'] == 'evaluated'
+    assert text['models']['paired_nontext']['features'] == ['municipal_history', 'history_missing']
+    assert text['models']['paired_text']['features'] == ['municipal_history', 'history_missing']
