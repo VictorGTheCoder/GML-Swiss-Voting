@@ -10,3 +10,10 @@ def test_archive_parser_keeps_pdf_links_and_ballot_dates_in_period():
     assert parse_archive_entries(html) == [
         {"vote_date": "2016-02-28", "official_url": "https://www.bk.admin.ch/dam/fr/2016-02-28_explications.pdf"}
     ]
+
+
+def test_archive_parser_accepts_historical_period_when_requested():
+    html = '<a href="/dam/fr/1978-02-26.pdf">1978-02-26</a><a href="/dam/fr/1977-01-01.pdf">1977-01-01</a>'
+    assert parse_archive_entries(html, start_year=1978) == [
+        {"vote_date": "1978-02-26", "official_url": "https://www.bk.admin.ch/dam/fr/1978-02-26.pdf"}
+    ]

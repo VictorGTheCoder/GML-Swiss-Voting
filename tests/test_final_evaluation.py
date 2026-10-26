@@ -3,8 +3,8 @@ from dataclasses import replace
 import pandas as pd
 import pytest
 
-from scripts.evaluate_votes import evaluate, synthetic_example
-from scripts.feature_blocks import synthetic_feature_example
+from scripts.modeling.evaluate_votes import evaluate, synthetic_example
+from scripts.modeling.feature_blocks import synthetic_feature_example
 
 
 def test_complete_date_paired_uncertainty_is_deterministic_and_reports_grouped_sampling():
@@ -30,7 +30,7 @@ def test_complete_date_paired_uncertainty_is_deterministic_and_reports_grouped_s
 
 
 def test_validation_freeze_controls_final_features_sources_and_refit():
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling.final_evaluation import freeze_experiment
     rows, config = synthetic_example()
     blocks = (synthetic_feature_example(),)
     validation = evaluate(rows,config,feature_blocks=blocks,text_records=[])
@@ -49,7 +49,7 @@ def test_validation_freeze_controls_final_features_sources_and_refit():
 @pytest.mark.parametrize('refit', [False, True])
 @pytest.mark.parametrize('changed_vote, should_reject', [('old', True), ('next', True), ('final', False)])
 def test_frozen_signature_pins_pretest_labels_but_not_reserved_test_labels(refit, changed_vote, should_reject):
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling.final_evaluation import freeze_experiment
 
     rows, config = synthetic_example()
     config = replace(config, refit_train_validation=refit)
@@ -68,7 +68,7 @@ def test_frozen_signature_pins_pretest_labels_but_not_reserved_test_labels(refit
 
 
 def test_declared_final_refit_adds_validation_labels_and_rolling_test_history_uses_only_published_past():
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling.final_evaluation import freeze_experiment
     rows, config = synthetic_example()
     later = rows.loc[rows.vote_id.eq('final')].copy()
     later['vote_id'] = 'test-later'
@@ -107,8 +107,8 @@ def test_weighted_pair_reports_keep_evaluation_weights_out_of_predictors():
 
 
 def test_text_final_refit_uses_unique_declared_objects_and_keeps_weighted_errors():
-    from scripts.final_evaluation import freeze_experiment
-    from scripts.text_votes import synthetic_text_example
+    from scripts.modeling.final_evaluation import freeze_experiment
+    from scripts.modeling.text_votes import synthetic_text_example
     rows,config = synthetic_example()
     rows['evaluation_weight'] = [1,1,1,3,2]
     config = replace(config,refit_train_validation=True,evaluation_weight_origin='synthetic electorate fixture')
@@ -129,8 +129,8 @@ def test_text_final_refit_uses_unique_declared_objects_and_keeps_weighted_errors
 
 
 def test_validation_skipped_text_stays_skipped_after_declared_refit_without_losing_nontext():
-    from scripts.final_evaluation import freeze_experiment
-    from scripts.text_votes import synthetic_text_example
+    from scripts.modeling.final_evaluation import freeze_experiment
+    from scripts.modeling.text_votes import synthetic_text_example
     rows,config = synthetic_example()
     config = replace(config,refit_train_validation=True)
     records = synthetic_text_example(rows)
@@ -149,7 +149,7 @@ def test_validation_skipped_text_stays_skipped_after_declared_refit_without_losi
 def test_freeze_hashes_expanding_window_implementation(monkeypatch):
     from pathlib import Path
 
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling.final_evaluation import freeze_experiment
 
     rows, config = synthetic_example()
     blocks = (synthetic_feature_example(),)
@@ -170,8 +170,8 @@ def test_freeze_hashes_expanding_window_implementation(monkeypatch):
 
 
 def test_freeze_skips_unvalidated_ridge_models_in_final_test(monkeypatch):
-    from scripts import regularized_votes
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling import regularized_votes
+    from scripts.modeling.final_evaluation import freeze_experiment
 
     rows, config = synthetic_example()
     blocks = (synthetic_feature_example(),)

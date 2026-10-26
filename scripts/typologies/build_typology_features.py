@@ -47,6 +47,7 @@ def build() -> pd.DataFrame:
     raw = workbook.parse(DATA_SHEET, header=None, dtype=str)
     nomenclature = {COLUMNS[i]: raw.iloc[NOMENCLATURE_ROW, i] for i in range(6, 10)}
     data = raw.iloc[NOMENCLATURE_ROW + 1:, list(COLUMNS)].rename(columns=COLUMNS).reset_index(drop=True)
+    data["municipality_id"] = data["commune_code"].astype("string").str.zfill(4)
     for column in CLASSIFIED:
         data[f"{column}_label"] = data[column].map(read_lookup(workbook, nomenclature[column]))
     data.attrs["nomenclatures"] = nomenclature

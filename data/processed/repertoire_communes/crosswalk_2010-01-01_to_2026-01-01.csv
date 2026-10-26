@@ -1,0 +1,2597 @@
+source_code,source_name,from_date,target_code,to_date,relation,n_targets
+13,Stallikon,2010-01-01,13,2026-01-01,unchanged,1
+2,Affoltern am Albis,2010-01-01,2,2026-01-01,unchanged,1
+3,Bonstetten,2010-01-01,3,2026-01-01,unchanged,1
+4,Hausen am Albis,2010-01-01,4,2026-01-01,unchanged,1
+5,Hedingen,2010-01-01,5,2026-01-01,unchanged,1
+9,Mettmenstetten,2010-01-01,9,2026-01-01,unchanged,1
+10,Obfelden,2010-01-01,10,2026-01-01,unchanged,1
+6,Kappel am Albis,2010-01-01,6,2026-01-01,unchanged,1
+7,Knonau,2010-01-01,7,2026-01-01,unchanged,1
+8,Maschwanden,2010-01-01,8,2026-01-01,unchanged,1
+12,Rifferswil,2010-01-01,12,2026-01-01,unchanged,1
+11,Ottenbach,2010-01-01,11,2026-01-01,unchanged,1
+14,Wettswil am Albis,2010-01-01,14,2026-01-01,unchanged,1
+1,Aeugst am Albis,2010-01-01,1,2026-01-01,unchanged,1
+229,Wiesendangen,2010-01-01,298,2026-01-01,recoded_or_merged,1
+231,Zell (ZH),2010-01-01,231,2026-01-01,unchanged,1
+230,Winterthur,2010-01-01,230,2026-01-01,unchanged,1
+228,Turbenthal,2010-01-01,228,2026-01-01,unchanged,1
+213,Brütten,2010-01-01,213,2026-01-01,unchanged,1
+216,Dinhard,2010-01-01,216,2026-01-01,unchanged,1
+214,Dägerlen,2010-01-01,214,2026-01-01,unchanged,1
+215,Dättlikon,2010-01-01,215,2026-01-01,unchanged,1
+211,Altikon,2010-01-01,211,2026-01-01,unchanged,1
+212,Bertschikon,2010-01-01,298,2026-01-01,recoded_or_merged,1
+220,Hagenbuch,2010-01-01,220,2026-01-01,unchanged,1
+218,Ellikon an der Thur,2010-01-01,218,2026-01-01,unchanged,1
+217,Elgg,2010-01-01,294,2026-01-01,recoded_or_merged,1
+221,Hettlingen,2010-01-01,221,2026-01-01,unchanged,1
+219,Elsau,2010-01-01,219,2026-01-01,unchanged,1
+223,Neftenbach,2010-01-01,223,2026-01-01,unchanged,1
+225,Rickenbach (ZH),2010-01-01,225,2026-01-01,unchanged,1
+227,Seuzach,2010-01-01,227,2026-01-01,unchanged,1
+224,Pfungen,2010-01-01,224,2026-01-01,unchanged,1
+226,Schlatt (ZH),2010-01-01,226,2026-01-01,unchanged,1
+222,Hofstetten (ZH),2010-01-01,294,2026-01-01,recoded_or_merged,1
+199,Volketswil,2010-01-01,199,2026-01-01,unchanged,1
+198,Uster,2010-01-01,198,2026-01-01,unchanged,1
+194,Greifensee,2010-01-01,194,2026-01-01,unchanged,1
+192,Egg,2010-01-01,192,2026-01-01,unchanged,1
+191,Dübendorf,2010-01-01,191,2026-01-01,unchanged,1
+193,Fällanden,2010-01-01,193,2026-01-01,unchanged,1
+196,Mönchaltorf,2010-01-01,196,2026-01-01,unchanged,1
+195,Maur,2010-01-01,195,2026-01-01,unchanged,1
+197,Schwerzenbach,2010-01-01,197,2026-01-01,unchanged,1
+200,Wangen-Brüttisellen,2010-01-01,200,2026-01-01,unchanged,1
+181,Wila,2010-01-01,181,2026-01-01,unchanged,1
+182,Wildberg,2010-01-01,182,2026-01-01,unchanged,1
+180,Weisslingen,2010-01-01,180,2026-01-01,unchanged,1
+179,Sternenberg,2010-01-01,297,2026-01-01,recoded_or_merged,1
+171,Bauma,2010-01-01,297,2026-01-01,recoded_or_merged,1
+172,Fehraltorf,2010-01-01,172,2026-01-01,unchanged,1
+173,Hittnau,2010-01-01,173,2026-01-01,unchanged,1
+175,Kyburg,2010-01-01,296,2026-01-01,recoded_or_merged,1
+176,Lindau,2010-01-01,176,2026-01-01,unchanged,1
+178,Russikon,2010-01-01,178,2026-01-01,unchanged,1
+177,Pfäffikon,2010-01-01,177,2026-01-01,unchanged,1
+174,Illnau-Effretikon,2010-01-01,296,2026-01-01,recoded_or_merged,1
+160,Zumikon,2010-01-01,160,2026-01-01,unchanged,1
+158,Stäfa,2010-01-01,158,2026-01-01,unchanged,1
+153,Hombrechtikon,2010-01-01,153,2026-01-01,unchanged,1
+151,Erlenbach (ZH),2010-01-01,151,2026-01-01,unchanged,1
+152,Herrliberg,2010-01-01,152,2026-01-01,unchanged,1
+156,Meilen,2010-01-01,156,2026-01-01,unchanged,1
+157,Oetwil am See,2010-01-01,157,2026-01-01,unchanged,1
+154,Küsnacht (ZH),2010-01-01,154,2026-01-01,unchanged,1
+155,Männedorf,2010-01-01,155,2026-01-01,unchanged,1
+159,Uetikon am See,2010-01-01,159,2026-01-01,unchanged,1
+161,Zollikon,2010-01-01,161,2026-01-01,unchanged,1
+142,Wädenswil,2010-01-01,293,2026-01-01,recoded_or_merged,1
+141,Thalwil,2010-01-01,141,2026-01-01,unchanged,1
+131,Adliswil,2010-01-01,131,2026-01-01,unchanged,1
+132,Hirzel,2010-01-01,295,2026-01-01,recoded_or_merged,1
+134,Hütten,2010-01-01,293,2026-01-01,recoded_or_merged,1
+133,Horgen,2010-01-01,295,2026-01-01,recoded_or_merged,1
+137,Oberrieden,2010-01-01,137,2026-01-01,unchanged,1
+136,Langnau am Albis,2010-01-01,136,2026-01-01,unchanged,1
+135,Kilchberg (ZH),2010-01-01,135,2026-01-01,unchanged,1
+139,Rüschlikon,2010-01-01,139,2026-01-01,unchanged,1
+138,Richterswil,2010-01-01,138,2026-01-01,unchanged,1
+140,Schönenberg (ZH),2010-01-01,293,2026-01-01,recoded_or_merged,1
+121,Wetzikon (ZH),2010-01-01,121,2026-01-01,unchanged,1
+120,Wald (ZH),2010-01-01,120,2026-01-01,unchanged,1
+112,Bubikon,2010-01-01,112,2026-01-01,unchanged,1
+111,Bäretswil,2010-01-01,111,2026-01-01,unchanged,1
+116,Grüningen,2010-01-01,116,2026-01-01,unchanged,1
+114,Fischenthal,2010-01-01,114,2026-01-01,unchanged,1
+115,Gossau (ZH),2010-01-01,115,2026-01-01,unchanged,1
+117,Hinwil,2010-01-01,117,2026-01-01,unchanged,1
+113,Dürnten,2010-01-01,113,2026-01-01,unchanged,1
+118,Rüti (ZH),2010-01-01,118,2026-01-01,unchanged,1
+119,Seegräben,2010-01-01,119,2026-01-01,unchanged,1
+100,Stadel,2010-01-01,100,2026-01-01,unchanged,1
+102,Weiach,2010-01-01,102,2026-01-01,unchanged,1
+101,Steinmaur,2010-01-01,101,2026-01-01,unchanged,1
+83,Buchs (ZH),2010-01-01,83,2026-01-01,unchanged,1
+86,Dielsdorf,2010-01-01,86,2026-01-01,unchanged,1
+84,Dällikon,2010-01-01,84,2026-01-01,unchanged,1
+85,Dänikon,2010-01-01,85,2026-01-01,unchanged,1
+81,Bachs,2010-01-01,81,2026-01-01,unchanged,1
+82,Boppelsen,2010-01-01,82,2026-01-01,unchanged,1
+87,Hüttikon,2010-01-01,87,2026-01-01,unchanged,1
+93,Oberweningen,2010-01-01,93,2026-01-01,unchanged,1
+92,Oberglatt,2010-01-01,92,2026-01-01,unchanged,1
+89,Niederglatt,2010-01-01,89,2026-01-01,unchanged,1
+88,Neerach,2010-01-01,88,2026-01-01,unchanged,1
+90,Niederhasli,2010-01-01,90,2026-01-01,unchanged,1
+91,Niederweningen,2010-01-01,91,2026-01-01,unchanged,1
+97,Rümlang,2010-01-01,97,2026-01-01,unchanged,1
+99,Schöfflisdorf,2010-01-01,99,2026-01-01,unchanged,1
+98,Schleinikon,2010-01-01,98,2026-01-01,unchanged,1
+94,Otelfingen,2010-01-01,94,2026-01-01,unchanged,1
+95,Regensberg,2010-01-01,95,2026-01-01,unchanged,1
+96,Regensdorf,2010-01-01,96,2026-01-01,unchanged,1
+71,Wil (ZH),2010-01-01,71,2026-01-01,unchanged,1
+72,Winkel,2010-01-01,72,2026-01-01,unchanged,1
+70,Wasterkingen,2010-01-01,70,2026-01-01,unchanged,1
+69,Wallisellen,2010-01-01,69,2026-01-01,unchanged,1
+53,Bülach,2010-01-01,53,2026-01-01,unchanged,1
+54,Dietlikon,2010-01-01,54,2026-01-01,unchanged,1
+51,Bachenbülach,2010-01-01,51,2026-01-01,unchanged,1
+52,Bassersdorf,2010-01-01,52,2026-01-01,unchanged,1
+57,Freienstein-Teufen,2010-01-01,57,2026-01-01,unchanged,1
+58,Glattfelden,2010-01-01,58,2026-01-01,unchanged,1
+59,Hochfelden,2010-01-01,59,2026-01-01,unchanged,1
+55,Eglisau,2010-01-01,55,2026-01-01,unchanged,1
+61,Hüntwangen,2010-01-01,61,2026-01-01,unchanged,1
+60,Höri,2010-01-01,60,2026-01-01,unchanged,1
+56,Embrach,2010-01-01,56,2026-01-01,unchanged,1
+66,Opfikon,2010-01-01,66,2026-01-01,unchanged,1
+65,Oberembrach,2010-01-01,65,2026-01-01,unchanged,1
+64,Nürensdorf,2010-01-01,64,2026-01-01,unchanged,1
+62,Kloten,2010-01-01,62,2026-01-01,unchanged,1
+63,Lufingen,2010-01-01,63,2026-01-01,unchanged,1
+68,Rorbas,2010-01-01,68,2026-01-01,unchanged,1
+67,Rafz,2010-01-01,67,2026-01-01,unchanged,1
+43,Volken,2010-01-01,43,2026-01-01,unchanged,1
+44,Waltalingen,2010-01-01,292,2026-01-01,recoded_or_merged,1
+39,Thalheim an der Thur,2010-01-01,39,2026-01-01,unchanged,1
+42,Unterstammheim,2010-01-01,292,2026-01-01,recoded_or_merged,1
+40,Trüllikon,2010-01-01,40,2026-01-01,unchanged,1
+41,Truttikon,2010-01-01,41,2026-01-01,unchanged,1
+24,Buch am Irchel,2010-01-01,24,2026-01-01,unchanged,1
+25,Dachsen,2010-01-01,25,2026-01-01,unchanged,1
+21,Adlikon,2010-01-01,291,2026-01-01,recoded_or_merged,1
+23,Berg am Irchel,2010-01-01,23,2026-01-01,unchanged,1
+22,Benken (ZH),2010-01-01,22,2026-01-01,unchanged,1
+29,Flurlingen,2010-01-01,29,2026-01-01,unchanged,1
+27,Feuerthalen,2010-01-01,27,2026-01-01,unchanged,1
+28,Flaach,2010-01-01,28,2026-01-01,unchanged,1
+32,Humlikon,2010-01-01,291,2026-01-01,recoded_or_merged,1
+26,Dorf,2010-01-01,26,2026-01-01,unchanged,1
+31,Henggart,2010-01-01,31,2026-01-01,unchanged,1
+36,Oberstammheim,2010-01-01,292,2026-01-01,recoded_or_merged,1
+34,Laufen-Uhwiesen,2010-01-01,34,2026-01-01,unchanged,1
+33,Kleinandelfingen,2010-01-01,33,2026-01-01,unchanged,1
+35,Marthalen,2010-01-01,35,2026-01-01,unchanged,1
+38,Rheinau,2010-01-01,38,2026-01-01,unchanged,1
+37,Ossingen,2010-01-01,37,2026-01-01,unchanged,1
+30,Andelfingen,2010-01-01,291,2026-01-01,recoded_or_merged,1
+261,Zürich,2010-01-01,261,2026-01-01,unchanged,1
+242,Birmensdorf (ZH),2010-01-01,242,2026-01-01,unchanged,1
+243,Dietikon,2010-01-01,243,2026-01-01,unchanged,1
+244,Geroldswil,2010-01-01,244,2026-01-01,unchanged,1
+245,Oberengstringen,2010-01-01,245,2026-01-01,unchanged,1
+246,Oetwil an der Limmat,2010-01-01,246,2026-01-01,unchanged,1
+247,Schlieren,2010-01-01,247,2026-01-01,unchanged,1
+248,Uitikon,2010-01-01,248,2026-01-01,unchanged,1
+249,Unterengstringen,2010-01-01,249,2026-01-01,unchanged,1
+250,Urdorf,2010-01-01,250,2026-01-01,unchanged,1
+251,Weiningen (ZH),2010-01-01,251,2026-01-01,unchanged,1
+241,Aesch (ZH),2010-01-01,241,2026-01-01,unchanged,1
+431,Corgémont,2010-01-01,431,2026-01-01,unchanged,1
+432,Cormoret,2010-01-01,432,2026-01-01,unchanged,1
+433,Cortébert,2010-01-01,433,2026-01-01,unchanged,1
+434,Courtelary,2010-01-01,434,2026-01-01,unchanged,1
+435,La Ferrière,2010-01-01,435,2026-01-01,unchanged,1
+436,La Heutte,2010-01-01,450,2026-01-01,recoded_or_merged,1
+437,Mont-Tramelan,2010-01-01,437,2026-01-01,unchanged,1
+438,Orvin,2010-01-01,438,2026-01-01,unchanged,1
+439,Péry,2010-01-01,450,2026-01-01,recoded_or_merged,1
+440,Plagne,2010-01-01,449,2026-01-01,recoded_or_merged,1
+441,Renan (BE),2010-01-01,441,2026-01-01,unchanged,1
+442,Romont (BE),2010-01-01,442,2026-01-01,unchanged,1
+443,Saint-Imier,2010-01-01,443,2026-01-01,unchanged,1
+444,Sonceboz-Sombeval,2010-01-01,444,2026-01-01,unchanged,1
+445,Sonvilier,2010-01-01,445,2026-01-01,unchanged,1
+446,Tramelan,2010-01-01,446,2026-01-01,unchanged,1
+447,Vauffelin,2010-01-01,449,2026-01-01,recoded_or_merged,1
+448,Villeret,2010-01-01,448,2026-01-01,unchanged,1
+681,Belprahon,2010-01-01,681,2026-01-01,unchanged,1
+682,Bévilard,2010-01-01,717,2026-01-01,recoded_or_merged,1
+683,Champoz,2010-01-01,683,2026-01-01,unchanged,1
+684,Châtelat,2010-01-01,716,2026-01-01,recoded_or_merged,1
+687,Corcelles (BE),2010-01-01,687,2026-01-01,unchanged,1
+690,Court,2010-01-01,690,2026-01-01,unchanged,1
+691,Crémines,2010-01-01,691,2026-01-01,unchanged,1
+692,Eschert,2010-01-01,692,2026-01-01,unchanged,1
+694,Grandval,2010-01-01,694,2026-01-01,unchanged,1
+696,Loveresse,2010-01-01,696,2026-01-01,unchanged,1
+697,Malleray,2010-01-01,717,2026-01-01,recoded_or_merged,1
+699,Monible,2010-01-01,716,2026-01-01,recoded_or_merged,1
+700,Moutier,2010-01-01,6831,2026-01-01,recoded_or_merged,1
+701,Perrefitte,2010-01-01,701,2026-01-01,unchanged,1
+702,Pontenet,2010-01-01,717,2026-01-01,recoded_or_merged,1
+703,Reconvilier,2010-01-01,703,2026-01-01,unchanged,1
+704,Roches (BE),2010-01-01,704,2026-01-01,unchanged,1
+706,Saicourt,2010-01-01,706,2026-01-01,unchanged,1
+707,Saules (BE),2010-01-01,707,2026-01-01,unchanged,1
+708,Schelten,2010-01-01,708,2026-01-01,unchanged,1
+709,Seehof,2010-01-01,709,2026-01-01,unchanged,1
+710,Sornetan,2010-01-01,716,2026-01-01,recoded_or_merged,1
+711,Sorvilier,2010-01-01,711,2026-01-01,unchanged,1
+712,Souboz,2010-01-01,716,2026-01-01,recoded_or_merged,1
+713,Tavannes,2010-01-01,713,2026-01-01,unchanged,1
+715,Rebévelier,2010-01-01,715,2026-01-01,unchanged,1
+721,Diesse,2010-01-01,726,2026-01-01,recoded_or_merged,1
+722,Lamboing,2010-01-01,726,2026-01-01,recoded_or_merged,1
+723,La Neuveville,2010-01-01,723,2026-01-01,unchanged,1
+724,Nods,2010-01-01,724,2026-01-01,unchanged,1
+725,Prêles,2010-01-01,726,2026-01-01,recoded_or_merged,1
+756,Twann-Tüscherz,2010-01-01,756,2026-01-01,unchanged,1
+371,Biel/Bienne,2010-01-01,371,2026-01-01,unchanged,1
+372,Evilard,2010-01-01,372,2026-01-01,unchanged,1
+387,Lengnau (BE),2010-01-01,387,2026-01-01,unchanged,1
+390,Meinisberg,2010-01-01,390,2026-01-01,unchanged,1
+392,Pieterlen,2010-01-01,392,2026-01-01,unchanged,1
+731,Aegerten,2010-01-01,731,2026-01-01,unchanged,1
+732,Bellmund,2010-01-01,732,2026-01-01,unchanged,1
+733,Brügg,2010-01-01,733,2026-01-01,unchanged,1
+739,Ipsach,2010-01-01,739,2026-01-01,unchanged,1
+740,Ligerz,2010-01-01,740,2026-01-01,unchanged,1
+742,Mörigen,2010-01-01,742,2026-01-01,unchanged,1
+743,Nidau,2010-01-01,743,2026-01-01,unchanged,1
+744,Orpund,2010-01-01,744,2026-01-01,unchanged,1
+745,Port,2010-01-01,745,2026-01-01,unchanged,1
+746,Safnern,2010-01-01,746,2026-01-01,unchanged,1
+747,Scheuren,2010-01-01,747,2026-01-01,unchanged,1
+748,Schwadernau,2010-01-01,748,2026-01-01,unchanged,1
+750,Sutz-Lattrigen,2010-01-01,750,2026-01-01,unchanged,1
+301,Aarberg,2010-01-01,301,2026-01-01,unchanged,1
+302,Bargen (BE),2010-01-01,302,2026-01-01,unchanged,1
+303,Grossaffoltern,2010-01-01,303,2026-01-01,unchanged,1
+304,Kallnach,2010-01-01,304,2026-01-01,unchanged,1
+305,Kappelen,2010-01-01,305,2026-01-01,unchanged,1
+306,Lyss,2010-01-01,306,2026-01-01,unchanged,1
+308,Niederried bei Kallnach,2010-01-01,304,2026-01-01,recoded_or_merged,1
+309,Radelfingen,2010-01-01,309,2026-01-01,unchanged,1
+310,Rapperswil (BE),2010-01-01,310,2026-01-01,unchanged,1
+311,Schüpfen,2010-01-01,311,2026-01-01,unchanged,1
+312,Seedorf (BE),2010-01-01,312,2026-01-01,unchanged,1
+381,Arch,2010-01-01,381,2026-01-01,unchanged,1
+382,Büetigen,2010-01-01,382,2026-01-01,unchanged,1
+383,Büren an der Aare,2010-01-01,383,2026-01-01,unchanged,1
+384,Busswil bei Büren,2010-01-01,306,2026-01-01,recoded_or_merged,1
+385,Diessbach bei Büren,2010-01-01,385,2026-01-01,unchanged,1
+386,Dotzigen,2010-01-01,386,2026-01-01,unchanged,1
+388,Leuzigen,2010-01-01,388,2026-01-01,unchanged,1
+389,Meienried,2010-01-01,389,2026-01-01,unchanged,1
+391,Oberwil bei Büren,2010-01-01,391,2026-01-01,unchanged,1
+393,Rüti bei Büren,2010-01-01,393,2026-01-01,unchanged,1
+394,Wengi,2010-01-01,394,2026-01-01,unchanged,1
+491,Brüttelen,2010-01-01,491,2026-01-01,unchanged,1
+492,Erlach,2010-01-01,492,2026-01-01,unchanged,1
+493,Finsterhennen,2010-01-01,493,2026-01-01,unchanged,1
+494,Gals,2010-01-01,494,2026-01-01,unchanged,1
+495,Gampelen,2010-01-01,495,2026-01-01,unchanged,1
+496,Ins,2010-01-01,496,2026-01-01,unchanged,1
+497,Lüscherz,2010-01-01,497,2026-01-01,unchanged,1
+498,Müntschemier,2010-01-01,498,2026-01-01,unchanged,1
+499,Siselen,2010-01-01,499,2026-01-01,unchanged,1
+500,Treiten,2010-01-01,500,2026-01-01,unchanged,1
+501,Tschugg,2010-01-01,501,2026-01-01,unchanged,1
+502,Vinelz,2010-01-01,502,2026-01-01,unchanged,1
+532,Bangerten,2010-01-01,310,2026-01-01,recoded_or_merged,1
+548,Ruppoldsried,2010-01-01,310,2026-01-01,recoded_or_merged,1
+734,Bühl,2010-01-01,734,2026-01-01,unchanged,1
+735,Epsach,2010-01-01,735,2026-01-01,unchanged,1
+736,Hagneck,2010-01-01,736,2026-01-01,unchanged,1
+737,Hermrigen,2010-01-01,737,2026-01-01,unchanged,1
+738,Jens,2010-01-01,738,2026-01-01,unchanged,1
+741,Merzligen,2010-01-01,741,2026-01-01,unchanged,1
+749,Studen (BE),2010-01-01,749,2026-01-01,unchanged,1
+751,Täuffelen,2010-01-01,751,2026-01-01,unchanged,1
+754,Walperswil,2010-01-01,754,2026-01-01,unchanged,1
+755,Worben,2010-01-01,755,2026-01-01,unchanged,1
+329,Langenthal,2010-01-01,329,2026-01-01,unchanged,1
+321,Aarwangen,2010-01-01,321,2026-01-01,unchanged,1
+322,Auswil,2010-01-01,322,2026-01-01,unchanged,1
+323,Bannwil,2010-01-01,323,2026-01-01,unchanged,1
+324,Bleienbach,2010-01-01,324,2026-01-01,unchanged,1
+325,Busswil bei Melchnau,2010-01-01,325,2026-01-01,unchanged,1
+326,Gondiswil,2010-01-01,326,2026-01-01,unchanged,1
+328,Kleindietwil,2010-01-01,332,2026-01-01,recoded_or_merged,1
+330,Leimiswil,2010-01-01,332,2026-01-01,recoded_or_merged,1
+331,Lotzwil,2010-01-01,331,2026-01-01,unchanged,1
+332,Madiswil,2010-01-01,332,2026-01-01,unchanged,1
+333,Melchnau,2010-01-01,333,2026-01-01,unchanged,1
+334,Obersteckholz,2010-01-01,329,2026-01-01,recoded_or_merged,1
+335,Oeschenbach,2010-01-01,335,2026-01-01,unchanged,1
+336,Reisiswil,2010-01-01,336,2026-01-01,unchanged,1
+337,Roggwil (BE),2010-01-01,337,2026-01-01,unchanged,1
+338,Rohrbach,2010-01-01,338,2026-01-01,unchanged,1
+339,Rohrbachgraben,2010-01-01,339,2026-01-01,unchanged,1
+340,Rütschelen,2010-01-01,340,2026-01-01,unchanged,1
+341,Schwarzhäusern,2010-01-01,341,2026-01-01,unchanged,1
+342,Thunstetten,2010-01-01,342,2026-01-01,unchanged,1
+344,Ursenbach,2010-01-01,344,2026-01-01,unchanged,1
+345,Wynau,2010-01-01,345,2026-01-01,unchanged,1
+953,Eriswil,2010-01-01,953,2026-01-01,unchanged,1
+954,Huttwil,2010-01-01,954,2026-01-01,unchanged,1
+959,Walterswil (BE),2010-01-01,959,2026-01-01,unchanged,1
+960,Wyssachen,2010-01-01,960,2026-01-01,unchanged,1
+971,Attiswil,2010-01-01,971,2026-01-01,unchanged,1
+972,Berken,2010-01-01,972,2026-01-01,unchanged,1
+973,Bettenhausen,2010-01-01,973,2026-01-01,unchanged,1
+974,Bollodingen,2010-01-01,973,2026-01-01,recoded_or_merged,1
+975,Farnern,2010-01-01,975,2026-01-01,unchanged,1
+976,Graben,2010-01-01,976,2026-01-01,unchanged,1
+977,Heimenhausen,2010-01-01,977,2026-01-01,unchanged,1
+978,Hermiswil,2010-01-01,988,2026-01-01,recoded_or_merged,1
+979,Herzogenbuchsee,2010-01-01,979,2026-01-01,unchanged,1
+980,Inkwil,2010-01-01,980,2026-01-01,unchanged,1
+981,Niederbipp,2010-01-01,981,2026-01-01,unchanged,1
+982,Niederönz,2010-01-01,982,2026-01-01,unchanged,1
+983,Oberbipp,2010-01-01,983,2026-01-01,unchanged,1
+985,Ochlenberg,2010-01-01,985,2026-01-01,unchanged,1
+987,Rumisberg,2010-01-01,987,2026-01-01,unchanged,1
+988,Seeberg,2010-01-01,988,2026-01-01,unchanged,1
+989,Thörigen,2010-01-01,989,2026-01-01,unchanged,1
+990,Walliswil bei Niederbipp,2010-01-01,990,2026-01-01,unchanged,1
+991,Walliswil bei Wangen,2010-01-01,991,2026-01-01,unchanged,1
+992,Wangen an der Aare,2010-01-01,992,2026-01-01,unchanged,1
+993,Wangenried,2010-01-01,992,2026-01-01,recoded_or_merged,1
+995,Wiedlisbach,2010-01-01,995,2026-01-01,unchanged,1
+996,Wolfisberg,2010-01-01,981,2026-01-01,recoded_or_merged,1
+401,Aefligen,2010-01-01,401,2026-01-01,unchanged,1
+402,Alchenstorf,2010-01-01,402,2026-01-01,unchanged,1
+404,Burgdorf,2010-01-01,404,2026-01-01,unchanged,1
+405,Ersigen,2010-01-01,405,2026-01-01,unchanged,1
+406,Hasle bei Burgdorf,2010-01-01,406,2026-01-01,unchanged,1
+407,Heimiswil,2010-01-01,407,2026-01-01,unchanged,1
+408,Hellsau,2010-01-01,408,2026-01-01,unchanged,1
+409,Hindelbank,2010-01-01,409,2026-01-01,unchanged,1
+410,Höchstetten,2010-01-01,410,2026-01-01,unchanged,1
+411,Kernenried,2010-01-01,411,2026-01-01,unchanged,1
+412,Kirchberg (BE),2010-01-01,412,2026-01-01,unchanged,1
+413,Koppigen,2010-01-01,413,2026-01-01,unchanged,1
+414,Krauchthal,2010-01-01,414,2026-01-01,unchanged,1
+415,Lyssach,2010-01-01,415,2026-01-01,unchanged,1
+416,Mötschwil,2010-01-01,409,2026-01-01,recoded_or_merged,1
+417,Niederösch,2010-01-01,405,2026-01-01,recoded_or_merged,1
+418,Oberburg,2010-01-01,418,2026-01-01,unchanged,1
+419,Oberösch,2010-01-01,405,2026-01-01,recoded_or_merged,1
+420,Rüdtligen-Alchenflüh,2010-01-01,420,2026-01-01,unchanged,1
+421,Rumendingen,2010-01-01,421,2026-01-01,unchanged,1
+422,Rüti bei Lyssach,2010-01-01,422,2026-01-01,unchanged,1
+423,Willadingen,2010-01-01,423,2026-01-01,unchanged,1
+424,Wynigen,2010-01-01,424,2026-01-01,unchanged,1
+533,Bätterkinden,2010-01-01,533,2026-01-01,unchanged,1
+552,Utzenstorf,2010-01-01,552,2026-01-01,unchanged,1
+554,Wiler bei Utzenstorf,2010-01-01,554,2026-01-01,unchanged,1
+556,Zielebach,2010-01-01,556,2026-01-01,unchanged,1
+901,Eggiwil,2010-01-01,901,2026-01-01,unchanged,1
+902,Langnau im Emmental,2010-01-01,902,2026-01-01,unchanged,1
+903,Lauperswil,2010-01-01,903,2026-01-01,unchanged,1
+904,Röthenbach im Emmental,2010-01-01,904,2026-01-01,unchanged,1
+905,Rüderswil,2010-01-01,905,2026-01-01,unchanged,1
+906,Schangnau,2010-01-01,906,2026-01-01,unchanged,1
+907,Signau,2010-01-01,907,2026-01-01,unchanged,1
+908,Trub,2010-01-01,908,2026-01-01,unchanged,1
+909,Trubschachen,2010-01-01,909,2026-01-01,unchanged,1
+951,Affoltern im Emmental,2010-01-01,951,2026-01-01,unchanged,1
+952,Dürrenroth,2010-01-01,952,2026-01-01,unchanged,1
+955,Lützelflüh,2010-01-01,955,2026-01-01,unchanged,1
+956,Rüegsau,2010-01-01,956,2026-01-01,unchanged,1
+957,Sumiswald,2010-01-01,957,2026-01-01,unchanged,1
+958,Trachselwald,2010-01-01,958,2026-01-01,unchanged,1
+540,Jegenstorf,2010-01-01,540,2026-01-01,unchanged,1
+619,Oberdiessbach,2010-01-01,619,2026-01-01,unchanged,1
+307,Meikirch,2010-01-01,307,2026-01-01,unchanged,1
+351,Bern,2010-01-01,351,2026-01-01,unchanged,1
+352,Bolligen,2010-01-01,352,2026-01-01,unchanged,1
+353,Bremgarten bei Bern,2010-01-01,353,2026-01-01,unchanged,1
+354,Kirchlindach,2010-01-01,354,2026-01-01,unchanged,1
+355,Köniz,2010-01-01,355,2026-01-01,unchanged,1
+356,Muri bei Bern,2010-01-01,356,2026-01-01,unchanged,1
+357,Oberbalm,2010-01-01,357,2026-01-01,unchanged,1
+358,Stettlen,2010-01-01,358,2026-01-01,unchanged,1
+359,Vechigen,2010-01-01,359,2026-01-01,unchanged,1
+360,Wohlen bei Bern,2010-01-01,360,2026-01-01,unchanged,1
+361,Zollikofen,2010-01-01,361,2026-01-01,unchanged,1
+362,Ittigen,2010-01-01,362,2026-01-01,unchanged,1
+363,Ostermundigen,2010-01-01,363,2026-01-01,unchanged,1
+403,Bäriswil,2010-01-01,403,2026-01-01,unchanged,1
+534,Büren zum Hof,2010-01-01,538,2026-01-01,recoded_or_merged,1
+535,Deisswil bei Münchenbuchsee,2010-01-01,535,2026-01-01,unchanged,1
+536,Diemerswil,2010-01-01,546,2026-01-01,recoded_or_merged,1
+537,Etzelkofen,2010-01-01,538,2026-01-01,recoded_or_merged,1
+538,Fraubrunnen,2010-01-01,538,2026-01-01,unchanged,1
+539,Grafenried,2010-01-01,538,2026-01-01,recoded_or_merged,1
+541,Iffwil,2010-01-01,541,2026-01-01,unchanged,1
+542,Limpach,2010-01-01,538,2026-01-01,recoded_or_merged,1
+543,Mattstetten,2010-01-01,543,2026-01-01,unchanged,1
+544,Moosseedorf,2010-01-01,544,2026-01-01,unchanged,1
+545,Mülchi,2010-01-01,538,2026-01-01,recoded_or_merged,1
+546,Münchenbuchsee,2010-01-01,546,2026-01-01,unchanged,1
+547,Münchringen,2010-01-01,540,2026-01-01,recoded_or_merged,1
+549,Schalunen,2010-01-01,538,2026-01-01,recoded_or_merged,1
+550,Scheunen,2010-01-01,540,2026-01-01,recoded_or_merged,1
+551,Urtenen-Schönbühl,2010-01-01,551,2026-01-01,unchanged,1
+553,Wiggiswil,2010-01-01,553,2026-01-01,unchanged,1
+555,Zauggenried,2010-01-01,538,2026-01-01,recoded_or_merged,1
+557,Zuzwil (BE),2010-01-01,557,2026-01-01,unchanged,1
+602,Arni (BE),2010-01-01,602,2026-01-01,unchanged,1
+603,Biglen,2010-01-01,603,2026-01-01,unchanged,1
+604,Bleiken bei Oberdiessbach,2010-01-01,619,2026-01-01,recoded_or_merged,1
+605,Bowil,2010-01-01,605,2026-01-01,unchanged,1
+606,Brenzikofen,2010-01-01,606,2026-01-01,unchanged,1
+607,Freimettigen,2010-01-01,607,2026-01-01,unchanged,1
+608,Grosshöchstetten,2010-01-01,608,2026-01-01,unchanged,1
+609,Häutligen,2010-01-01,609,2026-01-01,unchanged,1
+610,Herbligen,2010-01-01,610,2026-01-01,unchanged,1
+611,Kiesen,2010-01-01,611,2026-01-01,unchanged,1
+612,Konolfingen,2010-01-01,612,2026-01-01,unchanged,1
+613,Landiswil,2010-01-01,613,2026-01-01,unchanged,1
+614,Linden,2010-01-01,614,2026-01-01,unchanged,1
+615,Mirchel,2010-01-01,615,2026-01-01,unchanged,1
+616,Münsingen,2010-01-01,616,2026-01-01,unchanged,1
+617,Niederhünigen,2010-01-01,617,2026-01-01,unchanged,1
+620,Oberthal,2010-01-01,620,2026-01-01,unchanged,1
+622,Oppligen,2010-01-01,622,2026-01-01,unchanged,1
+623,Rubigen,2010-01-01,623,2026-01-01,unchanged,1
+624,Schlosswil,2010-01-01,608,2026-01-01,recoded_or_merged,1
+625,Tägertschi,2010-01-01,616,2026-01-01,recoded_or_merged,1
+626,Walkringen,2010-01-01,626,2026-01-01,unchanged,1
+627,Worb,2010-01-01,627,2026-01-01,unchanged,1
+628,Zäziwil,2010-01-01,628,2026-01-01,unchanged,1
+629,Oberhünigen,2010-01-01,629,2026-01-01,unchanged,1
+630,Allmendingen,2010-01-01,630,2026-01-01,unchanged,1
+631,Trimstein,2010-01-01,616,2026-01-01,recoded_or_merged,1
+632,Wichtrach,2010-01-01,632,2026-01-01,unchanged,1
+661,Clavaleyres,2010-01-01,2275,2026-01-01,recoded_or_merged,1
+662,Ferenbalm,2010-01-01,662,2026-01-01,unchanged,1
+663,Frauenkappelen,2010-01-01,663,2026-01-01,unchanged,1
+664,Golaten,2010-01-01,304,2026-01-01,recoded_or_merged,1
+665,Gurbrü,2010-01-01,665,2026-01-01,unchanged,1
+666,Kriechenwil,2010-01-01,666,2026-01-01,unchanged,1
+667,Laupen,2010-01-01,667,2026-01-01,unchanged,1
+668,Mühleberg,2010-01-01,668,2026-01-01,unchanged,1
+669,Münchenwiler,2010-01-01,669,2026-01-01,unchanged,1
+670,Neuenegg,2010-01-01,670,2026-01-01,unchanged,1
+671,Wileroltigen,2010-01-01,671,2026-01-01,unchanged,1
+851,Albligen,2010-01-01,855,2026-01-01,recoded_or_merged,1
+852,Guggisberg,2010-01-01,852,2026-01-01,unchanged,1
+853,Rüschegg,2010-01-01,853,2026-01-01,unchanged,1
+854,Wahlern,2010-01-01,855,2026-01-01,recoded_or_merged,1
+861,Belp,2010-01-01,861,2026-01-01,unchanged,1
+862,Belpberg,2010-01-01,861,2026-01-01,recoded_or_merged,1
+865,Gelterfingen,2010-01-01,872,2026-01-01,recoded_or_merged,1
+866,Gerzensee,2010-01-01,866,2026-01-01,unchanged,1
+868,Jaberg,2010-01-01,868,2026-01-01,unchanged,1
+869,Kaufdorf,2010-01-01,869,2026-01-01,unchanged,1
+870,Kehrsatz,2010-01-01,870,2026-01-01,unchanged,1
+872,Kirchdorf (BE),2010-01-01,872,2026-01-01,unchanged,1
+873,Kirchenthurnen,2010-01-01,889,2026-01-01,recoded_or_merged,1
+874,Lohnstorf,2010-01-01,889,2026-01-01,recoded_or_merged,1
+875,Mühledorf (BE),2010-01-01,872,2026-01-01,recoded_or_merged,1
+876,Mühlethurnen,2010-01-01,889,2026-01-01,recoded_or_merged,1
+877,Niedermuhlern,2010-01-01,877,2026-01-01,unchanged,1
+878,Noflen,2010-01-01,872,2026-01-01,recoded_or_merged,1
+879,Riggisberg,2010-01-01,879,2026-01-01,unchanged,1
+880,Rüeggisberg,2010-01-01,880,2026-01-01,unchanged,1
+881,Rümligen,2010-01-01,879,2026-01-01,recoded_or_merged,1
+884,Toffen,2010-01-01,884,2026-01-01,unchanged,1
+888,Wald (BE),2010-01-01,888,2026-01-01,unchanged,1
+764,Niederstocken,2010-01-01,770,2026-01-01,recoded_or_merged,1
+765,Oberstocken,2010-01-01,770,2026-01-01,recoded_or_merged,1
+767,Reutigen,2010-01-01,767,2026-01-01,unchanged,1
+863,Burgistein,2010-01-01,863,2026-01-01,unchanged,1
+867,Gurzelen,2010-01-01,867,2026-01-01,unchanged,1
+871,Kienersrüti,2010-01-01,885,2026-01-01,recoded_or_merged,1
+883,Seftigen,2010-01-01,883,2026-01-01,unchanged,1
+885,Uttigen,2010-01-01,885,2026-01-01,unchanged,1
+886,Wattenwil,2010-01-01,886,2026-01-01,unchanged,1
+921,Amsoldingen,2010-01-01,921,2026-01-01,unchanged,1
+922,Blumenstein,2010-01-01,922,2026-01-01,unchanged,1
+923,Buchholterberg,2010-01-01,923,2026-01-01,unchanged,1
+924,Eriz,2010-01-01,924,2026-01-01,unchanged,1
+925,Fahrni,2010-01-01,925,2026-01-01,unchanged,1
+927,Heiligenschwendi,2010-01-01,927,2026-01-01,unchanged,1
+928,Heimberg,2010-01-01,928,2026-01-01,unchanged,1
+929,Hilterfingen,2010-01-01,929,2026-01-01,unchanged,1
+930,Höfen,2010-01-01,770,2026-01-01,recoded_or_merged,1
+931,Homberg,2010-01-01,931,2026-01-01,unchanged,1
+932,Horrenbach-Buchen,2010-01-01,932,2026-01-01,unchanged,1
+934,Oberhofen am Thunersee,2010-01-01,934,2026-01-01,unchanged,1
+935,Oberlangenegg,2010-01-01,935,2026-01-01,unchanged,1
+936,Pohlern,2010-01-01,936,2026-01-01,unchanged,1
+937,Schwendibach,2010-01-01,939,2026-01-01,recoded_or_merged,1
+938,Sigriswil,2010-01-01,938,2026-01-01,unchanged,1
+939,Steffisburg,2010-01-01,939,2026-01-01,unchanged,1
+940,Teuffenthal (BE),2010-01-01,940,2026-01-01,unchanged,1
+941,Thierachern,2010-01-01,941,2026-01-01,unchanged,1
+942,Thun,2010-01-01,942,2026-01-01,unchanged,1
+943,Uebeschi,2010-01-01,943,2026-01-01,unchanged,1
+944,Uetendorf,2010-01-01,944,2026-01-01,unchanged,1
+945,Unterlangenegg,2010-01-01,945,2026-01-01,unchanged,1
+946,Wachseldorn,2010-01-01,946,2026-01-01,unchanged,1
+947,Zwieselberg,2010-01-01,767,2026-01-01,recoded_or_merged,1
+948,Forst-Längenbühl,2010-01-01,948,2026-01-01,unchanged,1
+791,Boltigen,2010-01-01,791,2026-01-01,unchanged,1
+792,Lenk,2010-01-01,792,2026-01-01,unchanged,1
+793,St. Stephan,2010-01-01,793,2026-01-01,unchanged,1
+794,Zweisimmen,2010-01-01,794,2026-01-01,unchanged,1
+841,Gsteig,2010-01-01,841,2026-01-01,unchanged,1
+842,Lauenen,2010-01-01,842,2026-01-01,unchanged,1
+843,Saanen,2010-01-01,843,2026-01-01,unchanged,1
+561,Adelboden,2010-01-01,561,2026-01-01,unchanged,1
+562,Aeschi bei Spiez,2010-01-01,562,2026-01-01,unchanged,1
+563,Frutigen,2010-01-01,563,2026-01-01,unchanged,1
+564,Kandergrund,2010-01-01,564,2026-01-01,unchanged,1
+565,Kandersteg,2010-01-01,565,2026-01-01,unchanged,1
+566,Krattigen,2010-01-01,566,2026-01-01,unchanged,1
+567,Reichenbach im Kandertal,2010-01-01,567,2026-01-01,unchanged,1
+761,Därstetten,2010-01-01,761,2026-01-01,unchanged,1
+762,Diemtigen,2010-01-01,762,2026-01-01,unchanged,1
+763,Erlenbach im Simmental,2010-01-01,763,2026-01-01,unchanged,1
+766,Oberwil im Simmental,2010-01-01,766,2026-01-01,unchanged,1
+768,Spiez,2010-01-01,768,2026-01-01,unchanged,1
+769,Wimmis,2010-01-01,769,2026-01-01,unchanged,1
+571,Beatenberg,2010-01-01,571,2026-01-01,unchanged,1
+572,Bönigen,2010-01-01,572,2026-01-01,unchanged,1
+573,Brienz (BE),2010-01-01,573,2026-01-01,unchanged,1
+574,Brienzwiler,2010-01-01,574,2026-01-01,unchanged,1
+575,Därligen,2010-01-01,575,2026-01-01,unchanged,1
+576,Grindelwald,2010-01-01,576,2026-01-01,unchanged,1
+577,Gsteigwiler,2010-01-01,577,2026-01-01,unchanged,1
+578,Gündlischwand,2010-01-01,578,2026-01-01,unchanged,1
+579,Habkern,2010-01-01,579,2026-01-01,unchanged,1
+580,Hofstetten bei Brienz,2010-01-01,580,2026-01-01,unchanged,1
+581,Interlaken,2010-01-01,581,2026-01-01,unchanged,1
+582,Iseltwald,2010-01-01,582,2026-01-01,unchanged,1
+584,Lauterbrunnen,2010-01-01,584,2026-01-01,unchanged,1
+585,Leissigen,2010-01-01,585,2026-01-01,unchanged,1
+586,Lütschental,2010-01-01,586,2026-01-01,unchanged,1
+587,Matten bei Interlaken,2010-01-01,587,2026-01-01,unchanged,1
+588,Niederried bei Interlaken,2010-01-01,588,2026-01-01,unchanged,1
+589,Oberried am Brienzersee,2010-01-01,589,2026-01-01,unchanged,1
+590,Ringgenberg (BE),2010-01-01,590,2026-01-01,unchanged,1
+591,Saxeten,2010-01-01,591,2026-01-01,unchanged,1
+592,Schwanden bei Brienz,2010-01-01,592,2026-01-01,unchanged,1
+593,Unterseen,2010-01-01,593,2026-01-01,unchanged,1
+594,Wilderswil,2010-01-01,594,2026-01-01,unchanged,1
+781,Gadmen,2010-01-01,784,2026-01-01,recoded_or_merged,1
+782,Guttannen,2010-01-01,782,2026-01-01,unchanged,1
+783,Hasliberg,2010-01-01,783,2026-01-01,unchanged,1
+784,Innertkirchen,2010-01-01,784,2026-01-01,unchanged,1
+785,Meiringen,2010-01-01,785,2026-01-01,unchanged,1
+786,Schattenhalb,2010-01-01,786,2026-01-01,unchanged,1
+1147,Wikon,2010-01-01,1147,2026-01-01,unchanged,1
+1150,Zell (LU),2010-01-01,1150,2026-01-01,unchanged,1
+1146,Wauwil,2010-01-01,1146,2026-01-01,unchanged,1
+1145,Ufhusen,2010-01-01,1145,2026-01-01,unchanged,1
+1121,Alberswil,2010-01-01,1121,2026-01-01,unchanged,1
+1122,Altbüron,2010-01-01,1122,2026-01-01,unchanged,1
+1123,Altishofen,2010-01-01,1123,2026-01-01,unchanged,1
+1131,Grossdietwil,2010-01-01,1131,2026-01-01,unchanged,1
+1129,Fischbach,2010-01-01,1129,2026-01-01,unchanged,1
+1130,Gettnau,2010-01-01,1151,2026-01-01,recoded_or_merged,1
+1126,Ebersecken,2010-01-01,1123,2026-01-01,recoded_or_merged,1
+1127,Egolzwil,2010-01-01,1127,2026-01-01,unchanged,1
+1132,Hergiswil bei Willisau,2010-01-01,1132,2026-01-01,unchanged,1
+1136,Menznau,2010-01-01,1136,2026-01-01,unchanged,1
+1138,Ohmstal,2010-01-01,1143,2026-01-01,recoded_or_merged,1
+1137,Nebikon,2010-01-01,1137,2026-01-01,unchanged,1
+1135,Luthern,2010-01-01,1135,2026-01-01,unchanged,1
+1142,Roggliswil,2010-01-01,1142,2026-01-01,unchanged,1
+1143,Schötz,2010-01-01,1143,2026-01-01,unchanged,1
+1139,Pfaffnau,2010-01-01,1139,2026-01-01,unchanged,1
+1125,Dagmersellen,2010-01-01,1125,2026-01-01,unchanged,1
+1128,Ettiswil,2010-01-01,1128,2026-01-01,unchanged,1
+1151,Willisau,2010-01-01,1151,2026-01-01,unchanged,1
+1140,Reiden,2010-01-01,1140,2026-01-01,unchanged,1
+1107,Wolhusen,2010-01-01,1107,2026-01-01,unchanged,1
+1103,Sursee,2010-01-01,1103,2026-01-01,unchanged,1
+1083,Buttisholz,2010-01-01,1083,2026-01-01,unchanged,1
+1082,Büron,2010-01-01,1082,2026-01-01,unchanged,1
+1086,Grosswangen,2010-01-01,1086,2026-01-01,unchanged,1
+1085,Geuensee,2010-01-01,1085,2026-01-01,unchanged,1
+1084,Eich,2010-01-01,1084,2026-01-01,unchanged,1
+1088,Hildisrieden,2010-01-01,1088,2026-01-01,unchanged,1
+1095,Oberkirch,2010-01-01,1095,2026-01-01,unchanged,1
+1092,Neudorf,2010-01-01,1081,2026-01-01,recoded_or_merged,1
+1093,Neuenkirch,2010-01-01,1093,2026-01-01,unchanged,1
+1094,Nottwil,2010-01-01,1094,2026-01-01,unchanged,1
+1091,Mauensee,2010-01-01,1091,2026-01-01,unchanged,1
+1089,Knutwil,2010-01-01,1089,2026-01-01,unchanged,1
+1098,Ruswil,2010-01-01,1098,2026-01-01,unchanged,1
+1097,Rickenbach (LU),2010-01-01,1097,2026-01-01,unchanged,1
+1102,Sempach,2010-01-01,1102,2026-01-01,unchanged,1
+1100,Schlierbach,2010-01-01,1100,2026-01-01,unchanged,1
+1099,Schenkon,2010-01-01,1099,2026-01-01,unchanged,1
+1096,Pfeffikon,2010-01-01,1097,2026-01-01,recoded_or_merged,1
+1081,Beromünster,2010-01-01,1081,2026-01-01,unchanged,1
+1104,Triengen,2010-01-01,1104,2026-01-01,unchanged,1
+1068,Vitznau,2010-01-01,1068,2026-01-01,unchanged,1
+1069,Weggis,2010-01-01,1069,2026-01-01,unchanged,1
+1067,Udligenswil,2010-01-01,1067,2026-01-01,unchanged,1
+1052,Buchrain,2010-01-01,1052,2026-01-01,unchanged,1
+1053,Dierikon,2010-01-01,1053,2026-01-01,unchanged,1
+1051,Adligenswil,2010-01-01,1051,2026-01-01,unchanged,1
+1055,Gisikon,2010-01-01,1055,2026-01-01,unchanged,1
+1056,Greppen,2010-01-01,1056,2026-01-01,unchanged,1
+1054,Ebikon,2010-01-01,1054,2026-01-01,unchanged,1
+1057,Honau,2010-01-01,1065,2026-01-01,recoded_or_merged,1
+1058,Horw,2010-01-01,1058,2026-01-01,unchanged,1
+1064,Meierskappel,2010-01-01,1064,2026-01-01,unchanged,1
+1063,Meggen,2010-01-01,1063,2026-01-01,unchanged,1
+1059,Kriens,2010-01-01,1059,2026-01-01,unchanged,1
+1062,Malters,2010-01-01,1062,2026-01-01,unchanged,1
+1065,Root,2010-01-01,1065,2026-01-01,unchanged,1
+1066,Schwarzenberg,2010-01-01,1066,2026-01-01,unchanged,1
+1061,Luzern,2010-01-01,1061,2026-01-01,unchanged,1
+1023,Ballwil,2010-01-01,1023,2026-01-01,unchanged,1
+1021,Aesch (LU),2010-01-01,1021,2026-01-01,unchanged,1
+1022,Altwis,2010-01-01,1030,2026-01-01,recoded_or_merged,1
+1031,Hochdorf,2010-01-01,1031,2026-01-01,unchanged,1
+1026,Eschenbach (LU),2010-01-01,1026,2026-01-01,unchanged,1
+1024,Emmen,2010-01-01,1024,2026-01-01,unchanged,1
+1025,Ermensee,2010-01-01,1025,2026-01-01,unchanged,1
+1033,Inwil,2010-01-01,1033,2026-01-01,unchanged,1
+1040,Rothenburg,2010-01-01,1040,2026-01-01,unchanged,1
+1041,Schongau,2010-01-01,1041,2026-01-01,unchanged,1
+1037,Rain,2010-01-01,1037,2026-01-01,unchanged,1
+1039,Römerswil,2010-01-01,1039,2026-01-01,unchanged,1
+1032,Hohenrain,2010-01-01,1032,2026-01-01,unchanged,1
+1030,Hitzkirch,2010-01-01,1030,2026-01-01,unchanged,1
+1009,Werthenstein,2010-01-01,1009,2026-01-01,unchanged,1
+1004,Flühli,2010-01-01,1004,2026-01-01,unchanged,1
+1005,Hasle (LU),2010-01-01,1005,2026-01-01,unchanged,1
+1001,Doppleschwand,2010-01-01,1001,2026-01-01,unchanged,1
+1003,Escholzmatt,2010-01-01,1010,2026-01-01,recoded_or_merged,1
+1002,Entlebuch,2010-01-01,1002,2026-01-01,unchanged,1
+1006,Marbach (LU),2010-01-01,1010,2026-01-01,recoded_or_merged,1
+1007,Romoos,2010-01-01,1007,2026-01-01,unchanged,1
+1008,Schüpfheim,2010-01-01,1008,2026-01-01,unchanged,1
+1218,Spiringen,2010-01-01,1218,2026-01-01,unchanged,1
+1220,Wassen,2010-01-01,1220,2026-01-01,unchanged,1
+1219,Unterschächen,2010-01-01,1219,2026-01-01,unchanged,1
+1205,Bürglen (UR),2010-01-01,1205,2026-01-01,unchanged,1
+1203,Attinghausen,2010-01-01,1203,2026-01-01,unchanged,1
+1204,Bauen,2010-01-01,1214,2026-01-01,recoded_or_merged,1
+1201,Altdorf (UR),2010-01-01,1201,2026-01-01,unchanged,1
+1202,Andermatt,2010-01-01,1202,2026-01-01,unchanged,1
+1207,Flüelen,2010-01-01,1207,2026-01-01,unchanged,1
+1209,Gurtnellen,2010-01-01,1209,2026-01-01,unchanged,1
+1208,Göschenen,2010-01-01,1208,2026-01-01,unchanged,1
+1210,Hospental,2010-01-01,1210,2026-01-01,unchanged,1
+1206,Erstfeld,2010-01-01,1206,2026-01-01,unchanged,1
+1211,Isenthal,2010-01-01,1211,2026-01-01,unchanged,1
+1215,Seelisberg,2010-01-01,1215,2026-01-01,unchanged,1
+1214,Seedorf (UR),2010-01-01,1214,2026-01-01,unchanged,1
+1217,Sisikon,2010-01-01,1217,2026-01-01,unchanged,1
+1216,Silenen,2010-01-01,1216,2026-01-01,unchanged,1
+1213,Schattdorf,2010-01-01,1213,2026-01-01,unchanged,1
+1212,Realp,2010-01-01,1212,2026-01-01,unchanged,1
+1323,Wollerau,2010-01-01,1323,2026-01-01,unchanged,1
+1322,Freienbach,2010-01-01,1322,2026-01-01,unchanged,1
+1321,Feusisberg,2010-01-01,1321,2026-01-01,unchanged,1
+1311,Gersau,2010-01-01,1311,2026-01-01,unchanged,1
+1301,Einsiedeln,2010-01-01,1301,2026-01-01,unchanged,1
+1374,Steinerberg,2010-01-01,1374,2026-01-01,unchanged,1
+1373,Steinen,2010-01-01,1373,2026-01-01,unchanged,1
+1375,Unteriberg,2010-01-01,1375,2026-01-01,unchanged,1
+1362,Arth,2010-01-01,1362,2026-01-01,unchanged,1
+1361,Alpthal,2010-01-01,1361,2026-01-01,unchanged,1
+1363,Illgau,2010-01-01,1363,2026-01-01,unchanged,1
+1367,Muotathal,2010-01-01,1367,2026-01-01,unchanged,1
+1366,Morschach,2010-01-01,1366,2026-01-01,unchanged,1
+1368,Oberiberg,2010-01-01,1368,2026-01-01,unchanged,1
+1365,Lauerz,2010-01-01,1365,2026-01-01,unchanged,1
+1364,Ingenbohl,2010-01-01,1364,2026-01-01,unchanged,1
+1370,Rothenthurm,2010-01-01,1370,2026-01-01,unchanged,1
+1369,Riemenstalden,2010-01-01,1369,2026-01-01,unchanged,1
+1372,Schwyz,2010-01-01,1372,2026-01-01,unchanged,1
+1371,Sattel,2010-01-01,1371,2026-01-01,unchanged,1
+1348,Vorderthal,2010-01-01,1348,2026-01-01,unchanged,1
+1349,Wangen (SZ),2010-01-01,1349,2026-01-01,unchanged,1
+1347,Tuggen,2010-01-01,1347,2026-01-01,unchanged,1
+1341,Altendorf,2010-01-01,1341,2026-01-01,unchanged,1
+1342,Galgenen,2010-01-01,1342,2026-01-01,unchanged,1
+1344,Lachen,2010-01-01,1344,2026-01-01,unchanged,1
+1343,Innerthal,2010-01-01,1343,2026-01-01,unchanged,1
+1346,Schübelbach,2010-01-01,1346,2026-01-01,unchanged,1
+1345,Reichenburg,2010-01-01,1345,2026-01-01,unchanged,1
+1331,Küssnacht (SZ),2010-01-01,1331,2026-01-01,unchanged,1
+1401,Alpnach,2010-01-01,1401,2026-01-01,unchanged,1
+1403,Giswil,2010-01-01,1403,2026-01-01,unchanged,1
+1402,Engelberg,2010-01-01,1402,2026-01-01,unchanged,1
+1404,Kerns,2010-01-01,1404,2026-01-01,unchanged,1
+1405,Lungern,2010-01-01,1405,2026-01-01,unchanged,1
+1406,Sachseln,2010-01-01,1406,2026-01-01,unchanged,1
+1407,Sarnen,2010-01-01,1407,2026-01-01,unchanged,1
+1511,Wolfenschiessen,2010-01-01,1511,2026-01-01,unchanged,1
+1509,Stans,2010-01-01,1509,2026-01-01,unchanged,1
+1510,Stansstad,2010-01-01,1510,2026-01-01,unchanged,1
+1502,Buochs,2010-01-01,1502,2026-01-01,unchanged,1
+1503,Dallenwil,2010-01-01,1503,2026-01-01,unchanged,1
+1501,Beckenried,2010-01-01,1501,2026-01-01,unchanged,1
+1506,Ennetmoos,2010-01-01,1506,2026-01-01,unchanged,1
+1505,Ennetbürgen,2010-01-01,1505,2026-01-01,unchanged,1
+1504,Emmetten,2010-01-01,1504,2026-01-01,unchanged,1
+1507,Hergiswil (NW),2010-01-01,1507,2026-01-01,unchanged,1
+1508,Oberdorf (NW),2010-01-01,1508,2026-01-01,unchanged,1
+1629,Sool,2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1603,Braunwald,2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1601,Betschwanden,2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1602,Bilten,2010-01-01,1630,2026-01-01,recoded_or_merged,1
+1608,Filzbach,2010-01-01,1630,2026-01-01,recoded_or_merged,1
+1609,Glarus,2010-01-01,1632,2026-01-01,recoded_or_merged,1
+1605,Elm,2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1607,Ennenda,2010-01-01,1632,2026-01-01,recoded_or_merged,1
+1606,Engi,2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1618,Mühlehorn,2010-01-01,1630,2026-01-01,recoded_or_merged,1
+1616,Mitlödi,2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1617,Mollis,2010-01-01,1630,2026-01-01,recoded_or_merged,1
+1623,Oberurnen,2010-01-01,1630,2026-01-01,recoded_or_merged,1
+1624,Obstalden,2010-01-01,1630,2026-01-01,recoded_or_merged,1
+1620,Netstal,2010-01-01,1632,2026-01-01,recoded_or_merged,1
+1619,Näfels,2010-01-01,1630,2026-01-01,recoded_or_merged,1
+1622,Niederurnen,2010-01-01,1630,2026-01-01,recoded_or_merged,1
+1615,Matt,2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1613,Linthal,2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1626,Rüti (GL),2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1625,Riedern,2010-01-01,1632,2026-01-01,recoded_or_merged,1
+1627,Schwanden (GL),2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1628,Schwändi,2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1614,Luchsingen,2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1610,Haslen,2010-01-01,1631,2026-01-01,recoded_or_merged,1
+1711,Zug,2010-01-01,1711,2026-01-01,unchanged,1
+1710,Walchwil,2010-01-01,1710,2026-01-01,unchanged,1
+1708,Steinhausen,2010-01-01,1708,2026-01-01,unchanged,1
+1709,Unterägeri,2010-01-01,1709,2026-01-01,unchanged,1
+1702,Cham,2010-01-01,1702,2026-01-01,unchanged,1
+1701,Baar,2010-01-01,1701,2026-01-01,unchanged,1
+1703,Hünenberg,2010-01-01,1703,2026-01-01,unchanged,1
+1704,Menzingen,2010-01-01,1704,2026-01-01,unchanged,1
+1705,Neuheim,2010-01-01,1705,2026-01-01,unchanged,1
+1706,Oberägeri,2010-01-01,1706,2026-01-01,unchanged,1
+1707,Risch,2010-01-01,1707,2026-01-01,unchanged,1
+2325,Châtel-Saint-Denis,2010-01-01,2325,2026-01-01,unchanged,1
+2321,Attalens,2010-01-01,2321,2026-01-01,unchanged,1
+2323,Bossonnens,2010-01-01,2323,2026-01-01,unchanged,1
+2328,Granges (Veveyse),2010-01-01,2328,2026-01-01,unchanged,1
+2333,Remaufens,2010-01-01,2333,2026-01-01,unchanged,1
+2336,Semsales,2010-01-01,2336,2026-01-01,unchanged,1
+2337,Le Flon,2010-01-01,2337,2026-01-01,unchanged,1
+2338,La Verrerie,2010-01-01,2338,2026-01-01,unchanged,1
+2335,Saint-Martin (FR),2010-01-01,2335,2026-01-01,unchanged,1
+2310,Zumholz,2010-01-01,2299,2026-01-01,recoded_or_merged,1
+2302,St. Antoni,2010-01-01,2306,2026-01-01,recoded_or_merged,1
+2303,St. Silvester,2010-01-01,2303,2026-01-01,unchanged,1
+2304,St. Ursen,2010-01-01,2304,2026-01-01,unchanged,1
+2306,Tafers,2010-01-01,2306,2026-01-01,unchanged,1
+2307,Tentlingen,2010-01-01,2307,2026-01-01,unchanged,1
+2308,Ueberstorf,2010-01-01,2308,2026-01-01,unchanged,1
+2292,Brünisried,2010-01-01,2292,2026-01-01,unchanged,1
+2291,Alterswil,2010-01-01,2306,2026-01-01,recoded_or_merged,1
+2294,Giffers,2010-01-01,2294,2026-01-01,unchanged,1
+2293,Düdingen,2010-01-01,2293,2026-01-01,unchanged,1
+2296,Heitenried,2010-01-01,2296,2026-01-01,unchanged,1
+2298,Oberschrot,2010-01-01,2299,2026-01-01,recoded_or_merged,1
+2305,Schmitten (FR),2010-01-01,2305,2026-01-01,unchanged,1
+2299,Plaffeien,2010-01-01,2299,2026-01-01,unchanged,1
+2301,Rechthalten,2010-01-01,2301,2026-01-01,unchanged,1
+2295,Bösingen,2010-01-01,2295,2026-01-01,unchanged,1
+2300,Plasselb,2010-01-01,2300,2026-01-01,unchanged,1
+2309,Wünnewil-Flamatt,2010-01-01,2309,2026-01-01,unchanged,1
+2283,Wallenried,2010-01-01,2254,2026-01-01,recoded_or_merged,1
+2278,Ulmiz,2010-01-01,2262,2026-01-01,recoded_or_merged,1
+2244,Büchslen,2010-01-01,2275,2026-01-01,recoded_or_merged,1
+2257,Cressier (FR),2010-01-01,2257,2026-01-01,unchanged,1
+2250,Courgevaux,2010-01-01,2250,2026-01-01,unchanged,1
+2243,Barberêche,2010-01-01,2254,2026-01-01,recoded_or_merged,1
+2258,Fräschels,2010-01-01,2258,2026-01-01,unchanged,1
+2261,Greng,2010-01-01,2261,2026-01-01,unchanged,1
+2260,Gempenach,2010-01-01,2275,2026-01-01,recoded_or_merged,1
+2259,Galmiz,2010-01-01,2275,2026-01-01,recoded_or_merged,1
+2274,Muntelier,2010-01-01,2274,2026-01-01,unchanged,1
+2271,Meyriez,2010-01-01,2271,2026-01-01,unchanged,1
+2264,Jeuss,2010-01-01,2275,2026-01-01,recoded_or_merged,1
+2265,Kerzers,2010-01-01,2265,2026-01-01,unchanged,1
+2266,Kleinbösingen,2010-01-01,2266,2026-01-01,unchanged,1
+2270,Lurtigen,2010-01-01,2275,2026-01-01,recoded_or_merged,1
+2277,Salvenach,2010-01-01,2275,2026-01-01,recoded_or_merged,1
+2251,Courlevon,2010-01-01,2275,2026-01-01,recoded_or_merged,1
+2281,Haut-Vully,2010-01-01,2284,2026-01-01,recoded_or_merged,1
+2280,Bas-Vully,2010-01-01,2284,2026-01-01,recoded_or_merged,1
+2279,Villarepos,2010-01-01,2254,2026-01-01,recoded_or_merged,1
+2275,Murten,2010-01-01,2275,2026-01-01,unchanged,1
+2272,Misery-Courtion,2010-01-01,2272,2026-01-01,unchanged,1
+2254,Courtepin,2010-01-01,2254,2026-01-01,unchanged,1
+2262,Gurmels,2010-01-01,2262,2026-01-01,unchanged,1
+2276,Ried bei Kerzers,2010-01-01,2276,2026-01-01,unchanged,1
+2228,Villars-sur-Glâne,2010-01-01,2228,2026-01-01,unchanged,1
+2230,Villarsel-sur-Marly,2010-01-01,2230,2026-01-01,unchanged,1
+2231,Vuisternens-en-Ogoz,2010-01-01,2236,2026-01-01,recoded_or_merged,1
+2226,Treyvaux,2010-01-01,2226,2026-01-01,unchanged,1
+2177,Chénens,2010-01-01,2177,2026-01-01,unchanged,1
+2186,Cottens (FR),2010-01-01,2186,2026-01-01,unchanged,1
+2179,Chésopelloz,2010-01-01,2183,2026-01-01,recoded_or_merged,1
+2183,Corminboeuf,2010-01-01,2183,2026-01-01,unchanged,1
+2185,Corserey,2010-01-01,2237,2026-01-01,recoded_or_merged,1
+2172,Autafond,2010-01-01,2175,2026-01-01,recoded_or_merged,1
+2173,Autigny,2010-01-01,2173,2026-01-01,unchanged,1
+2171,Arconciel,2010-01-01,2238,2026-01-01,recoded_or_merged,1
+2196,Fribourg,2010-01-01,2196,2026-01-01,unchanged,1
+2194,Ferpicloz,2010-01-01,2194,2026-01-01,unchanged,1
+2197,Givisiez,2010-01-01,2197,2026-01-01,unchanged,1
+2198,Granges-Paccot,2010-01-01,2198,2026-01-01,unchanged,1
+2211,Neyruz (FR),2010-01-01,2211,2026-01-01,unchanged,1
+2213,Noréaz,2010-01-01,2237,2026-01-01,recoded_or_merged,1
+2208,Matran,2010-01-01,2208,2026-01-01,unchanged,1
+2225,Senèdes,2010-01-01,2238,2026-01-01,recoded_or_merged,1
+2221,Prez-vers-Noréaz,2010-01-01,2237,2026-01-01,recoded_or_merged,1
+2216,Pierrafortscha,2010-01-01,2216,2026-01-01,unchanged,1
+2222,Rossens (FR),2010-01-01,2236,2026-01-01,recoded_or_merged,1
+2206,Marly,2010-01-01,2206,2026-01-01,unchanged,1
+2189,Ependes (FR),2010-01-01,2238,2026-01-01,recoded_or_merged,1
+2175,Belfaux,2010-01-01,2175,2026-01-01,unchanged,1
+2217,Ponthaux,2010-01-01,2239,2026-01-01,recoded_or_merged,1
+2192,Farvagny,2010-01-01,2236,2026-01-01,recoded_or_merged,1
+2184,Corpataux-Magnedens,2010-01-01,2236,2026-01-01,recoded_or_merged,1
+2200,Grolley,2010-01-01,2239,2026-01-01,recoded_or_merged,1
+2234,La Brillaz,2010-01-01,2234,2026-01-01,unchanged,1
+2233,Hauterive (FR),2010-01-01,2233,2026-01-01,unchanged,1
+2174,Avry,2010-01-01,2174,2026-01-01,unchanged,1
+2220,Le Mouret,2010-01-01,2220,2026-01-01,unchanged,1
+2223,Le Glèbe,2010-01-01,2236,2026-01-01,recoded_or_merged,1
+2235,La Sonnaz,2010-01-01,2235,2026-01-01,unchanged,1
+2159,Villarvolard,2010-01-01,2129,2026-01-01,recoded_or_merged,1
+2160,Vuadens,2010-01-01,2160,2026-01-01,unchanged,1
+2153,Sorens,2010-01-01,2153,2026-01-01,unchanged,1
+2155,Vaulruz,2010-01-01,2155,2026-01-01,unchanged,1
+2126,Cerniat (FR),2010-01-01,2163,2026-01-01,recoded_or_merged,1
+2128,Châtel-sur-Montsalvens,2010-01-01,2128,2026-01-01,unchanged,1
+2127,Charmey,2010-01-01,2163,2026-01-01,recoded_or_merged,1
+2130,Crésuz,2010-01-01,2130,2026-01-01,unchanged,1
+2129,Corbières,2010-01-01,2129,2026-01-01,unchanged,1
+2124,Broc,2010-01-01,2124,2026-01-01,unchanged,1
+2135,Gruyères,2010-01-01,2135,2026-01-01,unchanged,1
+2134,Grandvillard,2010-01-01,2134,2026-01-01,unchanged,1
+2131,Echarlens,2010-01-01,2131,2026-01-01,unchanged,1
+2137,Hauteville,2010-01-01,2137,2026-01-01,unchanged,1
+2143,Morlon,2010-01-01,2143,2026-01-01,unchanged,1
+2149,La Roche,2010-01-01,2149,2026-01-01,unchanged,1
+2145,Le Pâquier (FR),2010-01-01,2145,2026-01-01,unchanged,1
+2138,Jaun,2010-01-01,2138,2026-01-01,unchanged,1
+2148,Riaz,2010-01-01,2148,2026-01-01,unchanged,1
+2147,Pont-la-Ville,2010-01-01,2147,2026-01-01,unchanged,1
+2140,Marsens,2010-01-01,2140,2026-01-01,unchanged,1
+2152,Sâles,2010-01-01,2152,2026-01-01,unchanged,1
+2121,Haut-Intyamon,2010-01-01,2121,2026-01-01,unchanged,1
+2122,Pont-en-Ogoz,2010-01-01,2122,2026-01-01,unchanged,1
+2162,Bas-Intyamon,2010-01-01,2162,2026-01-01,unchanged,1
+2125,Bulle,2010-01-01,2125,2026-01-01,unchanged,1
+2123,Botterens,2010-01-01,2123,2026-01-01,unchanged,1
+2068,Châtonnaye,2010-01-01,2068,2026-01-01,unchanged,1
+2066,Chapelle (Glâne),2010-01-01,2097,2026-01-01,recoded_or_merged,1
+2061,Auboranges,2010-01-01,2097,2026-01-01,recoded_or_merged,1
+2079,Grangettes,2010-01-01,2079,2026-01-01,unchanged,1
+2089,Montet (Glâne),2010-01-01,2102,2026-01-01,recoded_or_merged,1
+2067,Le Châtelard,2010-01-01,2067,2026-01-01,unchanged,1
+2086,Massonnens,2010-01-01,2086,2026-01-01,unchanged,1
+2072,Ecublens (FR),2010-01-01,2097,2026-01-01,recoded_or_merged,1
+2111,Villaz-Saint-Pierre,2010-01-01,2117,2026-01-01,recoded_or_merged,1
+2096,Romont (FR),2010-01-01,2096,2026-01-01,unchanged,1
+2063,Billens-Hennens,2010-01-01,2063,2026-01-01,unchanged,1
+2114,Villorsonnens,2010-01-01,2114,2026-01-01,unchanged,1
+2102,Ursy,2010-01-01,2102,2026-01-01,unchanged,1
+2097,Rue,2010-01-01,2097,2026-01-01,unchanged,1
+2087,Mézières (FR),2010-01-01,2087,2026-01-01,unchanged,1
+2099,Siviriez,2010-01-01,2099,2026-01-01,unchanged,1
+2115,Torny,2010-01-01,2115,2026-01-01,unchanged,1
+2113,Vuisternens-devant-Romont,2010-01-01,2113,2026-01-01,unchanged,1
+2116,La Folliaz,2010-01-01,2117,2026-01-01,recoded_or_merged,1
+2112,Vuarmarens,2010-01-01,2102,2026-01-01,recoded_or_merged,1
+2047,Villeneuve (FR),2010-01-01,2044,2026-01-01,recoded_or_merged,1
+2049,Vuissens,2010-01-01,2054,2026-01-01,recoded_or_merged,1
+2045,Vallon,2010-01-01,2045,2026-01-01,unchanged,1
+2005,Châbles,2010-01-01,2055,2026-01-01,recoded_or_merged,1
+2008,Châtillon (FR),2010-01-01,2008,2026-01-01,unchanged,1
+2004,Bussy (FR),2010-01-01,2054,2026-01-01,recoded_or_merged,1
+2010,Cheyres,2010-01-01,2055,2026-01-01,recoded_or_merged,1
+2017,Font,2010-01-01,2054,2026-01-01,recoded_or_merged,1
+2016,Fétigny,2010-01-01,2056,2026-01-01,recoded_or_merged,1
+2022,Gletterens,2010-01-01,2022,2026-01-01,unchanged,1
+2014,Dompierre (FR),2010-01-01,2053,2026-01-01,recoded_or_merged,1
+2013,Domdidier,2010-01-01,2053,2026-01-01,recoded_or_merged,1
+2015,Estavayer-le-Lac,2010-01-01,2054,2026-01-01,recoded_or_merged,1
+2033,Morens (FR),2010-01-01,2054,2026-01-01,recoded_or_merged,1
+2027,Ménières,2010-01-01,2056,2026-01-01,recoded_or_merged,1
+2035,Nuvilly,2010-01-01,2035,2026-01-01,unchanged,1
+2039,Rueyres-les-Prés,2010-01-01,2054,2026-01-01,recoded_or_merged,1
+2040,Russy,2010-01-01,2053,2026-01-01,recoded_or_merged,1
+2043,Sévaz,2010-01-01,2043,2026-01-01,unchanged,1
+2038,Prévondavaux,2010-01-01,2038,2026-01-01,unchanged,1
+2041,Saint-Aubin (FR),2010-01-01,2041,2026-01-01,unchanged,1
+2034,Murist,2010-01-01,2054,2026-01-01,recoded_or_merged,1
+2024,Léchelles,2010-01-01,2053,2026-01-01,recoded_or_merged,1
+2050,Les Montets,2010-01-01,2050,2026-01-01,unchanged,1
+2029,Montagny (FR),2010-01-01,2029,2026-01-01,unchanged,1
+2009,Cheiry,2010-01-01,2044,2026-01-01,recoded_or_merged,1
+2011,Cugy (FR),2010-01-01,2011,2026-01-01,unchanged,1
+2051,Delley-Portalban,2010-01-01,2051,2026-01-01,unchanged,1
+2044,Surpierre,2010-01-01,2044,2026-01-01,unchanged,1
+2052,Vernay,2010-01-01,2054,2026-01-01,recoded_or_merged,1
+2025,Lully (FR),2010-01-01,2025,2026-01-01,unchanged,1
+2501,Winznau,2010-01-01,2501,2026-01-01,unchanged,1
+2502,Wisen (SO),2010-01-01,2502,2026-01-01,unchanged,1
+2499,Stüsslingen,2010-01-01,2499,2026-01-01,unchanged,1
+2500,Trimbach,2010-01-01,2500,2026-01-01,unchanged,1
+2491,Hauenstein-Ifenthal,2010-01-01,2491,2026-01-01,unchanged,1
+2497,Obergösgen,2010-01-01,2497,2026-01-01,unchanged,1
+2495,Niedergösgen,2010-01-01,2495,2026-01-01,unchanged,1
+2492,Kienberg,2010-01-01,2492,2026-01-01,unchanged,1
+2493,Lostorf,2010-01-01,2493,2026-01-01,unchanged,1
+2498,Rohr (SO),2010-01-01,2499,2026-01-01,recoded_or_merged,1
+2503,Erlinsbach (SO),2010-01-01,2503,2026-01-01,unchanged,1
+2622,Zullwil,2010-01-01,2622,2026-01-01,unchanged,1
+2614,Büsserach,2010-01-01,2614,2026-01-01,unchanged,1
+2611,Bärschwil,2010-01-01,2611,2026-01-01,unchanged,1
+2613,Breitenbach,2010-01-01,2613,2026-01-01,unchanged,1
+2612,Beinwil (SO),2010-01-01,2612,2026-01-01,unchanged,1
+2616,Fehren,2010-01-01,2616,2026-01-01,unchanged,1
+2617,Grindel,2010-01-01,2617,2026-01-01,unchanged,1
+2618,Himmelried,2010-01-01,2618,2026-01-01,unchanged,1
+2615,Erschwil,2010-01-01,2615,2026-01-01,unchanged,1
+2620,Meltingen,2010-01-01,2620,2026-01-01,unchanged,1
+2621,Nunningen,2010-01-01,2621,2026-01-01,unchanged,1
+2619,Kleinlützel,2010-01-01,2619,2026-01-01,unchanged,1
+2601,Solothurn,2010-01-01,2601,2026-01-01,unchanged,1
+2541,Balm bei Günsberg,2010-01-01,2541,2026-01-01,unchanged,1
+2542,Bellach,2010-01-01,2542,2026-01-01,unchanged,1
+2543,Bettlach,2010-01-01,2543,2026-01-01,unchanged,1
+2547,Günsberg,2010-01-01,2547,2026-01-01,unchanged,1
+2545,Flumenthal,2010-01-01,2545,2026-01-01,unchanged,1
+2544,Feldbrunnen-St. Niklaus,2010-01-01,2544,2026-01-01,unchanged,1
+2546,Grenchen,2010-01-01,2546,2026-01-01,unchanged,1
+2548,Hubersdorf,2010-01-01,2548,2026-01-01,unchanged,1
+2553,Oberdorf (SO),2010-01-01,2553,2026-01-01,unchanged,1
+2552,Niederwil (SO),2010-01-01,2554,2026-01-01,recoded_or_merged,1
+2550,Langendorf,2010-01-01,2550,2026-01-01,unchanged,1
+2549,Kammersrohr,2010-01-01,2549,2026-01-01,unchanged,1
+2551,Lommiswil,2010-01-01,2551,2026-01-01,unchanged,1
+2555,Rüttenen,2010-01-01,2555,2026-01-01,unchanged,1
+2554,Riedholz,2010-01-01,2554,2026-01-01,unchanged,1
+2556,Selzach,2010-01-01,2556,2026-01-01,unchanged,1
+2481,Witterswil,2010-01-01,2481,2026-01-01,unchanged,1
+2472,Büren (SO),2010-01-01,2472,2026-01-01,unchanged,1
+2471,Bättwil,2010-01-01,2471,2026-01-01,unchanged,1
+2474,Gempen,2010-01-01,2474,2026-01-01,unchanged,1
+2475,Hochwald,2010-01-01,2475,2026-01-01,unchanged,1
+2473,Dornach,2010-01-01,2473,2026-01-01,unchanged,1
+2478,Nuglar-St. Pantaleon,2010-01-01,2478,2026-01-01,unchanged,1
+2479,Rodersdorf,2010-01-01,2479,2026-01-01,unchanged,1
+2480,Seewen,2010-01-01,2480,2026-01-01,unchanged,1
+2476,Hofstetten-Flüh,2010-01-01,2476,2026-01-01,unchanged,1
+2477,Metzerlen-Mariastein,2010-01-01,2477,2026-01-01,unchanged,1
+2463,Unterramsern,2010-01-01,2463,2026-01-01,unchanged,1
+2462,Tscheppach,2010-01-01,2465,2026-01-01,recoded_or_merged,1
+2446,Brügglen,2010-01-01,2465,2026-01-01,recoded_or_merged,1
+2442,Aetingen,2010-01-01,2465,2026-01-01,recoded_or_merged,1
+2441,Aetigkofen,2010-01-01,2465,2026-01-01,recoded_or_merged,1
+2445,Biezwil,2010-01-01,2445,2026-01-01,unchanged,1
+2444,Bibern (SO),2010-01-01,2465,2026-01-01,recoded_or_merged,1
+2449,Gossliwil,2010-01-01,2465,2026-01-01,recoded_or_merged,1
+2450,Hessigkofen,2010-01-01,2465,2026-01-01,recoded_or_merged,1
+2458,Mühledorf (SO),2010-01-01,2465,2026-01-01,recoded_or_merged,1
+2459,Nennigkofen,2010-01-01,2464,2026-01-01,recoded_or_merged,1
+2452,Küttigkofen,2010-01-01,2465,2026-01-01,recoded_or_merged,1
+2453,Kyburg-Buchegg,2010-01-01,2465,2026-01-01,recoded_or_merged,1
+2454,Lüsslingen,2010-01-01,2464,2026-01-01,recoded_or_merged,1
+2461,Schnottwil,2010-01-01,2461,2026-01-01,unchanged,1
+2455,Lüterkofen-Ichertswil,2010-01-01,2455,2026-01-01,unchanged,1
+2456,Lüterswil-Gächliwil,2010-01-01,2465,2026-01-01,recoded_or_merged,1
+2457,Messen,2010-01-01,2457,2026-01-01,unchanged,1
+2585,Walterswil (SO),2010-01-01,2585,2026-01-01,unchanged,1
+2586,Wangen bei Olten,2010-01-01,2586,2026-01-01,unchanged,1
+2584,Starrkirch-Wil,2010-01-01,2584,2026-01-01,unchanged,1
+2572,Däniken,2010-01-01,2572,2026-01-01,unchanged,1
+2571,Boningen,2010-01-01,2571,2026-01-01,unchanged,1
+2578,Gunzgen,2010-01-01,2578,2026-01-01,unchanged,1
+2579,Hägendorf,2010-01-01,2579,2026-01-01,unchanged,1
+2575,Fulenbach,2010-01-01,2575,2026-01-01,unchanged,1
+2573,Dulliken,2010-01-01,2573,2026-01-01,unchanged,1
+2574,Eppenberg-Wöschnau,2010-01-01,2574,2026-01-01,unchanged,1
+2581,Olten,2010-01-01,2581,2026-01-01,unchanged,1
+2580,Kappel (SO),2010-01-01,2580,2026-01-01,unchanged,1
+2582,Rickenbach (SO),2010-01-01,2582,2026-01-01,unchanged,1
+2583,Schönenwerd,2010-01-01,2583,2026-01-01,unchanged,1
+2576,Gretzenbach,2010-01-01,2576,2026-01-01,unchanged,1
+2401,Egerkingen,2010-01-01,2401,2026-01-01,unchanged,1
+2402,Härkingen,2010-01-01,2402,2026-01-01,unchanged,1
+2403,Kestenholz,2010-01-01,2403,2026-01-01,unchanged,1
+2404,Neuendorf,2010-01-01,2404,2026-01-01,unchanged,1
+2405,Niederbuchsiten,2010-01-01,2405,2026-01-01,unchanged,1
+2406,Oberbuchsiten,2010-01-01,2406,2026-01-01,unchanged,1
+2407,Oensingen,2010-01-01,2407,2026-01-01,unchanged,1
+2408,Wolfwil,2010-01-01,2408,2026-01-01,unchanged,1
+2421,Aedermannsdorf,2010-01-01,2421,2026-01-01,unchanged,1
+2422,Balsthal,2010-01-01,2422,2026-01-01,unchanged,1
+2423,Gänsbrunnen,2010-01-01,2430,2026-01-01,recoded_or_merged,1
+2424,Herbetswil,2010-01-01,2424,2026-01-01,unchanged,1
+2425,Holderbank (SO),2010-01-01,2425,2026-01-01,unchanged,1
+2426,Laupersdorf,2010-01-01,2426,2026-01-01,unchanged,1
+2427,Matzendorf,2010-01-01,2427,2026-01-01,unchanged,1
+2428,Mümliswil-Ramiswil,2010-01-01,2428,2026-01-01,unchanged,1
+2429,Welschenrohr,2010-01-01,2430,2026-01-01,recoded_or_merged,1
+2513,Biberist,2010-01-01,2513,2026-01-01,unchanged,1
+2514,Bolken,2010-01-01,2514,2026-01-01,unchanged,1
+2516,Deitingen,2010-01-01,2516,2026-01-01,unchanged,1
+2517,Derendingen,2010-01-01,2517,2026-01-01,unchanged,1
+2518,Etziken,2010-01-01,2518,2026-01-01,unchanged,1
+2519,Gerlafingen,2010-01-01,2519,2026-01-01,unchanged,1
+2520,Halten,2010-01-01,2525,2026-01-01,recoded_or_merged,1
+2522,Hersiwil,2010-01-01,2535,2026-01-01,recoded_or_merged,1
+2523,Horriwil,2010-01-01,2523,2026-01-01,unchanged,1
+2524,Hüniken,2010-01-01,2524,2026-01-01,unchanged,1
+2525,Kriegstetten,2010-01-01,2525,2026-01-01,unchanged,1
+2527,Luterbach,2010-01-01,2527,2026-01-01,unchanged,1
+2528,Obergerlafingen,2010-01-01,2528,2026-01-01,unchanged,1
+2529,Oekingen,2010-01-01,2525,2026-01-01,recoded_or_merged,1
+2530,Recherswil,2010-01-01,2530,2026-01-01,unchanged,1
+2531,Steinhof,2010-01-01,2511,2026-01-01,recoded_or_merged,1
+2532,Subingen,2010-01-01,2532,2026-01-01,unchanged,1
+2534,Zuchwil,2010-01-01,2534,2026-01-01,unchanged,1
+2521,Heinrichswil-Winistorf,2010-01-01,2535,2026-01-01,recoded_or_merged,1
+2526,Lohn-Ammannsegg,2010-01-01,2526,2026-01-01,unchanged,1
+2511,Aeschi (SO),2010-01-01,2511,2026-01-01,unchanged,1
+2701,Basel,2010-01-01,2701,2026-01-01,unchanged,1
+2702,Bettingen,2010-01-01,2702,2026-01-01,unchanged,1
+2703,Riehen,2010-01-01,2703,2026-01-01,unchanged,1
+2761,Aesch (BL),2010-01-01,2761,2026-01-01,unchanged,1
+2762,Allschwil,2010-01-01,2762,2026-01-01,unchanged,1
+2763,Arlesheim,2010-01-01,2763,2026-01-01,unchanged,1
+2764,Biel-Benken,2010-01-01,2764,2026-01-01,unchanged,1
+2765,Binningen,2010-01-01,2765,2026-01-01,unchanged,1
+2766,Birsfelden,2010-01-01,2766,2026-01-01,unchanged,1
+2767,Bottmingen,2010-01-01,2767,2026-01-01,unchanged,1
+2768,Ettingen,2010-01-01,2768,2026-01-01,unchanged,1
+2769,Münchenstein,2010-01-01,2769,2026-01-01,unchanged,1
+2770,Muttenz,2010-01-01,2770,2026-01-01,unchanged,1
+2771,Oberwil (BL),2010-01-01,2771,2026-01-01,unchanged,1
+2772,Pfeffingen,2010-01-01,2772,2026-01-01,unchanged,1
+2773,Reinach (BL),2010-01-01,2773,2026-01-01,unchanged,1
+2774,Schönenbuch,2010-01-01,2774,2026-01-01,unchanged,1
+2775,Therwil,2010-01-01,2775,2026-01-01,unchanged,1
+2781,Blauen,2010-01-01,2781,2026-01-01,unchanged,1
+2782,Brislach,2010-01-01,2782,2026-01-01,unchanged,1
+2783,Burg im Leimental,2010-01-01,2783,2026-01-01,unchanged,1
+2784,Dittingen,2010-01-01,2784,2026-01-01,unchanged,1
+2785,Duggingen,2010-01-01,2785,2026-01-01,unchanged,1
+2786,Grellingen,2010-01-01,2786,2026-01-01,unchanged,1
+2787,Laufen,2010-01-01,2787,2026-01-01,unchanged,1
+2788,Liesberg,2010-01-01,2788,2026-01-01,unchanged,1
+2789,Nenzlingen,2010-01-01,2789,2026-01-01,unchanged,1
+2790,Roggenburg,2010-01-01,2790,2026-01-01,unchanged,1
+2791,Röschenz,2010-01-01,2791,2026-01-01,unchanged,1
+2792,Wahlen,2010-01-01,2792,2026-01-01,unchanged,1
+2793,Zwingen,2010-01-01,2793,2026-01-01,unchanged,1
+2821,Arisdorf,2010-01-01,2821,2026-01-01,unchanged,1
+2822,Augst,2010-01-01,2822,2026-01-01,unchanged,1
+2823,Bubendorf,2010-01-01,2823,2026-01-01,unchanged,1
+2824,Frenkendorf,2010-01-01,2824,2026-01-01,unchanged,1
+2825,Füllinsdorf,2010-01-01,2825,2026-01-01,unchanged,1
+2826,Giebenach,2010-01-01,2826,2026-01-01,unchanged,1
+2827,Hersberg,2010-01-01,2827,2026-01-01,unchanged,1
+2828,Lausen,2010-01-01,2828,2026-01-01,unchanged,1
+2829,Liestal,2010-01-01,2829,2026-01-01,unchanged,1
+2830,Lupsingen,2010-01-01,2830,2026-01-01,unchanged,1
+2831,Pratteln,2010-01-01,2831,2026-01-01,unchanged,1
+2832,Ramlinsburg,2010-01-01,2832,2026-01-01,unchanged,1
+2833,Seltisberg,2010-01-01,2833,2026-01-01,unchanged,1
+2834,Ziefen,2010-01-01,2834,2026-01-01,unchanged,1
+2841,Anwil,2010-01-01,2841,2026-01-01,unchanged,1
+2842,Böckten,2010-01-01,2842,2026-01-01,unchanged,1
+2843,Buckten,2010-01-01,2843,2026-01-01,unchanged,1
+2844,Buus,2010-01-01,2844,2026-01-01,unchanged,1
+2845,Diepflingen,2010-01-01,2845,2026-01-01,unchanged,1
+2846,Gelterkinden,2010-01-01,2846,2026-01-01,unchanged,1
+2847,Häfelfingen,2010-01-01,2847,2026-01-01,unchanged,1
+2848,Hemmiken,2010-01-01,2848,2026-01-01,unchanged,1
+2849,Itingen,2010-01-01,2849,2026-01-01,unchanged,1
+2850,Känerkinden,2010-01-01,2850,2026-01-01,unchanged,1
+2851,Kilchberg (BL),2010-01-01,2851,2026-01-01,unchanged,1
+2852,Läufelfingen,2010-01-01,2852,2026-01-01,unchanged,1
+2853,Maisprach,2010-01-01,2853,2026-01-01,unchanged,1
+2854,Nusshof,2010-01-01,2854,2026-01-01,unchanged,1
+2855,Oltingen,2010-01-01,2855,2026-01-01,unchanged,1
+2856,Ormalingen,2010-01-01,2856,2026-01-01,unchanged,1
+2857,Rickenbach (BL),2010-01-01,2857,2026-01-01,unchanged,1
+2858,Rothenfluh,2010-01-01,2858,2026-01-01,unchanged,1
+2859,Rümlingen,2010-01-01,2859,2026-01-01,unchanged,1
+2860,Rünenberg,2010-01-01,2860,2026-01-01,unchanged,1
+2861,Sissach,2010-01-01,2861,2026-01-01,unchanged,1
+2862,Tecknau,2010-01-01,2862,2026-01-01,unchanged,1
+2863,Tenniken,2010-01-01,2863,2026-01-01,unchanged,1
+2864,Thürnen,2010-01-01,2864,2026-01-01,unchanged,1
+2865,Wenslingen,2010-01-01,2865,2026-01-01,unchanged,1
+2866,Wintersingen,2010-01-01,2866,2026-01-01,unchanged,1
+2867,Wittinsburg,2010-01-01,2867,2026-01-01,unchanged,1
+2868,Zeglingen,2010-01-01,2868,2026-01-01,unchanged,1
+2869,Zunzgen,2010-01-01,2869,2026-01-01,unchanged,1
+2881,Arboldswil,2010-01-01,2881,2026-01-01,unchanged,1
+2882,Bennwil,2010-01-01,2882,2026-01-01,unchanged,1
+2883,Bretzwil,2010-01-01,2883,2026-01-01,unchanged,1
+2884,Diegten,2010-01-01,2884,2026-01-01,unchanged,1
+2885,Eptingen,2010-01-01,2885,2026-01-01,unchanged,1
+2886,Hölstein,2010-01-01,2886,2026-01-01,unchanged,1
+2887,Lampenberg,2010-01-01,2887,2026-01-01,unchanged,1
+2888,Langenbruck,2010-01-01,2888,2026-01-01,unchanged,1
+2889,Lauwil,2010-01-01,2889,2026-01-01,unchanged,1
+2890,Liedertswil,2010-01-01,2890,2026-01-01,unchanged,1
+2891,Niederdorf,2010-01-01,2891,2026-01-01,unchanged,1
+2892,Oberdorf (BL),2010-01-01,2892,2026-01-01,unchanged,1
+2893,Reigoldswil,2010-01-01,2893,2026-01-01,unchanged,1
+2894,Titterten,2010-01-01,2894,2026-01-01,unchanged,1
+2895,Waldenburg,2010-01-01,2895,2026-01-01,unchanged,1
+2973,Trasadingen,2010-01-01,2973,2026-01-01,unchanged,1
+2971,Hallau,2010-01-01,2971,2026-01-01,unchanged,1
+2972,Oberhallau,2010-01-01,2972,2026-01-01,unchanged,1
+2974,Wilchingen,2010-01-01,2974,2026-01-01,unchanged,1
+2964,Stein am Rhein,2010-01-01,2964,2026-01-01,unchanged,1
+2961,Buch (SH),2010-01-01,2961,2026-01-01,unchanged,1
+2962,Hemishofen,2010-01-01,2962,2026-01-01,unchanged,1
+2963,Ramsen,2010-01-01,2963,2026-01-01,unchanged,1
+2951,Beggingen,2010-01-01,2951,2026-01-01,unchanged,1
+2953,Siblingen,2010-01-01,2953,2026-01-01,unchanged,1
+2952,Schleitheim,2010-01-01,2952,2026-01-01,unchanged,1
+2933,Buchberg,2010-01-01,2933,2026-01-01,unchanged,1
+2931,Bargen (SH),2010-01-01,2931,2026-01-01,unchanged,1
+2932,Beringen,2010-01-01,2932,2026-01-01,unchanged,1
+2936,Merishausen,2010-01-01,2936,2026-01-01,unchanged,1
+2937,Neuhausen am Rheinfall,2010-01-01,2937,2026-01-01,unchanged,1
+2938,Rüdlingen,2010-01-01,2938,2026-01-01,unchanged,1
+2939,Schaffhausen,2010-01-01,2939,2026-01-01,unchanged,1
+2919,Stetten (SH),2010-01-01,2919,2026-01-01,unchanged,1
+2914,Büttenhardt,2010-01-01,2914,2026-01-01,unchanged,1
+2915,Dörflingen,2010-01-01,2915,2026-01-01,unchanged,1
+2917,Lohn (SH),2010-01-01,2917,2026-01-01,unchanged,1
+2920,Thayngen,2010-01-01,2920,2026-01-01,unchanged,1
+2902,Guntmadingen,2010-01-01,2932,2026-01-01,recoded_or_merged,1
+2901,Gächlingen,2010-01-01,2901,2026-01-01,unchanged,1
+2904,Neunkirch,2010-01-01,2904,2026-01-01,unchanged,1
+2903,Löhningen,2010-01-01,2903,2026-01-01,unchanged,1
+3007,Waldstatt,2010-01-01,3007,2026-01-01,unchanged,1
+3005,Stein (AR),2010-01-01,3005,2026-01-01,unchanged,1
+3006,Urnäsch,2010-01-01,3006,2026-01-01,unchanged,1
+3002,Hundwil,2010-01-01,3002,2026-01-01,unchanged,1
+3001,Herisau,2010-01-01,3001,2026-01-01,unchanged,1
+3004,Schwellbrunn,2010-01-01,3004,2026-01-01,unchanged,1
+3003,Schönengrund,2010-01-01,3003,2026-01-01,unchanged,1
+3038,Wolfhalden,2010-01-01,3038,2026-01-01,unchanged,1
+3036,Wald (AR),2010-01-01,3036,2026-01-01,unchanged,1
+3037,Walzenhausen,2010-01-01,3037,2026-01-01,unchanged,1
+3031,Grub (AR),2010-01-01,3031,2026-01-01,unchanged,1
+3032,Heiden,2010-01-01,3032,2026-01-01,unchanged,1
+3033,Lutzenberg,2010-01-01,3033,2026-01-01,unchanged,1
+3035,Reute (AR),2010-01-01,3035,2026-01-01,unchanged,1
+3034,Rehetobel,2010-01-01,3034,2026-01-01,unchanged,1
+3023,Speicher,2010-01-01,3023,2026-01-01,unchanged,1
+3024,Teufen (AR),2010-01-01,3024,2026-01-01,unchanged,1
+3025,Trogen,2010-01-01,3025,2026-01-01,unchanged,1
+3021,Bühler,2010-01-01,3021,2026-01-01,unchanged,1
+3022,Gais,2010-01-01,3022,2026-01-01,unchanged,1
+3101,Appenzell,2010-01-01,3101,2026-01-01,unchanged,1
+3102,Gonten,2010-01-01,3102,2026-01-01,unchanged,1
+3103,Rüte,2010-01-01,3112,2026-01-01,recoded_or_merged,1
+3104,Schlatt-Haslen,2010-01-01,3104,2026-01-01,unchanged,1
+3105,Schwende,2010-01-01,3112,2026-01-01,recoded_or_merged,1
+3111,Oberegg,2010-01-01,3111,2026-01-01,unchanged,1
+3352,Ebnat-Kappel,2010-01-01,3352,2026-01-01,unchanged,1
+3356,Stein (SG),2010-01-01,3360,2026-01-01,recoded_or_merged,1
+3372,Hemberg,2010-01-01,3396,2026-01-01,recoded_or_merged,1
+3373,Krinau,2010-01-01,3379,2026-01-01,recoded_or_merged,1
+3374,Lichtensteig,2010-01-01,3374,2026-01-01,unchanged,1
+3375,Oberhelfenschwil,2010-01-01,3396,2026-01-01,recoded_or_merged,1
+3377,Wattwil,2010-01-01,3379,2026-01-01,recoded_or_merged,1
+3391,Bütschwil,2010-01-01,3395,2026-01-01,recoded_or_merged,1
+3392,Kirchberg (SG),2010-01-01,3392,2026-01-01,unchanged,1
+3393,Lütisburg,2010-01-01,3393,2026-01-01,unchanged,1
+3394,Mosnang,2010-01-01,3394,2026-01-01,unchanged,1
+3403,Ganterschwil,2010-01-01,3395,2026-01-01,recoded_or_merged,1
+3358,Nesslau-Krummenau,2010-01-01,3360,2026-01-01,recoded_or_merged,1
+3378,Neckertal,2010-01-01,3396,2026-01-01,recoded_or_merged,1
+3359,Wildhaus-Alt St. Johann,2010-01-01,3359,2026-01-01,unchanged,1
+3211,Berg (SG),2010-01-01,3211,2026-01-01,unchanged,1
+3213,Goldach,2010-01-01,3213,2026-01-01,unchanged,1
+3214,Mörschwil,2010-01-01,3214,2026-01-01,unchanged,1
+3215,Rorschach,2010-01-01,3215,2026-01-01,unchanged,1
+3216,Rorschacherberg,2010-01-01,3216,2026-01-01,unchanged,1
+3217,Steinach,2010-01-01,3217,2026-01-01,unchanged,1
+3218,Tübach,2010-01-01,3218,2026-01-01,unchanged,1
+3219,Untereggen,2010-01-01,3219,2026-01-01,unchanged,1
+3237,Thal,2010-01-01,3237,2026-01-01,unchanged,1
+3201,Häggenschwil,2010-01-01,3201,2026-01-01,unchanged,1
+3202,Muolen,2010-01-01,3202,2026-01-01,unchanged,1
+3203,St. Gallen,2010-01-01,3203,2026-01-01,unchanged,1
+3204,Wittenbach,2010-01-01,3204,2026-01-01,unchanged,1
+3212,Eggersriet,2010-01-01,3212,2026-01-01,unchanged,1
+3441,Andwil (SG),2010-01-01,3441,2026-01-01,unchanged,1
+3442,Gaiserwald,2010-01-01,3442,2026-01-01,unchanged,1
+3443,Gossau (SG),2010-01-01,3443,2026-01-01,unchanged,1
+3444,Waldkirch,2010-01-01,3444,2026-01-01,unchanged,1
+3271,Buchs (SG),2010-01-01,3271,2026-01-01,unchanged,1
+3272,Gams,2010-01-01,3272,2026-01-01,unchanged,1
+3273,Grabs,2010-01-01,3273,2026-01-01,unchanged,1
+3274,Sennwald,2010-01-01,3274,2026-01-01,unchanged,1
+3275,Sevelen,2010-01-01,3275,2026-01-01,unchanged,1
+3276,Wartau,2010-01-01,3276,2026-01-01,unchanged,1
+3401,Degersheim,2010-01-01,3401,2026-01-01,unchanged,1
+3402,Flawil,2010-01-01,3402,2026-01-01,unchanged,1
+3405,Jonschwil,2010-01-01,3405,2026-01-01,unchanged,1
+3407,Oberuzwil,2010-01-01,3407,2026-01-01,unchanged,1
+3408,Uzwil,2010-01-01,3408,2026-01-01,unchanged,1
+3421,Bronschhofen,2010-01-01,3427,2026-01-01,recoded_or_merged,1
+3422,Niederbüren,2010-01-01,3422,2026-01-01,unchanged,1
+3423,Niederhelfenschwil,2010-01-01,3423,2026-01-01,unchanged,1
+3424,Oberbüren,2010-01-01,3424,2026-01-01,unchanged,1
+3425,Wil (SG),2010-01-01,3427,2026-01-01,recoded_or_merged,1
+3426,Zuzwil (SG),2010-01-01,3426,2026-01-01,unchanged,1
+3291,Bad Ragaz,2010-01-01,3291,2026-01-01,unchanged,1
+3292,Flums,2010-01-01,3292,2026-01-01,unchanged,1
+3293,Mels,2010-01-01,3293,2026-01-01,unchanged,1
+3294,Pfäfers,2010-01-01,3294,2026-01-01,unchanged,1
+3295,Quarten,2010-01-01,3295,2026-01-01,unchanged,1
+3296,Sargans,2010-01-01,3296,2026-01-01,unchanged,1
+3297,Vilters-Wangs,2010-01-01,3297,2026-01-01,unchanged,1
+3298,Walenstadt,2010-01-01,3298,2026-01-01,unchanged,1
+3311,Amden,2010-01-01,3311,2026-01-01,unchanged,1
+3312,Benken (SG),2010-01-01,3312,2026-01-01,unchanged,1
+3313,Kaltbrunn,2010-01-01,3313,2026-01-01,unchanged,1
+3314,Rieden,2010-01-01,3341,2026-01-01,recoded_or_merged,1
+3315,Schänis,2010-01-01,3315,2026-01-01,unchanged,1
+3316,Weesen,2010-01-01,3316,2026-01-01,unchanged,1
+3331,Ernetschwil,2010-01-01,3341,2026-01-01,recoded_or_merged,1
+3332,Eschenbach (SG),2010-01-01,3342,2026-01-01,recoded_or_merged,1
+3333,Goldingen,2010-01-01,3342,2026-01-01,recoded_or_merged,1
+3334,Gommiswald,2010-01-01,3341,2026-01-01,recoded_or_merged,1
+3337,St. Gallenkappel,2010-01-01,3342,2026-01-01,recoded_or_merged,1
+3338,Schmerikon,2010-01-01,3338,2026-01-01,unchanged,1
+3339,Uznach,2010-01-01,3339,2026-01-01,unchanged,1
+3340,Rapperswil-Jona,2010-01-01,3340,2026-01-01,unchanged,1
+3231,Au (SG),2010-01-01,3231,2026-01-01,unchanged,1
+3232,Balgach,2010-01-01,3232,2026-01-01,unchanged,1
+3233,Berneck,2010-01-01,3233,2026-01-01,unchanged,1
+3234,Diepoldsau,2010-01-01,3234,2026-01-01,unchanged,1
+3235,Rheineck,2010-01-01,3235,2026-01-01,unchanged,1
+3236,St. Margrethen,2010-01-01,3236,2026-01-01,unchanged,1
+3238,Widnau,2010-01-01,3238,2026-01-01,unchanged,1
+3251,Altstätten,2010-01-01,3251,2026-01-01,unchanged,1
+3252,Eichberg,2010-01-01,3252,2026-01-01,unchanged,1
+3253,Marbach (SG),2010-01-01,3253,2026-01-01,unchanged,1
+3254,Oberriet (SG),2010-01-01,3254,2026-01-01,unchanged,1
+3255,Rebstein,2010-01-01,3255,2026-01-01,unchanged,1
+3256,Rüthi (SG),2010-01-01,3256,2026-01-01,unchanged,1
+3941,Haldenstein,2010-01-01,3901,2026-01-01,recoded_or_merged,1
+3942,Igis,2010-01-01,3955,2026-01-01,recoded_or_merged,1
+3943,Mastrils,2010-01-01,3955,2026-01-01,recoded_or_merged,1
+3946,Untervaz,2010-01-01,3946,2026-01-01,unchanged,1
+3947,Zizers,2010-01-01,3947,2026-01-01,unchanged,1
+3951,Fläsch,2010-01-01,3951,2026-01-01,unchanged,1
+3952,Jenins,2010-01-01,3952,2026-01-01,unchanged,1
+3953,Maienfeld,2010-01-01,3953,2026-01-01,unchanged,1
+3954,Malans,2010-01-01,3954,2026-01-01,unchanged,1
+3945,Trimmis,2010-01-01,3945,2026-01-01,unchanged,1
+3781,Bever,2010-01-01,3781,2026-01-01,unchanged,1
+3782,Celerina/Schlarigna,2010-01-01,3782,2026-01-01,unchanged,1
+3783,Madulain,2010-01-01,3783,2026-01-01,unchanged,1
+3784,Pontresina,2010-01-01,3784,2026-01-01,unchanged,1
+3785,La Punt-Chamues-ch,2010-01-01,3785,2026-01-01,unchanged,1
+3786,Samedan,2010-01-01,3786,2026-01-01,unchanged,1
+3787,St. Moritz,2010-01-01,3787,2026-01-01,unchanged,1
+3788,S-chanf,2010-01-01,3788,2026-01-01,unchanged,1
+3789,Sils im Engadin/Segl,2010-01-01,3789,2026-01-01,unchanged,1
+3790,Silvaplana,2010-01-01,3790,2026-01-01,unchanged,1
+3791,Zuoz,2010-01-01,3791,2026-01-01,unchanged,1
+3792,Bregaglia,2010-01-01,3792,2026-01-01,unchanged,1
+3551,Brusio,2010-01-01,3551,2026-01-01,unchanged,1
+3561,Poschiavo,2010-01-01,3561,2026-01-01,unchanged,1
+3721,Bonaduz,2010-01-01,3721,2026-01-01,unchanged,1
+3722,Domat/Ems,2010-01-01,3722,2026-01-01,unchanged,1
+3723,Rhäzüns,2010-01-01,3723,2026-01-01,unchanged,1
+3731,Felsberg,2010-01-01,3731,2026-01-01,unchanged,1
+3732,Flims,2010-01-01,3732,2026-01-01,unchanged,1
+3733,Tamins,2010-01-01,3733,2026-01-01,unchanged,1
+3734,Trin,2010-01-01,3734,2026-01-01,unchanged,1
+3571,Castrisch,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3572,Falera,2010-01-01,3572,2026-01-01,unchanged,1
+3574,Ilanz,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3575,Laax,2010-01-01,3575,2026-01-01,unchanged,1
+3576,Ladir,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3577,Luven,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3578,Pitasch,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3579,Riein,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3580,Ruschein,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3581,Sagogn,2010-01-01,3581,2026-01-01,unchanged,1
+3582,Schluein,2010-01-01,3582,2026-01-01,unchanged,1
+3583,Schnaus,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3584,Sevgein,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3586,Valendas,2010-01-01,3672,2026-01-01,recoded_or_merged,1
+3587,Versam,2010-01-01,3672,2026-01-01,recoded_or_merged,1
+3592,Cumbel,2010-01-01,3618,2026-01-01,recoded_or_merged,1
+3593,Duvin,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3594,Degen,2010-01-01,3618,2026-01-01,recoded_or_merged,1
+3595,Lumbrein,2010-01-01,3618,2026-01-01,recoded_or_merged,1
+3596,Morissen,2010-01-01,3618,2026-01-01,recoded_or_merged,1
+3598,St. Martin,2010-01-01,3603,2026-01-01,recoded_or_merged,1
+3603,Vals,2010-01-01,3603,2026-01-01,unchanged,1
+3604,Vignogn,2010-01-01,3618,2026-01-01,recoded_or_merged,1
+3605,Vella,2010-01-01,3618,2026-01-01,recoded_or_merged,1
+3606,Vrin,2010-01-01,3618,2026-01-01,recoded_or_merged,1
+3611,Andiast,2010-01-01,3981,2026-01-01,recoded_or_merged,1
+3612,Obersaxen,2010-01-01,3988,2026-01-01,recoded_or_merged,1
+3613,Pigniu,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3614,Rueun,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3615,Siat,2010-01-01,3619,2026-01-01,recoded_or_merged,1
+3616,Waltensburg/Vuorz,2010-01-01,3981,2026-01-01,recoded_or_merged,1
+3651,Safien,2010-01-01,3672,2026-01-01,recoded_or_merged,1
+3652,Tenna,2010-01-01,3672,2026-01-01,recoded_or_merged,1
+3981,Breil/Brigels,2010-01-01,3981,2026-01-01,unchanged,1
+3982,Disentis/Mustér,2010-01-01,3982,2026-01-01,unchanged,1
+3983,Medel (Lucmagn),2010-01-01,3983,2026-01-01,unchanged,1
+3984,Schlans,2010-01-01,3987,2026-01-01,recoded_or_merged,1
+3985,Sumvitg,2010-01-01,3985,2026-01-01,unchanged,1
+3986,Tujetsch,2010-01-01,3986,2026-01-01,unchanged,1
+3987,Trun,2010-01-01,3987,2026-01-01,unchanged,1
+3599,Suraua,2010-01-01,3618,2026-01-01,recoded_or_merged,1
+3617,Mundaun,2010-01-01,3988,2026-01-01,recoded_or_merged,1
+3861,Fideris,2010-01-01,3861,2026-01-01,unchanged,1
+3862,Furna,2010-01-01,3862,2026-01-01,unchanged,1
+3863,Jenaz,2010-01-01,3863,2026-01-01,unchanged,1
+3871,Klosters-Serneus,2010-01-01,3871,2026-01-01,unchanged,1
+3881,Conters im Prättigau,2010-01-01,3881,2026-01-01,unchanged,1
+3882,Küblis,2010-01-01,3882,2026-01-01,unchanged,1
+3883,Saas,2010-01-01,3871,2026-01-01,recoded_or_merged,1
+3891,Luzein,2010-01-01,3891,2026-01-01,unchanged,1
+3961,Grüsch,2010-01-01,3961,2026-01-01,unchanged,1
+3962,Schiers,2010-01-01,3962,2026-01-01,unchanged,1
+3971,Fanas,2010-01-01,3961,2026-01-01,recoded_or_merged,1
+3972,Seewis im Prättigau,2010-01-01,3972,2026-01-01,unchanged,1
+3973,Valzeina,2010-01-01,3961,2026-01-01,recoded_or_merged,1
+3893,St. Antönien,2010-01-01,3891,2026-01-01,recoded_or_merged,1
+3851,Davos,2010-01-01,3851,2026-01-01,unchanged,1
+3631,Almens,2010-01-01,3673,2026-01-01,recoded_or_merged,1
+3633,Fürstenau,2010-01-01,3633,2026-01-01,unchanged,1
+3634,Paspels,2010-01-01,3673,2026-01-01,recoded_or_merged,1
+3635,Pratval,2010-01-01,3673,2026-01-01,recoded_or_merged,1
+3636,Rodels,2010-01-01,3673,2026-01-01,recoded_or_merged,1
+3637,Rothenbrunnen,2010-01-01,3637,2026-01-01,unchanged,1
+3638,Scharans,2010-01-01,3638,2026-01-01,unchanged,1
+3640,Sils im Domleschg,2010-01-01,3640,2026-01-01,unchanged,1
+3662,Flerden,2010-01-01,3662,2026-01-01,unchanged,1
+3663,Masein,2010-01-01,3663,2026-01-01,unchanged,1
+3668,Thusis,2010-01-01,3668,2026-01-01,unchanged,1
+3669,Tschappina,2010-01-01,3669,2026-01-01,unchanged,1
+3670,Urmein,2010-01-01,3670,2026-01-01,unchanged,1
+3681,Avers,2010-01-01,3681,2026-01-01,unchanged,1
+3691,Hinterrhein,2010-01-01,3714,2026-01-01,recoded_or_merged,1
+3693,Nufenen,2010-01-01,3714,2026-01-01,recoded_or_merged,1
+3695,Sufers,2010-01-01,3695,2026-01-01,unchanged,1
+3703,Casti-Wergenstein,2010-01-01,3715,2026-01-01,recoded_or_merged,1
+3707,Lohn (GR),2010-01-01,3715,2026-01-01,recoded_or_merged,1
+3708,Mathon,2010-01-01,3715,2026-01-01,recoded_or_merged,1
+3711,Rongellen,2010-01-01,3711,2026-01-01,unchanged,1
+3712,Zillis-Reischen,2010-01-01,3712,2026-01-01,unchanged,1
+3705,Donat,2010-01-01,3715,2026-01-01,recoded_or_merged,1
+3694,Splügen,2010-01-01,3714,2026-01-01,recoded_or_merged,1
+3713,Ferrera,2010-01-01,3713,2026-01-01,unchanged,1
+3671,Tomils,2010-01-01,3673,2026-01-01,recoded_or_merged,1
+3701,Andeer,2010-01-01,3701,2026-01-01,unchanged,1
+3661,Cazis,2010-01-01,3661,2026-01-01,unchanged,1
+3741,Ardez,2010-01-01,3762,2026-01-01,recoded_or_merged,1
+3742,Guarda,2010-01-01,3762,2026-01-01,recoded_or_merged,1
+3743,Lavin,2010-01-01,3746,2026-01-01,recoded_or_merged,1
+3744,Susch,2010-01-01,3746,2026-01-01,recoded_or_merged,1
+3745,Tarasp,2010-01-01,3762,2026-01-01,recoded_or_merged,1
+3746,Zernez,2010-01-01,3746,2026-01-01,unchanged,1
+3751,Ramosch,2010-01-01,3764,2026-01-01,recoded_or_merged,1
+3752,Samnaun,2010-01-01,3752,2026-01-01,unchanged,1
+3753,Tschlin,2010-01-01,3764,2026-01-01,recoded_or_merged,1
+3761,Ftan,2010-01-01,3762,2026-01-01,recoded_or_merged,1
+3762,Scuol,2010-01-01,3762,2026-01-01,unchanged,1
+3763,Sent,2010-01-01,3762,2026-01-01,recoded_or_merged,1
+3847,Val Müstair,2010-01-01,3847,2026-01-01,unchanged,1
+3901,Chur,2010-01-01,3901,2026-01-01,unchanged,1
+3921,Arosa,2010-01-01,3921,2026-01-01,unchanged,1
+3922,Calfreisen,2010-01-01,3921,2026-01-01,recoded_or_merged,1
+3923,Castiel,2010-01-01,3921,2026-01-01,recoded_or_merged,1
+3924,Langwies,2010-01-01,3921,2026-01-01,recoded_or_merged,1
+3925,Lüen,2010-01-01,3921,2026-01-01,recoded_or_merged,1
+3926,Maladers,2010-01-01,3901,2026-01-01,recoded_or_merged,1
+3927,Molinis,2010-01-01,3921,2026-01-01,recoded_or_merged,1
+3929,Peist,2010-01-01,3921,2026-01-01,recoded_or_merged,1
+3931,St. Peter-Pagig,2010-01-01,3921,2026-01-01,recoded_or_merged,1
+3932,Tschiertschen-Praden,2010-01-01,3901,2026-01-01,recoded_or_merged,1
+3911,Churwalden,2010-01-01,3911,2026-01-01,unchanged,1
+3801,Arvigo,2010-01-01,3837,2026-01-01,recoded_or_merged,1
+3803,Braggio,2010-01-01,3837,2026-01-01,recoded_or_merged,1
+3804,Buseno,2010-01-01,3804,2026-01-01,unchanged,1
+3805,Castaneda,2010-01-01,3805,2026-01-01,unchanged,1
+3806,Cauco,2010-01-01,3837,2026-01-01,recoded_or_merged,1
+3808,Rossa,2010-01-01,3808,2026-01-01,unchanged,1
+3810,Santa Maria in Calanca,2010-01-01,3810,2026-01-01,unchanged,1
+3811,Selma,2010-01-01,3837,2026-01-01,recoded_or_merged,1
+3821,Lostallo,2010-01-01,3821,2026-01-01,unchanged,1
+3822,Mesocco,2010-01-01,3822,2026-01-01,unchanged,1
+3823,Soazza,2010-01-01,3823,2026-01-01,unchanged,1
+3831,Cama,2010-01-01,3831,2026-01-01,unchanged,1
+3832,Grono,2010-01-01,3832,2026-01-01,unchanged,1
+3833,Leggia,2010-01-01,3832,2026-01-01,recoded_or_merged,1
+3834,Roveredo (GR),2010-01-01,3834,2026-01-01,unchanged,1
+3835,San Vittore,2010-01-01,3835,2026-01-01,unchanged,1
+3836,Verdabbio,2010-01-01,3832,2026-01-01,recoded_or_merged,1
+3501,Alvaschein,2010-01-01,3542,2026-01-01,recoded_or_merged,1
+3502,Mon,2010-01-01,3542,2026-01-01,recoded_or_merged,1
+3503,Mutten,2010-01-01,3668,2026-01-01,recoded_or_merged,1
+3504,Stierva,2010-01-01,3542,2026-01-01,recoded_or_merged,1
+3505,Tiefencastel,2010-01-01,3542,2026-01-01,recoded_or_merged,1
+3506,Vaz/Obervaz,2010-01-01,3506,2026-01-01,unchanged,1
+3511,Alvaneu,2010-01-01,3542,2026-01-01,recoded_or_merged,1
+3512,Brienz/Brinzauls,2010-01-01,3542,2026-01-01,recoded_or_merged,1
+3513,Lantsch/Lenz,2010-01-01,3513,2026-01-01,unchanged,1
+3514,Schmitten (GR),2010-01-01,3514,2026-01-01,unchanged,1
+3515,Surava,2010-01-01,3542,2026-01-01,recoded_or_merged,1
+3521,Bergün/Bravuogn,2010-01-01,3544,2026-01-01,recoded_or_merged,1
+3522,Filisur,2010-01-01,3544,2026-01-01,recoded_or_merged,1
+3531,Bivio,2010-01-01,3543,2026-01-01,recoded_or_merged,1
+3532,Cunter,2010-01-01,3543,2026-01-01,recoded_or_merged,1
+3533,Marmorera,2010-01-01,3543,2026-01-01,recoded_or_merged,1
+3534,Mulegns,2010-01-01,3543,2026-01-01,recoded_or_merged,1
+3536,Riom-Parsonz,2010-01-01,3543,2026-01-01,recoded_or_merged,1
+3538,Salouf,2010-01-01,3543,2026-01-01,recoded_or_merged,1
+3539,Savognin,2010-01-01,3543,2026-01-01,recoded_or_merged,1
+3540,Sur,2010-01-01,3543,2026-01-01,recoded_or_merged,1
+3541,Tinizong-Rona,2010-01-01,3543,2026-01-01,recoded_or_merged,1
+4322,Wislikofen,2010-01-01,4324,2026-01-01,recoded_or_merged,1
+4320,Tegerfelden,2010-01-01,4320,2026-01-01,unchanged,1
+4321,Unterendingen,2010-01-01,4305,2026-01-01,recoded_or_merged,1
+4301,Baldingen,2010-01-01,4324,2026-01-01,recoded_or_merged,1
+4302,Böbikon,2010-01-01,4324,2026-01-01,recoded_or_merged,1
+4303,Böttstein,2010-01-01,4303,2026-01-01,unchanged,1
+4306,Fisibach,2010-01-01,4306,2026-01-01,unchanged,1
+4307,Full-Reuenthal,2010-01-01,4307,2026-01-01,unchanged,1
+4304,Döttingen,2010-01-01,4304,2026-01-01,unchanged,1
+4305,Endingen,2010-01-01,4305,2026-01-01,unchanged,1
+4314,Mellikon,2010-01-01,4314,2026-01-01,unchanged,1
+4308,Kaiserstuhl,2010-01-01,4324,2026-01-01,recoded_or_merged,1
+4309,Klingnau,2010-01-01,4309,2026-01-01,unchanged,1
+4310,Koblenz,2010-01-01,4310,2026-01-01,unchanged,1
+4311,Leibstadt,2010-01-01,4311,2026-01-01,unchanged,1
+4313,Leuggern,2010-01-01,4313,2026-01-01,unchanged,1
+4312,Lengnau (AG),2010-01-01,4312,2026-01-01,unchanged,1
+4317,Rümikon,2010-01-01,4324,2026-01-01,recoded_or_merged,1
+4316,Rietheim,2010-01-01,4324,2026-01-01,recoded_or_merged,1
+4319,Siglistorf,2010-01-01,4319,2026-01-01,unchanged,1
+4318,Schneisingen,2010-01-01,4318,2026-01-01,unchanged,1
+4315,Rekingen (AG),2010-01-01,4324,2026-01-01,recoded_or_merged,1
+4323,Bad Zurzach,2010-01-01,4324,2026-01-01,recoded_or_merged,1
+4288,Wiliberg,2010-01-01,4288,2026-01-01,unchanged,1
+4287,Vordemwald,2010-01-01,4287,2026-01-01,unchanged,1
+4285,Strengelbach,2010-01-01,4285,2026-01-01,unchanged,1
+4284,Staffelbach,2010-01-01,4284,2026-01-01,unchanged,1
+4286,Uerkheim,2010-01-01,4286,2026-01-01,unchanged,1
+4274,Brittnau,2010-01-01,4274,2026-01-01,unchanged,1
+4272,Attelwil,2010-01-01,4281,2026-01-01,recoded_or_merged,1
+4271,Aarburg,2010-01-01,4271,2026-01-01,unchanged,1
+4273,Bottenwil,2010-01-01,4273,2026-01-01,unchanged,1
+4277,Moosleerau,2010-01-01,4277,2026-01-01,unchanged,1
+4279,Murgenthal,2010-01-01,4279,2026-01-01,unchanged,1
+4280,Oftringen,2010-01-01,4280,2026-01-01,unchanged,1
+4276,Kölliken,2010-01-01,4276,2026-01-01,unchanged,1
+4275,Kirchleerau,2010-01-01,4275,2026-01-01,unchanged,1
+4282,Rothrist,2010-01-01,4282,2026-01-01,unchanged,1
+4283,Safenwil,2010-01-01,4283,2026-01-01,unchanged,1
+4281,Reitnau,2010-01-01,4281,2026-01-01,unchanged,1
+4289,Zofingen,2010-01-01,4289,2026-01-01,unchanged,1
+4263,Zeiningen,2010-01-01,4263,2026-01-01,unchanged,1
+4264,Zuzgen,2010-01-01,4264,2026-01-01,unchanged,1
+4262,Wegenstetten,2010-01-01,4262,2026-01-01,unchanged,1
+4261,Wallbach,2010-01-01,4261,2026-01-01,unchanged,1
+4260,Stein (AG),2010-01-01,4260,2026-01-01,unchanged,1
+4251,Hellikon,2010-01-01,4251,2026-01-01,unchanged,1
+4255,Mumpf,2010-01-01,4255,2026-01-01,unchanged,1
+4254,Möhlin,2010-01-01,4254,2026-01-01,unchanged,1
+4256,Obermumpf,2010-01-01,4256,2026-01-01,unchanged,1
+4257,Olsberg,2010-01-01,4257,2026-01-01,unchanged,1
+4252,Kaiseraugst,2010-01-01,4252,2026-01-01,unchanged,1
+4253,Magden,2010-01-01,4253,2026-01-01,unchanged,1
+4258,Rheinfelden,2010-01-01,4258,2026-01-01,unchanged,1
+4259,Schupfart,2010-01-01,4259,2026-01-01,unchanged,1
+4240,Waltenschwil,2010-01-01,4240,2026-01-01,unchanged,1
+4229,Bünzen,2010-01-01,4229,2026-01-01,unchanged,1
+4230,Buttwil,2010-01-01,4230,2026-01-01,unchanged,1
+4231,Dietwil,2010-01-01,4231,2026-01-01,unchanged,1
+4223,Auw,2010-01-01,4223,2026-01-01,unchanged,1
+4221,Abtwil,2010-01-01,4221,2026-01-01,unchanged,1
+4222,Aristau,2010-01-01,4222,2026-01-01,unchanged,1
+4228,Boswil,2010-01-01,4228,2026-01-01,unchanged,1
+4225,Benzenschwil,2010-01-01,4234,2026-01-01,recoded_or_merged,1
+4224,Beinwil (Freiamt),2010-01-01,4224,2026-01-01,unchanged,1
+4226,Besenbüren,2010-01-01,4226,2026-01-01,unchanged,1
+4227,Bettwil,2010-01-01,4227,2026-01-01,unchanged,1
+4232,Geltwil,2010-01-01,4232,2026-01-01,unchanged,1
+4235,Mühlau,2010-01-01,4235,2026-01-01,unchanged,1
+4234,Merenschwand,2010-01-01,4234,2026-01-01,unchanged,1
+4236,Muri (AG),2010-01-01,4236,2026-01-01,unchanged,1
+4237,Oberrüti,2010-01-01,4237,2026-01-01,unchanged,1
+4233,Kallern,2010-01-01,4233,2026-01-01,unchanged,1
+4238,Rottenschwil,2010-01-01,4238,2026-01-01,unchanged,1
+4239,Sins,2010-01-01,4239,2026-01-01,unchanged,1
+4210,Staufen,2010-01-01,4210,2026-01-01,unchanged,1
+4193,Brunegg,2010-01-01,4193,2026-01-01,unchanged,1
+4194,Dintikon,2010-01-01,4194,2026-01-01,unchanged,1
+4191,Ammerswil,2010-01-01,4191,2026-01-01,unchanged,1
+4192,Boniswil,2010-01-01,4192,2026-01-01,unchanged,1
+4197,Hallwil,2010-01-01,4197,2026-01-01,unchanged,1
+4199,Holderbank (AG),2010-01-01,4199,2026-01-01,unchanged,1
+4195,Egliswil,2010-01-01,4195,2026-01-01,unchanged,1
+4200,Hunzenschwil,2010-01-01,4200,2026-01-01,unchanged,1
+4198,Hendschiken,2010-01-01,4198,2026-01-01,unchanged,1
+4196,Fahrwangen,2010-01-01,4196,2026-01-01,unchanged,1
+4203,Möriken-Wildegg,2010-01-01,4203,2026-01-01,unchanged,1
+4202,Meisterschwanden,2010-01-01,4202,2026-01-01,unchanged,1
+4204,Niederlenz,2010-01-01,4204,2026-01-01,unchanged,1
+4201,Lenzburg,2010-01-01,4201,2026-01-01,unchanged,1
+4206,Rupperswil,2010-01-01,4206,2026-01-01,unchanged,1
+4208,Seengen,2010-01-01,4208,2026-01-01,unchanged,1
+4209,Seon,2010-01-01,4209,2026-01-01,unchanged,1
+4207,Schafisheim,2010-01-01,4207,2026-01-01,unchanged,1
+4205,Othmarsingen,2010-01-01,4205,2026-01-01,unchanged,1
+4183,Zeihen,2010-01-01,4183,2026-01-01,unchanged,1
+4181,Wittnau,2010-01-01,4181,2026-01-01,unchanged,1
+4182,Wölflinswil,2010-01-01,4182,2026-01-01,unchanged,1
+4179,Ueken,2010-01-01,4186,2026-01-01,recoded_or_merged,1
+4163,Frick,2010-01-01,4163,2026-01-01,unchanged,1
+4165,Gipf-Oberfrick,2010-01-01,4165,2026-01-01,unchanged,1
+4164,Gansingen,2010-01-01,4164,2026-01-01,unchanged,1
+4161,Eiken,2010-01-01,4161,2026-01-01,unchanged,1
+4167,Hornussen,2010-01-01,4185,2026-01-01,recoded_or_merged,1
+4166,Herznach,2010-01-01,4186,2026-01-01,recoded_or_merged,1
+4172,Münchwilen (AG),2010-01-01,4172,2026-01-01,unchanged,1
+4173,Oberhof,2010-01-01,4173,2026-01-01,unchanged,1
+4175,Oeschgen,2010-01-01,4175,2026-01-01,unchanged,1
+4176,Schwaderloch,2010-01-01,4176,2026-01-01,unchanged,1
+4177,Sisseln,2010-01-01,4177,2026-01-01,unchanged,1
+4184,Mettauertal,2010-01-01,4184,2026-01-01,unchanged,1
+4169,Kaisten,2010-01-01,4169,2026-01-01,unchanged,1
+4170,Laufenburg,2010-01-01,4170,2026-01-01,unchanged,1
+4147,Zetzwil,2010-01-01,4147,2026-01-01,unchanged,1
+4145,Teufenthal (AG),2010-01-01,4145,2026-01-01,unchanged,1
+4146,Unterkulm,2010-01-01,4146,2026-01-01,unchanged,1
+4133,Burg (AG),2010-01-01,4139,2026-01-01,recoded_or_merged,1
+4131,Beinwil am See,2010-01-01,4131,2026-01-01,unchanged,1
+4132,Birrwil,2010-01-01,4132,2026-01-01,unchanged,1
+4135,Gontenschwil,2010-01-01,4135,2026-01-01,unchanged,1
+4134,Dürrenäsch,2010-01-01,4134,2026-01-01,unchanged,1
+4136,Holziken,2010-01-01,4136,2026-01-01,unchanged,1
+4139,Menziken,2010-01-01,4139,2026-01-01,unchanged,1
+4140,Oberkulm,2010-01-01,4140,2026-01-01,unchanged,1
+4138,Leutwil,2010-01-01,4138,2026-01-01,unchanged,1
+4137,Leimbach (AG),2010-01-01,4137,2026-01-01,unchanged,1
+4144,Schöftland,2010-01-01,4144,2026-01-01,unchanged,1
+4143,Schmiedrued,2010-01-01,4143,2026-01-01,unchanged,1
+4142,Schlossrued,2010-01-01,4142,2026-01-01,unchanged,1
+4141,Reinach (AG),2010-01-01,4141,2026-01-01,unchanged,1
+4122,Villnachern,2010-01-01,4095,2026-01-01,recoded_or_merged,1
+4123,Windisch,2010-01-01,4123,2026-01-01,unchanged,1
+4117,Thalheim (AG),2010-01-01,4117,2026-01-01,unchanged,1
+4119,Unterbözberg,2010-01-01,4124,2026-01-01,recoded_or_merged,1
+4120,Veltheim (AG),2010-01-01,4120,2026-01-01,unchanged,1
+4091,Auenstein,2010-01-01,4091,2026-01-01,unchanged,1
+4093,Birrhard,2010-01-01,4093,2026-01-01,unchanged,1
+4094,Bözen,2010-01-01,4185,2026-01-01,recoded_or_merged,1
+4092,Birr,2010-01-01,4092,2026-01-01,unchanged,1
+4099,Habsburg,2010-01-01,4099,2026-01-01,unchanged,1
+4098,Gallenkirch,2010-01-01,4124,2026-01-01,recoded_or_merged,1
+4096,Effingen,2010-01-01,4185,2026-01-01,recoded_or_merged,1
+4097,Elfingen,2010-01-01,4185,2026-01-01,recoded_or_merged,1
+4106,Mönthal,2010-01-01,4106,2026-01-01,unchanged,1
+4107,Mülligen,2010-01-01,4107,2026-01-01,unchanged,1
+4109,Oberflachs,2010-01-01,4125,2026-01-01,recoded_or_merged,1
+4108,Oberbözberg,2010-01-01,4124,2026-01-01,recoded_or_merged,1
+4104,Lupfig,2010-01-01,4104,2026-01-01,unchanged,1
+4105,Mandach,2010-01-01,4105,2026-01-01,unchanged,1
+4103,Linn,2010-01-01,4124,2026-01-01,recoded_or_merged,1
+4112,Rüfenach,2010-01-01,4112,2026-01-01,unchanged,1
+4111,Riniken,2010-01-01,4111,2026-01-01,unchanged,1
+4113,Scherz,2010-01-01,4104,2026-01-01,recoded_or_merged,1
+4110,Remigen,2010-01-01,4110,2026-01-01,unchanged,1
+4100,Hausen (AG),2010-01-01,4100,2026-01-01,unchanged,1
+4114,Schinznach-Bad,2010-01-01,4095,2026-01-01,recoded_or_merged,1
+4115,Schinznach-Dorf,2010-01-01,4125,2026-01-01,recoded_or_merged,1
+4121,Villigen,2010-01-01,4121,2026-01-01,unchanged,1
+4095,Brugg,2010-01-01,4095,2026-01-01,unchanged,1
+4081,Widen,2010-01-01,4081,2026-01-01,unchanged,1
+4083,Zufikon,2010-01-01,4083,2026-01-01,unchanged,1
+4082,Wohlen (AG),2010-01-01,4082,2026-01-01,unchanged,1
+4077,Tägerig,2010-01-01,4077,2026-01-01,unchanged,1
+4078,Uezwil,2010-01-01,4078,2026-01-01,unchanged,1
+4079,Unterlunkhofen,2010-01-01,4079,2026-01-01,unchanged,1
+4064,Büttikon,2010-01-01,4064,2026-01-01,unchanged,1
+4063,Bremgarten (AG),2010-01-01,4063,2026-01-01,unchanged,1
+4062,Berikon,2010-01-01,4062,2026-01-01,unchanged,1
+4068,Hägglingen,2010-01-01,4068,2026-01-01,unchanged,1
+4067,Fischbach-Göslikon,2010-01-01,4067,2026-01-01,unchanged,1
+4066,Eggenwil,2010-01-01,4066,2026-01-01,unchanged,1
+4065,Dottikon,2010-01-01,4065,2026-01-01,unchanged,1
+4069,Hermetschwil-Staffeln,2010-01-01,4063,2026-01-01,recoded_or_merged,1
+4073,Oberlunkhofen,2010-01-01,4073,2026-01-01,unchanged,1
+4072,Niederwil (AG),2010-01-01,4072,2026-01-01,unchanged,1
+4071,Jonen,2010-01-01,4071,2026-01-01,unchanged,1
+4075,Rudolfstetten-Friedlisberg,2010-01-01,4075,2026-01-01,unchanged,1
+4076,Sarmenstorf,2010-01-01,4076,2026-01-01,unchanged,1
+4061,Arni (AG),2010-01-01,4061,2026-01-01,unchanged,1
+4084,Islisberg,2010-01-01,4084,2026-01-01,unchanged,1
+4074,Oberwil-Lieli,2010-01-01,4074,2026-01-01,unchanged,1
+4080,Villmergen,2010-01-01,4080,2026-01-01,unchanged,1
+4045,Wettingen,2010-01-01,4045,2026-01-01,unchanged,1
+4048,Würenlos,2010-01-01,4048,2026-01-01,unchanged,1
+4047,Würenlingen,2010-01-01,4047,2026-01-01,unchanged,1
+4046,Wohlenschwil,2010-01-01,4046,2026-01-01,unchanged,1
+4040,Spreitenbach,2010-01-01,4040,2026-01-01,unchanged,1
+4041,Stetten (AG),2010-01-01,4041,2026-01-01,unchanged,1
+4044,Untersiggenthal,2010-01-01,4044,2026-01-01,unchanged,1
+4042,Turgi,2010-01-01,4021,2026-01-01,recoded_or_merged,1
+4023,Bergdietikon,2010-01-01,4023,2026-01-01,unchanged,1
+4022,Bellikon,2010-01-01,4022,2026-01-01,unchanged,1
+4024,Birmenstorf (AG),2010-01-01,4024,2026-01-01,unchanged,1
+4028,Freienwil,2010-01-01,4028,2026-01-01,unchanged,1
+4027,Fislisbach,2010-01-01,4027,2026-01-01,unchanged,1
+4029,Gebenstorf,2010-01-01,4029,2026-01-01,unchanged,1
+4026,Ennetbaden,2010-01-01,4026,2026-01-01,unchanged,1
+4033,Mellingen,2010-01-01,4033,2026-01-01,unchanged,1
+4037,Oberrohrdorf,2010-01-01,4037,2026-01-01,unchanged,1
+4038,Obersiggenthal,2010-01-01,4038,2026-01-01,unchanged,1
+4034,Neuenhof,2010-01-01,4034,2026-01-01,unchanged,1
+4035,Niederrohrdorf,2010-01-01,4035,2026-01-01,unchanged,1
+4031,Künten,2010-01-01,4031,2026-01-01,unchanged,1
+4030,Killwangen,2010-01-01,4030,2026-01-01,unchanged,1
+4032,Mägenwil,2010-01-01,4032,2026-01-01,unchanged,1
+4039,Remetschwil,2010-01-01,4039,2026-01-01,unchanged,1
+4021,Baden,2010-01-01,4021,2026-01-01,unchanged,1
+4049,Ehrendingen,2010-01-01,4049,2026-01-01,unchanged,1
+4012,Suhr,2010-01-01,4012,2026-01-01,unchanged,1
+4013,Unterentfelden,2010-01-01,4013,2026-01-01,unchanged,1
+4003,Buchs (AG),2010-01-01,4003,2026-01-01,unchanged,1
+4004,Densbüren,2010-01-01,4004,2026-01-01,unchanged,1
+4002,Biberstein,2010-01-01,4002,2026-01-01,unchanged,1
+4006,Gränichen,2010-01-01,4006,2026-01-01,unchanged,1
+4007,Hirschthal,2010-01-01,4007,2026-01-01,unchanged,1
+4009,Muhen,2010-01-01,4009,2026-01-01,unchanged,1
+4010,Oberentfelden,2010-01-01,4010,2026-01-01,unchanged,1
+4008,Küttigen,2010-01-01,4008,2026-01-01,unchanged,1
+4005,Erlinsbach (AG),2010-01-01,4005,2026-01-01,unchanged,1
+4001,Aarau,2010-01-01,4001,2026-01-01,unchanged,1
+4451,Uttwil,2010-01-01,4451,2026-01-01,unchanged,1
+4411,Egnach,2010-01-01,4411,2026-01-01,unchanged,1
+4406,Dozwil,2010-01-01,4406,2026-01-01,unchanged,1
+4421,Horn,2010-01-01,4421,2026-01-01,unchanged,1
+4416,Hefenhofen,2010-01-01,4416,2026-01-01,unchanged,1
+4426,Kesswil,2010-01-01,4426,2026-01-01,unchanged,1
+4436,Romanshorn,2010-01-01,4436,2026-01-01,unchanged,1
+4431,Roggwil (TG),2010-01-01,4431,2026-01-01,unchanged,1
+4441,Salmsach,2010-01-01,4441,2026-01-01,unchanged,1
+4446,Sommeri,2010-01-01,4446,2026-01-01,unchanged,1
+4401,Arbon,2010-01-01,4401,2026-01-01,unchanged,1
+4941,Märstetten,2010-01-01,4941,2026-01-01,unchanged,1
+4911,Bürglen (TG),2010-01-01,4911,2026-01-01,unchanged,1
+4881,Amlikon-Bissegg,2010-01-01,4881,2026-01-01,unchanged,1
+4946,Weinfelden,2010-01-01,4946,2026-01-01,unchanged,1
+4901,Birwinken,2010-01-01,4901,2026-01-01,unchanged,1
+4951,Wigoltingen,2010-01-01,4951,2026-01-01,unchanged,1
+4921,Bussnang,2010-01-01,4921,2026-01-01,unchanged,1
+4891,Berg (TG),2010-01-01,4891,2026-01-01,unchanged,1
+4864,Steckborn,2010-01-01,4864,2026-01-01,unchanged,1
+4801,Berlingen,2010-01-01,4801,2026-01-01,unchanged,1
+4806,Eschenz,2010-01-01,4806,2026-01-01,unchanged,1
+4846,Raperswilen,2010-01-01,4846,2026-01-01,unchanged,1
+4831,Müllheim,2010-01-01,4831,2026-01-01,unchanged,1
+4851,Salenstein,2010-01-01,4851,2026-01-01,unchanged,1
+4826,Mammern,2010-01-01,4826,2026-01-01,unchanged,1
+4871,Wagenhausen,2010-01-01,4871,2026-01-01,unchanged,1
+4821,Hüttwilen,2010-01-01,4821,2026-01-01,unchanged,1
+4811,Herdern,2010-01-01,4811,2026-01-01,unchanged,1
+4841,Pfyn,2010-01-01,4841,2026-01-01,unchanged,1
+4816,Homburg,2010-01-01,4816,2026-01-01,unchanged,1
+4746,Münchwilen (TG),2010-01-01,4746,2026-01-01,unchanged,1
+4756,Schönholzerswilen,2010-01-01,4756,2026-01-01,unchanged,1
+4791,Wuppenau,2010-01-01,4791,2026-01-01,unchanged,1
+4726,Fischingen,2010-01-01,4726,2026-01-01,unchanged,1
+4711,Affeltrangen,2010-01-01,4711,2026-01-01,unchanged,1
+4716,Bettwiesen,2010-01-01,4716,2026-01-01,unchanged,1
+4741,Lommis,2010-01-01,4741,2026-01-01,unchanged,1
+4781,Wängi,2010-01-01,4781,2026-01-01,unchanged,1
+4721,Bichelsee-Balterswil,2010-01-01,4721,2026-01-01,unchanged,1
+4761,Sirnach,2010-01-01,4761,2026-01-01,unchanged,1
+4724,Eschlikon,2010-01-01,4724,2026-01-01,unchanged,1
+4786,Wilen (TG),2010-01-01,4786,2026-01-01,unchanged,1
+4751,Rickenbach (TG),2010-01-01,4751,2026-01-01,unchanged,1
+4723,Braunau,2010-01-01,4723,2026-01-01,unchanged,1
+4776,Tobel-Tägerschen,2010-01-01,4776,2026-01-01,unchanged,1
+4696,Tägerwilen,2010-01-01,4696,2026-01-01,unchanged,1
+4641,Altnau,2010-01-01,4641,2026-01-01,unchanged,1
+4656,Güttingen,2010-01-01,4656,2026-01-01,unchanged,1
+4651,Gottlieben,2010-01-01,4651,2026-01-01,unchanged,1
+4671,Kreuzlingen,2010-01-01,4671,2026-01-01,unchanged,1
+4646,Ermatingen,2010-01-01,4646,2026-01-01,unchanged,1
+4643,Bottighofen,2010-01-01,4643,2026-01-01,unchanged,1
+4691,Münsterlingen,2010-01-01,4691,2026-01-01,unchanged,1
+4701,Wäldi,2010-01-01,4701,2026-01-01,unchanged,1
+4666,Kemmental,2010-01-01,4666,2026-01-01,unchanged,1
+4681,Langrickenbach,2010-01-01,4681,2026-01-01,unchanged,1
+4683,Lengwil,2010-01-01,4683,2026-01-01,unchanged,1
+4606,Stettfurt,2010-01-01,4606,2026-01-01,unchanged,1
+4591,Matzingen,2010-01-01,4591,2026-01-01,unchanged,1
+4561,Felben-Wellhausen,2010-01-01,4561,2026-01-01,unchanged,1
+4611,Thundorf,2010-01-01,4611,2026-01-01,unchanged,1
+4621,Warth-Weiningen,2010-01-01,4621,2026-01-01,unchanged,1
+4616,Uesslingen-Buch,2010-01-01,4616,2026-01-01,unchanged,1
+4551,Aadorf,2010-01-01,4551,2026-01-01,unchanged,1
+4601,Neunforn,2010-01-01,4601,2026-01-01,unchanged,1
+4571,Gachnang,2010-01-01,4571,2026-01-01,unchanged,1
+4566,Frauenfeld,2010-01-01,4566,2026-01-01,unchanged,1
+4590,Hüttlingen,2010-01-01,4590,2026-01-01,unchanged,1
+4476,Erlen,2010-01-01,4476,2026-01-01,unchanged,1
+4486,Hauptwil-Gottshaus,2010-01-01,4486,2026-01-01,unchanged,1
+4501,Kradolf-Schönenberg,2010-01-01,4501,2026-01-01,unchanged,1
+4471,Bischofszell,2010-01-01,4471,2026-01-01,unchanged,1
+4506,Sulgen,2010-01-01,4506,2026-01-01,unchanged,1
+4461,Amriswil,2010-01-01,4461,2026-01-01,unchanged,1
+4511,Zihlschlacht-Sitterdorf,2010-01-01,4511,2026-01-01,unchanged,1
+4495,Hohentannen,2010-01-01,4495,2026-01-01,unchanged,1
+4546,Schlatt (TG),2010-01-01,4546,2026-01-01,unchanged,1
+4536,Basadingen-Schlattingen,2010-01-01,4536,2026-01-01,unchanged,1
+4545,Diessenhofen,2010-01-01,4545,2026-01-01,unchanged,1
+5266,Stabio,2010-01-01,5266,2026-01-01,unchanged,1
+5268,Vacallo,2010-01-01,5268,2026-01-01,unchanged,1
+5251,Coldrerio,2010-01-01,5251,2026-01-01,unchanged,1
+5242,Balerna,2010-01-01,5242,2026-01-01,unchanged,1
+5243,Besazio,2010-01-01,5254,2026-01-01,recoded_or_merged,1
+5257,Morbio Inferiore,2010-01-01,5257,2026-01-01,unchanged,1
+5255,Meride,2010-01-01,5254,2026-01-01,recoded_or_merged,1
+5260,Novazzano,2010-01-01,5260,2026-01-01,unchanged,1
+5253,Ligornetto,2010-01-01,5254,2026-01-01,recoded_or_merged,1
+5263,Riva San Vitale,2010-01-01,5263,2026-01-01,unchanged,1
+5250,Chiasso,2010-01-01,5250,2026-01-01,unchanged,1
+5249,Castel San Pietro,2010-01-01,5249,2026-01-01,unchanged,1
+5254,Mendrisio,2010-01-01,5254,2026-01-01,unchanged,1
+5269,Breggia,2010-01-01,5269,2026-01-01,unchanged,1
+5224,Sonvico,2010-01-01,5192,2026-01-01,recoded_or_merged,1
+5225,Sorengo,2010-01-01,5225,2026-01-01,unchanged,1
+5233,Vico Morcote,2010-01-01,5233,2026-01-01,unchanged,1
+5227,Torricella-Taverne,2010-01-01,5227,2026-01-01,unchanged,1
+5230,Vernate,2010-01-01,5230,2026-01-01,unchanged,1
+5229,Valcolla,2010-01-01,5192,2026-01-01,recoded_or_merged,1
+5231,Vezia,2010-01-01,5231,2026-01-01,unchanged,1
+5173,Certara,2010-01-01,5192,2026-01-01,recoded_or_merged,1
+5167,Canobbio,2010-01-01,5167,2026-01-01,unchanged,1
+5170,Carona,2010-01-01,5192,2026-01-01,recoded_or_merged,1
+5171,Caslano,2010-01-01,5171,2026-01-01,unchanged,1
+5169,Carabietta,2010-01-01,5236,2026-01-01,recoded_or_merged,1
+5160,Brusino Arsizio,2010-01-01,5160,2026-01-01,unchanged,1
+5162,Cadempino,2010-01-01,5162,2026-01-01,unchanged,1
+5161,Cademario,2010-01-01,5161,2026-01-01,unchanged,1
+5163,Cadro,2010-01-01,5192,2026-01-01,recoded_or_merged,1
+5165,Camignolo,2010-01-01,5238,2026-01-01,recoded_or_merged,1
+5180,Cureglia,2010-01-01,5180,2026-01-01,unchanged,1
+5181,Curio,2010-01-01,5395,2026-01-01,recoded_or_merged,1
+5174,Cimadera,2010-01-01,5192,2026-01-01,recoded_or_merged,1
+5176,Comano,2010-01-01,5176,2026-01-01,unchanged,1
+5146,Astano,2010-01-01,5395,2026-01-01,recoded_or_merged,1
+5144,Arogno,2010-01-01,5144,2026-01-01,unchanged,1
+5141,Agno,2010-01-01,5141,2026-01-01,unchanged,1
+5143,Aranno,2010-01-01,5143,2026-01-01,unchanged,1
+5149,Bedigliora,2010-01-01,5395,2026-01-01,recoded_or_merged,1
+5154,Bissone,2010-01-01,5154,2026-01-01,unchanged,1
+5155,Bogno,2010-01-01,5192,2026-01-01,recoded_or_merged,1
+5153,Bironico,2010-01-01,5238,2026-01-01,recoded_or_merged,1
+5148,Bedano,2010-01-01,5148,2026-01-01,unchanged,1
+5186,Grancia,2010-01-01,5186,2026-01-01,unchanged,1
+5187,Gravesano,2010-01-01,5187,2026-01-01,unchanged,1
+5202,Monteggio,2010-01-01,5239,2026-01-01,recoded_or_merged,1
+5203,Morcote,2010-01-01,5203,2026-01-01,unchanged,1
+5198,Melide,2010-01-01,5198,2026-01-01,unchanged,1
+5197,Melano,2010-01-01,5240,2026-01-01,recoded_or_merged,1
+5200,Miglieglia,2010-01-01,5395,2026-01-01,recoded_or_merged,1
+5199,Mezzovico-Vira,2010-01-01,5199,2026-01-01,unchanged,1
+5208,Origlio,2010-01-01,5208,2026-01-01,unchanged,1
+5205,Muzzano,2010-01-01,5205,2026-01-01,unchanged,1
+5206,Neggio,2010-01-01,5206,2026-01-01,unchanged,1
+5207,Novaggio,2010-01-01,5395,2026-01-01,recoded_or_merged,1
+5189,Lamone,2010-01-01,5189,2026-01-01,unchanged,1
+5193,Magliaso,2010-01-01,5193,2026-01-01,unchanged,1
+5196,Massagno,2010-01-01,5196,2026-01-01,unchanged,1
+5195,Maroggia,2010-01-01,5240,2026-01-01,recoded_or_merged,1
+5194,Manno,2010-01-01,5194,2026-01-01,unchanged,1
+5219,Rovio,2010-01-01,5240,2026-01-01,recoded_or_merged,1
+5217,Rivera,2010-01-01,5238,2026-01-01,recoded_or_merged,1
+5223,Sigirino,2010-01-01,5238,2026-01-01,recoded_or_merged,1
+5222,Sessa,2010-01-01,5239,2026-01-01,recoded_or_merged,1
+5221,Savosa,2010-01-01,5221,2026-01-01,unchanged,1
+5213,Ponte Tresa,2010-01-01,5239,2026-01-01,recoded_or_merged,1
+5214,Porza,2010-01-01,5214,2026-01-01,unchanged,1
+5216,Pura,2010-01-01,5216,2026-01-01,unchanged,1
+5210,Paradiso,2010-01-01,5210,2026-01-01,unchanged,1
+5212,Ponte Capriasca,2010-01-01,5212,2026-01-01,unchanged,1
+5178,Croglio,2010-01-01,5239,2026-01-01,recoded_or_merged,1
+5236,Collina d'Oro,2010-01-01,5236,2026-01-01,unchanged,1
+5237,Alto Malcantone,2010-01-01,5237,2026-01-01,unchanged,1
+5192,Lugano,2010-01-01,5192,2026-01-01,unchanged,1
+5226,Capriasca,2010-01-01,5226,2026-01-01,unchanged,1
+5151,Bioggio,2010-01-01,5151,2026-01-01,unchanged,1
+5135,Vogorno,2010-01-01,5399,2026-01-01,recoded_or_merged,1
+5129,Sonogno,2010-01-01,5399,2026-01-01,recoded_or_merged,1
+5134,Vira (Gambarogno),2010-01-01,5398,2026-01-01,recoded_or_merged,1
+5130,Tegna,2010-01-01,5396,2026-01-01,recoded_or_merged,1
+5131,Tenero-Contra,2010-01-01,5131,2026-01-01,unchanged,1
+5133,Verscio,2010-01-01,5396,2026-01-01,recoded_or_merged,1
+5132,Vergeletto,2010-01-01,5136,2026-01-01,recoded_or_merged,1
+5098,Caviano,2010-01-01,5398,2026-01-01,recoded_or_merged,1
+5099,Cavigliano,2010-01-01,5396,2026-01-01,recoded_or_merged,1
+5102,Corippo,2010-01-01,5399,2026-01-01,recoded_or_merged,1
+5101,Contone,2010-01-01,5398,2026-01-01,recoded_or_merged,1
+5091,Ascona,2010-01-01,5091,2026-01-01,unchanged,1
+5095,Brione (Verzasca),2010-01-01,5399,2026-01-01,recoded_or_merged,1
+5096,Brione sopra Minusio,2010-01-01,5096,2026-01-01,unchanged,1
+5097,Brissago,2010-01-01,5097,2026-01-01,unchanged,1
+5105,Frasco,2010-01-01,5399,2026-01-01,recoded_or_merged,1
+5106,Gerra (Gambarogno),2010-01-01,5398,2026-01-01,recoded_or_merged,1
+5108,Gordola,2010-01-01,5108,2026-01-01,unchanged,1
+5109,Gresso,2010-01-01,5136,2026-01-01,recoded_or_merged,1
+5119,Mosogno,2010-01-01,5136,2026-01-01,recoded_or_merged,1
+5117,Mergoscia,2010-01-01,5117,2026-01-01,unchanged,1
+5118,Minusio,2010-01-01,5118,2026-01-01,unchanged,1
+5120,Muralto,2010-01-01,5120,2026-01-01,unchanged,1
+5112,Lavertezzo,2010-01-01,5112,2026-01-01,unchanged,1
+5110,Indemini,2010-01-01,5398,2026-01-01,recoded_or_merged,1
+5116,Magadino,2010-01-01,5398,2026-01-01,recoded_or_merged,1
+5115,Losone,2010-01-01,5115,2026-01-01,unchanged,1
+5113,Locarno,2010-01-01,5113,2026-01-01,unchanged,1
+5125,Ronco sopra Ascona,2010-01-01,5125,2026-01-01,unchanged,1
+5128,Sant'Abbondio,2010-01-01,5398,2026-01-01,recoded_or_merged,1
+5127,San Nazzaro,2010-01-01,5398,2026-01-01,recoded_or_merged,1
+5121,Orselina,2010-01-01,5121,2026-01-01,unchanged,1
+5123,Piazzogna,2010-01-01,5398,2026-01-01,recoded_or_merged,1
+5136,Onsernone,2010-01-01,5136,2026-01-01,unchanged,1
+5137,Isorno,2010-01-01,5136,2026-01-01,recoded_or_merged,1
+5138,Cugnasco-Gerra,2010-01-01,5138,2026-01-01,unchanged,1
+5397,Centovalli,2010-01-01,5397,2026-01-01,unchanged,1
+5067,Campello,2010-01-01,5072,2026-01-01,recoded_or_merged,1
+5068,Cavagnago,2010-01-01,5072,2026-01-01,recoded_or_merged,1
+5066,Calpiogna,2010-01-01,5072,2026-01-01,recoded_or_merged,1
+5071,Dalpe,2010-01-01,5071,2026-01-01,unchanged,1
+5070,Chironico,2010-01-01,5072,2026-01-01,recoded_or_merged,1
+5061,Airolo,2010-01-01,5061,2026-01-01,unchanged,1
+5062,Anzonico,2010-01-01,5072,2026-01-01,recoded_or_merged,1
+5064,Bodio,2010-01-01,5073,2026-01-01,recoded_or_merged,1
+5063,Bedretto,2010-01-01,5063,2026-01-01,unchanged,1
+5073,Giornico,2010-01-01,5073,2026-01-01,unchanged,1
+5074,Mairengo,2010-01-01,5072,2026-01-01,recoded_or_merged,1
+5081,Sobrio,2010-01-01,5072,2026-01-01,recoded_or_merged,1
+5077,Pollegio,2010-01-01,5077,2026-01-01,unchanged,1
+5079,Quinto,2010-01-01,5079,2026-01-01,unchanged,1
+5078,Prato (Leventina),2010-01-01,5079,2026-01-01,recoded_or_merged,1
+5075,Osco,2010-01-01,5072,2026-01-01,recoded_or_merged,1
+5076,Personico,2010-01-01,5076,2026-01-01,unchanged,1
+5072,Faido,2010-01-01,5072,2026-01-01,unchanged,1
+5041,Malvaglia,2010-01-01,5050,2026-01-01,recoded_or_merged,1
+5040,Ludiano,2010-01-01,5050,2026-01-01,recoded_or_merged,1
+5046,Semione,2010-01-01,5050,2026-01-01,recoded_or_merged,1
+5048,Acquarossa,2010-01-01,5048,2026-01-01,unchanged,1
+5049,Blenio,2010-01-01,5049,2026-01-01,unchanged,1
+5004,Camorino,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5001,Arbedo-Castione,2010-01-01,5001,2026-01-01,unchanged,1
+5002,Bellinzona,2010-01-01,5002,2026-01-01,unchanged,1
+5008,Gudo,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5006,Gnosca,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5007,Gorduno,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5005,Giubiasco,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5013,Monte Carasso,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5011,Medeglia,2010-01-01,5238,2026-01-01,recoded_or_merged,1
+5012,Moleno,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5009,Isone,2010-01-01,5009,2026-01-01,unchanged,1
+5010,Lumino,2010-01-01,5010,2026-01-01,unchanged,1
+5019,Sementina,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5018,Sant'Antonio,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5017,Sant'Antonino,2010-01-01,5017,2026-01-01,unchanged,1
+5015,Preonzo,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5014,Pianezzo,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5003,Cadenazzo,2010-01-01,5003,2026-01-01,unchanged,1
+5283,Cresciano,2010-01-01,5287,2026-01-01,recoded_or_merged,1
+5282,Claro,2010-01-01,5002,2026-01-01,recoded_or_merged,1
+5281,Biasca,2010-01-01,5281,2026-01-01,unchanged,1
+5284,Iragna,2010-01-01,5287,2026-01-01,recoded_or_merged,1
+5285,Lodrino,2010-01-01,5287,2026-01-01,recoded_or_merged,1
+5286,Osogna,2010-01-01,5287,2026-01-01,recoded_or_merged,1
+5309,Cerentino,2010-01-01,5309,2026-01-01,unchanged,1
+5307,Campo (Vallemaggia),2010-01-01,5307,2026-01-01,unchanged,1
+5304,Bosco/Gurin,2010-01-01,5304,2026-01-01,unchanged,1
+5315,Linescio,2010-01-01,5315,2026-01-01,unchanged,1
+5317,Maggia,2010-01-01,5317,2026-01-01,unchanged,1
+5323,Lavizzara,2010-01-01,5323,2026-01-01,unchanged,1
+5310,Cevio,2010-01-01,5310,2026-01-01,unchanged,1
+5324,Avegno Gordevio,2010-01-01,5324,2026-01-01,unchanged,1
+5401,Aigle,2010-01-01,5401,2026-01-01,unchanged,1
+5402,Bex,2010-01-01,5402,2026-01-01,unchanged,1
+5413,Roche (VD),2010-01-01,5413,2026-01-01,unchanged,1
+5412,Rennaz,2010-01-01,5412,2026-01-01,unchanged,1
+5408,Noville,2010-01-01,5408,2026-01-01,unchanged,1
+5407,Leysin,2010-01-01,5407,2026-01-01,unchanged,1
+5406,Lavey-Morcles,2010-01-01,5406,2026-01-01,unchanged,1
+5409,Ollon,2010-01-01,5409,2026-01-01,unchanged,1
+5411,Ormont-Dessus,2010-01-01,5411,2026-01-01,unchanged,1
+5410,Ormont-Dessous,2010-01-01,5410,2026-01-01,unchanged,1
+5405,Gryon,2010-01-01,5405,2026-01-01,unchanged,1
+5404,Corbeyrier,2010-01-01,5404,2026-01-01,unchanged,1
+5403,Chessel,2010-01-01,5403,2026-01-01,unchanged,1
+5415,Yvorne,2010-01-01,5415,2026-01-01,unchanged,1
+5414,Villeneuve (VD),2010-01-01,5414,2026-01-01,unchanged,1
+5830,Villarzel,2010-01-01,5830,2026-01-01,unchanged,1
+5451,Avenches,2010-01-01,5451,2026-01-01,unchanged,1
+5456,Cudrefin,2010-01-01,5456,2026-01-01,unchanged,1
+5822,Payerne,2010-01-01,5822,2026-01-01,unchanged,1
+5681,Oulens-sur-Lucens,2010-01-01,5675,2026-01-01,recoded_or_merged,1
+5683,Prévonloup,2010-01-01,5683,2026-01-01,unchanged,1
+5824,Sassel,2010-01-01,5831,2026-01-01,recoded_or_merged,1
+5686,Sarzens,2010-01-01,5675,2026-01-01,recoded_or_merged,1
+5826,Seigneux,2010-01-01,5831,2026-01-01,recoded_or_merged,1
+5798,Ropraz,2010-01-01,5798,2026-01-01,unchanged,1
+5684,Rossenges,2010-01-01,5684,2026-01-01,unchanged,1
+5674,Lovatens,2010-01-01,5674,2026-01-01,unchanged,1
+5820,Marnand,2010-01-01,5831,2026-01-01,recoded_or_merged,1
+5675,Lucens,2010-01-01,5675,2026-01-01,unchanged,1
+5461,Oleyres,2010-01-01,5451,2026-01-01,recoded_or_merged,1
+5821,Missy,2010-01-01,5821,2026-01-01,unchanged,1
+5678,Moudon,2010-01-01,5678,2026-01-01,unchanged,1
+5460,Mur (VD),2010-01-01,5464,2026-01-01,recoded_or_merged,1
+5459,Montmagny,2010-01-01,5464,2026-01-01,recoded_or_merged,1
+5673,Hermenches,2010-01-01,5673,2026-01-01,unchanged,1
+5819,Henniez,2010-01-01,5819,2026-01-01,unchanged,1
+5671,Dompierre (VD),2010-01-01,5671,2026-01-01,unchanged,1
+5818,Granges-près-Marnand,2010-01-01,5831,2026-01-01,recoded_or_merged,1
+5817,Grandcour,2010-01-01,5817,2026-01-01,unchanged,1
+5458,Faoug,2010-01-01,5458,2026-01-01,unchanged,1
+5672,Forel-sur-Lucens,2010-01-01,5675,2026-01-01,recoded_or_merged,1
+5452,Bellerive (VD),2010-01-01,5464,2026-01-01,recoded_or_merged,1
+5662,Brenles,2010-01-01,5675,2026-01-01,recoded_or_merged,1
+5785,Corcelles-le-Jorat,2010-01-01,5785,2026-01-01,unchanged,1
+5455,Constantine,2010-01-01,5464,2026-01-01,recoded_or_merged,1
+5815,Combremont-le-Petit,2010-01-01,5831,2026-01-01,recoded_or_merged,1
+5814,Combremont-le-Grand,2010-01-01,5831,2026-01-01,recoded_or_merged,1
+5816,Corcelles-près-Payerne,2010-01-01,5816,2026-01-01,unchanged,1
+5813,Chevroux,2010-01-01,5813,2026-01-01,unchanged,1
+5666,Chesalles-sur-Moudon,2010-01-01,5675,2026-01-01,recoded_or_merged,1
+5669,Curtilles,2010-01-01,5669,2026-01-01,unchanged,1
+5668,Cremin,2010-01-01,5675,2026-01-01,recoded_or_merged,1
+5663,Bussy-sur-Moudon,2010-01-01,5663,2026-01-01,unchanged,1
+5812,Champtauroz,2010-01-01,5812,2026-01-01,unchanged,1
+5665,Chavannes-sur-Moudon,2010-01-01,5665,2026-01-01,unchanged,1
+5782,Carrouge (VD),2010-01-01,5806,2026-01-01,recoded_or_merged,1
+5811,Cerniaz (VD),2010-01-01,5831,2026-01-01,recoded_or_merged,1
+5453,Chabrey,2010-01-01,5464,2026-01-01,recoded_or_merged,1
+5462,Vallamand,2010-01-01,5464,2026-01-01,recoded_or_merged,1
+5827,Trey,2010-01-01,5827,2026-01-01,unchanged,1
+5828,Treytorrens (Payerne),2010-01-01,5828,2026-01-01,unchanged,1
+5690,Villars-le-Comte,2010-01-01,5690,2026-01-01,unchanged,1
+5829,Villars-Bramard,2010-01-01,5831,2026-01-01,recoded_or_merged,1
+5463,Villars-le-Grand,2010-01-01,5464,2026-01-01,recoded_or_merged,1
+5688,Syens,2010-01-01,5688,2026-01-01,unchanged,1
+5803,Vulliens,2010-01-01,5803,2026-01-01,unchanged,1
+5692,Vucherens,2010-01-01,5692,2026-01-01,unchanged,1
+5487,Lussery-Villars,2010-01-01,5487,2026-01-01,unchanged,1
+5512,Bercher,2010-01-01,5512,2026-01-01,unchanged,1
+5796,Peney-le-Jorat,2010-01-01,5804,2026-01-01,recoded_or_merged,1
+5495,Penthalaz,2010-01-01,5495,2026-01-01,unchanged,1
+5496,Penthaz,2010-01-01,5496,2026-01-01,unchanged,1
+5531,Penthéréaz,2010-01-01,5531,2026-01-01,unchanged,1
+5682,Peyres-Possens,2010-01-01,5693,2026-01-01,recoded_or_merged,1
+5529,Oulens-sous-Echallens,2010-01-01,5529,2026-01-01,unchanged,1
+5530,Pailly,2010-01-01,5530,2026-01-01,unchanged,1
+5532,Poliez-le-Grand,2010-01-01,5540,2026-01-01,recoded_or_merged,1
+5533,Poliez-Pittet,2010-01-01,5533,2026-01-01,unchanged,1
+5535,Saint-Barthélemy (VD),2010-01-01,5535,2026-01-01,unchanged,1
+5685,Saint-Cierges,2010-01-01,5693,2026-01-01,recoded_or_merged,1
+5534,Rueyres,2010-01-01,5534,2026-01-01,unchanged,1
+5676,Martherenges,2010-01-01,5693,2026-01-01,recoded_or_merged,1
+5528,Naz,2010-01-01,5540,2026-01-01,recoded_or_merged,1
+5679,Neyruz-sur-Moudon,2010-01-01,5693,2026-01-01,recoded_or_merged,1
+5680,Ogens,2010-01-01,5680,2026-01-01,unchanged,1
+5923,Oppens,2010-01-01,5923,2026-01-01,unchanged,1
+5489,Mex (VD),2010-01-01,5489,2026-01-01,unchanged,1
+5527,Morrens (VD),2010-01-01,5527,2026-01-01,unchanged,1
+5677,Montaubion-Chardonney,2010-01-01,5804,2026-01-01,recoded_or_merged,1
+5521,Etagnières,2010-01-01,5521,2026-01-01,unchanged,1
+5520,Essertines-sur-Yverdon,2010-01-01,5520,2026-01-01,unchanged,1
+5517,Dommartin,2010-01-01,5540,2026-01-01,recoded_or_merged,1
+5518,Echallens,2010-01-01,5518,2026-01-01,unchanged,1
+5519,Eclagnens,2010-01-01,5541,2026-01-01,recoded_or_merged,1
+5525,Goumoens-le-Jux,2010-01-01,5541,2026-01-01,recoded_or_merged,1
+5524,Goumoens-la-Ville,2010-01-01,5541,2026-01-01,recoded_or_merged,1
+5522,Fey,2010-01-01,5522,2026-01-01,unchanged,1
+5523,Froideville,2010-01-01,5523,2026-01-01,unchanged,1
+5471,Bettens,2010-01-01,5471,2026-01-01,unchanged,1
+5513,Bioley-Orjulaz,2010-01-01,5511,2026-01-01,recoded_or_merged,1
+5473,Boussens,2010-01-01,5473,2026-01-01,unchanged,1
+5472,Bournens,2010-01-01,5472,2026-01-01,unchanged,1
+5661,Boulens,2010-01-01,5661,2026-01-01,unchanged,1
+5514,Bottens,2010-01-01,5514,2026-01-01,unchanged,1
+5515,Bretigny-sur-Morrens,2010-01-01,5515,2026-01-01,unchanged,1
+5667,Correvon,2010-01-01,5693,2026-01-01,recoded_or_merged,1
+5480,Daillens,2010-01-01,5480,2026-01-01,unchanged,1
+5670,Denezy,2010-01-01,5693,2026-01-01,recoded_or_merged,1
+5516,Cugy (VD),2010-01-01,5516,2026-01-01,unchanged,1
+5664,Chapelle-sur-Moudon,2010-01-01,5693,2026-01-01,recoded_or_merged,1
+5691,Villars-Mendraz,2010-01-01,5804,2026-01-01,recoded_or_merged,1
+5537,Villars-le-Terroir,2010-01-01,5537,2026-01-01,unchanged,1
+5536,Sugnens,2010-01-01,5540,2026-01-01,recoded_or_merged,1
+5689,Thierrens,2010-01-01,5693,2026-01-01,recoded_or_merged,1
+5501,Sullens,2010-01-01,5501,2026-01-01,unchanged,1
+5687,Sottens,2010-01-01,5804,2026-01-01,recoded_or_merged,1
+5503,Vufflens-la-Ville,2010-01-01,5503,2026-01-01,unchanged,1
+5539,Vuarrens,2010-01-01,5539,2026-01-01,unchanged,1
+5538,Villars-Tiercelin,2010-01-01,5804,2026-01-01,recoded_or_merged,1
+5511,Assens,2010-01-01,5511,2026-01-01,unchanged,1
+5928,Rovray,2010-01-01,5928,2026-01-01,unchanged,1
+5938,Yverdon-les-Bains,2010-01-01,5938,2026-01-01,unchanged,1
+5761,Romainmôtier-Envy,2010-01-01,5761,2026-01-01,unchanged,1
+5760,Rances,2010-01-01,5760,2026-01-01,unchanged,1
+5925,Orzens,2010-01-01,5925,2026-01-01,unchanged,1
+5759,Premier,2010-01-01,5759,2026-01-01,unchanged,1
+5566,Provence,2010-01-01,5566,2026-01-01,unchanged,1
+5926,Pomy,2010-01-01,5926,2026-01-01,unchanged,1
+5927,Prahins,2010-01-01,5913,2026-01-01,recoded_or_merged,1
+5568,Sainte-Croix,2010-01-01,5568,2026-01-01,unchanged,1
+5762,Sergey,2010-01-01,5762,2026-01-01,unchanged,1
+5567,Romairon,2010-01-01,5571,2026-01-01,recoded_or_merged,1
+5564,Novalles,2010-01-01,5564,2026-01-01,unchanged,1
+5755,Lignerolle,2010-01-01,5755,2026-01-01,unchanged,1
+5750,Les Clées,2010-01-01,5750,2026-01-01,unchanged,1
+5562,Mauborget,2010-01-01,5562,2026-01-01,unchanged,1
+5919,Mathod,2010-01-01,5919,2026-01-01,unchanged,1
+5754,Juriens,2010-01-01,5754,2026-01-01,unchanged,1
+5872,Le Chenit,2010-01-01,5872,2026-01-01,unchanged,1
+5873,Le Lieu,2010-01-01,5873,2026-01-01,unchanged,1
+5741,L'Abergement,2010-01-01,5741,2026-01-01,unchanged,1
+5871,L'Abbaye,2010-01-01,5871,2026-01-01,unchanged,1
+5758,La Praz,2010-01-01,5758,2026-01-01,unchanged,1
+5563,Mutrux,2010-01-01,5563,2026-01-01,unchanged,1
+5924,Orges,2010-01-01,5924,2026-01-01,unchanged,1
+5565,Onnens (VD),2010-01-01,5565,2026-01-01,unchanged,1
+5757,Orbe,2010-01-01,5757,2026-01-01,unchanged,1
+5921,Molondin,2010-01-01,5921,2026-01-01,unchanged,1
+5756,Montcherand,2010-01-01,5756,2026-01-01,unchanged,1
+5922,Montagny-près-Yverdon,2010-01-01,5922,2026-01-01,unchanged,1
+5914,Ependes (VD),2010-01-01,5914,2026-01-01,unchanged,1
+5915,Essert-Pittet,2010-01-01,5749,2026-01-01,recoded_or_merged,1
+5916,Essert-sous-Champvent,2010-01-01,5905,2026-01-01,recoded_or_merged,1
+5561,Grandson,2010-01-01,5561,2026-01-01,unchanged,1
+5918,Gressy,2010-01-01,5938,2026-01-01,recoded_or_merged,1
+5560,Grandevent,2010-01-01,5560,2026-01-01,unchanged,1
+5559,Giez,2010-01-01,5559,2026-01-01,unchanged,1
+5556,Fiez,2010-01-01,5556,2026-01-01,unchanged,1
+5557,Fontaines-sur-Grandson,2010-01-01,5557,2026-01-01,unchanged,1
+5558,Fontanezier,2010-01-01,5571,2026-01-01,recoded_or_merged,1
+5903,Bioley-Magnoux,2010-01-01,5903,2026-01-01,unchanged,1
+5902,Belmont-sur-Yverdon,2010-01-01,5902,2026-01-01,unchanged,1
+5748,Bretonnières,2010-01-01,5748,2026-01-01,unchanged,1
+5747,Bofflens,2010-01-01,5747,2026-01-01,unchanged,1
+5551,Bonvillars,2010-01-01,5551,2026-01-01,unchanged,1
+5743,Arnex-sur-Orbe,2010-01-01,5743,2026-01-01,unchanged,1
+5742,Agiez,2010-01-01,5742,2026-01-01,unchanged,1
+5744,Ballaigues,2010-01-01,5744,2026-01-01,unchanged,1
+5746,Bavois,2010-01-01,5746,2026-01-01,unchanged,1
+5745,Baulmes,2010-01-01,5745,2026-01-01,unchanged,1
+5751,Corcelles-sur-Chavornay,2010-01-01,5749,2026-01-01,recoded_or_merged,1
+5554,Concise,2010-01-01,5554,2026-01-01,unchanged,1
+5555,Corcelles-près-Concise,2010-01-01,5555,2026-01-01,unchanged,1
+5909,Cheseaux-Noréaz,2010-01-01,5909,2026-01-01,unchanged,1
+5912,Démoret,2010-01-01,5912,2026-01-01,unchanged,1
+5911,Cuarny,2010-01-01,5911,2026-01-01,unchanged,1
+5752,Croy,2010-01-01,5752,2026-01-01,unchanged,1
+5910,Cronay,2010-01-01,5910,2026-01-01,unchanged,1
+5552,Bullet,2010-01-01,5552,2026-01-01,unchanged,1
+5553,Champagne,2010-01-01,5553,2026-01-01,unchanged,1
+5906,Chanéaz,2010-01-01,5693,2026-01-01,recoded_or_merged,1
+5905,Champvent,2010-01-01,5905,2026-01-01,unchanged,1
+5749,Chavornay,2010-01-01,5749,2026-01-01,unchanged,1
+5907,Chavannes-le-Chêne,2010-01-01,5907,2026-01-01,unchanged,1
+5908,Chêne-Pâquier,2010-01-01,5908,2026-01-01,unchanged,1
+5904,Chamblon,2010-01-01,5904,2026-01-01,unchanged,1
+5764,Vallorbe,2010-01-01,5764,2026-01-01,unchanged,1
+5763,Valeyres-sous-Rances,2010-01-01,5763,2026-01-01,unchanged,1
+5933,Valeyres-sous-Montagny,2010-01-01,5933,2026-01-01,unchanged,1
+5932,Ursins,2010-01-01,5932,2026-01-01,unchanged,1
+5934,Valeyres-sous-Ursins,2010-01-01,5934,2026-01-01,unchanged,1
+5765,Vaulion,2010-01-01,5765,2026-01-01,unchanged,1
+5569,Vaugondry,2010-01-01,5571,2026-01-01,recoded_or_merged,1
+5931,Treycovagnes,2010-01-01,5931,2026-01-01,unchanged,1
+5935,Villars-Epeney,2010-01-01,5935,2026-01-01,unchanged,1
+5936,Villars-sous-Champvent,2010-01-01,5905,2026-01-01,recoded_or_merged,1
+5570,Villars-Burquin,2010-01-01,5571,2026-01-01,recoded_or_merged,1
+5929,Suchy,2010-01-01,5929,2026-01-01,unchanged,1
+5930,Suscévaz,2010-01-01,5930,2026-01-01,unchanged,1
+5766,Vuiteboeuf,2010-01-01,5766,2026-01-01,unchanged,1
+5937,Vugelles-La Mothe,2010-01-01,5937,2026-01-01,unchanged,1
+5939,Yvonand,2010-01-01,5939,2026-01-01,unchanged,1
+5913,Donneloye,2010-01-01,5913,2026-01-01,unchanged,1
+5592,Romanel-sur-Lausanne,2010-01-01,5592,2026-01-01,unchanged,1
+5585,Jouxtens-Mézery,2010-01-01,5585,2026-01-01,unchanged,1
+5587,Le Mont-sur-Lausanne,2010-01-01,5587,2026-01-01,unchanged,1
+5586,Lausanne,2010-01-01,5586,2026-01-01,unchanged,1
+5584,Epalinges,2010-01-01,5584,2026-01-01,unchanged,1
+5582,Cheseaux-sur-Lausanne,2010-01-01,5582,2026-01-01,unchanged,1
+5790,Maracon,2010-01-01,5790,2026-01-01,unchanged,1
+5795,Palézieux,2010-01-01,5805,2026-01-01,recoded_or_merged,1
+5588,Paudex,2010-01-01,5588,2026-01-01,unchanged,1
+5607,Puidoux,2010-01-01,5607,2026-01-01,unchanged,1
+5590,Pully,2010-01-01,5590,2026-01-01,unchanged,1
+5611,Savigny,2010-01-01,5611,2026-01-01,unchanged,1
+5610,Saint-Saphorin (Lavaux),2010-01-01,5610,2026-01-01,unchanged,1
+5799,Servion,2010-01-01,5799,2026-01-01,unchanged,1
+5609,Rivaz,2010-01-01,5609,2026-01-01,unchanged,1
+5608,Riex,2010-01-01,5613,2026-01-01,recoded_or_merged,1
+5786,Les Cullayes,2010-01-01,5799,2026-01-01,recoded_or_merged,1
+5801,Les Thioleyres,2010-01-01,5805,2026-01-01,recoded_or_merged,1
+5800,Les Tavernes,2010-01-01,5805,2026-01-01,recoded_or_merged,1
+5606,Lutry,2010-01-01,5606,2026-01-01,unchanged,1
+5793,Oron-la-Ville,2010-01-01,5805,2026-01-01,recoded_or_merged,1
+5791,Mézières (VD),2010-01-01,5806,2026-01-01,recoded_or_merged,1
+5794,Oron-le-Châtel,2010-01-01,5805,2026-01-01,recoded_or_merged,1
+5792,Montpreveyres,2010-01-01,5792,2026-01-01,unchanged,1
+5603,Epesses,2010-01-01,5613,2026-01-01,recoded_or_merged,1
+5788,Essertes,2010-01-01,5805,2026-01-01,recoded_or_merged,1
+5787,Ecoteaux,2010-01-01,5805,2026-01-01,recoded_or_merged,1
+5605,Grandvaux,2010-01-01,5613,2026-01-01,recoded_or_merged,1
+5789,Ferlens (VD),2010-01-01,5806,2026-01-01,recoded_or_merged,1
+5604,Forel (Lavaux),2010-01-01,5604,2026-01-01,unchanged,1
+5581,Belmont-sur-Lausanne,2010-01-01,5581,2026-01-01,unchanged,1
+5601,Chexbres,2010-01-01,5601,2026-01-01,unchanged,1
+5784,Chesalles-sur-Oron,2010-01-01,5805,2026-01-01,recoded_or_merged,1
+5602,Cully,2010-01-01,5613,2026-01-01,recoded_or_merged,1
+5781,Bussigny-sur-Oron,2010-01-01,5805,2026-01-01,recoded_or_merged,1
+5783,Châtillens,2010-01-01,5805,2026-01-01,recoded_or_merged,1
+5802,Vuibroye,2010-01-01,5805,2026-01-01,recoded_or_merged,1
+5612,Villette (Lavaux),2010-01-01,5613,2026-01-01,recoded_or_merged,1
+5625,Bussy-Chardonney,2010-01-01,5656,2026-01-01,recoded_or_merged,1
+5433,Pizy,2010-01-01,5422,2026-01-01,recoded_or_merged,1
+5494,Pampigny,2010-01-01,5656,2026-01-01,recoded_or_merged,1
+5643,Préverenges,2010-01-01,5643,2026-01-01,unchanged,1
+5497,Pompaples,2010-01-01,5497,2026-01-01,unchanged,1
+5437,Saubraz,2010-01-01,5437,2026-01-01,unchanged,1
+5436,Saint-Oyens,2010-01-01,5436,2026-01-01,unchanged,1
+5646,Saint-Prex,2010-01-01,5646,2026-01-01,unchanged,1
+5647,Saint-Saphorin-sur-Morges,2010-01-01,5634,2026-01-01,recoded_or_merged,1
+5500,Sévery,2010-01-01,5656,2026-01-01,recoded_or_merged,1
+5499,Senarclens,2010-01-01,5499,2026-01-01,unchanged,1
+5435,Saint-Livres,2010-01-01,5435,2026-01-01,unchanged,1
+5645,Romanel-sur-Morges,2010-01-01,5645,2026-01-01,unchanged,1
+5644,Reverolle,2010-01-01,5656,2026-01-01,recoded_or_merged,1
+5638,Lonay,2010-01-01,5638,2026-01-01,unchanged,1
+5639,Lully (VD),2010-01-01,5639,2026-01-01,unchanged,1
+5640,Lussy-sur-Morges,2010-01-01,5640,2026-01-01,unchanged,1
+5637,Lavigny,2010-01-01,5637,2026-01-01,unchanged,1
+5474,La Chaux (Cossonay),2010-01-01,5474,2026-01-01,unchanged,1
+5486,L'Isle,2010-01-01,5486,2026-01-01,unchanged,1
+5498,La Sarraz,2010-01-01,5498,2026-01-01,unchanged,1
+5493,Orny,2010-01-01,5493,2026-01-01,unchanged,1
+5641,Monnaz,2010-01-01,5634,2026-01-01,recoded_or_merged,1
+5431,Mollens (VD),2010-01-01,5431,2026-01-01,unchanged,1
+5490,Moiry,2010-01-01,5490,2026-01-01,unchanged,1
+5488,Mauraz,2010-01-01,5488,2026-01-01,unchanged,1
+5491,Mont-la-Ville,2010-01-01,5491,2026-01-01,unchanged,1
+5642,Morges,2010-01-01,5642,2026-01-01,unchanged,1
+5492,Montricher,2010-01-01,5492,2026-01-01,unchanged,1
+5432,Montherod,2010-01-01,5422,2026-01-01,recoded_or_merged,1
+5636,Etoy,2010-01-01,5636,2026-01-01,unchanged,1
+5482,Eclépens,2010-01-01,5482,2026-01-01,unchanged,1
+5633,Echandens,2010-01-01,5633,2026-01-01,unchanged,1
+5634,Echichens,2010-01-01,5634,2026-01-01,unchanged,1
+5428,Gimel,2010-01-01,5428,2026-01-01,unchanged,1
+5484,Gollion,2010-01-01,5484,2026-01-01,unchanged,1
+5485,Grancy,2010-01-01,5485,2026-01-01,unchanged,1
+5427,Féchy,2010-01-01,5427,2026-01-01,unchanged,1
+5483,Ferreyres,2010-01-01,5483,2026-01-01,unchanged,1
+5425,Bière,2010-01-01,5425,2026-01-01,unchanged,1
+5424,Berolle,2010-01-01,5424,2026-01-01,unchanged,1
+5426,Bougy-Villars,2010-01-01,5426,2026-01-01,unchanged,1
+5622,Bremblens,2010-01-01,5622,2026-01-01,unchanged,1
+5421,Apples,2010-01-01,5656,2026-01-01,recoded_or_merged,1
+5621,Aclens,2010-01-01,5621,2026-01-01,unchanged,1
+5851,Allaman,2010-01-01,5851,2026-01-01,unchanged,1
+5423,Ballens,2010-01-01,5423,2026-01-01,unchanged,1
+5422,Aubonne,2010-01-01,5422,2026-01-01,unchanged,1
+5630,Colombier (VD),2010-01-01,5634,2026-01-01,recoded_or_merged,1
+5476,Chevilly,2010-01-01,5476,2026-01-01,unchanged,1
+5628,Chigny,2010-01-01,5628,2026-01-01,unchanged,1
+5629,Clarmont,2010-01-01,5629,2026-01-01,unchanged,1
+5632,Denges,2010-01-01,5632,2026-01-01,unchanged,1
+5631,Denens,2010-01-01,5631,2026-01-01,unchanged,1
+5478,Cottens (VD),2010-01-01,5656,2026-01-01,recoded_or_merged,1
+5477,Cossonay,2010-01-01,5477,2026-01-01,unchanged,1
+5479,Cuarnens,2010-01-01,5479,2026-01-01,unchanged,1
+5623,Buchillon,2010-01-01,5623,2026-01-01,unchanged,1
+5475,Chavannes-le-Veyron,2010-01-01,5475,2026-01-01,unchanged,1
+5481,Dizy,2010-01-01,5481,2026-01-01,unchanged,1
+5650,Vaux-sur-Morges,2010-01-01,5650,2026-01-01,unchanged,1
+5649,Tolochenaz,2010-01-01,5649,2026-01-01,unchanged,1
+5652,Villars-sous-Yens,2010-01-01,5652,2026-01-01,unchanged,1
+5654,Vullierens,2010-01-01,5654,2026-01-01,unchanged,1
+5653,Vufflens-le-Château,2010-01-01,5653,2026-01-01,unchanged,1
+5655,Yens,2010-01-01,5655,2026-01-01,unchanged,1
+5860,Perroy,2010-01-01,5860,2026-01-01,unchanged,1
+5725,Prangins,2010-01-01,5725,2026-01-01,unchanged,1
+5728,Signy-Avenex,2010-01-01,5728,2026-01-01,unchanged,1
+5861,Rolle,2010-01-01,5861,2026-01-01,unchanged,1
+5727,Saint-Cergue,2010-01-01,5727,2026-01-01,unchanged,1
+5434,Saint-George,2010-01-01,5434,2026-01-01,unchanged,1
+5429,Longirod,2010-01-01,5429,2026-01-01,unchanged,1
+5430,Marchissy,2010-01-01,5430,2026-01-01,unchanged,1
+5858,Luins,2010-01-01,5858,2026-01-01,unchanged,1
+5731,Le Vaud,2010-01-01,5731,2026-01-01,unchanged,1
+5726,La Rippe,2010-01-01,5726,2026-01-01,unchanged,1
+5724,Nyon,2010-01-01,5724,2026-01-01,unchanged,1
+5723,Mies,2010-01-01,5723,2026-01-01,unchanged,1
+5859,Mont-sur-Rolle,2010-01-01,5859,2026-01-01,unchanged,1
+5856,Essertines-sur-Rolle,2010-01-01,5856,2026-01-01,unchanged,1
+5716,Eysins,2010-01-01,5716,2026-01-01,unchanged,1
+5715,Duillier,2010-01-01,5715,2026-01-01,unchanged,1
+5855,Dully,2010-01-01,5855,2026-01-01,unchanged,1
+5718,Genolier,2010-01-01,5718,2026-01-01,unchanged,1
+5722,Grens,2010-01-01,5722,2026-01-01,unchanged,1
+5719,Gingins,2010-01-01,5719,2026-01-01,unchanged,1
+5721,Gland,2010-01-01,5721,2026-01-01,unchanged,1
+5720,Givrins,2010-01-01,5720,2026-01-01,unchanged,1
+5857,Gilly,2010-01-01,5857,2026-01-01,unchanged,1
+5717,Founex,2010-01-01,5717,2026-01-01,unchanged,1
+5704,Begnins,2010-01-01,5704,2026-01-01,unchanged,1
+5706,Borex,2010-01-01,5706,2026-01-01,unchanged,1
+5705,Bogis-Bossey,2010-01-01,5705,2026-01-01,unchanged,1
+5701,Arnex-sur-Nyon,2010-01-01,5701,2026-01-01,unchanged,1
+5703,Bassins,2010-01-01,5703,2026-01-01,unchanged,1
+5702,Arzier,2010-01-01,5702,2026-01-01,unchanged,1
+5712,Coppet,2010-01-01,5712,2026-01-01,unchanged,1
+5711,Commugny,2010-01-01,5711,2026-01-01,unchanged,1
+5709,Chéserex,2010-01-01,5709,2026-01-01,unchanged,1
+5710,Coinsins,2010-01-01,5710,2026-01-01,unchanged,1
+5713,Crans-près-Céligny,2010-01-01,5713,2026-01-01,unchanged,1
+5714,Crassier,2010-01-01,5714,2026-01-01,unchanged,1
+5852,Bursinel,2010-01-01,5852,2026-01-01,unchanged,1
+5853,Bursins,2010-01-01,5853,2026-01-01,unchanged,1
+5854,Burtigny,2010-01-01,5854,2026-01-01,unchanged,1
+5708,Chavannes-des-Bois,2010-01-01,5708,2026-01-01,unchanged,1
+5707,Chavannes-de-Bogis,2010-01-01,5707,2026-01-01,unchanged,1
+5730,Trélex,2010-01-01,5730,2026-01-01,unchanged,1
+5732,Vich,2010-01-01,5732,2026-01-01,unchanged,1
+5862,Tartegnin,2010-01-01,5862,2026-01-01,unchanged,1
+5729,Tannay,2010-01-01,5729,2026-01-01,unchanged,1
+5863,Vinzel,2010-01-01,5863,2026-01-01,unchanged,1
+5589,Prilly,2010-01-01,5589,2026-01-01,unchanged,1
+5591,Renens (VD),2010-01-01,5591,2026-01-01,unchanged,1
+5648,Saint-Sulpice (VD),2010-01-01,5648,2026-01-01,unchanged,1
+5635,Ecublens (VD),2010-01-01,5635,2026-01-01,unchanged,1
+5583,Crissier,2010-01-01,5583,2026-01-01,unchanged,1
+5624,Bussigny-près-Lausanne,2010-01-01,5624,2026-01-01,unchanged,1
+5627,Chavannes-près-Renens,2010-01-01,5627,2026-01-01,unchanged,1
+5651,Villars-Sainte-Croix,2010-01-01,5651,2026-01-01,unchanged,1
+5886,Montreux,2010-01-01,5886,2026-01-01,unchanged,1
+5888,Saint-Légier-La Chiésaz,2010-01-01,5892,2026-01-01,recoded_or_merged,1
+5842,Rossinière,2010-01-01,5842,2026-01-01,unchanged,1
+5843,Rougemont,2010-01-01,5843,2026-01-01,unchanged,1
+5885,Jongny,2010-01-01,5885,2026-01-01,unchanged,1
+5889,La Tour-de-Peilz,2010-01-01,5889,2026-01-01,unchanged,1
+5881,Blonay,2010-01-01,5892,2026-01-01,recoded_or_merged,1
+5883,Corseaux,2010-01-01,5883,2026-01-01,unchanged,1
+5884,Corsier-sur-Vevey,2010-01-01,5884,2026-01-01,unchanged,1
+5841,Château-d'Oex,2010-01-01,5841,2026-01-01,unchanged,1
+5882,Chardonne,2010-01-01,5882,2026-01-01,unchanged,1
+5890,Vevey,2010-01-01,5890,2026-01-01,unchanged,1
+5891,Veytaux,2010-01-01,5891,2026-01-01,unchanged,1
+6158,Vionnaz,2010-01-01,6158,2026-01-01,unchanged,1
+6159,Vouvry,2010-01-01,6159,2026-01-01,unchanged,1
+6156,Troistorrents,2010-01-01,6156,2026-01-01,unchanged,1
+6157,Val-d'Illiez,2010-01-01,6157,2026-01-01,unchanged,1
+6151,Champéry,2010-01-01,6151,2026-01-01,unchanged,1
+6152,Collombey-Muraz,2010-01-01,6152,2026-01-01,unchanged,1
+6153,Monthey,2010-01-01,6153,2026-01-01,unchanged,1
+6155,Saint-Gingolph,2010-01-01,6155,2026-01-01,unchanged,1
+6154,Port-Valais,2010-01-01,6154,2026-01-01,unchanged,1
+6142,Trient,2010-01-01,6142,2026-01-01,unchanged,1
+6132,Charrat,2010-01-01,6136,2026-01-01,recoded_or_merged,1
+6131,Bovernier,2010-01-01,6131,2026-01-01,unchanged,1
+6133,Fully,2010-01-01,6133,2026-01-01,unchanged,1
+6134,Isérables,2010-01-01,6134,2026-01-01,unchanged,1
+6137,Martigny-Combe,2010-01-01,6137,2026-01-01,unchanged,1
+6135,Leytron,2010-01-01,6135,2026-01-01,unchanged,1
+6140,Saillon,2010-01-01,6140,2026-01-01,unchanged,1
+6139,Riddes,2010-01-01,6139,2026-01-01,unchanged,1
+6141,Saxon,2010-01-01,6141,2026-01-01,unchanged,1
+6136,Martigny,2010-01-01,6136,2026-01-01,unchanged,1
+6114,Turtmann,2010-01-01,6119,2026-01-01,recoded_or_merged,1
+6115,Unterems,2010-01-01,6119,2026-01-01,recoded_or_merged,1
+6116,Varen,2010-01-01,6116,2026-01-01,unchanged,1
+6101,Agarn,2010-01-01,6101,2026-01-01,unchanged,1
+6102,Albinen,2010-01-01,6102,2026-01-01,unchanged,1
+6105,Erschmatt,2010-01-01,6110,2026-01-01,recoded_or_merged,1
+6104,Ergisch,2010-01-01,6104,2026-01-01,unchanged,1
+6112,Oberems,2010-01-01,6112,2026-01-01,unchanged,1
+6109,Inden,2010-01-01,6109,2026-01-01,unchanged,1
+6110,Leuk,2010-01-01,6110,2026-01-01,unchanged,1
+6111,Leukerbad,2010-01-01,6111,2026-01-01,unchanged,1
+6113,Salgesch,2010-01-01,6113,2026-01-01,unchanged,1
+6117,Guttet-Feschel,2010-01-01,6117,2026-01-01,unchanged,1
+6118,Gampel-Bratsch,2010-01-01,6118,2026-01-01,unchanged,1
+6088,Vernamiège,2010-01-01,6090,2026-01-01,recoded_or_merged,1
+6089,Vex,2010-01-01,6089,2026-01-01,unchanged,1
+6082,Ayent,2010-01-01,6082,2026-01-01,unchanged,1
+6083,Evolène,2010-01-01,6083,2026-01-01,unchanged,1
+6084,Hérémence,2010-01-01,6084,2026-01-01,unchanged,1
+6086,Nax,2010-01-01,6090,2026-01-01,recoded_or_merged,1
+6085,Mase,2010-01-01,6090,2026-01-01,recoded_or_merged,1
+6087,Saint-Martin (VS),2010-01-01,6087,2026-01-01,unchanged,1
+6081,Les Agettes,2010-01-01,6266,2026-01-01,recoded_or_merged,1
+6055,Blitzingen,2010-01-01,6077,2026-01-01,recoded_or_merged,1
+6052,Bellwald,2010-01-01,6052,2026-01-01,unchanged,1
+6054,Binn,2010-01-01,6054,2026-01-01,unchanged,1
+6058,Fieschertal,2010-01-01,6058,2026-01-01,unchanged,1
+6057,Fiesch,2010-01-01,6057,2026-01-01,unchanged,1
+6064,Niederwald,2010-01-01,6077,2026-01-01,recoded_or_merged,1
+6061,Lax,2010-01-01,6061,2026-01-01,unchanged,1
+6073,Grafschaft,2010-01-01,6077,2026-01-01,recoded_or_merged,1
+6074,Münster-Geschinen,2010-01-01,6077,2026-01-01,recoded_or_merged,1
+6075,Reckingen-Gluringen,2010-01-01,6077,2026-01-01,recoded_or_merged,1
+6056,Ernen,2010-01-01,6056,2026-01-01,unchanged,1
+6076,Obergoms,2010-01-01,6076,2026-01-01,unchanged,1
+6036,Vollèges,2010-01-01,6037,2026-01-01,recoded_or_merged,1
+6031,Bagnes,2010-01-01,6037,2026-01-01,recoded_or_merged,1
+6032,Bourg-Saint-Pierre,2010-01-01,6032,2026-01-01,unchanged,1
+6033,Liddes,2010-01-01,6033,2026-01-01,unchanged,1
+6035,Sembrancher,2010-01-01,6035,2026-01-01,unchanged,1
+6034,Orsières,2010-01-01,6034,2026-01-01,unchanged,1
+6025,Vétroz,2010-01-01,6025,2026-01-01,unchanged,1
+6022,Chamoson,2010-01-01,6022,2026-01-01,unchanged,1
+6023,Conthey,2010-01-01,6023,2026-01-01,unchanged,1
+6021,Ardon,2010-01-01,6021,2026-01-01,unchanged,1
+6024,Nendaz,2010-01-01,6024,2026-01-01,unchanged,1
+6011,Zwischbergen,2010-01-01,6011,2026-01-01,unchanged,1
+6010,Termen,2010-01-01,6010,2026-01-01,unchanged,1
+6001,Birgisch,2010-01-01,6007,2026-01-01,recoded_or_merged,1
+6004,Eggerberg,2010-01-01,6004,2026-01-01,unchanged,1
+6006,Mund,2010-01-01,6007,2026-01-01,recoded_or_merged,1
+6007,Naters,2010-01-01,6007,2026-01-01,unchanged,1
+6009,Simplon,2010-01-01,6009,2026-01-01,unchanged,1
+6002,Brig-Glis,2010-01-01,6002,2026-01-01,unchanged,1
+6008,Ried-Brig,2010-01-01,6008,2026-01-01,unchanged,1
+6202,Wiler (Lötschen),2010-01-01,6202,2026-01-01,unchanged,1
+6201,Unterbäch,2010-01-01,6201,2026-01-01,unchanged,1
+6193,Bürchen,2010-01-01,6193,2026-01-01,unchanged,1
+6191,Ausserberg,2010-01-01,6191,2026-01-01,unchanged,1
+6172,Bister,2010-01-01,6172,2026-01-01,unchanged,1
+6173,Bitsch,2010-01-01,6173,2026-01-01,unchanged,1
+6192,Blatten,2010-01-01,6192,2026-01-01,unchanged,1
+6171,Betten,2010-01-01,6205,2026-01-01,recoded_or_merged,1
+6195,Ferden,2010-01-01,6195,2026-01-01,unchanged,1
+6177,Grengiols,2010-01-01,6177,2026-01-01,unchanged,1
+6194,Eischoll,2010-01-01,6194,2026-01-01,unchanged,1
+6198,Niedergesteln,2010-01-01,6198,2026-01-01,unchanged,1
+6197,Kippel,2010-01-01,6197,2026-01-01,unchanged,1
+6178,Martisberg,2010-01-01,6205,2026-01-01,recoded_or_merged,1
+6199,Raron,2010-01-01,6199,2026-01-01,unchanged,1
+6181,Riederalp,2010-01-01,6181,2026-01-01,unchanged,1
+6203,Mörel-Filet,2010-01-01,6203,2026-01-01,unchanged,1
+6204,Steg-Hohtenn,2010-01-01,6204,2026-01-01,unchanged,1
+6219,Vernayaz,2010-01-01,6219,2026-01-01,unchanged,1
+6220,Vérossaz,2010-01-01,6220,2026-01-01,unchanged,1
+6211,Collonges,2010-01-01,6211,2026-01-01,unchanged,1
+6214,Finhaut,2010-01-01,6214,2026-01-01,unchanged,1
+6212,Dorénaz,2010-01-01,6212,2026-01-01,unchanged,1
+6213,Evionnaz,2010-01-01,6213,2026-01-01,unchanged,1
+6216,Mex (VS),2010-01-01,6217,2026-01-01,recoded_or_merged,1
+6215,Massongex,2010-01-01,6215,2026-01-01,unchanged,1
+6218,Salvan,2010-01-01,6218,2026-01-01,unchanged,1
+6217,Saint-Maurice,2010-01-01,6217,2026-01-01,unchanged,1
+6249,Venthône,2010-01-01,6254,2026-01-01,recoded_or_merged,1
+6250,Veyras,2010-01-01,6254,2026-01-01,recoded_or_merged,1
+6232,Chalais,2010-01-01,6232,2026-01-01,unchanged,1
+6234,Chermignon,2010-01-01,6253,2026-01-01,recoded_or_merged,1
+6235,Chippis,2010-01-01,6235,2026-01-01,unchanged,1
+6238,Grône,2010-01-01,6238,2026-01-01,unchanged,1
+6239,Icogne,2010-01-01,6239,2026-01-01,unchanged,1
+6243,Montana,2010-01-01,6253,2026-01-01,recoded_or_merged,1
+6242,Mollens (VS),2010-01-01,6253,2026-01-01,recoded_or_merged,1
+6241,Miège,2010-01-01,6254,2026-01-01,recoded_or_merged,1
+6240,Lens,2010-01-01,6240,2026-01-01,unchanged,1
+6246,Saint-Léonard,2010-01-01,6246,2026-01-01,unchanged,1
+6244,Randogne,2010-01-01,6253,2026-01-01,recoded_or_merged,1
+6248,Sierre,2010-01-01,6248,2026-01-01,unchanged,1
+6252,Anniviers,2010-01-01,6252,2026-01-01,unchanged,1
+6267,Veysonnaz,2010-01-01,6267,2026-01-01,unchanged,1
+6261,Arbaz,2010-01-01,6261,2026-01-01,unchanged,1
+6263,Grimisuat,2010-01-01,6263,2026-01-01,unchanged,1
+6264,Salins,2010-01-01,6266,2026-01-01,recoded_or_merged,1
+6265,Savièse,2010-01-01,6265,2026-01-01,unchanged,1
+6266,Sion,2010-01-01,6266,2026-01-01,unchanged,1
+6300,Zermatt,2010-01-01,6300,2026-01-01,unchanged,1
+6299,Zeneggen,2010-01-01,6299,2026-01-01,unchanged,1
+6292,St. Niklaus,2010-01-01,6292,2026-01-01,unchanged,1
+6298,Visperterminen,2010-01-01,6298,2026-01-01,unchanged,1
+6295,Täsch,2010-01-01,6295,2026-01-01,unchanged,1
+6293,Stalden (VS),2010-01-01,6293,2026-01-01,unchanged,1
+6294,Staldenried,2010-01-01,6294,2026-01-01,unchanged,1
+6296,Törbel,2010-01-01,6296,2026-01-01,unchanged,1
+6281,Baltschieder,2010-01-01,6281,2026-01-01,unchanged,1
+6285,Grächen,2010-01-01,6285,2026-01-01,unchanged,1
+6282,Eisten,2010-01-01,6282,2026-01-01,unchanged,1
+6283,Embd,2010-01-01,6283,2026-01-01,unchanged,1
+6286,Lalden,2010-01-01,6286,2026-01-01,unchanged,1
+6287,Randa,2010-01-01,6287,2026-01-01,unchanged,1
+6297,Visp,2010-01-01,6297,2026-01-01,unchanged,1
+6288,Saas-Almagell,2010-01-01,6288,2026-01-01,unchanged,1
+6289,Saas-Balen,2010-01-01,6289,2026-01-01,unchanged,1
+6290,Saas-Fee,2010-01-01,6290,2026-01-01,unchanged,1
+6291,Saas-Grund,2010-01-01,6291,2026-01-01,unchanged,1
+6452,Cressier (NE),2010-01-01,6452,2026-01-01,unchanged,1
+6451,Cornaux,2010-01-01,6451,2026-01-01,unchanged,1
+6453,Enges,2010-01-01,6513,2026-01-01,recoded_or_merged,1
+6458,Neuchâtel,2010-01-01,6458,2026-01-01,unchanged,1
+6456,Lignières,2010-01-01,6456,2026-01-01,unchanged,1
+6459,Saint-Blaise,2010-01-01,6513,2026-01-01,recoded_or_merged,1
+6455,Le Landeron,2010-01-01,6455,2026-01-01,unchanged,1
+6454,Hauterive (NE),2010-01-01,6513,2026-01-01,recoded_or_merged,1
+6461,La Tène,2010-01-01,6513,2026-01-01,recoded_or_merged,1
+6405,Brot-Dessous,2010-01-01,6413,2026-01-01,recoded_or_merged,1
+6408,Cortaillod,2010-01-01,6408,2026-01-01,unchanged,1
+6406,Colombier (NE),2010-01-01,6416,2026-01-01,recoded_or_merged,1
+6407,Corcelles-Cormondrèche,2010-01-01,6458,2026-01-01,recoded_or_merged,1
+6401,Auvernier,2010-01-01,6416,2026-01-01,recoded_or_merged,1
+6403,Bôle,2010-01-01,6416,2026-01-01,recoded_or_merged,1
+6404,Boudry,2010-01-01,6404,2026-01-01,unchanged,1
+6402,Bevaix,2010-01-01,6417,2026-01-01,recoded_or_merged,1
+6409,Fresens,2010-01-01,6417,2026-01-01,recoded_or_merged,1
+6410,Gorgier,2010-01-01,6417,2026-01-01,recoded_or_merged,1
+6411,Montalchez,2010-01-01,6417,2026-01-01,recoded_or_merged,1
+6414,Saint-Aubin-Sauges,2010-01-01,6417,2026-01-01,recoded_or_merged,1
+6413,Rochefort,2010-01-01,6413,2026-01-01,unchanged,1
+6412,Peseux,2010-01-01,6458,2026-01-01,recoded_or_merged,1
+6415,Vaumarcus,2010-01-01,6417,2026-01-01,recoded_or_merged,1
+6433,Brot-Plamboz,2010-01-01,6433,2026-01-01,unchanged,1
+6432,La Brévine,2010-01-01,6432,2026-01-01,unchanged,1
+6435,La Chaux-du-Milieu,2010-01-01,6435,2026-01-01,unchanged,1
+6434,Le Cerneux-Péquignot,2010-01-01,6434,2026-01-01,unchanged,1
+6436,Le Locle,2010-01-01,6436,2026-01-01,unchanged,1
+6437,Les Ponts-de-Martel,2010-01-01,6437,2026-01-01,unchanged,1
+6431,Les Brenets,2010-01-01,6436,2026-01-01,recoded_or_merged,1
+6486,Villiers,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6485,Valangin,2010-01-01,6458,2026-01-01,recoded_or_merged,1
+6472,Cernier,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6474,Coffrane,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6473,Chézard-Saint-Martin,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6471,Boudevilliers,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6479,Fontaines (NE),2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6478,Fontainemelon,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6477,Fenin-Vilars-Saules,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6475,Dombresson,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6476,Engollon,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6482,Montmollin,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6483,Le Pâquier (NE),2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6480,Les Geneveys-sur-Coffrane,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6481,Les Hauts-Geneveys,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6484,Savagnier,2010-01-01,6487,2026-01-01,recoded_or_merged,1
+6504,La Côte-aux-Fées,2010-01-01,6504,2026-01-01,unchanged,1
+6511,Les Verrières,2010-01-01,6511,2026-01-01,unchanged,1
+6512,Val-de-Travers,2010-01-01,6512,2026-01-01,unchanged,1
+6423,La Sagne,2010-01-01,6423,2026-01-01,unchanged,1
+6421,La Chaux-de-Fonds,2010-01-01,6421,2026-01-01,unchanged,1
+6422,Les Planchettes,2010-01-01,6422,2026-01-01,unchanged,1
+6639,Soral,2010-01-01,6639,2026-01-01,unchanged,1
+6640,Thônex,2010-01-01,6640,2026-01-01,unchanged,1
+6641,Troinex,2010-01-01,6641,2026-01-01,unchanged,1
+6645,Veyrier,2010-01-01,6645,2026-01-01,unchanged,1
+6643,Vernier,2010-01-01,6643,2026-01-01,unchanged,1
+6644,Versoix,2010-01-01,6644,2026-01-01,unchanged,1
+6642,Vandoeuvres,2010-01-01,6642,2026-01-01,unchanged,1
+6610,Céligny,2010-01-01,6610,2026-01-01,unchanged,1
+6608,Carouge (GE),2010-01-01,6608,2026-01-01,unchanged,1
+6609,Cartigny,2010-01-01,6609,2026-01-01,unchanged,1
+6612,Chêne-Bougeries,2010-01-01,6612,2026-01-01,unchanged,1
+6611,Chancy,2010-01-01,6611,2026-01-01,unchanged,1
+6613,Chêne-Bourg,2010-01-01,6613,2026-01-01,unchanged,1
+6619,Corsier (GE),2010-01-01,6619,2026-01-01,unchanged,1
+6620,Dardagny,2010-01-01,6620,2026-01-01,unchanged,1
+6614,Choulex,2010-01-01,6614,2026-01-01,unchanged,1
+6615,Collex-Bossy,2010-01-01,6615,2026-01-01,unchanged,1
+6616,Collonge-Bellerive,2010-01-01,6616,2026-01-01,unchanged,1
+6617,Cologny,2010-01-01,6617,2026-01-01,unchanged,1
+6618,Confignon,2010-01-01,6618,2026-01-01,unchanged,1
+6603,Avully,2010-01-01,6603,2026-01-01,unchanged,1
+6604,Avusy,2010-01-01,6604,2026-01-01,unchanged,1
+6605,Bardonnex,2010-01-01,6605,2026-01-01,unchanged,1
+6601,Aire-la-Ville,2010-01-01,6601,2026-01-01,unchanged,1
+6602,Anières,2010-01-01,6602,2026-01-01,unchanged,1
+6607,Bernex,2010-01-01,6607,2026-01-01,unchanged,1
+6606,Bellevue,2010-01-01,6606,2026-01-01,unchanged,1
+6624,Gy,2010-01-01,6624,2026-01-01,unchanged,1
+6622,Genthod,2010-01-01,6622,2026-01-01,unchanged,1
+6621,Genève,2010-01-01,6621,2026-01-01,unchanged,1
+6625,Hermance,2010-01-01,6625,2026-01-01,unchanged,1
+6629,Meinier,2010-01-01,6629,2026-01-01,unchanged,1
+6630,Meyrin,2010-01-01,6630,2026-01-01,unchanged,1
+6631,Onex,2010-01-01,6631,2026-01-01,unchanged,1
+6627,Laconnex,2010-01-01,6627,2026-01-01,unchanged,1
+6623,Le Grand-Saconnex,2010-01-01,6623,2026-01-01,unchanged,1
+6628,Lancy,2010-01-01,6628,2026-01-01,unchanged,1
+6626,Jussy,2010-01-01,6626,2026-01-01,unchanged,1
+6637,Russin,2010-01-01,6637,2026-01-01,unchanged,1
+6638,Satigny,2010-01-01,6638,2026-01-01,unchanged,1
+6636,Puplinge,2010-01-01,6636,2026-01-01,unchanged,1
+6635,Presinge,2010-01-01,6635,2026-01-01,unchanged,1
+6634,Pregny-Chambésy,2010-01-01,6634,2026-01-01,unchanged,1
+6633,Plan-les-Ouates,2010-01-01,6633,2026-01-01,unchanged,1
+6632,Perly-Certoux,2010-01-01,6632,2026-01-01,unchanged,1
+6701,Bassecourt,2010-01-01,6729,2026-01-01,recoded_or_merged,1
+6702,Boécourt,2010-01-01,6702,2026-01-01,unchanged,1
+6703,Bourrignon,2010-01-01,6703,2026-01-01,unchanged,1
+6704,Châtillon (JU),2010-01-01,6704,2026-01-01,unchanged,1
+6705,Corban,2010-01-01,6730,2026-01-01,recoded_or_merged,1
+6706,Courchapoix,2010-01-01,6706,2026-01-01,unchanged,1
+6707,Courfaivre,2010-01-01,6729,2026-01-01,recoded_or_merged,1
+6708,Courrendlin,2010-01-01,6708,2026-01-01,unchanged,1
+6709,Courroux,2010-01-01,6709,2026-01-01,unchanged,1
+6710,Courtételle,2010-01-01,6710,2026-01-01,unchanged,1
+6711,Delémont,2010-01-01,6711,2026-01-01,unchanged,1
+6712,Develier,2010-01-01,6712,2026-01-01,unchanged,1
+6713,Ederswiler,2010-01-01,6713,2026-01-01,unchanged,1
+6714,Glovelier,2010-01-01,6729,2026-01-01,recoded_or_merged,1
+6715,Mervelier,2010-01-01,6715,2026-01-01,unchanged,1
+6717,Montsevelier,2010-01-01,6730,2026-01-01,recoded_or_merged,1
+6718,Movelier,2010-01-01,6718,2026-01-01,unchanged,1
+6719,Pleigne,2010-01-01,6719,2026-01-01,unchanged,1
+6720,Rebeuvelier,2010-01-01,6708,2026-01-01,recoded_or_merged,1
+6721,Rossemaison,2010-01-01,6721,2026-01-01,unchanged,1
+6722,Saulcy,2010-01-01,6722,2026-01-01,unchanged,1
+6723,Soulce,2010-01-01,6729,2026-01-01,recoded_or_merged,1
+6724,Soyhières,2010-01-01,6724,2026-01-01,unchanged,1
+6725,Undervelier,2010-01-01,6729,2026-01-01,recoded_or_merged,1
+6726,Vermes,2010-01-01,6730,2026-01-01,recoded_or_merged,1
+6727,Vicques,2010-01-01,6730,2026-01-01,recoded_or_merged,1
+6716,Mettembert,2010-01-01,6716,2026-01-01,unchanged,1
+6728,Vellerat,2010-01-01,6708,2026-01-01,recoded_or_merged,1
+6741,Le Bémont (JU),2010-01-01,6741,2026-01-01,unchanged,1
+6742,Les Bois,2010-01-01,6742,2026-01-01,unchanged,1
+6743,Les Breuleux,2010-01-01,6743,2026-01-01,unchanged,1
+6744,La Chaux-des-Breuleux,2010-01-01,6743,2026-01-01,recoded_or_merged,1
+6745,Les Enfers,2010-01-01,6745,2026-01-01,unchanged,1
+6748,Les Genevez (JU),2010-01-01,6748,2026-01-01,unchanged,1
+6750,Lajoux (JU),2010-01-01,6750,2026-01-01,unchanged,1
+6754,Le Noirmont,2010-01-01,6754,2026-01-01,unchanged,1
+6758,Saint-Brais,2010-01-01,6758,2026-01-01,unchanged,1
+6759,Soubey,2010-01-01,6759,2026-01-01,unchanged,1
+6757,Saignelégier,2010-01-01,6757,2026-01-01,unchanged,1
+6751,Montfaucon,2010-01-01,6751,2026-01-01,unchanged,1
+6753,Muriaux,2010-01-01,6753,2026-01-01,unchanged,1
+6771,Alle,2010-01-01,6771,2026-01-01,unchanged,1
+6773,Beurnevésin,2010-01-01,6812,2026-01-01,recoded_or_merged,1
+6774,Boncourt,2010-01-01,6774,2026-01-01,unchanged,1
+6775,Bonfol,2010-01-01,6812,2026-01-01,recoded_or_merged,1
+6776,Bressaucourt,2010-01-01,6790,2026-01-01,recoded_or_merged,1
+6778,Bure,2010-01-01,6778,2026-01-01,unchanged,1
+6781,Coeuve,2010-01-01,6781,2026-01-01,unchanged,1
+6782,Cornol,2010-01-01,6782,2026-01-01,unchanged,1
+6783,Courchavon,2010-01-01,6783,2026-01-01,unchanged,1
+6784,Courgenay,2010-01-01,6784,2026-01-01,unchanged,1
+6785,Courtedoux,2010-01-01,6785,2026-01-01,unchanged,1
+6787,Damphreux,2010-01-01,6811,2026-01-01,recoded_or_merged,1
+6789,Fahy,2010-01-01,6789,2026-01-01,unchanged,1
+6790,Fontenais,2010-01-01,6790,2026-01-01,unchanged,1
+6792,Grandfontaine,2010-01-01,6792,2026-01-01,unchanged,1
+6793,Lugnez,2010-01-01,6811,2026-01-01,recoded_or_merged,1
+6800,Porrentruy,2010-01-01,6800,2026-01-01,unchanged,1
+6803,Rocourt,2010-01-01,6809,2026-01-01,recoded_or_merged,1
+6806,Vendlincourt,2010-01-01,6806,2026-01-01,unchanged,1
+6808,Clos du Doubs,2010-01-01,6808,2026-01-01,unchanged,1
+6810,La Baroche,2010-01-01,6810,2026-01-01,unchanged,1
+6807,Basse-Allaine,2010-01-01,6807,2026-01-01,unchanged,1
+6809,Haute-Ajoie,2010-01-01,6809,2026-01-01,unchanged,1

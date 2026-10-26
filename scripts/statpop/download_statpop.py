@@ -1,7 +1,7 @@
-"""Download OFS STATPOP (px-x-0102010000_101) into data/raw/statpop/, one CSV per year.
+"""Download OFS STATPOP (px-x-0102010000_101) and extract one CSV per year.
 
-Permanent resident population by commune, nationality and single year of age, fetched from the
-PXWeb JSON API in batches of communes (the cube is too large for a single query).
+Use the complete PX export by default. The slower batched API remains available
+with --method api. Both select permanent residents, nationality and single-year age.
 
 Usage: python -m scripts.statpop.download_statpop [--force]
 """
@@ -25,6 +25,7 @@ from scripts.common.communes import (
 
 STATPOP_TABLE_ID = "px-x-0102010000_101"
 STATPOP_API_URL = f"https://www.pxweb.bfs.admin.ch/api/v1/fr/{STATPOP_TABLE_ID}/{STATPOP_TABLE_ID}.px"
+STATPOP_DOWNLOAD_URL = f"https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file={STATPOP_TABLE_ID}"
 DIM_YEAR, DIM_PLACE = "Jahr", "Kanton (-) / Bezirk (>>) / Gemeinde (......)"
 DIM_POPTYPE, DIM_NATIONALITY, DIM_SEX, DIM_AGE = (
     "Bevölkerungstyp", "Staatsangehörigkeit (Kategorie)", "Geschlecht", "Alter",
@@ -74,15 +75,34 @@ def download_statpop(session: requests.Session, force: bool) -> None:
 
 def ensure_raw_data(force: bool = False) -> None:
     """Download the raw files that are missing (all of them with ``force``); used by run_pipeline."""
-    download_statpop(requests.Session(), force)
+    from scripts.statpop.parse_statpop_px import extract_years
+
+    path = STATPOP_RAW_DIR / f"{STATPOP_TABLE_ID}.px"
+    if force or not path.is_file():
+        response = request_with_retry(requests.Session(), "GET", STATPOP_DOWNLOAD_URL, stream=True)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        partial = path.with_suffix(".px.part")
+        with response, partial.open("wb") as handle:
+            for chunk in response.iter_content(1024 * 1024):
+                handle.write(chunk)
+        expected = response.headers.get("Content-Length")
+        if expected and partial.stat().st_size != int(expected):
+            raise RuntimeError("Incomplete STATPOP PX download")
+        partial.replace(path)
+        record_provenance(path.stem, path, STATPOP_DOWNLOAD_URL)
+    extract_years(path, force=force)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--force", action="store_true", help="replace existing raw files")
+    parser.add_argument("--method", choices=("px", "api"), default="px", help="complete PX export (default) or slow API batches")
     args = parser.parse_args()
     try:
-        ensure_raw_data(args.force)
+        if args.method == "api":
+            download_statpop(requests.Session(), args.force)
+        else:
+            ensure_raw_data(args.force)
     except (requests.RequestException, RuntimeError) as error:
         raise SystemExit(f"STATPOP download failed: {error}") from error
 

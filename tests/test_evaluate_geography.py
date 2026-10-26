@@ -1,15 +1,15 @@
 import pandas as pd
 import pytest
 
-from scripts.evaluate_votes import EvaluationConfig, evaluate
+from scripts.modeling.evaluate_votes import EvaluationConfig, evaluate
 
 
 def record(municipality, vote, date, yes, no, geography):
-    return dict(municipality_id=municipality, vote_id=vote, voting_date=date, yes_count=yes,
-                no_count=no, geography_id=geography, source_version='fixture-v1',
-                result_available_at=date, result_availability_evidence='fixture-result',
-                forecast_at=str(pd.Timestamp(date)-pd.Timedelta(days=10)), forecast_evidence='fixture-brochure',
-                is_special_unit=False, is_subsidiary=False, is_provisional=False)
+    return {'municipality_id': municipality, 'vote_id': vote, 'voting_date': date, 'yes_count': yes,
+                'no_count': no, 'geography_id': geography, 'source_version': 'fixture-v1',
+                'result_available_at': date, 'result_availability_evidence': 'fixture-result',
+                'forecast_at': str(pd.Timestamp(date)-pd.Timedelta(days=10)), 'forecast_evidence': 'fixture-brochure',
+                'is_special_unit': False, 'is_subsidiary': False, 'is_provisional': False}
 
 
 def population():
@@ -24,10 +24,10 @@ def configuration(**changes):
 
 
 def crosswalk():
-    return pd.DataFrame([dict(source_municipality_id=key, source_geography_id='old',
-        target_municipality_id='ab', target_geography_id='new', mapping_type='merger',
-        crosswalk_version='cw-v1', crosswalk_evidence='official-reference',
-        mapping_available_at='2019-01-01', target_valid_from='2019-01-01') for key in ['a','b']])
+    return pd.DataFrame([{'source_municipality_id': key, 'source_geography_id': 'old',
+        'target_municipality_id': 'ab', 'target_geography_id': 'new', 'mapping_type': 'merger',
+        'crosswalk_version': 'cw-v1', 'crosswalk_evidence': 'official-reference',
+        'mapping_available_at': '2019-01-01', 'target_valid_from': '2019-01-01'} for key in ['a','b']])
 
 
 def test_pipeline_aggregates_merger_counts_and_records_lineage():
@@ -48,8 +48,8 @@ def test_pipeline_aggregates_merger_counts_and_records_lineage():
 def test_unsupported_splits_and_missing_mappings_are_excluded_not_multiplied():
     data = pd.concat([population(), pd.DataFrame([record('x','old','2020-01-01',40,60,'old'),
                                                   record('z','old','2020-01-01',50,50,'old')])], ignore_index=True)
-    mapping = pd.concat([crosswalk(), pd.DataFrame([crosswalk().iloc[0].to_dict() | dict(
-        source_municipality_id='x',target_municipality_id=target,mapping_type='split') for target in ['x1','x2']])], ignore_index=True)
+    mapping = pd.concat([crosswalk(), pd.DataFrame([crosswalk().iloc[0].to_dict() | {
+        'source_municipality_id': 'x','target_municipality_id': target,'mapping_type': 'split'} for target in ['x1','x2']])], ignore_index=True)
     result = evaluate(data, configuration(), geography_crosswalk=mapping)
     assert result['exclusions']['unsupported_geography_mapping'] == 1
     assert result['exclusions']['geography_mapping_missing'] == 1

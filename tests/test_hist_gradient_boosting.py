@@ -3,8 +3,8 @@ from dataclasses import replace
 import pandas as pd
 import pytest
 
-from scripts.evaluate_votes import EvaluationConfig, evaluate
-from scripts.feature_blocks import FeatureBlock
+from scripts.modeling.evaluate_votes import EvaluationConfig, evaluate
+from scripts.modeling.feature_blocks import FeatureBlock
 
 
 def prepared_rows():
@@ -17,20 +17,20 @@ def prepared_rows():
         ('test', '2024-01-01', [.1, .9], '2024-01-02'),
     ]:
         for municipality, share in zip(['a', 'b'], shares):
-            rows.append(dict(municipality_id=municipality, vote_id=vote, voting_date=date,
-                yes_count=share * 100, no_count=(1-share) * 100, geography_id='g1',
-                source_version='fixture-v1', result_available_at=available,
-                result_availability_evidence='fixture-result-release',
-                forecast_at=str(pd.Timestamp(date, tz='UTC')-pd.Timedelta(days=10)),
-                forecast_evidence='fixture-brochure', is_special_unit=False,
-                is_subsidiary=False, is_provisional=False))
+            rows.append({'municipality_id': municipality, 'vote_id': vote, 'voting_date': date,
+                'yes_count': share * 100, 'no_count': (1-share) * 100, 'geography_id': 'g1',
+                'source_version': 'fixture-v1', 'result_available_at': available,
+                'result_availability_evidence': 'fixture-result-release',
+                'forecast_at': str(pd.Timestamp(date, tz='UTC')-pd.Timedelta(days=10)),
+                'forecast_evidence': 'fixture-brochure', 'is_special_unit': False,
+                'is_subsidiary': False, 'is_provisional': False})
     return pd.DataFrame(rows)
 
 
 def population_block():
-    records = pd.DataFrame([dict(municipality_id=municipality, reference_date='2019-12-31',
-        published_at='2020-01-01', availability_status='verified', availability_evidence='fixture-source',
-        source_version='features-v1', geography_id='g1', population=value, language=language)
+    records = pd.DataFrame([{'municipality_id': municipality, 'reference_date': '2019-12-31',
+        'published_at': '2020-01-01', 'availability_status': 'verified', 'availability_evidence': 'fixture-source',
+        'source_version': 'features-v1', 'geography_id': 'g1', 'population': value, 'language': language}
         for municipality, value, language in [('a', 100, 'fr'), ('b', 200, 'de')]])
     return FeatureBlock('population', 'municipality', records, ('population',), ('language',),
         {'population': 'fixture population', 'language': 'fixture language'},
@@ -106,7 +106,7 @@ def test_invalid_histogram_boosting_configuration_fails_at_evaluation_seam():
 
 
 def test_frozen_choices_cover_boosting_windows_and_explicit_text_policy():
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling.final_evaluation import freeze_experiment
 
     rows = prepared_rows()
     settings = config(validation_windows=(('2022-01-01',), ('2023-01-01',)))
@@ -152,7 +152,7 @@ def test_frozen_choices_cover_boosting_windows_and_explicit_text_policy():
 
 
 def test_final_boosting_fit_and_first_test_prediction_ignore_reserved_test_targets():
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling.final_evaluation import freeze_experiment
 
     rows, block = prepared_rows(), population_block()
     settings = config(refit_train_validation=True)

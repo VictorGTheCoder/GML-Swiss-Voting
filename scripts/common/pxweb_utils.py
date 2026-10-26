@@ -97,6 +97,7 @@ def fetch_table(
     selections: dict | None = None,
     pause: float = 2.0,
     label: str = "",
+    include_codes: bool = False,
 ):
     """Télécharge un tableau en découpant la variable ``split_code`` en lots.
 
@@ -134,7 +135,14 @@ def fetch_table(
             print(f"  Erreur {response.status_code} : {response.text[:200]}")
             failed.append((label, b, response.status_code))
             continue
-        frames.append(pyjstat.Dataset.read(response.text).write("dataframe"))
+        dataset = pyjstat.Dataset.read(response.text)
+        frame = dataset.write("dataframe")
+        if include_codes:
+            codes = dataset.write("dataframe", naming="id")
+            for column in codes.columns:
+                if column != "value":
+                    frame[f"code_{column}"] = codes[column].astype("string")
+        frames.append(frame)
         time.sleep(pause)
     return frames, failed
 

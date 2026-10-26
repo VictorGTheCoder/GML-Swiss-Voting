@@ -21,13 +21,15 @@ from collections import defaultdict
 from datetime import date, datetime
 from pathlib import Path
 
+import pandas as pd
+
 from scripts.common.communes import REGISTER_PROCESSED_DIR, REGISTER_RAW_DIR, ROOT
 
 COMMUNE_LEVEL = "3"  # snapshot levels: 1 canton, 2 district, 3 commune
 
 
 def parse_fr_date(text: str) -> date:
-    return datetime.strptime(text, "%d.%m.%Y").date()
+    return datetime.strptime(text, "%d.%m.%Y").date()  # noqa: DTZ007 - calendar date, no time or timezone in source
 
 
 def read_csv(path: Path) -> list[dict]:
@@ -117,14 +119,20 @@ def write_crosswalk(rows: list[dict], path: Path) -> None:
         writer.writerows(rows)
 
 
-def main() -> None:
+def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--from", dest="from_date", type=date.fromisoformat, default=date(2010, 1, 1))
     parser.add_argument("--to", dest="to_date", type=date.fromisoformat, default=date(2026, 1, 1))
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     rows = build_crosswalk(args.from_date, args.to_date)
     out = REGISTER_PROCESSED_DIR / f"crosswalk_{args.from_date.isoformat()}_to_{args.to_date.isoformat()}.csv"
     write_crosswalk(rows, out)
+    table = pd.DataFrame(rows)
+    for column in ("source_code", "target_code"):
+        table[column] = table[column].astype("string").str.zfill(4)
+    for column in ("from_date", "to_date"):
+        table[column] = pd.to_datetime(table[column])
+    table.to_parquet(out.with_suffix(".parquet"), index=False)
     report = validate(rows, args.to_date)
     print(f"Wrote {out.relative_to(ROOT)} ({len(rows)} rows)")
     for key, value in report.items():

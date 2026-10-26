@@ -32,7 +32,11 @@ from scripts.common.communes import (
     write_atomic,
 )
 from scripts.common.config import INTERIM_PATH
-from scripts.repertoire_communes.commune_crosswalk import load_mutations, load_snapshot_codes, resolve
+from scripts.repertoire_communes.commune_crosswalk import (
+    load_mutations,
+    load_snapshot_codes,
+    resolve,
+)
 
 SNAPSHOT_DIR = REGISTER_RAW_DIR / "vote_snapshots"
 REPORT_PATH = REGISTER_REPORTS_DIR / "vote_code_check.csv"

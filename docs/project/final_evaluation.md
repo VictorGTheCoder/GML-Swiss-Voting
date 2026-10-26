@@ -9,8 +9,8 @@ instants remain explicit inputs. Ordinary validation does not produce final-test
 From the repository root in its Python environment:
 
 ```bash
-python3 -m scripts.evaluate_votes --synthetic --synthetic-features --synthetic-text --output /tmp/swiss-voting/validation --freeze-output /tmp/swiss-voting/frozen.json
-python3 -m scripts.evaluate_votes --synthetic --synthetic-features --synthetic-text --final-test --frozen-experiment /tmp/swiss-voting/frozen.json --output /tmp/swiss-voting/final
+python3 -m scripts.modeling.evaluate_votes --synthetic --synthetic-features --synthetic-text --output /tmp/swiss-voting/validation --freeze-output /tmp/swiss-voting/frozen.json
+python3 -m scripts.modeling.evaluate_votes --synthetic --synthetic-features --synthetic-text --final-test --frozen-experiment /tmp/swiss-voting/frozen.json --output /tmp/swiss-voting/final
 python3 -m pytest -q tests/test_final_evaluation.py tests/test_hist_gradient_boosting.py
 ```
 
@@ -128,6 +128,6 @@ metadata remains missing/excluded or a clearly recorded skipped branch; publicat
 territorial crosswalks are never invented.
 
 See [the prepared contract and source-block protocol](municipal_evaluation.md) and
-[the forecast-time text gates](../forecast-text-export.md). Retrospective fixed-geography results must remain
+[the forecast-time text gates](forecast_text_export.md). Retrospective fixed-geography results must remain
 labelled retrospective. Negative or worse incremental results are valid outcomes. These comparisons
 estimate municipal prediction error; they do not establish brochure causality or individual behavior.

@@ -84,16 +84,31 @@ Les données brutes et les caches ne sont pas versionnés : ils doivent être r�
 
 ### Pipeline OFS et Swissvotes
 
+Pour reconstruire **toutes les sources** (OFS, Swissvotes, STATPOP, typologies,
+répertoire, élections et brochures), puis vérifier leurs formats et identifiants :
+
+```bash
+python -m scripts.run_pipeline --all
+```
+
+Les sources déjà présentes sont réutilisées. `--force` renouvelle les sources.
+STATPOP télécharge un export PX d'environ 153 Mo. Les tables restent séparées ; le
+rapport `reports/generated/dataset_compatibility/audit.md` distingue la compatibilité
+structurelle de la disponibilité temporelle et des correspondances à valider.
+Les tables communales préparées utilisent `municipality_id` au format chaîne OFS
+sur quatre caractères. Les élections conservent les valeurs manquantes et n'inventent
+pas de date de publication historique.
+
 La pipeline nettoie et valide OFS et Swissvotes dans deux tables distinctes. Elle ne fusionne pas les datasets :
 
 ```bash
-python scripts/run_pipeline.py
+python -m scripts.run_pipeline
 ```
 
 Pour renouveler les deux sources avant la reconstruction :
 
 ```bash
-python scripts/run_pipeline.py --force
+python -m scripts.run_pipeline --force
 ```
 
 Les fichiers bruts présents sont réutilisés sans accès réseau, sauf avec `--force`.
@@ -129,15 +144,23 @@ python -m scripts.integration.prepare_join
 
 Organisation de `scripts/` :
 
+- `modeling/` : construction des features, modèles Ridge et boosting, expérience textuelle, validation chronologique et métriques.
+- `elections/` : collecte des résultats et de la force des partis au Conseil national.
 - `ofs_votes/` : collecte PX, parsing, audit, nettoyage et validation OFS.
 - `swissvotes/` : collecte et nettoyage Swissvotes.
 - `federal_explanations/` : collecte, extraction, audit et export des brochures.
 - `repertoire_communes/` : répertoire historique des communes, correspondance de codes et contrôle des codes de votation.
 - `statpop/` : population résidante par commune (collecte, conversion Parquet, features démographiques).
 - `typologies/` : typologies territoriales et régions linguistiques (collecte, table des communes).
-- `common/` : configuration et construction unique des identifiants.
-- `integration/` : préparation des correspondances entre sources, sans fusion des variables.
+- `common/` : configuration, construction unique des identifiants et utilitaires de collecte PXWeb.
+- `integration/` : correspondances, audit de compatibilité et construction explicite de la table exploratoire.
 - `run_pipeline.py` : orchestration OFS et Swissvotes ; avec `--with-communes`, répertoire des communes, STATPOP et typologies.
+
+Les modules se lancent depuis la racine du dépôt avec `python -m`, par exemple
+`python -m scripts.modeling.evaluate_votes --help` ou
+`python -m scripts.elections.collect_elections_conseil_national --help`.
+Les notebooks d'exploration sont regroupés dans `notebooks/datasets/<source>/eda.ipynb`
+et lisent les tables du pipeline. L'ancienne collecte CSV OFS par API a été supprimée.
 
 La préparation des correspondances est optionnelle :
 
@@ -211,7 +234,9 @@ python -m pytest tests -q
 python -m ruff check scripts tests
 ```
 
-### Explications du Conseil fédéral
+La CI exécute la suite complète sur Windows et Linux à chaque pull request.
+`ruff.toml` fixe les règles du dépôt ; `requirements-test.txt` définit l'environnement
+pip minimal de la CI. L'environnement complet de travail reste `environment.yml`.
 
 ### Datasets communaux (STATPOP, typologies, répertoire des communes)
 
@@ -221,9 +246,24 @@ Ces trois sources se construisent à part, sans fusion avec les résultats de vo
 python -m scripts.run_pipeline --with-communes
 ```
 
-Le premier téléchargement de STATPOP prend environ une heure à cause de la limite de débit de l'OFS ; les fichiers présents sont ensuite réutilisés. Chaque dataset écrit sous `data/<étape>/<dataset>/` (`repertoire_communes`, `statpop`, `typologies`). Pour leur contenu, leurs règles de disponibilité avant scrutin et leur reconstruction, voir la documentation de [STATPOP](docs/datasets/statpop/README.md), des [typologies](docs/datasets/typologies/README.md) et du [répertoire des communes](docs/datasets/repertoire_communes/README.md).
+STATPOP utilise l'export PX complet (environ 153 Mo), puis extrait les années localement ; les fichiers présents sont réutilisés et contrôlés. Le mode API par lots reste disponible comme solution de repli, mais il est beaucoup plus lent. Chaque dataset écrit sous `data/<étape>/<dataset>/` (`repertoire_communes`, `statpop`, `typologies`). Pour leur contenu, leurs règles de disponibilité avant scrutin et leur reconstruction, voir la documentation de [STATPOP](docs/datasets/statpop/README.md), des [typologies](docs/datasets/typologies/README.md) et du [répertoire des communes](docs/datasets/repertoire_communes/README.md).
+
+### Explications du Conseil fédéral
 
 Le snapshot des explications du Conseil fédéral est disponible dans `data/processed/federal_explanations/`. Pour son contenu, ses limites et sa reconstruction, voir la [documentation du dataset](docs/datasets/federal_explanations/README.md).
+
+## Table exploratoire structurée
+
+Après préparation des sources, une étape explicite crée la table rétrospective
+commune × objet, sans texte et avec les hypothèses temporelles documentées :
+
+```bash
+python -m scripts.integration.build_modeling_dataset
+```
+
+Voir [le contrat de la table](data/processed/modeling/README.md). La sortie reste
+distincte des sources et du protocole de prévision stricte ; elle ne constitue
+pas encore une évaluation de modèle.
 
 ## Collaboration
 

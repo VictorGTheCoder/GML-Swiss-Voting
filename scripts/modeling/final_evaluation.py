@@ -8,7 +8,6 @@ import json
 import numpy as np
 import pandas as pd
 
-
 TEXT_POLICY = {
     'summary_field': 'summary_official', 'language': 'fr',
     'ngram_range': [1, 2], 'norm': 'l2', 'min_df': 2,

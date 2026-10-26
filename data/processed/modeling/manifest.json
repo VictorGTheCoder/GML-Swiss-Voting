@@ -1,0 +1,151 @@
+{
+  "mode": "exploratory_retrospective",
+  "strict_forecast_ready": false,
+  "requested_start": "2012-01-01",
+  "first_vote": "2012-03-11",
+  "last_vote": "2025-09-28",
+  "input_rows": 1025903,
+  "eligible_history_rows": 995269,
+  "rows_before_start": 732288,
+  "exclusions_sequential": [
+    {
+      "reason": "is_special_unit",
+      "rows": 3190
+    },
+    {
+      "reason": "is_tiebreak_question",
+      "rows": 8414
+    },
+    {
+      "reason": "is_provisional",
+      "rows": 18945
+    },
+    {
+      "reason": "flag_valid_gt_ballots",
+      "rows": 4
+    },
+    {
+      "reason": "flag_yes_no_gt_valid",
+      "rows": 81
+    },
+    {
+      "reason": "undefined_target",
+      "rows": 0
+    }
+  ],
+  "rows_before_joins": 262981,
+  "rows_after_joins": 262981,
+  "join_row_losses": 0,
+  "communes": 2105,
+  "objects": 125,
+  "dates": 44,
+  "target": "yes_share",
+  "numeric_features": [
+    "history_mean_yes",
+    "history_n_objects",
+    "statpop_pop_total",
+    "statpop_share_foreign",
+    "statpop_share_0_19",
+    "statpop_share_20_39",
+    "statpop_share_40_64",
+    "statpop_share_65_plus",
+    "statpop_share_80_plus",
+    "statpop_mean_age",
+    "party_share_plr",
+    "party_share_pdc",
+    "party_share_ps",
+    "party_share_udc",
+    "party_share_pev",
+    "party_share_verts",
+    "party_share_pvl",
+    "party_share_pbd",
+    "party_share_centre"
+  ],
+  "categorical_features": [
+    "urban_rural",
+    "language_region",
+    "object_legal_form",
+    "object_domain_1",
+    "object_domain_2",
+    "object_domain_3"
+  ],
+  "missing_indicators": [
+    "history_missing",
+    "statpop_missing",
+    "elections_missing"
+  ],
+  "block_matched_rows": {
+    "history": 262976,
+    "statpop": 262981,
+    "elections": 262981,
+    "typologies": 262981,
+    "swissvotes": 262981
+  },
+  "missing_values": {
+    "history_mean_yes": 5,
+    "history_n_objects": 0,
+    "statpop_pop_total": 0,
+    "statpop_share_foreign": 0,
+    "statpop_share_0_19": 0,
+    "statpop_share_20_39": 0,
+    "statpop_share_40_64": 0,
+    "statpop_share_65_plus": 0,
+    "statpop_share_80_plus": 0,
+    "statpop_mean_age": 0,
+    "party_share_plr": 3913,
+    "party_share_pdc": 36294,
+    "party_share_ps": 4865,
+    "party_share_udc": 1519,
+    "party_share_pev": 56983,
+    "party_share_verts": 10525,
+    "party_share_pvl": 30931,
+    "party_share_pbd": 75046,
+    "party_share_centre": 231511,
+    "urban_rural": 0,
+    "language_region": 0,
+    "object_legal_form": 0,
+    "object_domain_1": 0,
+    "object_domain_2": 63108,
+    "object_domain_3": 199849
+  },
+  "blocks": {
+    "history": "Dates strictement antérieures, tous les objets du même jour exclus. Publication historique non vérifiée. Historique roulant rétrospectif, à recalculer selon le protocole train/validation/test.",
+    "statpop": "Dernière année dont available_from <= veille du scrutin. Règle conservatrice du 2 septembre Y+1 ; édition actuelle et géographie 2026 rétrospectives.",
+    "elections": "Dernière élection d'une année strictement antérieure au scrutin. Le 1er janvier Y+1 est un seuil de sélection supposé, jamais une preuve de publication. PDC, PBD et Centre restent distincts.",
+    "typologies": "Classification statique du snapshot 2026. Date de publication non vérifiée ; analyse rétrospective uniquement.",
+    "swissvotes": "Forme juridique et codes de domaines seulement. Jointure exacte vote_key, dates et types contrôlés. Classification de l'édition actuelle, disponibilité historique non vérifiée.",
+    "brochures": "Exclues : correspondances et admissibilité temporelle à valider."
+  },
+  "excluded_predictors": [
+    "yes_share (cible uniquement)",
+    "identifiants",
+    "participation du scrutin",
+    "résultats nationaux/cantonaux du scrutin",
+    "campagne et financement",
+    "recommandations",
+    "texte"
+  ],
+  "evaluation_note": "Aucun modèle ni partition choisi. Ne pas passer cette table au moteur strict evaluate_votes. Les dates de prévision et de publication attestées restent à établir. Aucune imputation ni normalisation ajustée ici.",
+  "sources": {
+    "ofs": {
+      "path": "data/processed/ofs-votes/votes_communes.parquet",
+      "sha256": "231bc1806c6cfd2050795265d973d6c512211e8fb82e0a5a6c6e715348325207"
+    },
+    "swissvotes": {
+      "path": "data/processed/swissvotes/swissvotes_clean.parquet",
+      "sha256": "1c60679dd5cfe2cb9c0c29fd50ca5900ff61d8696336aa3bd4a1631b9371321e"
+    },
+    "statpop": {
+      "path": "data/processed/statpop/statpop_features.parquet",
+      "sha256": "acc8f5e1170d8105da7a10dce4cc27b89136314b5a8a56abda79a7ff58093b61"
+    },
+    "elections": {
+      "path": "data/processed/elections/elections_communes.parquet",
+      "sha256": "e1657eb57aa5a05755eaf2b73ceb57a9dbef453df6ba9344012994c7a6e300fb"
+    },
+    "typologies": {
+      "path": "data/processed/typologies/commune_typologies.parquet",
+      "sha256": "2a5c6f0e953601cc92cd523fa14c67b8ce549f2cbecdbb8ce68ae647e45f9289"
+    }
+  }
+}

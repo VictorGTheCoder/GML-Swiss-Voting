@@ -3,8 +3,8 @@ from dataclasses import replace
 import pandas as pd
 import pytest
 
-from scripts.evaluate_votes import evaluate, synthetic_example
-from scripts.feature_blocks import synthetic_feature_example
+from scripts.modeling.evaluate_votes import evaluate, synthetic_example
+from scripts.modeling.feature_blocks import synthetic_feature_example
 
 
 def test_independent_ablation_reports_paired_keys_provenance_and_wider_coverage():
@@ -50,9 +50,9 @@ def test_canonical_outcome_fields_are_rejected_as_metadata_predictors(outcome):
 def test_object_metadata_requires_validated_correspondence_and_timely_release():
     rows, config = synthetic_example()
     source = synthetic_feature_example()
-    records = pd.DataFrame([dict(vote_id=vote, reference_date='2018-01-01', published_at='2019-01-01',
-        availability_status='verified',availability_evidence='fixture-release',source_version=source.source_version,
-        legal_type='law') for vote in ['old','next','final']])
+    records = pd.DataFrame([{'vote_id': vote, 'reference_date': '2018-01-01', 'published_at': '2019-01-01',
+        'availability_status': 'verified','availability_evidence': 'fixture-release','source_version': source.source_version,
+        'legal_type': 'law'} for vote in ['old','next','final']])
     metadata = replace(source, block_id='legal', scope='object', records=records,
                        numeric_features=(),categorical_features=('legal_type',),definitions={'legal_type':'legal instrument'})
     with pytest.raises(ValueError, match='correspondence'):

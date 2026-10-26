@@ -15,7 +15,7 @@ from urllib.request import Request, urlopen
 import pandas as pd
 
 ARCHIVE_URL = "https://www.bk.admin.ch/fr/compilation-des-explications-du-conseil-federal-depuis-1978"
-_DATE = re.compile(r"20\d{2}-\d{2}-\d{2}")
+_DATE = re.compile(r"(?:19|20)\d{2}-\d{2}-\d{2}")
 
 
 class _Links(HTMLParser):
@@ -57,11 +57,14 @@ def parse_archive_entries(html: str, *, start_year: int = 2011, end_year: int = 
     return [result[key] for key in sorted(result)]
 
 
-def collect(manifest_path: Path, cache_dir: Path, ofs_path: Path, *, archive_url: str = ARCHIVE_URL) -> dict:
+def collect(manifest_path: Path, cache_dir: Path, ofs_path: Path, *, archive_url: str = ARCHIVE_URL,
+            start_year: int = 2011, end_year: int = 2026) -> dict:
     request = Request(archive_url, headers={"User-Agent": "GML-Swiss-Voting-research/1.0"})
     with urlopen(request, timeout=60) as response:
         html = response.read().decode("utf-8", errors="replace")
-    entries = parse_archive_entries(html)
+    entries = parse_archive_entries(html, start_year=start_year, end_year=end_year)
+    if not entries:
+        raise ValueError("No official brochures discovered for the requested period")
     ofs = pd.read_parquet(ofs_path) if ofs_path.suffix == ".parquet" else pd.read_csv(ofs_path, dtype={"vote_id": "string"})
     ofs["vote_id"] = ofs.vote_id.astype(str)
     ofs["vote_date"] = pd.to_datetime(ofs.vote_date).dt.strftime("%Y-%m-%d")
@@ -92,7 +95,7 @@ def collect(manifest_path: Path, cache_dir: Path, ofs_path: Path, *, archive_url
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
     manifest_path.write_text(json.dumps({
         "archive_url": archive_url, "collected_at": collected_at,
-        "period": "2011-01-01/2026-12-31", "documents": docs,
+        "period": f"{start_year}-01-01/{end_year}-12-31", "documents": docs,
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return {"documents": len(docs), "manifest": str(manifest_path), "cache": str(cache_dir)}
 
@@ -102,8 +105,11 @@ def main():
     parser.add_argument("--ofs", type=Path, required=True, help="Read-only OFS CSV/parquet vote roster")
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--cache", type=Path, required=True)
+    parser.add_argument("--start-year", type=int, default=2011)
+    parser.add_argument("--end-year", type=int, default=2026)
     args = parser.parse_args()
-    print(json.dumps(collect(args.manifest, args.cache, args.ofs), indent=2))
+    print(json.dumps(collect(args.manifest, args.cache, args.ofs,
+                             start_year=args.start_year, end_year=args.end_year), indent=2))
 
 
 if __name__ == "__main__":

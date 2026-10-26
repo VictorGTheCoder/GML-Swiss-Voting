@@ -1,6 +1,6 @@
 # Explications du Conseil fédéral
 
-Snapshot des brochures officielles de la Chancellerie fédérale pour la période 2011–2026. Les textes et leur provenance sont conservés dans cinq tables séparées.
+Snapshot des brochures officielles de la Chancellerie fédérale pour la période demandée dans le manifeste de collecte (1978–2026 avec `--all`). Les textes et leur provenance sont conservés dans cinq tables séparées. Le rapport d'audit donne la couverture et les limites réelles d'extraction.
 
 - `objects.parquet` : une ligne par objet OFS, avec sa date, la couverture par les brochures et les statuts de validation.
 - `sections.parquet` : une ligne par section extraite, avec titre, texte, résumé, recommandations et références aux pages sources.

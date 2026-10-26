@@ -1,16 +1,20 @@
 import pandas as pd
 import pytest
 
-from scripts.evaluate_votes import EvaluationConfig, evaluate, synthetic_example
-from scripts.feature_blocks import FeatureBlock
+from scripts.modeling.evaluate_votes import (
+    EvaluationConfig,
+    evaluate,
+    synthetic_example,
+)
+from scripts.modeling.feature_blocks import FeatureBlock
 
 
 def block(records=None, **changes):
     if records is None:
-        records = pd.DataFrame([dict(municipality_id=key, reference_date='2018-12-31',
-            published_at='2019-01-01', availability_status='verified', availability_evidence='release-archive',
-            source_version='statpop-fixture-v1', geography_id='synthetic-g1', population=value,
-            foreign_share=.2, language='fr') for key, value in [('a',100),('b',200),('c',300)]])
+        records = pd.DataFrame([{'municipality_id': key, 'reference_date': '2018-12-31',
+            'published_at': '2019-01-01', 'availability_status': 'verified', 'availability_evidence': 'release-archive',
+            'source_version': 'statpop-fixture-v1', 'geography_id': 'synthetic-g1', 'population': value,
+            'foreign_share': .2, 'language': 'fr'} for key, value in [('a',100),('b',200),('c',300)]])
     return FeatureBlock(block_id='statpop', scope='municipality', records=records,
         numeric_features=('population','foreign_share'), categorical_features=('language',),
         definitions={'population':'resident population, persons', 'foreign_share':'foreign/population, share',
@@ -82,7 +86,7 @@ def test_frozen_reference_ignores_heldout_targets_and_training_transforms_ignore
 
 
 def test_final_regularized_run_never_selects_using_test_targets_and_late_labels_are_excluded():
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling.final_evaluation import freeze_experiment
     rows, original = synthetic_example()
     rows.loc[rows.municipality_id.eq('b'),'result_available_at'] = '2023-01-01'
     features = (block(),)
@@ -114,12 +118,12 @@ def test_rolling_municipal_history_uses_training_only_global_fallback():
 
 
 def test_statpop_prepared_adapter_requires_real_publication_evidence_and_computes_defined_share():
-    from scripts.feature_blocks import prepare_statpop_nationality
+    from scripts.modeling.feature_blocks import prepare_statpop_nationality
     rows, config = synthetic_example()
     prepared = pd.DataFrame({'year':[2018,2018,2018],'code':['a','b','c'],
                              'population':[100,200,300],'swiss':[80,160,240],'foreign':[20,40,60]})
-    source = dict(source_version='statpop-fixture-v1', geography_id='synthetic-g1',
-                  source_url='https://example.test/statpop')
+    source = {'source_version': 'statpop-fixture-v1', 'geography_id': 'synthetic-g1',
+                  'source_url': 'https://example.test/statpop'}
     unavailable = prepare_statpop_nationality(prepared,**source)
     result = evaluate(rows,config,feature_blocks=(unavailable,))
     assert result['coverage']['feature_blocks']['statpop_nationality']['unknown_availability_rows'] == 5

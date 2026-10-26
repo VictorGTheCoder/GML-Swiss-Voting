@@ -236,7 +236,9 @@ def section_harmonisation(df: pd.DataFrame, meta: dict[str, list[str]]) -> str:
     note = "".join(meta.get("NOTE[fr]", []))
     spatial = next((s for s in note.split("#") if "Référence spatiale" in s), "(not found in NOTE)")
     communes = df[df["level"] == "commune"]
-    cantons = df[df["level"] == "canton"].set_index(["canton", "vote_id"], verify_integrity=True)
+    cantons = df[df["level"] == "canton"].set_index(["canton", "vote_id"])
+    if not cantons.index.is_unique:
+        raise ValueError("Duplicate canton/vote_id keys in canton results")
     sums = communes.groupby(["canton", "vote_id"], observed=True)["votes_yes"].sum(min_count=1)
     comparison = cantons[["votes_yes", "year"]].join(sums.rename("sum_communes")).dropna(subset=["votes_yes"])
     comparison["diff"] = comparison["votes_yes"] - comparison["sum_communes"]

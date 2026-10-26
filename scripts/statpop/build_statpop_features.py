@@ -28,7 +28,11 @@ import pandas as pd
 
 from scripts.common.communes import ROOT, STATPOP_PROCESSED_DIR
 from scripts.common.communes import STATPOP_RAW_DIR as RAW_DIR
-from scripts.repertoire_communes.commune_crosswalk import load_mutations, load_snapshot_codes, resolve
+from scripts.repertoire_communes.commune_crosswalk import (
+    load_mutations,
+    load_snapshot_codes,
+    resolve,
+)
 
 OUTPUT_PATH = STATPOP_PROCESSED_DIR / "statpop_features.parquet"
 
@@ -87,8 +91,9 @@ def build() -> pd.DataFrame:
     for name in list(AGE_GROUPS) + ["80_plus"]:
         features[f"share_{name}"] = features[f"pop_{name}"] / features["pop_total"]
     features = features.reset_index().rename(columns={"code": "commune_code"})
+    features["municipality_id"] = features["commune_code"].astype("string").str.zfill(4)
     month, day = AVAILABLE_MONTH_DAY
-    features["available_from"] = pd.to_datetime(dict(year=features["year"] + 1, month=month, day=day))
+    features["available_from"] = pd.to_datetime({"year": features["year"] + 1, "month": month, "day": day})
     return features.sort_values(["commune_code", "year"], key=lambda s: s.astype(int) if s.name == "commune_code" else s)
 
 

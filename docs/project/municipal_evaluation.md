@@ -1,11 +1,11 @@
 # Publication-aware municipal evaluation
 
-The public integration boundary is `scripts.evaluate_votes.evaluate(prepared, EvaluationConfig)`.
+The public integration boundary is `scripts.modeling.evaluate_votes.evaluate(prepared, EvaluationConfig)`.
 It runs independently of communal and brochure-text sources. The testing seam is the complete
 orchestrator using synthetic prepared records, as agreed in issue #33.
 
 ```bash
-python3 -m scripts.evaluate_votes --synthetic --output /tmp/swiss-voting-synthetic
+python3 -m scripts.modeling.evaluate_votes --synthetic --output /tmp/swiss-voting-synthetic
 python3 -m pytest -q tests/test_evaluate_votes.py
 ```
 
@@ -97,7 +97,7 @@ later source-block and text evaluations using this same result structure. Additi
 should consume only explicitly admissible features and preserve identical comparison keys.
 
 Real prepared runs use `--input prepared.csv --config experiment.json --output /tmp/run` (Parquet
-also supported). The local `data/processed/votes_communes.parquet` is **not yet forecast-ready**:
+also supported). The local `data/processed/ofs-votes/votes_communes.parquet` is **not yet forecast-ready**:
 it needs explicit per-object evidenced brochure publication, historical result publication/version
 availability, and verified geographical references/crosswalks. Its `vote_date`, `votes_yes`,
 `votes_no`, and `is_tiebreak_question` names also need an explicit adapter to the contract above.
@@ -164,7 +164,7 @@ errors are calculated only after these checks.
 ## Prepared communal blocks and regularized references (#36)
 
 ```bash
-python3 -m scripts.evaluate_votes --synthetic --synthetic-features --output /tmp/swiss-voting-features
+python3 -m scripts.modeling.evaluate_votes --synthetic --synthetic-features --output /tmp/swiss-voting-features
 python3 -m pytest -q tests/test_evaluate_features.py
 ```
 
@@ -173,7 +173,7 @@ and compares `ridge_history` with `ridge_statpop_nationality` on the same valida
 baselines. A source block is not required to improve error. These small synthetic scores establish
 reproducibility, not Swiss predictive performance.
 
-`evaluate(..., feature_blocks=(FeatureBlock(...),))` accepts `scripts.feature_blocks.FeatureBlock`:
+`evaluate(..., feature_blocks=(FeatureBlock(...),))` accepts `scripts.modeling.feature_blocks.FeatureBlock`:
 `block_id`, `scope` (`municipality` or `object`), `records` (DataFrame), `numeric_features`,
 `categorical_features`, `definitions`, `source_url`, `source_version`, and `geography_mode`.
 All features need documented definitions/units; allowlists are the only columns supplied to a
@@ -303,7 +303,7 @@ file. The evaluator preserves municipal/object identifier strings. Example descr
 }]
 ```
 
-Use `python3 -m scripts.evaluate_votes --input votes_prepared.csv --config experiment.json
+Use `python3 -m scripts.modeling.evaluate_votes --input votes_prepared.csv --config experiment.json
 --blocks blocks.json --output /tmp/run` (on one command line). All joined features, selection
 manifests, matched publication evidence, coverage and paired prediction keys are reproducible
 artifacts. The source CSV must already include the record contract; the CLI does not guess how to
@@ -312,7 +312,7 @@ join an unevidenced raw population file.
 ### Paired brochure text experiment
 
 Supply `--text-records reviewed-records.json` (a JSON list using the reviewed
-record contract in `scripts/forecast_text_export.py`), or pass `text_records`
+record contract in `scripts/federal_explanations/federal_explanations_temporal.py`), or pass `text_records`
 to `evaluate`. The evaluator reruns the version-bound export gate; unknown
 availability, stale source decisions, ambiguous correspondence and invalid
 extractions cannot enter the experiment. It additionally requires the document's

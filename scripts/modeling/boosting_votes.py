@@ -6,13 +6,13 @@ import hashlib
 import numpy as np
 import pandas as pd
 import sklearn
-from scripts.expanding_windows import select_training_rows, window_dates
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.impute import MissingIndicator, SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
+from scripts.modeling.expanding_windows import select_training_rows, window_dates
 
 SETTING_NAMES = ('max_leaf_nodes', 'min_samples_leaf', 'learning_rate', 'max_iter')
 
@@ -62,13 +62,14 @@ def hist_gradient_boosting_predictions(rows, config, baseline, design, blocks):
         candidates = tuple(_settings_tuple(setting) for setting in config.hist_gradient_boosting_candidates)
     except (TypeError, ValueError):
         raise ValueError('hist_gradient_boosting_candidates must contain four-value settings') from None
-    valid = lambda setting: (
-        len(setting) == 4
-        and isinstance(setting[0], (int, np.integer)) and not isinstance(setting[0], bool) and setting[0] >= 2
-        and isinstance(setting[1], (int, np.integer)) and not isinstance(setting[1], bool) and setting[1] >= 1
-        and isinstance(setting[2], (int, float, np.number)) and not isinstance(setting[2], bool)
-        and np.isfinite(setting[2]) and setting[2] > 0
-        and isinstance(setting[3], (int, np.integer)) and not isinstance(setting[3], bool) and setting[3] >= 1)
+    def valid(setting):
+        return (
+            len(setting) == 4
+            and isinstance(setting[0], (int, np.integer)) and not isinstance(setting[0], bool) and setting[0] >= 2
+            and isinstance(setting[1], (int, np.integer)) and not isinstance(setting[1], bool) and setting[1] >= 1
+            and isinstance(setting[2], (int, float, np.number)) and not isinstance(setting[2], bool)
+            and np.isfinite(setting[2]) and setting[2] > 0
+            and isinstance(setting[3], (int, np.integer)) and not isinstance(setting[3], bool) and setting[3] >= 1)
     if (not candidates or len(set(candidates)) != len(candidates) or any(not valid(setting) for setting in candidates)):
         raise ValueError('hist_gradient_boosting_candidates must contain unique valid (max_leaf_nodes, min_samples_leaf, learning_rate, max_iter) settings')
     partition = 'test' if config.mode == 'final_test' else 'validation'

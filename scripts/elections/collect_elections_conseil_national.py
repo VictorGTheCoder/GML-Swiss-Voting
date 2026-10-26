@@ -7,14 +7,19 @@ votations 2013-2024 du projet.
 
 Sortie : data/raw/elections_conseil_national_brut.csv (format long, 466 600 lignes pour 4 années).
 
-Usage (depuis n'importe où dans le dépôt) :
-    python scripts/collect_elections_conseil_national.py
-    python scripts/collect_elections_conseil_national.py --force
+Usage (depuis la racine du dépôt) :
+    python -m scripts.elections.collect_elections_conseil_national
+    python -m scripts.elections.collect_elections_conseil_national --force
 """
 
 import argparse
+import json
 
-from pxweb_utils import (
+import pandas as pd
+
+from scripts.common.communes import record_provenance
+from scripts.common.config import RAW_DIR
+from scripts.common.pxweb_utils import (
     expected_rows,
     fetch_table,
     find_variable,
@@ -50,7 +55,18 @@ def main(force: bool = False) -> None:
     selections = {var_annee["code"]: codes_annee}
     expected = expected_rows(meta, selections)
 
-    if not force and is_complete(out_path, expected):
+    px_path = RAW_DIR / "elections" / "px-x-1702020000_105.px"
+    if force or not px_path.exists():
+        px_url = "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-1702020000_105"
+        response = session.get(px_url, timeout=120)
+        response.raise_for_status()
+        px_path.parent.mkdir(parents=True, exist_ok=True)
+        px_path.write_bytes(response.content)
+        record_provenance(px_path.stem, px_path, px_url)
+
+    if not force and is_complete(out_path, expected) and any(
+        column.startswith("code_") for column in pd.read_csv(out_path, nrows=0).columns
+    ):
         print(f"Fichier déjà présent et complet : {out_path} ({expected:,} lignes).")
         return
 
@@ -62,11 +78,16 @@ def main(force: bool = False) -> None:
             split_code=var_parti["code"], batch_size=PARTI_BATCH,
             selections={**selections, var_annee["code"]: [code]},
             label=f"année {code}, ",
+            include_codes=True,
         )
         frames += f
         failed += fail
 
     save_if_complete(frames, failed, expected, out_path)
+    metadata_path = out_path.with_suffix(".metadata.json")
+    metadata_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    record_provenance(out_path.stem, out_path, URL, years=ANNEES)
+    record_provenance(metadata_path.stem, metadata_path, URL)
 
 
 if __name__ == "__main__":

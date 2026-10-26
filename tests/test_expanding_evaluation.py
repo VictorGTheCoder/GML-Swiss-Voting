@@ -3,8 +3,8 @@ from dataclasses import replace
 import pandas as pd
 import pytest
 
-from scripts.evaluate_votes import EvaluationConfig, evaluate
-from scripts.feature_blocks import FeatureBlock
+from scripts.modeling.evaluate_votes import EvaluationConfig, evaluate
+from scripts.modeling.feature_blocks import FeatureBlock
 
 
 def rows_for_windows():
@@ -17,20 +17,20 @@ def rows_for_windows():
         ('test', '2024-01-01', [0.1, 0.9], '2024-01-02'),
     ]:
         for municipality, share in zip(['a', 'b'], shares):
-            rows.append(dict(municipality_id=municipality, vote_id=vote, voting_date=date,
-                yes_count=share * 100, no_count=(1-share) * 100, geography_id='g1',
-                source_version='fixture-v1', result_available_at=available,
-                result_availability_evidence='fixture-result-release',
-                forecast_at=str(pd.Timestamp(date, tz='UTC')-pd.Timedelta(days=10)),
-                forecast_evidence='fixture-brochure', is_special_unit=False,
-                is_subsidiary=False, is_provisional=False))
+            rows.append({'municipality_id': municipality, 'vote_id': vote, 'voting_date': date,
+                'yes_count': share * 100, 'no_count': (1-share) * 100, 'geography_id': 'g1',
+                'source_version': 'fixture-v1', 'result_available_at': available,
+                'result_availability_evidence': 'fixture-result-release',
+                'forecast_at': str(pd.Timestamp(date, tz='UTC')-pd.Timedelta(days=10)),
+                'forecast_evidence': 'fixture-brochure', 'is_special_unit': False,
+                'is_subsidiary': False, 'is_provisional': False})
     return pd.DataFrame(rows)
 
 
 def feature_block():
-    records = pd.DataFrame([dict(municipality_id=municipality, reference_date='2019-12-31',
-        published_at='2020-01-01', availability_status='verified', availability_evidence='fixture-source',
-        source_version='features-v1', geography_id='g1', population=value)
+    records = pd.DataFrame([{'municipality_id': municipality, 'reference_date': '2019-12-31',
+        'published_at': '2020-01-01', 'availability_status': 'verified', 'availability_evidence': 'fixture-source',
+        'source_version': 'features-v1', 'geography_id': 'g1', 'population': value}
         for municipality, value in [('a', 100), ('b', 200)]])
     return FeatureBlock('population', 'municipality', records, ('population',), (),
         {'population': 'fixture population'}, 'fixture://population', 'features-v1')

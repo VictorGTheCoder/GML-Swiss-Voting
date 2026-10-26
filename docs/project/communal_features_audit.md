@@ -203,6 +203,6 @@ La densité doit rejoindre ce socle après validation de la surface et du réfé
 
 Fichier créé par cette tâche :
 
-- `docs/communal_features_audit.md`
+- `docs/project/communal_features_audit.md`
 
 Aucun dataset brut n'a été ajouté et aucun pipeline, modèle ou dataset `commune × votation` n'a été modifié dans le cadre de cet audit.

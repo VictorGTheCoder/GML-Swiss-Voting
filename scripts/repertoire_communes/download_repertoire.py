@@ -9,7 +9,8 @@ Usage: python -m scripts.repertoire_communes.download_repertoire [--force]
 from __future__ import annotations
 
 import argparse
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 import requests
 
@@ -47,7 +48,7 @@ def download_repertoire(session: requests.Session, force: bool) -> None:
     path = REGISTER_RAW_DIR / "mutations.csv"
     if should_skip(path, force):
         return
-    end = date.today()
+    end = datetime.now(ZoneInfo("Europe/Zurich")).date()
     params = {"includeTerritoryExchange": "false", "startPeriod": fr_date(MUTATIONS_START), "endPeriod": fr_date(end)}
     response = request_with_retry(session, "GET", f"{AGVCH_BASE}/api/communes/mutations", params=params)
     if not response.content.lstrip(b"\xef\xbb\xbf").startswith(b"MutationNumber"):
