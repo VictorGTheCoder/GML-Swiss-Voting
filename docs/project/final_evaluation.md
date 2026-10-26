@@ -9,8 +9,8 @@ instants remain explicit inputs. Ordinary validation does not produce final-test
 From the repository root in its Python environment:
 
 ```bash
-python3 -m scripts.evaluate_votes --synthetic --synthetic-features --synthetic-text --output /tmp/swiss-voting/validation --freeze-output /tmp/swiss-voting/frozen.json
-python3 -m scripts.evaluate_votes --synthetic --synthetic-features --synthetic-text --final-test --frozen-experiment /tmp/swiss-voting/frozen.json --output /tmp/swiss-voting/final
+python3 -m scripts.modeling.evaluate_votes --synthetic --synthetic-features --synthetic-text --output /tmp/swiss-voting/validation --freeze-output /tmp/swiss-voting/frozen.json
+python3 -m scripts.modeling.evaluate_votes --synthetic --synthetic-features --synthetic-text --final-test --frozen-experiment /tmp/swiss-voting/frozen.json --output /tmp/swiss-voting/final
 python3 -m pytest -q tests/test_final_evaluation.py tests/test_hist_gradient_boosting.py
 ```
 

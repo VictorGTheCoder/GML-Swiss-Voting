@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from scripts.evaluate_votes import EvaluationConfig, evaluate
+from scripts.modeling.evaluate_votes import EvaluationConfig, evaluate
 
 
 def row(municipality, vote, date, yes, forecast=None, **changes):
@@ -101,7 +101,7 @@ def test_invalid_experiment_configuration_fails_before_scoring(changes, message)
 
 
 def test_blank_source_versions_are_excluded_from_prepared_outcomes():
-    from scripts.evaluate_votes import synthetic_example
+    from scripts.modeling.evaluate_votes import synthetic_example
 
     rows, config = synthetic_example()
     rows.loc[(rows.vote_id == 'old') & (rows.municipality_id == 'a'), 'source_version'] = ''
@@ -115,7 +115,7 @@ def test_blank_source_versions_are_excluded_from_prepared_outcomes():
 def test_final_test_requires_frozen_choices_and_audits_coverage_and_weights():
     data = prepared()
     data['evaluation_weight'] = [1, 1, 1, 3, 2]
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling.final_evaluation import freeze_experiment
     frozen = freeze_experiment(evaluate(data, config()))
     final_config = config(mode='final_test', choices_frozen=True,
                           selected_ridge_alphas=frozen['selected_ridge_alphas'])

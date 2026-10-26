@@ -4,13 +4,13 @@
 Sortie : data/raw/votations_communes_1960_2026_brut.csv (format long, ~8,45 M de lignes).
 
 Usage (depuis n'importe où dans le dépôt) :
-    python scripts/collect_votations_federales.py            # télécharge si nécessaire
-    python scripts/collect_votations_federales.py --force    # retélécharge dans tous les cas
+    python -m scripts.ofs_votes.collect_votations_federales            # télécharge si nécessaire
+    python -m scripts.ofs_votes.collect_votations_federales --force    # retélécharge dans tous les cas
 """
 
 import argparse
 
-from pxweb_utils import (
+from scripts.common.pxweb_utils import (
     expected_rows,
     fetch_table,
     find_variable,

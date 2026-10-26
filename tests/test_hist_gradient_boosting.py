@@ -3,8 +3,8 @@ from dataclasses import replace
 import pandas as pd
 import pytest
 
-from scripts.evaluate_votes import EvaluationConfig, evaluate
-from scripts.feature_blocks import FeatureBlock
+from scripts.modeling.evaluate_votes import EvaluationConfig, evaluate
+from scripts.modeling.feature_blocks import FeatureBlock
 
 
 def prepared_rows():
@@ -106,7 +106,7 @@ def test_invalid_histogram_boosting_configuration_fails_at_evaluation_seam():
 
 
 def test_frozen_choices_cover_boosting_windows_and_explicit_text_policy():
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling.final_evaluation import freeze_experiment
 
     rows = prepared_rows()
     settings = config(validation_windows=(('2022-01-01',), ('2023-01-01',)))
@@ -152,7 +152,7 @@ def test_frozen_choices_cover_boosting_windows_and_explicit_text_policy():
 
 
 def test_final_boosting_fit_and_first_test_prediction_ignore_reserved_test_targets():
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling.final_evaluation import freeze_experiment
 
     rows, block = prepared_rows(), population_block()
     settings = config(refit_train_validation=True)

@@ -1,7 +1,7 @@
 from dataclasses import replace
 import pandas as pd
 import pytest
-from scripts.evaluate_votes import EvaluationConfig, evaluate, synthetic_example
+from scripts.modeling.evaluate_votes import EvaluationConfig, evaluate, synthetic_example
 
 
 def documents(rows):
@@ -31,7 +31,7 @@ def test_text_comparison_is_paired_and_document_frequencies_count_objects():
 
 
 def test_frozen_text_choices_and_predictions_ignore_test_targets():
-    from scripts.final_evaluation import freeze_experiment
+    from scripts.modeling.final_evaluation import freeze_experiment
     rows, config = synthetic_example()
     records = documents(rows)
     frozen = freeze_experiment(evaluate(rows, config, text_records=records))
@@ -65,7 +65,7 @@ def test_real_eligibility_gates_and_cutoff_mismatch_skip_text_without_losing_non
 
 
 def test_text_coverage_preserves_identical_keys_when_one_object_is_ineligible(tmp_path):
-    from scripts.evaluate_votes import write_artifacts
+    from scripts.modeling.evaluate_votes import write_artifacts
     rows, config = synthetic_example()
     other = rows.loc[rows.vote_id.eq('next')].assign(vote_id='other')
     rows = pd.concat([rows, other], ignore_index=True)

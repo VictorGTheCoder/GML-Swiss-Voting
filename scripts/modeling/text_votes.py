@@ -7,10 +7,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import Ridge
 from scipy.sparse import csr_matrix, hstack
 
-from scripts.expanding_windows import select_training_rows, window_dates
-from scripts.forecast_text_export import build_forecast_text_export
-from scripts.final_evaluation import TEXT_POLICY
-from scripts.regularized_votes import _pipeline, historical_features
+from scripts.modeling.expanding_windows import select_training_rows, window_dates
+from scripts.modeling.forecast_text_export import build_forecast_text_export
+from scripts.modeling.final_evaluation import TEXT_POLICY
+from scripts.modeling.regularized_votes import _pipeline, historical_features
 
 
 def text_experiment(rows, config, baseline, design, blocks, records):
@@ -215,7 +215,7 @@ def text_experiment(rows, config, baseline, design, blocks, records):
         return result
     for name, group in result['predictions'].groupby('model'):
         def score(frame):
-            from scripts.vote_metrics import score_predictions
+            from scripts.modeling.vote_metrics import score_predictions
             return {**counts(frame),**score_predictions(frame),'weight_origin':config.evaluation_weight_origin}
         result['metrics'][name] = score(group)
         for vote, subgroup in group.groupby('vote_id'):

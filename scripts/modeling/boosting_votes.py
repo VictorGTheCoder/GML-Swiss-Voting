@@ -6,7 +6,7 @@ import hashlib
 import numpy as np
 import pandas as pd
 import sklearn
-from scripts.expanding_windows import select_training_rows, window_dates
+from scripts.modeling.expanding_windows import select_training_rows, window_dates
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.impute import MissingIndicator, SimpleImputer

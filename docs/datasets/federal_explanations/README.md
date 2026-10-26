@@ -34,16 +34,29 @@ Exécuter les commandes depuis la racine du dépôt. Préparer d'abord les donn�
 Collecter les brochures si elles ne sont pas encore disponibles :
 
 ```bash
-python -m scripts.federal_explanations.collect_federal_explanations --ofs data/processed/ofs-votes/votes_communes.parquet --manifest data/raw/federal_explanations/sources.json --cache data/raw/federal_explanations/pdfs
+python -m scripts.federal_explanations.collect_federal_explanations --ofs data/processed/ofs-votes/votes_communes.parquet --manifest data/raw/federal_explanations/sources.json --cache data/raw/federal_explanations/pdfs --start-year 1978
 ```
 
 Le manifeste doit référencer les PDF locaux et expliciter les validations humaines. La date de collecte ne prouve pas la disponibilité avant le vote.
+
+`--start-year` et `--end-year` définissent la période. L'audit reprend celle du manifeste.
+Le pipeline `--all` demande 1978–2026 ; sans option, la collecte seule conserve son
+périmètre historique 2011–2026. Les anciens documents peuvent nécessiter une revue
+ou de l'OCR : la présence d'un PDF ne garantit pas une extraction exploitable.
+
+L'environnement Conda inclut PyMuPDF, pytesseract et Tesseract. Le traitement
+recherche le modèle français `fra.traineddata` dans `share/tessdata` de
+l'environnement, sauf si `TESSDATA_PREFIX` est défini explicitement. Les échecs
+d'OCR sont conservés par page et signalés dans le rapport de compatibilité.
 
 Extraire les données et préparer les liens vers les objets OFS :
 
 ```bash
 python -m scripts.federal_explanations.audit_federal_explanations --ofs data/processed/ofs-votes/votes_communes.parquet --sources data/raw/federal_explanations/sources.json --output data/interim/federal_explanations
 ```
+
+Ajouter `--workers 4` permet de répartir les documents entre quatre processus
+indépendants. Le pipeline global `--all` utilise ce réglage et affiche sa progression.
 
 Les sorties comprennent les sources, pages, sections, liens candidats, diagnostics de couverture, relations entre identifiants et `link_eligibility.parquet`. Ce dernier contient seulement les identifiants, leur admissibilité et les motifs d'exclusion.
 

@@ -132,7 +132,9 @@ def _official_fields(section: dict, vote_rows: list[dict]) -> dict:
     return result
 
 
-def run_audit(ofs_path: Path, sources_path: Path, output: Path) -> None:
+def run_audit(ofs_path: Path, sources_path: Path, output: Path, *, workers: int = 1) -> None:
+    if workers < 1:
+        raise ValueError("workers must be positive")
     ofs_frame = pd.read_parquet(ofs_path) if ofs_path.suffix == ".parquet" else pd.read_csv(ofs_path, dtype={"vote_id": "string"})
     needed = {"vote_id", "vote_date", "is_tiebreak_question"}
     if not needed.issubset(ofs_frame.columns):
@@ -144,13 +146,28 @@ def run_audit(ofs_path: Path, sources_path: Path, output: Path) -> None:
     expected = ofs_frame[columns].drop_duplicates("vote_id").copy()
     expected["vote_id"] = ofs_keys(expected["vote_id"])
     expected["vote_date"] = pd.to_datetime(expected.vote_date).dt.strftime("%Y-%m-%d")
-    expected = expected[expected.vote_date.between("2011-01-01", "2026-12-31")]
     manifest = json.loads(sources_path.read_text(encoding="utf-8"))
+    period = manifest.get("period", "2011-01-01/2026-12-31")
+    period_start, period_end = period.split("/")
+    pd.Timestamp(period_start), pd.Timestamp(period_end)
+    expected = expected[expected.vote_date.between(period_start, period_end)]
     documents = manifest.get("documents", [])
     output.mkdir(parents=True, exist_ok=True)
     originals = output / "originals"
     originals.mkdir(exist_ok=True)
     source_rows, page_rows, section_rows, correction_audit = [], [], [], []
+    extracted = {}
+    if workers > 1:
+        from concurrent.futures import ProcessPoolExecutor, as_completed
+
+        paths = list(dict.fromkeys(Path(doc["pdf_path"]) for doc in documents if Path(doc["pdf_path"]).is_file()))
+        # PyMuPDF n'est pas partagé entre threads : chaque processus ouvre ses PDF.
+        with ProcessPoolExecutor(max_workers=workers) as pool:
+            futures = {pool.submit(extract_pdf_pages, path): path for path in paths}
+            for completed, future in enumerate(as_completed(futures), start=1):
+                extracted[futures[future]] = future.result()
+                if completed % 10 == 0 or completed == len(paths):
+                    print(f"Brochure extraction: {completed}/{len(paths)} documents", flush=True)
     for doc in documents:
         path = Path(doc["pdf_path"])
         if not path.is_file():
@@ -160,7 +177,7 @@ def run_audit(ofs_path: Path, sources_path: Path, output: Path) -> None:
         preserved = originals / f"{digest}.pdf"
         if not preserved.exists():
             shutil.copyfile(path, preserved)
-        pages = extract_pdf_pages(path)
+        pages = extracted[path] if workers > 1 else extract_pdf_pages(path)
         page_rows.extend({"source_id": doc.get("source_id"), "pdf_sha256": digest, **row} for row in pages)
         structure = extract_objects([str(page["text"]) for page in pages], source_id=str(doc.get("source_id", "source")), source_sha256=digest)
         decision = doc.get("temporal_decision") or {"status": "INVESTIGATE", "source_sha256": ""}
@@ -292,7 +309,7 @@ def run_audit(ofs_path: Path, sources_path: Path, output: Path) -> None:
     pd.DataFrame(eligibility, columns=["vote_id", "eligible", "exclusion_reason"]).to_parquet(
         output / "link_eligibility.parquet", index=False
     )
-    report = ["# Full-period federal explanations audit", "", "Period: French-language sources for 2011–2026.",
+    report = ["# Full-period federal explanations audit", "", f"Period: French-language sources for {period}.",
               f"Expected OFS vote objects: {len(frame)}", f"Chancellerie PDFs supplied: {len(source_rows)}",
               f"Vote IDs associated with official brochure dates: {(frame.brochure_status == 'FOUND').sum()}",
               f"Distinct Chancellery brochure dates: {len(source_rows)}",
@@ -322,8 +339,9 @@ def main() -> None:
     parser.add_argument("--ofs", type=Path, required=True, help="Read-only OFS vote reference CSV or communal parquet")
     parser.add_argument("--sources", type=Path, required=True, help="Local PDF manifest JSON")
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--workers", type=int, default=1, help="independent PDF extraction processes")
     args = parser.parse_args()
-    run_audit(args.ofs, args.sources, args.output)
+    run_audit(args.ofs, args.sources, args.output, workers=args.workers)
 
 
 if __name__ == "__main__":

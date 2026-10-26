@@ -14,6 +14,9 @@ dependencies:
   - scipy
   - pyarrow
   - pdfplumber
+  - pymupdf
+  - pytesseract
+  - tesseract
   - openpyxl
   - requests
   - tabulate
@@ -36,3 +39,5 @@ dependencies:
   - pytest
   - pytest-cov
   - ruff
+  - pip:
+      - pyjstat==2.4.0

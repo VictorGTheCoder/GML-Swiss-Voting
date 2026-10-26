@@ -3,8 +3,8 @@ from dataclasses import replace
 import pandas as pd
 import pytest
 
-from scripts.evaluate_votes import evaluate, synthetic_example
-from scripts.feature_blocks import synthetic_feature_example
+from scripts.modeling.evaluate_votes import evaluate, synthetic_example
+from scripts.modeling.feature_blocks import synthetic_feature_example
 
 
 def test_independent_ablation_reports_paired_keys_provenance_and_wider_coverage():

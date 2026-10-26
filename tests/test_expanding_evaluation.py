@@ -3,8 +3,8 @@ from dataclasses import replace
 import pandas as pd
 import pytest
 
-from scripts.evaluate_votes import EvaluationConfig, evaluate
-from scripts.feature_blocks import FeatureBlock
+from scripts.modeling.evaluate_votes import EvaluationConfig, evaluate
+from scripts.modeling.feature_blocks import FeatureBlock
 
 
 def rows_for_windows():

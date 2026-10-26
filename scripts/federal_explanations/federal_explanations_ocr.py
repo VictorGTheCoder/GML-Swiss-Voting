@@ -6,6 +6,9 @@ validation of a brochure or its correspondence to an OFS vote.
 
 from __future__ import annotations
 
+import os
+import shutil
+import sys
 from collections.abc import Callable
 from io import BytesIO
 from pathlib import Path
@@ -31,6 +34,13 @@ def _local_ocr_page(pdf_path: Path, page_number: int) -> str:
         page = document[page_number - 1]
         pixmap = page.get_pixmap(matrix=fitz.Matrix(2, 2), alpha=False)
         image = Image.open(BytesIO(pixmap.tobytes("png")))
+    if shutil.which("tesseract") is None:
+        conda_binary = Path(sys.prefix) / "Library" / "bin" / "tesseract.exe"
+        if conda_binary.is_file():
+            pytesseract.pytesseract.tesseract_cmd = str(conda_binary)
+    tessdata = Path(sys.prefix) / "share" / "tessdata"
+    if not os.environ.get("TESSDATA_PREFIX") and (tessdata / "fra.traineddata").is_file():
+        os.environ["TESSDATA_PREFIX"] = str(tessdata)
     return pytesseract.image_to_string(image, lang="fra")
 
 

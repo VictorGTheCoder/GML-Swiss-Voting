@@ -4,13 +4,16 @@ Population résidante permanente par commune, nationalité et âge. Le dataset r
 
 ## Source
 
-Cube PXWeb `px-x-0102010000_101` de l'OFS, millésime du 20.08.2026 (années 2010 à 2025). L'API JSON refuse les requêtes volumineuses (403) et limite le débit (429) : le téléchargement se fait **par année et par lots de 100 communes**, avec pauses et reprises automatiques. Un premier téléchargement complet prend environ une heure ; les fichiers présents ne sont pas retéléchargés sans `--force`.
+Cube PXWeb `px-x-0102010000_101` de l'OFS, millésime du 20.08.2026 (années 2010 à 2025). Le téléchargement utilise désormais **l'export PX complet** (environ 153 Mo), conservé intact dans `data/raw/statpop/`. Il est lu progressivement pour extraire les CSV annuels sans charger tout le cube en mémoire. Les neuf années 2010–2018 déjà obtenues par l'API ont été comparées cellule par cellule : elles sont identiques.
+
+Le mode `--method api` conserve la collecte par lots de 100 communes comme solution de repli, mais peut prendre plus d'une heure à cause des réponses 429 et des délais du serveur. Le PX et les CSV existants sont réutilisés sans `--force` ; leur cohérence est vérifiée avant réutilisation.
 
 ## Scripts
 
 Tous les modules sont dans `scripts/statpop/` :
 
 - `download_statpop.py` : un CSV par année dans `data/raw/statpop/` (communes seulement, population permanente, sexes confondus, nationalité totale/Suisse/étranger, âge à l'année), avec `provenance.json`.
+- `parse_statpop_px.py` : extraction progressive du PX et comparaison exacte des CSV déjà présents.
 - `convert_statpop_to_parquet.py` : `data/interim/statpop/statpop.parquet`, une ligne par année × commune × nationalité, colonnes `age_0` à `age_100` (la dernière est « 100 ans ou plus ») et `total`.
 - `build_statpop_features.py` : `data/processed/statpop/statpop_features.parquet`.
 

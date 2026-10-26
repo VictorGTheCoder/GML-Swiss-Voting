@@ -258,18 +258,18 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
                               KEYS + ['voting_date', 'partition', 'yes_count', 'no_count']]
     pretest_labels_sha256 = hashlib.sha256(
         pretest_labels.to_json(orient='split', date_format='iso').encode()).hexdigest()
-    from scripts.feature_blocks import join_feature_blocks
-    from scripts.regularized_votes import regularized_predictions
-    from scripts.voting_history import build_historical_features
+    from scripts.modeling.feature_blocks import join_feature_blocks
+    from scripts.modeling.regularized_votes import regularized_predictions
+    from scripts.modeling.voting_history import build_historical_features
     history = build_historical_features(rows,config)
     joined, join_report, block_manifest, block_coverage = join_feature_blocks(rows, feature_blocks, config.geography_mode)
     design = pd.concat([history[['municipal_history','history_missing']], joined], axis=1)
-    from scripts.final_evaluation import _digest, verify_frozen_experiment
+    from scripts.modeling.final_evaluation import _digest, verify_frozen_experiment
     run_manifest = {**asdict(config), 'input_rows': len(prepared),
                           'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
                           'geography': geography, 'feature_blocks': block_manifest, 'regularized': {},
                           'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
-                          'implementation_sha256': {name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','boosting_votes.py','expanding_windows.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','forecast_text_export.py','federal_explanations/federal_explanations_temporal.py']},
+                          'implementation_sha256': {name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','boosting_votes.py','expanding_windows.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','forecast_text_export.py','../federal_explanations/federal_explanations_temporal.py']},
                           'versions': {'python': platform.python_version(), 'pandas': pd.__version__, 'numpy': np.__version__, 'scikit-learn': sklearn.__version__},
                           'weight_origin': config.evaluation_weight_origin,
                           'experiment_configuration': asdict(config),
@@ -304,7 +304,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
         predictions = pd.concat([predictions, regularized], ignore_index=True)
     hist_gradient_boosting_manifest = {}
     if feature_blocks:
-        from scripts.boosting_votes import hist_gradient_boosting_predictions
+        from scripts.modeling.boosting_votes import hist_gradient_boosting_predictions
         boosted, hist_gradient_boosting_manifest = hist_gradient_boosting_predictions(
             rows, config, predictions, design,
             admissible_blocks)
@@ -316,7 +316,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
         'partitions': {name: {'rows': len(group), 'objects': int(group.vote_id.nunique()),
                               'dates': int(group.voting_date.nunique())}
                        for name, group in rows.groupby('partition')}}
-    from scripts.vote_metrics import score_predictions as score
+    from scripts.modeling.vote_metrics import score_predictions as score
     by_date, by_object = [], []
     for model, group in predictions.groupby('model'):
         metrics[model] = score(group)
@@ -330,13 +330,13 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
             by_object.append({'model': model, 'vote_id': vote, **score(subgroup)})
     text_result = {}
     if text_records is not None:
-        from scripts.text_votes import text_experiment
+        from scripts.modeling.text_votes import text_experiment
         text_frozen_skipped = frozen_experiment is not None and frozen_experiment['text_choices']['status'] != 'evaluated'
         text_result = text_experiment(rows, config, predictions, design, admissible_blocks, [] if text_frozen_skipped else text_records)
         if text_frozen_skipped:
             text_result['reason'] = 'Text branch was skipped in frozen validation; final nontext evaluation proceeds'
             text_result['frozen_validation_status'] = frozen_experiment['text_choices']['status']
-    from scripts.feature_ablations import ablation_reports
+    from scripts.modeling.feature_ablations import ablation_reports
     ablations = ablation_reports(predictions, feature_blocks, block_manifest, block_coverage, regularized_manifest, config.mode)
     run_manifest['regularized'] = regularized_manifest
     run_manifest['hist_gradient_boosting'] = hist_gradient_boosting_manifest
@@ -345,7 +345,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
             'exclusions': exclusions, 'metrics': metrics,
             'by_date': pd.DataFrame(by_date), 'by_object': pd.DataFrame(by_object),
             'joined_features': pd.concat([rows[KEYS], design],axis=1), 'join_report': join_report}
-    from scripts.final_evaluation import paired_uncertainty, verify_frozen_experiment
+    from scripts.modeling.final_evaluation import paired_uncertainty, verify_frozen_experiment
     combined_predictions = predictions
     if text_result.get('status') == 'evaluated':
         combined_predictions = pd.concat([predictions,text_result['predictions']],ignore_index=True)
@@ -439,15 +439,15 @@ def main():
     elif config.mode == 'final_test':
         parser.error('Final config requires explicit --final-test and --frozen-experiment')
     try:
-        from scripts.feature_blocks import load_feature_blocks, synthetic_feature_example
+        from scripts.modeling.feature_blocks import load_feature_blocks, synthetic_feature_example
         blocks = (synthetic_feature_example(),) if args.synthetic_features else load_feature_blocks(args.blocks) if args.blocks else ()
-        from scripts.text_votes import synthetic_text_example
+        from scripts.modeling.text_votes import synthetic_text_example
         records = synthetic_text_example(rows) if args.synthetic_text else json.loads(args.text_records.read_text()) if args.text_records else None
         result = evaluate(rows, config, frozen_experiment=frozen, text_records=records, feature_blocks=blocks, geography_crosswalk=pd.read_csv(args.crosswalk, dtype=str) if args.crosswalk else None)
     except ValueError as error:
         parser.error(str(error))
     if args.freeze_output:
-        from scripts.final_evaluation import freeze_experiment
+        from scripts.modeling.final_evaluation import freeze_experiment
         args.freeze_output.parent.mkdir(parents=True,exist_ok=True)
         args.freeze_output.write_text(json.dumps(freeze_experiment(result),indent=2,allow_nan=False)+'\n')
     write_artifacts(result, args.output)

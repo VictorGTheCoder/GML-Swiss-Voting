@@ -6,7 +6,7 @@ import hashlib
 import numpy as np
 import pandas as pd
 import sklearn
-from scripts.expanding_windows import select_training_rows, window_dates
+from scripts.modeling.expanding_windows import select_training_rows, window_dates
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import MissingIndicator, SimpleImputer
 from sklearn.linear_model import Ridge
@@ -15,7 +15,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 def historical_features(rows, config):
-    from scripts.voting_history import build_historical_features
+    from scripts.modeling.voting_history import build_historical_features
     return build_historical_features(rows,config)[['municipal_history','history_missing']]
 
 

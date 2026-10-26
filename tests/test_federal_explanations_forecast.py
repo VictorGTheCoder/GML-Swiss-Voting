@@ -1,6 +1,6 @@
 import json
 
-from scripts.forecast_text_export import build_forecast_text_export
+from scripts.modeling.forecast_text_export import build_forecast_text_export
 
 
 def reviewed(**changes):

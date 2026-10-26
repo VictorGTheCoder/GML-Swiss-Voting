@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from scripts.evaluate_votes import EvaluationConfig, evaluate
+from scripts.modeling.evaluate_votes import EvaluationConfig, evaluate
 
 
 def record(municipality, vote, date, yes, no, geography):
