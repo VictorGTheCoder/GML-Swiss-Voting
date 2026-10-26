@@ -97,7 +97,7 @@ later source-block and text evaluations using this same result structure. Additi
 should consume only explicitly admissible features and preserve identical comparison keys.
 
 Real prepared runs use `--input prepared.csv --config experiment.json --output /tmp/run` (Parquet
-also supported). The local `data/processed/votes_communes.parquet` is **not yet forecast-ready**:
+also supported). The local `data/processed/ofs-votes/votes_communes.parquet` is **not yet forecast-ready**:
 it needs explicit per-object evidenced brochure publication, historical result publication/version
 availability, and verified geographical references/crosswalks. Its `vote_date`, `votes_yes`,
 `votes_no`, and `is_tiebreak_question` names also need an explicit adapter to the contract above.
@@ -312,7 +312,7 @@ join an unevidenced raw population file.
 ### Paired brochure text experiment
 
 Supply `--text-records reviewed-records.json` (a JSON list using the reviewed
-record contract in `scripts/forecast_text_export.py`), or pass `text_records`
+record contract in `scripts/federal_explanations/federal_explanations_temporal.py`), or pass `text_records`
 to `evaluate`. The evaluator reruns the version-bound export gate; unknown
 availability, stale source decisions, ambiguous correspondence and invalid
 extractions cannot enter the experiment. It additionally requires the document's

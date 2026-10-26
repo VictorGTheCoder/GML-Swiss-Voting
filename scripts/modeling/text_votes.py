@@ -3,12 +3,12 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
+from scipy.sparse import csr_matrix, hstack
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import Ridge
-from scipy.sparse import csr_matrix, hstack
 
+from scripts.federal_explanations.federal_explanations_temporal import build_forecast_text_export
 from scripts.modeling.expanding_windows import select_training_rows, window_dates
-from scripts.modeling.forecast_text_export import build_forecast_text_export
 from scripts.modeling.final_evaluation import TEXT_POLICY
 from scripts.modeling.regularized_votes import _pipeline, historical_features
 
@@ -69,7 +69,6 @@ def text_experiment(rows, config, baseline, design, blocks, records):
     blocks = tuple(block for block in blocks if block.prerequisite_reason is None)
     numeric = ['municipal_history','history_missing'] + [f'{b.block_id}__{n}' for b in blocks for n in b.numeric_features]
     categorical = [f'{b.block_id}__{n}' for b in blocks for n in b.categorical_features]
-    preprocess = _pipeline(numeric, categorical, 1.).named_steps['prepare']
     matrix = design[numeric+categorical].copy()
     for column in categorical:
         matrix[column] = matrix[column].where(matrix[column].notna(), np.nan)
@@ -81,7 +80,7 @@ def text_experiment(rows, config, baseline, design, blocks, records):
         return result
     if design.empty:
         design = historical_features(rows, config)
-    selected, predictions, fold_reports = {}, [], []
+    selected, fold_reports = {}, []
     for index, window_eval in enumerate(window_eval_frames):
         if window_eval.empty:
             fold_reports.append({'window': index+1, 'status': 'no_eligible_evaluation_rows',
@@ -230,10 +229,10 @@ def synthetic_text_example(rows):
     records = []
     for row in rows.drop_duplicates('vote_id').itertuples():
         forecast = str(pd.Timestamp(row.forecast_at,tz='UTC'))
-        records.append(dict(vote_id=row.vote_id,voting_date=str(row.voting_date),forecast_at=forecast,
-            forecast_evidence='synthetic-brochure-release',availability_at=forecast,
-            availability_reference='synthetic-archive',availability_status='CONFIRMED_PRE_VOTE',
-            source_sha256=f'synthetic-{row.vote_id}',decision_source_sha256=f'synthetic-{row.vote_id}',
-            match_status='VALIDATED',extraction_status='EXTRACTED',semantic_status='VALIDATED',
-            language='fr', summary_official='synthetic municipal history apples oranges' if row.vote_id == 'old' else 'synthetic heldout public policy bananas'))
+        records.append({'vote_id': row.vote_id,'voting_date': str(row.voting_date),'forecast_at': forecast,
+            'forecast_evidence': 'synthetic-brochure-release','availability_at': forecast,
+            'availability_reference': 'synthetic-archive','availability_status': 'CONFIRMED_PRE_VOTE',
+            'source_sha256': f'synthetic-{row.vote_id}','decision_source_sha256': f'synthetic-{row.vote_id}',
+            'match_status': 'VALIDATED','extraction_status': 'EXTRACTED','semantic_status': 'VALIDATED',
+            'language': 'fr', 'summary_official': 'synthetic municipal history apples oranges' if row.vote_id == 'old' else 'synthetic heldout public policy bananas'})
     return records

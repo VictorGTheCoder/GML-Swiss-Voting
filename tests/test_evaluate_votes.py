@@ -5,12 +5,12 @@ from scripts.modeling.evaluate_votes import EvaluationConfig, evaluate
 
 
 def row(municipality, vote, date, yes, forecast=None, **changes):
-    record = dict(municipality_id=municipality, vote_id=vote, voting_date=date,
-                  yes_count=yes, no_count=100-yes, geography_id='g1', source_version='fixture-v1',
-                  result_available_at=date, result_availability_evidence='fixture-publication',
-                  forecast_at=forecast or str(pd.Timestamp(date) - pd.Timedelta(days=10)),
-                  forecast_evidence='fixture-brochure', is_special_unit=False,
-                  is_subsidiary=False, is_provisional=False)
+    record = {'municipality_id': municipality, 'vote_id': vote, 'voting_date': date,
+                  'yes_count': yes, 'no_count': 100-yes, 'geography_id': 'g1', 'source_version': 'fixture-v1',
+                  'result_available_at': date, 'result_availability_evidence': 'fixture-publication',
+                  'forecast_at': forecast or str(pd.Timestamp(date) - pd.Timedelta(days=10)),
+                  'forecast_evidence': 'fixture-brochure', 'is_special_unit': False,
+                  'is_subsidiary': False, 'is_provisional': False}
     return record | changes
 
 
@@ -72,8 +72,8 @@ def test_publication_cutoff_and_geography_apply_to_history_and_constant():
 
 def test_rolling_history_updates_only_after_publication_and_frozen_targets_do_not_leak():
     data = pd.concat([prepared(), pd.DataFrame([row('a','later','2021-06-01',50)])], ignore_index=True)
-    options = dict(train_dates=('2020-01-01',), validation_dates=('2021-01-01','2021-06-01'),
-                   test_dates=('2022-01-01',))
+    options = {'train_dates': ('2020-01-01',), 'validation_dates': ('2021-01-01','2021-06-01'),
+                   'test_dates': ('2022-01-01',)}
     frozen = evaluate(data, EvaluationConfig(**options))
     rolling = evaluate(data, EvaluationConfig(**options, history_policy='rolling'))
     def prediction(result):
@@ -95,7 +95,7 @@ def test_rolling_history_updates_only_after_publication_and_frozen_targets_do_no
     ({'mode': 'final_test'}, 'frozen'),
 ])
 def test_invalid_experiment_configuration_fails_before_scoring(changes, message):
-    options = dict(train_dates=('2020-01-01',), validation_dates=('2021-01-01',), test_dates=('2022-01-01',))
+    options = {'train_dates': ('2020-01-01',), 'validation_dates': ('2021-01-01',), 'test_dates': ('2022-01-01',)}
     with pytest.raises(ValueError, match=message):
         evaluate(prepared(), EvaluationConfig(**(options | changes)))
 
@@ -157,8 +157,8 @@ def test_audit_flags_and_missing_real_contract_are_explicit():
 
 
 def test_calendar_day_cannot_cross_partitions_even_when_timestamps_differ():
-    options = dict(train_dates=('2020-01-01T00:00:00',),
-                   validation_dates=('2020-01-01T12:00:00',),test_dates=('2022-01-01',))
+    options = {'train_dates': ('2020-01-01T00:00:00',),
+                   'validation_dates': ('2020-01-01T12:00:00',),'test_dates': ('2022-01-01',)}
     with pytest.raises(ValueError,match='disjoint'):
         evaluate(prepared(),EvaluationConfig(**options))
     data = prepared()

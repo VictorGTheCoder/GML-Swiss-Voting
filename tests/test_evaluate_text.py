@@ -1,17 +1,22 @@
 from dataclasses import replace
+
 import pandas as pd
-import pytest
-from scripts.modeling.evaluate_votes import EvaluationConfig, evaluate, synthetic_example
+
+from scripts.modeling.evaluate_votes import (
+    EvaluationConfig,
+    evaluate,
+    synthetic_example,
+)
 
 
 def documents(rows):
-    return [dict(vote_id=r.vote_id, voting_date=str(r.voting_date), forecast_at=str(pd.Timestamp(r.forecast_at, tz="UTC")),
-        forecast_evidence='fixture release', availability_at=str(pd.Timestamp(r.forecast_at, tz="UTC")),
-        availability_reference='fixture archive', availability_status='CONFIRMED_PRE_VOTE',
-        source_sha256='fixture', decision_source_sha256='fixture', match_status='VALIDATED',
-        extraction_status='EXTRACTED', semantic_status='VALIDATED',
-        language='fr', summary_official='training apples oranges' if r.vote_id == 'old' else 'heldout bananas',
-        full_text='must not enter the model full text')
+    return [{"vote_id": r.vote_id, "voting_date": str(r.voting_date), "forecast_at": str(pd.Timestamp(r.forecast_at, tz="UTC")),
+        "forecast_evidence": 'fixture release', "availability_at": str(pd.Timestamp(r.forecast_at, tz="UTC")),
+        "availability_reference": 'fixture archive', "availability_status": 'CONFIRMED_PRE_VOTE',
+        "source_sha256": 'fixture', "decision_source_sha256": 'fixture', "match_status": 'VALIDATED',
+        "extraction_status": 'EXTRACTED', "semantic_status": 'VALIDATED',
+        "language": 'fr', "summary_official": 'training apples oranges' if r.vote_id == 'old' else 'heldout bananas',
+        "full_text": 'must not enter the model full text'}
         for r in rows.drop_duplicates('vote_id').itertuples()]
 
 
@@ -162,13 +167,13 @@ def test_text_vocabulary_and_preprocessing_follow_shared_expanding_windows():
         ('test', '2024-01-01', '2024-01-02', [.1, .9]),
     ]:
         for municipality, share in zip(['a', 'b'], shares):
-            rows.append(dict(municipality_id=municipality, vote_id=vote, voting_date=date,
-                yes_count=share*100, no_count=(1-share)*100, geography_id='g1',
-                source_version='fixture-v1', result_available_at=available,
-                result_availability_evidence='fixture-result-release',
-                forecast_at=str(pd.Timestamp(date, tz='UTC')-pd.Timedelta(days=10)),
-                forecast_evidence='fixture-brochure', is_special_unit=False,
-                is_subsidiary=False, is_provisional=False))
+            rows.append({"municipality_id": municipality, "vote_id": vote, "voting_date": date,
+                "yes_count": share*100, "no_count": (1-share)*100, "geography_id": 'g1',
+                "source_version": 'fixture-v1', "result_available_at": available,
+                "result_availability_evidence": 'fixture-result-release',
+                "forecast_at": str(pd.Timestamp(date, tz='UTC')-pd.Timedelta(days=10)),
+                "forecast_evidence": 'fixture-brochure', "is_special_unit": False,
+                "is_subsidiary": False, "is_provisional": False})
     rows = pd.DataFrame(rows)
     config = EvaluationConfig(('2020-01-01', '2021-01-01'),
         ('2022-01-01', '2023-01-01'), ('2024-01-01',),

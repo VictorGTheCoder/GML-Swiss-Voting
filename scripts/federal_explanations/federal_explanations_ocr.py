@@ -27,7 +27,7 @@ def _local_ocr_page(pdf_path: Path, page_number: int) -> str:
     except ImportError as exc:
         raise RuntimeError(
             "OCR requires the optional Python packages PyMuPDF and pytesseract; "
-            "see docs/federal_explanations_pipeline.md"
+            "see docs/datasets/federal_explanations/README.md"
         ) from exc
 
     with fitz.open(pdf_path) as document:

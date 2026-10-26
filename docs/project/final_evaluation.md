@@ -128,6 +128,6 @@ metadata remains missing/excluded or a clearly recorded skipped branch; publicat
 territorial crosswalks are never invented.
 
 See [the prepared contract and source-block protocol](municipal_evaluation.md) and
-[the forecast-time text gates](../forecast-text-export.md). Retrospective fixed-geography results must remain
+[the forecast-time text gates](forecast_text_export.md). Retrospective fixed-geography results must remain
 labelled retrospective. Negative or worse incremental results are valid outcomes. These comparisons
 estimate municipal prediction error; they do not establish brochure causality or individual behavior.

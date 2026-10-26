@@ -1,0 +1,14 @@
+# Minimal pip environment for CI. Use environment.yml for the full project and OCR.
+numpy
+pandas
+scipy
+scikit-learn
+pyarrow
+requests
+pdfplumber
+matplotlib
+openpyxl
+tabulate
+pyjstat==2.4.0
+pytest
+ruff

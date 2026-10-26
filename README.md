@@ -102,13 +102,13 @@ pas de date de publication historique.
 La pipeline nettoie et valide OFS et Swissvotes dans deux tables distinctes. Elle ne fusionne pas les datasets :
 
 ```bash
-python scripts/run_pipeline.py
+python -m scripts.run_pipeline
 ```
 
 Pour renouveler les deux sources avant la reconstruction :
 
 ```bash
-python scripts/run_pipeline.py --force
+python -m scripts.run_pipeline --force
 ```
 
 Les fichiers bruts présents sont réutilisés sans accès réseau, sauf avec `--force`.
@@ -153,14 +153,14 @@ Organisation de `scripts/` :
 - `statpop/` : population résidante par commune (collecte, conversion Parquet, features démographiques).
 - `typologies/` : typologies territoriales et régions linguistiques (collecte, table des communes).
 - `common/` : configuration, construction unique des identifiants et utilitaires de collecte PXWeb.
-- `integration/` : préparation des correspondances entre sources, sans fusion des variables.
+- `integration/` : correspondances, audit de compatibilité et construction explicite de la table exploratoire.
 - `run_pipeline.py` : orchestration OFS et Swissvotes ; avec `--with-communes`, répertoire des communes, STATPOP et typologies.
 
 Les modules se lancent depuis la racine du dépôt avec `python -m`, par exemple
 `python -m scripts.modeling.evaluate_votes --help` ou
 `python -m scripts.elections.collect_elections_conseil_national --help`.
-Le collecteur CSV alternatif `scripts.ofs_votes.collect_votations_federales`
-reste disponible pour le notebook historique ; le pipeline principal utilise le fichier PX.
+Les notebooks d'exploration sont regroupés dans `notebooks/datasets/<source>/eda.ipynb`
+et lisent les tables du pipeline. L'ancienne collecte CSV OFS par API a été supprimée.
 
 La préparation des correspondances est optionnelle :
 
@@ -234,7 +234,9 @@ python -m pytest tests -q
 python -m ruff check scripts tests
 ```
 
-### Explications du Conseil fédéral
+La CI exécute la suite complète sur Windows et Linux à chaque pull request.
+`ruff.toml` fixe les règles du dépôt ; `requirements-test.txt` définit l'environnement
+pip minimal de la CI. L'environnement complet de travail reste `environment.yml`.
 
 ### Datasets communaux (STATPOP, typologies, répertoire des communes)
 
@@ -246,7 +248,22 @@ python -m scripts.run_pipeline --with-communes
 
 STATPOP utilise l'export PX complet (environ 153 Mo), puis extrait les années localement ; les fichiers présents sont réutilisés et contrôlés. Le mode API par lots reste disponible comme solution de repli, mais il est beaucoup plus lent. Chaque dataset écrit sous `data/<étape>/<dataset>/` (`repertoire_communes`, `statpop`, `typologies`). Pour leur contenu, leurs règles de disponibilité avant scrutin et leur reconstruction, voir la documentation de [STATPOP](docs/datasets/statpop/README.md), des [typologies](docs/datasets/typologies/README.md) et du [répertoire des communes](docs/datasets/repertoire_communes/README.md).
 
+### Explications du Conseil fédéral
+
 Le snapshot des explications du Conseil fédéral est disponible dans `data/processed/federal_explanations/`. Pour son contenu, ses limites et sa reconstruction, voir la [documentation du dataset](docs/datasets/federal_explanations/README.md).
+
+## Table exploratoire structurée
+
+Après préparation des sources, une étape explicite crée la table rétrospective
+commune × objet, sans texte et avec les hypothèses temporelles documentées :
+
+```bash
+python -m scripts.integration.build_modeling_dataset
+```
+
+Voir [le contrat de la table](data/processed/modeling/README.md). La sortie reste
+distincte des sources et du protocole de prévision stricte ; elle ne constitue
+pas encore une évaluation de modèle.
 
 ## Collaboration
 

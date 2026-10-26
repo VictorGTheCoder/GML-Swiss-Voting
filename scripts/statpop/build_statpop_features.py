@@ -93,7 +93,7 @@ def build() -> pd.DataFrame:
     features = features.reset_index().rename(columns={"code": "commune_code"})
     features["municipality_id"] = features["commune_code"].astype("string").str.zfill(4)
     month, day = AVAILABLE_MONTH_DAY
-    features["available_from"] = pd.to_datetime(dict(year=features["year"] + 1, month=month, day=day))
+    features["available_from"] = pd.to_datetime({"year": features["year"] + 1, "month": month, "day": day})
     return features.sort_values(["commune_code", "year"], key=lambda s: s.astype(int) if s.name == "commune_code" else s)
 
 

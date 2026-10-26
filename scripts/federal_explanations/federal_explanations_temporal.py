@@ -129,8 +129,8 @@ def build_forecast_text_export(
     the existence of some brochure. Ambiguous relationships remain in exclusions.
     Output records use the evaluation contract's voting_date and text names.
     """
-    from collections import Counter
     import json
+    from collections import Counter
     from pathlib import Path
 
     records = [dict(row) for row in rows]

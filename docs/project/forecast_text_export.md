@@ -1,6 +1,6 @@
 # Forecast-time brochure text export
 
-Use `scripts.modeling.forecast_text_export.build_forecast_text_export(records,
+Use `scripts.federal_explanations.federal_explanations_temporal.build_forecast_text_export(records,
 output_dir)` with one reviewed object record per vote ID. The function reuses
 existing brochure eligibility gates; it does not convert a proposed match or
 unreviewed section into validated object text.

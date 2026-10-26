@@ -1,8 +1,8 @@
 """Prepared, explicitly allowlisted source blocks; no source collection is performed."""
 from __future__ import annotations
 
-from dataclasses import dataclass
 import hashlib
+from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -74,9 +74,8 @@ def join_feature_blocks(rows, blocks, geography_mode):
         if missing:
             raise ValueError(f'Missing prepared feature columns: {sorted(missing)}')
         source = block.records.copy().reset_index(drop=True)
-        if block.scope == 'object':
-            if {'object_match_status','object_match_evidence'} - set(source):
-                raise ValueError('Object metadata requires validated correspondence columns')
+        if block.scope == 'object' and {'object_match_status','object_match_evidence'} - set(source):
+            raise ValueError('Object metadata requires validated correspondence columns')
         if block.scope == 'municipality':
             # Match the evaluator's string reference IDs for CSV, Parquet and in-memory blocks.
             source['geography_id'] = source.geography_id.astype('string')
@@ -195,7 +194,7 @@ def load_feature_blocks(manifest_path):
     path = Path(manifest_path)
     descriptors = json.loads(path.read_text())
     if not isinstance(descriptors,list):
-        raise ValueError('Feature block manifest must contain a JSON list')
+        raise ValueError('Feature block manifest must contain a JSON list')  # noqa: TRY004 - invalid JSON document value
     blocks = []
     for descriptor in descriptors:
         parameters = descriptor.copy()

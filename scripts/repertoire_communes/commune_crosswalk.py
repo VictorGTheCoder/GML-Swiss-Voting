@@ -29,7 +29,7 @@ COMMUNE_LEVEL = "3"  # snapshot levels: 1 canton, 2 district, 3 commune
 
 
 def parse_fr_date(text: str) -> date:
-    return datetime.strptime(text, "%d.%m.%Y").date()
+    return datetime.strptime(text, "%d.%m.%Y").date()  # noqa: DTZ007 - calendar date, no time or timezone in source
 
 
 def read_csv(path: Path) -> list[dict]:

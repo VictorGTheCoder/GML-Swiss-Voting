@@ -1,15 +1,15 @@
 import json
 
-from scripts.modeling.forecast_text_export import build_forecast_text_export
+from scripts.federal_explanations.federal_explanations_temporal import build_forecast_text_export
 
 
 def reviewed(**changes):
-    row = dict(vote_id="1", vote_date="2025-06-01", full_text="Reviewed object text",
-               forecast_at="2025-05-01T12:00:00+00:00", forecast_reference="official publication record",
-               availability_at="2025-05-01T12:00:00+00:00", availability_reference="exact PDF archive record",
-               source_sha256="a" * 64, decision_source_sha256="a" * 64,
-               availability_status="CONFIRMED_PRE_VOTE", match_status="VALIDATED",
-               extraction_status="EXTRACTED", semantic_status="VALIDATED")
+    row = {"vote_id": "1", "vote_date": "2025-06-01", "full_text": "Reviewed object text",
+               "forecast_at": "2025-05-01T12:00:00+00:00", "forecast_reference": "official publication record",
+               "availability_at": "2025-05-01T12:00:00+00:00", "availability_reference": "exact PDF archive record",
+               "source_sha256": "a" * 64, "decision_source_sha256": "a" * 64,
+               "availability_status": "CONFIRMED_PRE_VOTE", "match_status": "VALIDATED",
+               "extraction_status": "EXTRACTED", "semantic_status": "VALIDATED"}
     return row | changes
 
 
