@@ -1,0 +1,285 @@
+{
+  "annual_rows": 92972,
+  "annual_codes": 2113,
+  "zero_denominators": 266,
+  "anomalous_codes": [
+    "630",
+    "4501",
+    "4505",
+    "4546",
+    "4621",
+    "4643",
+    "4670",
+    "4683",
+    "4691",
+    "4695",
+    "4716",
+    "4723",
+    "4724",
+    "4786",
+    "4826"
+  ],
+  "legacy_codes": [
+    "4505",
+    "4670",
+    "4695"
+  ],
+  "statpop_codes_not_in_target": [
+    "700",
+    "2016",
+    "2027",
+    "2278",
+    "2520",
+    "2529",
+    "4122"
+  ],
+  "comparison_status_counts": {
+    "balance": [
+      {
+        "year": 1981,
+        "status": "equal",
+        "rows": 2110
+      },
+      {
+        "year": 1981,
+        "status": "missing_ofs",
+        "rows": 3
+      },
+      {
+        "year": 1990,
+        "status": "equal",
+        "rows": 2110
+      },
+      {
+        "year": 1990,
+        "status": "missing_ofs",
+        "rows": 3
+      },
+      {
+        "year": 2000,
+        "status": "equal",
+        "rows": 2110
+      },
+      {
+        "year": 2000,
+        "status": "missing_ofs",
+        "rows": 3
+      },
+      {
+        "year": 2009,
+        "status": "equal",
+        "rows": 2110
+      },
+      {
+        "year": 2009,
+        "status": "missing_ofs",
+        "rows": 3
+      },
+      {
+        "year": 2010,
+        "status": "equal",
+        "rows": 2110
+      },
+      {
+        "year": 2010,
+        "status": "missing_ofs",
+        "rows": 3
+      },
+      {
+        "year": 2011,
+        "status": "equal",
+        "rows": 2110
+      },
+      {
+        "year": 2011,
+        "status": "missing_ofs",
+        "rows": 3
+      }
+    ],
+    "statpop": [
+      {
+        "year": 2010,
+        "status": "different",
+        "rows": 2033
+      },
+      {
+        "year": 2010,
+        "status": "equal",
+        "rows": 77
+      },
+      {
+        "year": 2010,
+        "status": "missing_ofs",
+        "rows": 3
+      },
+      {
+        "year": 2011,
+        "status": "different",
+        "rows": 9
+      },
+      {
+        "year": 2011,
+        "status": "equal",
+        "rows": 2101
+      },
+      {
+        "year": 2011,
+        "status": "missing_ofs",
+        "rows": 3
+      }
+    ],
+    "census": [
+      {
+        "year": 1980,
+        "status": "different",
+        "rows": 4
+      },
+      {
+        "year": 1980,
+        "status": "equal",
+        "rows": 2074
+      },
+      {
+        "year": 1980,
+        "status": "missing_ofs",
+        "rows": 28
+      },
+      {
+        "year": 1990,
+        "status": "different",
+        "rows": 4
+      },
+      {
+        "year": 1990,
+        "status": "equal",
+        "rows": 2080
+      },
+      {
+        "year": 1990,
+        "status": "missing_ofs",
+        "rows": 25
+      },
+      {
+        "year": 2000,
+        "status": "equal",
+        "rows": 2097
+      },
+      {
+        "year": 2000,
+        "status": "missing_ofs",
+        "rows": 13
+      }
+    ]
+  },
+  "age_coverage": [
+    {
+      "year": 1980,
+      "age_group": "0-19",
+      "rts_observations": 2106,
+      "ofs_comparable": 2078,
+      "equal_counts": 2074,
+      "differing_counts": 4,
+      "positive_rts_denominators": 2106
+    },
+    {
+      "year": 1980,
+      "age_group": "20-39",
+      "rts_observations": 0,
+      "ofs_comparable": null,
+      "equal_counts": null,
+      "differing_counts": null,
+      "positive_rts_denominators": null
+    },
+    {
+      "year": 1980,
+      "age_group": "20-64",
+      "rts_observations": 2106,
+      "ofs_comparable": 2078,
+      "equal_counts": 2074,
+      "differing_counts": 4,
+      "positive_rts_denominators": 2106
+    },
+    {
+      "year": 1980,
+      "age_group": "65+",
+      "rts_observations": 2106,
+      "ofs_comparable": 2078,
+      "equal_counts": 2074,
+      "differing_counts": 4,
+      "positive_rts_denominators": 2106
+    },
+    {
+      "year": 1990,
+      "age_group": "0-19",
+      "rts_observations": 2109,
+      "ofs_comparable": 2084,
+      "equal_counts": 2080,
+      "differing_counts": 4,
+      "positive_rts_denominators": 2109
+    },
+    {
+      "year": 1990,
+      "age_group": "20-39",
+      "rts_observations": 0,
+      "ofs_comparable": null,
+      "equal_counts": null,
+      "differing_counts": null,
+      "positive_rts_denominators": null
+    },
+    {
+      "year": 1990,
+      "age_group": "20-64",
+      "rts_observations": 2109,
+      "ofs_comparable": 2084,
+      "equal_counts": 2080,
+      "differing_counts": 4,
+      "positive_rts_denominators": 2109
+    },
+    {
+      "year": 1990,
+      "age_group": "65+",
+      "rts_observations": 2109,
+      "ofs_comparable": 2084,
+      "equal_counts": 2080,
+      "differing_counts": 4,
+      "positive_rts_denominators": 2109
+    },
+    {
+      "year": 2000,
+      "age_group": "0-19",
+      "rts_observations": 2110,
+      "ofs_comparable": 2097,
+      "equal_counts": 2097,
+      "differing_counts": 0,
+      "positive_rts_denominators": 2110
+    },
+    {
+      "year": 2000,
+      "age_group": "20-39",
+      "rts_observations": 0,
+      "ofs_comparable": null,
+      "equal_counts": null,
+      "differing_counts": null,
+      "positive_rts_denominators": null
+    },
+    {
+      "year": 2000,
+      "age_group": "20-64",
+      "rts_observations": 2110,
+      "ofs_comparable": 2097,
+      "equal_counts": 2097,
+      "differing_counts": 0,
+      "positive_rts_denominators": 2110
+    },
+    {
+      "year": 2000,
+      "age_group": "65+",
+      "rts_observations": 2110,
+      "ofs_comparable": 2097,
+      "equal_counts": 2097,
+      "differing_counts": 0,
+      "positive_rts_denominators": 2110
+    }
+  ],
+  "historical_availability": "not_proven; no feature integration or V1 change"
+}
