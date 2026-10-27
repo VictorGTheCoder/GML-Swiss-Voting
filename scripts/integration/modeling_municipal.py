@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date
+import hashlib
 from pathlib import Path
 
 import numpy as np
@@ -332,7 +333,22 @@ def build_municipal_feature_blocks(
 
 def load_local_municipal_sources(source_root: Path) -> dict:
     """Read the checked-in prepared STATPOP and commune-level sources without editing them."""
+    import json
+
     root = Path(source_root)
+    verified_hashes = {}
+    for relative in (
+        "features/statpop_nationality.csv", "features/statpop_age_classes.csv",
+        "features/commune_levels_2026-01-01.csv", "geography/register_snapshot_2025-04-06.csv",
+        "geography/register_snapshot_2026-01-01.csv", "geography/register_mutations_2010_2026.csv",
+    ):
+        path = root / relative
+        metadata = json.loads(path.with_suffix(".provenance.json").read_text(encoding="utf-8"))
+        actual = hashlib.sha256(path.read_bytes()).hexdigest()
+        expected = metadata.get("sha256")
+        if not expected or actual != expected:
+            raise ValueError(f"Municipal source {relative} does not match its provenance SHA-256")
+        verified_hashes[relative] = actual
     features = root / "features"
     nationality = pd.read_csv(features / "statpop_nationality.csv", dtype={"code": "string"})
     age_classes = pd.read_csv(features / "statpop_age_classes.csv", dtype={"code": "string"})
@@ -350,6 +366,7 @@ def load_local_municipal_sources(source_root: Path) -> dict:
         crosswalk_evidence="data/raw/geography/register_mutations_2010_2026.provenance.json; "
                             "snapshots register_snapshot_2025-04-06 and register_snapshot_2026-01-01",
     )
+    geography_audit["verified_source_sha256"] = verified_hashes
     versions = {
         "population_source_version": _sidecar_version(features / "statpop_nationality.provenance.json"),
         "age_source_version": _sidecar_version(features / "statpop_age_classes.provenance.json"),
