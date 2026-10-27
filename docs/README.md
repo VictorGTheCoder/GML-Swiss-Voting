@@ -12,5 +12,6 @@ La documentation est organisée pour rester lisible à mesure que les six source
 Chaque source dispose d'un dossier unique sous `docs/datasets/<dataset>/` avec un `README.md` de référence.
 
 - [Explications du Conseil fédéral](datasets/federal_explanations/README.md)
+- [ESPOP — sources et reproduction de l'audit historique](datasets/espop/README.md)
 
 Les rapports de résultats et audits datés ne sont pas stockés ici : voir `reports/datasets/`.
