@@ -215,6 +215,39 @@ def test_complete_table_is_accepted_by_existing_evaluation_orchestrator():
     assert set(evaluation["eligible_rows"].partition) == {"train", "validation", "test"}
 
 
+def test_unknown_forecast_keeps_retrospective_feature_value_and_audit_row():
+    source = outcomes().loc[lambda frame: frame.vote_id.eq("100")].copy()
+    block = FeatureBlock(
+        block_id="municipal_test", scope="municipality",
+        records=pd.DataFrame([{
+            "municipality_id": "1", "geography_id": "bfs-2026-01-01",
+            "reference_date": "2020-08-31", "published_at": "2020-09-20",
+            "availability_status": "unknown", "availability_evidence": "archive-check-pending",
+            "source_version": "test-v1", "population": 321,
+        }]),
+        numeric_features=("population",), categorical_features=(),
+        definitions={"population": "fixture population"},
+        source_url="https://example.test/source", source_version="test-v1",
+        geography_mode="retrospective_fixed",
+    )
+
+    result = prepare_modeling_table(
+        source, geography_id="bfs-2026-01-01", source_version="ofs-v1",
+        forecast_publications=None, feature_blocks=(block,),
+    )
+
+    row = result.prepared.iloc[0]
+    assert pd.isna(row.forecast_at)
+    assert row.municipal_test__population == 321
+    assert row.municipal_test__availability_status == "unknown_availability"
+    assert row.municipal_test__source_version == "test-v1"
+    assert row.municipal_test__availability_evidence == "archive-check-pending"
+    assert len(result.feature_join_report) == 1
+    assert result.feature_join_report.iloc[0].status == "unknown_availability"
+    assert result.strict_population.empty
+    assert "feature_unknown_availability" in set(result.exclusions.reason)
+
+
 def test_historically_existing_geography_requires_mapping_available_and_valid_at_forecast():
     source = outcomes().loc[lambda frame: frame.vote_id.eq("100")].copy()
     crosswalk = pd.DataFrame([

@@ -352,7 +352,6 @@ def prepare_modeling_table(
             prepared_keys = pd.MultiIndex.from_frame(prepared[["municipality_id", "vote_id"]])
             strict_mask &= ~prepared_keys.isin(blocked_keys)
     strict_population = prepared.loc[strict_mask].copy().reset_index(drop=True)
-    strict_population = prepared.loc[strict_mask].copy().reset_index(drop=True)
     if not strict_population.empty:
         strict_population["voting_date"] = pd.to_datetime(strict_population.voting_date, utc=True).dt.normalize()
     exclusions = excluded.sort_values(["vote_id", "municipality_id", "reason"], kind="stable").reset_index(drop=True)
