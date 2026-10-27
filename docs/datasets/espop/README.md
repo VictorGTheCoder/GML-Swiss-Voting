@@ -5,6 +5,10 @@ répond au [ticket #65](https://github.com/VictorGTheCoder/GML-Swiss-Voting/issu
 Il établit la faisabilité d'une extension ; il ne construit pas de table de
 modélisation et ne change pas la période principale provisoire 2012–2025.
 
+Une [recherche complémentaire sur les raccordements existants](existing_projects.md)
+documente les données RTS, le projet zurichois et les outils de correspondance
+historique, avec les contrôles réalisés et les limites de réutilisation.
+
 ## Sources à récupérer
 
 - [Bilan démographique communal OFS](https://www.pxweb.bfs.admin.ch/pxweb/fr/px-x-0102020000_201/-/px-x-0102020000_201.px/)
