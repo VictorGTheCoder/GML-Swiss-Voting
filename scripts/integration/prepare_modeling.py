@@ -41,6 +41,7 @@ def prepare_base_table(
     geography_id: str,
     source_version: str,
     geography_crosswalk: pd.DataFrame | None = None,
+    source_geography_id: str | None = None,
     source_start: str = "2010-01-01",
 ) -> BasePreparation:
     """Prepare one municipality × vote row, preserving unresolved rows for audit.
@@ -57,6 +58,9 @@ def prepare_base_table(
     source_start_at = pd.to_datetime(source_start, utc=True)
 
     rows = outcomes.copy(deep=True)
+    if "harmonization_applied" in rows and rows.harmonization_applied.fillna(False).astype(bool).any():
+        if geography_crosswalk is not None:
+            raise ValueError("Cannot apply a geography crosswalk to already harmonized outcomes")
     rows["_input_order"] = np.arange(len(rows))
     rows["preparation_status"] = "ready_for_enrichment"
     rows["voting_date"] = pd.to_datetime(rows.pop("vote_date"), errors="coerce", utc=True, format="mixed").dt.normalize()
@@ -66,6 +70,7 @@ def prepare_base_table(
     for name in ("municipality_id", "vote_id"):
         rows[name] = rows[name].astype("string").str.strip()
         rows.loc[rows[name].eq(""), name] = pd.NA
+    rows["municipality_id"] = rows.municipality_id.map(_normalize_municipality_code).astype("string")
     try:
         rows["vote_id"] = ofs_keys(rows["vote_id"])
     except ValueError:
@@ -74,8 +79,22 @@ def prepare_base_table(
         rows.loc[~valid_vote_id, "preparation_status"] = "invalid_identifier"
     rows["yes_count"] = pd.to_numeric(rows.pop("votes_yes"), errors="coerce")
     rows["no_count"] = pd.to_numeric(rows.pop("votes_no"), errors="coerce")
-    rows["geography_id"] = geography_id
-    rows["source_version"] = source_version
+    if geography_crosswalk is not None and not source_geography_id:
+        raise ValueError("source_geography_id is required when a geography crosswalk is supplied")
+    if "geography_id" not in rows:
+        rows["geography_id"] = source_geography_id or geography_id
+    elif geography_crosswalk is not None:
+        rows["geography_id"] = source_geography_id
+    if "source_geography_id" not in rows:
+        already_harmonized = ("harmonization_applied" in rows
+                              and rows.harmonization_applied.fillna(False).astype(bool).any())
+        rows["source_geography_id"] = pd.NA if already_harmonized and geography_crosswalk is None else (
+            source_geography_id or geography_id
+        )
+    if "source_version" not in rows:
+        rows["source_version"] = source_version
+    else:
+        rows["source_version"] = rows.source_version.fillna(source_version).astype("string")
     rows["is_subsidiary"] = rows.pop("is_tiebreak_question").astype("boolean")
 
     # Keep a single evidence schema compatible with evaluate_votes.REQUIRED.
@@ -84,13 +103,24 @@ def prepare_base_table(
     rows["result_available_at"] = pd.NaT
     rows["result_availability_evidence"] = pd.NA
     rows["target_share"] = np.nan
-    rows["harmonization_applied"] = False
-    rows["crosswalk_version"] = pd.NA
-    rows["crosswalk_evidence"] = pd.NA
+    if "harmonization_applied" not in rows:
+        rows["harmonization_applied"] = False
+    if "crosswalk_version" not in rows:
+        rows["crosswalk_version"] = pd.NA
+    if "crosswalk_evidence" not in rows:
+        rows["crosswalk_evidence"] = pd.NA
     rows["target_period_eligible"] = False
 
+    source_duplicate = rows.duplicated(["municipality_id", "vote_id"], keep=False)
+    rows.loc[source_duplicate, "preparation_status"] = "duplicate_key"
+    rows["_source_counts_valid"] = (
+        np.isfinite(rows.yes_count) & np.isfinite(rows.no_count)
+        & rows.yes_count.ge(0) & rows.no_count.ge(0)
+        & rows.yes_count.mod(1).eq(0) & rows.no_count.mod(1).eq(0)
+        & (rows.yes_count + rows.no_count).gt(0)
+    )
     if geography_crosswalk is not None:
-        rows = _apply_base_geography(rows, geography_crosswalk, geography_id)
+        rows = _apply_base_geography(rows, geography_crosswalk, source_geography_id, geography_id)
 
     duplicate = rows.duplicated(["municipality_id", "vote_id"], keep=False)
     rows.loc[duplicate, "preparation_status"] = "duplicate_key"
@@ -125,6 +155,7 @@ def prepare_base_table(
     rows = rows.drop(columns="_input_order").sort_values(
         ["voting_date", "vote_id", "municipality_id"], na_position="last", kind="stable"
     ).reset_index(drop=True)
+    rows = rows.drop(columns="_source_counts_valid", errors="ignore")
     exclusions = (rows.groupby("preparation_status", dropna=False).size()
                   .rename("rows").reset_index().sort_values("preparation_status").reset_index(drop=True))
     join_report = {
@@ -133,6 +164,8 @@ def prepare_base_table(
         "rows_before_source_start": excluded_before_source_start,
         "source_start_inclusive": source_start_at.isoformat(),
         "geography_reference": geography_id,
+        "source_geography_reference": source_geography_id or geography_id,
+        "target_geography_reference": geography_id,
         "geography_mapping_rows": 0 if geography_crosswalk is None else len(geography_crosswalk),
         "geography_mapping_applied": int(rows.harmonization_applied.sum()),
         "unresolved_rows": int((~rows.preparation_status.eq("ready_for_enrichment")).sum()),
@@ -169,63 +202,164 @@ def _coverage_by(rows: pd.DataFrame, key: str) -> dict:
     return coverage
 
 
-def _apply_base_geography(rows: pd.DataFrame, crosswalk: pd.DataFrame, geography_id: str) -> pd.DataFrame:
+def _normalize_municipality_code(value):
+    if pd.isna(value):
+        return pd.NA
+    code = str(value).strip()
+    if code.isdigit():
+        return str(int(code))
+    return code or pd.NA
+
+
+def _apply_base_geography(rows: pd.DataFrame, crosswalk: pd.DataFrame,
+                          source_geography_id: str, target_geography_id: str) -> pd.DataFrame:
     required = {"source_municipality_id", "target_municipality_id", "mapping_type",
-                "crosswalk_version", "crosswalk_evidence"}
+                "source_geography_id", "target_geography_id", "crosswalk_version", "crosswalk_evidence",
+                "mapping_available_at", "target_valid_from"}
     missing = required - set(crosswalk.columns)
     if missing:
         raise ValueError(f"Geography crosswalk missing columns: {sorted(missing)}")
-    mapping = crosswalk[list(required)].copy().rename(columns={
+    mapping = crosswalk[sorted(required)].copy().rename(columns={
         "crosswalk_version": "_crosswalk_version", "crosswalk_evidence": "_crosswalk_evidence",
+        "source_geography_id": "_source_geography_id", "target_geography_id": "_target_geography_id",
     })
     for column in ("source_municipality_id", "target_municipality_id", "mapping_type",
-                   "_crosswalk_version", "_crosswalk_evidence"):
+                   "_source_geography_id", "_target_geography_id", "_crosswalk_version", "_crosswalk_evidence"):
         mapping[column] = mapping[column].astype("string").str.strip()
-    if mapping[["source_municipality_id", "target_municipality_id", "mapping_type",
-                "_crosswalk_version", "_crosswalk_evidence"]].isna().any().any():
+    mapping["source_municipality_id"] = mapping.source_municipality_id.map(_normalize_municipality_code).astype("string")
+    mapping["target_municipality_id"] = mapping.target_municipality_id.map(_normalize_municipality_code).astype("string")
+    declared_split_sources = set(mapping.loc[mapping.mapping_type.eq("split"), "source_municipality_id"])
+    if mapping[["source_municipality_id", "target_municipality_id", "mapping_type", "_source_geography_id",
+                "_target_geography_id", "_crosswalk_version", "_crosswalk_evidence"]].isna().any().any():
         raise ValueError("Geography crosswalk identifiers and provenance must be nonempty")
-    if mapping.source_municipality_id.duplicated().any():
-        # An ambiguous source is retained and marked, rather than multiplied.
-        ambiguous = set(mapping.loc[mapping.source_municipality_id.duplicated(keep=False), "source_municipality_id"])
+    if not mapping._source_geography_id.eq(source_geography_id).all() or not mapping._target_geography_id.eq(target_geography_id).all():
+        raise ValueError("Geography crosswalk source/target references do not match requested geography")
+    if mapping._source_geography_id.eq(mapping._target_geography_id).any():
+        raise ValueError("Geography crosswalk cannot map within the same reference")
+    mapping_key = ["source_municipality_id", "_source_geography_id"]
+    ambiguous_mask = mapping.duplicated(mapping_key, keep=False)
+    if ambiguous_mask.any():
+        by_source = mapping.loc[ambiguous_mask].groupby(mapping_key, dropna=False)
+        valid_splits = set()
+        invalid_sources = set()
+        for key, group in by_source:
+            if (group.mapping_type.eq("split").all() and not group.target_municipality_id.duplicated().any()
+                    and not group.duplicated().any()):
+                valid_splits.add(key[0])
+            else:
+                invalid_sources.add(key[0])
+        ambiguous = invalid_sources
         rows.loc[rows.municipality_id.isin(ambiguous), "preparation_status"] = "ambiguous_geography_mapping"
-        mapping = mapping.loc[~mapping.source_municipality_id.isin(ambiguous)]
-    supported_types = {"unchanged", "recoded_or_merged", "merge"}
+        mapping = mapping.loc[~mapping.source_municipality_id.isin(ambiguous | valid_splits)]
+    supported_types = {"identity", "merger"}
+    for target_key, group in mapping.groupby(["target_municipality_id", "_target_geography_id"], sort=True):
+        supported = group.loc[group.mapping_type.isin(supported_types)]
+        if len(supported) > 1 and not supported.mapping_type.eq("merger").all():
+            raise ValueError("Many-to-one geography target requires explicit merger mappings")
+        if group.mapping_type.eq("merger").any() and not group.mapping_type.eq("merger").all():
+            raise ValueError("Geography merger target cannot mix identity and merger mappings")
+        for provenance_column in ("_crosswalk_version", "_crosswalk_evidence", "mapping_available_at",
+                                  "target_valid_from", "target_valid_to"):
+            if provenance_column in group and group[provenance_column].nunique(dropna=False) > 1:
+                raise ValueError("Geography constituents have conflicting version, evidence, or validity provenance")
+        for date_column in ("target_valid_from", "target_valid_to"):
+            if date_column in group and group[date_column].nunique(dropna=False) > 1:
+                raise ValueError("Geography merger constituents have conflicting target validity")
+        if group.mapping_type.eq("merger").any() and len(group) < 2:
+            raise ValueError("A geography merger must declare at least two source constituents")
+    for date_column in ("mapping_available_at", "target_valid_from", "target_valid_to"):
+        if date_column in mapping:
+            mapping[date_column] = pd.to_datetime(mapping[date_column], errors="coerce", utc=True, format="mixed")
+    split_sources = declared_split_sources
+    rows.loc[rows.municipality_id.isin(split_sources)
+             & rows.preparation_status.eq("ready_for_enrichment"), "preparation_status"] = "unsupported_geography_mapping"
+    mapping = mapping.loc[~mapping.mapping_type.eq("split")].copy()
+    duplicate_keys = rows.duplicated(["municipality_id", "vote_id"], keep=False)
+    rows.loc[duplicate_keys, "preparation_status"] = "duplicate_key"
     merged = rows.merge(mapping, how="left", left_on="municipality_id", right_on="source_municipality_id",
                         validate="many_to_one", indicator=True, suffixes=("", "_crosswalk"))
     absent = merged._merge.eq("left_only")
     merged.loc[absent & merged.preparation_status.eq("ready_for_enrichment"), "preparation_status"] = "geography_mapping_missing"
     unsupported = merged._merge.eq("both") & ~merged.mapping_type.isin(supported_types)
     merged.loc[unsupported & merged.preparation_status.eq("ready_for_enrichment"), "preparation_status"] = "unsupported_geography_mapping"
-    supported = merged._merge.eq("both") & merged.mapping_type.isin(supported_types)
     merged["_original_municipality_id"] = merged.municipality_id
+
+    merger_targets = mapping.loc[mapping.mapping_type.eq("merger")].groupby(
+        ["target_municipality_id", "_target_geography_id"], sort=True
+    ).source_municipality_id.agg(lambda values: frozenset(values))
+    if merger_targets.empty:
+        merger_target_by_key = {}
+    else:
+        merger_target_by_key = {key: expected for key, expected in merger_targets.items()}
+    merged["_target_key"] = list(zip(merged.target_municipality_id, merged._target_geography_id))
+    merged["_expected_constituents"] = merged._target_key.map(merger_target_by_key)
+    is_merger = merged.mapping_type.eq("merger") & merged._merge.eq("both")
+
+    # Validate each object against the complete declared source set before any
+    # aggregation. Duplicate source rows, missing constituents, bad counts or
+    # inconsistent metadata keep source rows separate for inspection.
+    metadata_columns = ["voting_date", "is_special_unit", "is_subsidiary", "is_provisional", "source_version"]
+    bad_merge_keys = set()
+    conflict_keys = set()
+    incomplete_keys = set()
+    for (vote_id, target_id, target_geo), group in merged.loc[is_merger].groupby(
+            ["vote_id", "target_municipality_id", "_target_geography_id"], dropna=False, sort=False):
+        key = (vote_id, target_id, target_geo)
+        expected = merger_target_by_key.get((target_id, target_geo), frozenset())
+        actual_values = group._original_municipality_id.astype(str)
+        actual = set(actual_values)
+        duplicate_source = actual_values.duplicated(keep=False).any()
+        if duplicate_source or actual != set(expected):
+            incomplete_keys.add(key)
+        elif not group._source_counts_valid.all():
+            bad_merge_keys.add(key)
+        elif any(group[column].nunique(dropna=False) > 1 for column in metadata_columns):
+            conflict_keys.add(key)
+    merge_key_series = list(zip(merged.vote_id, merged.target_municipality_id, merged._target_geography_id))
+    keys = pd.Series(merge_key_series, index=merged.index)
+    incomplete_mask = is_merger & keys.isin(incomplete_keys)
+    invalid_mask = is_merger & keys.isin(bad_merge_keys)
+    conflict_mask = is_merger & keys.isin(conflict_keys)
+    preserve_mask = incomplete_mask | invalid_mask | conflict_mask
+    merged.loc[incomplete_mask & merged.preparation_status.eq("ready_for_enrichment"),
+               "preparation_status"] = "incomplete_geography_merger"
+    merged.loc[invalid_mask, "preparation_status"] = "invalid_target"
+    merged.loc[conflict_mask & merged.preparation_status.eq("ready_for_enrichment"),
+               "preparation_status"] = "conflicting_merger_metadata"
+
+    supported = merged._merge.eq("both") & merged.mapping_type.isin(supported_types) & ~preserve_mask
     merged.loc[supported, "municipality_id"] = merged.loc[supported, "target_municipality_id"]
-    merged.loc[supported, "geography_id"] = geography_id
+    merged.loc[supported, "geography_id"] = merged.loc[supported, "_target_geography_id"]
     merged.loc[supported, "harmonization_applied"] = True
     merged.loc[supported, "crosswalk_version"] = merged.loc[supported, "_crosswalk_version"]
     merged.loc[supported, "crosswalk_evidence"] = merged.loc[supported, "_crosswalk_evidence"]
-    merged = merged.drop(columns=["target_municipality_id", "_merge"])
-    merge_rows = merged.mapping_type.eq("merge") & merged._crosswalk_version.notna()
-    merger_keys = (merged.loc[merge_rows].groupby(["vote_id", "municipality_id"], dropna=False)
-                   .size().loc[lambda counts: counts.gt(1)].index)
-    merger = pd.MultiIndex.from_frame(merged[["vote_id", "municipality_id"]]).isin(merger_keys)
+    merged.loc[preserve_mask, "geography_id"] = source_geography_id
+    merged = merged.drop(columns=["_merge"])
+
+    mapped_mergers = is_merger & ~preserve_mask
+    merger = mapped_mergers
     if merger.any():
         passthrough = merged.loc[~merger].copy()
         merged_rows = merged.loc[merger].copy()
-        aggregated = merged_rows.groupby(["vote_id", "municipality_id"], dropna=False, sort=False).agg(
+        aggregated = merged_rows.groupby(["vote_id", "municipality_id", "geography_id"], dropna=False, sort=False).agg(
             yes_count=("yes_count", lambda values: values.sum(min_count=1)),
             no_count=("no_count", lambda values: values.sum(min_count=1)),
             source_municipality_ids=("_original_municipality_id", lambda values: "|".join(sorted(values.astype(str)))),
         ).reset_index()
-        first = merged_rows.drop_duplicates(["vote_id", "municipality_id"]).drop(
-            columns=["yes_count", "no_count", "_original_municipality_id"]
+        first = merged_rows.drop_duplicates(["vote_id", "municipality_id", "geography_id"]).drop(
+            columns=["yes_count", "no_count", "_original_municipality_id", "_target_key", "_expected_constituents"]
         )
-        merged = pd.concat([passthrough, first.merge(aggregated, on=["vote_id", "municipality_id"],
-                                                       validate="one_to_one")], ignore_index=True)
+        merged = pd.concat([passthrough.drop(columns=["_target_key", "_expected_constituents"]),
+                            first.merge(aggregated, on=["vote_id", "municipality_id", "geography_id"],
+                                        validate="one_to_one")], ignore_index=True)
+    else:
+        merged = merged.drop(columns=["_target_key", "_expected_constituents"])
     merged["target_share"] = merged.yes_count / (merged.yes_count + merged.no_count).where(
         (merged.yes_count + merged.no_count).gt(0)
     )
     return merged.drop(columns=["_crosswalk_version", "_crosswalk_evidence", "_original_municipality_id",
-                                "mapping_type"], errors="ignore")
+                                "mapping_type", "source_municipality_id", "target_municipality_id",
+                                "_source_geography_id", "_target_geography_id"], errors="ignore")
 
 
 def write_base_artifacts(result: BasePreparation, output_path: Path = OUTPUT_PATH,
@@ -247,6 +381,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--input", type=Path, default=CLEAN_PATH, help="Cleaned OFS outcomes parquet")
     parser.add_argument("--geography-id", required=True, help="Verified source or target geography reference")
+    parser.add_argument("--source-geography-id", help="Required source reference when using a crosswalk")
     parser.add_argument("--source-version", required=True, help="Version/provenance label for the input")
     parser.add_argument("--source-start", default="2010-01-01", help="Inclusive floor for current source/history scope")
     parser.add_argument("--geography-crosswalk", type=Path, help="Optional validated crosswalk CSV")
@@ -257,6 +392,7 @@ def main() -> None:
     crosswalk = pd.read_csv(args.geography_crosswalk, dtype="string") if args.geography_crosswalk else None
     result = prepare_base_table(outcomes, geography_id=args.geography_id,
                                 source_version=args.source_version, geography_crosswalk=crosswalk,
+                                source_geography_id=args.source_geography_id,
                                 source_start=args.source_start)
     write_base_artifacts(result, args.output, args.report)
     print(f"Prepared {len(result.prepared):,} rows; see {args.report}")
