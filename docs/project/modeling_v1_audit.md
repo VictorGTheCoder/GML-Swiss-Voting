@@ -8,7 +8,7 @@ final-test evaluation was performed.
 | Population | Observations | Objects | Voting dates |
 | --- | ---: | ---: | ---: |
 | Retained sources from 2010 onward | 304,616 | 144 | 51 |
-| Provisional target window 2012–2025, before eligibility gates | 268,675 | 127 | See machine-readable coverage |
+| Provisional target window 2012–2025, before eligibility gates | 268,675 | 127 | 45 |
 | Strict eligible population | 0 | 0 | 0 |
 
 The source contains 1,025,903 outcome rows; 721,287 rows before 2010 are counted
