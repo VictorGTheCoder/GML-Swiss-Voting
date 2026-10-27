@@ -1,7 +1,10 @@
+import hashlib
+import json
+
 import pandas as pd
 import pytest
 
-from scripts.integration.modeling_municipal import prepare_municipal_table
+from scripts.integration.modeling_municipal import load_local_municipal_sources, prepare_municipal_table
 
 
 def _inputs(*, missing_age_bin=False, missing_commune=False):
@@ -170,3 +173,28 @@ def test_suppressed_population_counts_remain_missing_without_losing_observations
     assert pd.isna(row["statpop_population__share_foreign"])
     assert len(result.preparation.prepared) == 2
     assert result.audit["population"]["invalid_or_missing_foreign_rows"] == 1
+
+
+@pytest.mark.parametrize("tampered", [
+    "features/statpop_nationality.csv", "features/statpop_age_classes.csv",
+    "features/commune_levels_2026-01-01.csv", "geography/register_snapshot_2025-04-06.csv",
+    "geography/register_snapshot_2026-01-01.csv", "geography/register_mutations_2010_2026.csv",
+])
+def test_source_loader_rejects_modified_bytes_before_using_vintage_metadata(tmp_path, tampered):
+    files = [
+        "features/statpop_nationality.csv", "features/statpop_age_classes.csv",
+        "features/commune_levels_2026-01-01.csv", "geography/register_snapshot_2025-04-06.csv",
+        "geography/register_snapshot_2026-01-01.csv", "geography/register_mutations_2010_2026.csv",
+    ]
+    original = b"fixture,value\n1,100\n"
+    for relative in files:
+        path = tmp_path / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(original)
+        path.with_suffix(".provenance.json").write_text(json.dumps({
+            "sha256": hashlib.sha256(original).hexdigest(),
+        }))
+    (tmp_path / tampered).write_bytes(original + b"2,200\n")
+    with pytest.raises(ValueError, match="SHA-256"):
+        load_local_municipal_sources(tmp_path)
+    assert (tmp_path / tampered).read_bytes() == original + b"2,200\n"
