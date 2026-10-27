@@ -25,7 +25,8 @@ one row per `vote_id`, the publication instant, source, exact source version,
 and evidence pointer. A voting date, reference year or retrieval timestamp does
 not establish historical publication. Optional `--history-config` accepts the
 existing `EvaluationConfig` JSON with justified complete-date partitions.
-Without it, histories remain unknown and readiness records the missing policy.
+Without it, histories remain unknown and the strict population stays empty;
+readiness records the missing policy independently from source evidence gaps.
 No real partition years are chosen automatically.
 
 ## Artifacts
@@ -40,6 +41,8 @@ No real partition years are chosen automatically.
 | `coverage.json` | Source blocks, objects and voting dates, including candidate missingness |
 | `readiness.json` | Strict row counts, unresolved prerequisites and modeling readiness |
 | `manifest.json` | Candidate allowlist, input hash, block versions, definitions and configuration |
+| `blocks.json`, `block_*.csv` | Source blocks reloadable with `scripts.feature_blocks.load_feature_blocks` |
+| `domain_records.parquet` | Evidenced object-domain records for evaluation-time history recomputation |
 | `object_join_audit.csv` | Exact OFS–Swissvotes correspondence and consistency checks |
 | `unmatched_swissvotes.csv` | Source records outside the OFS coverage or with invalid identifiers |
 

@@ -103,7 +103,8 @@ def prepare_v1_table(
     history_exclusions = prepared.loc[~history_ok, ["municipality_id", "vote_id", "voting_date"]].assign(
         reason=history_reason, source_block="history",
     )
-    exclusions = pd.concat([preparation.exclusions, history_exclusions], ignore_index=True).sort_values(
+    exclusion_parts = [part for part in (preparation.exclusions, history_exclusions) if not part.empty]
+    exclusions = (pd.concat(exclusion_parts, ignore_index=True) if exclusion_parts else preparation.exclusions.copy()).sort_values(
         ["vote_id", "municipality_id", "reason"], kind="stable",
     ).reset_index(drop=True)
     strict = prepared.loc[strict_mask & history_ok].copy()
@@ -163,6 +164,11 @@ def _group_coverage(rows: pd.DataFrame, key: str) -> dict:
         result[label] = {
             "rows": len(group), "municipalities": int(group.municipality_id.nunique()),
             "missing_candidates": {name: int(group[name].isna().sum()) for name in CANDIDATE_FEATURES},
+            "block_availability": {
+                name.removesuffix("__availability_status"): {
+                    str(status): int(count) for status, count in group[name].value_counts(dropna=False).sort_index().items()
+                } for name in group if name.endswith("__availability_status")
+            },
         }
     return result
 
