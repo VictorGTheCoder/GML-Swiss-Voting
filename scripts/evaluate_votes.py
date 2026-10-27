@@ -303,11 +303,26 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     predictions['fallback'] = np.column_stack([np.zeros(len(targets),dtype=bool),history.loc[targets.index,'history_missing'].astype(bool)]).ravel()
     regularized_manifest = {}
     admissible_blocks = ()
+    fitting_partitions = ['train','validation'] if config.mode == 'final_test' and config.refit_train_validation else ['train']
+    active_history_rows = rows.partition.isin(fitting_partitions) | rows.index.isin(targets.index)
+    unresolved_history = {}
+    for prefix in ('history','history_5y','history_same_domain'):
+        statuses = v1_history.loc[active_history_rows, prefix+'_status']
+        unknown = statuses.loc[~statuses.isin(['known','no_antecedents'])]
+        if not unknown.empty:
+            unresolved_history[prefix] = {str(status): int(count) for status,count in unknown.value_counts(dropna=False).items()}
+    computed_history_enabled = history_source is not None and not unresolved_history
+    run_manifest['computed_history'].update(
+        status='not_requested' if history_source is None else 'enabled' if computed_history_enabled else 'skipped',
+        reason='unresolved_history_availability' if history_source is not None and unresolved_history else None,
+        unresolved_status_counts=unresolved_history,
+        active_rows=int(active_history_rows.sum()),
+    )
     if feature_blocks or history_source is not None:
         admissible_blocks = tuple(block for block in feature_blocks
                                   if block.prerequisite_reason is None
                                   and block_coverage[block.block_id]['matched_rows'] > 0)
-        regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, admissible_blocks, computed_history=history_source is not None)
+        regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, admissible_blocks, computed_history=computed_history_enabled)
         predictions = pd.concat([predictions, regularized], ignore_index=True)
     if unpredictable:
         exclusions['no_admissible_training_history'] = unpredictable

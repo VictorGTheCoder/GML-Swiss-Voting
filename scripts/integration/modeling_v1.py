@@ -8,17 +8,11 @@ from pathlib import Path
 
 import pandas as pd
 
+from scripts.integration.modeling_municipal import MUNICIPALITY_FEATURES as MUNICIPAL_FEATURES
 from scripts.integration.modeling_objects import DOMAIN_COLUMNS, ObjectFeaturePreparation
+from scripts.voting_history import HISTORY_FEATURES
 from scripts.integration.modeling_temporal import prepare_modeling_table
 
-MUNICIPAL_FEATURES = (
-    "population_total", "share_foreign", "share_age_0_19", "share_age_20_39",
-    "share_age_65_plus", "canton", "language_region", "urban_rural_type",
-)
-HISTORY_FEATURES = tuple(
-    prefix + suffix for prefix in ("history", "history_5y", "history_same_domain")
-    for suffix in ("_yes_mean", "_vote_count", "_missing")
-)
 CANDIDATE_FEATURES = MUNICIPAL_FEATURES + HISTORY_FEATURES + ("legal_form",) + DOMAIN_COLUMNS
 
 

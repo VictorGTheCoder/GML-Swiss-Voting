@@ -103,7 +103,11 @@ def build_object_feature_block(
     """
     if not source_version or not source_version.strip() or not source_url.strip():
         raise ValueError("Swissvotes source URL and version must be nonempty")
-    ofs = _normalize_ofs_objects(ofs_objects)
+    if 'vote_id' not in ofs_objects:
+        raise ValueError('OFS objects require vote_id')
+    valid_keys = ofs_objects.vote_id.astype('string').str.strip().str.fullmatch(r'[1-9][0-9]*', na=False)
+    invalid_ofs = ofs_objects.loc[~valid_keys].copy()
+    ofs = _normalize_ofs_objects(ofs_objects.loc[valid_keys])
     swiss, invalid_swissvotes = _normalize_swissvotes(swissvotes)
     source_duplicates = set(swiss.loc[swiss.vote_key.duplicated(keep=False), "vote_key"])
     ofs_conflicts = set(
@@ -157,7 +161,7 @@ def build_object_feature_block(
             "swissvotes_is_subsidiary": None if source is None else source.is_subsidiary,
         })
 
-    records = pd.DataFrame(object_rows)
+    records = pd.DataFrame(object_rows, columns=[*_empty_metadata_record('', source_version), 'metadata_date'])
     records = _attach_publication_evidence(
         records, source_version=source_version, published_at=published_at,
         publication_evidence=publication_evidence, reference_date=reference_date,
@@ -171,7 +175,15 @@ def build_object_feature_block(
         records.reference_date.notna(), records["metadata_date"]
     )
     records = records.drop(columns="metadata_date")
-    audit = pd.DataFrame(audit_rows)
+    audit = pd.DataFrame(audit_rows, columns=[
+        'vote_id', 'vote_key', 'voting_date', 'join_status', 'swissvotes_id',
+        'swissvotes_date', 'ofs_is_subsidiary', 'swissvotes_is_subsidiary',
+    ])
+    if not invalid_ofs.empty:
+        invalid_audit = invalid_ofs[['vote_id']].copy()
+        invalid_audit['vote_key'] = pd.NA
+        invalid_audit['join_status'] = 'invalid_ofs_identifier'
+        audit = pd.concat([audit, invalid_audit], ignore_index=True)
     unmatched = invalid_swissvotes.copy()
     represented = set(ofs.vote_key)
     right_only = swiss.loc[~swiss.vote_key.isin(represented)].copy()
