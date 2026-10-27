@@ -1,0 +1,77 @@
+[
+  {
+    "name": "data",
+    "color": "0075CA",
+    "description": "Collecte, nettoyage, jointures et qualité des données OFS, Swissvotes et autres sources."
+  },
+  {
+    "name": "ml",
+    "color": "5319E7",
+    "description": "Entraînement, modèles supervisés et expérimentation ML."
+  },
+  {
+    "name": "nlp",
+    "color": "9C6ADE",
+    "description": "Brochures, résumés, texte et représentations TF-IDF."
+  },
+  {
+    "name": "evaluation",
+    "color": "6F42C1",
+    "description": "Validation temporelle, métriques, baselines et comparaisons de modèles."
+  },
+  {
+    "name": "features",
+    "color": "1D76DB",
+    "description": "Ingénierie et sélection des variables explicatives."
+  },
+  {
+    "name": "eda",
+    "color": "0E8A16",
+    "description": "Exploration, analyses descriptives et visualisations des tendances."
+  },
+  {
+    "name": "app",
+    "color": "1EAFB5",
+    "description": "Application, interface, filtres et présentation des résultats."
+  },
+  {
+    "name": "tests",
+    "color": "2DA44E",
+    "description": "Tests automatisés, qualité et reproductibilité."
+  },
+  {
+    "name": "docs",
+    "color": "0366D6",
+    "description": "Documentation technique, rapport et journal de projet."
+  },
+  {
+    "name": "infra",
+    "color": "59677A",
+    "description": "CI, environnement Python, packaging et automatisation GitHub."
+  },
+  {
+    "name": "research",
+    "color": "BFD4F2",
+    "description": "Recherche de sources et investigations méthodologiques."
+  },
+  {
+    "name": "blocked",
+    "color": "B60205",
+    "description": "Bloqué par une dépendance, une décision ou un problème non résolu."
+  },
+  {
+    "name": "priority:high",
+    "color": "D73A4A",
+    "description": "Priorité haute : indispensable ou urgent pour la livraison."
+  },
+  {
+    "name": "priority:medium",
+    "color": "FBCA04",
+    "description": "Priorité moyenne : travail important planifié."
+  },
+  {
+    "name": "priority:low",
+    "color": "C2E0C6",
+    "description": "Priorité basse : amélioration non critique."
+  }
+]
