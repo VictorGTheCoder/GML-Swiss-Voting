@@ -219,7 +219,8 @@ def _apply_base_geography(rows: pd.DataFrame, crosswalk: pd.DataFrame,
     missing = required - set(crosswalk.columns)
     if missing:
         raise ValueError(f"Geography crosswalk missing columns: {sorted(missing)}")
-    mapping = crosswalk[sorted(required)].copy().rename(columns={
+    selected_columns = required | ({"target_valid_to"} if "target_valid_to" in crosswalk else set())
+    mapping = crosswalk[sorted(selected_columns)].copy().rename(columns={
         "crosswalk_version": "_crosswalk_version", "crosswalk_evidence": "_crosswalk_evidence",
         "source_geography_id": "_source_geography_id", "target_geography_id": "_target_geography_id",
     })
