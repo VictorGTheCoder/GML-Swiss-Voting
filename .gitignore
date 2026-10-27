@@ -45,6 +45,16 @@ data/processed/*
 !data/processed/federal_explanations/sections.parquet
 !data/processed/federal_explanations/section_links.parquet
 
+# Audited V1 prepared table; full row-level logs remain generated reports.
+!data/processed/modeling_v1/
+data/processed/modeling_v1/*
+!data/processed/modeling_v1/README.md
+!data/processed/modeling_v1/prepared.parquet
+!data/processed/modeling_v1/strict_population.parquet
+!data/processed/modeling_v1/manifest.json
+!data/processed/modeling_v1/coverage.json
+!data/processed/modeling_v1/readiness.json
+
 # Generated reports and figures
 reports/generated/
 
