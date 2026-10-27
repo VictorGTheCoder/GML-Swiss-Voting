@@ -120,7 +120,9 @@ def join_feature_blocks(rows, blocks, geography_mode, *, retain_unverified=False
         releases = {key:group.loc[verified.loc[group.index]] for key,group in all_releases.items()}
         counts = {'matched_rows': 0}
         context_columns = [entity,'forecast_at'] + (['geography_id'] if block.scope == 'municipality' else [])
-        for context,targets in rows.groupby(context_columns,sort=False):
+        # Unknown forecast instants still need a keyed retrospective value and
+        # audit row. They remain unverified and are blocked from strict use.
+        for context,targets in rows.groupby(context_columns,sort=False,dropna=False):
             entity_id,cutoff = context[:2]
             candidates = all_releases.get(entity_id)
             selected_publication, selected_reference, selected_evidence = None, None, None
