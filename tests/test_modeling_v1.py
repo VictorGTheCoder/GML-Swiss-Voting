@@ -2,6 +2,7 @@
 import json
 
 import pandas as pd
+import pytest
 
 from scripts.feature_blocks import FeatureBlock
 from scripts.integration.modeling_objects import build_object_feature_block
@@ -133,3 +134,22 @@ def test_complete_verified_bundle_is_consumable_by_existing_evaluator():
     assert len(evaluated["eligible_rows"]) == 3
     assert evaluated["predictions"].voting_date.eq(pd.Timestamp(dates[2], tz="UTC")).all()
     assert evaluated["joined_features"].loc[0, "history_yes_mean"] == .2
+
+
+@pytest.mark.parametrize("include_valid", [True, False])
+def test_invalid_object_keys_remain_auditable_through_complete_preparation(include_valid):
+    outcomes, _, municipal = fixture_sources()
+    invalid = outcomes.iloc[[0]].copy()
+    invalid['vote_id'] = None
+    malformed = outcomes.iloc[[0]].copy()
+    malformed['vote_id'] = 'not-an-ofs-key'
+    outcomes = pd.concat(([outcomes] if include_valid else []) + [invalid, malformed], ignore_index=True)
+    metadata = pd.DataFrame([dict(anr='1.0', datum='04.03.2018', rechtsform='1',
+                                   d1e1='1', d2e1='.', d3e1='.')])
+    objects = build_object_feature_block(outcomes, metadata, source_version='fixture-swissvotes')
+    result = prepare_v1_table(outcomes, geography_id='fixture-g1', source_version='fixture-outcomes',
+                              municipal_blocks=municipal, object_features=objects)
+    assert len(result.prepared) == (3 if include_valid else 2)
+    assert result.prepared.vote_id.isna().sum() == 2
+    assert objects.join_audit.join_status.eq('invalid_ofs_identifier').sum() == 2
+    assert result.exclusions.reason.eq('base_preparation_unresolved').sum() == 2

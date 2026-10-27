@@ -101,6 +101,7 @@ def test_evaluator_rejects_unproved_or_invalid_history_publication_and_ignores_c
         final = result['history_report'].query("vote_id == 'final'").iloc[0]
         assert final.history_status == status
         assert pd.isna(final.history_vote_count)
+        assert 'ridge_v1_history' not in set(result['predictions'].model)
 
 
 def test_frozen_v1_context_signature_reserves_final_labels_and_ignores_outcome_extras():
@@ -118,3 +119,32 @@ def test_frozen_v1_context_signature_reserves_final_labels_and_ignores_outcome_e
     changed.loc[changed.vote_id.eq('final'), 'yes_share'] = 0
     result = evaluate(rows, final_config, history_source=changed, frozen_experiment=frozen)
     assert result['manifest']['frozen_experiment_sha256'] == frozen['sha256']
+
+
+def test_evaluator_skips_unknown_history_family_but_keeps_baseline_predictions():
+    from scripts.evaluate_votes import evaluate, synthetic_example
+    rows, config = synthetic_example()
+    result = evaluate(rows, config, history_source=rows)
+    assert 'ridge_v1_history' not in set(result['predictions'].model)
+    assert {'constant','municipal_history'} <= set(result['predictions'].model)
+    report = result['manifest']['computed_history']
+    assert report['status'] == 'skipped'
+    assert report['reason'] == 'unresolved_history_availability'
+    assert report['unresolved_status_counts']['history_same_domain']['unknown_domain_metadata'] > 0
+
+
+def test_evaluator_allows_known_no_antecedent_means_to_use_training_imputation():
+    from scripts.evaluate_votes import evaluate, synthetic_example
+    rows, config = synthetic_example()
+    domains = pd.DataFrame([dict(
+        vote_id=vote, domain_codes=(1,), domain_status='known', object_match_status='validated',
+        object_match_evidence='fixture exact match', availability_status='verified',
+        availability_evidence='fixture publication', published_at='2000-01-01',
+        reference_date='2000-01-01', source_version='fixture-domain-v1',
+    ) for vote in rows.vote_id.unique()])
+    result = evaluate(rows, config, history_source=rows, domain_records=domains)
+    assert 'ridge_v1_history' in set(result['predictions'].model)
+    assert result['manifest']['computed_history']['status'] == 'enabled'
+    train = result['history_report'].query("vote_id == 'old'")
+    assert train.history_same_domain_status.eq('no_antecedents').all()
+    assert train.history_same_domain_yes_mean.isna().all()
