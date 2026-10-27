@@ -59,8 +59,14 @@ def test_complete_v1_retains_thirty_candidates_and_exports_honest_empty_readines
     assert result.manifest["final_test_used"] is False
     assert not {"yes_count", "no_count", "target_share", "vote_id"} & set(result.candidate_columns)
     pd.testing.assert_frame_equal(outcomes, original)
+    repeated = prepare_v1_table(
+        outcomes, geography_id="fixture-g1", source_version="fixture-outcomes",
+        municipal_blocks=municipal, object_features=objects,
+    )
+    pd.testing.assert_frame_equal(result.prepared, repeated.prepared)
+    assert result.manifest == repeated.manifest
     write_v1_artifacts(result, tmp_path / "first")
-    write_v1_artifacts(result, tmp_path / "second")
+    write_v1_artifacts(repeated, tmp_path / "second")
     for first in (tmp_path / "first").iterdir():
         assert first.read_bytes() == (tmp_path / "second" / first.name).read_bytes()
     assert len(pd.read_parquet(tmp_path / "first" / "prepared.parquet")) == 1
