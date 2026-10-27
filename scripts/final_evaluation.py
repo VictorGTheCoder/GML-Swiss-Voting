@@ -68,6 +68,7 @@ def experiment_signature(manifest):
             'forecast_cutoffs':manifest['forecast_cutoffs'],'partition_keys_sha256':manifest['partition_keys_sha256'],
             'prepared_availability_sha256':manifest['prepared_availability_sha256'],
             'pretest_labels_sha256':manifest['pretest_labels_sha256'],
+            'computed_history_signature':manifest.get('computed_history_signature'),
             'text_records_sha256':manifest.get('text_records_sha256')}
 
 
