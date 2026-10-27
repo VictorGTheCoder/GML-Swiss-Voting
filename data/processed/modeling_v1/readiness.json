@@ -1,0 +1,1424 @@
+{
+  "status": "strict_population_empty",
+  "prepared_rows": 304616,
+  "strict_population_rows": 0,
+  "strict_objects": 0,
+  "strict_dates": 0,
+  "target_period": {
+    "start_inclusive": "2012-01-01T00:00:00+00:00",
+    "end_exclusive": "2026-01-01T00:00:00+00:00",
+    "rows": 268675,
+    "objects": 127
+  },
+  "forecast_status": {
+    "unknown": 304616
+  },
+  "result_availability_status": {
+    "unknown": 304616
+  },
+  "geography_status": {
+    "verified": 304616
+  },
+  "source_version": "ofs-20260821-e66550d4571a",
+  "source_geography_reference": "bfs-2026-01-01",
+  "target_geography_reference": "bfs-2026-01-01",
+  "exclusions_by_reason": {
+    "base_preparation_unresolved": 24811,
+    "feature_unknown_availability": 1516448,
+    "forecast_evidence_missing": 304616,
+    "ineligible_is_provisional": 21170,
+    "ineligible_is_special_unit": 1658,
+    "ineligible_is_subsidiary": 4229,
+    "outside_target_period": 35941
+  },
+  "exclusions_by_source_block": {
+    "base": {
+      "base_preparation_unresolved": 24811,
+      "forecast_evidence_missing": 304616,
+      "ineligible_is_provisional": 21170,
+      "ineligible_is_special_unit": 1658,
+      "ineligible_is_subsidiary": 4229,
+      "outside_target_period": 35941
+    },
+    "language_region": {
+      "feature_unknown_availability": 302958
+    },
+    "municipal_context": {
+      "feature_unknown_availability": 302958
+    },
+    "statpop_age": {
+      "feature_unknown_availability": 302958
+    },
+    "statpop_population": {
+      "feature_unknown_availability": 302958
+    },
+    "swissvotes": {
+      "feature_unknown_availability": 304616
+    }
+  },
+  "availability_by_vote": [
+    {
+      "vote_id": "5480",
+      "rows": 2111,
+      "voting_date": "2010-03-07 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5490",
+      "rows": 2111,
+      "voting_date": "2010-03-07 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5500",
+      "rows": 2111,
+      "voting_date": "2010-03-07 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5510",
+      "rows": 2112,
+      "voting_date": "2010-09-26 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5521",
+      "rows": 2112,
+      "voting_date": "2010-11-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5522",
+      "rows": 2112,
+      "voting_date": "2010-11-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5523",
+      "rows": 2112,
+      "voting_date": "2010-11-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5530",
+      "rows": 2112,
+      "voting_date": "2010-11-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5540",
+      "rows": 2112,
+      "voting_date": "2011-02-13 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5550",
+      "rows": 2113,
+      "voting_date": "2012-03-11 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5560",
+      "rows": 2113,
+      "voting_date": "2012-03-11 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5570",
+      "rows": 2113,
+      "voting_date": "2012-03-11 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5580",
+      "rows": 2113,
+      "voting_date": "2012-03-11 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5590",
+      "rows": 2113,
+      "voting_date": "2012-03-11 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5600",
+      "rows": 2113,
+      "voting_date": "2012-06-17 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5610",
+      "rows": 2113,
+      "voting_date": "2012-06-17 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5620",
+      "rows": 2113,
+      "voting_date": "2012-06-17 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5630",
+      "rows": 2114,
+      "voting_date": "2012-09-23 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5640",
+      "rows": 2114,
+      "voting_date": "2012-09-23 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5650",
+      "rows": 2114,
+      "voting_date": "2012-09-23 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5660",
+      "rows": 2114,
+      "voting_date": "2012-11-25 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5670",
+      "rows": 2114,
+      "voting_date": "2013-03-03 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5680",
+      "rows": 2114,
+      "voting_date": "2013-03-03 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5690",
+      "rows": 2114,
+      "voting_date": "2013-03-03 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5700",
+      "rows": 2114,
+      "voting_date": "2013-06-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5710",
+      "rows": 2114,
+      "voting_date": "2013-06-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5720",
+      "rows": 2114,
+      "voting_date": "2013-09-22 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5730",
+      "rows": 2114,
+      "voting_date": "2013-09-22 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5740",
+      "rows": 2114,
+      "voting_date": "2013-09-22 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5750",
+      "rows": 2114,
+      "voting_date": "2013-11-24 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5760",
+      "rows": 2114,
+      "voting_date": "2013-11-24 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5770",
+      "rows": 2114,
+      "voting_date": "2013-11-24 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5780",
+      "rows": 2114,
+      "voting_date": "2014-02-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5790",
+      "rows": 2114,
+      "voting_date": "2014-02-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5800",
+      "rows": 2114,
+      "voting_date": "2014-02-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5810",
+      "rows": 2114,
+      "voting_date": "2014-05-18 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5820",
+      "rows": 2114,
+      "voting_date": "2014-05-18 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5830",
+      "rows": 2114,
+      "voting_date": "2014-05-18 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5840",
+      "rows": 2114,
+      "voting_date": "2014-05-18 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5850",
+      "rows": 2114,
+      "voting_date": "2014-09-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5860",
+      "rows": 2114,
+      "voting_date": "2014-09-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5870",
+      "rows": 2115,
+      "voting_date": "2014-11-30 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5880",
+      "rows": 2115,
+      "voting_date": "2014-11-30 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5890",
+      "rows": 2115,
+      "voting_date": "2014-11-30 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5900",
+      "rows": 2115,
+      "voting_date": "2015-03-08 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5910",
+      "rows": 2115,
+      "voting_date": "2015-03-08 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5920",
+      "rows": 2115,
+      "voting_date": "2015-06-14 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5930",
+      "rows": 2115,
+      "voting_date": "2015-06-14 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5940",
+      "rows": 2115,
+      "voting_date": "2015-06-14 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5950",
+      "rows": 2115,
+      "voting_date": "2015-06-14 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5960",
+      "rows": 2115,
+      "voting_date": "2016-02-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5970",
+      "rows": 2115,
+      "voting_date": "2016-02-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5980",
+      "rows": 2115,
+      "voting_date": "2016-02-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "5990",
+      "rows": 2115,
+      "voting_date": "2016-02-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6000",
+      "rows": 2115,
+      "voting_date": "2016-06-05 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6010",
+      "rows": 2115,
+      "voting_date": "2016-06-05 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6020",
+      "rows": 2115,
+      "voting_date": "2016-06-05 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6030",
+      "rows": 2115,
+      "voting_date": "2016-06-05 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6040",
+      "rows": 2115,
+      "voting_date": "2016-06-05 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6050",
+      "rows": 2115,
+      "voting_date": "2016-09-25 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6060",
+      "rows": 2115,
+      "voting_date": "2016-09-25 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6070",
+      "rows": 2115,
+      "voting_date": "2016-09-25 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6080",
+      "rows": 2115,
+      "voting_date": "2016-11-27 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6090",
+      "rows": 2115,
+      "voting_date": "2017-02-12 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6100",
+      "rows": 2115,
+      "voting_date": "2017-02-12 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6110",
+      "rows": 2115,
+      "voting_date": "2017-02-12 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6120",
+      "rows": 2115,
+      "voting_date": "2017-05-21 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6130",
+      "rows": 2115,
+      "voting_date": "2017-09-24 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6140",
+      "rows": 2115,
+      "voting_date": "2017-09-24 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6150",
+      "rows": 2115,
+      "voting_date": "2017-09-24 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6160",
+      "rows": 2116,
+      "voting_date": "2018-03-04 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6170",
+      "rows": 2116,
+      "voting_date": "2018-03-04 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6180",
+      "rows": 2116,
+      "voting_date": "2018-06-10 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6190",
+      "rows": 2116,
+      "voting_date": "2018-06-10 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6200",
+      "rows": 2116,
+      "voting_date": "2018-09-23 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6210",
+      "rows": 2116,
+      "voting_date": "2018-09-23 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6220",
+      "rows": 2116,
+      "voting_date": "2018-09-23 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6230",
+      "rows": 2116,
+      "voting_date": "2018-11-25 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6240",
+      "rows": 2116,
+      "voting_date": "2018-11-25 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6250",
+      "rows": 2116,
+      "voting_date": "2018-11-25 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6260",
+      "rows": 2116,
+      "voting_date": "2019-02-10 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6270",
+      "rows": 2116,
+      "voting_date": "2019-05-19 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6280",
+      "rows": 2116,
+      "voting_date": "2019-05-19 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6290",
+      "rows": 2116,
+      "voting_date": "2020-02-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6300",
+      "rows": 2116,
+      "voting_date": "2020-02-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6310",
+      "rows": 2116,
+      "voting_date": "2020-09-27 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6320",
+      "rows": 2116,
+      "voting_date": "2020-09-27 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6330",
+      "rows": 2116,
+      "voting_date": "2020-09-27 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6340",
+      "rows": 2116,
+      "voting_date": "2020-09-27 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6350",
+      "rows": 2116,
+      "voting_date": "2020-09-27 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6360",
+      "rows": 2116,
+      "voting_date": "2020-11-29 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6370",
+      "rows": 2116,
+      "voting_date": "2020-11-29 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6380",
+      "rows": 2117,
+      "voting_date": "2021-03-07 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6390",
+      "rows": 2117,
+      "voting_date": "2021-03-07 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6400",
+      "rows": 2117,
+      "voting_date": "2021-03-07 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6410",
+      "rows": 2117,
+      "voting_date": "2021-06-13 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6420",
+      "rows": 2117,
+      "voting_date": "2021-06-13 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6430",
+      "rows": 2117,
+      "voting_date": "2021-06-13 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6440",
+      "rows": 2117,
+      "voting_date": "2021-06-13 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6450",
+      "rows": 2117,
+      "voting_date": "2021-06-13 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6460",
+      "rows": 2117,
+      "voting_date": "2021-09-26 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6470",
+      "rows": 2117,
+      "voting_date": "2021-09-26 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6480",
+      "rows": 2117,
+      "voting_date": "2021-11-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6490",
+      "rows": 2117,
+      "voting_date": "2021-11-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6500",
+      "rows": 2117,
+      "voting_date": "2021-11-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6510",
+      "rows": 2117,
+      "voting_date": "2022-02-13 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6520",
+      "rows": 2117,
+      "voting_date": "2022-02-13 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6530",
+      "rows": 2117,
+      "voting_date": "2022-02-13 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6540",
+      "rows": 2117,
+      "voting_date": "2022-02-13 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6550",
+      "rows": 2117,
+      "voting_date": "2022-05-15 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6560",
+      "rows": 2117,
+      "voting_date": "2022-05-15 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6570",
+      "rows": 2117,
+      "voting_date": "2022-05-15 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6580",
+      "rows": 2117,
+      "voting_date": "2022-09-25 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6590",
+      "rows": 2117,
+      "voting_date": "2022-09-25 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6600",
+      "rows": 2117,
+      "voting_date": "2022-09-25 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6610",
+      "rows": 2117,
+      "voting_date": "2022-09-25 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6620",
+      "rows": 2117,
+      "voting_date": "2023-06-18 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6630",
+      "rows": 2117,
+      "voting_date": "2023-06-18 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6640",
+      "rows": 2117,
+      "voting_date": "2023-06-18 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6650",
+      "rows": 2117,
+      "voting_date": "2024-03-03 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6660",
+      "rows": 2117,
+      "voting_date": "2024-03-03 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6670",
+      "rows": 2117,
+      "voting_date": "2024-06-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6680",
+      "rows": 2117,
+      "voting_date": "2024-06-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6690",
+      "rows": 2117,
+      "voting_date": "2024-06-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6700",
+      "rows": 2117,
+      "voting_date": "2024-06-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6710",
+      "rows": 2117,
+      "voting_date": "2024-09-22 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6720",
+      "rows": 2117,
+      "voting_date": "2024-09-22 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6730",
+      "rows": 2117,
+      "voting_date": "2024-11-24 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6740",
+      "rows": 2117,
+      "voting_date": "2024-11-24 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6750",
+      "rows": 2117,
+      "voting_date": "2024-11-24 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6760",
+      "rows": 2117,
+      "voting_date": "2024-11-24 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6770",
+      "rows": 2117,
+      "voting_date": "2025-02-09 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6780",
+      "rows": 2117,
+      "voting_date": "2025-09-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6790",
+      "rows": 2117,
+      "voting_date": "2025-09-28 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6800",
+      "rows": 2117,
+      "voting_date": "2025-11-30 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6810",
+      "rows": 2117,
+      "voting_date": "2025-11-30 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6821",
+      "rows": 2117,
+      "voting_date": "2026-03-08 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6822",
+      "rows": 2117,
+      "voting_date": "2026-03-08 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6823",
+      "rows": 2117,
+      "voting_date": "2026-03-08 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6830",
+      "rows": 2117,
+      "voting_date": "2026-03-08 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6840",
+      "rows": 2117,
+      "voting_date": "2026-03-08 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6850",
+      "rows": 2117,
+      "voting_date": "2026-03-08 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6860",
+      "rows": 2117,
+      "voting_date": "2026-06-14 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    },
+    {
+      "vote_id": "6870",
+      "rows": 2117,
+      "voting_date": "2026-06-14 00:00:00+00:00",
+      "forecast_status": "unknown",
+      "result_availability_status": "unknown",
+      "geography_status": "verified"
+    }
+  ],
+  "strict_dates_are_complete_vote_dates": true,
+  "partitions": null,
+  "partition_status": "not_configured; boundaries await eligible-coverage audit",
+  "final_test_used": false,
+  "feature_blocks": {
+    "statpop_population": {
+      "matched_rows": 0,
+      "unknown_availability_rows": 302958,
+      "missing_entity_rows": 1658,
+      "missing_values": {
+        "population_total": 1658,
+        "share_foreign": 1658
+      },
+      "input_records": 33760,
+      "eligible_rows": 304616,
+      "prerequisite_status": "no_admissible_matches"
+    },
+    "statpop_age": {
+      "matched_rows": 0,
+      "unknown_availability_rows": 302958,
+      "missing_entity_rows": 1658,
+      "missing_values": {
+        "share_age_0_19": 1658,
+        "share_age_20_39": 1658,
+        "share_age_65_plus": 1658
+      },
+      "input_records": 33760,
+      "eligible_rows": 304616,
+      "prerequisite_status": "no_admissible_matches"
+    },
+    "municipal_context": {
+      "matched_rows": 0,
+      "unknown_availability_rows": 302958,
+      "missing_entity_rows": 1658,
+      "missing_values": {
+        "canton": 1658,
+        "urban_rural_type": 1658
+      },
+      "input_records": 2110,
+      "eligible_rows": 304616,
+      "prerequisite_status": "no_admissible_matches"
+    },
+    "language_region": {
+      "matched_rows": 0,
+      "unknown_availability_rows": 302958,
+      "missing_entity_rows": 1658,
+      "missing_values": {
+        "language_region": 1658
+      },
+      "input_records": 2110,
+      "eligible_rows": 304616,
+      "prerequisite_status": "no_admissible_matches"
+    },
+    "swissvotes": {
+      "matched_rows": 0,
+      "unknown_availability_rows": 304616,
+      "missing_values": {
+        "policy_domain_01": 0,
+        "policy_domain_02": 0,
+        "policy_domain_03": 0,
+        "policy_domain_04": 0,
+        "policy_domain_05": 0,
+        "policy_domain_06": 0,
+        "policy_domain_07": 0,
+        "policy_domain_08": 0,
+        "policy_domain_09": 0,
+        "policy_domain_10": 0,
+        "policy_domain_11": 0,
+        "policy_domain_12": 0,
+        "legal_form": 4229
+      },
+      "input_records": 511,
+      "eligible_rows": 304616,
+      "prerequisite_status": "no_admissible_matches"
+    }
+  },
+  "feature_manifests": {
+    "statpop_population": {
+      "scope": "municipality",
+      "source_url": "https://www.pxweb.bfs.admin.ch/api/v1/fr/px-x-0102010000_101/px-x-0102010000_101.px",
+      "source_version": "px-x-0102010000_101; updated=20260820 08:30; sha256=b855c4dc6ad51079e28d30647a14fb2c50455a08c94817523fc73db67f97778d",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [
+        "population_total",
+        "share_foreign"
+      ],
+      "categorical_features": [],
+      "definitions": {
+        "population_total": "Permanent resident population on 31 December; counts are summed over complete merger constituents.",
+        "share_foreign": "Foreign permanent resident population / total permanent resident population, after aggregating counts.",
+        "source_geography_reference": "bfs-2025-04-06",
+        "target_geography_reference": "bfs-2026-01-01",
+        "geography_crosswalk_version": "register_mutations_2010_2026",
+        "geography_crosswalk_evidence": "data/raw/geography/register_mutations_2010_2026.provenance.json; snapshots register_snapshot_2025-04-06 and register_snapshot_2026-01-01"
+      },
+      "object_correspondence": null,
+      "records_sha256": "73d7fa98c6c8e9fb6351fbecf1e08fdaeb549e3458e434d0f66410f5af8007c2"
+    },
+    "statpop_age": {
+      "scope": "municipality",
+      "source_url": "https://www.pxweb.bfs.admin.ch/api/v1/fr/px-x-0102010000_103/px-x-0102010000_103.px",
+      "source_version": "px-x-0102010000_103; updated=20260820 08:30; sha256=7719603e6b98240fafd1dfc2831b20934f2b7e16add274db04789e366f9410d4",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [
+        "share_age_0_19",
+        "share_age_20_39",
+        "share_age_65_plus"
+      ],
+      "categorical_features": [],
+      "definitions": {
+        "share_age_0_19": "Permanent residents aged 0\u201319 / total permanent residents; five-year bins 0, 5, 10 and 15.",
+        "share_age_20_39": "Permanent residents aged 20\u201339 / total permanent residents; five-year bins 20, 25, 30 and 35.",
+        "share_age_65_plus": "Permanent residents aged 65 or more / total permanent residents; bins 65\u201395 and 100+.",
+        "source_geography_reference": "bfs-2025-04-06",
+        "target_geography_reference": "bfs-2026-01-01",
+        "geography_crosswalk_version": "register_mutations_2010_2026",
+        "geography_crosswalk_evidence": "data/raw/geography/register_mutations_2010_2026.provenance.json; snapshots register_snapshot_2025-04-06 and register_snapshot_2026-01-01"
+      },
+      "object_correspondence": null,
+      "records_sha256": "f5a870b59f213462a2e1e120c7fe7a193f9a781af4ebd5ffe0d885fcbba425e8"
+    },
+    "municipal_context": {
+      "scope": "municipality",
+      "source_url": "https://www.agvchapp.bfs.admin.ch/api/communes/levels?date=01-01-2026",
+      "source_version": "https://www.agvchapp.bfs.admin.ch/api/communes/levels?date=01-01-2026; updated=unknown; sha256=f7b41c86b07ae973d68996b81ed1b8b90708305e838d919bd0616959a186d51a",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [],
+      "categorical_features": [
+        "canton",
+        "urban_rural_type"
+      ],
+      "definitions": {
+        "canton": "Canton label from the BFS commune register.",
+        "urban_rural_type": "BFS urban\u2013rural typology 2020: urban, intermediate or rural (STALAN2020).",
+        "typology_version": "BFS STALAN2020, current geography 2026-01-01; value codes remain categorical.",
+        "geography_reference": "bfs-2026-01-01"
+      },
+      "object_correspondence": null,
+      "records_sha256": "97a2dd074fe3eeb1b8adddcbd32ded1781c907312b930c5fa65956dfd84935a0"
+    },
+    "language_region": {
+      "scope": "municipality",
+      "source_url": "https://www.agvchapp.bfs.admin.ch/api/communes/levels?date=01-01-2026",
+      "source_version": "https://www.agvchapp.bfs.admin.ch/api/communes/levels?date=01-01-2026; updated=unknown; sha256=f7b41c86b07ae973d68996b81ed1b8b90708305e838d919bd0616959a186d51a",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [],
+      "categorical_features": [
+        "language_region"
+      ],
+      "definitions": {
+        "language_region": "BFS linguistic region code from SPRGEB2020, retained as a nominal category.",
+        "classification_version": "SPRGEB2020; output is a current-vintage category, not a historical publication claim.",
+        "geography_reference": "bfs-2026-01-01"
+      },
+      "object_correspondence": null,
+      "records_sha256": "b19238589a7501f2185c7ad1fbd5cb6f37917940b2cf199a7bd45518b81c2ed6"
+    },
+    "swissvotes": {
+      "scope": "object",
+      "source_url": "https://swissvotes.ch/page/dataset/swissvotes_dataset.csv",
+      "source_version": "sha256:60710209a267fbf2e87cb9bf228a7bf910b59d72d135c9a3dc0b558ab67df09f",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [
+        "policy_domain_01",
+        "policy_domain_02",
+        "policy_domain_03",
+        "policy_domain_04",
+        "policy_domain_05",
+        "policy_domain_06",
+        "policy_domain_07",
+        "policy_domain_08",
+        "policy_domain_09",
+        "policy_domain_10",
+        "policy_domain_11",
+        "policy_domain_12"
+      ],
+      "categorical_features": [
+        "legal_form"
+      ],
+      "definitions": {
+        "legal_form": "Swissvotes legal form as a category: mandatory referendum, optional referendum, popular initiative, or direct counterproposal",
+        "policy_domain_01": "1 if broad Swissvotes policy domain 1 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_02": "1 if broad Swissvotes policy domain 2 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_03": "1 if broad Swissvotes policy domain 3 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_04": "1 if broad Swissvotes policy domain 4 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_05": "1 if broad Swissvotes policy domain 5 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_06": "1 if broad Swissvotes policy domain 6 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_07": "1 if broad Swissvotes policy domain 7 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_08": "1 if broad Swissvotes policy domain 8 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_09": "1 if broad Swissvotes policy domain 9 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_10": "1 if broad Swissvotes policy domain 10 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_11": "1 if broad Swissvotes policy domain 11 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_12": "1 if broad Swissvotes policy domain 12 is assigned; 0 if known absent; missing if classification is unknown"
+      },
+      "object_correspondence": "validated object_match_status and nonempty object_match_evidence required",
+      "records_sha256": "e1e1bfc4d8b0a3d230b549b89d8c11c72195d8e446a80ca61101a37983587c1c"
+    }
+  },
+  "exclusion_reasons": {
+    "base_preparation_unresolved": 24811,
+    "feature_unknown_availability": 1516448,
+    "forecast_evidence_missing": 304616,
+    "history_policy_not_configured": 304616,
+    "ineligible_is_provisional": 21170,
+    "ineligible_is_special_unit": 1658,
+    "ineligible_is_subsidiary": 4229,
+    "outside_target_period": 35941
+  },
+  "history_status": "not_configured",
+  "modeling_ready": false,
+  "candidate_feature_count": 30
+}

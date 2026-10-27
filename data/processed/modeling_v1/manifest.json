@@ -1,0 +1,390 @@
+{
+  "schema": "swiss-voting.modeling-v1",
+  "source_start": "2010-01-01",
+  "source_version": "ofs-20260821-e66550d4571a",
+  "geography_id": "bfs-2026-01-01",
+  "geography_mode": "retrospective_fixed",
+  "candidate_features": [
+    "population_total",
+    "share_foreign",
+    "share_age_0_19",
+    "share_age_20_39",
+    "share_age_65_plus",
+    "canton",
+    "language_region",
+    "urban_rural_type",
+    "history_yes_mean",
+    "history_vote_count",
+    "history_missing",
+    "history_5y_yes_mean",
+    "history_5y_vote_count",
+    "history_5y_missing",
+    "history_same_domain_yes_mean",
+    "history_same_domain_vote_count",
+    "history_same_domain_missing",
+    "legal_form",
+    "policy_domain_01",
+    "policy_domain_02",
+    "policy_domain_03",
+    "policy_domain_04",
+    "policy_domain_05",
+    "policy_domain_06",
+    "policy_domain_07",
+    "policy_domain_08",
+    "policy_domain_09",
+    "policy_domain_10",
+    "policy_domain_11",
+    "policy_domain_12"
+  ],
+  "feature_aliases": {
+    "population_total": "statpop_population__population_total",
+    "share_foreign": "statpop_population__share_foreign",
+    "share_age_0_19": "statpop_age__share_age_0_19",
+    "share_age_20_39": "statpop_age__share_age_20_39",
+    "share_age_65_plus": "statpop_age__share_age_65_plus",
+    "canton": "municipal_context__canton",
+    "urban_rural_type": "municipal_context__urban_rural_type",
+    "language_region": "language_region__language_region",
+    "policy_domain_01": "swissvotes__policy_domain_01",
+    "policy_domain_02": "swissvotes__policy_domain_02",
+    "policy_domain_03": "swissvotes__policy_domain_03",
+    "policy_domain_04": "swissvotes__policy_domain_04",
+    "policy_domain_05": "swissvotes__policy_domain_05",
+    "policy_domain_06": "swissvotes__policy_domain_06",
+    "policy_domain_07": "swissvotes__policy_domain_07",
+    "policy_domain_08": "swissvotes__policy_domain_08",
+    "policy_domain_09": "swissvotes__policy_domain_09",
+    "policy_domain_10": "swissvotes__policy_domain_10",
+    "policy_domain_11": "swissvotes__policy_domain_11",
+    "policy_domain_12": "swissvotes__policy_domain_12",
+    "legal_form": "swissvotes__legal_form"
+  },
+  "feature_blocks": {
+    "statpop_population": {
+      "scope": "municipality",
+      "source_url": "https://www.pxweb.bfs.admin.ch/api/v1/fr/px-x-0102010000_101/px-x-0102010000_101.px",
+      "source_version": "px-x-0102010000_101; updated=20260820 08:30; sha256=b855c4dc6ad51079e28d30647a14fb2c50455a08c94817523fc73db67f97778d",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [
+        "population_total",
+        "share_foreign"
+      ],
+      "categorical_features": [],
+      "definitions": {
+        "population_total": "Permanent resident population on 31 December; counts are summed over complete merger constituents.",
+        "share_foreign": "Foreign permanent resident population / total permanent resident population, after aggregating counts.",
+        "source_geography_reference": "bfs-2025-04-06",
+        "target_geography_reference": "bfs-2026-01-01",
+        "geography_crosswalk_version": "register_mutations_2010_2026",
+        "geography_crosswalk_evidence": "data/raw/geography/register_mutations_2010_2026.provenance.json; snapshots register_snapshot_2025-04-06 and register_snapshot_2026-01-01"
+      },
+      "object_correspondence": null,
+      "records_sha256": "73d7fa98c6c8e9fb6351fbecf1e08fdaeb549e3458e434d0f66410f5af8007c2"
+    },
+    "statpop_age": {
+      "scope": "municipality",
+      "source_url": "https://www.pxweb.bfs.admin.ch/api/v1/fr/px-x-0102010000_103/px-x-0102010000_103.px",
+      "source_version": "px-x-0102010000_103; updated=20260820 08:30; sha256=7719603e6b98240fafd1dfc2831b20934f2b7e16add274db04789e366f9410d4",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [
+        "share_age_0_19",
+        "share_age_20_39",
+        "share_age_65_plus"
+      ],
+      "categorical_features": [],
+      "definitions": {
+        "share_age_0_19": "Permanent residents aged 0\u201319 / total permanent residents; five-year bins 0, 5, 10 and 15.",
+        "share_age_20_39": "Permanent residents aged 20\u201339 / total permanent residents; five-year bins 20, 25, 30 and 35.",
+        "share_age_65_plus": "Permanent residents aged 65 or more / total permanent residents; bins 65\u201395 and 100+.",
+        "source_geography_reference": "bfs-2025-04-06",
+        "target_geography_reference": "bfs-2026-01-01",
+        "geography_crosswalk_version": "register_mutations_2010_2026",
+        "geography_crosswalk_evidence": "data/raw/geography/register_mutations_2010_2026.provenance.json; snapshots register_snapshot_2025-04-06 and register_snapshot_2026-01-01"
+      },
+      "object_correspondence": null,
+      "records_sha256": "f5a870b59f213462a2e1e120c7fe7a193f9a781af4ebd5ffe0d885fcbba425e8"
+    },
+    "municipal_context": {
+      "scope": "municipality",
+      "source_url": "https://www.agvchapp.bfs.admin.ch/api/communes/levels?date=01-01-2026",
+      "source_version": "https://www.agvchapp.bfs.admin.ch/api/communes/levels?date=01-01-2026; updated=unknown; sha256=f7b41c86b07ae973d68996b81ed1b8b90708305e838d919bd0616959a186d51a",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [],
+      "categorical_features": [
+        "canton",
+        "urban_rural_type"
+      ],
+      "definitions": {
+        "canton": "Canton label from the BFS commune register.",
+        "urban_rural_type": "BFS urban\u2013rural typology 2020: urban, intermediate or rural (STALAN2020).",
+        "typology_version": "BFS STALAN2020, current geography 2026-01-01; value codes remain categorical.",
+        "geography_reference": "bfs-2026-01-01"
+      },
+      "object_correspondence": null,
+      "records_sha256": "97a2dd074fe3eeb1b8adddcbd32ded1781c907312b930c5fa65956dfd84935a0"
+    },
+    "language_region": {
+      "scope": "municipality",
+      "source_url": "https://www.agvchapp.bfs.admin.ch/api/communes/levels?date=01-01-2026",
+      "source_version": "https://www.agvchapp.bfs.admin.ch/api/communes/levels?date=01-01-2026; updated=unknown; sha256=f7b41c86b07ae973d68996b81ed1b8b90708305e838d919bd0616959a186d51a",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [],
+      "categorical_features": [
+        "language_region"
+      ],
+      "definitions": {
+        "language_region": "BFS linguistic region code from SPRGEB2020, retained as a nominal category.",
+        "classification_version": "SPRGEB2020; output is a current-vintage category, not a historical publication claim.",
+        "geography_reference": "bfs-2026-01-01"
+      },
+      "object_correspondence": null,
+      "records_sha256": "b19238589a7501f2185c7ad1fbd5cb6f37917940b2cf199a7bd45518b81c2ed6"
+    },
+    "swissvotes": {
+      "scope": "object",
+      "source_url": "https://swissvotes.ch/page/dataset/swissvotes_dataset.csv",
+      "source_version": "sha256:60710209a267fbf2e87cb9bf228a7bf910b59d72d135c9a3dc0b558ab67df09f",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [
+        "policy_domain_01",
+        "policy_domain_02",
+        "policy_domain_03",
+        "policy_domain_04",
+        "policy_domain_05",
+        "policy_domain_06",
+        "policy_domain_07",
+        "policy_domain_08",
+        "policy_domain_09",
+        "policy_domain_10",
+        "policy_domain_11",
+        "policy_domain_12"
+      ],
+      "categorical_features": [
+        "legal_form"
+      ],
+      "definitions": {
+        "legal_form": "Swissvotes legal form as a category: mandatory referendum, optional referendum, popular initiative, or direct counterproposal",
+        "policy_domain_01": "1 if broad Swissvotes policy domain 1 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_02": "1 if broad Swissvotes policy domain 2 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_03": "1 if broad Swissvotes policy domain 3 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_04": "1 if broad Swissvotes policy domain 4 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_05": "1 if broad Swissvotes policy domain 5 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_06": "1 if broad Swissvotes policy domain 6 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_07": "1 if broad Swissvotes policy domain 7 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_08": "1 if broad Swissvotes policy domain 8 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_09": "1 if broad Swissvotes policy domain 9 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_10": "1 if broad Swissvotes policy domain 10 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_11": "1 if broad Swissvotes policy domain 11 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_12": "1 if broad Swissvotes policy domain 12 is assigned; 0 if known absent; missing if classification is unknown"
+      },
+      "object_correspondence": "validated object_match_status and nonempty object_match_evidence required",
+      "records_sha256": "e1e1bfc4d8b0a3d230b549b89d8c11c72195d8e446a80ca61101a37983587c1c"
+    }
+  },
+  "source_audit": {
+    "municipal": {
+      "status": "PREPARED",
+      "target_geography_id": "bfs-2026-01-01",
+      "candidate_features": [
+        "population_total",
+        "share_foreign",
+        "share_age_0_19",
+        "share_age_20_39",
+        "share_age_65_plus",
+        "canton",
+        "language_region",
+        "urban_rural_type"
+      ],
+      "feature_prerequisites": {
+        "language_region": null
+      },
+      "sources": {
+        "statpop_nationality": {
+          "version": "px-x-0102010000_101; updated=20260820 08:30; sha256=b855c4dc6ad51079e28d30647a14fb2c50455a08c94817523fc73db67f97778d",
+          "url": "https://www.pxweb.bfs.admin.ch/api/v1/fr/px-x-0102010000_101/px-x-0102010000_101.px"
+        },
+        "statpop_age_classes": {
+          "version": "px-x-0102010000_103; updated=20260820 08:30; sha256=7719603e6b98240fafd1dfc2831b20934f2b7e16add274db04789e366f9410d4",
+          "url": "https://www.pxweb.bfs.admin.ch/api/v1/fr/px-x-0102010000_103/px-x-0102010000_103.px"
+        },
+        "commune_levels": {
+          "version": "https://www.agvchapp.bfs.admin.ch/api/communes/levels?date=01-01-2026; updated=unknown; sha256=f7b41c86b07ae973d68996b81ed1b8b90708305e838d919bd0616959a186d51a",
+          "url": "https://www.agvchapp.bfs.admin.ch/api/communes/levels?date=01-01-2026"
+        }
+      },
+      "geography_crosswalk": {
+        "status": "PASS",
+        "source_geography_id": "bfs-2025-04-06",
+        "target_geography_id": "bfs-2026-01-01",
+        "crosswalk_version": "register_mutations_2010_2026",
+        "crosswalk_evidence": "data/raw/geography/register_mutations_2010_2026.provenance.json; snapshots register_snapshot_2025-04-06 and register_snapshot_2026-01-01",
+        "source_rows": 2115,
+        "mapped_source_rows": 2115,
+        "unsupported_sources": [],
+        "target_coverage": 2110,
+        "mapping_available_at": null
+      },
+      "population": {
+        "source_rows_2010_2025": 33856,
+        "years": [
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "aggregate_8100_rows_excluded": 16,
+        "invalid_or_missing_population_rows": 0,
+        "invalid_or_missing_foreign_rows": 0,
+        "unmapped_source_codes": [],
+        "missing_source_codes_by_year": {
+          "2010": [],
+          "2011": [],
+          "2012": [],
+          "2013": [],
+          "2014": [],
+          "2015": [],
+          "2016": [],
+          "2017": [],
+          "2018": [],
+          "2019": [],
+          "2020": [],
+          "2021": [],
+          "2022": [],
+          "2023": [],
+          "2024": [],
+          "2025": []
+        }
+      },
+      "age": {
+        "source_rows_2010_2025": 710640,
+        "years": [
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "aggregate_8100_rows_excluded": 336,
+        "incomplete_age_vectors": 0,
+        "inconsistent_complete_age_totals": 0,
+        "missing_selected_bins_by_feature": {
+          "share_age_0_19": 0,
+          "share_age_20_39": 0,
+          "share_age_65_plus": 0
+        }
+      },
+      "territory": {
+        "source_rows": 2110,
+        "missing_communes": 0,
+        "missing_canton": 0,
+        "unknown_STALAN2020_codes": 0,
+        "urban_rural_counts": {
+          "rural": 1021,
+          "intermediate": 580,
+          "urban": 509
+        },
+        "typology": "STALAN2020",
+        "reference_date": "2026-01-01",
+        "availability_status": {
+          "unknown": 2110
+        },
+        "excluded_fields": [
+          "DEGURB2021",
+          "REGCH",
+          "GDETYP2020_9",
+          "GDETYP2020_25"
+        ]
+      },
+      "language_region": {
+        "status": "prepared",
+        "prerequisite_reason": null,
+        "source_rows": 2110,
+        "missing_communes": 0,
+        "missing_language_region": 0,
+        "language_region_codes": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "source_field": "SPRGEB2020",
+        "reference_date": "2026-01-01",
+        "availability_status": {
+          "unknown": 2110
+        }
+      }
+    },
+    "geography": {
+      "status": "PASS",
+      "source_geography_id": "bfs-2025-04-06",
+      "target_geography_id": "bfs-2026-01-01",
+      "source_snapshot_date": "2025-04-06",
+      "target_snapshot_date": "2026-01-01",
+      "source_communes": 2115,
+      "target_communes": 2110,
+      "mapped_target_communes": 2110,
+      "unsupported_source_codes": [],
+      "target_communes_without_source": [],
+      "merger_groups": {
+        "2056": [
+          "2016",
+          "2027"
+        ],
+        "2262": [
+          "2262",
+          "2278"
+        ],
+        "2525": [
+          "2520",
+          "2525",
+          "2529"
+        ],
+        "4095": [
+          "4095",
+          "4122"
+        ]
+      },
+      "crosswalk_version": "register_mutations_2010_2026",
+      "crosswalk_evidence": "data/raw/geography/register_mutations_2010_2026.provenance.json; snapshots register_snapshot_2025-04-06 and register_snapshot_2026-01-01",
+      "verified_source_sha256": {
+        "features/statpop_nationality.csv": "b855c4dc6ad51079e28d30647a14fb2c50455a08c94817523fc73db67f97778d",
+        "features/statpop_age_classes.csv": "7719603e6b98240fafd1dfc2831b20934f2b7e16add274db04789e366f9410d4",
+        "features/commune_levels_2026-01-01.csv": "f7b41c86b07ae973d68996b81ed1b8b90708305e838d919bd0616959a186d51a",
+        "geography/register_snapshot_2025-04-06.csv": "24e2b4a51a63aeb5b67c67f20fb809f27344574de7005802e38f230257269e81",
+        "geography/register_snapshot_2026-01-01.csv": "4937e55a50b27ec74da5e3975b6baa65d6e0b9c6de6b6c3609da919085975231",
+        "geography/register_mutations_2010_2026.csv": "6422b6d88bf428b0566823d305049fea2ce8dd0d67419eb57b47e17611a8b065"
+      }
+    },
+    "object_join_status": {
+      "matched": 511
+    }
+  },
+  "history_config": null,
+  "partitions": null,
+  "history_values": "diagnostic; recompute inside evaluator for every fold and policy",
+  "final_test_used": false,
+  "input_sha256": "a8ea6587e0df6be70bf1fbfd07b70c65ac5a1aec7c4e08f05126614eba903e90"
+}
