@@ -28,11 +28,13 @@ def _pipeline(numeric, categorical, alpha):
     return Pipeline([('prepare',ColumnTransformer(transforms)), ('ridge',Ridge(alpha=alpha))])
 
 
-def regularized_predictions(rows, config, baseline, design, blocks):
+def regularized_predictions(rows, config, baseline, design, blocks, computed_history=False):
     partition = 'test' if config.mode == 'final_test' else 'validation'
     keys = set(zip(baseline.municipality_id,baseline.vote_id))
     evaluation = rows.loc[rows.partition.eq(partition) & pd.Series([(m,v) in keys for m,v in zip(rows.municipality_id,rows.vote_id)],index=rows.index)]
     expected_models = ['ridge_history'] + [f'ridge_{block.block_id}' for block in blocks]
+    if computed_history:
+        expected_models.append('ridge_v1_history')
     if config.mode == 'final_test' and (not config.selected_ridge_alphas or any(name not in config.selected_ridge_alphas for name in expected_models)):
         raise ValueError('Final test requires selected_ridge_alphas for every regularized model')
     if not config.ridge_alphas or any(not np.isfinite(alpha) or alpha <= 0 for alpha in config.ridge_alphas):
@@ -45,9 +47,13 @@ def regularized_predictions(rows, config, baseline, design, blocks):
                      & rows.result_availability_evidence.astype(str).str.strip().ne('')]
     if train.empty:
         return pd.DataFrame(columns=baseline.columns), {}
-    feature_sets = {'ridge_history': (['municipal_history','history_missing'],[])}
+    baseline_missing = 'baseline_history_missing' if 'baseline_history_missing' in design else 'history_missing'
+    feature_sets = {'ridge_history': (['municipal_history',baseline_missing],[])}
+    if computed_history:
+        from scripts.voting_history import HISTORY_FEATURES
+        feature_sets['ridge_v1_history'] = (list(HISTORY_FEATURES), [])
     for block in blocks:
-        feature_sets[f'ridge_{block.block_id}'] = (['municipal_history','history_missing'] + [f'{block.block_id}__{name}' for name in block.numeric_features],
+        feature_sets[f'ridge_{block.block_id}'] = (['municipal_history',baseline_missing] + [f'{block.block_id}__{name}' for name in block.numeric_features],
                                                   [f'{block.block_id}__{name}' for name in block.categorical_features])
     output, manifest = [], {}
     for name, (numeric,categorical) in feature_sets.items():
