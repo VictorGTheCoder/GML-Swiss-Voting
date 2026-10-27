@@ -1,0 +1,41 @@
+name: Synchroniser les labels des issues
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/issue-labels.json
+      - .github/workflows/sync-labels.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sync-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Créer ou mettre à jour les labels
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r item; do
+            name=$(jq -r '.name' <<< "$item")
+            color=$(jq -r '.color' <<< "$item")
+            description=$(jq -r '.description' <<< "$item")
+            if gh api "repos/$GH_REPO/labels/$name" --silent 2>/dev/null; then
+              gh api --method PATCH "repos/$GH_REPO/labels/$name" \
+                -f name="$name" -f color="$color" \
+                -f description="$description" --silent
+            else
+              gh api --method POST "repos/$GH_REPO/labels" \
+                -f name="$name" -f color="$color" \
+                -f description="$description" --silent
+            fi
+            echo "Synced: $name"
+          done < <(jq -c '.[]' .github/issue-labels.json)
