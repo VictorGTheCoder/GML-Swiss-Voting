@@ -148,3 +148,52 @@ def test_evaluator_allows_known_no_antecedent_means_to_use_training_imputation()
     train = result['history_report'].query("vote_id == 'old'")
     assert train.history_same_domain_status.eq('no_antecedents').all()
     assert train.history_same_domain_yes_mean.isna().all()
+
+
+def test_frozen_final_preserves_history_family_skipped_during_validation():
+    from dataclasses import replace
+    from scripts.evaluate_votes import evaluate, synthetic_example
+    from scripts.final_evaluation import freeze_experiment
+    rows, config = synthetic_example()
+    domains = pd.DataFrame([dict(
+        vote_id=vote, domain_codes=(1,), domain_status='known', object_match_status='validated',
+        object_match_evidence='fixture exact match', availability_status='verified',
+        availability_evidence='fixture publication',
+        published_at='2021-02-01' if vote == 'next' else '2010-01-01',
+        reference_date='2010-01-01', source_version='fixture-domain-v1',
+    ) for vote in rows.vote_id.unique()])
+    validation = evaluate(rows, config, history_source=rows, domain_records=domains)
+    assert validation['manifest']['computed_history']['status'] == 'skipped'
+    frozen = freeze_experiment(validation)
+    final_config = replace(config, mode='final_test', choices_frozen=True,
+                           selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    final = evaluate(rows, final_config, history_source=rows, domain_records=domains,
+                     frozen_experiment=frozen)
+    assert 'ridge_v1_history' not in set(final['predictions'].model)
+    assert {'constant','municipal_history'} <= set(final['predictions'].model)
+    assert final['manifest']['computed_history']['status'] == 'skipped'
+    assert final['manifest']['computed_history']['reason'] == 'skipped_in_frozen_validation'
+
+
+def test_frozen_final_reports_newly_unresolved_history_without_imputing_it():
+    from dataclasses import replace
+    from scripts.evaluate_votes import evaluate, synthetic_example
+    from scripts.final_evaluation import freeze_experiment
+    rows, config = synthetic_example()
+    domains = pd.DataFrame([dict(
+        vote_id=vote, domain_codes=(1,), domain_status='known', object_match_status='validated',
+        object_match_evidence='fixture exact match', availability_status='verified',
+        availability_evidence='fixture publication',
+        published_at='2023-01-01' if vote == 'final' else '2010-01-01',
+        reference_date='2010-01-01', source_version='fixture-domain-v1',
+    ) for vote in rows.vote_id.unique()])
+    validation = evaluate(rows, config, history_source=rows, domain_records=domains)
+    assert validation['manifest']['computed_history']['status'] == 'enabled'
+    frozen = freeze_experiment(validation)
+    final_config = replace(config, mode='final_test', choices_frozen=True,
+                           selected_ridge_alphas=frozen['selected_ridge_alphas'])
+    final = evaluate(rows, final_config, history_source=rows, domain_records=domains,
+                     frozen_experiment=frozen)
+    assert 'ridge_v1_history' not in set(final['predictions'].model)
+    assert final['manifest']['computed_history']['status'] == 'skipped'
+    assert final['manifest']['computed_history']['reason'] == 'unresolved_history_availability'

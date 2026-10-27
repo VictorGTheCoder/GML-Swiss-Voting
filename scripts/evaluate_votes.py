@@ -311,10 +311,12 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
         unknown = statuses.loc[~statuses.isin(['known','no_antecedents'])]
         if not unknown.empty:
             unresolved_history[prefix] = {str(status): int(count) for status,count in unknown.value_counts(dropna=False).items()}
-    computed_history_enabled = history_source is not None and not unresolved_history
+    history_frozen_skipped = frozen_experiment is not None and 'ridge_v1_history' not in frozen_experiment['nontext_choices']
+    computed_history_enabled = history_source is not None and not unresolved_history and not history_frozen_skipped
     run_manifest['computed_history'].update(
         status='not_requested' if history_source is None else 'enabled' if computed_history_enabled else 'skipped',
-        reason='unresolved_history_availability' if history_source is not None and unresolved_history else None,
+        reason=('skipped_in_frozen_validation' if history_source is not None and history_frozen_skipped
+                else 'unresolved_history_availability' if history_source is not None and unresolved_history else None),
         unresolved_status_counts=unresolved_history,
         active_rows=int(active_history_rows.sum()),
     )
