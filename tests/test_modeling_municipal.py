@@ -5,7 +5,6 @@ from scripts.integration.modeling_municipal import prepare_municipal_table
 
 
 def _inputs(*, missing_age_bin=False, missing_commune=False):
-    years = [2012]
     nationality = pd.DataFrame([
         {"year": 2012, "code": "0001", "population": 100, "swiss": 80, "foreign": 20},
         {"year": 2012, "code": "0002", "population": 300, "swiss": 210, "foreign": 90},
