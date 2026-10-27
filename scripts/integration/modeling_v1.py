@@ -80,6 +80,7 @@ def prepare_v1_table(
     else:
         from scripts.voting_history import build_v1_history_features
 
+        _validate_partitions(history_config)
         history = build_v1_history_features(
             prepared, prepared, history_config, domain_records=object_features.domain_metadata,
         )
@@ -90,8 +91,27 @@ def prepare_v1_table(
         ], axis=1)
         history_manifest = asdict(history_config)
     strict_keys = pd.MultiIndex.from_frame(preparation.strict_population[["municipality_id", "vote_id"]])
-    strict = prepared.loc[pd.MultiIndex.from_frame(prepared[["municipality_id", "vote_id"]]).isin(strict_keys)].copy()
+    strict_mask = pd.Series(pd.MultiIndex.from_frame(prepared[["municipality_id", "vote_id"]]).isin(strict_keys), index=prepared.index)
+    if history_config is None:
+        history_ok = pd.Series(False, index=prepared.index)
+        history_reason = "history_policy_not_configured"
+    else:
+        history_ok = prepared[[f"{prefix}_status" for prefix in (
+            "history", "history_5y", "history_same_domain",
+        )]].isin(["known", "no_antecedents"]).all(axis=1)
+        history_reason = "history_unresolved"
+    history_exclusions = prepared.loc[~history_ok, ["municipality_id", "vote_id", "voting_date"]].assign(
+        reason=history_reason, source_block="history",
+    )
+    exclusions = pd.concat([preparation.exclusions, history_exclusions], ignore_index=True).sort_values(
+        ["vote_id", "municipality_id", "reason"], kind="stable",
+    ).reset_index(drop=True)
+    strict = prepared.loc[strict_mask & history_ok].copy()
     readiness = dict(preparation.readiness)
+    readiness.update(status="ready" if len(strict) else "strict_population_empty",
+                     strict_population_rows=len(strict), strict_objects=int(strict.vote_id.nunique()),
+                     strict_dates=int(strict.voting_date.nunique()))
+    readiness["exclusion_reasons"] = {str(key): int(value) for key, value in exclusions.reason.value_counts().sort_index().items()}
     readiness["history_status"] = "not_configured" if history_config is None else "diagnostic; evaluator recomputes"
     readiness["modeling_ready"] = bool(len(strict) and history_config is not None)
     readiness["candidate_feature_count"] = 30
@@ -116,10 +136,24 @@ def prepare_v1_table(
         "input_sha256": hashlib.sha256(outcomes.to_json(orient="split", date_format="iso").encode()).hexdigest(),
     }
     return V1Preparation(
-        prepared, strict.reset_index(drop=True), preparation.exclusions,
+        prepared, strict.reset_index(drop=True), exclusions,
         preparation.feature_join_report, history_report, coverage, readiness, manifest,
         blocks, object_features.domain_metadata,
     )
+
+
+def _validate_partitions(config) -> None:
+    groups = [pd.to_datetime(list(getattr(config, f"{name}_dates")), utc=True).normalize()
+              for name in ("train", "validation", "test")]
+    dates = [date for group in groups for date in group]
+    if any(len(group) == 0 or group.isna().any() for group in groups):
+        raise ValueError("All three history partitions must declare valid complete dates")
+    if len(dates) != len(set(dates)):
+        raise ValueError("History partition dates must be disjoint and unique")
+    if not (max(groups[0]) < min(groups[1]) and max(groups[1]) < min(groups[2])):
+        raise ValueError("History partitions must be chronological")
+    if config.history_policy not in ("frozen", "rolling"):
+        raise ValueError("History policy must be frozen or rolling")
 
 
 def _group_coverage(rows: pd.DataFrame, key: str) -> dict:

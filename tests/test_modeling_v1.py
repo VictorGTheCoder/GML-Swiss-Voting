@@ -65,3 +65,23 @@ def test_complete_v1_retains_thirty_candidates_and_exports_honest_empty_readines
         assert first.read_bytes() == (tmp_path / "second" / first.name).read_bytes()
     assert len(pd.read_parquet(tmp_path / "first" / "prepared.parquet")) == 1
     assert json.loads((tmp_path / "first" / "manifest.json").read_text())["final_test_used"] is False
+
+
+def test_verified_sources_cannot_make_undeclared_history_ready():
+    outcomes, objects, municipal = fixture_sources()
+    for block in (*municipal, objects.feature_block):
+        block.records["availability_status"] = "verified"
+        block.records["published_at"] = "2018-01-01"
+        block.records["reference_date"] = "2017-01-01"
+        block.records["availability_evidence"] = "fixture documentary release"
+    forecasts = pd.DataFrame([dict(
+        vote_id="10", forecast_at="2018-02-01", forecast_source="fixture",
+        forecast_source_version="fixture-v1", forecast_evidence="fixture brochure",
+    )])
+    result = prepare_v1_table(
+        outcomes, geography_id="fixture-g1", source_version="fixture-outcomes",
+        municipal_blocks=municipal, object_features=objects, forecast_publications=forecasts,
+    )
+    assert result.strict_population.empty
+    assert result.exclusions.reason.eq("history_policy_not_configured").any()
+    assert result.readiness["modeling_ready"] is False
