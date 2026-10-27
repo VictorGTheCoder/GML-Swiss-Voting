@@ -18,6 +18,7 @@ Les tables Parquet, caches, JSON techniques détaillés et autres données inter
 ### Datasets disponibles
 
 - [Bilan du pipeline au 26 octobre 2026](datasets/pipeline_validation_2026-10-26.md).
+- [ESPOP — faisabilité d'une extension 1981–2010](datasets/espop/audit_1981_2010.md).
 - [Archive — brochures, audit du 6 octobre 2026](datasets/federal_explanations/audit_2011_2026.md).
 
 Rapports régénérables : `generated/dataset_compatibility/audit.md` pour les sources,

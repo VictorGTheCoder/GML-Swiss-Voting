@@ -19,6 +19,7 @@ Les READMEs des tables versionnées décrivent leur format ; les guides détaill
 expliquent les sources, la reconstruction et les limites.
 
 - [Explications du Conseil fédéral](datasets/federal_explanations/README.md)
+- [ESPOP — sources et reproduction de l'audit historique](datasets/espop/README.md)
 - [Répertoire historique des communes](datasets/repertoire_communes/README.md)
 - [STATPOP](datasets/statpop/README.md)
 - [Typologies territoriales et régions linguistiques](datasets/typologies/README.md)
