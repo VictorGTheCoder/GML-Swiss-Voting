@@ -86,6 +86,12 @@ def compare_population(rts, official):
     columns = ["year", "code", "population", "foreign"]
     result = rts[columns].merge(official[columns], on=["year", "code"], how="outer",
                                 suffixes=("_rts", "_ofs"), validate="one_to_one", indicator=True)
+    # An entirely excluded official input leaves object-typed empty columns.
+    # Coerce both sides before arithmetic and finiteness checks.
+    for field in ("population", "foreign"):
+        for source in ("rts", "ofs"):
+            column = f"{field}_{source}"
+            result[column] = pd.to_numeric(result[column], errors="coerce")
     for field in ("population", "foreign"):
         result[f"{field}_delta"] = result[f"{field}_rts"] - result[f"{field}_ofs"]
     for source in ("rts", "ofs"):
