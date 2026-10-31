@@ -1,4 +1,5 @@
 import pandas as pd
+import pytest
 
 from scripts.modeling.evaluate_votes import EvaluationConfig
 from scripts.modeling.voting_history import build_v1_history_features
@@ -204,3 +205,31 @@ def test_frozen_final_reports_newly_unresolved_history_without_imputing_it():
     assert 'ridge_v1_history' not in set(final['predictions'].model)
     assert final['manifest']['computed_history']['status'] == 'skipped'
     assert final['manifest']['computed_history']['reason'] == 'unresolved_history_availability'
+
+
+@pytest.mark.parametrize("yes_count,no_count", [
+    (-999, -999),  # Sentinel produces a misleading 0.5 without count checks.
+    (-3, 13),
+    (1.5, 8.5),
+    (0, 0),
+    (float("inf"), 1),
+    ("missing", 12),
+])
+def test_invalid_external_history_counts_cannot_enter_v1_features(yes_count, no_count):
+    from scripts.modeling.evaluate_votes import evaluate, synthetic_example
+
+    rows, config = synthetic_example()
+    source = rows.copy()
+    # Simulate an unprepared external source, including an untrusted cached share.
+    source["target_share"] = 0.5
+    invalid = source.vote_id.eq("old") & source.municipality_id.eq("a")
+    source.loc[invalid, "yes_count"] = yes_count
+    source.loc[invalid, "no_count"] = no_count
+
+    result = evaluate(rows, config, history_source=source)
+    final = result["history_report"].query(
+        "vote_id == 'final' and municipality_id == 'a'"
+    ).iloc[0]
+    assert final.history_status == "ambiguous_history_result"
+    assert pd.isna(final.history_vote_count)
+    assert pd.isna(final.history_yes_mean)
