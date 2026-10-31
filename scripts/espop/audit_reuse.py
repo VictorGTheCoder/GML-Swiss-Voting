@@ -9,6 +9,7 @@ from collections import defaultdict
 from datetime import date
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 from scripts.espop.collect_reuse import SNAPSHOTS, YEARS
@@ -20,7 +21,7 @@ def harmonize_counts(counts, source_codes, target_codes, from_date, to_date, mut
 
     Source codes are the entire source snapshot, not just the supplied counts.
     A destination requires every constituent in every supplied year. Both counts
-    must be present and nonnegative. Missing/zero denominators remain explicit.
+    must be finite and nonnegative. Missing/zero denominators remain explicit.
     """
     count_columns = ["population", "foreign"] + [c for c in counts if c.startswith("age_")]
     if counts.duplicated(["year", "code"]).any():
@@ -62,7 +63,7 @@ def harmonize_counts(counts, source_codes, target_codes, from_date, to_date, mut
             values = part[count_columns]
             if target in ambiguous_targets or set(part.code) != required:
                 reason = "incomplete_or_ambiguous_constituents"
-            elif values.isna().any().any() or (values < 0).any().any() or (part.foreign > part.population).any():
+            elif not np.isfinite(values).all().all() or (values < 0).any().any() or (part.foreign > part.population).any():
                 reason = "invalid_counts"
             else:
                 sums = values.sum().to_dict()
@@ -90,7 +91,8 @@ def compare_population(rts, official):
     for source in ("rts", "ofs"):
         denominator = result[f"population_{source}"]
         numerator = result[f"foreign_{source}"]
-        valid = denominator.gt(0) & numerator.ge(0) & numerator.le(denominator)
+        valid = (np.isfinite(denominator) & np.isfinite(numerator) &
+                 denominator.gt(0) & numerator.ge(0) & numerator.le(denominator))
         result[f"share_foreign_{source}"] = numerator / denominator.where(valid)
     result["status"] = "different"
     result.loc[result.population_delta.eq(0) & result.foreign_delta.eq(0), "status"] = "equal"
@@ -100,7 +102,9 @@ def compare_population(rts, official):
     result.loc[matched & result[[c for c in result if c.endswith(("_rts", "_ofs")) and not c.startswith("share_")]].isna().any(axis=1), "status"] = "missing_counts"
     for source in ("rts", "ofs"):
         denominator, numerator = result[f"population_{source}"], result[f"foreign_{source}"]
-        result.loc[denominator.lt(0) | numerator.lt(0) | numerator.gt(denominator), "status"] = "invalid_counts"
+        nonfinite = ((denominator.notna() & ~np.isfinite(denominator)) |
+                     (numerator.notna() & ~np.isfinite(numerator)))
+        result.loc[nonfinite | denominator.lt(0) | numerator.lt(0) | numerator.gt(denominator), "status"] = "invalid_counts"
     return result.drop(columns="_merge").sort_values(["year", "code"]).reset_index(drop=True)
 
 
@@ -212,8 +216,8 @@ def audit(raw_dir: Path, output_dir: Path) -> dict:
     )
     comparisons["statpop"] = compare_population(annual.loc[annual.year.isin([2010, 2011])], statpop_mapped)
 
-    anomalies = annual.loc[annual.population.le(0) | annual.population.isna() |
-                           annual.foreign.isna() | annual.foreign.lt(0) |
+    anomalies = annual.loc[annual.population.le(0) | ~np.isfinite(annual.population) |
+                           ~np.isfinite(annual.foreign) | annual.foreign.lt(0) |
                            annual.foreign.gt(annual.population)].copy()
     official_anomalies = read_cube(raw_dir / "balance_anomalies.csv")
     anomalies = anomalies.merge(official_anomalies, on=["year", "code"], how="left",
