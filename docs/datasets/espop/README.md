@@ -134,3 +134,11 @@ sortie. Le manifeste publié ne contient aucun fichier de données tiers.
 Les sorties locales supplémentaires conservent les exclusions, comparaisons
 complètes et événements administratifs. Consulter les
 [conditions de réutilisation](reuse_conditions.md) avant de diffuser des données.
+
+Les tests rejouent aussi une commande complète sur des CSV et un classeur RFP
+entièrement synthétiques, sans réseau ni redistribution de fichiers tiers.
+Ils contrôlent les sorties chiffrées de la transition 2010, une renumérotation,
+une fusion pondérée et l'exclusion d'une scission même suivie d'une fusion,
+ainsi que les absences d'âge et les codes historiques à total nul.
+Les effectifs non finis sont invalides : exclus des sommes OFS, signalés dans
+les comparaisons RTS et jamais convertis en parts calculables.
