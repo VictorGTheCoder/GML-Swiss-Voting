@@ -130,3 +130,11 @@ Follow-up remains documentary: obtain version-bound brochure/result/source relea
 evidence, audit strict coverage, then justify complete-date partitions. Party
 features, text contributions and any ESPOP extension require their existing
 separate gates. Human PR review and remote CI remain distinct from local tests.
+
+The first integration CI run
+[41199789865](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/41199789865)
+failed on both operating systems before dependency installation: the existing
+`setup-python` pip cache searched for `requirements.txt`/`pyproject.toml`, while
+the repository uses `requirements-test.txt`. The workflow now explicitly sets
+`cache-dependency-path: requirements-test.txt`; this preserves its original
+Windows/Linux matrix and commands. Those failed jobs did not run tests.
