@@ -28,3 +28,5 @@ Rapports régénérables : `generated/dataset_compatibility/audit.md` pour les s
 et dictionnaires nécessaires à cette dernière restent versionnés avec son Parquet.
 
 Les rapports OFS et Swissvotes produits par `scripts/run_pipeline.py` sont générés à la racine de ce dossier et ignorés par Git. Ils sont recréés à chaque exécution.
+
+- [Démonstration rétrospective du 3 novembre 2026](datasets/retrospective_demo/presentation.md) : scores de validation, figures et manifeste mesurés ; aucune évaluation du test réservé.

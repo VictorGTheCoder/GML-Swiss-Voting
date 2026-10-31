@@ -278,6 +278,22 @@ La population strictement admissible reste **vide** : les preuves de publication
 historiques manquent et les partitions ne sont pas encore justifiées. Aucun
 score réel, entraînement strict ni accès au test final n'est revendiqué.
 
+## Démonstration ML du 3 novembre 2026
+
+Une commande reproduit le modèle HistGradientBoostingRegressor exécuté sur la
+validation 2021–2022, les baselines, les références Ridge, le modèle sauvegardé
+et les figures de présentation :
+
+```bash
+python -m scripts.modeling.retrospective_demo
+```
+
+Voir le [guide de reproduction et environnement figé](docs/project/retrospective_demo.md)
+et la [présentation avec résultats mesurés](reports/datasets/retrospective_demo/presentation.md).
+Il s'agit d'une expérience **rétrospective exploratoire** distincte de la V1 stricte.
+Le test 2023–2025 reste réservé ; aucune performance de prévision opérationnelle
+n'est démontrée.
+
 ## Collaboration
 
 Le développement se fait par branches, avec des pull requests et des revues avant les intégrations importantes. Les analyses, sources, décisions méthodologiques et limites doivent rester traçables dans le dépôt.
