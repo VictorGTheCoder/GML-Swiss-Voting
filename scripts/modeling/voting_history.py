@@ -37,6 +37,21 @@ def build_historical_features(rows, config):
     return result
 
 
+def validated_vote_shares(rows: pd.DataFrame) -> pd.Series:
+    """Compute shares only from valid, finite, nonnegative integer vote counts.
+
+    Invalid historical results remain unresolved rather than producing a
+    plausible share or silently disappearing from the history pool.
+    """
+    yes = pd.to_numeric(rows['yes_count'], errors='coerce')
+    no = pd.to_numeric(rows['no_count'], errors='coerce')
+    total = yes + no
+    valid = (np.isfinite(yes) & np.isfinite(no) & np.isfinite(total)
+             & yes.ge(0) & no.ge(0) & yes.mod(1).eq(0) & no.mod(1).eq(0)
+             & total.gt(0))
+    return (yes / total).where(valid)
+
+
 HISTORY_FEATURES = tuple(f"{prefix}_{suffix}" for prefix in
     ("history", "history_5y", "history_same_domain")
     for suffix in ("yes_mean", "vote_count", "missing"))
@@ -64,8 +79,8 @@ def build_v1_history_features(target_rows, history_source, config, domain_record
                 frame[name] = pd.to_datetime(frame[name], errors='coerce', utc=True, format='mixed')
         for name in ('municipality_id','geography_id','vote_id'):
             frame[name] = frame[name].astype('string')
-    if 'target_share' not in source:
-        source['target_share'] = source.yes_count / (source.yes_count + source.no_count)
+    # Recheck the underlying counts even if the caller provided target_share.
+    source['target_share'] = validated_vote_shares(source)
     mapping = {pd.to_datetime(date, utc=True).normalize(): part for part, dates in
                zip(('train','validation','test'), (config.train_dates,config.validation_dates,config.test_dates)) for date in dates}
     first = min(mapping) if mapping else None
@@ -141,7 +156,7 @@ def build_v1_history_features(target_rows, history_source, config, domain_record
                     status = 'unknown_domain_metadata'
                 else:
                     subset = subset.loc[[bool(target_domain & value) for value in memberships]]
-            if status is None and (subset.vote_id.duplicated().any() or not (np.isfinite(subset.target_share) & subset.target_share.between(0,1)).all()):
+            if status is None and (subset.vote_id.duplicated().any() or not (subset.target_share.notna() & np.isfinite(subset.target_share) & subset.target_share.between(0,1)).fillna(False).all()):
                 status = 'ambiguous_history_result'
             if status is None:
                 count = len(subset)
