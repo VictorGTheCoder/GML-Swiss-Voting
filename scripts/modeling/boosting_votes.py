@@ -34,15 +34,15 @@ def _pipeline(numeric, categorical, settings, seed):
     return Pipeline([('prepare', ColumnTransformer(transforms, sparse_threshold=0.0)), ('model', estimator)])
 
 
-def _feature_sets(blocks):
-    feature_sets = {'hist_gradient_boosting_history': (['municipal_history', 'history_missing'], [])}
+def _feature_sets(blocks, baseline_missing='history_missing'):
+    feature_sets = {'hist_gradient_boosting_history': (['municipal_history', baseline_missing], [])}
     for block in blocks:
         feature_sets[f'hist_gradient_boosting_{block.block_id}'] = (
-            ['municipal_history', 'history_missing'] + [f'{block.block_id}__{name}' for name in block.numeric_features],
+            ['municipal_history', baseline_missing] + [f'{block.block_id}__{name}' for name in block.numeric_features],
             [f'{block.block_id}__{name}' for name in block.categorical_features])
     if len(blocks) > 1:
         feature_sets['hist_gradient_boosting_combined'] = (
-            ['municipal_history', 'history_missing'] + [
+            ['municipal_history', baseline_missing] + [
                 f'{block.block_id}__{name}' for block in blocks for name in block.numeric_features],
             [f'{block.block_id}__{name}' for block in blocks for name in block.categorical_features])
     return feature_sets
@@ -77,7 +77,7 @@ def hist_gradient_boosting_predictions(rows, config, baseline, design, blocks):
     evaluation_rows = rows.loc[rows.partition.eq(partition) & pd.Series(
         [(municipality, vote) in keys for municipality, vote in zip(rows.municipality_id, rows.vote_id)],
         index=rows.index)]
-    feature_sets = _feature_sets(blocks)
+    feature_sets = _feature_sets(blocks, 'baseline_history_missing' if 'baseline_history_missing' in design else 'history_missing')
     frozen_settings = config.selected_hist_gradient_boosting or {}
     if evaluation_rows.empty:
         return pd.DataFrame(columns=baseline.columns), {}

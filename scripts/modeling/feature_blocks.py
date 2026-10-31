@@ -22,8 +22,8 @@ class FeatureBlock:
     prerequisite_reason: str | None = None
 
 
-def join_feature_blocks(rows, blocks, geography_mode):
-    """As-of joins preserve the row index and never multiply municipality/object keys."""
+def join_feature_blocks(rows, blocks, geography_mode, *, retain_unverified=False):
+    """As-of joins preserve keys; optional retrospective values stay explicitly unverified."""
     joined = pd.DataFrame(index=rows.index)
     report, manifests, coverage = [], {}, {}
     identifiers = [block.block_id for block in blocks]
@@ -52,6 +52,18 @@ def join_feature_blocks(rows, blocks, geography_mode):
             raise ValueError('Same-object outcome/key or evaluation-only fields cannot be predictors')
         for name in names:
             joined[f'{block.block_id}__{name}'] = np.nan if name in block.numeric_features else None
+        provenance_columns = {
+            f'{block.block_id}__availability_status': None,
+            f'{block.block_id}__published_at': None,
+            f'{block.block_id}__reference_date': None,
+            f'{block.block_id}__availability_evidence': None,
+            f'{block.block_id}__source_version': None,
+        }
+        if retain_unverified:
+            for column, value in provenance_columns.items():
+                if column in joined:
+                    raise ValueError(f'Feature provenance column collides: {column}')
+                joined[column] = value
         if block.prerequisite_reason is not None:
             if not block.prerequisite_reason.strip() or not block.records.empty:
                 raise ValueError('Skipped blocks require a prerequisite reason and no records')
@@ -65,6 +77,8 @@ def join_feature_blocks(rows, blocks, geography_mode):
             for _, row in rows.iterrows():
                 report.append({'municipality_id': row.municipality_id, 'vote_id': row.vote_id,
                                'block_id': block.block_id, 'status': 'skipped'})
+            if retain_unverified:
+                joined.loc[:, f'{block.block_id}__availability_status'] = 'skipped'
             continue
         entity = 'municipality_id' if block.scope == 'municipality' else 'vote_id'
         required = [entity,'reference_date','published_at','availability_status','availability_evidence','source_version'] + names
@@ -101,17 +115,28 @@ def join_feature_blocks(rows, blocks, geography_mode):
             verified &= (source.object_match_status.eq('validated') & source.object_match_evidence.notna()
                                    & source.object_match_evidence.astype('string').str.strip().ne('').fillna(False))
         source = source.sort_values(['published_at','reference_date'])
-        releases = {key:group.loc[verified.loc[group.index]] for key,group in source.groupby(entity,sort=False)}
+        all_releases = {key: group for key, group in source.groupby(entity,sort=False)}  # noqa: C416
+        releases = {key:group.loc[verified.loc[group.index]] for key,group in all_releases.items()}
         counts = {'matched_rows': 0}
         context_columns = [entity,'forecast_at'] + (['geography_id'] if block.scope == 'municipality' else [])
-        for context,targets in rows.groupby(context_columns,sort=False):
+        # Unknown forecast instants still need a keyed retrospective value and
+        # audit row. They remain unverified and are blocked from strict use.
+        for context,targets in rows.groupby(context_columns,sort=False,dropna=False):
             entity_id,cutoff = context[:2]
-            candidates = releases.get(entity_id)
+            candidates = all_releases.get(entity_id)
             selected_publication, selected_reference, selected_evidence = None, None, None
+            selected_version = None
             status = 'missing_entity'
             if candidates is not None:
-                timely = candidates.loc[candidates.published_at.le(cutoff) & candidates.reference_date.le(cutoff)]
-                status = 'unknown_availability' if candidates.empty else 'unavailable_at_forecast'
+                verified_candidates = releases.get(entity_id, candidates.iloc[:0])
+                if pd.isna(cutoff):
+                    timely = verified_candidates.iloc[:0]
+                else:
+                    timely = verified_candidates.loc[
+                        verified_candidates.published_at.le(cutoff)
+                        & verified_candidates.reference_date.le(cutoff)
+                    ]
+                status = 'unknown_availability' if verified_candidates.empty else 'unavailable_at_forecast'
                 if not timely.empty:
                     if block.scope == 'municipality':
                         timely = timely.loc[timely.geography_id.eq(context[2])] if block.geography_mode == geography_mode else timely.iloc[:0]
@@ -121,10 +146,32 @@ def join_feature_blocks(rows, blocks, geography_mode):
                         for name in names:
                             joined.loc[targets.index,f'{block.block_id}__{name}'] = selected[name]
                         selected_publication,selected_reference,selected_evidence = str(selected.published_at),str(selected.reference_date),selected.availability_evidence
+                        selected_version = selected.source_version
                         counts['matched_rows'] += len(targets)
+                elif retain_unverified and status != 'incompatible_geography':
+                    retrospective = candidates
+                    if block.scope == 'municipality':
+                        retrospective = retrospective.loc[retrospective.geography_id.eq(context[2])]
+                    if not retrospective.empty:
+                        selected = retrospective.sort_values(
+                            ['reference_date','published_at','source_version'], na_position='last', kind='stable'
+                        ).iloc[-1]
+                        for name in names:
+                            joined.loc[targets.index,f'{block.block_id}__{name}'] = selected[name]
+                        selected_publication = None if pd.isna(selected.published_at) else str(selected.published_at)
+                        selected_reference = None if pd.isna(selected.reference_date) else str(selected.reference_date)
+                        selected_evidence = selected.availability_evidence
+                        selected_version = selected.source_version
+                if retain_unverified:
+                    joined.loc[targets.index, f'{block.block_id}__availability_status'] = status
+                    joined.loc[targets.index, f'{block.block_id}__published_at'] = selected_publication
+                    joined.loc[targets.index, f'{block.block_id}__reference_date'] = selected_reference
+                    joined.loc[targets.index, f'{block.block_id}__availability_evidence'] = selected_evidence
+                    joined.loc[targets.index, f'{block.block_id}__source_version'] = selected_version
             counts[status+'_rows'] = counts.get(status+'_rows',0) + (len(targets) if status != 'matched' else 0)
             context_report = targets[['municipality_id','vote_id']].assign(block_id=block.block_id,status=status,
-                published_at=selected_publication,reference_date=selected_reference,availability_evidence=selected_evidence)
+                published_at=selected_publication,reference_date=selected_reference,
+                availability_evidence=selected_evidence,source_version=selected_version)
             report.extend(context_report.to_dict('records'))
         counts['missing_values'] = {name:int(joined[f'{block.block_id}__{name}'].isna().sum()) for name in names}
         counts['input_records'] = len(source)

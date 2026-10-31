@@ -8,6 +8,8 @@ La table exploratoire dérivée reste distincte des sources et du protocole de p
 - [Datasets retenus](project/datasets.md) — rôle, granularité et règles temporelles des sources Must.
 - [Audit des features communales](project/communal_features_audit.md) — inventaire et faisabilité des variables communales.
 - [Table exploratoire structurée](../data/processed/modeling/README.md) — jointures, hypothèses et reconstruction.
+- [Préparation V1](project/modeling_v1.md) — 30 candidates, provenance et population stricte séparée.
+- [Audit V1](project/modeling_v1_audit.md) — état historique et intégration sur les sources actuelles.
 - [Évaluation municipale](project/municipal_evaluation.md) — contrat strict et séparation temporelle.
 - [Blocs de variables](project/municipal_features.md) — comparaison indépendante des sources.
 - [Évaluation finale](project/final_evaluation.md) — gel de l'expérience et test réservé.
