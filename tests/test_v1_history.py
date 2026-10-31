@@ -236,3 +236,21 @@ def test_invalid_external_history_counts_cannot_enter_v1_features(yes_count, no_
     assert final.history_status == "ambiguous_history_result"
     assert pd.isna(final.history_vote_count)
     assert pd.isna(final.history_yes_mean)
+
+
+
+def test_nullable_missing_history_count_remains_unresolved():
+    from scripts.modeling.evaluate_votes import evaluate, synthetic_example
+
+    rows, config = synthetic_example()
+    source = rows.copy()
+    source["yes_count"] = source["yes_count"].astype("Int64")
+    invalid = source.vote_id.eq("old") & source.municipality_id.eq("a")
+    source.loc[invalid, "yes_count"] = pd.NA
+
+    result = evaluate(rows, config, history_source=source)
+    final = result["history_report"].query(
+        "vote_id == 'final' and municipality_id == 'a'"
+    ).iloc[0]
+    assert final.history_status == "ambiguous_history_result"
+    assert pd.isna(final.history_vote_count)
