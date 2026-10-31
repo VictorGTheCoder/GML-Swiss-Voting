@@ -156,7 +156,7 @@ def build_v1_history_features(target_rows, history_source, config, domain_record
                     status = 'unknown_domain_metadata'
                 else:
                     subset = subset.loc[[bool(target_domain & value) for value in memberships]]
-            if status is None and (subset.vote_id.duplicated().any() or not (np.isfinite(subset.target_share) & subset.target_share.between(0,1)).all()):
+            if status is None and (subset.vote_id.duplicated().any() or not (subset.target_share.notna() & np.isfinite(subset.target_share) & subset.target_share.between(0,1)).fillna(False).all()):
                 status = 'ambiguous_history_result'
             if status is None:
                 count = len(subset)
