@@ -126,6 +126,30 @@ def test_offline_command_publishes_comparisons_coverage_and_geography(audit_inpu
     assert mutations.loc[mutations.kind.eq("split"), "decision"].eq("exclude_unproven_allocation").all()
 
 
+def test_command_keeps_missingness_when_every_official_row_is_excluded(audit_inputs, tmp_path):
+    path = audit_inputs / "balance.csv"
+    frame = pd.read_csv(path, encoding="cp1252")
+    frame["Valeur"] = float("inf")
+    frame.to_csv(path, index=False, encoding="cp1252")
+    refresh_fingerprint(audit_inputs, path)
+
+    output = tmp_path / "output"
+    result = run_audit(audit_inputs, output)
+    assert result.returncode == 0, result.stderr
+    compared = pd.read_csv(output / "comparison_balance.csv", dtype={"code": str})
+    assert not compared.empty
+    assert compared.status.eq("missing_ofs").all()
+    assert compared.population_ofs.isna().all()
+    assert compared.share_foreign_ofs.isna().all()
+
+    exclusions = pd.read_csv(output / "geography_exclusions.csv", dtype={"code": str})
+    from_balance = exclusions.loc[exclusions.source.eq("balance")]
+    assert len(from_balance) == 18  # All three official codes in all six years.
+    assert from_balance.reason.eq("invalid_counts").all()
+    summary = json.loads((output / "summary.json").read_text())
+    assert summary["comparison_status_counts"]["balance"]
+
+
 def test_command_excludes_nonfinite_official_counts(audit_inputs, tmp_path):
     path = audit_inputs / "balance.csv"
     frame = pd.read_csv(path, encoding="cp1252")
