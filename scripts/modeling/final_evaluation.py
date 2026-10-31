@@ -84,6 +84,7 @@ def experiment_signature(manifest):
             'forecast_cutoffs':manifest['forecast_cutoffs'],'partition_keys_sha256':manifest['partition_keys_sha256'],
             'prepared_availability_sha256':manifest['prepared_availability_sha256'],
             'pretest_labels_sha256':manifest['pretest_labels_sha256'],
+            'computed_history_signature':manifest.get('computed_history_signature'),
             'text_records_sha256':manifest.get('text_records_sha256'),
             'validation_windows':windows,
             'final_refit_schedule':('training_plus_validation_before_first_test_forecast'
@@ -97,7 +98,7 @@ def freeze_experiment(validation_result):
     if manifest['mode'] != 'validation':
         raise ValueError('Only a validation run may freeze experiment choices')
     skipped_regularized = sorted(name for name, run in manifest['regularized'].items()
-                                 if run.get('status') == 'no_evaluable_windows')
+                                 if run.get('status') in ('no_evaluable_windows', 'skipped'))
     evaluated_regularized = {name: run for name, run in manifest['regularized'].items()
                              if name not in skipped_regularized}
     if any(run.get('selected_alpha') is None for run in evaluated_regularized.values()):

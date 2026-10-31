@@ -60,3 +60,12 @@ outputs/
 # Operating systems
 .DS_Store
 Thumbs.db
+
+# V1 curated snapshots only; full bundles are generated.
+data/processed/modeling_v1/*
+!data/processed/modeling_v1/README.md
+!data/processed/modeling_v1/prepared.parquet
+!data/processed/modeling_v1/strict_population.parquet
+!data/processed/modeling_v1/manifest.json
+!data/processed/modeling_v1/coverage.json
+!data/processed/modeling_v1/readiness.json

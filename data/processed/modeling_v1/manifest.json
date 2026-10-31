@@ -1,0 +1,177 @@
+{
+  "schema": "swiss-voting.modeling-v1",
+  "source_start": "2010-01-01",
+  "source_version": "sha256:231bc1806c6cfd2050795265d973d6c512211e8fb82e0a5a6c6e715348325207",
+  "geography_id": "bfs-2026-01-01",
+  "geography_mode": "retrospective_fixed",
+  "candidate_features": [
+    "population_total",
+    "share_foreign",
+    "share_age_0_19",
+    "share_age_20_39",
+    "share_age_65_plus",
+    "canton",
+    "language_region",
+    "urban_rural_type",
+    "history_yes_mean",
+    "history_vote_count",
+    "history_missing",
+    "history_5y_yes_mean",
+    "history_5y_vote_count",
+    "history_5y_missing",
+    "history_same_domain_yes_mean",
+    "history_same_domain_vote_count",
+    "history_same_domain_missing",
+    "legal_form",
+    "policy_domain_01",
+    "policy_domain_02",
+    "policy_domain_03",
+    "policy_domain_04",
+    "policy_domain_05",
+    "policy_domain_06",
+    "policy_domain_07",
+    "policy_domain_08",
+    "policy_domain_09",
+    "policy_domain_10",
+    "policy_domain_11",
+    "policy_domain_12"
+  ],
+  "feature_aliases": {
+    "population_total": "municipal_demography__population_total",
+    "share_foreign": "municipal_demography__share_foreign",
+    "share_age_0_19": "municipal_demography__share_age_0_19",
+    "share_age_20_39": "municipal_demography__share_age_20_39",
+    "share_age_65_plus": "municipal_demography__share_age_65_plus",
+    "canton": "municipal_context__canton",
+    "language_region": "municipal_context__language_region",
+    "urban_rural_type": "municipal_context__urban_rural_type",
+    "policy_domain_01": "swissvotes__policy_domain_01",
+    "policy_domain_02": "swissvotes__policy_domain_02",
+    "policy_domain_03": "swissvotes__policy_domain_03",
+    "policy_domain_04": "swissvotes__policy_domain_04",
+    "policy_domain_05": "swissvotes__policy_domain_05",
+    "policy_domain_06": "swissvotes__policy_domain_06",
+    "policy_domain_07": "swissvotes__policy_domain_07",
+    "policy_domain_08": "swissvotes__policy_domain_08",
+    "policy_domain_09": "swissvotes__policy_domain_09",
+    "policy_domain_10": "swissvotes__policy_domain_10",
+    "policy_domain_11": "swissvotes__policy_domain_11",
+    "policy_domain_12": "swissvotes__policy_domain_12",
+    "legal_form": "swissvotes__legal_form"
+  },
+  "feature_blocks": {
+    "municipal_demography": {
+      "scope": "municipality",
+      "source_url": "https://www.pxweb.bfs.admin.ch/",
+      "source_version": "sha256:acc8f5e1170d8105da7a10dce4cc27b89136314b5a8a56abda79a7ff58093b61",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [
+        "population_total",
+        "share_foreign",
+        "share_age_0_19",
+        "share_age_20_39",
+        "share_age_65_plus"
+      ],
+      "categorical_features": [],
+      "definitions": {
+        "population_total": "Permanent resident population",
+        "share_foreign": "Share of total permanent resident population",
+        "share_age_0_19": "Share of total permanent resident population",
+        "share_age_20_39": "Share of total permanent resident population",
+        "share_age_65_plus": "Share of total permanent resident population"
+      },
+      "object_correspondence": null,
+      "records_sha256": "6094adb502d13a8351b9b537c1c5c7325a6473e62b9a0771d7736294487b5fb5"
+    },
+    "municipal_context": {
+      "scope": "municipality",
+      "source_url": "https://www.agvchapp.bfs.admin.ch/fr/typologies/query",
+      "source_version": "sha256:2a5c6f0e953601cc92cd523fa14c67b8ce549f2cbecdbb8ce68ae647e45f9289",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [],
+      "categorical_features": [
+        "canton",
+        "language_region",
+        "urban_rural_type"
+      ],
+      "definitions": {
+        "canton": "Nominal OFS territorial classification",
+        "language_region": "Nominal OFS territorial classification",
+        "urban_rural_type": "Nominal OFS territorial classification"
+      },
+      "object_correspondence": null,
+      "records_sha256": "b6609a7e34569e9474f43970c6875466479194764a8d967e5878a2ab78e12f04"
+    },
+    "swissvotes": {
+      "scope": "object",
+      "source_url": "https://swissvotes.ch/page/dataset",
+      "source_version": "sha256:1c60679dd5cfe2cb9c0c29fd50ca5900ff61d8696336aa3bd4a1631b9371321e",
+      "geography_mode": "retrospective_fixed",
+      "numeric_features": [
+        "policy_domain_01",
+        "policy_domain_02",
+        "policy_domain_03",
+        "policy_domain_04",
+        "policy_domain_05",
+        "policy_domain_06",
+        "policy_domain_07",
+        "policy_domain_08",
+        "policy_domain_09",
+        "policy_domain_10",
+        "policy_domain_11",
+        "policy_domain_12"
+      ],
+      "categorical_features": [
+        "legal_form"
+      ],
+      "definitions": {
+        "legal_form": "Swissvotes legal form as a category: mandatory referendum, optional referendum, popular initiative, or direct counterproposal",
+        "policy_domain_01": "1 if broad Swissvotes policy domain 1 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_02": "1 if broad Swissvotes policy domain 2 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_03": "1 if broad Swissvotes policy domain 3 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_04": "1 if broad Swissvotes policy domain 4 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_05": "1 if broad Swissvotes policy domain 5 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_06": "1 if broad Swissvotes policy domain 6 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_07": "1 if broad Swissvotes policy domain 7 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_08": "1 if broad Swissvotes policy domain 8 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_09": "1 if broad Swissvotes policy domain 9 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_10": "1 if broad Swissvotes policy domain 10 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_11": "1 if broad Swissvotes policy domain 11 is assigned; 0 if known absent; missing if classification is unknown",
+        "policy_domain_12": "1 if broad Swissvotes policy domain 12 is assigned; 0 if known absent; missing if classification is unknown"
+      },
+      "object_correspondence": "validated object_match_status and nonempty object_match_evidence required",
+      "records_sha256": "bff07107f73e67ef820ff6720d6495a4b08e0b9d8ec733f3593d9f71c174dc30"
+    }
+  },
+  "source_audit": {
+    "statpop": {
+      "path": "processed/statpop/statpop_features.parquet",
+      "sha256": "acc8f5e1170d8105da7a10dce4cc27b89136314b5a8a56abda79a7ff58093b61",
+      "source_version": "sha256:acc8f5e1170d8105da7a10dce4cc27b89136314b5a8a56abda79a7ff58093b61"
+    },
+    "territory": {
+      "path": "processed/typologies/commune_typologies.parquet",
+      "sha256": "2a5c6f0e953601cc92cd523fa14c67b8ce549f2cbecdbb8ce68ae647e45f9289",
+      "source_version": "sha256:2a5c6f0e953601cc92cd523fa14c67b8ce549f2cbecdbb8ce68ae647e45f9289"
+    },
+    "swissvotes": {
+      "path": "processed/swissvotes/swissvotes_clean.parquet",
+      "sha256": "1c60679dd5cfe2cb9c0c29fd50ca5900ff61d8696336aa3bd4a1631b9371321e",
+      "source_version": "sha256:1c60679dd5cfe2cb9c0c29fd50ca5900ff61d8696336aa3bd4a1631b9371321e"
+    },
+    "geography": {
+      "reference": "bfs-2026-01-01",
+      "mode": "retrospective_fixed",
+      "harmonization": "already applied by source pipelines; no second crosswalk"
+    },
+    "publication_evidence": "unknown; available_from is not historical version evidence",
+    "object_join_status": {
+      "matched": 511
+    }
+  },
+  "history_config": null,
+  "partitions": null,
+  "history_values": "diagnostic; recompute inside evaluator for every fold and policy",
+  "final_test_used": false,
+  "input_sha256": "d0e2d4c8c835dd945d0e34469a0f4fddaf97f858f497a3ae311cd30261b18b3d"
+}

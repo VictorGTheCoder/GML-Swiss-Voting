@@ -167,7 +167,7 @@ def _apply_geography(rows, config, crosswalk, exclusions):
     return output, manifest
 
 
-def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None, feature_blocks: tuple = (), text_records=None, frozen_experiment=None) -> dict:
+def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_crosswalk: pd.DataFrame | None = None, feature_blocks: tuple = (), text_records=None, frozen_experiment=None, history_source=None, domain_records=None) -> dict:
     """Run the complete evaluation seam on prepared rows, returning auditable artifacts."""
     if config.mode == 'final_test' and config.choices_frozen and frozen_experiment is None:
         raise ValueError('Final test requires a frozen experiment artifact')
@@ -250,6 +250,24 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     rows['target_share'] = rows.yes_count / (rows.yes_count + rows.no_count)
     mapping = {date: name for name, dates in zip(['train','validation','test'],date_groups) for date in dates}
     rows['partition'] = rows.voting_date.map(mapping)
+    history_pool = rows.copy()
+    if history_source is not None:
+        history_pool = history_source.copy()
+        for name in ['voting_date', 'forecast_at', 'result_available_at']:
+            history_pool[name] = pd.to_datetime(history_pool[name], errors='coerce', utc=True, format='mixed')
+        for name in KEYS + ['geography_id']:
+            history_pool[name] = history_pool[name].astype('string')
+        for name in ('yes_count','no_count'):
+            history_pool[name] = pd.to_numeric(history_pool[name], errors='coerce')
+        for flag in FLAGS:
+            history_pool = history_pool.loc[history_pool[flag].eq(False)]
+        for flag in [c for c in history_pool if c.startswith('flag_')]:
+            history_pool = history_pool.loc[history_pool[flag].eq(False)]
+        if 'preparation_status' in history_pool:
+            history_pool = history_pool.loc[history_pool.preparation_status.eq('ready_for_enrichment')]
+        history_pool, _ = _apply_geography(history_pool, config, geography_crosswalk, {})
+        from scripts.modeling.voting_history import validated_vote_shares
+        history_pool['target_share'] = validated_vote_shares(history_pool)
     exclude(rows.partition.isna(), 'unassigned_date')
     rows = rows.sort_values(['voting_date', 'vote_id', 'municipality_id']).reset_index(drop=True)
     # Pin every label available for fitting/model selection, excluding reserved test labels.
@@ -261,11 +279,24 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     from scripts.modeling.regularized_votes import regularized_predictions
     from scripts.modeling.voting_history import build_historical_features
     history = build_historical_features(rows,config)
+    from scripts.modeling.voting_history import HISTORY_FEATURES, build_v1_history_features
+    v1_history = build_v1_history_features(rows, history_pool, config, domain_records)
     joined, join_report, block_manifest, block_coverage = join_feature_blocks(rows, feature_blocks, config.geography_mode)
-    design = pd.concat([history[['municipal_history','history_missing']], joined], axis=1)
+    baseline_design = history[['municipal_history','history_missing']]
+    if history_source is not None:
+        baseline_design = baseline_design.rename(columns={'history_missing':'baseline_history_missing'})
+        design = pd.concat([baseline_design, v1_history[list(HISTORY_FEATURES)], joined], axis=1)
+    else:
+        design = pd.concat([baseline_design, joined], axis=1)
     from scripts.modeling.final_evaluation import _digest, verify_frozen_experiment
+    history_availability_columns = [name for name in REQUIRED + [
+        'preparation_status', 'result_availability_status', 'result_source', 'result_source_version',
+        'forecast_source', 'forecast_source_version', 'crosswalk_version', 'crosswalk_evidence',
+    ] if name in history_pool and name not in ('yes_count','no_count')]
     run_manifest = {**asdict(config), 'input_rows': len(prepared),
                           'input_sha256': hashlib.sha256(prepared.to_json(orient='split', date_format='iso').encode()).hexdigest(),
+                          'computed_history_signature': {'source_availability_sha256': hashlib.sha256(history_pool[history_availability_columns].to_json(orient='split',date_format='iso').encode()).hexdigest(), 'pretest_context_labels_sha256': hashlib.sha256(history_pool.loc[history_pool.voting_date.lt(min(date_groups[2])), KEYS + ['yes_count','no_count']].to_json(orient='split').encode()).hexdigest(), 'domains_sha256': _digest(domain_records.to_json(orient='split',date_format='iso')) if domain_records is not None else None},
+                          'computed_history': {'version': 'v1', 'history_policy': config.history_policy, 'features': list(HISTORY_FEATURES), 'source_sha256': hashlib.sha256(history_pool.to_json(orient='split',date_format='iso').encode()).hexdigest(), 'domains_sha256': hashlib.sha256(domain_records.to_json(orient='split',date_format='iso').encode()).hexdigest() if domain_records is not None else None},
                           'geography': geography, 'feature_blocks': block_manifest, 'regularized': {},
                           'source_versions': sorted(rows.source_version.astype(str).unique().tolist()),
                           'implementation_sha256': {name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest() for name in ['evaluate_votes.py','regularized_votes.py','boosting_votes.py','expanding_windows.py','feature_blocks.py','text_votes.py','final_evaluation.py','voting_history.py','vote_metrics.py','../federal_explanations/federal_explanations_temporal.py']},
@@ -295,11 +326,32 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
     predictions['clipped'] = False
     predictions['fallback'] = np.column_stack([np.zeros(len(targets),dtype=bool),history.loc[targets.index,'history_missing'].astype(bool)]).ravel()
     regularized_manifest = {}
-    admissible_blocks = tuple(block for block in feature_blocks
-                              if block.prerequisite_reason is None
-                              and block_coverage[block.block_id]['matched_rows'] > 0)
-    if feature_blocks:
-        regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, admissible_blocks)
+    admissible_blocks = ()
+    fitting_partitions = ['train','validation'] if config.mode == 'final_test' and config.refit_train_validation else ['train']
+    active_history_rows = rows.partition.isin(fitting_partitions) | rows.index.isin(targets.index)
+    unresolved_history = {}
+    for prefix in ('history','history_5y','history_same_domain'):
+        statuses = v1_history.loc[active_history_rows, prefix+'_status']
+        unknown = statuses.loc[~statuses.isin(['known','no_antecedents'])]
+        if not unknown.empty:
+            unresolved_history[prefix] = {str(status): int(count) for status,count in unknown.value_counts(dropna=False).items()}
+    history_frozen_skipped = frozen_experiment is not None and 'ridge_v1_history' not in frozen_experiment['nontext_choices']
+    computed_history_enabled = history_source is not None and not unresolved_history and not history_frozen_skipped
+    run_manifest['computed_history'].update(
+        status='not_requested' if history_source is None else 'enabled' if computed_history_enabled else 'skipped',
+        reason=('skipped_in_frozen_validation' if history_source is not None and history_frozen_skipped
+                else 'unresolved_history_availability' if history_source is not None and unresolved_history else None),
+        unresolved_status_counts=unresolved_history,
+        active_rows=int(active_history_rows.sum()),
+    )
+    if feature_blocks or history_source is not None:
+        admissible_blocks = tuple(block for block in feature_blocks
+                                  if block.prerequisite_reason is None
+                                  and block_coverage[block.block_id]['matched_rows'] > 0)
+        regularized, regularized_manifest = regularized_predictions(rows, config, predictions, design, admissible_blocks, computed_history=computed_history_enabled)
+        if history_source is not None and not computed_history_enabled:
+            regularized_manifest['ridge_v1_history'] = {
+                'status': 'skipped', 'reason': run_manifest['computed_history']['reason']}
         predictions = pd.concat([predictions, regularized], ignore_index=True)
     hist_gradient_boosting_manifest = {}
     if feature_blocks:
@@ -343,6 +395,7 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
             'eligible_rows': rows, 'predictions': predictions, 'coverage': coverage,
             'exclusions': exclusions, 'metrics': metrics,
             'by_date': pd.DataFrame(by_date), 'by_object': pd.DataFrame(by_object),
+            'history_report': pd.concat([rows[KEYS], v1_history],axis=1),
             'joined_features': pd.concat([rows[KEYS], design],axis=1), 'join_report': join_report}
     from scripts.modeling.final_evaluation import (
         paired_uncertainty,
@@ -407,12 +460,16 @@ def main():
     parser.add_argument('--frozen-experiment', type=Path, help='Previously saved validation freeze artifact')
     parser.add_argument('--synthetic-features', action='store_true', help='Include an illustrative prepared STATPOP block with --synthetic')
     parser.add_argument('--input', type=Path, help='Prepared CSV or Parquet; raw cleaned outcomes alone are insufficient')
+    parser.add_argument('--history-source', type=Path, help='Complete V1 prepared Parquet, including pre-training history context')
+    parser.add_argument('--domain-records', type=Path, help='V1 domain_records.parquet with version-bound eligibility')
     parser.add_argument('--blocks', type=Path, help='JSON descriptors of prepared feature blocks')
     parser.add_argument('--text-records', type=Path, help='JSON list of reviewed version-bound brochure records; eligibility is rechecked')
     parser.add_argument('--crosswalk', type=Path, help='Optional prepared geography crosswalk CSV')
     parser.add_argument('--config', type=Path, help='JSON EvaluationConfig with date partitions and policies')
     parser.add_argument('--output', type=Path, default=Path('reports/generated/municipal_evaluation'))
     args = parser.parse_args()
+    if args.domain_records and not args.history_source:
+        parser.error('--domain-records requires --history-source')
     if args.synthetic_text and not args.synthetic:
         parser.error('--synthetic-text requires --synthetic')
     if args.final_test != bool(args.frozen_experiment):
@@ -423,7 +480,7 @@ def main():
     if args.synthetic_features and not args.synthetic:
         parser.error('--synthetic-features requires --synthetic')
     if args.synthetic:
-        if args.input or args.config or args.crosswalk or args.blocks:
+        if args.input or args.config or args.crosswalk or args.blocks or args.history_source or args.domain_records:
             parser.error('--synthetic cannot be combined with --input/--config')
         rows, config = synthetic_example()
     else:
@@ -448,7 +505,10 @@ def main():
         blocks = (synthetic_feature_example(),) if args.synthetic_features else load_feature_blocks(args.blocks) if args.blocks else ()
         from scripts.modeling.text_votes import synthetic_text_example
         records = synthetic_text_example(rows) if args.synthetic_text else json.loads(args.text_records.read_text()) if args.text_records else None
-        result = evaluate(rows, config, frozen_experiment=frozen, text_records=records, feature_blocks=blocks, geography_crosswalk=pd.read_csv(args.crosswalk, dtype=str) if args.crosswalk else None)
+        result = evaluate(rows, config,
+            history_source=pd.read_parquet(args.history_source) if args.history_source else None,
+            domain_records=pd.read_parquet(args.domain_records) if args.domain_records else None,
+            frozen_experiment=frozen, text_records=records, feature_blocks=blocks, geography_crosswalk=pd.read_csv(args.crosswalk, dtype=str) if args.crosswalk else None)
     except ValueError as error:
         parser.error(str(error))
     if args.freeze_output:
