@@ -30,7 +30,7 @@ def _pipeline(numeric, categorical, alpha):
     return Pipeline([('prepare',ColumnTransformer(transforms)), ('ridge',Ridge(alpha=alpha))])
 
 
-def regularized_predictions(rows, config, baseline, design, blocks):
+def regularized_predictions(rows, config, baseline, design, blocks, computed_history=False):
     """Fit Ridge once per declared validation window and keep each fit fixed within it."""
     partition = 'test' if config.mode == 'final_test' else 'validation'
     keys = set(zip(baseline.municipality_id,baseline.vote_id))
@@ -43,14 +43,18 @@ def regularized_predictions(rows, config, baseline, design, blocks):
     if evaluation_rows.empty:
         return pd.DataFrame(columns=baseline.columns), {}
 
-    feature_sets = {'ridge_history': (['municipal_history','history_missing'],[])}
+    baseline_missing = 'baseline_history_missing' if 'baseline_history_missing' in design else 'history_missing'
+    feature_sets = {'ridge_history': (['municipal_history',baseline_missing],[])}
+    if computed_history:
+        from scripts.modeling.voting_history import HISTORY_FEATURES
+        feature_sets['ridge_v1_history'] = (list(HISTORY_FEATURES), [])
     for block in blocks:
         feature_sets[f'ridge_{block.block_id}'] = (
-            ['municipal_history','history_missing'] + [f'{block.block_id}__{name}' for name in block.numeric_features],
+            ['municipal_history',baseline_missing] + [f'{block.block_id}__{name}' for name in block.numeric_features],
             [f'{block.block_id}__{name}' for name in block.categorical_features])
     if len(blocks) > 1:
         feature_sets['ridge_combined'] = (
-            ['municipal_history','history_missing'] + [f'{block.block_id}__{name}'
+            ['municipal_history',baseline_missing] + [f'{block.block_id}__{name}'
                 for block in blocks for name in block.numeric_features],
             [f'{block.block_id}__{name}' for block in blocks for name in block.categorical_features])
 
@@ -60,6 +64,8 @@ def regularized_predictions(rows, config, baseline, design, blocks):
         selected_models = {name for name in config.selected_ridge_alphas
                            if name.startswith('ridge_')}
         unknown = selected_models - feature_sets.keys()
+        if not computed_history:
+            unknown -= {'ridge_v1_history'}
         if unknown:
             raise ValueError(f'Frozen Ridge models have no matching feature sets: {sorted(unknown)}')
 

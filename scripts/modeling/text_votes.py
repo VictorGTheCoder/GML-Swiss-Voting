@@ -67,7 +67,8 @@ def text_experiment(rows, config, baseline, design, blocks, records):
     if design.empty:
         design = historical_features(rows, config)
     blocks = tuple(block for block in blocks if block.prerequisite_reason is None)
-    numeric = ['municipal_history','history_missing'] + [f'{b.block_id}__{n}' for b in blocks for n in b.numeric_features]
+    baseline_missing = 'baseline_history_missing' if 'baseline_history_missing' in design else 'history_missing'
+    numeric = ['municipal_history',baseline_missing] + [f'{b.block_id}__{n}' for b in blocks for n in b.numeric_features]
     categorical = [f'{b.block_id}__{n}' for b in blocks for n in b.categorical_features]
     matrix = design[numeric+categorical].copy()
     for column in categorical:

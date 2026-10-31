@@ -265,6 +265,19 @@ Voir [le contrat de la table](data/processed/modeling/README.md). La sortie rest
 distincte des sources et du protocole de prévision stricte ; elle ne constitue
 pas encore une évaluation de modèle.
 
+## Préparation de modélisation V1
+
+La [V1](docs/project/modeling_v1.md) réutilise les sources préparées pour assembler
+30 features candidates avec provenance, contrôles de géographie et de disponibilité,
+couverture et exclusions. Elle reste distincte de la table exploratoire ci-dessus.
+La commande complète figure dans le guide ; `--source-layout processed` est le
+mode par défaut, sans nouveau téléchargement ni harmonisation des sources.
+Le snapshot audité est dans `data/processed/modeling_v1/`.
+
+La population strictement admissible reste **vide** : les preuves de publication
+historiques manquent et les partitions ne sont pas encore justifiées. Aucun
+score réel, entraînement strict ni accès au test final n'est revendiqué.
+
 ## Collaboration
 
 Le développement se fait par branches, avec des pull requests et des revues avant les intégrations importantes. Les analyses, sources, décisions méthodologiques et limites doivent rester traçables dans le dépôt.

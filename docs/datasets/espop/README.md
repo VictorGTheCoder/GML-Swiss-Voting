@@ -102,3 +102,33 @@ des features admissibles : version, territoire et disponibilité doivent être �
 
 Les mouvements supplémentaires restent des candidats pour une expérience
 ultérieure. Leur récupération ne les ajoute pas aux 30 features de la V1.
+
+## Prototype de réutilisation (#67)
+
+Le [rapport de validation](../../../reports/datasets/espop/reuse_2026-10-27.md)
+présente les résultats et décisions par bloc. Les interfaces de test (commande
+et sorties publiques) ont été approuvées dans la session initiale du 27 octobre.
+
+```bash
+python3 -m scripts.espop.collect_reuse --raw-dir data/raw/espop_reuse/nouvelle_collecte
+python3 -m scripts.espop.audit_reuse --raw-dir data/raw/espop_reuse/nouvelle_collecte --output-dir reports/generated/espop_reuse
+python3 -m pytest tests/test_espop_reuse.py -q
+```
+
+La collecte exige un dossier inexistant. Le second programme fonctionne hors
+réseau, vérifie les empreintes et exige un manifeste pour chaque entrée utilisée
+avant de créer les sorties. Pour reproduire la collecte du rapport, utiliser
+`data/raw/espop_reuse/issue67` si ses fichiers locaux sont encore présents.
+Une nouvelle collecte peut produire des chiffres différents : comparer son
+manifeste à `reuse_sources_2026-10-27.json`, sans lui attribuer l'ancien horodatage.
+Dépendances : environnement `environment.yml` (dont `openpyxl` pour le RFP).
+
+Les CSV complets restent locaux. Les résultats publiés sous
+`reports/datasets/espop/reuse_2026-10-27/` sont les sorties sélectionnées
+`summary.json`, `anomaly_periods.csv`, `age_coverage.csv`, `population_sample.csv`,
+`census_differences.csv`, `statpop_2011_differences.csv` et
+`zurich_status_counts.csv`, copiées sans transformation depuis le dossier de
+sortie. Le manifeste publié ne contient aucun fichier de données tiers.
+Les sorties locales supplémentaires conservent les exclusions, comparaisons
+complètes et événements administratifs. Consulter les
+[conditions de réutilisation](reuse_conditions.md) avant de diffuser des données.
