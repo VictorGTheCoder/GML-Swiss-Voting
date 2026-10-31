@@ -266,7 +266,8 @@ def evaluate(prepared: pd.DataFrame, config: EvaluationConfig, *, geography_cros
         if 'preparation_status' in history_pool:
             history_pool = history_pool.loc[history_pool.preparation_status.eq('ready_for_enrichment')]
         history_pool, _ = _apply_geography(history_pool, config, geography_crosswalk, {})
-        history_pool['target_share'] = history_pool.yes_count / (history_pool.yes_count + history_pool.no_count)
+        from scripts.modeling.voting_history import validated_vote_shares
+        history_pool['target_share'] = validated_vote_shares(history_pool)
     exclude(rows.partition.isna(), 'unassigned_date')
     rows = rows.sort_values(['voting_date', 'vote_id', 'municipality_id']).reset_index(drop=True)
     # Pin every label available for fitting/model selection, excluding reserved test labels.
