@@ -108,6 +108,8 @@ ultérieure. Leur récupération ne les ajoute pas aux 30 features de la V1.
 Le [rapport de validation](../../../reports/datasets/espop/reuse_2026-10-27.md)
 présente les résultats et décisions par bloc. Les interfaces de test (commande
 et sorties publiques) ont été approuvées dans la session initiale du 27 octobre.
+La [reproduction du 31 octobre](../../../reports/datasets/espop/reuse_2026-10-31.md)
+retrouve les 25 empreintes source et les sept sorties publiées à l'identique.
 
 ```bash
 python3 -m scripts.espop.collect_reuse --raw-dir data/raw/espop_reuse/nouvelle_collecte
@@ -132,3 +134,11 @@ sortie. Le manifeste publié ne contient aucun fichier de données tiers.
 Les sorties locales supplémentaires conservent les exclusions, comparaisons
 complètes et événements administratifs. Consulter les
 [conditions de réutilisation](reuse_conditions.md) avant de diffuser des données.
+
+Les tests rejouent aussi une commande complète sur des CSV et un classeur RFP
+entièrement synthétiques, sans réseau ni redistribution de fichiers tiers.
+Ils contrôlent les sorties chiffrées de la transition 2010, une renumérotation,
+une fusion pondérée et l'exclusion d'une scission même suivie d'une fusion,
+ainsi que les absences d'âge et les codes historiques à total nul.
+Les effectifs non finis sont invalides : exclus des sommes OFS, signalés dans
+les comparaisons RTS et jamais convertis en parts calculables.
