@@ -108,6 +108,8 @@ ultérieure. Leur récupération ne les ajoute pas aux 30 features de la V1.
 Le [rapport de validation](../../../reports/datasets/espop/reuse_2026-10-27.md)
 présente les résultats et décisions par bloc. Les interfaces de test (commande
 et sorties publiques) ont été approuvées dans la session initiale du 27 octobre.
+La [reproduction du 31 octobre](../../../reports/datasets/espop/reuse_2026-10-31.md)
+retrouve les 25 empreintes source et les sept sorties publiées à l'identique.
 
 ```bash
 python3 -m scripts.espop.collect_reuse --raw-dir data/raw/espop_reuse/nouvelle_collecte
