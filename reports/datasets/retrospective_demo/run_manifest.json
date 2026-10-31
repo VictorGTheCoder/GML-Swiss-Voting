@@ -1,0 +1,203 @@
+{
+  "mode": "exploratory_retrospective",
+  "strict_forecast_ready": false,
+  "test_evaluated": false,
+  "notebook_commit": "6741747853304ed2d2e16f66e13b60cb52020615",
+  "seed": 42,
+  "thread_limit": 1,
+  "settings": {
+    "loss": "squared_error",
+    "learning_rate": 0.1,
+    "max_iter": 100,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 20,
+    "l2_regularization": 0.0,
+    "early_stopping": false,
+    "random_state": 42
+  },
+  "train_end": "2020-12-31",
+  "validation_end": "2022-12-31",
+  "reserved_test": "2023–2025; no targets loaded, predictions or scores generated",
+  "history_policy": "strictly earlier dates, including pre-2012; frozen at 2020-12-31",
+  "refit_train_validation": false,
+  "hyperparameter_search": false,
+  "ridge_alpha": 1.0,
+  "features": [
+    "history_mean_yes",
+    "history_n_objects",
+    "statpop_pop_total",
+    "statpop_share_foreign",
+    "statpop_share_0_19",
+    "statpop_share_20_39",
+    "statpop_share_40_64",
+    "statpop_share_65_plus",
+    "statpop_share_80_plus",
+    "statpop_mean_age",
+    "party_share_plr",
+    "party_share_pdc",
+    "party_share_ps",
+    "party_share_udc",
+    "party_share_pev",
+    "party_share_verts",
+    "party_share_pvl",
+    "party_share_pbd",
+    "party_share_centre",
+    "urban_rural",
+    "language_region",
+    "object_legal_form",
+    "object_domain_1",
+    "object_domain_2",
+    "object_domain_3",
+    "history_missing",
+    "statpop_missing",
+    "elections_missing"
+  ],
+  "excluded_all_missing_training_features": [
+    "party_share_centre"
+  ],
+  "preprocessing": "training-only ordinal encoding; native missing values and categorical splits",
+  "constant_prediction": 0.4618294985769974,
+  "history_validation_fallbacks": 24,
+  "sources": {
+    "ofs": {
+      "path": "data/processed/ofs-votes/votes_communes.parquet",
+      "sha256": "231bc1806c6cfd2050795265d973d6c512211e8fb82e0a5a6c6e715348325207"
+    },
+    "swissvotes": {
+      "path": "data/processed/swissvotes/swissvotes_clean.parquet",
+      "sha256": "1c60679dd5cfe2cb9c0c29fd50ca5900ff61d8696336aa3bd4a1631b9371321e"
+    },
+    "statpop": {
+      "path": "data/processed/statpop/statpop_features.parquet",
+      "sha256": "acc8f5e1170d8105da7a10dce4cc27b89136314b5a8a56abda79a7ff58093b61"
+    },
+    "elections": {
+      "path": "data/processed/elections/elections_communes.parquet",
+      "sha256": "e1657eb57aa5a05755eaf2b73ceb57a9dbef453df6ba9344012994c7a6e300fb"
+    },
+    "typologies": {
+      "path": "data/processed/typologies/commune_typologies.parquet",
+      "sha256": "2a5c6f0e953601cc92cd523fa14c67b8ce549f2cbecdbb8ce68ae647e45f9289"
+    }
+  },
+  "assumptions": {
+    "history": "Dates strictement antérieures, tous les objets du même jour exclus. Publication historique non vérifiée. Historique roulant rétrospectif, à recalculer selon le protocole train/validation/test.",
+    "statpop": "Dernière année dont available_from <= veille du scrutin. Règle conservatrice du 2 septembre Y+1 ; édition actuelle et géographie 2026 rétrospectives.",
+    "elections": "Dernière élection d'une année strictement antérieure au scrutin. Le 1er janvier Y+1 est un seuil de sélection supposé, jamais une preuve de publication. PDC, PBD et Centre restent distincts.",
+    "typologies": "Classification statique du snapshot 2026. Date de publication non vérifiée ; analyse rétrospective uniquement.",
+    "swissvotes": "Forme juridique et codes de domaines seulement. Jointure exacte vote_key, dates et types contrôlés. Classification de l'édition actuelle, disponibilité historique non vérifiée.",
+    "brochures": "Exclues : correspondances et admissibilité temporelle à valider."
+  },
+  "dataset_sha256": "c8a488826093a53f307af0b4a04627fa6d78118a8ac4b25ca8c8e097fdf8e043",
+  "dataset_manifest_sha256": "1466004256ea15632914b5ffa2052fba2c3ff73ef75505bb3422efe49448403c",
+  "source_exclusions_before_training_cutoff": [
+    {
+      "reason": "is_special_unit",
+      "rows": 2566
+    },
+    {
+      "reason": "is_tiebreak_question",
+      "rows": 6309
+    },
+    {
+      "reason": "is_provisional",
+      "rows": 0
+    },
+    {
+      "reason": "flag_valid_gt_ballots",
+      "rows": 4
+    },
+    {
+      "reason": "flag_yes_no_gt_valid",
+      "rows": 81
+    },
+    {
+      "reason": "undefined_target",
+      "rows": 0
+    }
+  ],
+  "dataset_exclusions_sequential": [
+    {
+      "reason": "is_special_unit",
+      "rows": 3190
+    },
+    {
+      "reason": "is_tiebreak_question",
+      "rows": 8414
+    },
+    {
+      "reason": "is_provisional",
+      "rows": 18945
+    },
+    {
+      "reason": "flag_valid_gt_ballots",
+      "rows": 4
+    },
+    {
+      "reason": "flag_yes_no_gt_valid",
+      "rows": 81
+    },
+    {
+      "reason": "undefined_target",
+      "rows": 0
+    }
+  ],
+  "partition_dates": {
+    "train": [
+      "2012-03-11",
+      "2012-06-17",
+      "2012-09-23",
+      "2012-11-25",
+      "2013-03-03",
+      "2013-06-09",
+      "2013-09-22",
+      "2013-11-24",
+      "2014-02-09",
+      "2014-05-18",
+      "2014-09-28",
+      "2014-11-30",
+      "2015-03-08",
+      "2015-06-14",
+      "2016-02-28",
+      "2016-06-05",
+      "2016-09-25",
+      "2016-11-27",
+      "2017-02-12",
+      "2017-05-21",
+      "2017-09-24",
+      "2018-03-04",
+      "2018-06-10",
+      "2018-09-23",
+      "2018-11-25",
+      "2019-02-10",
+      "2019-05-19",
+      "2020-02-09",
+      "2020-09-27",
+      "2020-11-29"
+    ],
+    "validation": [
+      "2021-03-07",
+      "2021-06-13",
+      "2021-09-26",
+      "2021-11-28",
+      "2022-02-13",
+      "2022-05-15",
+      "2022-09-25"
+    ]
+  },
+  "versions": {
+    "python": "3.12.3",
+    "sklearn": "1.9.1",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "joblib": "1.6.0"
+  },
+  "example_selection": "minimum and maximum boosting object MAE; ties ordered by vote_id",
+  "example_vote_ids": [
+    "6550",
+    "6570"
+  ],
+  "artifact_reload_predictions_identical": true,
+  "runner_sha256": "8f9cd7c991640d01a886c7c2f55ded4b292f33290fc0bbfed9d90b5ce0b37a90",
+  "artifact_sha256": "d8a61eb47b1d843d32f6306f65c38a317d099cbbf14941152eeb412e6326a83f"
+}
