@@ -222,6 +222,9 @@ def test_invalid_external_history_counts_cannot_enter_v1_features(yes_count, no_
     source = rows.copy()
     # Simulate an unprepared external source, including an untrusted cached share.
     source["target_share"] = 0.5
+    # pandas 3 rejects incompatible assignments into strict integer columns.
+    source["yes_count"] = source["yes_count"].astype(object)
+    source["no_count"] = source["no_count"].astype(object)
     invalid = source.vote_id.eq("old") & source.municipality_id.eq("a")
     source.loc[invalid, "yes_count"] = yes_count
     source.loc[invalid, "no_count"] = no_count
