@@ -3,7 +3,7 @@
 OFS PX -> parsing -> audit -> cleaning -> validation -> Parquet.
 Swissvotes is cleaned separately. Optional key checks prepare a future join only.
 ``--with-communes`` also builds the commune reference datasets (communes register, STATPOP,
-typologies); STATPOP uses the complete PX export to avoid the slow batched API.
+typologies, map boundaries); STATPOP uses the complete PX export to avoid the slow batched API.
 Use ``--force`` to refresh the sources; cached downloads are otherwise reused.
 """
 
@@ -44,6 +44,9 @@ def run_pipeline(force: bool = False, prepare_joins: bool = False, with_communes
 
 def run_communes_pipeline(force: bool = False) -> None:
     """Commune reference datasets: download, convert to Parquet, build commune features."""
+    from scripts.boundaries.download_boundaries import (
+        ensure_raw_data as download_boundaries,
+    )
     from scripts.repertoire_communes import convert_repertoire_to_parquet
     from scripts.repertoire_communes.download_repertoire import (
         ensure_raw_data as download_repertoire,
@@ -57,6 +60,7 @@ def run_communes_pipeline(force: bool = False) -> None:
 
     download_repertoire(force=force)
     download_typologies(force=force)
+    download_boundaries(force=force)
     download_statpop(force=force)
     convert_repertoire_to_parquet.main()
     convert_statpop_to_parquet.main()

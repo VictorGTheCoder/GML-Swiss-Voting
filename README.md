@@ -152,9 +152,10 @@ Organisation de `scripts/` :
 - `repertoire_communes/` : répertoire historique des communes, correspondance de codes et contrôle des codes de votation.
 - `statpop/` : population résidante par commune (collecte, conversion Parquet, features démographiques).
 - `typologies/` : typologies territoriales et régions linguistiques (collecte, table des communes).
+- `boundaries/` : contours des communes (swisstopo, swissBOUNDARIES3D) pour les cartes ; non utilisés par les modèles.
 - `common/` : configuration, construction unique des identifiants et utilitaires de collecte PXWeb.
 - `integration/` : correspondances, audit de compatibilité et construction explicite de la table exploratoire.
-- `run_pipeline.py` : orchestration OFS et Swissvotes ; avec `--with-communes`, répertoire des communes, STATPOP et typologies.
+- `run_pipeline.py` : orchestration OFS et Swissvotes ; avec `--with-communes`, répertoire des communes, STATPOP, typologies et contours des communes.
 
 Les modules se lancent depuis la racine du dépôt avec `python -m`, par exemple
 `python -m scripts.modeling.evaluate_votes --help` ou

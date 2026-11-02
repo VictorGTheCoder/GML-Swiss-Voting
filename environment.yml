@@ -31,6 +31,7 @@ dependencies:
   - matplotlib
   - seaborn
   - plotly
+  - geopandas
 
   # Application
   - streamlit
