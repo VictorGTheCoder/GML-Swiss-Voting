@@ -38,6 +38,7 @@ data/interim/*
 /reports/*
 !/reports/README.md
 !/reports/datasets/
+!/reports/presentation/
 /reports/datasets/repertoire_communes/vote_code_check.csv
 
 # Models and experiment artifacts

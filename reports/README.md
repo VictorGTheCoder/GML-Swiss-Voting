@@ -6,6 +6,7 @@ Ce dossier contient des **rapports humains versionnés** : audits datés, synth�
 
 ```text
 reports/
+├── presentation/   # figures PNG de la présentation (scripts.integration.presentation_figures)
 ├── datasets/
 │   └── <dataset>/
 │       └── audit_YYYY_YYYY.md
