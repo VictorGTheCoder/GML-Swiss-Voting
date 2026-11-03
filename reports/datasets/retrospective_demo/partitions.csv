@@ -1,0 +1,3 @@
+partition,rows,objects,dates,municipalities,first_date,last_date
+train,174571,83,30,2104,2012-03-11,2020-11-29
+validation,50520,24,7,2105,2021-03-07,2022-09-25

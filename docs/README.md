@@ -15,6 +15,8 @@ La table exploratoire dérivée reste distincte des sources et du protocole de p
 - [Évaluation finale](project/final_evaluation.md) — gel de l'expérience et test réservé.
 - [Export textuel](project/forecast_text_export.md) — admissibilité des brochures.
 
+- [Démonstration ML rétrospective](project/retrospective_demo.md) — commande, artefact, résultats et limites du 3 novembre.
+
 ## Datasets
 
 Les READMEs des tables versionnées décrivent leur format ; les guides détaillés
