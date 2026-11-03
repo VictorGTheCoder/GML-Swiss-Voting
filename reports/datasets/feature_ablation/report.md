@@ -1,13 +1,15 @@
 # Première ablation des variables — Ridge
 
 Évaluation rétrospective exploratoire, pas une prévision historique stricte.
-Objectif : mesurer l'apport cumulé de cinq groupes à modèle identique.
+Objectif : mesurer l'apport cumulé de cinq groupes à modèle identique, puis
+comparer chaque groupe seul et les dix combinaisons de deux groupes.
 
 ## Données et variables
 
 Table versionnée `data/processed/modeling/municipal_structured.parquet`, une ligne
 commune × objet, cible `yes_share` (0–1), géographie rétrospective 2026.
-A contient l'historique ; chaque configuration ajoute le groupe suivant :
+A–E ajoutent successivement les groupes suivants. L'extension les teste aussi
+séparément et par paires, sans interactions supplémentaires entre colonnes :
 
 - **historique** : `history_mean_yes`, `history_n_objects`, `history_missing`
 - **géographie** : `urban_rural`, `language_region`
@@ -60,6 +62,42 @@ commune × objet a le même poids, sans pondération par population.
 
 ![Évolution des performances](ablation_mae.png)
 
+## Chaque groupe seul et toutes les paires
+
+| configuration   | groups                   |    mae_pp |   gain_vs_A_pp |
+|:----------------|:-------------------------|----------:|---------------:|
+| A               | historique               | 13.042844 |       0.000000 |
+| S2              | géographie               | 13.195486 |      -0.152642 |
+| S3              | démographie              | 13.085905 |      -0.043062 |
+| S4              | partis                   | 13.166009 |      -0.123165 |
+| S5              | objets                   | 11.004411 |       2.038433 |
+| B               | historique + géographie  | 13.136385 |      -0.093541 |
+| P2              | historique + démographie | 13.022222 |       0.020621 |
+| P3              | historique + partis      | 13.154591 |      -0.111747 |
+| P4              | historique + objets      | 10.707049 |       2.335795 |
+| P5              | géographie + démographie | 13.158761 |      -0.115917 |
+| P6              | géographie + partis      | 13.187670 |      -0.144827 |
+| P7              | géographie + objets      | 10.811237 |       2.231606 |
+| P8              | démographie + partis     | 13.152882 |      -0.110038 |
+| P9              | démographie + objets     | 10.882209 |       2.160635 |
+| P10             | partis + objets          | 10.830453 |       2.212391 |
+
+Cinq groupes seuls + dix paires = quinze comparaisons. A correspond déjà à
+l'historique seul, B à historique + géographie : ces deux ajustements sont réutilisés,
+soit dix-huit ensembles distincts au total avec A–E. Les prédictions, les colonnes
+exactes et les indicateurs de valeurs manquantes sont conservés pour chaque ensemble.
+Un groupe « seul » utilise seulement ses colonnes et leurs indicateurs de manque ;
+aucun historique, identifiant ou date n'est ajouté implicitement.
+
+![Groupes seuls et paires](single_pair_mae.png)
+
+Les objets seuls donnent **11.004411 pp**. Le meilleur ensemble
+parmi les groupes seuls/paires sur cette validation est **historique + objets**,
+avec **10.707049 pp**, contre **10.697160 pp** pour tous les groupes.
+Un modèle objets seuls produit la même prédiction pour toutes les communes d'un
+objet : il ne peut pas expliquer leurs écarts internes. Le meilleur score observé
+parmi ces comparaisons reste exploratoire, sans estimation indépendante après sélection.
+
 ## Interprétation et limites
 
 Le passage A → E change la MAE de 13.042844 à
@@ -75,7 +113,9 @@ empêchent une revendication de prévision historique stricte. Les contrôles ex
 les cibles contemporaines ou futures des historiques, sans certifier les versions
 historiquement publiées des autres sources. Validation limitée à 24 objets sur sept
 dates ; dépendance entre communes, absence d'intervalle d'incertitude.
-La validation a déjà été explorée par les travaux #70/#73.
+La validation a déjà été explorée par les travaux #70/#73. L'ajout de ces
+comparaisons augmente le risque de sélectionner un résultat favorable propre à
+cette période ; aucun choix automatique de variables ni d'alpha n'est effectué.
 
 ## Existant examiné et prochaines étapes
 

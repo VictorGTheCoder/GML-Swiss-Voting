@@ -1,4 +1,4 @@
-"""Cumulative fixed-Ridge feature ablation; reserved test is never evaluated.
+"""Cumulative, single-group and pairwise fixed-Ridge feature ablation; reserved test is never evaluated.
 
 Run from the repository root: python -m scripts.modeling.feature_ablation
 """
@@ -7,6 +7,7 @@ from __future__ import annotations
 import argparse
 import json
 import platform
+from itertools import combinations
 from pathlib import Path
 
 import matplotlib
@@ -39,8 +40,19 @@ GROUPS = {
 }
 
 
+def feature_sets():
+    """Preserve A–E and add every singleton/pair, fitting duplicate sets only once."""
+    names = tuple(GROUPS)
+    sets = {label: names[:i] for i, label in enumerate('ABCDE', 1)}
+    for size, prefix in [(1, 'S'), (2, 'P')]:
+        for i, groups in enumerate(combinations(names, size), 1):
+            if groups not in sets.values():
+                sets[f'{prefix}{i}'] = groups
+    return sets
+
+
 def compare(data):
-    """One fit per cumulative configuration, with identical keys and fixed alpha."""
+    """One fit per distinct group set, with identical keys and fixed alpha."""
     if not data.vote_date.between('2012-01-01', VALIDATION_END).all():
         raise ValueError('Only training and validation dates are allowed')
     expected = np.where(data.vote_date.le(TRAIN_END), 'train', 'validation')
@@ -52,10 +64,10 @@ def compare(data):
     validation = data.loc[data.partition.eq('validation')]
     if train.empty or validation.empty:
         raise ValueError('Both periods must contain observations')
-    numeric, categorical, predictions, scores, configurations = [], [], [], [], {}
-    for label, (group, (num, cat)) in zip('ABCDE', GROUPS.items()):
-        numeric += num
-        categorical += cat
+    predictions, scores, configurations = [], [], {}
+    for label, groups in feature_sets().items():
+        numeric = [c for group in groups for c in GROUPS[group][0]]
+        categorical = [c for group in groups for c in GROUPS[group][1]]
         columns = numeric + categorical
         x = data[columns].copy()
         for c in numeric:
@@ -74,13 +86,16 @@ def compare(data):
         frame['prediction'] = np.clip(raw, 0, 1)
         frame['clipped'] = raw != frame.prediction
         predictions.append(frame)
-        scores.append({'configuration': label, 'ajout': group, **score_predictions(frame),
+        scores.append({'configuration': label, 'ajout': groups[-1] if label in 'ABCDE' else ' + '.join(groups),
+                       'groups': ' + '.join(groups), 'n_groups': len(groups), **score_predictions(frame),
                        'raw_mae_pp': float(np.abs(raw - frame.target_share).mean() * 100)})
-        configurations[label] = {'numeric': numeric.copy(), 'categorical': categorical.copy(),
+        configurations[label] = {'groups': list(groups), 'numeric': numeric.copy(), 'categorical': categorical.copy(),
             'all_missing_training': [c for c in columns if train[c].isna().all()]}
     scores = pd.DataFrame(scores)
     scores['gain_vs_A_pp'] = scores.mae_pp.iloc[0] - scores.mae_pp
-    scores['gain_vs_previous_pp'] = -scores.mae_pp.diff()
+    scores['gain_vs_previous_pp'] = np.nan
+    cumulative = scores.configuration.isin(list('ABCDE'))
+    scores.loc[cumulative, 'gain_vs_previous_pp'] = -scores.loc[cumulative, 'mae_pp'].diff()
     return pd.concat(predictions, ignore_index=True), scores, configurations
 
 
@@ -90,6 +105,11 @@ def run(root, output):
     predictions, scores, configurations = compare(data)
     predictions.to_parquet(output / 'validation_predictions.parquet', index=False)
     scores.to_csv(output / 'validation_metrics.csv', index=False)
+    cumulative = scores.loc[scores.configuration.isin(list('ABCDE'))]
+    single_pairs = scores.loc[scores.n_groups.le(2)].sort_values('n_groups', kind='stable').copy()
+    single_pairs.to_csv(output / 'single_pair_metrics.csv', index=False)
+    best = single_pairs.loc[single_pairs.mae_pp.idxmin()]
+    objects_only = scores.loc[scores.groups.eq('objets')].iloc[0]
     partitions = data.groupby('partition').agg(rows=('vote_id', 'size'), objects=('vote_id', 'nunique'),
         dates=('vote_date', 'nunique'), first_date=('vote_date', 'min'), last_date=('vote_date', 'max'))
     partitions.to_csv(output / 'partitions.csv')
@@ -105,8 +125,8 @@ def run(root, output):
     (output / 'run_manifest.json').write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n')
     plt.rcParams['svg.hashsalt'] = 'feature-ablation'
     fig, ax = plt.subplots(figsize=(9, 4.5))
-    ax.plot(scores.configuration, scores.mae_pp, marker='o', color='#2563a6')
-    for row in scores.itertuples():
+    ax.plot(cumulative.configuration, cumulative.mae_pp, marker='o', color='#2563a6')
+    for row in cumulative.itertuples():
         ax.annotate(f'{row.mae_pp:.3f}', (row.configuration, row.mae_pp), xytext=(0, 10),
                     textcoords='offset points', ha='center')
     ax.set_xticks(range(5), ['A\nHistorique', 'B\n+ Géographie', 'C\n+ Démographie',
@@ -121,18 +141,38 @@ def run(root, output):
     svg = output / 'ablation_mae.svg'
     svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines()) + '\n')
     plt.close(fig)
+    ranked = single_pairs.sort_values(['mae_pp', 'configuration'], kind='stable')
+    fig, ax = plt.subplots(figsize=(10, 7))
+    colors = ['#2563a6' if n == 1 else '#439b83' for n in ranked.n_groups]
+    ax.barh(ranked.groups, ranked.mae_pp, color=colors)
+    ax.invert_yaxis()
+    for i, value in enumerate(ranked.mae_pp):
+        ax.text(value + .07, i, f'{value:.3f}', va='center', fontsize=9)
+    ax.axvline(cumulative.mae_pp.iloc[-1], linestyle='--', color='#ad4053',
+               label=f"Tous les groupes (E) : {cumulative.mae_pp.iloc[-1]:.3f} pp")
+    ax.set(xlim=(0, ranked.mae_pp.max() + 1.3), xlabel='MAE (points de pourcentage) — plus bas = mieux',
+           title='Ridge α = 1 · validation 2021–2022\nGroupes seuls (bleu) et paires (vert)')
+    ax.legend(loc='lower right')
+    fig.tight_layout()
+    for ext in ['png', 'svg']:
+        fig.savefig(output / f'single_pair_mae.{ext}', dpi=180, metadata={'Date': None} if ext == 'svg' else None)
+    svg = output / 'single_pair_mae.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines()) + '\n')
+    plt.close(fig)
     group_text = '\n'.join(f'- **{name}** : ' + ', '.join(f'`{c}`' for c in num + cat)
                            for name, (num, cat) in GROUPS.items())
     report = f'''# Première ablation des variables — Ridge
 
 Évaluation rétrospective exploratoire, pas une prévision historique stricte.
-Objectif : mesurer l'apport cumulé de cinq groupes à modèle identique.
+Objectif : mesurer l'apport cumulé de cinq groupes à modèle identique, puis
+comparer chaque groupe seul et les dix combinaisons de deux groupes.
 
 ## Données et variables
 
 Table versionnée `data/processed/modeling/municipal_structured.parquet`, une ligne
 commune × objet, cible `yes_share` (0–1), géographie rétrospective 2026.
-A contient l'historique ; chaque configuration ajoute le groupe suivant :
+A–E ajoutent successivement les groupes suivants. L'extension les teste aussi
+séparément et par paires, sans interactions supplémentaires entre colonnes :
 
 {group_text}
 
@@ -165,17 +205,37 @@ Prédictions bornées à [0,1], comme #70 ; MAE brute et fréquence de bornage a
 
 ## Résultats réels de validation
 
-{scores[['configuration', 'ajout', 'mae_pp', 'gain_vs_A_pp', 'gain_vs_previous_pp']].to_markdown(index=False, floatfmt='.6f')}
+{cumulative[['configuration', 'ajout', 'mae_pp', 'gain_vs_A_pp', 'gain_vs_previous_pp']].to_markdown(index=False, floatfmt='.6f')}
 
 Gain positif = baisse de MAE ; gain négatif = dégradation. Chaque ligne
 commune × objet a le même poids, sans pondération par population.
 
 ![Évolution des performances](ablation_mae.png)
 
+## Chaque groupe seul et toutes les paires
+
+{single_pairs[['configuration', 'groups', 'mae_pp', 'gain_vs_A_pp']].to_markdown(index=False, floatfmt='.6f')}
+
+Cinq groupes seuls + dix paires = quinze comparaisons. A correspond déjà à
+l'historique seul, B à historique + géographie : ces deux ajustements sont réutilisés,
+soit dix-huit ensembles distincts au total avec A–E. Les prédictions, les colonnes
+exactes et les indicateurs de valeurs manquantes sont conservés pour chaque ensemble.
+Un groupe « seul » utilise seulement ses colonnes et leurs indicateurs de manque ;
+aucun historique, identifiant ou date n'est ajouté implicitement.
+
+![Groupes seuls et paires](single_pair_mae.png)
+
+Les objets seuls donnent **{objects_only.mae_pp:.6f} pp**. Le meilleur ensemble
+parmi les groupes seuls/paires sur cette validation est **{best.groups}**,
+avec **{best.mae_pp:.6f} pp**, contre **{cumulative.mae_pp.iloc[-1]:.6f} pp** pour tous les groupes.
+Un modèle objets seuls produit la même prédiction pour toutes les communes d'un
+objet : il ne peut pas expliquer leurs écarts internes. Le meilleur score observé
+parmi ces comparaisons reste exploratoire, sans estimation indépendante après sélection.
+
 ## Interprétation et limites
 
 Le passage A → E change la MAE de {scores.mae_pp.iloc[0]:.6f} à
-{scores.mae_pp.iloc[-1]:.6f} pp, soit un gain de {scores.gain_vs_A_pp.iloc[-1]:.6f} pp.
+{cumulative.mae_pp.iloc[-1]:.6f} pp, soit un gain de {cumulative.gain_vs_A_pp.iloc[-1]:.6f} pp.
 Les différences successives mesurent une contribution conditionnelle à l'ordre
 retenu, pas une importance intrinsèque ou causale. Une amélioration de validation
 ne prouve pas une meilleure généralisation.
@@ -187,7 +247,9 @@ empêchent une revendication de prévision historique stricte. Les contrôles ex
 les cibles contemporaines ou futures des historiques, sans certifier les versions
 historiquement publiées des autres sources. Validation limitée à 24 objets sur sept
 dates ; dépendance entre communes, absence d'intervalle d'incertitude.
-La validation a déjà été explorée par les travaux #70/#73.
+La validation a déjà été explorée par les travaux #70/#73. L'ajout de ces
+comparaisons augmente le risque de sélectionner un résultat favorable propre à
+cette période ; aucun choix automatique de variables ni d'alpha n'est effectué.
 
 ## Existant examiné et prochaines étapes
 
@@ -218,7 +280,7 @@ Parquet, manifeste des variables/sources/versions et figures PNG/SVG sous
 `reports/generated/feature_ablation/`. Aucun téléchargement ou changement des sources.
 '''
     (output / 'report.md').write_text(report, encoding='utf-8')
-    print(scores[['configuration', 'mae_pp', 'gain_vs_A_pp']].to_string(index=False))
+    print(scores[['configuration', 'groups', 'mae_pp', 'gain_vs_A_pp']].to_string(index=False))
     return predictions, scores, manifest
 
 

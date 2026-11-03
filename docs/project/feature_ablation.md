@@ -2,7 +2,9 @@
 
 Étude rétrospective exploratoire à Ridge identique (alpha=1), sans sélection
 sur le test réservé. Le [rapport exécuté](../../reports/datasets/feature_ablation/report.md)
-contient le tableau, la figure, les colonnes exactes et les limites.
+contient les tableaux A–E, les cinq groupes seuls et les dix paires, les figures,
+les colonnes exactes et les limites. Les deux configurations communes avec A–E
+sont réutilisées : dix-huit ensembles distincts sont ajustés.
 
 Depuis la racine, dans l'environnement du projet (`environment.yml`), ou dans
 l'environnement figé Python 3.12 / `requirements-demo.txt` décrit dans le
@@ -15,12 +17,14 @@ python -m pytest tests/test_feature_ablation.py -q
 
 Les sorties complètes sont dans `reports/generated/feature_ablation/` : rapport,
 figures PNG/SVG, métriques CSV, partitions CSV, manifeste avec empreintes et versions,
-prédictions Parquet. Les fichiers sous `reports/datasets/feature_ablation/` sont
+prédictions Parquet. `single_pair_metrics.csv` et `single_pair_mae.png`/`.svg`
+isolent les quinze comparaisons de groupes seuls/paires. Les fichiers sous `reports/datasets/feature_ablation/` sont
 une copie de présentation versionnée du rapport, des métriques et des figures.
 Après réexécution, les mettre à jour depuis le dossier généré si nécessaire.
 
 Entraînement 2012–2020 ; validation 2021–2022 sur les mêmes 50 520 observations
-pour A–E ; aucune évaluation 2023–2025. Le chargement et le recalcul de l'historique
+pour chaque ensemble ; aucune évaluation 2023–2025. Les paires concatènent les
+colonnes des deux groupes, sans ajouter de termes d’interaction. Le chargement et le recalcul de l'historique
 réutilisent directement les contrôles bornés de `retrospective_demo` dans #70 ;
 le pipeline Ridge est réutilisé directement depuis `regularized_votes`.
 Cette extension complète #70 sans collecte ni reconstruction de dataset. #73 reste inchangée.
