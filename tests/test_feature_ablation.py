@@ -104,3 +104,19 @@ def test_object_variants_keep_the_same_D_base_and_exact_object_columns():
         row = scores.loc[scores.configuration.eq(name)].iloc[0]
         assert row.gain_vs_D_pp == pytest.approx(scores.loc[scores.configuration.eq('D'), 'mae_pp'].iloc[0] - row.mae_pp)
     assert predictions.groupby('model').size().eq(2).all()
+
+
+def test_report_verification_rejects_inconsistent_scores_targets_and_keys():
+    data = fixture()
+    predictions, scores, _ = ablation.compare(data)
+    ablation.verify_results(data, predictions, scores)
+    wrong_scores = scores.copy()
+    wrong_scores.loc[wrong_scores.configuration.eq('D3'), 'mae_pp'] += 1
+    with pytest.raises(ValueError, match='Inconsistent mae_pp: D3'):
+        ablation.verify_results(data, predictions, wrong_scores)
+    wrong_targets = predictions.copy()
+    wrong_targets.loc[wrong_targets.index[0], 'target_share'] = .1
+    with pytest.raises(AssertionError):
+        ablation.verify_results(data, wrong_targets, scores)
+    with pytest.raises(ValueError, match='Comparison keys differ'):
+        ablation.verify_results(data, predictions.iloc[1:], scores)

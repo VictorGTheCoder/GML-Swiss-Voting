@@ -1,7 +1,7 @@
 # Première ablation des variables
 
 Étude rétrospective exploratoire à Ridge identique (alpha=1), sans sélection
-sur le test réservé. Le [rapport exécuté](../../reports/datasets/feature_ablation/report.md)
+sur le test réservé. Le [rapport universitaire vérifié](../../reports/datasets/feature_ablation/report.md)
 contient les tableaux A–E, les cinq groupes seuls et les dix paires, les figures,
 les colonnes exactes et les limites. Les deux configurations communes avec A–E
 sont réutilisées : dix-huit ensembles distincts de groupes complets sont ajustés.
@@ -15,6 +15,8 @@ l'environnement figé Python 3.12 / `requirements-demo.txt` décrit dans le
 
 ```bash
 python -m scripts.modeling.feature_ablation
+# Après une exécution complète, contrôle et rapport sans réentraînement :
+python -m scripts.modeling.feature_ablation --report-only
 python -m pytest tests/test_feature_ablation.py -q
 ```
 
@@ -34,4 +36,14 @@ réutilisent directement les contrôles bornés de `retrospective_demo` dans #70
 le pipeline Ridge est réutilisé directement depuis `regularized_votes`.
 Cette extension complète #70 sans collecte ni reconstruction de dataset. #73 reste inchangée.
 La V1 stricte reste inadmissible ; ces résultats ne démontrent pas la prévision
-historique ni la généralisation.
+historique ni la généralisation. Cette étude ne charge pas le test 2023–2025, mais
+le notebook #73 en conserve une évaluation exécutée : le test ne peut pas être
+considéré comme vierge à l’échelle du projet. Voir la section méthodologique du rapport.
+
+Le rapport suit huit sections, définit les termes, présente deux communes et deux
+objets réels et distingue faits et hypothèses pour D3. Les tables d’appui
+`municipal_examples.csv`, `object_error_audit.csv` et `object_category_support.csv`
+sont calculées depuis les entrées et les prédictions vérifiées. Le mode
+`--report-only` vérifie les 21 MAE, les cibles, le bornage et les clés communes, puis
+réécrit le rapport et ces trois tables ; il conserve les prédictions, les scores,
+les figures et le manifeste d’entraînement d’origine.
