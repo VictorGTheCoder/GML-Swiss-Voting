@@ -135,7 +135,8 @@ compatibility under the retrospective assumptions, not historical availability.
 ## Ablation cumulative des variables
 
 La même préparation rétrospective et le pipeline Ridge existant alimentent une
-étude A–E, cinq groupes seuls et dix paires à alpha fixé à 1, sans lancer le boosting
+étude A–E, cinq groupes seuls, dix paires et les variantes D1–D3 (forme juridique
+et thèmes) à alpha fixé à 1, sans lancer le boosting
 ni sélectionner sur le test :
 
 ```bash

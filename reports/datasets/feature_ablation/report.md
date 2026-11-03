@@ -2,7 +2,8 @@
 
 Évaluation rétrospective exploratoire, pas une prévision historique stricte.
 Objectif : mesurer l'apport cumulé de cinq groupes à modèle identique, puis
-comparer chaque groupe seul et les dix combinaisons de deux groupes.
+comparer chaque groupe seul et les dix combinaisons de deux groupes, puis
+distinguer l'apport des thèmes et de la forme juridique des objets.
 
 ## Données et variables
 
@@ -84,7 +85,8 @@ commune × objet a le même poids, sans pondération par population.
 
 Cinq groupes seuls + dix paires = quinze comparaisons. A correspond déjà à
 l'historique seul, B à historique + géographie : ces deux ajustements sont réutilisés,
-soit dix-huit ensembles distincts au total avec A–E. Les prédictions, les colonnes
+soit dix-huit ensembles distincts avec A–E, auxquels s'ajoutent les trois
+variantes D1–D3 ci-dessous (vingt et un ensembles ajustés au total). Les prédictions, les colonnes
 exactes et les indicateurs de valeurs manquantes sont conservés pour chaque ensemble.
 Un groupe « seul » utilise seulement ses colonnes et leurs indicateurs de manque ;
 aucun historique, identifiant ou date n'est ajouté implicitement.
@@ -97,6 +99,32 @@ avec **10.707049 pp**, contre **10.697160 pp** pour tous les groupes.
 Un modèle objets seuls produit la même prédiction pour toutes les communes d'un
 objet : il ne peut pas expliquer leurs écarts internes. Le meilleur score observé
 parmi ces comparaisons reste exploratoire, sans estimation indépendante après sélection.
+
+## Forme juridique ou thèmes des objets ?
+
+D est identique pour les cinq comparaisons : historique, géographie, démographie,
+partis. Seules les colonnes d'objet suivantes sont ajoutées, toutes nominales et
+encodées avec le même pipeline entraîné sur 2012–2020. D et E sont réutilisés.
+
+| configuration   | object_features                                                         |    mae_pp |   gain_vs_D_pp |
+|:----------------|:------------------------------------------------------------------------|----------:|---------------:|
+| D               | aucune                                                                  | 13.181698 |       0.000000 |
+| D1              | object_legal_form                                                       | 11.755056 |       1.426643 |
+| D2              | object_domain_1                                                         | 12.561039 |       0.620660 |
+| D3              | object_domain_1 + object_domain_2 + object_domain_3                     | 15.400875 |      -2.219176 |
+| E               | object_legal_form + object_domain_1 + object_domain_2 + object_domain_3 | 10.697160 |       2.484538 |
+
+![Forme juridique et thèmes](object_detail_mae.png)
+
+Le gain positif indique une réduction de MAE par rapport à D. La forme juridique
+seule (D1) apporte 1.426643 pp ;
+le domaine principal seul (D2), 0.620660 pp ;
+les trois domaines (D3), -2.219176 pp.
+Ces apports sont conditionnels au même socle D. E permet de comparer leur combinaison,
+sans supposer que les gains s'additionnent. Les codes de domaines constituent une
+représentation grossière du thème politique ; ces comparaisons ne mesurent pas
+l'effet causal d'un thème ou d'une forme juridique et ne prouvent pas leur valeur
+sur de nouvelles dates de votation.
 
 ## Interprétation et limites
 

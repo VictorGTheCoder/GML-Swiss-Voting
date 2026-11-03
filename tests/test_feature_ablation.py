@@ -64,7 +64,7 @@ def test_every_singleton_and_pair_uses_identical_validation_keys():
     expected = {groups for size in [1, 2] for groups in combinations(ablation.GROUPS, size)}
     observed = {tuple(config['groups']) for config in configs.values() if len(config['groups']) <= 2}
     assert observed == expected
-    assert len(configs) == 18  # A and B already represent one singleton and one pair.
+    assert len(configs) == 21  # 18 full-group sets plus three object-subset variants.
     assert scores.n_groups.le(2).sum() == 15
     assert scores.loc[~scores.configuration.isin(list('ABCDE')), 'gain_vs_previous_pp'].isna().all()
     keys = data.loc[data.partition.eq('validation'), ['municipality_id', 'vote_id', 'vote_date']].reset_index(drop=True)
@@ -93,3 +93,14 @@ def test_objects_only_does_not_use_communal_history_or_other_groups():
             data[column] = ['new1', 'new2', 'new3', 'new4']
     second, _, _ = ablation.compare(data)
     np.testing.assert_array_equal(raw, second.loc[second.model.eq(name), 'raw_prediction'])
+
+
+def test_object_variants_keep_the_same_D_base_and_exact_object_columns():
+    predictions, scores, configs = ablation.compare(fixture())
+    base = configs['D']
+    for name, added in ablation.OBJECT_VARIANTS.items():
+        assert configs[name]['numeric'] == base['numeric']
+        assert configs[name]['categorical'] == base['categorical'] + added
+        row = scores.loc[scores.configuration.eq(name)].iloc[0]
+        assert row.gain_vs_D_pp == pytest.approx(scores.loc[scores.configuration.eq('D'), 'mae_pp'].iloc[0] - row.mae_pp)
+    assert predictions.groupby('model').size().eq(2).all()

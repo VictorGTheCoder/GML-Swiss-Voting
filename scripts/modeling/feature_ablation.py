@@ -40,6 +40,16 @@ GROUPS = {
 }
 
 
+# Fixed comparisons conditional on the same four municipal groups (D).
+OBJECT_VARIANTS = {
+    'D': [],
+    'D1': ['object_legal_form'],
+    'D2': ['object_domain_1'],
+    'D3': ['object_domain_1', 'object_domain_2', 'object_domain_3'],
+    'E': list(OBJECT_FIELDS.values()),
+}
+
+
 def feature_sets():
     """Preserve A–E and add every singleton/pair, fitting duplicate sets only once."""
     names = tuple(GROUPS)
@@ -65,9 +75,16 @@ def compare(data):
     if train.empty or validation.empty:
         raise ValueError('Both periods must contain observations')
     predictions, scores, configurations = [], [], {}
-    for label, groups in feature_sets().items():
+    sets = feature_sets()
+    sets.update({label: sets['E'] for label in OBJECT_VARIANTS if label not in sets})
+    for label, groups in sets.items():
         numeric = [c for group in groups for c in GROUPS[group][0]]
         categorical = [c for group in groups for c in GROUPS[group][1]]
+        if label in OBJECT_VARIANTS:
+            categorical = [c for c in categorical if c not in GROUPS['objets'][1] or c in OBJECT_VARIANTS[label]]
+        description = ' + '.join(groups)
+        if label in ['D1', 'D2', 'D3']:
+            description = 'D + ' + ' + '.join(OBJECT_VARIANTS[label])
         columns = numeric + categorical
         x = data[columns].copy()
         for c in numeric:
@@ -87,12 +104,13 @@ def compare(data):
         frame['clipped'] = raw != frame.prediction
         predictions.append(frame)
         scores.append({'configuration': label, 'ajout': groups[-1] if label in 'ABCDE' else ' + '.join(groups),
-                       'groups': ' + '.join(groups), 'n_groups': len(groups), **score_predictions(frame),
+                       'groups': description, 'n_groups': len(groups), **score_predictions(frame),
                        'raw_mae_pp': float(np.abs(raw - frame.target_share).mean() * 100)})
         configurations[label] = {'groups': list(groups), 'numeric': numeric.copy(), 'categorical': categorical.copy(),
             'all_missing_training': [c for c in columns if train[c].isna().all()]}
     scores = pd.DataFrame(scores)
     scores['gain_vs_A_pp'] = scores.mae_pp.iloc[0] - scores.mae_pp
+    scores['gain_vs_D_pp'] = float(scores.loc[scores.configuration.eq('D'), 'mae_pp'].iloc[0]) - scores.mae_pp
     scores['gain_vs_previous_pp'] = np.nan
     cumulative = scores.configuration.isin(list('ABCDE'))
     scores.loc[cumulative, 'gain_vs_previous_pp'] = -scores.loc[cumulative, 'mae_pp'].diff()
@@ -110,11 +128,16 @@ def run(root, output):
     single_pairs.to_csv(output / 'single_pair_metrics.csv', index=False)
     best = single_pairs.loc[single_pairs.mae_pp.idxmin()]
     objects_only = scores.loc[scores.groups.eq('objets')].iloc[0]
+    object_detail = scores.set_index('configuration').loc[list(OBJECT_VARIANTS)].reset_index()
+    object_detail['object_features'] = [' + '.join(OBJECT_VARIANTS[label]) or 'aucune'
+                                        for label in object_detail.configuration]
+    object_detail.to_csv(output / 'object_detail_metrics.csv', index=False)
     partitions = data.groupby('partition').agg(rows=('vote_id', 'size'), objects=('vote_id', 'nunique'),
         dates=('vote_date', 'nunique'), first_date=('vote_date', 'min'), last_date=('vote_date', 'max'))
     partitions.to_csv(output / 'partitions.csv')
     manifest = {'mode': 'exploratory_retrospective', 'test_evaluated': False, 'alpha': 1.0,
-        'configurations': configurations, 'groups': GROUPS, 'sources': source_manifest['sources'],
+        'configurations': configurations, 'groups': GROUPS, 'object_variants': OBJECT_VARIANTS,
+        'sources': source_manifest['sources'],
         'dataset_sha256': sha256(root / 'data/processed/modeling/municipal_structured.parquet'),
         'runner_sha256': sha256(Path(__file__)), 'source_exclusions': exclusions,
         'history_policy': 'strictly earlier dates; frozen at 2020-12-31; pre-2012 context included',
@@ -159,13 +182,28 @@ def run(root, output):
     svg = output / 'single_pair_mae.svg'
     svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines()) + '\n')
     plt.close(fig)
+    fig, ax = plt.subplots(figsize=(9, 4.5))
+    ax.bar(object_detail.configuration, object_detail.mae_pp, color=['#888888'] + ['#2563a6'] * 4)
+    for i, row in enumerate(object_detail.itertuples()):
+        ax.text(i, row.mae_pp + .1, f'{row.mae_pp:.3f}', ha='center')
+    ax.set_xticks(range(5), ['D\nSans objet', 'D1\nForme juridique', 'D2\nDomaine 1',
+                            'D3\nDomaines 1–3', 'E\nForme + domaines'])
+    ax.set(ylim=(0, object_detail.mae_pp.max() + 1), ylabel='MAE (points de pourcentage) — plus bas = mieux',
+           title='Forme juridique ou thème ?\nRidge α = 1 · validation rétrospective 2021–2022')
+    fig.tight_layout()
+    for ext in ['png', 'svg']:
+        fig.savefig(output / f'object_detail_mae.{ext}', dpi=180, metadata={'Date': None} if ext == 'svg' else None)
+    svg = output / 'object_detail_mae.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines()) + '\n')
+    plt.close(fig)
     group_text = '\n'.join(f'- **{name}** : ' + ', '.join(f'`{c}`' for c in num + cat)
                            for name, (num, cat) in GROUPS.items())
     report = f'''# Première ablation des variables — Ridge
 
 Évaluation rétrospective exploratoire, pas une prévision historique stricte.
 Objectif : mesurer l'apport cumulé de cinq groupes à modèle identique, puis
-comparer chaque groupe seul et les dix combinaisons de deux groupes.
+comparer chaque groupe seul et les dix combinaisons de deux groupes, puis
+distinguer l'apport des thèmes et de la forme juridique des objets.
 
 ## Données et variables
 
@@ -218,7 +256,8 @@ commune × objet a le même poids, sans pondération par population.
 
 Cinq groupes seuls + dix paires = quinze comparaisons. A correspond déjà à
 l'historique seul, B à historique + géographie : ces deux ajustements sont réutilisés,
-soit dix-huit ensembles distincts au total avec A–E. Les prédictions, les colonnes
+soit dix-huit ensembles distincts avec A–E, auxquels s'ajoutent les trois
+variantes D1–D3 ci-dessous (vingt et un ensembles ajustés au total). Les prédictions, les colonnes
 exactes et les indicateurs de valeurs manquantes sont conservés pour chaque ensemble.
 Un groupe « seul » utilise seulement ses colonnes et leurs indicateurs de manque ;
 aucun historique, identifiant ou date n'est ajouté implicitement.
@@ -231,6 +270,26 @@ avec **{best.mae_pp:.6f} pp**, contre **{cumulative.mae_pp.iloc[-1]:.6f} pp** po
 Un modèle objets seuls produit la même prédiction pour toutes les communes d'un
 objet : il ne peut pas expliquer leurs écarts internes. Le meilleur score observé
 parmi ces comparaisons reste exploratoire, sans estimation indépendante après sélection.
+
+## Forme juridique ou thèmes des objets ?
+
+D est identique pour les cinq comparaisons : historique, géographie, démographie,
+partis. Seules les colonnes d'objet suivantes sont ajoutées, toutes nominales et
+encodées avec le même pipeline entraîné sur 2012–2020. D et E sont réutilisés.
+
+{object_detail[['configuration', 'object_features', 'mae_pp', 'gain_vs_D_pp']].to_markdown(index=False, floatfmt='.6f')}
+
+![Forme juridique et thèmes](object_detail_mae.png)
+
+Le gain positif indique une réduction de MAE par rapport à D. La forme juridique
+seule (D1) apporte {object_detail.loc[object_detail.configuration.eq('D1'), 'gain_vs_D_pp'].iloc[0]:.6f} pp ;
+le domaine principal seul (D2), {object_detail.loc[object_detail.configuration.eq('D2'), 'gain_vs_D_pp'].iloc[0]:.6f} pp ;
+les trois domaines (D3), {object_detail.loc[object_detail.configuration.eq('D3'), 'gain_vs_D_pp'].iloc[0]:.6f} pp.
+Ces apports sont conditionnels au même socle D. E permet de comparer leur combinaison,
+sans supposer que les gains s'additionnent. Les codes de domaines constituent une
+représentation grossière du thème politique ; ces comparaisons ne mesurent pas
+l'effet causal d'un thème ou d'une forme juridique et ne prouvent pas leur valeur
+sur de nouvelles dates de votation.
 
 ## Interprétation et limites
 
