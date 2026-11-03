@@ -86,9 +86,9 @@ preprocessing, history, fitting or hyperparameter search. Test 2023–2025 remai
 reserved. No operational forecasting claim follows from retrospective features.
 
 Ridge's alpha is fixed at 1, without a search. The history-only and combined Ridge
-scores satisfy a useful nontext comparison, but source-specific ablations, strict
-brochure-publication-time evaluation and independently recorded teammate reproduction
-remain future work. A successful second run by this agent is not a teammate's
+scores satisfy a useful nontext comparison. The cumulative source-group ablation
+is now available through the command below. Strict brochure-publication-time
+evaluation and independently recorded teammate reproduction remain future work. A successful second run by this agent is not a teammate's
 independent replication.
 
 ## Verification
@@ -131,3 +131,17 @@ exact `vote_key` plus independently checked date/question type. All source bytes
 the derived snapshot match the notebook's manifest; no new joins or geographic
 allocation are introduced by the demonstration. These checks establish structural
 compatibility under the retrospective assumptions, not historical availability.
+
+## Ablation cumulative des variables
+
+La même préparation rétrospective et le pipeline Ridge existant alimentent une
+étude A–E à alpha fixé à 1, sans lancer le boosting ni sélectionner sur le test :
+
+```bash
+python -m scripts.modeling.feature_ablation
+```
+
+Voir le [guide](feature_ablation.md) et le
+[rapport exécuté avec tableau et figure](../../reports/datasets/feature_ablation/report.md).
+Les sorties complètes sont dans `reports/generated/feature_ablation/`.
+Cette étude précise l'apport conditionnel des groupes, sans preuve de généralisation.

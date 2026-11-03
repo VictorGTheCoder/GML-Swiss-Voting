@@ -5,7 +5,6 @@ Run from the repository root: python -m scripts.modeling.feature_ablation
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import platform
 from pathlib import Path
@@ -17,89 +16,18 @@ import sklearn
 from threadpoolctl import threadpool_limits
 
 from scripts.common.config import ROOT
-from scripts.integration.build_modeling_dataset import DEMOGRAPHICS, OBJECT_FIELDS, PARTIES, TYPOLOGIES, clean_outcomes
+from scripts.integration.build_modeling_dataset import DEMOGRAPHICS, OBJECT_FIELDS, PARTIES, TYPOLOGIES
 from scripts.modeling.regularized_votes import _pipeline as ridge_pipeline
+from scripts.modeling.retrospective_demo import (
+    TRAIN_END,
+    VALIDATION_END,
+    load_inputs,
+    sha256,
+)
 from scripts.modeling.vote_metrics import score_predictions
 
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-
-TRAIN_END = pd.Timestamp('2020-12-31')
-VALIDATION_END = pd.Timestamp('2022-12-31')
-DATASET_SHA256 = 'c8a488826093a53f307af0b4a04627fa6d78118a8ac4b25ca8c8e097fdf8e043'
-NUMERIC = ['history_mean_yes', 'history_n_objects'] + [f'statpop_{c}' for c in DEMOGRAPHICS] + [
-    f'party_share_{c}' for c in PARTIES.values()]
-CATEGORICAL = TYPOLOGIES + list(OBJECT_FIELDS.values())
-INDICATORS = ['history_missing', 'statpop_missing', 'elections_missing']
-
-
-def sha256(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
-
-
-def frozen_history(targets, outcomes):
-    """Recovered notebook policy: strictly earlier dates, capped at end of training."""
-    pool = outcomes.loc[outcomes.vote_date.le(TRAIN_END)]
-    result = pd.DataFrame(index=targets.index, columns=[
-        'history_mean_yes', 'history_n_objects', 'history_last_vote_date'])
-    for date, group in targets.groupby('vote_date', sort=True):
-        past = pool.loc[pool.vote_date.lt(date)]
-        stats = past.groupby('municipality_id').agg(
-            history_mean_yes=('yes_share', 'mean'), history_n_objects=('yes_share', 'count'),
-            history_last_vote_date=('vote_date', 'max'))
-        for column in result:
-            result.loc[group.index, column] = group.municipality_id.map(stats[column]).to_numpy()
-    result['history_mean_yes'] = pd.to_numeric(result.history_mean_yes)
-    result['history_n_objects'] = pd.to_numeric(result.history_n_objects).fillna(0).astype('int64')
-    result['history_last_vote_date'] = pd.to_datetime(result.history_last_vote_date)
-    result['history_missing'] = result.history_mean_yes.isna()
-    return result
-
-
-def load_inputs(root):
-    directory = root / 'data/processed/modeling'
-    manifest = json.loads((directory / 'manifest.json').read_text())
-    if manifest['mode'] != 'exploratory_retrospective' or manifest['strict_forecast_ready'] is not False:
-        raise ValueError('Expected the separately identified retrospective dataset')
-    for field, expected in [('numeric_features', NUMERIC), ('categorical_features', CATEGORICAL),
-                            ('missing_indicators', INDICATORS), ('target', 'yes_share')]:
-        if manifest[field] != expected:
-            raise ValueError(f'Feature contract changed: {field}')
-    for source in manifest['sources'].values():
-        if sha256(root / source['path']) != source['sha256']:
-            raise ValueError(f'Source changed; rebuild and audit the modeling dataset: {source["path"]}')
-    path = directory / 'municipal_structured.parquet'
-    if sha256(path) != DATASET_SHA256:
-        raise ValueError('Dataset differs from executed #61 snapshot; audit before changing the frozen experiment')
-    # Arrow predicate filtering: no reserved-test target values enter this experiment.
-    data = pd.read_parquet(path, filters=[('vote_date', '<=', VALIDATION_END)])
-    if (data.duplicated(['municipality_id', 'vote_id']).any() or
-            data[['municipality_id', 'vote_id', 'vote_date']].isna().any().any() or
-            not data.groupby('vote_id').vote_date.nunique().eq(1).all() or
-            not data.yes_share.between(0, 1).all() or not np.isfinite(data.yes_share).all()):
-        raise ValueError('Invalid keys, dates or target')
-    if not data.geography_id.eq('retrospective_fixed_2026-01-01').all() or data.strict_forecast_ready.any():
-        raise ValueError('Unexpected geography or forecasting status')
-    for field in ['statpop_selection_from', 'election_selection_from']:
-        if (data[field].notna() & data[field].gt(data.vote_date - pd.Timedelta(days=1))).any():
-            raise ValueError(f'Future source selected: {field}')
-    history_path = root / manifest['sources']['ofs']['path']
-    source = pd.read_parquet(history_path, filters=[('vote_date', '<=', TRAIN_END)])
-    outcomes, exclusions = clean_outcomes(source)
-    history = frozen_history(data, outcomes)
-    train = data.vote_date.le(TRAIN_END)
-    np.testing.assert_allclose(history.loc[train, 'history_mean_yes'].to_numpy(dtype=float),
-                               data.loc[train, 'history_mean_yes'].to_numpy(dtype=float), equal_nan=True)
-    if (history.history_last_vote_date.notna() & (
-            history.history_last_vote_date.ge(data.vote_date) | history.history_last_vote_date.gt(TRAIN_END))).any():
-        raise ValueError('History contains a same-date or held-out outcome')
-    data[history.columns] = history
-    data['partition'] = np.where(train, 'train', 'validation')
-    if data.groupby('vote_date').partition.nunique().gt(1).any() or set(data.partition) != {'train', 'validation'}:
-        raise ValueError('Invalid date partitions')
-    return data, manifest, exclusions
-
-
 
 # Cumulative groups; source definitions come from the existing table builder.
 GROUPS = {
@@ -264,8 +192,8 @@ La validation a déjà été explorée par les travaux #70/#73.
 ## Existant examiné et prochaines étapes
 
 README, contrats `modeling`/`modeling_v1`, guides V1 et évaluation municipale examinés.
-#70 (commit `462885c`) fournit le protocole et les contrôles de chargement/historique
-repris ici ; son modèle boosting n'est pas réimplémenté.
+#70 fournit le protocole et les contrôles de chargement/historique, réutilisés
+directement depuis `retrospective_demo` ; son modèle boosting reste inchangé.
 #73 (`17186d7`, `02_regularized_linear.ipynb`) explore Ridge/Lasso/Elastic Net,
 plusieurs alphas, regroupements de partis et interactions. Son notebook contient
 également une section test final : elle n'est ni exécutée ni utilisée ici.

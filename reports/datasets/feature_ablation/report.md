@@ -80,8 +80,8 @@ La validation a déjà été explorée par les travaux #70/#73.
 ## Existant examiné et prochaines étapes
 
 README, contrats `modeling`/`modeling_v1`, guides V1 et évaluation municipale examinés.
-#70 (commit `462885c`) fournit le protocole et les contrôles de chargement/historique
-repris ici ; son modèle boosting n'est pas réimplémenté.
+#70 fournit le protocole et les contrôles de chargement/historique, réutilisés
+directement depuis `retrospective_demo` ; son modèle boosting reste inchangé.
 #73 (`17186d7`, `02_regularized_linear.ipynb`) explore Ridge/Lasso/Elastic Net,
 plusieurs alphas, regroupements de partis et interactions. Son notebook contient
 également une section test final : elle n'est ni exécutée ni utilisée ici.
