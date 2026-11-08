@@ -38,3 +38,6 @@ Les rapports OFS et Swissvotes produits par `scripts/run_pipeline.py` sont gén�
 - [Population depuis 1981 : résultats du 1er novembre 2026](datasets/population_history_experiment_2026-11-01.md) : intégration officielle, couverture et comparaison récente/longue à variables identiques.
 - [Âges historiques : résultats du 1er novembre 2026](datasets/census_age_experiment_2026-11-01.md) : intégration RFP/STATPOP et huit comparaisons sur les mêmes lignes.
 - [Comparaison chronologique des blocs au 1er novembre 2026](datasets/block_selection_2026-11-01.md) : résultats des ajouts et retraits du Ridge sur cinq fenêtres internes.
+
+- [Ablation cumulative Ridge](datasets/feature_ablation/report.md) : résultats A–E, groupes seuls et paires,
+  figure et limites ; reproduction via `python -m scripts.modeling.feature_ablation`.

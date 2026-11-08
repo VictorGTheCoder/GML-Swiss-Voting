@@ -90,6 +90,7 @@ scores satisfy a useful nontext comparison. The follow-up [structured EDA](struc
 adds measured source-block comparisons on the reused retrospective validation;
 [its results](../../reports/datasets/retrospective_demo/structured_eda.md) distinguish
 the published history baseline from complete history including object count.
+The cumulative source-group ablation is also available through the command below.
 Strict brochure-publication-time evaluation and independently recorded teammate
 reproduction remain future work. A successful second run by this agent is not a
 teammate's independent replication.
@@ -134,3 +135,19 @@ exact `vote_key` plus independently checked date/question type. All source bytes
 the derived snapshot match the notebook's manifest; no new joins or geographic
 allocation are introduced by the demonstration. These checks establish structural
 compatibility under the retrospective assumptions, not historical availability.
+
+## Ablation cumulative des variables
+
+La même préparation rétrospective et le pipeline Ridge existant alimentent une
+étude A–E, cinq groupes seuls, dix paires et les variantes D1–D3 (forme juridique
+et thèmes) à alpha fixé à 1, sans lancer le boosting
+ni sélectionner sur le test :
+
+```bash
+python -m scripts.modeling.feature_ablation
+```
+
+Voir le [guide](feature_ablation.md) et le
+[rapport exécuté avec tableau et figure](../../reports/datasets/feature_ablation/report.md).
+Les sorties complètes sont dans `reports/generated/feature_ablation/`.
+Cette étude précise l'apport conditionnel des groupes, sans preuve de généralisation.

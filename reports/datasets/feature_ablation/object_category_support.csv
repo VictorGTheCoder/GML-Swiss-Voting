@@ -1,0 +1,5 @@
+colonne,objets_train_renseignes,objets_validation_renseignes,objets_validation_categorie_inconnue
+object_legal_form,83,24,0
+object_domain_1,83,24,0
+object_domain_2,60,23,2
+object_domain_3,12,13,3
