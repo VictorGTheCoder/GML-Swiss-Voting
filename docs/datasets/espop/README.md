@@ -142,3 +142,55 @@ une fusion pondérée et l'exclusion d'une scission même suivie d'une fusion,
 ainsi que les absences d'âge et les codes historiques à total nul.
 Les effectifs non finis sont invalides : exclus des sommes OFS, signalés dans
 les comparaisons RTS et jamais convertis en parts calculables.
+
+## Expérience historique avec population (1er novembre 2026)
+
+Une préparation séparée utilise désormais les **stocks officiels complets
+1981–2009**, raccordés au territoire 2026 avec les outils du prototype, puis
+STATPOP dès 2010. Les CSV RTS ne sont pas utilisés comme entrées de modèle.
+Les stocks invalides restent explicites et les références non résolues sont
+exclues. Les 8 472 stocks des quatre années officielles de contrôle concordent
+avec le précédent audit, pour le total et les étrangers.
+
+```bash
+python -m scripts.espop.population_history
+python -m scripts.modeling.population_history_experiment
+```
+
+La première commande attend par défaut les références locales contrôlées dans
+`data/raw/espop_reuse/issue67_2026-10-31`. Si elles sont absentes, effectuer une
+nouvelle collecte avec `scripts.espop.collect_reuse` dans un nouveau dossier,
+puis transmettre ce dossier via `--reference-dir` à `population_history`. Ne pas
+attribuer à la nouvelle collecte l'horodatage des sources de 2026-10-31.
+
+Les sorties sont sous `data/interim/population_history/` et
+`reports/generated/population_history_experiment/` ; le snapshot récent et la V1
+restent distincts. Le [protocole](../../project/population_history_experiment.md)
+et les [résultats mesurés](../../../reports/datasets/population_history_experiment_2026-11-01.md)
+précisent la première date exploitable (28 novembre 1982), les pertes de couverture
+et la comparaison de douze modèles sur la validation exposée 2021–2022.
+La sélection supposée au 2 septembre Y+1 ne prouve pas une disponibilité
+historique : ce raccordement est une expérience rétrospective, pas une admission
+au protocole de prévision stricte.
+
+## Âges historiques intégrés (1er novembre 2026)
+
+Les recensements OFS 1980/1990/2000 sont désormais utilisés dans une variante
+séparée, avec les parts **0–19, 20–39 et 65+**, calculées sur leur propre total
+RFP après raccordement et agrégation des effectifs. STATPOP annuel prend le
+relais dès le stock 2010. L'année et la date de mesure, la source et l'ancienneté
+sont conservées ; aucune interpolation ni vieillissement de cohortes n'est réalisé.
+
+```bash
+python -m scripts.espop.census_age_history
+python -m scripts.modeling.census_age_experiment
+```
+
+Le [protocole](../../project/census_age_experiment.md) fixe la sélection supposée
+au 1er janvier Y+3 pour les RFP, et au 2 septembre Y+1 pour STATPOP. Ces règles
+ne prouvent pas la publication historique des versions utilisées. Les absences
+restent explicites et ne suppriment aucune ligne pour la comparaison avec/sans
+âge. Les [résultats](../../../reports/datasets/census_age_experiment_2026-11-01.md)
+portent sur les mêmes 50 520 observations de validation 2021–2022 déjà exposées.
+Les sorties sont sous `data/interim/census_age_history/` et
+`reports/generated/census_age_experiment/`, séparées des préparations précédentes.

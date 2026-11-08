@@ -39,9 +39,9 @@ def sha256(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def frozen_history(targets, outcomes):
+def frozen_history(targets, outcomes, train_end=TRAIN_END):
     """Recovered notebook policy: strictly earlier dates, capped at end of training."""
-    pool = outcomes.loc[outcomes.vote_date.le(TRAIN_END)]
+    pool = outcomes.loc[outcomes.vote_date.le(train_end)]
     result = pd.DataFrame(index=targets.index, columns=[
         'history_mean_yes', 'history_n_objects', 'history_last_vote_date'])
     for date, group in targets.groupby('vote_date', sort=True):
@@ -50,7 +50,7 @@ def frozen_history(targets, outcomes):
             history_mean_yes=('yes_share', 'mean'), history_n_objects=('yes_share', 'count'),
             history_last_vote_date=('vote_date', 'max'))
         for column in result:
-            result.loc[group.index, column] = group.municipality_id.map(stats[column]).to_numpy()
+            result.loc[group.index, column] = stats[column].reindex(group.municipality_id).to_numpy()
     result['history_mean_yes'] = pd.to_numeric(result.history_mean_yes)
     result['history_n_objects'] = pd.to_numeric(result.history_n_objects).fillna(0).astype('int64')
     result['history_last_vote_date'] = pd.to_datetime(result.history_last_vote_date)
@@ -91,7 +91,10 @@ def notebook_pipeline(train):
     return model, empty, settings
 
 
-def load_inputs(root):
+def load_inputs(root, last_date=VALIDATION_END):
+    last_date = pd.Timestamp(last_date)
+    if last_date > VALIDATION_END:
+        raise ValueError('Cannot load reserved-test outcomes')
     directory = root / 'data/processed/modeling'
     manifest = json.loads((directory / 'manifest.json').read_text())
     if manifest['mode'] != 'exploratory_retrospective' or manifest['strict_forecast_ready'] is not False:
@@ -107,7 +110,7 @@ def load_inputs(root):
     if sha256(path) != DATASET_SHA256:
         raise ValueError('Dataset differs from executed #61 snapshot; audit before changing the frozen experiment')
     # Arrow predicate filtering: no reserved-test target values enter this experiment.
-    data = pd.read_parquet(path, filters=[('vote_date', '<=', VALIDATION_END)])
+    data = pd.read_parquet(path, filters=[('vote_date', '<=', last_date)])
     if (data.duplicated(['municipality_id', 'vote_id']).any() or
             data[['municipality_id', 'vote_id', 'vote_date']].isna().any().any() or
             not data.groupby('vote_id').vote_date.nunique().eq(1).all() or
@@ -130,7 +133,8 @@ def load_inputs(root):
         raise ValueError('History contains a same-date or held-out outcome')
     data[history.columns] = history
     data['partition'] = np.where(train, 'train', 'validation')
-    if data.groupby('vote_date').partition.nunique().gt(1).any() or set(data.partition) != {'train', 'validation'}:
+    expected = {'train', 'validation'} if last_date > TRAIN_END else {'train'}
+    if data.groupby('vote_date').partition.nunique().gt(1).any() or set(data.partition) != expected:
         raise ValueError('Invalid date partitions')
     return data, manifest, exclusions
 

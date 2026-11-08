@@ -111,3 +111,9 @@ def test_loader_filters_reserved_targets_before_reading(tmp_path, monkeypatch):
     assert set(loaded.vote_id) == {'train', 'val'}
     assert calls == [[('vote_date', '<=', demo.VALIDATION_END)], [('vote_date', '<=', demo.TRAIN_END)]]
     assert loaded.loc[loaded.partition.eq('validation'), 'history_mean_yes'].iloc[0] == pytest.approx(.4)
+    calls.clear()
+    training_only, _, _ = demo.load_inputs(tmp_path, last_date=demo.TRAIN_END)
+    assert set(training_only.vote_id) == {'train'}
+    assert calls == [[('vote_date', '<=', demo.TRAIN_END)], [('vote_date', '<=', demo.TRAIN_END)]]
+    with pytest.raises(ValueError, match='reserved-test'):
+        demo.load_inputs(tmp_path, last_date='2023-01-01')

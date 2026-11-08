@@ -86,10 +86,13 @@ preprocessing, history, fitting or hyperparameter search. Test 2023–2025 remai
 reserved. No operational forecasting claim follows from retrospective features.
 
 Ridge's alpha is fixed at 1, without a search. The history-only and combined Ridge
-scores satisfy a useful nontext comparison, but source-specific ablations, strict
-brochure-publication-time evaluation and independently recorded teammate reproduction
-remain future work. A successful second run by this agent is not a teammate's
-independent replication.
+scores satisfy a useful nontext comparison. The follow-up [structured EDA](structured_eda.md)
+adds measured source-block comparisons on the reused retrospective validation;
+[its results](../../reports/datasets/retrospective_demo/structured_eda.md) distinguish
+the published history baseline from complete history including object count.
+Strict brochure-publication-time evaluation and independently recorded teammate
+reproduction remain future work. A successful second run by this agent is not a
+teammate's independent replication.
 
 ## Verification
 

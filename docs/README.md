@@ -16,6 +16,12 @@ La table exploratoire dérivée reste distincte des sources et du protocole de p
 - [Export textuel](project/forecast_text_export.md) — admissibilité des brochures.
 
 - [Démonstration ML rétrospective](project/retrospective_demo.md) — commande, artefact, résultats et limites du 3 novembre.
+- [EDA du Ridge et comparaison des blocs](project/structured_eda.md) — notebook, figures et protocole exploratoire.
+- [Comparaison chronologique des blocs](project/block_selection.md) — ajouts, retraits et stabilité sur les fenêtres internes 2016–2020.
+- [Interactions et profils latents](project/interaction_experiment.md) — recommandations, croisements objet × commune et représentation historique.
+- [Extension historique avec population](project/population_history_experiment.md) — stocks depuis 1981 et comparaison d'entraînements récent et long.
+- [Âges issus des recensements](project/census_age_experiment.md) — dernière mesure sélectionnable, ancienneté et comparaison avec/sans âges.
+- [Glossaire](../GLOSSARY.md) — unités de votation et portée des analyses.
 
 ## Datasets
 

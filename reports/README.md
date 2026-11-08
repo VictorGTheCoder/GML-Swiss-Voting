@@ -30,3 +30,11 @@ et dictionnaires nécessaires à cette dernière restent versionnés avec son Pa
 Les rapports OFS et Swissvotes produits par `scripts/run_pipeline.py` sont générés à la racine de ce dossier et ignorés par Git. Ils sont recréés à chaque exécution.
 
 - [Démonstration rétrospective du 3 novembre 2026](datasets/retrospective_demo/presentation.md) : scores de validation, figures et manifeste mesurés ; aucune évaluation du test réservé.
+- [EDA du Ridge et apports des blocs](datasets/retrospective_demo/structured_eda.md) : comparaisons mesurées sur validation réutilisée et limites d'interprétation.
+- [Recherche sur la sélection des variables](datasets/feature_selection.md) : méthodes et recommandations adaptées au projet.
+- [Études comparables en Suisse et ailleurs](datasets/comparable_voting_studies_2026-11-01.md) : huit travaux, limites des comparaisons et trois expériences prioritaires.
+- [Interactions et profils latents au 1er novembre 2026](datasets/interaction_experiment_2026-11-01.md) : neuf modèles sur cinq fenêtres internes, avec comparaisons isolées des ajouts.
+- [Comparaison directe sur 2021–2022](datasets/interaction_validation_2021_2022.md) : mêmes observations que la démonstration, paramètres fixes et validation déjà exposée.
+- [Population depuis 1981 : résultats du 1er novembre 2026](datasets/population_history_experiment_2026-11-01.md) : intégration officielle, couverture et comparaison récente/longue à variables identiques.
+- [Âges historiques : résultats du 1er novembre 2026](datasets/census_age_experiment_2026-11-01.md) : intégration RFP/STATPOP et huit comparaisons sur les mêmes lignes.
+- [Comparaison chronologique des blocs au 1er novembre 2026](datasets/block_selection_2026-11-01.md) : résultats des ajouts et retraits du Ridge sur cinq fenêtres internes.
