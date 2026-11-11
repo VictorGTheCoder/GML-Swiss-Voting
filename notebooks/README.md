@@ -13,3 +13,12 @@ Préparation depuis la racine : `python -m scripts.run_pipeline --all`.
 Les graphiques exportés vont dans `reports/generated/`, ignoré par Git.
 Les notebooks OFS historiques dépendant du CSV API ont été remplacés par l'analyse
 du pipeline PX ; il n'existe plus de collecte concurrente dans les notebooks.
+
+Le [notebook HistGradientBoosting exécuté](modeling/01_hist_gradient_boosting.ipynb)
+est conservé comme expérience originale #61. Le [guide de démonstration](../docs/project/retrospective_demo.md)
+fournit la commande reproductible complète et les figures, avec le test réservé.
+
+Le [notebook EDA du Ridge](modeling/02_structured_eda.ipynb) décrit les variables
+sur l'entraînement et compare les blocs sur la validation rétrospective réutilisée.
+Son [protocole](../docs/project/structured_eda.md) détaille les références, exports
+et limites ; aucune sélection de variables ni consultation du test réservé.
