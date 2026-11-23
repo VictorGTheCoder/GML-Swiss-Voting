@@ -137,7 +137,7 @@ def test_invalid_correspondence_fails_without_silent_row_dropping(failure):
     elif failure == "inconsistent_vote":
         table.loc[7, "vote_key"] = "6010"
     elif failure == "subsidiary":
-        swiss.loc[0, "rechtsform"] = 5
+        swiss.loc[0, "rechtsform"] = "5"
     elif failure == "existing_output":
         table["political_direction_plr"] = 1
     with pytest.raises(ValueError):

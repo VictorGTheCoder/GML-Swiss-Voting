@@ -504,7 +504,7 @@ class PollAnchoredRegressor(RegressorMixin, BaseEstimator):
             shares = work.iloc[pos][POLL_SHARES].apply(pd.to_numeric, errors="raise")
             if (shares.nunique(dropna=False) != 1).any():
                 raise ValueError(f"National poll shares must be constant within object {vote_key}")
-            values = shares.iloc[0].to_numpy(float)
+            values = shares.iloc[0].to_numpy(float, copy=True)
             if not np.isfinite(values).all() or ((values < 0) | (values > 1)).any():
                 raise ValueError("Selected poll shares must be finite in [0, 1]")
             if abs(values.sum() - 1) > ROUNDING_TOLERANCE:

@@ -1,0 +1,9 @@
+{
+  "purpose": "Pandas copy-on-write portability repair, no new model selection",
+  "original_frozen_signature": "7be60eb2aa4aa2b35ba3d740dbaa0c4a2fa298578d414312a2c9bdd70757ff4c",
+  "original_source_commit": "eaed200710d4f6ada59505a4ca9bd28308e0a589",
+  "configuration_unchanged": true,
+  "expected_change": "Make mutable poll-share numpy array an explicit copy; use string code in a test fixture",
+  "verification": "Require identical source data, identical configuration and bit-for-bit development/comparison/future predictions; preserve the original prospective capture",
+  "comparison_independent": false
+}
