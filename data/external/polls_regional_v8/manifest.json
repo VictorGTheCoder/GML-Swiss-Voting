@@ -1,0 +1,29 @@
+{
+  "version": "regional-v8-1",
+  "coverage": {
+    "rows": 135,
+    "objects": 24,
+    "complete_both_waves": 21,
+    "expected_rows": 144
+  },
+  "source_run": 45288455195,
+  "source_job": 138090768312,
+  "collection": "Exact reviewed original chart URL/identity/wave, source national cells reproduced before accepting regional cells",
+  "missing": [
+    [
+      "6520",
+      1
+    ],
+    [
+      "6550",
+      2
+    ],
+    [
+      "6600",
+      2
+    ]
+  ],
+  "rounding": "Five published integer response cells, accept total 98-102 inclusive; raw values unchanged",
+  "historical_version_verified": false,
+  "strict_forecast_ready": false
+}
