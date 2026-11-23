@@ -1,0 +1,76 @@
+name: V4 semantics + V3 expanded polls
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/semantic-v4-poll-comparison.yml'
+      - 'scripts/modeling/semantic_poll_comparison_v4.py'
+      - 'scripts/modeling/semantic_experiment_v4.py'
+      - 'scripts/modeling/semantic_features_v4.py'
+      - 'tests/test_semantic_poll_comparison_v4.py'
+      - 'experiments/municipal_v4/poll_combination_plan.json'
+  workflow_dispatch:
+
+jobs:
+  matched-v3-v4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      NUMEXPR_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - name: Install frozen experiment dependencies
+        run: python -m pip install -r requirements-experiments.txt
+      - name: Check fixed protocol and semantic feature tests
+        run: >-
+          python -m pytest -q
+          tests/test_semantic_poll_comparison_v4.py
+          tests/test_semantic_features_v4.py
+          tests/test_semantic_experiment_v4.py
+          tests/test_poll_anchor.py
+      - name: Build fresh historical dataset
+        run: >-
+          python -m scripts.modeling.municipal_v2 prepare
+          --output reports/generated/municipal_v4_base
+      - name: Compare V3 and V4 using identical extended historical polls
+        run: >-
+          python -m scripts.modeling.semantic_poll_comparison_v4
+          --base reports/generated/municipal_v4_base
+          --output reports/generated/municipal_v4_poll_combination
+      - name: Display all scores (positive delta means improvement)
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("reports/generated/municipal_v4_poll_combination/manifest.json")
+          manifest = json.loads(p.read_text(encoding="utf-8"))
+          assert manifest["reference_reproduced"]
+          print("V3 reference:", manifest["reference_mae_pp"])
+          for variant in manifest["runs"]:
+              print(variant["variant"], "structural:", variant["structural_mae_pp"],
+                    "poll-anchored:", variant["macro_object_mae_pp"])
+          for item in manifest["comparisons"]:
+              print(item["variant"], "gain pp:",
+                    item["improvement_pp_positive_is_better"],
+                    "CI by dates:", item["date_bootstrap_95pct_descriptive"])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-v4-v3-poll-comparison
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            reports/generated/municipal_v4_poll_combination/manifest.json
+            reports/generated/municipal_v4_poll_combination/*_by_object.csv
+            reports/generated/municipal_v4_poll_combination/*_by_date.csv
+            reports/generated/municipal_v4_poll_combination/paired_by_object.csv
+            reports/generated/municipal_v4_poll_combination/*_predictions.parquet
