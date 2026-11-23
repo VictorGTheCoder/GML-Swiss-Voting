@@ -4,7 +4,15 @@ import numpy as np
 import pytest
 from sklearn.decomposition import PCA
 
-from scripts.modeling.audit_xgboost_capacity import GRID, STEPS, anchor_fast, diagnostics, reconstruct
+from scripts.modeling.audit_xgboost_capacity import (
+    EXTENDED_GRID,
+    EXTENDED_STEPS,
+    GRID,
+    STEPS,
+    anchor_fast,
+    diagnostics,
+    reconstruct,
+)
 from scripts.modeling.object_profile_v2 import ObjectProfileRegressor
 
 
@@ -40,3 +48,12 @@ def test_unknown_municipality_falls_back_to_object_level():
     heads = np.array([[0.6, 0.3]])
     result = reconstruct(heads, pca, np.array([0, 0]), np.array([0, -1]))
     assert result[-1] == 0.6
+
+
+def test_extended_capacity_is_effectively_larger():
+    assert EXTENDED_STEPS[-1] == 2400
+    assert EXTENDED_GRID["depth_16"]["max_depth"] == 16
+    assert EXTENDED_GRID["depth_unlimited"]["model_params"]["max_depth"] == 0
+    pytest.importorskip("xgboost")
+    model = ObjectProfileRegressor([], [], model="xgboost", **EXTENDED_GRID["depth_unlimited"])
+    assert model._make_regressor().get_params()["max_depth"] == 0

@@ -49,6 +49,19 @@ GRID = {
     "lr_001": {"max_depth": 6, "learning_rate": 0.01},
     "lr_010": {"max_depth": 6, "learning_rate": 0.1},
 }
+# Extended stress test: keep the original baseline and L2=100 candidate,
+# and deliberately explore much deeper trees and four times more rounds.
+EXTENDED_STEPS = (300, 600, 1200, 2400)
+EXTENDED_GRID = {
+    "depth_6": {"max_depth": 6},
+    "depth_9": {"max_depth": 9},
+    "depth_12": {"max_depth": 12},
+    "depth_16": {"max_depth": 16},
+    "depth_unlimited": {"max_depth": 0, "model_params": {"max_depth": 0}},
+    "l2_100": {"max_depth": 6, "reg_lambda": 100.0},
+    "deep_l2_100": {"max_depth": 12, "reg_lambda": 100.0},
+    "deep_low_lr": {"max_depth": 12, "learning_rate": 0.01},
+}
 FEATURE_SETS = {"v3": "baseline_pca5", "v5": "baseline_coarse_mechanisms"}
 
 
@@ -163,7 +176,9 @@ def diagnostics(y, prediction, idx, n):
     }, mae
 
 
-def run(base, output, feature_set):
+def run(base, output, feature_set, *, extended=False):
+    grid = EXTENDED_GRID if extended else GRID
+    steps = EXTENDED_STEPS if extended else STEPS
     if output.exists() and any(output.iterdir()):
         raise FileExistsError("Preserve previous experiments")
     plan = json.loads(PLAN.read_text(encoding="utf-8"))
@@ -186,8 +201,8 @@ def run(base, output, feature_set):
         fold = prepare_fold(a, b, use_n, use_c, params)
         anchor, groups = poll_context(a, b, plan["frozen_poll_parameters"])
         nt, nv = len(fold["train_ids"]), len(fold["val_ids"])
-        for name, overrides in GRID.items():
-            estimator_params = {**params, **overrides, "n_estimators": max(STEPS)}
+        for name, overrides in grid.items():
+            estimator_params = {**params, **overrides, "n_estimators": max(steps)}
             prototype = ObjectProfileRegressor(use_n, use_c, **estimator_params)
             models = []
             with threadpool_limits(limits=2):
@@ -195,7 +210,7 @@ def run(base, output, feature_set):
                     model = prototype._make_regressor()
                     model.fit(fold["train_x"], values)
                     models.append(model)
-            for step in STEPS:
+            for step in steps:
                 with threadpool_limits(limits=2):
                     tr_heads = np.column_stack([
                         m.predict(fold["train_x"], iteration_range=(0, step)) for m in models
@@ -262,7 +277,8 @@ def run(base, output, feature_set):
     pd.DataFrame(object_rows).to_csv(output / "object_metrics.csv", index=False)
     manifest = {
         "status": "complete", "feature_set": feature_set,
-        "grid": GRID, "tree_checkpoints": list(STEPS),
+        "grid": grid, "tree_checkpoints": list(steps),
+        "suite": "extended" if extended else "standard",
         "protocol": plan, "source_sha256": sha(Path(__file__)),
         "prepared_data_sha256": sha(base / "dataset.parquet"),
         "baseline_reproduced": True,
@@ -280,8 +296,9 @@ def main():
     parser.add_argument("--base", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--feature-set", choices=FEATURE_SETS, required=True)
+    parser.add_argument("--extended", action="store_true")
     args = parser.parse_args()
-    run(args.base, args.output, args.feature_set)
+    run(args.base, args.output, args.feature_set, extended=args.extended)
 
 
 if __name__ == "__main__":
