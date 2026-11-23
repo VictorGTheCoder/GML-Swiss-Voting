@@ -17,6 +17,7 @@ import pandas as pd
 
 from scripts.common.config import ROOT
 from scripts.modeling.collect_poll_features import (
+    DATE_RE,
     FIELDS,
     NATIONAL_BARE_DATE_CHARTS,
     date_de,
@@ -30,6 +31,7 @@ from scripts.modeling.collect_poll_features import (
 
 REGIONS = {
     "dch": "de", "deutschschweiz": "de", "deutschsprachigeschweiz": "de",
+    "deutschprachigeschweiz": "de",  # Explicit typo in source charts, 2022.
     "fch": "fr", "westschweiz": "fr", "franzosischsprachigeschweiz": "fr",
     "romandie": "fr", "ich": "it", "tessin": "it",
     "italienischsprachigeschweiz": "it",
@@ -39,7 +41,6 @@ REGIONS = {
 def region_label(label):
     # Remove explicitly recognized dates; never infer a region from its order.
     raw = str(label)
-    from scripts.modeling.collect_poll_features import DATE_RE
     raw = re.sub(DATE_RE, "", raw, flags=re.I)
     raw = re.sub(r"\b\d{1,2}\.\d{1,2}\.20\d{2}\b", "", raw)
     return REGIONS.get(norm(raw))
@@ -63,7 +64,7 @@ def candidate_rows(tables, midpoint, wave):
                 values = {name: float(str(row[i]).replace(",", ".")) for i, name in mapping.items()}
             except (ValueError, TypeError, IndexError):
                 continue
-            if not all(0 <= v <= 100 for v in values.values()) or abs(sum(values.values()) - 100) > 1.01:
+            if not all(0 <= v <= 100 for v in values.values()) or abs(sum(values.values()) - 100) > 2.01:
                 continue
             rows.append({"region": region, "path": path, "header": header, "row": row,
                          "date_label": when, **values})
