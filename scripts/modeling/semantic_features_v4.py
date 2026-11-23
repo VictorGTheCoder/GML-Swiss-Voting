@@ -110,11 +110,11 @@ def validate_annotation_document(document):
     sources = document.get("sources")
     rows = document.get("votes")
     if not isinstance(sources, dict) or not isinstance(rows, list):
-        raise ValueError("Sources dictionary and votes list required")
+        raise TypeError("Sources dictionary and votes list required")
     identities = set()
     for key, source in sources.items():
         if not isinstance(key, str) or not isinstance(source, dict):
-            raise ValueError("Invalid brochure entry")
+            raise TypeError("Invalid brochure entry")
         if not str(source.get("url", "")).startswith("https://www.bk.admin.ch/"):
             raise ValueError("Official brochure URL required")
         if source.get("published_at") is not None:

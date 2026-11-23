@@ -23,8 +23,12 @@ from scripts.modeling.municipal_v2 import metrics
 from scripts.modeling.object_enrichment_v3 import encode_domains, fit_domain_vocabulary
 from scripts.modeling.object_profile_v2 import ObjectProfileRegressor
 from scripts.modeling.semantic_features_v4 import (
-    build_semantic_table, build_topic_table, encode_multihot, fit_vocabulary,
-    load_annotations, topic_features,
+    build_semantic_table,
+    build_topic_table,
+    encode_multihot,
+    fit_vocabulary,
+    load_annotations,
+    topic_features,
 )
 
 DEFAULT_PLAN = ROOT / "experiments/municipal_v3/plan.json"
