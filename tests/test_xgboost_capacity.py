@@ -1,6 +1,7 @@
 """Target-free reconstruction and fixed capacity sweep regression tests."""
 
 import numpy as np
+import pytest
 from sklearn.decomposition import PCA
 
 from scripts.modeling.audit_xgboost_capacity import GRID, STEPS, anchor_fast, diagnostics, reconstruct
@@ -10,6 +11,7 @@ from scripts.modeling.object_profile_v2 import ObjectProfileRegressor
 def test_frozen_baseline_and_effective_leaf_parameters():
     assert 300 in STEPS
     assert GRID["depth_6"] == {"max_depth": 6}
+    pytest.importorskip("xgboost")
     model = ObjectProfileRegressor([], [], model="xgboost", min_samples_leaf=11)
     assert model._make_regressor().get_params().get("min_child_weight") in (None, 1)
     assert GRID["child_15"]["model_params"]["min_child_weight"] == 15
