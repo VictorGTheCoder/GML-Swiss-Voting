@@ -1,0 +1,62 @@
+name: Semantic V4 benchmark
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/semantic_features_v4.py'
+      - 'scripts/modeling/semantic_experiment_v4.py'
+      - 'data/annotations/yes_effects_v4.json'
+      - 'docs/project/semantic_v4.md'
+      - 'tests/test_semantic_features_v4.py'
+      - 'tests/test_semantic_experiment_v4.py'
+      - '.github/workflows/semantic-v4-benchmark.yml'
+  workflow_dispatch:
+
+jobs:
+  semantic-ablation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '2'
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      NUMEXPR_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements-experiments.txt
+      - name: Verify semantic annotation contract
+        run: python -m pytest -q tests/test_semantic_features_v4.py tests/test_semantic_experiment_v4.py
+      - name: Prepare fresh baseline dataset
+        run: >-
+          python -m scripts.modeling.municipal_v2 prepare
+          --output reports/generated/municipal_v4_base
+      - name: Evaluate fixed chronological ablations
+        run: >-
+          python -m scripts.modeling.semantic_experiment_v4
+          --base reports/generated/municipal_v4_base
+          --output reports/generated/municipal_v4_semantics
+      - name: Print score summary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('reports/generated/municipal_v4_semantics/metrics.json')
+          evidence = json.loads(path.read_text(encoding='utf-8'))
+          for variant in evidence['variants']:
+              print('{}: {:.4f} pp'.format(variant['name'], variant['mae_pp']))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-v4-development-evidence
+          if-no-files-found: warn
+          path: |
+            reports/generated/municipal_v4_semantics/metrics.json
+            reports/generated/municipal_v4_semantics/*_by_object.csv
+            reports/generated/municipal_v4_semantics/*_by_date.csv
