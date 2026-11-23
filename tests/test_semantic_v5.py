@@ -127,7 +127,7 @@ def test_missing_or_corrupt_identity_does_not_silently_match():
     history = load_history()
     current = load_annotations(V4)
     with pytest.raises(ValueError):
-        build_coarse_table(rows.iloc[1:], history, current)
+        build_coarse_table(rows.loc[rows.vote_id.ne('5170')], history, current)
     rows.loc[rows.vote_id.eq("5170"), "vote_date"] = "2019-01-01"
     with pytest.raises(ValueError, match="mismatch"):
         build_coarse_table(rows, history, current)
@@ -165,5 +165,5 @@ def test_2016_training_has_nonzero_historical_coverage():
 def test_historical_annotation_edition_is_not_claimed_strict():
     history = load_history()
     assert "not_independently_reviewed" in history["status"]
-    assert "historical" in history["limitations"].lower()
+    assert "not been authenticated" in history["limitations"].lower()
     assert all(s["editorial_cutoff"] is None for s in history["sources"].values())
