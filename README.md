@@ -13,6 +13,25 @@ Projet GML de la HEIG-VD consacré à l'analyse et à la prédiction des **résu
 
 Le projet porte sur les **votations fédérales**, avec des prédictions **par commune** ; ce n'est pas un modèle de prédiction des votations cantonales à partir de C2D.
 
+## Enrichissement et investigation V3 — 23 novembre 2026
+
+L'ajout de 48 observations de sondages pour 24 objets de 2016–2020 porte la
+couverture du développement de 24 à 48 objets sur 66. Avec la tendance déjà
+fixée en V2, la MAE passe de **8,1181 à 7,6183 points**. L'objectif de quatre
+points reste non atteint ; ces résultats réutilisent le développement.
+
+La campagne compare aussi 32 nouvelles variables d'objet, un encodage des thèmes
+comme ensembles et six prototypes communaux. L'audit porte sur les variables
+brutes puis sur les colonnes réellement encodées. Chaque hypothèse, y compris
+les résultats défavorables, est conservée avec sa configuration et ses preuves.
+
+- [Résultats, corrélations et priorités de données](reports/datasets/municipal_v3_20261123/report.md)
+- [Commandes de reproduction V3](docs/project/municipal_v3.md)
+- [Collecte historique et provenance](data/external/polls_historical_v3/README.md)
+- [Registre synthétique des résultats](reports/datasets/municipal_v3_20261123/results.json)
+
+Le candidat V2 et sa capture prospective restent inchangés.
+
 ## Expériences de modèles V2 — 23 novembre 2026
 
 La campagne V2 compare XGBoost, CatBoost, les profils communaux, la sélection

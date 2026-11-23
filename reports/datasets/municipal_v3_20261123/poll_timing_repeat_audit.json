@@ -1,0 +1,17 @@
+{
+  "verified_at_utc": "2026-11-23T16:10:53.848203+00:00",
+  "reason": "Style-only Ruff SIM102 fix: combine nested nominal guard into one logically equivalent condition. No input, scenario, parameter or scoring change.",
+  "original_declaration": "poll_timing_plan_initial.json",
+  "original_declaration_sha256": "81a3242cc7c33d60f4144c26ba1e065dc8646b6dc548bb67d0333ebe7b5853ae",
+  "original_results": "poll_timing_results_initial.json",
+  "original_results_sha256": "dd69c9219f792acdcb40ab02eac3de276b184b48c0bacd973f187cc540f55856",
+  "current_declaration_sha256": "e6f91b72b46a5b1930f18afe8f308cf982c0333113d2921dff7fbbdf85161421",
+  "current_results_sha256": "1fd509cc2e90e67acc7fd8aaaf44af385d30c0dbc3bc31fab15b698813a22b81",
+  "original_code_sha256": "528d3b7b789f513306b8cf90c3dd58c21a37201c56a81026526cd0c7245f261b",
+  "current_code_sha256": "853bd9fb835246150330366efddc1a9754fb7f048de616a2ceb5d82920388727",
+  "scenario_definitions_unchanged": true,
+  "all_source_hashes_unchanged": true,
+  "all_scenario_metrics_and_counts_exactly_identical": true,
+  "all_three_output_csv_hashes_exactly_identical": true,
+  "no_tuning_or_optimistic_selection": true
+}

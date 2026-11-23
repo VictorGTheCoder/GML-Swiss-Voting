@@ -1,0 +1,125 @@
+{
+  "declared_at_utc": "2026-11-23T16:10:12.800478+00:00",
+  "declared_before_new_sensitivity_scores": true,
+  "version": "municipal-v3-poll-timing-20261123",
+  "scenarios": [
+    {
+      "name": "wave1_lower_wave2_lower",
+      "wave1": "lower",
+      "wave2": "lower"
+    },
+    {
+      "name": "wave1_lower_wave2_upper",
+      "wave1": "lower",
+      "wave2": "upper"
+    },
+    {
+      "name": "wave1_upper_wave2_lower",
+      "wave1": "upper",
+      "wave2": "lower"
+    },
+    {
+      "name": "wave1_upper_wave2_upper",
+      "wave1": "upper",
+      "wave2": "upper"
+    }
+  ],
+  "mutation_policy": "Only survey_midpoint on explicit approximate=True rows; shares, publication, fieldwork and all calibration parameters unchanged",
+  "frozen_poll_parameters": {
+    "weight": 1.0,
+    "undecided_yes_fraction": 0.0,
+    "min_population_fraction": 0.9,
+    "trend_factor": 1.0,
+    "max_trend_adjustment": 0.15
+  },
+  "validation_windows": [
+    {
+      "name": "2016-2018",
+      "start": "2016-01-01",
+      "end": "2018-12-31"
+    },
+    {
+      "name": "2019-2020",
+      "start": "2019-01-01",
+      "end": "2020-12-31"
+    },
+    {
+      "name": "2021-2022",
+      "start": "2021-01-01",
+      "end": "2022-12-31"
+    }
+  ],
+  "training_start": "1990-01-01",
+  "evaluation_end": "2022-12-31",
+  "metric": "Equal-object mean of unweighted municipal absolute errors in percentage points",
+  "expected_rows": 138868,
+  "expected_objects": 66,
+  "nominal_macro_object_mae_pp": 7.618292700184025,
+  "original_poll_macro_object_mae_pp": 8.118123158099484,
+  "approximate_poll_rows": 27,
+  "approximate_objects": 16,
+  "prediction_change_tolerance": 1e-12,
+  "limitations": "Range of four simultaneous endpoint scenarios, not a confidence interval or a global bound over independent midpoint choices per object; no scenario is selected for deployment or used for calibration.",
+  "input_evidence": {
+    "dataset": {
+      "path": "reports/generated/municipal_v3_base/dataset.parquet",
+      "sha256": "cdbe2331bf50d5aef94fd0b7c89ccaf36d0a8321ba00807fe2aad42bd691a85c"
+    },
+    "base_manifest": {
+      "path": "reports/generated/municipal_v3_base/data_manifest.json",
+      "sha256": "73e49f4702dd97f0b8f5ee2259f6f238cdf27ab2764620b4992b114532253b6c"
+    },
+    "campaign": {
+      "path": "reports/generated/municipal_v3_experiments_final/campaign.json",
+      "sha256": "85bce7bb263f2566f7346b048cb84bf1b9447ab26f11f1cf34a225dc19db324a"
+    },
+    "structural_predictions": {
+      "path": "reports/generated/municipal_v3_experiments_final/baseline_pca5_predictions.parquet",
+      "sha256": "586e331e188bd40c3352672999670f4beab82c69c5de0e83dccb83be1fcb356d"
+    },
+    "nominal_predictions": {
+      "path": "reports/generated/municipal_v3_polls_final/baseline_expanded_trend_predictions.parquet",
+      "sha256": "4b7440c471765803321bb3d1654895d2ec1a592618ca0508c195342dc055732e"
+    },
+    "original_polls": {
+      "path": "data/external/polls/srg_gfs_polls.csv",
+      "sha256": "cf491f402341df2aa9e66fc5de384ae0d7c98fbc69ef3b2a6fa2a557d4d8a827"
+    },
+    "historical_polls": {
+      "path": "data/external/polls_historical_v3/polls.csv",
+      "sha256": "25ba86dd0aac4f4f2d5d2636bfcc541aa44a0f5f2e26b58a7943aac0b39671f3"
+    },
+    "comparison": {
+      "path": "reports/generated/municipal_v3_polls_final/polling_comparison.json",
+      "sha256": "40c81c02dcffbf4b86171bf6e7493b0eb1cff505024881c62b130036cdfbde23"
+    },
+    "source_evidence": {
+      "path": "data/external/polls_historical_v3/evidence.json",
+      "sha256": "a0f9a200059aa90fea5f77db137f4c213e8adfdfc0b754c92b79318c092f97ff"
+    },
+    "sensitivity_code": {
+      "path": "scripts/modeling/poll_timing_sensitivity_v3.py",
+      "sha256": "853bd9fb835246150330366efddc1a9754fb7f048de616a2ceb5d82920388727"
+    }
+  },
+  "frozen_campaign_code": {
+    "scripts/modeling/municipal_v2.py": "6dcb9a74b03c300317270d52a052a5f72481e31ad9982f7e6ba09c68c862e6bb",
+    "experiments/municipal_v2/protocol.json": "d479c22b8a53916332d9c645a39aa7457801ee1e46a64e91b51c0b79a2864084",
+    "requirements-experiments.txt": "108bc70470ce6fa590461cebb7a131ebd3a98c44a6dfb0f5bd2ba5074c316d7f",
+    "scripts/integration/build_modeling_dataset.py": "a374045492f49eaf405119487fd58606095b1c6a6201ccd870d6a87fd0124281",
+    "scripts/integration/prepare_join.py": "43dc2cb5a248736dea48534cff1ccc3fa3a135ef90c71566841d260feab2c7f8",
+    "scripts/common/config.py": "b87a3761bd1dd1a3a6d5e93515fc1437f4f5fd417872a2e74512b142e8c580a0",
+    "scripts/common/vote_keys.py": "2314981bd033c49ba9b31609b9fe5f62b17dab09f75c85cfccabec43f2781a33",
+    "scripts/modeling/residual_voting_model.py": "8bb5cd930f8a5ad69af84716cafda1a98543bde9cc0b2f41f9a6abce95b3d201",
+    "scripts/modeling/poll_anchor.py": "df34038dfb35f194b3ea406dd15e4b93ae6f607ce745453b223797e5f89255f2",
+    "scripts/modeling/direction_features_v2.py": "836ba9a07d0b6685140c0f8be4d1ec9e00358eed089839c9fcca663844721485",
+    "scripts/modeling/experiment_control_v2.py": "8fcf0feab0757d77c539234a813aee0d77e4725c0c49a737b16f96595749bbe0",
+    "scripts/modeling/object_profile_v2.py": "3a5b251f7900635ffb56ea14ee6394eb1857c1afaf01dbb3630ca124989dfafe",
+    "scripts/modeling/political_features_v2.py": "c1171e8c7d5bb62a39f305fa0265cc6b7ee0167d4308e64761df1f1654cc032d",
+    "scripts/modeling/enrichment_experiment_v3.py": "3ffa7f92fe71279625bf4e2c45525293b22891095d15f1efbcdb630ceb6a01c7",
+    "scripts/modeling/object_enrichment_v3.py": "e26a36fa6d198fbeac3bebf174f6401ff02f4a99b023942890f063e28ae3740e",
+    "scripts/modeling/prototype_profile_v3.py": "4359dc3a16a9f5a676c0e6e8a9bbf6d37ba0d2d2b96915e90f7b9c846419dca8"
+  },
+  "no_tuning_or_model_selection": true,
+  "comparison_targets_loaded": false
+}

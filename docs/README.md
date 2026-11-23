@@ -18,6 +18,8 @@ La table exploratoire dérivée reste distincte des sources et du protocole de p
 - [Méthodologie V2](project/municipal_v2_methodology.md) — validation, sélection et limites.
 - [Audit des données V2](project/municipal_v2_data_audit.md) — couverture et disponibilité.
 - [Résultats V2 du 23 novembre 2026](../reports/datasets/municipal_v2_20261123/report.md) — décisions et registre des essais.
+- [Investigation V3](project/municipal_v3.md) — données supplémentaires, redondances, prototypes et reproduction.
+- [Résultats V3 du 23 novembre 2026](../reports/datasets/municipal_v3_20261123/report.md) — comparaisons contrôlées, incertitudes et prochaines acquisitions.
 
 ## Datasets
 
@@ -31,6 +33,8 @@ expliquent les sources, la reconstruction et les limites.
 - [Typologies territoriales et régions linguistiques](datasets/typologies/README.md)
 - [Résultats OFS](../data/processed/ofs-votes/README.md)
 - [Swissvotes](../data/processed/swissvotes/README.md)
+- [Sondages historiques V3](../data/external/polls_historical_v3/README.md)
+- [Enrichissement des objets V3](../data/processed/municipal_v3/README.md)
 - [Élections au Conseil national](../data/processed/elections/README.md)
 
 Voir aussi [l'index des notebooks](../notebooks/README.md).

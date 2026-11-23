@@ -1,0 +1,2 @@
+# Preserve the exact hashed CSV snapshot, including its standard CSV CRLF endings.
+data/external/polls_historical_v3/polls.csv -text whitespace=cr-at-eol

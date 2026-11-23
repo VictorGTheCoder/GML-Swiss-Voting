@@ -1,0 +1,235 @@
+{
+  "structural": [
+    {
+      "name": "baseline_pca5",
+      "structural_mae_pp": 9.42099474882755,
+      "current_polls_trend_mae_pp": 8.118123158099484,
+      "oracle_local_mae_pp": 5.618536073330545,
+      "seconds": 19.602653563999866
+    },
+    {
+      "name": "stakeholders_pca5",
+      "structural_mae_pp": 9.379698455325578,
+      "current_polls_trend_mae_pp": 8.219833680712142,
+      "oracle_local_mae_pp": 5.601318544928143,
+      "seconds": 32.12762862699992
+    },
+    {
+      "name": "procedure_pca5",
+      "structural_mae_pp": 9.58510211452462,
+      "current_polls_trend_mae_pp": 8.372591546763868,
+      "oracle_local_mae_pp": 5.751031935318865,
+      "seconds": 20.75364663900018
+    },
+    {
+      "name": "domains_pca5",
+      "structural_mae_pp": 9.045701807589287,
+      "current_polls_trend_mae_pp": 8.040374726253761,
+      "oracle_local_mae_pp": 5.661953444276547,
+      "seconds": 21.63971781300006
+    },
+    {
+      "name": "combined_pca5",
+      "structural_mae_pp": 9.296797009659388,
+      "current_polls_trend_mae_pp": 8.434342847284448,
+      "oracle_local_mae_pp": 5.706033233579436,
+      "seconds": 38.41679691599984
+    },
+    {
+      "name": "prototypes6",
+      "structural_mae_pp": 9.625888557595832,
+      "current_polls_trend_mae_pp": 8.354260469981426,
+      "oracle_local_mae_pp": 5.898727835755147,
+      "seconds": 19.029053990000193
+    }
+  ],
+  "polling": [
+    {
+      "name": "baseline_original_latest",
+      "structure": "baseline_pca5",
+      "collection": "original",
+      "trend_factor": 0,
+      "metrics": {
+        "macro_object_mae_pp": 8.454827353750845,
+        "row_mae_pp": 8.45482465630574,
+        "macro_date_mae_pp": 8.300487138520184,
+        "median_row_ae_pp": 6.804948678548401,
+        "p90_row_ae_pp": 18.06065592293562,
+        "within_4pp_share": 0.3095529567646974,
+        "majority_accuracy": 0.8173373275340611,
+        "rows": 138868,
+        "objects": 66,
+        "dates": 23
+      },
+      "polled_objects": 24,
+      "predictions_sha256": "94e28964dbc687e5200d3f36c84ff5e3b91457f0e785c2b49cada7db63fdfc79"
+    },
+    {
+      "name": "baseline_original_trend",
+      "structure": "baseline_pca5",
+      "collection": "original",
+      "trend_factor": 1,
+      "metrics": {
+        "macro_object_mae_pp": 8.118123158099484,
+        "row_mae_pp": 8.117970133292207,
+        "macro_date_mae_pp": 8.10000870975322,
+        "median_row_ae_pp": 6.446432412235085,
+        "p90_row_ae_pp": 17.42862820832137,
+        "within_4pp_share": 0.3276276752023504,
+        "majority_accuracy": 0.8169628712158309,
+        "rows": 138868,
+        "objects": 66,
+        "dates": 23
+      },
+      "polled_objects": 24,
+      "predictions_sha256": "85d78f5d89d525a96ead5c0a930a8291142f51403c6fa1c997212cb2b4096fba"
+    },
+    {
+      "name": "baseline_expanded_latest",
+      "structure": "baseline_pca5",
+      "collection": "expanded",
+      "trend_factor": 0,
+      "metrics": {
+        "macro_object_mae_pp": 8.570721180028483,
+        "row_mae_pp": 8.570686477898223,
+        "macro_date_mae_pp": 8.434320084374743,
+        "median_row_ae_pp": 7.058989310343527,
+        "p90_row_ae_pp": 18.039457671705485,
+        "within_4pp_share": 0.29409223147161334,
+        "majority_accuracy": 0.8207506408963908,
+        "rows": 138868,
+        "objects": 66,
+        "dates": 23
+      },
+      "polled_objects": 48,
+      "predictions_sha256": "d95a01e1e47dc5931386da23c1980b8de18eda0d74d20a9d3f972a58e223b992"
+    },
+    {
+      "name": "baseline_expanded_trend",
+      "structure": "baseline_pca5",
+      "collection": "expanded",
+      "trend_factor": 1,
+      "metrics": {
+        "macro_object_mae_pp": 7.618292700184025,
+        "row_mae_pp": 7.618142606516203,
+        "macro_date_mae_pp": 7.5131461251104215,
+        "median_row_ae_pp": 6.166323150808243,
+        "p90_row_ae_pp": 15.931738736702439,
+        "within_4pp_share": 0.3374067459745946,
+        "majority_accuracy": 0.8347711495808969,
+        "rows": 138868,
+        "objects": 66,
+        "dates": 23
+      },
+      "polled_objects": 48,
+      "predictions_sha256": "4b7440c471765803321bb3d1654895d2ec1a592618ca0508c195342dc055732e"
+    }
+  ],
+  "paired_date_bootstrap": [
+    {
+      "comparison": "stakeholders_pca5 minus baseline structural",
+      "difference_pp": -0.041296293501972975,
+      "lower_95_pp": -0.338392939989348,
+      "upper_95_pp": 0.2564086761152628,
+      "dates": 23,
+      "objects": 66,
+      "replicates": 4000,
+      "unit": "whole voting date",
+      "interpretation": "descriptive paired bootstrap; exploratory reused development, no multiplicity or selection correction"
+    },
+    {
+      "comparison": "procedure_pca5 minus baseline structural",
+      "difference_pp": 0.16410736569706846,
+      "lower_95_pp": -0.35863180428285785,
+      "upper_95_pp": 0.6549859540898638,
+      "dates": 23,
+      "objects": 66,
+      "replicates": 4000,
+      "unit": "whole voting date",
+      "interpretation": "descriptive paired bootstrap; exploratory reused development, no multiplicity or selection correction"
+    },
+    {
+      "comparison": "domains_pca5 minus baseline structural",
+      "difference_pp": -0.3752929412382637,
+      "lower_95_pp": -0.716362390376872,
+      "upper_95_pp": -0.06833363063389081,
+      "dates": 23,
+      "objects": 66,
+      "replicates": 4000,
+      "unit": "whole voting date",
+      "interpretation": "descriptive paired bootstrap; exploratory reused development, no multiplicity or selection correction"
+    },
+    {
+      "comparison": "combined_pca5 minus baseline structural",
+      "difference_pp": -0.12419773916816387,
+      "lower_95_pp": -0.7384542234432906,
+      "upper_95_pp": 0.45173666285595004,
+      "dates": 23,
+      "objects": 66,
+      "replicates": 4000,
+      "unit": "whole voting date",
+      "interpretation": "descriptive paired bootstrap; exploratory reused development, no multiplicity or selection correction"
+    },
+    {
+      "comparison": "prototypes6 minus baseline structural",
+      "difference_pp": 0.2048938087682802,
+      "lower_95_pp": 0.12060148109214198,
+      "upper_95_pp": 0.3217868101977032,
+      "dates": 23,
+      "objects": 66,
+      "replicates": 4000,
+      "unit": "whole voting date",
+      "interpretation": "descriptive paired bootstrap; exploratory reused development, no multiplicity or selection correction"
+    },
+    {
+      "comparison": "baseline_expanded_trend minus original trend",
+      "difference_pp": -0.499830457915461,
+      "lower_95_pp": -1.2982947236103834,
+      "upper_95_pp": 0.07981314704452935,
+      "dates": 23,
+      "objects": 66,
+      "replicates": 4000,
+      "unit": "whole voting date",
+      "interpretation": "descriptive paired bootstrap; exploratory reused development, no multiplicity or selection correction"
+    },
+    {
+      "comparison": "baseline_expanded_latest minus original trend",
+      "difference_pp": 0.4525980219289989,
+      "lower_95_pp": -0.4853748290460447,
+      "upper_95_pp": 1.3534205931725145,
+      "dates": 23,
+      "objects": 66,
+      "replicates": 4000,
+      "unit": "whole voting date",
+      "interpretation": "descriptive paired bootstrap; exploratory reused development, no multiplicity or selection correction"
+    }
+  ],
+  "interrupted_run_replay": [
+    {
+      "name": "baseline_pca5",
+      "predictions_identical": true,
+      "same_configuration": true
+    },
+    {
+      "name": "stakeholders_pca5",
+      "predictions_identical": true,
+      "same_configuration": true
+    },
+    {
+      "name": "procedure_pca5",
+      "predictions_identical": true,
+      "same_configuration": true
+    }
+  ],
+  "new_objects": 24,
+  "new_poll_rows": 48,
+  "development_objects": 66,
+  "polled_before": 24,
+  "polled_after": 48,
+  "new_object_features": 32,
+  "goal_mae_pp": 4,
+  "goal_reached": false,
+  "comparison_2023_onward_rerun": false,
+  "frozen_v2_replaced": false,
+  "strict_forecast_ready": false
+}

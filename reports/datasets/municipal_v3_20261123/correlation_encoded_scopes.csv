@@ -1,0 +1,4 @@
+cutoff,scope,training_objects,training_dates,raw_numeric_features,raw_categorical_features,encoded_columns,matrix_rank,centered_matrix_rank,constant_columns,high_correlation_pairs,hard_redundancy_candidate_pairs,exact_duplicate_pairs,exact_opposite_pairs,affine_candidate_pairs
+2016-01-01,object_encoded,240,79,19,23,340,179,178,3,183,101,69,0,32
+2019-01-01,object_encoded,270,90,19,23,353,193,192,3,184,96,64,0,32
+2021-01-01,object_encoded,282,95,19,23,357,200,199,3,176,92,60,0,32

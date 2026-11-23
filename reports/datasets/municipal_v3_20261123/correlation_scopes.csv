@@ -1,0 +1,13 @@
+cutoff,scope,training_rows,training_objects,training_dates,units,keys,features,all_missing,constant_when_observed,high_correlation_pairs,hard_redundancy_pairs,interpretation
+2016-01-01,objects,504071,240,79,240,['vote_id'],58,2,6,25,0,One observation per training object; objects on the same date can still be dependent.
+2016-01-01,municipal_snapshots,504071,240,79,10515,"['municipality_id', 'statpop_year', 'election_year']",19,1,0,0,0,One municipality/source-year combination; repeated communes across snapshots remain dependent.
+2016-01-01,municipal_history,504071,240,79,165959,"['municipality_id', 'vote_date']",2,0,0,0,0,"One municipality/voting-date combination, excluding duplicate same-day objects; no independence claim."
+2016-01-01,local_interactions,504071,240,79,504071,"['municipality_id', 'vote_id']",16,1,0,2,0,"Dependent municipality/object panel; descriptive correlation, not independent sample size or evidence of significance."
+2019-01-01,objects,567171,270,90,270,['vote_id'],58,1,5,29,0,One observation per training object; objects on the same date can still be dependent.
+2019-01-01,municipal_snapshots,567171,270,90,18929,"['municipality_id', 'statpop_year', 'election_year']",19,1,0,0,0,One municipality/source-year combination; repeated communes across snapshots remain dependent.
+2019-01-01,municipal_history,567171,270,90,189096,"['municipality_id', 'vote_date']",2,0,0,0,0,"One municipality/voting-date combination, excluding duplicate same-day objects; no independence claim."
+2019-01-01,local_interactions,567171,270,90,567171,"['municipality_id', 'vote_id']",16,1,0,2,0,"Dependent municipality/object panel; descriptive correlation, not independent sample size or evidence of significance."
+2021-01-01,objects,592419,282,95,282,['vote_id'],58,1,5,44,0,One observation per training object; objects on the same date can still be dependent.
+2021-01-01,municipal_snapshots,592419,282,95,23137,"['municipality_id', 'statpop_year', 'election_year']",19,1,0,0,0,One municipality/source-year combination; repeated communes across snapshots remain dependent.
+2021-01-01,municipal_history,592419,282,95,199616,"['municipality_id', 'vote_date']",2,0,0,0,0,"One municipality/voting-date combination, excluding duplicate same-day objects; no independence claim."
+2021-01-01,local_interactions,592419,282,95,592419,"['municipality_id', 'vote_id']",16,1,0,2,0,"Dependent municipality/object panel; descriptive correlation, not independent sample size or evidence of significance."

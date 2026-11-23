@@ -21,6 +21,7 @@ ses chiffres vérifiables. Les grandes sorties de calcul restent sous `generated
 
 ### Datasets disponibles
 
+- [Enrichissement V3 — campagne du 23 novembre 2026](datasets/municipal_v3_20261123/report.md).
 - [Modèles V2 — campagne du 23 novembre 2026](datasets/municipal_v2_20261123/report.md).
 - [Bilan du pipeline au 26 octobre 2026](datasets/pipeline_validation_2026-10-26.md).
 - [ESPOP — prototype de réutilisation indépendant](datasets/espop/reuse_2026-10-27.md).

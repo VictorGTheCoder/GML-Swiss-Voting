@@ -55,3 +55,9 @@ jobs:
           tests/test_collect_poll_features.py
           tests/test_poll_anchor.py
           tests/test_forecast_municipal.py
+          tests/test_object_enrichment_v3.py
+          tests/test_feature_redundancy_v3.py
+          tests/test_encoded_redundancy_v3.py
+          tests/test_prototype_profile_v3.py
+          tests/test_enrichment_experiment_v3_review.py
+          tests/test_poll_timing_sensitivity_v3.py

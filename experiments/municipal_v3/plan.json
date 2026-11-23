@@ -1,0 +1,113 @@
+{
+  "version": "municipal-v3-enrichment-20261123",
+  "declared_before_new_scores": true,
+  "declared_at": "2026-11-23",
+  "purpose": "Test unused source information and soft communal prototypes, not a new frozen candidate",
+  "metric": "Equal-object mean of unweighted within-object municipal MAE, percentage points",
+  "training_start": "1990-01-01",
+  "validation_windows": [
+    {
+      "name": "2016-2018",
+      "start": "2016-01-01",
+      "end": "2018-12-31"
+    },
+    {
+      "name": "2019-2020",
+      "start": "2019-01-01",
+      "end": "2020-12-31"
+    },
+    {
+      "name": "2021-2022",
+      "start": "2021-01-01",
+      "end": "2022-12-31"
+    }
+  ],
+  "comparison_period": "2023 onward not scored; previously exposed comparison remains unchanged",
+  "regressor_parameters": {
+    "dimensions": 5,
+    "model": "xgboost",
+    "alpha": 51.733073028958565,
+    "n_estimators": 300,
+    "max_depth": 6,
+    "min_samples_leaf": 11,
+    "reg_lambda": 26.39595644479291,
+    "random_state": 20261123
+  },
+  "frozen_poll_parameters": {
+    "weight": 1.0,
+    "undecided_yes_fraction": 0.0,
+    "min_population_fraction": 0.9,
+    "trend_factor": 1.0,
+    "max_trend_adjustment": 0.15
+  },
+  "structural_variants": [
+    {
+      "name": "baseline_pca5",
+      "basis": "pca",
+      "groups": []
+    },
+    {
+      "name": "stakeholders_pca5",
+      "basis": "pca",
+      "groups": [
+        "stakeholders"
+      ]
+    },
+    {
+      "name": "procedure_pca5",
+      "basis": "pca",
+      "groups": [
+        "procedure"
+      ]
+    },
+    {
+      "name": "domains_pca5",
+      "basis": "pca",
+      "groups": [],
+      "domain_multihot": true
+    },
+    {
+      "name": "combined_pca5",
+      "basis": "pca",
+      "groups": [
+        "stakeholders",
+        "procedure"
+      ],
+      "domain_multihot": true
+    },
+    {
+      "name": "prototypes6",
+      "basis": "prototypes",
+      "groups": []
+    }
+  ],
+  "polling_variants": [
+    {
+      "name": "baseline_original_latest",
+      "structure": "baseline_pca5",
+      "collection": "original",
+      "trend_factor": 0
+    },
+    {
+      "name": "baseline_original_trend",
+      "structure": "baseline_pca5",
+      "collection": "original",
+      "trend_factor": 1
+    },
+    {
+      "name": "baseline_expanded_latest",
+      "structure": "baseline_pca5",
+      "collection": "expanded",
+      "trend_factor": 0
+    },
+    {
+      "name": "baseline_expanded_trend",
+      "structure": "baseline_pca5",
+      "collection": "expanded",
+      "trend_factor": 1
+    }
+  ],
+  "selection_policy": "No hyperparameter tuning; all new comparisons are exploratory development ablations. No promotion over V2 without further validation.",
+  "historical_poll_sampling": "Collect complete voting dates with verifiable primary sources, without consulting object prediction errors",
+  "strict_forecast_ready": false
+}
