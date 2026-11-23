@@ -60,8 +60,7 @@ restent en attente de relecture indépendante.**
   contiennent. Encodage `instrument_prohibition` et
   `signed_synthetic_pesticides_ban_introduce`.
 
-Sources: [Explications du Conseil fédéral du 13 juin 2021, pages 4 et 6]
-(https://www.bk.admin.ch/dam/fr/sd-web/UxUxfYD5ma0h/2021-06-13_explications_du_conseil_federal.pdf).
+Sources: [Explications du Conseil fédéral du 13 juin 2021, pages 4 et 6](https://www.bk.admin.ch/dam/fr/sd-web/UxUxfYD5ma0h/2021-06-13_explications_du_conseil_federal.pdf).
 
 ### Cas particuliers
 
@@ -145,3 +144,20 @@ reste **inconnu**. Une direction ne peut être déduite d'un titre abstrait.
 La précision sur 2023–2025, déjà explorée, ne peut pas constituer une nouvelle
 validation indépendante; une mesure prospective sur plusieurs dates sera
 nécessaire pour confirmer le progrès.
+
+## File de relecture sur les 380 objets
+
+Pour ne pas sélectionner les objets selon les erreurs du modèle, le backlog
+provient **uniquement de la liste officielle des objets de V3**, des thèmes
+et du registre d'annotations, jamais des résultats des votations:
+
+```bash
+python -m scripts.modeling.semantic_review_queue_v4 \
+  --output reports/generated/semantic_v4/review_queue.csv
+```
+
+Cette génération laisse **338 objets à annoter** et **42 fiches à faire
+relire indépendamment**. Les objets antérieurs à 2016 sont marqués comme
+priorité de couverture historique: les premières fenêtres de développement
+n'ont aucune annotation pré-2016 pour apprendre cette nouvelle famille de
+variables. La file est un suivi de travail, **pas une donnée d'entraînement**.

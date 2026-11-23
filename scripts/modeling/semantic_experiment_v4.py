@@ -70,12 +70,15 @@ def fold_features(train, evaluation, extras, base_numeric, base_categorical, var
     ]
     if variant.endswith("plus_effects"):
         vocabulary["semantics"] = fit_vocabulary(train_objects, "semantic_tags")
-        effects = encode_multihot(extras, "semantic_tags", vocabulary["semantics"], "effect")
-        features = pd.concat([features, effects], axis=1)
-        numeric.extend(effects.columns)
-        # Explicit coverage indicator: unknown is not an evidenced false.
-        features["semantic_documented"] = extras.semantic_documented.astype("uint8")
-        numeric.append("semantic_documented")
+        if vocabulary["semantics"]:
+            effects = encode_multihot(extras, "semantic_tags", vocabulary["semantics"], "effect")
+            features = pd.concat([features, effects], axis=1)
+            numeric.extend(effects.columns)
+            # Avoid adding a constant missingness feature when no training
+            # object was annotated. Even constant features can perturb the
+            # XGBoost column-sampling RNG without supplying information.
+            features["semantic_documented"] = extras.semantic_documented.astype("uint8")
+            numeric.append("semantic_documented")
     if len(set(numeric + categorical)) != len(numeric + categorical):
         raise ValueError("Duplicate estimator features")
     a = train.merge(features, on="vote_id", how="left", validate="many_to_one", sort=False)

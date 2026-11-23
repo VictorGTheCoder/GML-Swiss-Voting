@@ -9,6 +9,8 @@ on:
       - 'docs/project/semantic_v4.md'
       - 'tests/test_semantic_features_v4.py'
       - 'tests/test_semantic_experiment_v4.py'
+      - 'scripts/modeling/semantic_review_queue_v4.py'
+      - 'tests/test_semantic_review_queue_v4.py'
       - '.github/workflows/semantic-v4-benchmark.yml'
   workflow_dispatch:
 
@@ -31,7 +33,7 @@ jobs:
       - name: Install pinned dependencies
         run: python -m pip install -r requirements-experiments.txt
       - name: Verify semantic annotation contract
-        run: python -m pytest -q tests/test_semantic_features_v4.py tests/test_semantic_experiment_v4.py
+        run: python -m pytest -q tests/test_semantic_features_v4.py tests/test_semantic_experiment_v4.py tests/test_semantic_review_queue_v4.py
       - name: Prepare fresh baseline dataset
         run: >-
           python -m scripts.modeling.municipal_v2 prepare

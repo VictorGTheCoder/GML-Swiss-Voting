@@ -88,3 +88,15 @@ def test_duplicate_join_is_rejected():
     extras = pd.concat([extras, extras.iloc[[0]]], ignore_index=True)
     with pytest.raises(Exception):
         fold_features(train, evaluation, extras, ["num"], ["object_legal_form"], "canonical_leaf")
+
+
+def test_no_past_annotations_means_exact_baseline_features():
+    train, evaluation, extras = example()
+    extras.loc[extras.vote_id.isin(["1000", "2000"]), "semantic_tags"] = ""
+    extras.loc[extras.vote_id.isin(["1000", "2000"]), "semantic_documented"] = 0
+    base = fold_features(train, evaluation, extras, ["num"], ["object_legal_form"], "canonical_leaf")
+    enriched = fold_features(train, evaluation, extras, ["num"], ["object_legal_form"], "canonical_leaf_plus_effects")
+    assert enriched[2] == base[2]
+    assert enriched[3] == base[3]
+    pd.testing.assert_frame_equal(base[0], enriched[0])
+    pd.testing.assert_frame_equal(base[1], enriched[1])
