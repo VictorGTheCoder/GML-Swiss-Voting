@@ -1,0 +1,17 @@
+# Tested CPU environment for the 2026-11-23 retrospective experiments.
+# Install into a dedicated environment; existing project entry points are unchanged.
+pandas==2.2.3
+numpy==2.3.5
+scipy==1.17.0
+scikit-learn==1.8.0
+pyarrow==26.0.1
+xgboost-cpu==3.4.1
+catboost==1.2.10
+optuna==5.1.0
+joblib
+threadpoolctl
+matplotlib
+tabulate
+requests
+pytest
+ruff

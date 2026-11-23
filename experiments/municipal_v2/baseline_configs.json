@@ -1,0 +1,161 @@
+[
+  {
+    "name": "constant",
+    "model": "constant"
+  },
+  {
+    "name": "municipal_history",
+    "model": "history"
+  },
+  {
+    "name": "ridge_base_recent",
+    "model": "ridge",
+    "blocks": "base",
+    "params": {
+      "alpha": 1000.0
+    },
+    "train_start": "2012-01-01"
+  },
+  {
+    "name": "xgboost_base_recent",
+    "model": "xgboost",
+    "blocks": "base",
+    "params": {
+      "n_estimators": 300,
+      "max_depth": 3,
+      "learning_rate": 0.04,
+      "min_child_weight": 200,
+      "reg_lambda": 20.0,
+      "reg_alpha": 0.0,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0,
+      "objective": "reg:squarederror"
+    },
+    "train_start": "2012-01-01"
+  },
+  {
+    "name": "catboost_base_recent",
+    "model": "catboost",
+    "blocks": "base",
+    "params": {
+      "iterations": 400,
+      "depth": 4,
+      "learning_rate": 0.04,
+      "l2_leaf_reg": 20.0,
+      "loss_function": "RMSE"
+    },
+    "train_start": "2012-01-01"
+  },
+  {
+    "name": "ridge_political_recent",
+    "model": "ridge",
+    "blocks": "political",
+    "params": {
+      "alpha": 1000.0
+    },
+    "train_start": "2012-01-01"
+  },
+  {
+    "name": "xgboost_political_recent",
+    "model": "xgboost",
+    "blocks": "political",
+    "params": {
+      "n_estimators": 300,
+      "max_depth": 3,
+      "learning_rate": 0.04,
+      "min_child_weight": 200,
+      "reg_lambda": 20.0,
+      "reg_alpha": 0.0,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0,
+      "objective": "reg:squarederror"
+    },
+    "train_start": "2012-01-01"
+  },
+  {
+    "name": "catboost_political_recent",
+    "model": "catboost",
+    "blocks": "political",
+    "params": {
+      "iterations": 400,
+      "depth": 4,
+      "learning_rate": 0.04,
+      "l2_leaf_reg": 20.0,
+      "loss_function": "RMSE"
+    },
+    "train_start": "2012-01-01"
+  },
+  {
+    "name": "ridge_direction_recent",
+    "model": "ridge",
+    "blocks": "direction",
+    "params": {
+      "alpha": 1000.0
+    },
+    "train_start": "2012-01-01"
+  },
+  {
+    "name": "xgboost_direction_recent",
+    "model": "xgboost",
+    "blocks": "direction",
+    "params": {
+      "n_estimators": 300,
+      "max_depth": 3,
+      "learning_rate": 0.04,
+      "min_child_weight": 200,
+      "reg_lambda": 20.0,
+      "reg_alpha": 0.0,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0,
+      "objective": "reg:squarederror"
+    },
+    "train_start": "2012-01-01"
+  },
+  {
+    "name": "catboost_direction_recent",
+    "model": "catboost",
+    "blocks": "direction",
+    "params": {
+      "iterations": 400,
+      "depth": 4,
+      "learning_rate": 0.04,
+      "l2_leaf_reg": 20.0,
+      "loss_function": "RMSE"
+    },
+    "train_start": "2012-01-01"
+  },
+  {
+    "name": "xgboost_political_since_1990",
+    "model": "xgboost",
+    "blocks": "political",
+    "params": {
+      "n_estimators": 300,
+      "max_depth": 3,
+      "learning_rate": 0.04,
+      "min_child_weight": 200,
+      "reg_lambda": 20.0,
+      "reg_alpha": 0.0,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0,
+      "objective": "reg:squarederror"
+    },
+    "train_start": "1990-01-01"
+  },
+  {
+    "name": "xgboost_political_since_2000",
+    "model": "xgboost",
+    "blocks": "political",
+    "params": {
+      "n_estimators": 300,
+      "max_depth": 3,
+      "learning_rate": 0.04,
+      "min_child_weight": 200,
+      "reg_lambda": 20.0,
+      "reg_alpha": 0.0,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0,
+      "objective": "reg:squarederror"
+    },
+    "train_start": "2000-01-01"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "version": "municipal-v2-2026-11-23",
+  "declared_at": "2026-11-23",
+  "target": "yes_share = votes_yes / (votes_yes + votes_no)",
+  "goal_mae_pp": 4.0,
+  "primary_metric": "Unweighted mean of municipality MAE within each object, then equal mean across objects",
+  "validation_windows": [
+    {"name": "2016-2018", "start": "2016-01-01", "end": "2018-12-31"},
+    {"name": "2019-2020", "start": "2019-01-01", "end": "2020-12-31"},
+    {"name": "2021-2022", "start": "2021-01-01", "end": "2022-12-31"}
+  ],
+  "comparison_start": "2023-01-01",
+  "comparison_end": "2025-12-31",
+  "comparison_status": "Previously exposed in earlier project experiments; retrospective comparison, not an independent final test",
+  "exclude_provisional": true,
+  "history_policy": "Past dates only in training; freeze all outcome-derived features at the start of each validation/comparison window",
+  "fit_policy": "Train and learn all transformations on strictly earlier dates, keep all objects of one date together",
+  "weight_policy": "Equal total training weight per object; optional predeclared recency weights, never evaluation outcomes",
+  "selection_policy": "All candidate settings, feature selection and ensembles are selected only on declared development windows",
+  "comparison_gate": "Explicit freeze with input/code hashes and chosen configuration before opening 2023-2025 comparison",
+  "data_mode": "retrospective_fixed_2026_geography",
+  "strict_forecast_ready": false,
+  "temporal_limit": "Source vintage and historical publication evidence remain unverified; original strict pipeline is unchanged",
+  "text_policy": "Official titles only for conservative target-blind lexical direction proxies. Unreviewed brochure-object mappings are excluded",
+  "seed": 20261123,
+  "stopping_policy": "Document each trial and next hypothesis; do not claim 4 points unless observed. Stop a search family when validation gains plateau, preserve the best honest result and the remaining data limitations"
+}
