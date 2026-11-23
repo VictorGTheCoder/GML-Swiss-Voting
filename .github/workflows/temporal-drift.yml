@@ -1,0 +1,51 @@
+name: Temporal drift and historical weighting
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/temporal-drift.yml'
+      - 'scripts/modeling/temporal_drift_v6.py'
+      - 'tests/test_temporal_drift_v6.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  temporal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [weights, trends, basis]
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      NUMEXPR_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements-experiments.txt
+      - name: Check strictly past-only trends and normalized weights
+        run: python -m pytest -q tests/test_temporal_drift_v6.py
+      - name: Prepare historical snapshot
+        run: >-
+          python -m scripts.modeling.municipal_v2 prepare
+          --output reports/generated/temporal_base
+      - name: Evaluate temporal hypotheses with unchanged V3 poll anchor
+        run: >-
+          python -m scripts.modeling.temporal_drift_v6
+          --base reports/generated/temporal_base
+          --suite ${{ matrix.suite }}
+          --output reports/generated/temporal_${{ matrix.suite }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: temporal-drift-${{ matrix.suite }}
+          path: reports/generated/temporal_${{ matrix.suite }}/
+          if-no-files-found: warn
+          retention-days: 30
