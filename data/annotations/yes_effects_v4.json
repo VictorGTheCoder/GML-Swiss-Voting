@@ -1,0 +1,1032 @@
+{
+  "version": "yes-effects-v4-pilot-1",
+  "data_status": "source_reviewed_first_pass_independent_review_pending",
+  "strict_forecast_ready": false,
+  "annotation_policy": "Describe direct effects of YES, never observed result, campaign rhetoric, intentions or post-vote analyses; source pages are printed brochure pages.",
+  "sources": {
+    "2016-02": {
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/W1ntyhaPtfLI/2016-02-28_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2015-11-18",
+      "published_at": null
+    },
+    "2017-09": {
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/nQa1iYBWTOLV/2017-09-24_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2017-06-16",
+      "published_at": null
+    },
+    "2019-05": {
+      "url": "https://www.bk.admin.ch/dam/bk/fr/dokumente/Abstimmungsbuechlein/Abstimmungsbroschuere_19-05-2019_FR%20%281%29.pdf.download.pdf/Abstimmungsbroschuere_19-05-2019_FR%20%281%29.pdf",
+      "editorial_cutoff": "2019-02-13",
+      "published_at": null
+    },
+    "2020-02": {
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/aSmZ7rOvZDrG/2020-02-09_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2019-10-30",
+      "published_at": null
+    },
+    "2020-09": {
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/XuiMCko39BzI/2020-09-27_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2020-06-12",
+      "published_at": null
+    },
+    "2021-06": {
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/UxUxfYD5ma0h/2021-06-13_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2021-03-05",
+      "published_at": null
+    },
+    "2022-09": {
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/SwAIDvDocLte/2022-09-25_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2022-06-10",
+      "published_at": null
+    },
+    "2023-06": {
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/Lv5UWt6X1iUj/2023-06-18_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2023-03-17",
+      "published_at": null
+    },
+    "2024-03": {
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/In9i5Kp4p64r/2024-03-03_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2023-11-29",
+      "published_at": null
+    },
+    "2024-06": {
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/z11TVw3xAFqy/2024-06-09_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2024-03-08",
+      "published_at": null
+    },
+    "2024-09": {
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/iWYLyEPfLvhn/2024-09-22_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2024-06-19",
+      "published_at": null
+    },
+    "2024-11": {
+      "url": "https://www.bk.admin.ch/dam/bk/fr/dokumente/Abstimmungsbuechlein/Erlaeuterungen_November-2024_fr%20%281%29%20%281%29.pdf.download.pdf/Erlaeuterungen_November-2024_fr%20%281%29%20%281%29.pdf",
+      "editorial_cutoff": "2024-08-21",
+      "published_at": null
+    },
+    "2025-09": {
+      "url": "https://www.bk.admin.ch/dam/bk/fr/dokumente/Abstimmungsbuechlein/Bar_Erlaeuterungen_September_2025_fr.pdf.download.pdf/Bar_Erlaeuterungen_September_2025_fr.pdf",
+      "editorial_cutoff": "2025-06-20",
+      "published_at": null
+    }
+  },
+  "votes": [
+    {
+      "vote_id": "5960",
+      "vote_date": "2016-02-28",
+      "source": "2016-02",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "family",
+          "instrument": "constitutional_rule",
+          "direction": "introduce",
+          "quantity": "marriage_definition",
+          "targets": [
+            "married_couples"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Inscrit la définition du mariage et la non-pénalisation des couples mariés dans la Constitution."
+        },
+        {
+          "domain": "taxation",
+          "instrument": "constitutional_rule",
+          "direction": "restrict",
+          "quantity": "joint_taxation_options",
+          "targets": [
+            "married_couples"
+          ],
+          "page": 5,
+          "evidence_kind": "direct_mechanism",
+          "note": "Le mariage est défini comme communauté économique fiscale; le livret explique la contrainte sur une éventuelle imposition individuelle."
+        }
+      ]
+    },
+    {
+      "vote_id": "5970",
+      "vote_date": "2016-02-28",
+      "source": "2016-02",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "immigration",
+          "instrument": "deportation_rule",
+          "direction": "extend",
+          "quantity": "mandatory_expulsion_scope",
+          "targets": [
+            "foreign_residents_convicted"
+          ],
+          "page": 14,
+          "evidence_kind": "direct_mechanism",
+          "note": "Impose le dispositif de renvoi défini par l'initiative de mise en œuvre, plus automatique que la loi parlementaire."
+        }
+      ]
+    },
+    {
+      "vote_id": "5980",
+      "vote_date": "2016-02-28",
+      "source": "2016-02",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "finance",
+          "instrument": "prohibition",
+          "direction": "introduce",
+          "quantity": "agricultural_commodity_speculation_ban",
+          "targets": [
+            "financial_intermediaries"
+          ],
+          "page": 28,
+          "evidence_kind": "direct_mechanism",
+          "note": "Interdit des opérations financières spéculatives sur les matières premières agricoles et aliments."
+        }
+      ]
+    },
+    {
+      "vote_id": "5990",
+      "vote_date": "2016-02-28",
+      "source": "2016-02",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "transport",
+          "instrument": "infrastructure_investment",
+          "direction": "extend",
+          "quantity": "gotthard_road_tunnel_tubes",
+          "targets": [
+            "road_users"
+          ],
+          "page": 40,
+          "evidence_kind": "direct_mechanism",
+          "note": "Autorise un deuxième tube du tunnel du Gothard pour l'assainissement sans augmentation de capacité routière autorisée."
+        }
+      ]
+    },
+    {
+      "vote_id": "6130",
+      "vote_date": "2017-09-24",
+      "source": "2017-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "agriculture",
+          "instrument": "constitutional_rule",
+          "direction": "introduce",
+          "quantity": "food_security_mandate",
+          "targets": [
+            "agricultural_sector",
+            "consumers"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Inscrit une mission générale de sécurité alimentaire et de préservation des bases de production, sans quota d'achats de denrées suisses."
+        }
+      ]
+    },
+    {
+      "vote_id": "6140",
+      "vote_date": "2017-09-24",
+      "source": "2017-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "pensions",
+          "instrument": "vat_tax",
+          "direction": "increase",
+          "quantity": "vat_rate",
+          "targets": [
+            "consumers"
+          ],
+          "page": 12,
+          "evidence_kind": "direct_mechanism",
+          "note": "Prévoit un relèvement de TVA au profit de l'AVS dans la réforme liée de la prévoyance.",
+          "conditional_on": [
+            "6150"
+          ]
+        }
+      ]
+    },
+    {
+      "vote_id": "6150",
+      "vote_date": "2017-09-24",
+      "source": "2017-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "pensions",
+          "instrument": "retirement_rule",
+          "direction": "increase",
+          "quantity": "female_retirement_age",
+          "targets": [
+            "women_near_retirement"
+          ],
+          "page": 12,
+          "evidence_kind": "direct_mechanism",
+          "note": "Prévoit de rapprocher l'âge de la retraite des femmes de celui des hommes dans la réforme Prévoyance 2020.",
+          "conditional_on": [
+            "6140"
+          ]
+        }
+      ]
+    },
+    {
+      "vote_id": "6270",
+      "vote_date": "2019-05-19",
+      "source": "2019-05",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "corporate_tax",
+          "instrument": "tax_reform",
+          "direction": "remove",
+          "quantity": "privileged_corporate_regimes",
+          "targets": [
+            "corporations"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Supprime des régimes fiscaux privilégiés pour certaines sociétés et prévoit un système harmonisé."
+        },
+        {
+          "domain": "pensions",
+          "instrument": "public_financing",
+          "direction": "increase",
+          "quantity": "avs_financing",
+          "targets": [
+            "pension_system"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Affecte des moyens supplémentaires à l'AVS en parallèle du volet fiscal."
+        }
+      ]
+    },
+    {
+      "vote_id": "6280",
+      "vote_date": "2019-05-19",
+      "source": "2019-05",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "public_safety",
+          "instrument": "firearms_registration",
+          "direction": "extend",
+          "quantity": "weapons_traceability_rules",
+          "targets": [
+            "gun_owners",
+            "arms_dealers"
+          ],
+          "page": 6,
+          "evidence_kind": "direct_mechanism",
+          "note": "Étend le marquage, les déclarations et les échanges d'informations sur certaines armes."
+        }
+      ]
+    },
+    {
+      "vote_id": "6290",
+      "vote_date": "2020-02-09",
+      "source": "2020-02",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "housing",
+          "instrument": "construction_quota",
+          "direction": "introduce",
+          "quantity": "nonprofit_new_housing_minimum",
+          "targets": [
+            "housing_cooperatives",
+            "tenants"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Vise au moins dix pour cent de nouveaux logements d'utilité publique et introduit des possibilités de préemption."
+        }
+      ]
+    },
+    {
+      "vote_id": "6300",
+      "vote_date": "2020-02-09",
+      "source": "2020-02",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "civil_rights",
+          "instrument": "criminal_protection",
+          "direction": "extend",
+          "quantity": "sexual_orientation_antidiscrimination",
+          "targets": [
+            "sexual_minorities",
+            "public_service_providers"
+          ],
+          "page": 6,
+          "evidence_kind": "direct_mechanism",
+          "note": "Étend la protection pénale contre la discrimination publique à l'orientation sexuelle."
+        }
+      ]
+    },
+    {
+      "vote_id": "6310",
+      "vote_date": "2020-09-27",
+      "source": "2020-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "immigration",
+          "instrument": "treaty_termination",
+          "direction": "introduce",
+          "quantity": "eu_free_movement_termination",
+          "targets": [
+            "cross_border_workers",
+            "employers"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Demande de mettre fin à l'accord de libre circulation des personnes avec l'UE."
+        }
+      ]
+    },
+    {
+      "vote_id": "6320",
+      "vote_date": "2020-09-27",
+      "source": "2020-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "wildlife",
+          "instrument": "hunting_regulation",
+          "direction": "extend",
+          "quantity": "wildlife_management_permissions",
+          "targets": [
+            "cantonal_wildlife_authorities",
+            "farmers"
+          ],
+          "page": 6,
+          "evidence_kind": "direct_mechanism",
+          "note": "Assouplit les règles d'intervention et de régulation de certaines espèces protégées, notamment le loup."
+        }
+      ]
+    },
+    {
+      "vote_id": "6330",
+      "vote_date": "2020-09-27",
+      "source": "2020-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "taxation",
+          "instrument": "tax_allowance",
+          "direction": "increase",
+          "quantity": "child_tax_deduction",
+          "targets": [
+            "families_with_children"
+          ],
+          "page": 8,
+          "evidence_kind": "direct_mechanism",
+          "note": "Augmente les déductions fiscales pour les enfants dans l'impôt fédéral direct."
+        }
+      ]
+    },
+    {
+      "vote_id": "6340",
+      "vote_date": "2020-09-27",
+      "source": "2020-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "social_policy",
+          "instrument": "paid_leave",
+          "direction": "introduce",
+          "quantity": "paid_paternity_leave",
+          "targets": [
+            "new_fathers",
+            "employers"
+          ],
+          "page": 10,
+          "evidence_kind": "direct_mechanism",
+          "note": "Introduit un congé de paternité indemnisé de deux semaines."
+        }
+      ]
+    },
+    {
+      "vote_id": "6350",
+      "vote_date": "2020-09-27",
+      "source": "2020-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "military",
+          "instrument": "defence_procurement",
+          "direction": "introduce",
+          "quantity": "new_fighter_jet_purchase",
+          "targets": [
+            "armed_forces",
+            "taxpayers"
+          ],
+          "page": 12,
+          "evidence_kind": "direct_mechanism",
+          "note": "Autorise l'acquisition de nouveaux avions de combat dans le cadre financier proposé."
+        }
+      ]
+    },
+    {
+      "vote_id": "6410",
+      "vote_date": "2021-06-13",
+      "source": "2021-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "agriculture",
+          "instrument": "subsidy_conditionality",
+          "direction": "restrict",
+          "quantity": "direct_payment_eligibility",
+          "targets": [
+            "farmers"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Durcit les conditions des paiements directs: pas de pesticides ni d'antibiotiques préventifs/réguliers, et fourrage issu de l'exploitation."
+        }
+      ]
+    },
+    {
+      "vote_id": "6420",
+      "vote_date": "2021-06-13",
+      "source": "2021-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "environment",
+          "instrument": "prohibition",
+          "direction": "introduce",
+          "quantity": "synthetic_pesticides_ban",
+          "targets": [
+            "farmers",
+            "food_importers",
+            "industry"
+          ],
+          "page": 6,
+          "evidence_kind": "direct_mechanism",
+          "note": "Interdit les pesticides de synthèse dans la production et leur présence dans des denrées importées, avec période de transition."
+        }
+      ]
+    },
+    {
+      "vote_id": "6430",
+      "vote_date": "2021-06-13",
+      "source": "2021-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "public_health",
+          "instrument": "emergency_legal_framework",
+          "direction": "preserve",
+          "quantity": "covid_legal_basis",
+          "targets": [
+            "businesses",
+            "residents"
+          ],
+          "page": 8,
+          "evidence_kind": "direct_mechanism",
+          "note": "Maintient la base légale fédérale de mesures et d'aides adoptées contre les conséquences de la pandémie."
+        }
+      ]
+    },
+    {
+      "vote_id": "6440",
+      "vote_date": "2021-06-13",
+      "source": "2021-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "climate",
+          "instrument": "carbon_pricing",
+          "direction": "increase",
+          "quantity": "co2_incentive",
+          "targets": [
+            "emitters",
+            "fuel_users"
+          ],
+          "page": 10,
+          "evidence_kind": "direct_mechanism",
+          "note": "Renforce les incitations et prélèvements climatiques et leur affectation, en lien avec les émissions de CO2."
+        }
+      ]
+    },
+    {
+      "vote_id": "6450",
+      "vote_date": "2021-06-13",
+      "source": "2021-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "public_safety",
+          "instrument": "police_powers",
+          "direction": "extend",
+          "quantity": "preventive_anti_terror_measures",
+          "targets": [
+            "police",
+            "persons_under_prevention_measures"
+          ],
+          "page": 12,
+          "evidence_kind": "direct_mechanism",
+          "note": "Élargit les instruments préventifs des autorités contre des menaces terroristes."
+        }
+      ]
+    },
+    {
+      "vote_id": "6580",
+      "vote_date": "2022-09-25",
+      "source": "2022-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "animal_welfare",
+          "instrument": "husbandry_standard",
+          "direction": "restrict",
+          "quantity": "industrial_animal_husbandry",
+          "targets": [
+            "livestock_farmers"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Renforce les normes constitutionnelles de bien-être animal et vise à empêcher l'élevage intensif."
+        }
+      ]
+    },
+    {
+      "vote_id": "6590",
+      "vote_date": "2022-09-25",
+      "source": "2022-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "pensions",
+          "instrument": "vat_tax",
+          "direction": "increase",
+          "quantity": "vat_rate",
+          "targets": [
+            "consumers"
+          ],
+          "page": 6,
+          "evidence_kind": "direct_mechanism",
+          "note": "Relève les taux de TVA pour financer l'AVS, uniquement dans le cadre de la réforme liée.",
+          "conditional_on": [
+            "6600"
+          ]
+        }
+      ]
+    },
+    {
+      "vote_id": "6600",
+      "vote_date": "2022-09-25",
+      "source": "2022-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "pensions",
+          "instrument": "retirement_rule",
+          "direction": "increase",
+          "quantity": "female_retirement_age",
+          "targets": [
+            "women_near_retirement"
+          ],
+          "page": 8,
+          "evidence_kind": "direct_mechanism",
+          "note": "Augmente l'âge de référence de la retraite des femmes de 64 à 65 ans avec compensations.",
+          "conditional_on": [
+            "6590"
+          ]
+        }
+      ]
+    },
+    {
+      "vote_id": "6610",
+      "vote_date": "2022-09-25",
+      "source": "2022-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "taxation",
+          "instrument": "tax_exemption",
+          "direction": "remove",
+          "quantity": "bond_interest_withholding_tax",
+          "targets": [
+            "bond_investors",
+            "bond_issuers"
+          ],
+          "page": 10,
+          "evidence_kind": "direct_mechanism",
+          "note": "Supprime l'impôt anticipé sur les intérêts d'obligations suisses nouvelles et un droit de timbre sur titres concernés."
+        }
+      ]
+    },
+    {
+      "vote_id": "6620",
+      "vote_date": "2023-06-18",
+      "source": "2023-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "corporate_tax",
+          "instrument": "minimum_tax",
+          "direction": "introduce",
+          "quantity": "large_group_minimum_tax_15pct",
+          "targets": [
+            "multinational_corporations"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Introduit une imposition complémentaire pour que les grands groupes concernés supportent au moins 15 % selon les règles OCDE/G20."
+        }
+      ]
+    },
+    {
+      "vote_id": "6630",
+      "vote_date": "2023-06-18",
+      "source": "2023-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "climate",
+          "instrument": "public_subsidy",
+          "direction": "increase",
+          "quantity": "renewable_building_support",
+          "targets": [
+            "building_owners",
+            "renewable_industry"
+          ],
+          "page": 6,
+          "evidence_kind": "direct_mechanism",
+          "note": "Prévoit des aides à la transition énergétique des bâtiments et de l'industrie et des objectifs climatiques."
+        }
+      ]
+    },
+    {
+      "vote_id": "6640",
+      "vote_date": "2023-06-18",
+      "source": "2023-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "public_health",
+          "instrument": "emergency_legal_framework",
+          "direction": "extend",
+          "quantity": "covid_legal_basis",
+          "targets": [
+            "residents",
+            "health_authorities"
+          ],
+          "page": 8,
+          "evidence_kind": "direct_mechanism",
+          "note": "Prolonge des dispositions ciblées de la loi COVID-19."
+        }
+      ]
+    },
+    {
+      "vote_id": "6650",
+      "vote_date": "2024-03-03",
+      "source": "2024-03",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "pensions",
+          "instrument": "public_benefit",
+          "direction": "increase",
+          "quantity": "annual_avs_pension_payments",
+          "targets": [
+            "pensioners"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Ajoute un treizième versement annuel de rente AVS."
+        }
+      ]
+    },
+    {
+      "vote_id": "6660",
+      "vote_date": "2024-03-03",
+      "source": "2024-03",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "pensions",
+          "instrument": "retirement_rule",
+          "direction": "increase",
+          "quantity": "retirement_age_indexing",
+          "targets": [
+            "future_pensioners"
+          ],
+          "page": 6,
+          "evidence_kind": "direct_mechanism",
+          "note": "Relève l'âge de la retraite et prévoit une adaptation liée à l'espérance de vie."
+        }
+      ]
+    },
+    {
+      "vote_id": "6670",
+      "vote_date": "2024-06-09",
+      "source": "2024-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "healthcare",
+          "instrument": "premium_subsidy",
+          "direction": "increase",
+          "quantity": "health_insurance_premium_aid",
+          "targets": [
+            "low_income_insured"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Plafonne le poids des primes à dix pour cent du revenu disponible par l'augmentation des réductions de primes."
+        }
+      ]
+    },
+    {
+      "vote_id": "6680",
+      "vote_date": "2024-06-09",
+      "source": "2024-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "healthcare",
+          "instrument": "cost_growth_control",
+          "direction": "restrict",
+          "quantity": "healthcare_cost_growth",
+          "targets": [
+            "health_insurers",
+            "healthcare_providers"
+          ],
+          "page": 6,
+          "evidence_kind": "direct_mechanism",
+          "note": "Introduit un mécanisme de frein aux coûts dans l'assurance obligatoire."
+        }
+      ]
+    },
+    {
+      "vote_id": "6690",
+      "vote_date": "2024-06-09",
+      "source": "2024-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "civil_rights",
+          "instrument": "constitutional_rule",
+          "direction": "extend",
+          "quantity": "bodily_integrity_consent_right",
+          "targets": [
+            "residents"
+          ],
+          "page": 8,
+          "evidence_kind": "direct_mechanism",
+          "note": "Renforce dans la Constitution le droit au consentement pour les interventions portant atteinte à l'intégrité physique."
+        }
+      ]
+    },
+    {
+      "vote_id": "6700",
+      "vote_date": "2024-06-09",
+      "source": "2024-06",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "energy",
+          "instrument": "renewable_energy_rules",
+          "direction": "extend",
+          "quantity": "renewable_electricity_generation",
+          "targets": [
+            "electricity_producers",
+            "local_communities"
+          ],
+          "page": 10,
+          "evidence_kind": "direct_mechanism",
+          "note": "Facilite le développement d'installations renouvelables et ajuste leur cadre légal."
+        }
+      ]
+    },
+    {
+      "vote_id": "6710",
+      "vote_date": "2024-09-22",
+      "source": "2024-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "environment",
+          "instrument": "nature_protection",
+          "direction": "extend",
+          "quantity": "biodiversity_protected_areas",
+          "targets": [
+            "landowners",
+            "cantons"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Renforce la protection de la biodiversité, des paysages et les engagements fédéraux et cantonaux."
+        }
+      ]
+    },
+    {
+      "vote_id": "6720",
+      "vote_date": "2024-09-22",
+      "source": "2024-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "pensions",
+          "instrument": "pension_reform",
+          "direction": "reallocate",
+          "quantity": "occupational_pension_benefits_and_contributions",
+          "targets": [
+            "employees",
+            "pension_funds"
+          ],
+          "page": 6,
+          "evidence_kind": "direct_mechanism",
+          "note": "Modifie les paramètres de prévoyance professionnelle, les cotisations et les compensations dans la réforme LPP."
+        }
+      ]
+    },
+    {
+      "vote_id": "6730",
+      "vote_date": "2024-11-24",
+      "source": "2024-11",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "transport",
+          "instrument": "road_expansion",
+          "direction": "extend",
+          "quantity": "national_highway_capacity",
+          "targets": [
+            "road_users",
+            "taxpayers"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Autorise six projets d'extension de routes nationales."
+        }
+      ]
+    },
+    {
+      "vote_id": "6740",
+      "vote_date": "2024-11-24",
+      "source": "2024-11",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "housing",
+          "instrument": "tenancy_rule",
+          "direction": "restrict",
+          "quantity": "tenant_subletting_discretion",
+          "targets": [
+            "tenants",
+            "landlords"
+          ],
+          "page": 6,
+          "evidence_kind": "direct_mechanism",
+          "note": "Exige davantage de conditions et d'autorisations du bailleur pour la sous-location."
+        }
+      ]
+    },
+    {
+      "vote_id": "6750",
+      "vote_date": "2024-11-24",
+      "source": "2024-11",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "housing",
+          "instrument": "tenancy_rule",
+          "direction": "extend",
+          "quantity": "landlord_termination_for_own_use",
+          "targets": [
+            "tenants",
+            "landlords"
+          ],
+          "page": 8,
+          "evidence_kind": "direct_mechanism",
+          "note": "Assouplit la résiliation pour besoin propre du bailleur, en passant à un besoin important et actuel."
+        }
+      ]
+    },
+    {
+      "vote_id": "6760",
+      "vote_date": "2024-11-24",
+      "source": "2024-11",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "healthcare",
+          "instrument": "financing_rule",
+          "direction": "reallocate",
+          "quantity": "care_financing_shares",
+          "targets": [
+            "health_insurers",
+            "cantons",
+            "patients"
+          ],
+          "page": 10,
+          "evidence_kind": "direct_mechanism",
+          "note": "Unifie le système de financement des prestations entre cantons et assureurs."
+        }
+      ]
+    },
+    {
+      "vote_id": "6780",
+      "vote_date": "2025-09-28",
+      "source": "2025-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "housing_tax",
+          "instrument": "tax_reform",
+          "direction": "remove",
+          "quantity": "imputed_rental_value_tax",
+          "targets": [
+            "homeowners"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Permet de supprimer l'imposition de la valeur locative avec le nouveau cadre constitutionnel."
+        },
+        {
+          "domain": "housing_tax",
+          "instrument": "cantonal_tax_option",
+          "direction": "introduce",
+          "quantity": "secondary_residence_property_tax_option",
+          "targets": [
+            "secondary_homeowners",
+            "cantons"
+          ],
+          "page": 4,
+          "evidence_kind": "direct_mechanism",
+          "note": "Autorise les cantons à créer un impôt immobilier particulier sur les résidences secondaires."
+        }
+      ]
+    },
+    {
+      "vote_id": "6790",
+      "vote_date": "2025-09-28",
+      "source": "2025-09",
+      "source_review": "checked_against_prevote_booklet",
+      "independent_review": "pending",
+      "effects": [
+        {
+          "domain": "digital_government",
+          "instrument": "digital_identity",
+          "direction": "introduce",
+          "quantity": "federal_eid_voluntary",
+          "targets": [
+            "residents",
+            "online_service_providers"
+          ],
+          "page": 6,
+          "evidence_kind": "direct_mechanism",
+          "note": "Introduit une identité électronique étatique et son cadre d'utilisation volontaire."
+        }
+      ]
+    }
+  ]
+}
