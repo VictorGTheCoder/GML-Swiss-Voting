@@ -13,6 +13,21 @@ Projet GML de la HEIG-VD consacré à l'analyse et à la prédiction des **résu
 
 Le projet porte sur les **votations fédérales**, avec des prédictions **par commune** ; ce n'est pas un modèle de prédiction des votations cantonales à partir de C2D.
 
+## Expériences de modèles V2 — 23 novembre 2026
+
+La campagne V2 compare XGBoost, CatBoost, les profils communaux, la sélection
+de variables et les sondages publiés avant le vote. Elle conserve les essais
+réussis et interrompus, puis gèle un candidat avant sa comparaison rétrospective.
+
+- [Résultats mesurés et décision de sélection](reports/datasets/municipal_v2_20261123/report.md)
+- [Installation, commandes et prévision d'un nouvel objet](docs/project/municipal_v2.md)
+- [Méthodologie et outils](docs/project/municipal_v2_methodology.md)
+- [Audit des données et de leur disponibilité](docs/project/municipal_v2_data_audit.md)
+- [Registre complet des essais](reports/datasets/municipal_v2_20261123/experiments.csv)
+
+La période 2023–2025 a déjà été examinée auparavant et reste une comparaison
+rétrospective. Le statut de disponibilité historique stricte reste faux.
+
 ## Données retenues
 
 Le périmètre des sources **Must** est défini dans [docs/project/datasets.md](docs/project/datasets.md). L'inclusion effective d'une variable dans un modèle dépendra de sa disponibilité, de la qualité de sa jointure et de son admissibilité temporelle.

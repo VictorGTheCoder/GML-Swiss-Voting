@@ -1,0 +1,19 @@
+vote_id,vote_date,mae_pp,n_communes,observed_mean,predicted_mean,titel_off_f
+6620,2023-06-18,13.43973365165262,2105,0.7813435248225272,0.6473106637628202,Arrêté fédéral sur une imposition particulière des grands groupes d’entreprises (Mise en œuvre du projet conjoint de l’OCDE et du G20 sur l’imposition des grands groupes d’entreprises)
+6630,2023-06-18,4.801963062155747,2105,0.5134136929476953,0.5227786562370802,"Loi fédérale sur les objectifs en matière de protection du climat, sur l’innovation et sur le renforcement de la sécurité énergétique"
+6640,2023-06-18,5.904772043326617,2105,0.5534108340164486,0.6034480524278263,Modification du 16 décembre 2022 de la loi fédérale sur les bases légales des ordonnances du Conseil fédéral visant à surmonter l’épidémie de COVID-19 (Loi COVID-19)
+6650,2024-03-03,13.752131743990542,2105,0.5796306109401627,0.4446840367282559,Initiative populaire «Mieux vivre à la retraite (initiative pour une 13e rente AVS)»
+6660,2024-03-03,8.3859108650148,2105,0.2289245077447008,0.3095890146185013,Initiative populaire «Pour une prévoyance vieillesse sûre et pérenne (initiative sur les rentes)»
+6670,2024-06-09,6.141516083782483,2105,0.4344710634397751,0.4341312505257542,Initiative populaire «Maximum 10 % du revenu pour les primes d’assurance-maladie (initiative d’allègement des primes)»
+6680,2024-06-09,7.352533943947254,2105,0.3844805233299458,0.3308254854724252,Initiative populaire «Pour des primes plus basses. Frein aux coûts dans le système de santé (initiative pour un frein aux coûts)»
+6690,2024-06-09,9.568596881168457,2105,0.295338597857862,0.2012852225480502,Initiative populaire «Pour la liberté et l’intégrité physique»
+6700,2024-06-09,5.969811925551192,2105,0.6345171891980277,0.6654405045921723,Loi fédérale relative à un approvisionnement en électricité sûr reposant sur des énergies renouvelables (modification de la loi sur l’énergie et de la loi sur l’approvisionnement en électricité)
+6710,2024-09-22,9.02061209225564,2105,0.2920404207047223,0.3709157195671688,Initiative populaire «Pour l’avenir de notre nature et de notre paysage (Initiative biodiversité)»
+6720,2024-09-22,6.334089805180136,2105,0.319261105817696,0.3670009726070073,"Modification de la loi fédérale sur la prévoyance professionnelle vieillesse, survivants et invalidité (LPP) (Réforme de la prévoyance professionnelle)"
+6730,2024-11-24,7.638358466435921,2105,0.5010048936560959,0.4413472608061726,Arrêté fédéral sur l’étape d’aménagement 2023 des routes nationales
+6740,2024-11-24,11.34133669630554,2105,0.540968145078485,0.4316115756899964,Modification du code des obligations (droit du bail: sous-location)
+6750,2024-11-24,13.376350724439751,2105,0.5292609916630279,0.3984484110099093,Modification du code des obligations (droit du bail: résiliation pour besoin propre)
+6760,2024-11-24,9.354382185864246,2105,0.5361670342889325,0.4809448139239362,Modification de la loi fédérale sur l’assurance-maladie (LAMal) (financement uniforme des prestations)
+6770,2025-02-09,6.220104153026241,2105,0.2449945203108403,0.2950286961683933,Initiative populaire «Pour une économie responsable respectant les limites planétaires (initiative pour la responsabilité environnementale)»
+6780,2025-09-28,16.671513397829703,2105,0.5899483242662503,0.4509492197292346,Arrêté fédéral relatif à l’impôt immobilier cantonal sur les résidences secondaires
+6790,2025-09-28,8.965019713520551,2105,0.4537053958833412,0.5387466534620917,"Loi fédérale sur l’identité électronique et d’autres moyens de preuves électroniques (Loi sur l’e-ID, LeID)"

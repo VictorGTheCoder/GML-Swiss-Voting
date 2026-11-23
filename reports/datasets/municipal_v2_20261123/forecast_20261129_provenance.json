@@ -1,0 +1,928 @@
+{
+  "mode": "prospective_research_batch_fixed_2026_geography",
+  "vote_date": "2026-11-29",
+  "as_of_utc": "2026-11-23T12:52:58Z",
+  "training_last_vote_date": "2025-09-28",
+  "population_policy": "All municipalities appearing on the latest date of the supplied prepared training table",
+  "municipalities": 2105,
+  "objects": 4,
+  "rows": 8420,
+  "vote_ids": [
+    "6900",
+    "6910",
+    "6920",
+    "6930"
+  ],
+  "excluded_subsidiary_objects": 0,
+  "source_members_read": [
+    "swissvotes",
+    "statpop",
+    "elections",
+    "typologies",
+    "polls"
+  ],
+  "current_ofs_outcomes_read": false,
+  "future_outcome_columns": [],
+  "history_policy": "Only prepared historical targets strictly before as_of; cumulative means frozen after the last training date",
+  "source_selection_cutoff": "as_of, not the day before the future vote",
+  "strict_forecast_ready": false,
+  "political": {
+    "schema_version": 1,
+    "mode": "exploratory_retrospective",
+    "strict_forecast_ready": false,
+    "availability_status": "historically_unverified",
+    "availability_note": "Current Swissvotes edition; per-object historical release evidence is not established.",
+    "source_url": "https://swissvotes.ch/page/dataset/swissvotes_dataset.csv",
+    "codebook_url": "https://swissvotes.ch/page/dataset/codebook-de.pdf",
+    "codebook_pages": {
+      "institutions_and_parliament": [
+        12,
+        13,
+        14
+      ],
+      "party_recommendations": [
+        21,
+        22,
+        23
+      ],
+      "national_electoral_support": [
+        26,
+        27,
+        28
+      ]
+    },
+    "source_fields": [
+      "p-fdp",
+      "p-cvp",
+      "p-sps",
+      "p-svp",
+      "p-evp",
+      "p-gps",
+      "p-glp",
+      "p-bdp",
+      "p-mitte",
+      "br-pos",
+      "bv-pos",
+      "nr-pos",
+      "sr-pos",
+      "nrja",
+      "nrnein",
+      "srja",
+      "srnein",
+      "ja-lager",
+      "nein-lager",
+      "d1e2",
+      "d1e3",
+      "d2e2",
+      "d2e3",
+      "d3e2",
+      "d3e3"
+    ],
+    "source_selected_sha256": "c4ec3ec3529ddfabeadf9bdc7915beef1895815a5ad87d57bfcdadce38b31810",
+    "numeric_features": [
+      "political_direction_plr",
+      "political_direction_pdc",
+      "political_direction_ps",
+      "political_direction_udc",
+      "political_direction_pev",
+      "political_direction_verts",
+      "political_direction_pvl",
+      "political_direction_pbd",
+      "political_direction_centre",
+      "political_direction_federal_council",
+      "political_direction_parliament",
+      "political_direction_national_council",
+      "political_direction_council_of_states",
+      "political_nr_yes_fraction",
+      "political_sr_yes_fraction",
+      "political_national_yes_electoral_share",
+      "political_national_no_electoral_share",
+      "political_national_binary_coverage",
+      "political_national_yes_fraction_known",
+      "political_local_cue_plr",
+      "political_local_cue_pdc",
+      "political_local_cue_ps",
+      "political_local_cue_udc",
+      "political_local_cue_pev",
+      "political_local_cue_verts",
+      "political_local_cue_pvl",
+      "political_local_cue_pbd",
+      "political_local_cue_centre",
+      "political_local_yes_mass",
+      "political_local_no_mass",
+      "political_local_binary_coverage",
+      "political_local_observed_party_mass",
+      "political_local_nonbinary_or_unknown_mass",
+      "political_local_yes_fraction_known",
+      "political_local_missing_party_count"
+    ],
+    "categorical_features": [
+      "political_recommendation_plr",
+      "political_recommendation_pdc",
+      "political_recommendation_ps",
+      "political_recommendation_udc",
+      "political_recommendation_pev",
+      "political_recommendation_verts",
+      "political_recommendation_pvl",
+      "political_recommendation_pbd",
+      "political_recommendation_centre",
+      "political_recommendation_federal_council",
+      "political_recommendation_parliament",
+      "political_recommendation_national_council",
+      "political_recommendation_council_of_states",
+      "political_domain_d1e2",
+      "political_domain_d1e3",
+      "political_domain_d2e2",
+      "political_domain_d2e3",
+      "political_domain_d3e2",
+      "political_domain_d3e3"
+    ],
+    "object_numeric_features": [
+      "political_direction_plr",
+      "political_direction_pdc",
+      "political_direction_ps",
+      "political_direction_udc",
+      "political_direction_pev",
+      "political_direction_verts",
+      "political_direction_pvl",
+      "political_direction_pbd",
+      "political_direction_centre",
+      "political_direction_federal_council",
+      "political_direction_parliament",
+      "political_direction_national_council",
+      "political_direction_council_of_states",
+      "political_nr_yes_fraction",
+      "political_sr_yes_fraction",
+      "political_national_yes_electoral_share",
+      "political_national_no_electoral_share",
+      "political_national_binary_coverage",
+      "political_national_yes_fraction_known"
+    ],
+    "object_categorical_features": [
+      "political_recommendation_plr",
+      "political_recommendation_pdc",
+      "political_recommendation_ps",
+      "political_recommendation_udc",
+      "political_recommendation_pev",
+      "political_recommendation_verts",
+      "political_recommendation_pvl",
+      "political_recommendation_pbd",
+      "political_recommendation_centre",
+      "political_recommendation_federal_council",
+      "political_recommendation_parliament",
+      "political_recommendation_national_council",
+      "political_recommendation_council_of_states",
+      "political_domain_d1e2",
+      "political_domain_d1e3",
+      "political_domain_d2e2",
+      "political_domain_d2e3",
+      "political_domain_d3e2",
+      "political_domain_d3e3"
+    ],
+    "feature_groups": {
+      "party_categories": [
+        "political_recommendation_plr",
+        "political_recommendation_pdc",
+        "political_recommendation_ps",
+        "political_recommendation_udc",
+        "political_recommendation_pev",
+        "political_recommendation_verts",
+        "political_recommendation_pvl",
+        "political_recommendation_pbd",
+        "political_recommendation_centre"
+      ],
+      "party_signs": [
+        "political_direction_plr",
+        "political_direction_pdc",
+        "political_direction_ps",
+        "political_direction_udc",
+        "political_direction_pev",
+        "political_direction_verts",
+        "political_direction_pvl",
+        "political_direction_pbd",
+        "political_direction_centre"
+      ],
+      "local_interactions": [
+        "political_local_cue_plr",
+        "political_local_cue_pdc",
+        "political_local_cue_ps",
+        "political_local_cue_udc",
+        "political_local_cue_pev",
+        "political_local_cue_verts",
+        "political_local_cue_pvl",
+        "political_local_cue_pbd",
+        "political_local_cue_centre"
+      ],
+      "local_support": [
+        "political_local_yes_mass",
+        "political_local_no_mass",
+        "political_local_binary_coverage",
+        "political_local_observed_party_mass",
+        "political_local_nonbinary_or_unknown_mass",
+        "political_local_yes_fraction_known",
+        "political_local_missing_party_count"
+      ],
+      "institutions": [
+        "political_recommendation_federal_council",
+        "political_direction_federal_council",
+        "political_recommendation_parliament",
+        "political_direction_parliament",
+        "political_recommendation_national_council",
+        "political_direction_national_council",
+        "political_recommendation_council_of_states",
+        "political_direction_council_of_states"
+      ],
+      "parliamentary_votes": [
+        "political_nr_yes_fraction",
+        "political_sr_yes_fraction"
+      ],
+      "national_support": [
+        "political_national_yes_electoral_share",
+        "political_national_no_electoral_share",
+        "political_national_binary_coverage",
+        "political_national_yes_fraction_known"
+      ],
+      "detailed_domains": [
+        "political_domain_d1e2",
+        "political_domain_d1e3",
+        "political_domain_d2e2",
+        "political_domain_d2e3",
+        "political_domain_d3e2",
+        "political_domain_d3e3"
+      ]
+    },
+    "party_mapping": {
+      "plr": "fdp",
+      "pdc": "cvp",
+      "ps": "sps",
+      "udc": "svp",
+      "pev": "evp",
+      "verts": "gps",
+      "pvl": "glp",
+      "pbd": "bdp",
+      "centre": "mitte"
+    },
+    "party_codes": {
+      "1": "yes",
+      "2": "no",
+      "3": "no_recommendation",
+      "4": "blank_ballot",
+      "5": "free_vote",
+      "8": "prefer_counterproposal",
+      "9": "prefer_initiative",
+      "66": "neutral_legacy",
+      "9999": "not_existing"
+    },
+    "party_direction_rule": "1 => +1; 2 => -1; every other category or missing value => NaN",
+    "party_merger_policy": "PDC, PBD and Centre remain separate; no inherited shares or recommendations.",
+    "local_support_definition": "Observed prior local electoral shares summed for explicit yes/no recommendations; zero mass is not evidence of opposition. Read binary coverage and missing-party count alongside it.",
+    "national_support_definition": "Swissvotes ja-lager/nein-lager sum party shares at the last national election before the vote; these are not referendum outcomes.",
+    "domain_note": "Detailed policy-domain categories describe subject matter, not the effect of a yes vote.",
+    "excluded_source_families": [
+      "referendum outcomes",
+      "turnout",
+      "current electorate",
+      "campaign advertising",
+      "media tone",
+      "campaign finance",
+      "cantonal dissidence with ambiguous missingness",
+      "free-text post-vote descriptions"
+    ],
+    "rows": 8420,
+    "objects": 4,
+    "join": {
+      "matched_rows": 8420,
+      "missing_objects": 0,
+      "date_mismatches": 0,
+      "row_losses": 0,
+      "same_object_type": "subsidiary questions rejected when rechtsform is present"
+    },
+    "missing_source_columns": [],
+    "missing_local_columns": [],
+    "invalid_source_values_by_field_on_unique_objects": {
+      "p-fdp": 0,
+      "p-cvp": 0,
+      "p-sps": 0,
+      "p-svp": 0,
+      "p-evp": 0,
+      "p-gps": 0,
+      "p-glp": 0,
+      "p-bdp": 0,
+      "p-mitte": 0,
+      "br-pos": 0,
+      "bv-pos": 0,
+      "nr-pos": 0,
+      "sr-pos": 0,
+      "nr_vote_pair": 0,
+      "sr_vote_pair": 0,
+      "ja-lager": 0,
+      "nein-lager": 0,
+      "national_support_sum_over_one": 0,
+      "d1e2": 0,
+      "d1e3": 0,
+      "d2e2": 0,
+      "d2e3": 0,
+      "d3e2": 0,
+      "d3e3": 0
+    },
+    "invalid_local_values_by_field_on_rows": {
+      "party_share_plr": 0,
+      "party_share_pdc": 0,
+      "party_share_ps": 0,
+      "party_share_udc": 0,
+      "party_share_pev": 0,
+      "party_share_verts": 0,
+      "party_share_pvl": 0,
+      "party_share_pbd": 0,
+      "party_share_centre": 0
+    },
+    "missing_feature_rows": {
+      "political_direction_plr": 0,
+      "political_direction_pdc": 8420,
+      "political_direction_ps": 4210,
+      "political_direction_udc": 8420,
+      "political_direction_pev": 8420,
+      "political_direction_verts": 0,
+      "political_direction_pvl": 8420,
+      "political_direction_pbd": 8420,
+      "political_direction_centre": 2105,
+      "political_direction_federal_council": 0,
+      "political_direction_parliament": 0,
+      "political_direction_national_council": 0,
+      "political_direction_council_of_states": 0,
+      "political_nr_yes_fraction": 0,
+      "political_sr_yes_fraction": 0,
+      "political_national_yes_electoral_share": 8420,
+      "political_national_no_electoral_share": 8420,
+      "political_national_binary_coverage": 8420,
+      "political_national_yes_fraction_known": 8420,
+      "political_local_cue_plr": 108,
+      "political_local_cue_pdc": 8420,
+      "political_local_cue_ps": 4334,
+      "political_local_cue_udc": 8420,
+      "political_local_cue_pev": 8420,
+      "political_local_cue_verts": 260,
+      "political_local_cue_pvl": 8420,
+      "political_local_cue_pbd": 8420,
+      "political_local_cue_centre": 2126,
+      "political_local_yes_mass": 0,
+      "political_local_no_mass": 0,
+      "political_local_binary_coverage": 0,
+      "political_local_observed_party_mass": 0,
+      "political_local_nonbinary_or_unknown_mass": 0,
+      "political_local_yes_fraction_known": 27,
+      "political_local_missing_party_count": 0,
+      "political_recommendation_plr": 0,
+      "political_recommendation_pdc": 0,
+      "political_recommendation_ps": 4210,
+      "political_recommendation_udc": 8420,
+      "political_recommendation_pev": 8420,
+      "political_recommendation_verts": 0,
+      "political_recommendation_pvl": 8420,
+      "political_recommendation_pbd": 0,
+      "political_recommendation_centre": 2105,
+      "political_recommendation_federal_council": 0,
+      "political_recommendation_parliament": 0,
+      "political_recommendation_national_council": 0,
+      "political_recommendation_council_of_states": 0,
+      "political_domain_d1e2": 0,
+      "political_domain_d1e3": 4210,
+      "political_domain_d2e2": 0,
+      "political_domain_d2e3": 2105,
+      "political_domain_d3e2": 6315,
+      "political_domain_d3e3": 6315
+    }
+  },
+  "direction": {
+    "version": "title_direction_v2.1",
+    "numeric_features": [
+      "direction__environmental_protection",
+      "direction__environmental_protection__known",
+      "direction__tax_burden",
+      "direction__tax_burden__known",
+      "direction__social_public_support",
+      "direction__social_public_support__known",
+      "direction__immigration_openness",
+      "direction__immigration_openness__known",
+      "direction__international_cooperation",
+      "direction__international_cooperation__known",
+      "direction__military_commitment",
+      "direction__military_commitment__known",
+      "direction__civil_equality",
+      "direction__civil_equality__known",
+      "direction__regulatory_restriction",
+      "direction__regulatory_restriction__known"
+    ],
+    "source_url": "https://swissvotes.ch/page/dataset",
+    "source_columns_read": [
+      "vote_key",
+      "titel_off_f",
+      "titel_kurz_f",
+      "vote_date"
+    ],
+    "source_titles_sha256": "8572e866400d7bf9c37ce1d5cc9d693940edf80c7dc47d8777f12b55b831bf4f",
+    "rules_sha256": "f17af834969eff1605ce3105d91fdf7ad1ca5d7af633a49c34b75e29a464470b",
+    "axes": {
+      "environmental_protection": "+1: stated strengthening of environmental protection; -1: weakening",
+      "tax_burden": "+1: increase/introduce a tax or remove a tax preference; -1: decrease/remove tax",
+      "social_public_support": "+1: expand social benefits or their public financing; -1: reduce",
+      "immigration_openness": "+1: facilitate residence/naturalisation; -1: restrict immigration/residence",
+      "international_cooperation": "+1: join/approve an international agreement; -1: withdraw",
+      "military_commitment": "+1: expand military resources/obligations; -1: reduce",
+      "civil_equality": "+1: extend equal civil rights/protection; -1: remove",
+      "regulatory_restriction": "+1: introduce an explicit prohibition; -1: abolish an explicit prohibition"
+    },
+    "labels": {
+      "-1": "decrease",
+      "0": "explicit_maintenance",
+      "1": "increase",
+      "NaN": "unknown_or_ambiguous"
+    },
+    "target_blind": true,
+    "outcome_columns_read": [],
+    "party_recommendations_read": false,
+    "brochures_read": false,
+    "human_reviewed": false,
+    "quality_status": "experimental_lexical_proxy_not_validated_policy_effect",
+    "availability_status": "retrospective_titles_historical_publication_unverified",
+    "date_check": "checked",
+    "date_rejected_rows": 0,
+    "coverage": {
+      "environmental_protection": {
+        "known_rows": 0,
+        "total_rows": 8420,
+        "known_objects": 0
+      },
+      "tax_burden": {
+        "known_rows": 2105,
+        "total_rows": 8420,
+        "known_objects": 1
+      },
+      "social_public_support": {
+        "known_rows": 2105,
+        "total_rows": 8420,
+        "known_objects": 1
+      },
+      "immigration_openness": {
+        "known_rows": 0,
+        "total_rows": 8420,
+        "known_objects": 0
+      },
+      "international_cooperation": {
+        "known_rows": 0,
+        "total_rows": 8420,
+        "known_objects": 0
+      },
+      "military_commitment": {
+        "known_rows": 0,
+        "total_rows": 8420,
+        "known_objects": 0
+      },
+      "civil_equality": {
+        "known_rows": 0,
+        "total_rows": 8420,
+        "known_objects": 0
+      },
+      "regulatory_restriction": {
+        "known_rows": 0,
+        "total_rows": 8420,
+        "known_objects": 0
+      }
+    },
+    "object_evidence": {
+      "6900": {
+        "join_status": "exact_key",
+        "titles": {
+          "titel_off_f": "Arrêté fédéral sur le financement additionnel de l’AVS par le biais d’un relèvement de la TVA",
+          "titel_kurz_f": "Relèvement de la TVA pour un financement additionnel de l’AVS"
+        },
+        "axes": {
+          "environmental_protection": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "tax_burden": {
+            "status": "lexical_proxy",
+            "matches": [
+              {
+                "rule_id": "tax_increase",
+                "source_column": "titel_off_f",
+                "matched_text_normalized": "relevement de la tva",
+                "sign": 1,
+                "interpretation": "explicit_action"
+              },
+              {
+                "rule_id": "tax_increase",
+                "source_column": "titel_kurz_f",
+                "matched_text_normalized": "relevement de la tva",
+                "sign": 1,
+                "interpretation": "explicit_action"
+              }
+            ],
+            "blocked_matches": []
+          },
+          "social_public_support": {
+            "status": "lexical_proxy",
+            "matches": [
+              {
+                "rule_id": "social_additional_avs_financing",
+                "source_column": "titel_off_f",
+                "matched_text_normalized": "financement additionnel de l'avs",
+                "sign": 1,
+                "interpretation": "explicit_action"
+              },
+              {
+                "rule_id": "social_additional_avs_financing",
+                "source_column": "titel_kurz_f",
+                "matched_text_normalized": "financement additionnel de l'avs",
+                "sign": 1,
+                "interpretation": "explicit_action"
+              }
+            ],
+            "blocked_matches": []
+          },
+          "immigration_openness": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "international_cooperation": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "military_commitment": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "civil_equality": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "regulatory_restriction": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          }
+        }
+      },
+      "6910": {
+        "join_status": "exact_key",
+        "titles": {
+          "titel_off_f": "Initiative populaire « Pour une limitation des feux d’artifice »",
+          "titel_kurz_f": "Initiative sur les feux d'artifice"
+        },
+        "axes": {
+          "environmental_protection": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "tax_burden": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "social_public_support": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "immigration_openness": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "international_cooperation": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "military_commitment": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "civil_equality": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "regulatory_restriction": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          }
+        }
+      },
+      "6920": {
+        "join_status": "exact_key",
+        "titles": {
+          "titel_off_f": "Initiative populaire « Oui à des impôts fédéraux équitables pour les couples mariés – Pour enfin en finir avec la discrimination du mariage ! »",
+          "titel_kurz_f": "Initiative sur l'imposition des couples mariés"
+        },
+        "axes": {
+          "environmental_protection": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "tax_burden": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "social_public_support": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "immigration_openness": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "international_cooperation": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "military_commitment": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "civil_equality": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "regulatory_restriction": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          }
+        }
+      },
+      "6930": {
+        "join_status": "exact_key",
+        "titles": {
+          "titel_off_f": "Modification de la loi fédérale sur le matériel de guerre (LFMG)",
+          "titel_kurz_f": "Modification de la loi sur le matériel de guerre"
+        },
+        "axes": {
+          "environmental_protection": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "tax_burden": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "social_public_support": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "immigration_openness": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "international_cooperation": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "military_commitment": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "civil_equality": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          },
+          "regulatory_restriction": {
+            "status": "no_explicit_direction",
+            "matches": [],
+            "blocked_matches": []
+          }
+        }
+      }
+    },
+    "limitations": [
+      "Lexical title proxies, not manually reviewed legal effects or guaranteed causal impacts.",
+      "No match means unknown, never neutral; negations and mixed directions abstain.",
+      "Short Swissvotes titles are editorial metadata; historical publication dates are not certified.",
+      "Unresolved brochure-to-object links are not used."
+    ]
+  },
+  "polls": {
+    "mode": "exploratory_poll_variant",
+    "strict_forecast_ready": false,
+    "historical_version_verified": false,
+    "evaluation_targets_used": false,
+    "rows": 8420,
+    "objects": 4,
+    "poll_objects": 4,
+    "objects_without_poll": 0,
+    "poll_rows": 8420,
+    "source_poll_rows": 96,
+    "objects_with_prior_admissible_poll": 4,
+    "trend_rule": "(latest yes share - prior yes share) / survey midpoint days; only publications admissible at cutoff",
+    "trend_horizon": "Calendar days from latest survey midpoint to vote_date; not days from publication",
+    "trend_missing_prior_policy": "Rate=0, availability=0; latest midpoint horizon retained if a poll exists",
+    "numeric_features": [
+      "poll_yes_share",
+      "poll_no_share",
+      "poll_undecided_share",
+      "poll_available",
+      "poll_yes_trend_per_day",
+      "poll_days_to_vote",
+      "poll_trend_available"
+    ],
+    "categorical_features": [],
+    "object_numeric_features": [
+      "poll_yes_share",
+      "poll_no_share",
+      "poll_undecided_share",
+      "poll_available",
+      "poll_yes_trend_per_day",
+      "poll_days_to_vote",
+      "poll_trend_available"
+    ],
+    "object_categorical_features": [],
+    "population_weight_column": "poll_population_weight",
+    "population_proxy": "STATPOP population * (1 - foreign share) * (1 - age 0..19 share). Approximate resident electorate, using marginal shares: age/citizenship dependence, voters aged 18/19, expatriates and turnout are not represented. No current referendum outcome is used.",
+    "population_weight_missing_rows": 0,
+    "percentage_rule": "Exact division by 100; no renormalization; source sum may differ by at most 1 point",
+    "source_rows_with_rounding": 3,
+    "selected_rows_with_rounding": 0,
+    "timestamp_policy": "Naive timestamps are UTC; date-only cutoff is start of day",
+    "as_of": "2026-11-23T12:52:58+00:00",
+    "cutoff_policy": "min(feature_cutoff or vote_date minus one day, optional as_of)",
+    "selection": [
+      {
+        "vote_key": "6900",
+        "vote_date": "2026-11-29",
+        "published_at": "2026-11-18T05:00:00+00:00",
+        "wave": 2,
+        "poll_yes_trend_per_day": 0.0,
+        "poll_days_to_vote": 22.0,
+        "poll_trend_available": 1.0,
+        "latest_midpoint": "2026-11-07",
+        "prior_midpoint": "2026-10-11",
+        "prior_published_at": "2026-10-23T04:00:00+00:00"
+      },
+      {
+        "vote_key": "6910",
+        "vote_date": "2026-11-29",
+        "published_at": "2026-11-18T05:00:00+00:00",
+        "wave": 2,
+        "poll_yes_trend_per_day": -0.0022222222222222222,
+        "poll_days_to_vote": 22.0,
+        "poll_trend_available": 1.0,
+        "latest_midpoint": "2026-11-07",
+        "prior_midpoint": "2026-10-11",
+        "prior_published_at": "2026-10-23T04:00:00+00:00"
+      },
+      {
+        "vote_key": "6920",
+        "vote_date": "2026-11-29",
+        "published_at": "2026-11-18T05:00:00+00:00",
+        "wave": 2,
+        "poll_yes_trend_per_day": -0.005555555555555556,
+        "poll_days_to_vote": 22.0,
+        "poll_trend_available": 1.0,
+        "latest_midpoint": "2026-11-07",
+        "prior_midpoint": "2026-10-11",
+        "prior_published_at": "2026-10-23T04:00:00+00:00"
+      },
+      {
+        "vote_key": "6930",
+        "vote_date": "2026-11-29",
+        "published_at": "2026-11-18T05:00:00+00:00",
+        "wave": 2,
+        "poll_yes_trend_per_day": 0.0,
+        "poll_days_to_vote": 22.0,
+        "poll_trend_available": 1.0,
+        "latest_midpoint": "2026-11-07",
+        "prior_midpoint": "2026-10-11",
+        "prior_published_at": "2026-10-23T04:00:00+00:00"
+      }
+    ],
+    "retained_all_input_rows": true
+  },
+  "missing_rows": {
+    "history_mean_yes": 0,
+    "log_population": 0,
+    "party_share_plr": 108,
+    "party_share_pdc": 8420,
+    "party_share_ps": 248,
+    "party_share_udc": 0,
+    "party_share_pev": 1148,
+    "party_share_verts": 260,
+    "party_share_pvl": 260,
+    "party_share_pbd": 8420,
+    "party_share_centre": 28
+  },
+  "limitations": [
+    "Historical source publication vintages are not certified; source selection dates include documented approximations.",
+    "Municipalities and typologies use fixed 2026 geography, not an independently verified future electorate.",
+    "Title directions are lexical proxies; the batch makes no accuracy guarantee.",
+    "Weighted aggregates are population/electorate proxies, not a forecast weighted by actual future valid ballots."
+  ],
+  "captured_at_utc": "2026-11-23T12:52:59.533906Z",
+  "captured_before_vote": true,
+  "model_sha256": "ab458832f07a41ee13f34bf912f9a6e5233a0eccf8646a607fec0f737209123c",
+  "model_card_sha256": "3f8489d94ebbdd36a75d9bf04ced1641d6a0854649d6034c890985d0720bcbe0",
+  "training_dataset_sha256": "cdbe2331bf50d5aef94fd0b7c89ccaf36d0a8321ba00807fe2aad42bd691a85c",
+  "data_manifest_sha256": "540d3445b816b1eb7f575fb0d0a57c68b63deaed944693948fa784dbf6642716",
+  "sources": {
+    "swissvotes": {
+      "path": "data/processed/swissvotes/swissvotes_clean.parquet",
+      "sha256": "1c60679dd5cfe2cb9c0c29fd50ca5900ff61d8696336aa3bd4a1631b9371321e"
+    },
+    "statpop": {
+      "path": "data/processed/statpop/statpop_features.parquet",
+      "sha256": "acc8f5e1170d8105da7a10dce4cc27b89136314b5a8a56abda79a7ff58093b61"
+    },
+    "elections": {
+      "path": "data/processed/elections/elections_communes.parquet",
+      "sha256": "e1657eb57aa5a05755eaf2b73ceb57a9dbef453df6ba9344012994c7a6e300fb"
+    },
+    "typologies": {
+      "path": "data/processed/typologies/commune_typologies.parquet",
+      "sha256": "2a5c6f0e953601cc92cd523fa14c67b8ce549f2cbecdbb8ce68ae647e45f9289"
+    },
+    "polls": {
+      "path": "/workspace/scratch/7a3958afcf3f/GML-Swiss-Voting/data/external/polls/srg_gfs_polls.csv",
+      "sha256": "cf491f402341df2aa9e66fc5de384ae0d7c98fbc69ef3b2a6fa2a557d4d8a827"
+    }
+  },
+  "model_selection": "poll_trend_t100_u0-6afc7cff30",
+  "model_environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "sklearn": "1.8.0",
+    "xgboost": "3.4.1",
+    "catboost": "1.2.10",
+    "optuna": "5.1.0",
+    "scipy": "1.17.0",
+    "joblib": "1.5.3",
+    "threadpoolctl": "3.6.0"
+  },
+  "frozen_selection_signature": "7be60eb2aa4aa2b35ba3d740dbaa0c4a2fa298578d414312a2c9bdd70757ff4c",
+  "verified_model_code": {
+    "scripts/modeling/municipal_v2.py": "6dcb9a74b03c300317270d52a052a5f72481e31ad9982f7e6ba09c68c862e6bb",
+    "experiments/municipal_v2/protocol.json": "d479c22b8a53916332d9c645a39aa7457801ee1e46a64e91b51c0b79a2864084",
+    "requirements-experiments.txt": "108bc70470ce6fa590461cebb7a131ebd3a98c44a6dfb0f5bd2ba5074c316d7f",
+    "scripts/integration/build_modeling_dataset.py": "a374045492f49eaf405119487fd58606095b1c6a6201ccd870d6a87fd0124281",
+    "scripts/integration/prepare_join.py": "43dc2cb5a248736dea48534cff1ccc3fa3a135ef90c71566841d260feab2c7f8",
+    "scripts/common/config.py": "b87a3761bd1dd1a3a6d5e93515fc1437f4f5fd417872a2e74512b142e8c580a0",
+    "scripts/common/vote_keys.py": "2314981bd033c49ba9b31609b9fe5f62b17dab09f75c85cfccabec43f2781a33",
+    "scripts/modeling/residual_voting_model.py": "8bb5cd930f8a5ad69af84716cafda1a98543bde9cc0b2f41f9a6abce95b3d201",
+    "scripts/modeling/poll_anchor.py": "20afc6719613235f3a2e30d0f82942365f779fd97bfdb632ee644c1e13dd13c0",
+    "scripts/modeling/direction_features_v2.py": "836ba9a07d0b6685140c0f8be4d1ec9e00358eed089839c9fcca663844721485",
+    "scripts/modeling/experiment_control_v2.py": "8fcf0feab0757d77c539234a813aee0d77e4725c0c49a737b16f96595749bbe0",
+    "scripts/modeling/object_profile_v2.py": "3a5b251f7900635ffb56ea14ee6394eb1857c1afaf01dbb3630ca124989dfafe",
+    "scripts/modeling/political_features_v2.py": "c1171e8c7d5bb62a39f305fa0265cc6b7ee0167d4308e64761df1f1654cc032d"
+  },
+  "verified_model_environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "sklearn": "1.8.0",
+    "xgboost": "3.4.1",
+    "catboost": "1.2.10",
+    "optuna": "5.1.0",
+    "scipy": "1.17.0",
+    "joblib": "1.5.3",
+    "threadpoolctl": "3.6.0"
+  },
+  "forecast_code_sha256": "6a219c7209f64d02c634ccac39c591c7edab9b6c54ccf15d5ea13c20b10460c7",
+  "source_snapshot_at_capture_not_certified_archived_at_as_of": true,
+  "artifacts": {
+    "predictions": {
+      "file": "forecast_20261129.csv",
+      "sha256": "be9457786b2d4010aea2c8f1cf38e032f53eb1b449dfd29d0ac31a1ee830992e"
+    },
+    "summary": {
+      "file": "forecast_20261129_summary.csv",
+      "sha256": "d8f5dbb407af8f1287907fca5b720c0433fb431f70d6e30efd899f572bd3b8ea"
+    },
+    "features": {
+      "file": "forecast_20261129_features.parquet",
+      "sha256": "2013a51dcc31ba3f88fedf8bd66218948ab988f15670f6da2f079fa17e6c0883"
+    }
+  },
+  "signature": "40a336626b6ec6604330704086cb3a2cd1cc1f0bebc34546fb4ae180dee9f972"
+}

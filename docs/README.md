@@ -14,6 +14,10 @@ La table exploratoire dérivée reste distincte des sources et du protocole de p
 - [Blocs de variables](project/municipal_features.md) — comparaison indépendante des sources.
 - [Évaluation finale](project/final_evaluation.md) — gel de l'expérience et test réservé.
 - [Export textuel](project/forecast_text_export.md) — admissibilité des brochures.
+- [Expériences V2](project/municipal_v2.md) — modèles, sondages, commandes et prévision future.
+- [Méthodologie V2](project/municipal_v2_methodology.md) — validation, sélection et limites.
+- [Audit des données V2](project/municipal_v2_data_audit.md) — couverture et disponibilité.
+- [Résultats V2 du 23 novembre 2026](../reports/datasets/municipal_v2_20261123/report.md) — décisions et registre des essais.
 
 ## Datasets
 

@@ -1,0 +1,9 @@
+label,run_id,mae_pp
+Ridge · variables initiales,ridge_base_recent-197492c68e,13.418694264276583
+XGBoost · variables initiales,xgboost_base_recent-0cb95d5d8d,13.094376098265569
+XGBoost · informations politiques,xgboost_political_recent-5f544d469b,11.255949364834834
+XGBoost · orientation des titres,xgboost_direction_recent-207fa25596,11.134831985737879
+"XGBoost · SelectKBest, k = 64",xgb_direction_k64-9c02edfecd,10.726367453558304
+CatBoost · informations politiques,catboost_political_recent-c66748331f,10.607851082972152
+Profils communaux + XGBoost,profile_final_provenance-8078851637,9.42099474882755
+Candidat avec sondages,poll_trend_t100_u0-6afc7cff30,8.118123158099484

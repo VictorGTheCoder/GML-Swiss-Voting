@@ -1,0 +1,192 @@
+[
+  {
+    "name": "profile_final_provenance",
+    "model": "profile",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "params": {
+      "dimensions": 5,
+      "model": "xgboost",
+      "alpha": 51.733073028958565,
+      "n_estimators": 300,
+      "max_depth": 6,
+      "min_samples_leaf": 11,
+      "reg_lambda": 26.39595644479291,
+      "random_state": 20261123
+    }
+  },
+  {
+    "name": "poll_trend_t0_u0",
+    "model": "poll_anchor",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "base": {
+      "name": "profile_best_round2",
+      "model": "profile",
+      "blocks": "political",
+      "train_start": "1990-01-01",
+      "params": {
+        "dimensions": 5,
+        "model": "xgboost",
+        "alpha": 51.733073028958565,
+        "n_estimators": 300,
+        "max_depth": 6,
+        "min_samples_leaf": 11,
+        "reg_lambda": 26.39595644479291,
+        "random_state": 20261123
+      }
+    },
+    "params": {
+      "weight": 1.0,
+      "undecided_yes_fraction": 0.0,
+      "min_population_fraction": 0.9,
+      "trend_factor": 0.0,
+      "max_trend_adjustment": 0.15
+    }
+  },
+  {
+    "name": "poll_trend_t0_u50",
+    "model": "poll_anchor",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "base": {
+      "name": "profile_best_round2",
+      "model": "profile",
+      "blocks": "political",
+      "train_start": "1990-01-01",
+      "params": {
+        "dimensions": 5,
+        "model": "xgboost",
+        "alpha": 51.733073028958565,
+        "n_estimators": 300,
+        "max_depth": 6,
+        "min_samples_leaf": 11,
+        "reg_lambda": 26.39595644479291,
+        "random_state": 20261123
+      }
+    },
+    "params": {
+      "weight": 1.0,
+      "undecided_yes_fraction": 0.5,
+      "min_population_fraction": 0.9,
+      "trend_factor": 0.0,
+      "max_trend_adjustment": 0.15
+    }
+  },
+  {
+    "name": "poll_trend_t50_u0",
+    "model": "poll_anchor",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "base": {
+      "name": "profile_best_round2",
+      "model": "profile",
+      "blocks": "political",
+      "train_start": "1990-01-01",
+      "params": {
+        "dimensions": 5,
+        "model": "xgboost",
+        "alpha": 51.733073028958565,
+        "n_estimators": 300,
+        "max_depth": 6,
+        "min_samples_leaf": 11,
+        "reg_lambda": 26.39595644479291,
+        "random_state": 20261123
+      }
+    },
+    "params": {
+      "weight": 1.0,
+      "undecided_yes_fraction": 0.0,
+      "min_population_fraction": 0.9,
+      "trend_factor": 0.5,
+      "max_trend_adjustment": 0.15
+    }
+  },
+  {
+    "name": "poll_trend_t50_u50",
+    "model": "poll_anchor",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "base": {
+      "name": "profile_best_round2",
+      "model": "profile",
+      "blocks": "political",
+      "train_start": "1990-01-01",
+      "params": {
+        "dimensions": 5,
+        "model": "xgboost",
+        "alpha": 51.733073028958565,
+        "n_estimators": 300,
+        "max_depth": 6,
+        "min_samples_leaf": 11,
+        "reg_lambda": 26.39595644479291,
+        "random_state": 20261123
+      }
+    },
+    "params": {
+      "weight": 1.0,
+      "undecided_yes_fraction": 0.5,
+      "min_population_fraction": 0.9,
+      "trend_factor": 0.5,
+      "max_trend_adjustment": 0.15
+    }
+  },
+  {
+    "name": "poll_trend_t100_u0",
+    "model": "poll_anchor",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "base": {
+      "name": "profile_best_round2",
+      "model": "profile",
+      "blocks": "political",
+      "train_start": "1990-01-01",
+      "params": {
+        "dimensions": 5,
+        "model": "xgboost",
+        "alpha": 51.733073028958565,
+        "n_estimators": 300,
+        "max_depth": 6,
+        "min_samples_leaf": 11,
+        "reg_lambda": 26.39595644479291,
+        "random_state": 20261123
+      }
+    },
+    "params": {
+      "weight": 1.0,
+      "undecided_yes_fraction": 0.0,
+      "min_population_fraction": 0.9,
+      "trend_factor": 1.0,
+      "max_trend_adjustment": 0.15
+    }
+  },
+  {
+    "name": "poll_trend_t100_u50",
+    "model": "poll_anchor",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "base": {
+      "name": "profile_best_round2",
+      "model": "profile",
+      "blocks": "political",
+      "train_start": "1990-01-01",
+      "params": {
+        "dimensions": 5,
+        "model": "xgboost",
+        "alpha": 51.733073028958565,
+        "n_estimators": 300,
+        "max_depth": 6,
+        "min_samples_leaf": 11,
+        "reg_lambda": 26.39595644479291,
+        "random_state": 20261123
+      }
+    },
+    "params": {
+      "weight": 1.0,
+      "undecided_yes_fraction": 0.5,
+      "min_population_fraction": 0.9,
+      "trend_factor": 1.0,
+      "max_trend_adjustment": 0.15
+    }
+  }
+]

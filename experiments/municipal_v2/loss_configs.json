@@ -1,0 +1,71 @@
+[
+  {
+    "name": "profile_absolute_loss",
+    "model": "profile",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "params": {
+      "dimensions": 5,
+      "model": "xgboost",
+      "alpha": 51.733073028958565,
+      "n_estimators": 300,
+      "max_depth": 6,
+      "min_samples_leaf": 11,
+      "reg_lambda": 26.39595644479291,
+      "random_state": 20261123,
+      "model_params": {
+        "objective": "reg:absoluteerror"
+      }
+    }
+  },
+  {
+    "name": "poll_absolute_loss_reference",
+    "model": "poll_anchor",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "base": {
+      "name": "profile_absolute_loss",
+      "model": "profile",
+      "blocks": "political",
+      "train_start": "1990-01-01",
+      "params": {
+        "dimensions": 5,
+        "model": "xgboost",
+        "alpha": 51.733073028958565,
+        "n_estimators": 300,
+        "max_depth": 6,
+        "min_samples_leaf": 11,
+        "reg_lambda": 26.39595644479291,
+        "random_state": 20261123,
+        "model_params": {
+          "objective": "reg:absoluteerror"
+        }
+      }
+    },
+    "params": {
+      "weight": 1.0,
+      "undecided_yes_fraction": 0.0,
+      "min_population_fraction": 0.9,
+      "trend_factor": 0.0,
+      "max_trend_adjustment": 0.15
+    }
+  },
+  {
+    "name": "xgb_k64_absolute_loss",
+    "model": "xgboost",
+    "blocks": "direction",
+    "train_start": "2012-01-01",
+    "select_k": 64,
+    "params": {
+      "n_estimators": 300,
+      "max_depth": 3,
+      "learning_rate": 0.04,
+      "min_child_weight": 200,
+      "reg_lambda": 20.0,
+      "reg_alpha": 0.0,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0,
+      "objective": "reg:absoluteerror"
+    }
+  }
+]

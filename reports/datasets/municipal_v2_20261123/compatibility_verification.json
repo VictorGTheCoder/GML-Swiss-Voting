@@ -1,0 +1,17 @@
+{
+  "purpose": "Compatibility replay, no hyperparameter selection",
+  "original_frozen_signature": "7be60eb2aa4aa2b35ba3d740dbaa0c4a2fa298578d414312a2c9bdd70757ff4c",
+  "compatible_frozen_signature": "d2b401021274f45b82aa9655c866c9d0ee8d032ff87d62a4aa65205305776060",
+  "same_configuration": true,
+  "dataset_sha256_identical": true,
+  "development_predictions_bit_identical": true,
+  "comparison_predictions_bit_identical": true,
+  "prospective_predictions_bit_identical": true,
+  "original_forecast_preserved": true,
+  "model_binary_sha256_identical": true,
+  "model_sha256": "ab458832f07a41ee13f34bf912f9a6e5233a0eccf8646a607fec0f737209123c",
+  "code_changes": [
+    "scripts/modeling/poll_anchor.py"
+  ],
+  "original_source_commit": "eaed200710d4f6ada59505a4ca9bd28308e0a589"
+}

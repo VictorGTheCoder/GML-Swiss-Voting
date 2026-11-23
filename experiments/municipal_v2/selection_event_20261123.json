@@ -1,0 +1,7 @@
+{
+  "event": "configuration_frozen_before_comparison",
+  "recorded_at_utc": "2026-11-23T12:50:23.197738+00:00",
+  "frozen_selection_sha256": "f51c4615d7ab39c8a909af398c40d2aec2100a5e6d0d14b490883c047daf7f66",
+  "comparison_summary_exists": false,
+  "comparison_independent": false
+}

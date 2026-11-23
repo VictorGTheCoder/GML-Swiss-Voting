@@ -1,0 +1,67 @@
+vote_id,vote_date,mae_pp,n_communes,observed_mean,predicted_mean,titel_off_f
+5960,2016-02-28,12.886643101385804,2103,0.5346737238358009,0.4072208106517792,Initiative populaire «Pour le couple et la famille – Non à la pénalisation du mariage»
+5970,2016-02-28,6.56955040360826,2103,0.4706484297465473,0.4113189876079559,Initiative populaire «Pour le renvoi effectif des étrangers criminels (initiative de mise en oeuvre)»
+5980,2016-02-28,9.019736884778675,2103,0.3819179948831072,0.2934263348579407,Initiative populaire «Pas de spéculation sur les denrées alimentaires»
+5990,2016-02-28,7.279828729106982,2103,0.59823932342071,0.5710917711257935,Modification de la loi fédérale sur le transit routier dans la région alpine (LTRA) (Réfection du tunnel routier du Gothard)
+6000,2016-06-05,6.867561851781291,2103,0.3339265466684719,0.2724749445915222,Initiative populaire «En faveur du service public»
+6010,2016-06-05,9.366625893110433,2103,0.1949760277167578,0.2649422883987427,Initiative populaire «Pour un revenu de base inconditionnel»
+6020,2016-06-05,6.673656317283398,2103,0.321992327362562,0.3815279006958008,Initiative populaire «Pour un financement équitable des transports»
+6030,2016-06-05,8.039033834973637,2103,0.605195069880267,0.5399689674377441,Modification de la loi fédérale sur la procréation médicalement assistée (LPMA)
+6040,2016-06-05,4.562910851539102,2103,0.6266554639840133,0.6468649506568909,Modification de la loi sur l'asile (LAsi)
+6050,2016-09-25,5.502987775114995,2103,0.3189876193902138,0.3299061059951782,Initiative populaire «Pour une économie durable et fondée sur une gestion efficiente des ressources (économie verte)»
+6060,2016-09-25,10.91749576222028,2103,0.3819109902784478,0.2755938172340393,Initiative populaire «AVSplus: pour une AVS forte»
+6070,2016-09-25,9.921555967238694,2103,0.6697312084813906,0.5758468508720398,Loi fédérale sur le renseignement (Lrens)
+6080,2016-11-27,5.892497408087548,2103,0.4209268412868179,0.3769941031932831,Initiative populaire «Pour la sortie programmée de l'énergie nucléaire (Initiative «Sortir du nucléaire»)»
+6090,2017-02-12,4.673044447659222,2103,0.5527121489085964,0.5613219738006592,Arrêté fédéral concernant la naturalisation facilitée des étrangers de la troisième génération
+6100,2017-02-12,6.013302348227413,2103,0.6268635220315871,0.591183602809906,Arrêté fédéral sur la création d'un fonds pour les routes nationales et pour le trafic d'agglomération
+6110,2017-02-12,16.47520403762121,2103,0.4179251801727007,0.5791383385658264,Loi fédérale sur l'amélioration des conditions fiscales en vue de renforcer la compétitivité du site entrepreneurial suisse (Loi sur la réforme de l'imposition des entreprises III)
+6120,2017-05-21,7.670973086841159,2103,0.5413678233342717,0.5910903811454773,Loi sur l'énergie (LEne)
+6130,2017-09-24,6.183934355202575,2103,0.7885313688433776,0.7672469615936279,Arrêté fédéral sur la sécurité alimentaire
+6140,2017-09-24,6.2291487839520725,2103,0.4619843507240878,0.4143831133842468,Arrêté fédéral sur le financement additionnel de l'AVS par le biais d'un relèvement de la taxe sur la valeur ajoutée
+6150,2017-09-24,5.27780653890818,2103,0.4392808816951445,0.4358613491058349,Loi fédérale sur la réforme de la prévoyance vieillesse 2020
+6160,2018-03-04,10.37376211318365,2104,0.8239010822833984,0.7209177017211914,Arrêté fédéral concernant le nouveau régime financier 2021
+6170,2018-03-04,18.567649956278075,2104,0.2931362484880918,0.4786249697208404,Initiative populaire «Oui à la suppression des redevances radio et télévision (suppression des redevances Billag)»
+6180,2018-06-10,6.795279573836832,2104,0.2239212605253676,0.2631351947784424,Initiative populaire «Pour une monnaie à l'abri des crises: émission monétaire uniquement par la Banque nationale! (Initiative Monnaie pleine)»
+6190,2018-06-10,22.02249074090904,2104,0.7443075977448464,0.5241426825523376,Loi fédérale sur les jeux d'argent (LJAr)
+6200,2018-09-23,8.597376293420666,2104,0.7083896590546899,0.6300336122512817,Arrêté fédéral concernant les voies cyclables et les chemins et sentiers pédestres
+6210,2018-09-23,12.772228442936536,2104,0.3775519666983251,0.2645946443080902,Initiative populaire «Pour des denrées alimentaires saines et produites dans des conditions équitables et écologiques (initiative pour des aliments équitables)»
+6220,2018-09-23,10.086920336053694,2104,0.3236818952689724,0.2455372810363769,Initiative populaire «Pour la souveraineté alimentaire. L'agriculture nous concerne toutes et tous»
+6230,2018-11-25,11.24236643899832,2104,0.4107636207202383,0.3146935105323791,Initiative populaire «Pour la dignité des animaux de rente agricoles (initiative pour les vaches à cornes)»
+6240,2018-11-25,5.005105156439025,2104,0.3814750912323096,0.406535267829895,Initiative populaire «Le droit suisse au lieu de juges étrangers (initiative pour l’autodétermination)»
+6250,2018-11-25,18.481238958423884,2104,0.6716220234752228,0.487663596868515,Modification de la loi fédérale sur la partie générale du droit des assurances sociales (LPGA) (Base légale pour la surveillance des assurés)
+6260,2019-02-10,5.078159243785207,2104,0.3206044816115472,0.344416081905365,Initiative populaire «Stopper le mitage – pour un développement durable du milieu bâti (initiative contre le mitage)»
+6270,2019-05-19,10.036195990899133,2104,0.6562414900155599,0.5612550377845764,Loi fédérale relative à la réforme fiscale et au financement de l’AVS (RFFA)
+6280,2019-05-19,8.015061376890076,2104,0.5458448118812378,0.6104573011398315,Arrêté fédéral portant approbation et mise en oeuvre de l'échange de notes entre la Suisse et l'UE concernant la reprise de la directive (UE) 2017/853 modifiant la directive de l'UE sur les armes (Développement de l'acquis de Schengen)
+6290,2020-02-09,4.478222046947579,2104,0.3527029623574683,0.3583343029022217,Initiative populaire «Davantage de logements abordables»
+6300,2020-02-09,6.063000760428216,2104,0.5822048971864585,0.6055091619491577,Code pénal et code pénal militaire (Discrimination et incitation à la haine en raison de l’orientation sexuelle)
+6310,2020-09-27,4.509717707913864,2104,0.4429709552691912,0.4552842378616333,Initiative populaire «Pour une immigration modérée (initiative de limitation)»
+6320,2020-09-27,9.23130968370935,2104,0.5345881014320545,0.5570662021636963,"Modification de la loi fédérale sur la chasse et la protection des mammifères et oiseaux sauvages (Loi sur la chasse, LChP)"
+6330,2020-09-27,14.854079006108018,2104,0.3727353627190378,0.5037158131599426,Modification de la loi fédérale sur l’impôt direct (LIFD) (Déduction fiscale des frais de garde des enfants par des tiers)
+6340,2020-09-27,8.022993997475496,2104,0.5632936361134062,0.6053847670555115,Modification de la loi fédérale sur les allocations pour perte de gain en cas de service et de maternité (contre-projet indirect à l’initiative populaire «Pour un congé de paternité raisonnable – en faveur de toute la famille»)
+6350,2020-09-27,7.415281574479275,2104,0.5373913824640865,0.5897271037101746,Arrêté fédéral relatif à l’acquisition de nouveaux avions de combat
+6360,2020-11-29,5.961289900814764,2104,0.4596333326953246,0.4629270732402801,Initiative populaire «Entreprises responsables – pour protéger l’être humain et l’environnement»
+6370,2020-11-29,4.917158682154634,2104,0.3683778466555156,0.391620397567749,Initiative populaire «Pour une interdiction du financement des producteurs de matériel de guerre»
+6380,2021-03-07,10.878911111368948,2105,0.5736876799454739,0.46698966908433,Initiative populaire «Oui à l’interdiction de se dissimuler le visage»
+6390,2021-03-07,5.422647382064812,2105,0.3580739226460827,0.3516556174289078,Loi fédérale sur les services d’identification électronique (LSIE)
+6400,2021-03-07,6.13151009412818,2105,0.4905578841552414,0.5288109312906446,Arrêté fédéral portant approbation de l’Accord de partenariat économique de large portée entre les États de l’AELE et l’Indonésie
+6410,2021-06-13,6.721157703036261,2105,0.3128314743950721,0.3322290442561179,Initiative populaire «Pour une eau potable propre et une alimentation saine – Pas de subventions pour l’utilisation de pesticides et l’utilisation d’antibiotiques à titre prophylactique»
+6420,2021-06-13,6.521597563654567,2105,0.3204227159321132,0.3712011273607805,Initiative populaire «Pour une Suisse libre de pesticides de synthèse»
+6430,2021-06-13,6.899457101633699,2105,0.5540778560499425,0.592977473553577,Loi fédérale sur les bases légales des ordonnances du Conseil fédéral visant à surmonter l’épidémie de COVID-19 (Loi COVID-19)
+6440,2021-06-13,5.74190299662287,2105,0.4013869213288472,0.449019638549019,Loi fédérale sur la réduction des émissions de gaz à effet de serre (Loi sur le CO2)
+6450,2021-06-13,9.15804805157997,2105,0.581309265132796,0.5960263759162542,Loi fédérale sur les mesures policières de lutte contre le terrorisme (MPT)
+6460,2021-09-26,3.8435853293444495,2105,0.3078853320265739,0.2860254691819388,"Initiative populaire «Alléger les impôts sur les salaires, imposer équitablement le capital»"
+6470,2021-09-26,7.586340461820802,2105,0.5955105275237844,0.5467448273030829,Modification du code civil suisse (Mariage pour tous)
+6480,2021-11-28,6.200877053065268,2105,0.5946461729424777,0.5525569834937494,Initiative populaire «Pour des soins infirmiers forts (initiative sur les soins infirmiers)»
+6490,2021-11-28,9.976681629759073,2105,0.3089703612858735,0.4063057289758698,Initiative populaire «Désignation des juges fédéraux par tirage au sort (initiative sur la justice)»
+6500,2021-11-28,6.3409039895565815,2105,0.5753755551013744,0.572039545150723,"Modification du 19 mars 2021 de la loi fédérale sur les bases légales des ordonnances du Conseil fédéral visant à surmonter l’épidémie de COVID-19) (Loi COVID-19) (Cas de rigueur, assurance-chômage, accueil extra-familial pour enfants, acteurs culturels, manifestations)"
+6510,2022-02-13,7.8682158507354,2105,0.2044181456279513,0.1322700810305527,Initiative populaire «Oui à l'interdiction de l'expérimentation animale et humaine - Oui aux approches de recherche qui favorisent la sécurité et le progrès»
+6520,2022-02-13,6.557254548922905,2105,0.5233953270074094,0.5302934003558392,Initiative populaire «Oui à la protection des enfants et des jeunes contre la publicité pour le tabac (enfants et jeunes sans publicité pour le tabac)»
+6530,2022-02-13,4.692529373116878,2105,0.3778392273444425,0.3765913224138558,Modification de la loi fédérale sur les droits de timbre (LT)
+6540,2022-02-13,4.960045137028575,2105,0.4184020049258509,0.4239322633598231,Loi fédérale sur un train de mesures en faveur des médias
+6550,2022-05-15,5.663368305831867,2105,0.5560952118273694,0.5126167093228207,"Modification de la loi fédérale sur la culture et la production cinématographiques (Loi sur le cinéma, LCin)"
+6560,2022-05-15,7.399254849680243,2105,0.5944269944190181,0.5655468559230858,"Modification de la loi fédérale sur la transplantation d'organes, de tissus et de cellules (Loi sur la transplantation)"
+6570,2022-05-15,7.816570562312777,2105,0.7170705625098737,0.7272676648014849,Arrêté fédéral portant approbation et mise en œuvre de l'échange de notes entre la Suisse et l'Union européenne concernant la reprise du règlement (UE) 2019/1896 relatif au corps européen de garde-frontières et de garde-côtes et abrogeant les règlements (UE) no 1052/2013 et (UE) 2016/1624 (Développement de l'acquis de Schengen)
+6580,2022-09-25,11.24128625943886,2105,0.2934531537371484,0.4038649556203794,Initiative populaire «Non à l’élevage intensif en Suisse (initiative sur l’élevage intensif)»
+6590,2022-09-25,8.140890255182441,2105,0.5363487485278645,0.6145296618368078,Arrêté fédéral sur le financement additionnel de l’AVS par le biais d’un relèvement de la TVA
+6600,2022-09-25,7.117283184776868,2105,0.4957418918217192,0.557556453460473,Modification de la loi fédérale sur l’assurance-vieillesse et survivants (LAVS) (AVS 21)
+6610,2022-09-25,4.365423279177477,2105,0.4919838374559595,0.4629442623587427,Modification de la loi fédérale sur l’impôt anticipé (LIA) (Renforcement du marché des capitaux de tiers)
