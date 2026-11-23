@@ -1,0 +1,18 @@
+{
+  "version": "proposal-v3-20261123",
+  "status": "schema_proposal_not_annotated_training_data",
+  "purpose": "Represent the concrete effect of accepting an object, independently of its observed popular result",
+  "identity": ["vote_id", "vote_key", "vote_date", "official_title", "legal_form", "initiative_or_counterproposal_target"],
+  "evidence": ["official_source_url", "document_sha256", "source_pages", "published_at_if_verified", "availability_status", "object_mapping_review", "short_supporting_excerpt"],
+  "changes": {
+    "multiple_changes_allowed": true,
+    "fields": ["policy_domain", "instrument", "status_quo_description", "effect_of_yes", "direction", "directly_affected_groups", "financing_mechanism", "implementation_timing", "confidence", "supporting_evidence_reference"],
+    "instrument_examples": ["tax", "subsidy", "public_service", "prohibition", "obligation", "eligibility_rule", "individual_right", "institutional_rule", "international_agreement"],
+    "direction_states": ["increase_or_extend", "decrease_or_restrict", "explicit_status_quo", "mixed", "unknown"],
+    "rule": "Direction must refer to a defined policy quantity or right, not an inferred political virtue. Unknown is distinct from zero or mixed effects."
+  },
+  "review": ["annotator_or_method", "annotation_version", "independent_review_status", "unresolved_ambiguities"],
+  "forbidden_inputs": ["popular_result", "cantonal_result", "municipal_result", "post_vote_surveys_of_current_object", "retrospective_summary_that_reveals_current_result"],
+  "evaluation": "Vocabulary, feature selection and models fitted within chronological training windows; no claimed gain until measured on matched objects",
+  "individual_inference": "Municipal exposure is aggregate context, never a reconstructed individual political profile"
+}

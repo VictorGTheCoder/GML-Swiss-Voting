@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "purpose": "Descriptive redundancy audit; no feature or model changed",
+  "training_start": "1990-01-01",
+  "training_cutoffs_exclusive": [
+    "2016-01-01",
+    "2019-01-01",
+    "2021-01-01"
+  ],
+  "minimum_complete_support": 20,
+  "correlation_threshold": 0.95,
+  "dataset_sha256": "cdbe2331bf50d5aef94fd0b7c89ccaf36d0a8321ba00807fe2aad42bd691a85c",
+  "input_manifest_sha256": "73e49f4702dd97f0b8f5ee2259f6f238cdf27ab2764620b4992b114532253b6c",
+  "code_sha256": "85e47898d77ca6f53f2f5c8bdeb6373aa59d56dadea4a8958c93f8e4d71106c4",
+  "target_columns_loaded": [],
+  "feature_selection_performed": false,
+  "scopes": [
+    {
+      "cutoff": "2016-01-01",
+      "scope": "objects",
+      "training_rows": 504071,
+      "training_objects": 240,
+      "training_dates": 79,
+      "units": 240,
+      "keys": [
+        "vote_id"
+      ],
+      "features": 58,
+      "all_missing": 2,
+      "constant_when_observed": 6,
+      "high_correlation_pairs": 25,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "One observation per training object; objects on the same date can still be dependent."
+    },
+    {
+      "cutoff": "2016-01-01",
+      "scope": "municipal_snapshots",
+      "training_rows": 504071,
+      "training_objects": 240,
+      "training_dates": 79,
+      "units": 10515,
+      "keys": [
+        "municipality_id",
+        "statpop_year",
+        "election_year"
+      ],
+      "features": 19,
+      "all_missing": 1,
+      "constant_when_observed": 0,
+      "high_correlation_pairs": 0,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "One municipality/source-year combination; repeated communes across snapshots remain dependent."
+    },
+    {
+      "cutoff": "2016-01-01",
+      "scope": "municipal_history",
+      "training_rows": 504071,
+      "training_objects": 240,
+      "training_dates": 79,
+      "units": 165959,
+      "keys": [
+        "municipality_id",
+        "vote_date"
+      ],
+      "features": 2,
+      "all_missing": 0,
+      "constant_when_observed": 0,
+      "high_correlation_pairs": 0,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "One municipality/voting-date combination, excluding duplicate same-day objects; no independence claim."
+    },
+    {
+      "cutoff": "2016-01-01",
+      "scope": "local_interactions",
+      "training_rows": 504071,
+      "training_objects": 240,
+      "training_dates": 79,
+      "units": 504071,
+      "keys": [
+        "municipality_id",
+        "vote_id"
+      ],
+      "features": 16,
+      "all_missing": 1,
+      "constant_when_observed": 0,
+      "high_correlation_pairs": 2,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "Dependent municipality/object panel; descriptive correlation, not independent sample size or evidence of significance."
+    },
+    {
+      "cutoff": "2019-01-01",
+      "scope": "objects",
+      "training_rows": 567171,
+      "training_objects": 270,
+      "training_dates": 90,
+      "units": 270,
+      "keys": [
+        "vote_id"
+      ],
+      "features": 58,
+      "all_missing": 1,
+      "constant_when_observed": 5,
+      "high_correlation_pairs": 29,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "One observation per training object; objects on the same date can still be dependent."
+    },
+    {
+      "cutoff": "2019-01-01",
+      "scope": "municipal_snapshots",
+      "training_rows": 567171,
+      "training_objects": 270,
+      "training_dates": 90,
+      "units": 18929,
+      "keys": [
+        "municipality_id",
+        "statpop_year",
+        "election_year"
+      ],
+      "features": 19,
+      "all_missing": 1,
+      "constant_when_observed": 0,
+      "high_correlation_pairs": 0,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "One municipality/source-year combination; repeated communes across snapshots remain dependent."
+    },
+    {
+      "cutoff": "2019-01-01",
+      "scope": "municipal_history",
+      "training_rows": 567171,
+      "training_objects": 270,
+      "training_dates": 90,
+      "units": 189096,
+      "keys": [
+        "municipality_id",
+        "vote_date"
+      ],
+      "features": 2,
+      "all_missing": 0,
+      "constant_when_observed": 0,
+      "high_correlation_pairs": 0,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "One municipality/voting-date combination, excluding duplicate same-day objects; no independence claim."
+    },
+    {
+      "cutoff": "2019-01-01",
+      "scope": "local_interactions",
+      "training_rows": 567171,
+      "training_objects": 270,
+      "training_dates": 90,
+      "units": 567171,
+      "keys": [
+        "municipality_id",
+        "vote_id"
+      ],
+      "features": 16,
+      "all_missing": 1,
+      "constant_when_observed": 0,
+      "high_correlation_pairs": 2,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "Dependent municipality/object panel; descriptive correlation, not independent sample size or evidence of significance."
+    },
+    {
+      "cutoff": "2021-01-01",
+      "scope": "objects",
+      "training_rows": 592419,
+      "training_objects": 282,
+      "training_dates": 95,
+      "units": 282,
+      "keys": [
+        "vote_id"
+      ],
+      "features": 58,
+      "all_missing": 1,
+      "constant_when_observed": 5,
+      "high_correlation_pairs": 44,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "One observation per training object; objects on the same date can still be dependent."
+    },
+    {
+      "cutoff": "2021-01-01",
+      "scope": "municipal_snapshots",
+      "training_rows": 592419,
+      "training_objects": 282,
+      "training_dates": 95,
+      "units": 23137,
+      "keys": [
+        "municipality_id",
+        "statpop_year",
+        "election_year"
+      ],
+      "features": 19,
+      "all_missing": 1,
+      "constant_when_observed": 0,
+      "high_correlation_pairs": 0,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "One municipality/source-year combination; repeated communes across snapshots remain dependent."
+    },
+    {
+      "cutoff": "2021-01-01",
+      "scope": "municipal_history",
+      "training_rows": 592419,
+      "training_objects": 282,
+      "training_dates": 95,
+      "units": 199616,
+      "keys": [
+        "municipality_id",
+        "vote_date"
+      ],
+      "features": 2,
+      "all_missing": 0,
+      "constant_when_observed": 0,
+      "high_correlation_pairs": 0,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "One municipality/voting-date combination, excluding duplicate same-day objects; no independence claim."
+    },
+    {
+      "cutoff": "2021-01-01",
+      "scope": "local_interactions",
+      "training_rows": 592419,
+      "training_objects": 282,
+      "training_dates": 95,
+      "units": 592419,
+      "keys": [
+        "municipality_id",
+        "vote_id"
+      ],
+      "features": 16,
+      "all_missing": 1,
+      "constant_when_observed": 0,
+      "high_correlation_pairs": 2,
+      "hard_redundancy_pairs": 0,
+      "interpretation": "Dependent municipality/object panel; descriptive correlation, not independent sample size or evidence of significance."
+    }
+  ],
+  "limitations": [
+    "Pairwise correlations do not detect all multivariate or nonlinear redundancy.",
+    "A high absolute correlation is not by itself a reason to remove a feature.",
+    "Hard redundancy candidates have matching missingness and adequate support; they still need fold-local validation.",
+    "Constant-when-observed is not equivalent to uninformative: its missingness may carry a signal.",
+    "Historical source availability and fixed 2026 geography retain the V2 retrospective limitations.",
+    "Correlations across repeated communes and same-day objects are descriptive; no p-values are reported.",
+    "Raw features are audited before one-hot encoding; complementary dummy columns are not counted as scientific redundancy."
+  ]
+}

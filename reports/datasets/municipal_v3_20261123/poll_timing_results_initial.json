@@ -1,0 +1,141 @@
+{
+  "status": "complete",
+  "completed_at_utc": "2026-11-23T16:08:58.972719+00:00",
+  "plan_sha256": "81a3242cc7c33d60f4144c26ba1e065dc8646b6dc548bb67d0333ebe7b5853ae",
+  "input_hashes_verified": true,
+  "nominal_reproduced": true,
+  "scenarios": [
+    {
+      "name": "nominal",
+      "wave1": null,
+      "wave2": null,
+      "metrics": {
+        "macro_object_mae_pp": 7.618292700184025,
+        "row_mae_pp": 7.618142606516203,
+        "macro_date_mae_pp": 7.5131461251104215,
+        "median_row_ae_pp": 6.166323150808243,
+        "p90_row_ae_pp": 15.931738736702439,
+        "within_4pp_share": 0.3374067459745946,
+        "majority_accuracy": 0.8347711495808969,
+        "rows": 138868,
+        "objects": 66,
+        "dates": 23
+      },
+      "mae_delta_vs_nominal_pp": 0.0,
+      "mae_delta_vs_original_poll_trend_pp": -0.49983045791545955,
+      "changed_prediction_rows": 0,
+      "changed_objects": 0,
+      "max_absolute_prediction_change_pp": 0.0,
+      "source_poll_objects": 48
+    },
+    {
+      "name": "wave1_lower_wave2_lower",
+      "wave1": "lower",
+      "wave2": "lower",
+      "metrics": {
+        "macro_object_mae_pp": 7.626185820623406,
+        "row_mae_pp": 7.626036404036207,
+        "macro_date_mae_pp": 7.519650711674365,
+        "median_row_ae_pp": 6.161817732665764,
+        "p90_row_ae_pp": 15.989973339498928,
+        "within_4pp_share": 0.3379396261197684,
+        "majority_accuracy": 0.8340798456087796,
+        "rows": 138868,
+        "objects": 66,
+        "dates": 23
+      },
+      "mae_delta_vs_nominal_pp": 0.007893120439381285,
+      "mae_delta_vs_original_poll_trend_pp": -0.49193733747607826,
+      "changed_prediction_rows": 27350,
+      "changed_objects": 13,
+      "max_absolute_prediction_change_pp": 1.038003403289847,
+      "source_poll_objects": 48
+    },
+    {
+      "name": "wave1_lower_wave2_upper",
+      "wave1": "lower",
+      "wave2": "upper",
+      "metrics": {
+        "macro_object_mae_pp": 7.685458668068551,
+        "row_mae_pp": 7.685312608239943,
+        "macro_date_mae_pp": 7.584668392471394,
+        "median_row_ae_pp": 6.277076555270769,
+        "p90_row_ae_pp": 15.946999996421525,
+        "within_4pp_share": 0.3317971022841835,
+        "majority_accuracy": 0.8331149004810323,
+        "rows": 138868,
+        "objects": 66,
+        "dates": 23
+      },
+      "mae_delta_vs_nominal_pp": 0.06716596788452645,
+      "mae_delta_vs_original_poll_trend_pp": -0.4326644900309331,
+      "changed_prediction_rows": 31558,
+      "changed_objects": 15,
+      "max_absolute_prediction_change_pp": 2.8378378378378533,
+      "source_poll_objects": 48
+    },
+    {
+      "name": "wave1_upper_wave2_lower",
+      "wave1": "upper",
+      "wave2": "lower",
+      "metrics": {
+        "macro_object_mae_pp": 7.647626607343906,
+        "row_mae_pp": 7.647460524805974,
+        "macro_date_mae_pp": 7.542466143085293,
+        "median_row_ae_pp": 6.082483379205309,
+        "p90_row_ae_pp": 16.224946742516,
+        "within_4pp_share": 0.34417576403491085,
+        "majority_accuracy": 0.8367658495837774,
+        "rows": 138868,
+        "objects": 66,
+        "dates": 23
+      },
+      "mae_delta_vs_nominal_pp": 0.029333907159880823,
+      "mae_delta_vs_original_poll_trend_pp": -0.4704965507555787,
+      "changed_prediction_rows": 27350,
+      "changed_objects": 13,
+      "max_absolute_prediction_change_pp": 6.277777777777782,
+      "source_poll_objects": 48
+    },
+    {
+      "name": "wave1_upper_wave2_upper",
+      "wave1": "upper",
+      "wave2": "upper",
+      "metrics": {
+        "macro_object_mae_pp": 7.611701954785033,
+        "row_mae_pp": 7.61154689675392,
+        "macro_date_mae_pp": 7.521045959408666,
+        "median_row_ae_pp": 6.170339597617161,
+        "p90_row_ae_pp": 15.895416564037415,
+        "within_4pp_share": 0.3368450614972492,
+        "majority_accuracy": 0.8357000892934298,
+        "rows": 138868,
+        "objects": 66,
+        "dates": 23
+      },
+      "mae_delta_vs_nominal_pp": -0.0065907453989915155,
+      "mae_delta_vs_original_poll_trend_pp": -0.5064212033144511,
+      "changed_prediction_rows": 27350,
+      "changed_objects": 13,
+      "max_absolute_prediction_change_pp": 1.7001499250374863,
+      "source_poll_objects": 48
+    }
+  ],
+  "four_scenario_mae_range_pp": [
+    7.611701954785033,
+    7.685458668068551
+  ],
+  "original_poll_trend_mae_pp": 8.118123158099484,
+  "all_four_scenarios_improve_original_poll_trend": true,
+  "comparison_targets_loaded": false,
+  "structural_models_retrained": false,
+  "calibration_parameters_changed": false,
+  "strict_forecast_ready": false,
+  "evaluation_end": "2022-12-31",
+  "limitations": "Range of four simultaneous endpoint scenarios, not a confidence interval or a global bound over independent midpoint choices per object; no scenario is selected for deployment or used for calibration.",
+  "output_hashes": {
+    "poll_timing_by_object.csv": "2b8033466d07d0f2e75e6ffbb4b2123e7c35c835547ffe7cd31f01ec2bffd1cb",
+    "poll_timing_selected_midpoints.csv": "29860d6f228cad06e77a0391006b8df310b00938e2c59bd4ff8e411bfb89fa1c",
+    "poll_timing_scenarios.csv": "2cdbf1293b4a00c62212f2c5071a5b527ddad448e2f842add5b0cf08bd8c76ed"
+  }
+}
