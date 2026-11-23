@@ -21,7 +21,8 @@ from sklearn.base import BaseEstimator, RegressorMixin
 from sklearn.utils.validation import check_is_fitted
 
 POLL_SHARES = ["poll_yes_share", "poll_no_share", "poll_undecided_share"]
-POLL_FEATURES = [*POLL_SHARES, "poll_available"]
+POLL_TREND_FEATURES = ["poll_yes_trend_per_day", "poll_days_to_vote", "poll_trend_available"]
+POLL_FEATURES = [*POLL_SHARES, "poll_available", *POLL_TREND_FEATURES]
 POLL_ADDED_COLUMNS = [
     *POLL_FEATURES,
     "poll_population_weight",
@@ -125,11 +126,12 @@ def _object_keys(frame, name):
 
 
 def _validated_polls(polls):
-    _required(polls, ["vote_key", "vote_date", "published_at", "undecided"], "polls")
+    _required(polls, ["vote_key", "vote_date", "published_at", "survey_midpoint", "undecided"], "polls")
     result = polls.reset_index(drop=True).copy()
     result["vote_key"] = _keys(result.vote_key, "poll vote_key")
     result["vote_date"] = _dates(result.vote_date, "poll vote_date")
     result["published_at"] = _timestamps(result.published_at, "published_at")
+    result["survey_midpoint"] = _dates(result.survey_midpoint, "survey_midpoint")
     if result.groupby("vote_key").vote_date.nunique().gt(1).any():
         raise ValueError("A poll vote_key maps to multiple dates")
     if result.duplicated(["vote_key", "published_at"]).any():
@@ -160,12 +162,22 @@ def _validated_polls(polls):
         raise ValueError("Poll percentages must sum to 100%, within one published rounding point")
     if (result.published_at >= result.vote_date.dt.tz_localize("UTC")).any():
         raise ValueError("Poll publication must precede the referendum date")
+    if (result.survey_midpoint >= result.vote_date).any() or (
+        result.survey_midpoint.dt.tz_localize("UTC") > result.published_at
+    ).any():
+        raise ValueError("survey_midpoint must precede publication and the referendum date")
     if "survey_start" in result or "survey_end" in result:
         _required(result, ["survey_start", "survey_end"], "poll survey dates")
         start = _dates(result.survey_start, "survey_start")
         end = _dates(result.survey_end, "survey_end")
         if (start > end).any() or (end.dt.tz_localize("UTC") > result.published_at).any():
             raise ValueError("Poll survey dates must precede publication")
+        if ((result.survey_midpoint < start) | (result.survey_midpoint > end)).any():
+            raise ValueError("survey_midpoint must lie within the survey interval")
+    ordered = result.sort_values(["vote_key", "published_at"])
+    gaps = ordered.groupby("vote_key").survey_midpoint.diff().dt.days
+    if gaps.dropna().le(0).any():
+        raise ValueError("Poll survey midpoints must be strictly increasing in publication chronology")
     return result, totals
 
 
@@ -177,6 +189,8 @@ def add_poll_features(table, polls, as_of=None):
     identical within each object. Missing polls preserve all municipal rows.
     Percentages are divided by 100 exactly, with only +/-1 percentage point of
     source rounding accepted; no implicit renormalization occurs.
+    The trend uses only the two latest admissible publications and their survey
+    midpoints. Without a prior admissible wave its rate and availability are 0.
     """
     collisions = sorted(set(POLL_ADDED_COLUMNS) & set(table.columns))
     if collisions:
@@ -206,17 +220,35 @@ def add_poll_features(table, polls, as_of=None):
     overlap = source[source.vote_key.isin(dates.index)]
     if overlap.vote_date.ne(overlap.vote_key.map(dates)).any():
         raise ValueError("Poll vote_key/date mismatch with the municipal table")
-    selected = {}
+    selected, trends = {}, {}
     for obj in objects.itertuples(index=False):
         eligible = source[(source.vote_key == obj.vote_key) & (source.published_at <= obj.cutoff)]
         if not eligible.empty:
-            selected[obj.vote_key] = eligible.sort_values("published_at").iloc[-1]
+            eligible = eligible.sort_values("published_at")
+            latest = eligible.iloc[-1]
+            selected[obj.vote_key] = latest
+            rate, prior = 0.0, None
+            if len(eligible) > 1:
+                prior = eligible.iloc[-2]
+                days = int((latest.survey_midpoint - prior.survey_midpoint).days)
+                # Strict positivity has already been checked independently of targets.
+                rate = (float(latest.yes_total) - float(prior.yes_total)) / 100 / days
+            trends[obj.vote_key] = {
+                "poll_yes_trend_per_day": rate,
+                "poll_days_to_vote": float((obj.vote_date - latest.survey_midpoint).days),
+                "poll_trend_available": float(prior is not None),
+                "latest_midpoint": latest.survey_midpoint.date().isoformat(),
+                "prior_midpoint": prior.survey_midpoint.date().isoformat() if prior is not None else None,
+                "prior_published_at": prior.published_at.isoformat() if prior is not None else None,
+            }
     result = table.copy()
     row_keys = keys.vote_key
     for name, field in zip(POLL_SHARES, ["yes_total", "no_total", "undecided"], strict=True):
         values = {key: float(row[field]) / 100 for key, row in selected.items()}
         result[name] = row_keys.map(values).to_numpy(dtype=float)
     result["poll_available"] = row_keys.isin(selected).to_numpy(dtype=float)
+    for name in POLL_TREND_FEATURES:
+        result[name] = row_keys.map({key: row[name] for key, row in trends.items()}).fillna(0.0).to_numpy(float)
     result["poll_population_weight"] = weights.to_numpy(dtype=float)
     for name, field in [
         ("poll_published_at", "published_at"),
@@ -233,6 +265,7 @@ def add_poll_features(table, polls, as_of=None):
             "vote_date": row.vote_date.date().isoformat(),
             "published_at": row.published_at.isoformat(),
             "wave": None if pd.isna(row.get("wave")) else int(row.wave),
+            **trends[key],
         }
         for key, row in selected.items()
     ]
@@ -247,6 +280,10 @@ def add_poll_features(table, polls, as_of=None):
         "objects_without_poll": len(objects) - len(selected),
         "poll_rows": int(result.poll_available.sum()),
         "source_poll_rows": len(source),
+        "objects_with_prior_admissible_poll": int(sum(row["poll_trend_available"] for row in trends.values())),
+        "trend_rule": "(latest yes share - prior yes share) / survey midpoint days; only publications admissible at cutoff",
+        "trend_horizon": "Calendar days from latest survey midpoint to vote_date; not days from publication",
+        "trend_missing_prior_policy": "Rate=0, availability=0; latest midpoint horizon retained if a poll exists",
         "numeric_features": list(POLL_FEATURES),
         "categorical_features": [],
         "object_numeric_features": list(POLL_FEATURES),
@@ -283,13 +320,36 @@ class PollAnchoredRegressor(RegressorMixin, BaseEstimator):
 
     The anchor is a model variant to evaluate, not an assertion that a national
     intention poll equals the eventual nationwide referendum share.
+
+    Optional ``trend_factor`` extrapolates the pre-vote yes-share slope from the
+    latest survey midpoint to vote day. The capped adjustment transfers support
+    between no and yes, preserving undecided and the published rounded total.
+    Bounds also keep the allocated poll target feasible. No trend parameter is
+    learned in ``fit``; the default factor of zero retains the original anchor.
     """
 
-    def __init__(self, base_model, weight=1.0, undecided_yes_fraction=0.5, min_population_fraction=0.9):
+    def __init__(
+        self,
+        base_model,
+        weight=1.0,
+        undecided_yes_fraction=0.5,
+        min_population_fraction=0.9,
+        trend_factor=0.0,
+        max_trend_adjustment=0.15,
+    ):
         self.base_model = base_model
         self.weight = weight
         self.undecided_yes_fraction = undecided_yes_fraction
         self.min_population_fraction = min_population_fraction
+        self.trend_factor = trend_factor
+        self.max_trend_adjustment = max_trend_adjustment
+
+    def __setstate__(self, state):
+        """Load pre-trend pickles with the exact original prediction defaults."""
+        state = dict(state)
+        state.setdefault("trend_factor", 0.0)
+        state.setdefault("max_trend_adjustment", 0.15)
+        super().__setstate__(state)
 
     def _validate_parameters(self):
         for name in ["weight", "undecided_yes_fraction", "min_population_fraction"]:
@@ -298,6 +358,18 @@ class PollAnchoredRegressor(RegressorMixin, BaseEstimator):
                 raise ValueError(f"{name} must be finite and in [0, 1]")
         if self.min_population_fraction == 0:
             raise ValueError("min_population_fraction must be positive")
+        if (
+            not isinstance(self.trend_factor, (int, float, np.number))
+            or not np.isfinite(self.trend_factor)
+            or self.trend_factor < 0
+        ):
+            raise ValueError("trend_factor must be finite and nonnegative")
+        if (
+            not isinstance(self.max_trend_adjustment, (int, float, np.number))
+            or not np.isfinite(self.max_trend_adjustment)
+            or not 0 <= self.max_trend_adjustment <= 1
+        ):
+            raise ValueError("max_trend_adjustment must be finite and in [0, 1]")
         if not callable(getattr(self.base_model, "predict", None)):
             raise TypeError("base_model must already expose predict(frame)")
 
@@ -337,6 +409,10 @@ class PollAnchoredRegressor(RegressorMixin, BaseEstimator):
             "reference_policy": "Unique municipalities at the last global training vote_date; no union of obsolete municipalities",
             "base_model_retrained": False,
             "evaluation_targets_used": False,
+            "trend_factor": self.trend_factor,
+            "max_trend_adjustment": self.max_trend_adjustment,
+            "trend_parameters_learned": False,
+            "trend_adjustment_policy": "Capped pre-vote midpoint slope; transfer no to yes, preserve undecided and rounded total; bound shares and allocated target",
             "prediction_population_requirement": "Full national batch per object; both observed total and represented reference population must pass coverage guard",
             "strict_forecast_ready": False,
         }
@@ -350,6 +426,21 @@ class PollAnchoredRegressor(RegressorMixin, BaseEstimator):
         self._validate_parameters()
         work = frame.reset_index(drop=True)
         keys = _object_keys(work, "prediction frame")
+        trend_inputs = None
+        if self.trend_factor != 0:
+            _required(work, POLL_TREND_FEATURES, "trend_factor != 0 prediction features")
+            trend_inputs = work[POLL_TREND_FEATURES].copy()
+            for column in POLL_TREND_FEATURES:
+                trend_inputs[column] = _numbers(trend_inputs[column], column)
+            if not trend_inputs.poll_trend_available.isin([0.0, 1.0]).all():
+                raise ValueError("poll_trend_available must be 0 or 1")
+            if (trend_inputs.poll_days_to_vote < 0).any():
+                raise ValueError("poll_days_to_vote must be nonnegative")
+            if ((trend_inputs.poll_trend_available == 0) & (trend_inputs.poll_yes_trend_per_day != 0)).any():
+                raise ValueError("Unavailable poll trend must have a zero rate")
+            grouped = trend_inputs.assign(vote_key=keys.vote_key).groupby("vote_key")
+            if (grouped[POLL_TREND_FEATURES].nunique(dropna=False) > 1).any().any():
+                raise ValueError("National trend features must be constant within each object")
         baseline = np.asarray(self.base_model.predict(frame), dtype=float)
         if baseline.ndim != 1 or len(baseline) != len(frame) or not np.isfinite(baseline).all():
             raise ValueError("base_model.predict must return one finite prediction per row")
@@ -373,6 +464,19 @@ class PollAnchoredRegressor(RegressorMixin, BaseEstimator):
         ]
         for column in audit_columns:
             components[column] = np.nan
+        trend_audit_columns = [
+            "poll_yes_share_before_trend",
+            "poll_no_share_before_trend",
+            "poll_undecided_share_before_trend",
+            "poll_yes_share_after_trend",
+            "poll_no_share_after_trend",
+            "poll_undecided_share_after_trend",
+            "national_poll_target_before_trend",
+        ]
+        for column in trend_audit_columns:
+            components[column] = np.nan
+        for column in ["trend_adjustment_raw", "trend_adjustment_capped", "trend_adjustment_applied"]:
+            components[column] = 0.0
         if frame.empty or self.weight == 0:
             components.index = frame.index
             return components
@@ -380,6 +484,11 @@ class PollAnchoredRegressor(RegressorMixin, BaseEstimator):
         available = _numbers(work.poll_available, "poll_available")
         if not available.isin([0.0, 1.0]).all():
             raise ValueError("poll_available must be 0 or 1")
+        if trend_inputs is not None:
+            if ((trend_inputs.poll_trend_available == 1) & (available == 0)).any():
+                raise ValueError("An available trend requires an available poll")
+            if ((available == 1) & (trend_inputs.poll_days_to_vote <= 0)).any():
+                raise ValueError("An available poll must have positive poll_days_to_vote")
         flags = keys[["vote_key"]].assign(available=available)
         if flags.groupby("vote_key").available.nunique().gt(1).any():
             raise ValueError("Poll availability must be constant within each object")
@@ -400,6 +509,29 @@ class PollAnchoredRegressor(RegressorMixin, BaseEstimator):
                 raise ValueError("Selected poll shares must be finite in [0, 1]")
             if abs(values.sum() - 1) > ROUNDING_TOLERANCE:
                 raise ValueError("Selected poll shares must sum to 1 within published rounding")
+            before = values.copy()
+            before_target = float(before[0] + self.undecided_yes_fraction * before[2])
+            if not 0 <= before_target <= 1:
+                raise ValueError("Allocated pre-trend poll target is outside [0, 1]")
+            raw_delta, capped_delta, applied_delta = 0.0, 0.0, 0.0
+            if trend_inputs is not None and trend_inputs.poll_trend_available.iloc[pos[0]]:
+                row_trend = trend_inputs.iloc[pos[0]]
+                raw_delta = float(self.trend_factor * row_trend.poll_yes_trend_per_day * row_trend.poll_days_to_vote)
+                if not np.isfinite(raw_delta):
+                    raise ValueError("Trend extrapolation must be finite")
+                capped_delta = float(np.clip(raw_delta, -self.max_trend_adjustment, self.max_trend_adjustment))
+                # Move the same mass from no to yes; keep undecided and sum exactly.
+                delta_lower = max(-before[0], before[1] - 1.0, -before_target)
+                delta_upper = min(1.0 - before[0], before[1], 1.0 - before_target)
+                applied_delta = float(np.clip(capped_delta, delta_lower, delta_upper))
+                values[0] = before[0] + applied_delta
+                values[1] = before[1] - applied_delta
+            components.loc[pos, trend_audit_columns] = [*before, *values, before_target]
+            components.loc[pos, ["trend_adjustment_raw", "trend_adjustment_capped", "trend_adjustment_applied"]] = [
+                raw_delta,
+                capped_delta,
+                applied_delta,
+            ]
             municipality_ids = keys.iloc[pos].municipality_id
             valid = weights.iloc[pos].notna().to_numpy() & (weights.iloc[pos].to_numpy() > 0)
             if valid.sum() < 2:

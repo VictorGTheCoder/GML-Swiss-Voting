@@ -5,6 +5,9 @@ par commune pour un **nouvel objet de votation fédérale**. Elle ajoute des
 informations politiques et des indices sur le sens du « oui », étend
 l'historique d'entraînement et conserve un journal reproductible des essais.
 
+L'[annexe méthodologique](municipal_v2_methodology.md) explique les choix
+d'outils, les risques de fuite et les limites d'interprétation.
+
 Le protocole est défini dans
 [`experiments/municipal_v2/protocol.json`](../../experiments/municipal_v2/protocol.json).
 Le statut reste `strict_forecast_ready: false` : les versions historiques des
@@ -42,7 +45,8 @@ Les résultats de 2023–2025 ont déjà été consultés dans des expériences
 antérieures du projet. Cette dernière période **n'est donc pas un test final
 indépendant**, même si la V2 impose de figer son choix avant de l'ouvrir.
 Aucun test indépendant n'est acquis à ce stade. Les résultats 2026 sont exclus
-de cette expérience.
+de l'apprentissage et de cette évaluation ; un lot de prévisions peut en
+revanche viser un scrutin futur de 2026 sans en connaître les résultats.
 
 Dans l'entraînement, les historiques communaux utilisent uniquement les dates
 passées. Pour toute une fenêtre de validation ou de comparaison, ces variables
@@ -126,14 +130,63 @@ ExtraTrees ou XGBoost. La moyenne du nouvel objet est **prédite** ; son résult
 national réalisé n'entre pas dans les données de prédiction. Une commune
 inconnue reçoit la moyenne prédite de l'objet.
 
+La famille `hierarchical` est une comparaison supplémentaire : elle apprend
+la moyenne de l'objet sur les objets historiques, puis des écarts communaux
+signés à partir des caractéristiques locales, avec une fenêtre locale
+déclarée. XGBoost, CatBoost et Ridge sont comparés pour cette seconde étape.
+Le centrage optionnel retire la moyenne des écarts **prédits**, jamais celle
+des résultats futurs. Il nécessite toute la population communale de l'objet
+dans le même appel. Cette décomposition est une hypothèse testée ; sa
+complexité ne constitue pas une preuve de gain.
+
+## Sondages et horizon de prévision
+
+Si `data/external/polls/srg_gfs_polls.csv` est présent, `prepare` ajoute les
+sondages et leur provenance au jeu préparé. La jointure retient la **dernière
+vague admissible**, sur l'identifiant exact de l'objet et sa date. La
+publication doit précéder le scrutin et ne pas dépasser le cutoff disponible.
+Les objets sans sondage restent dans l'évaluation.
+
+La famille `poll_anchor` ajuste un modèle de base vers une estimation issue
+du sondage. Les configurations comparent le poids de cet ajustement et
+l'allocation des indécis au « oui ». Une autre série teste une tendance
+calculée à partir de deux vagues admissibles et extrapolée vers le jour du
+vote. Le coefficient `eta` prend les valeurs **0, 0,5 ou 1** ; la correction
+de tendance est limitée à **±15 points de pourcentage**. Avec `eta=0`, aucune
+extrapolation n'est appliquée. Une vague seule ne suffit pas à déterminer une
+pente. Ces variantes sont des hypothèses soumises à validation, sans gain
+présumé ni utilisation du résultat final pour choisir la tendance.
+
+La moyenne de référence de l'ancrage est pondérée par un proxy : population
+STATPOP × part suisse × part hors 0–19 ans. Ce produit de marges ignore leur
+dépendance, les électeurs de 18–19 ans, les expatriés et la participation.
+Il ne remplace pas un registre électoral. La moyenne communale non pondérée
+reste une mesure séparée.
+
+Une prévision faite quelques jours avant le vote peut disposer d'une seconde
+vague de sondage ; une prévision faite plusieurs mois auparavant ne le peut
+pas. Les performances doivent donc être rattachées à leur horizon et aux
+sources effectivement disponibles. Le backtest utilise son cutoff déclaré ;
+une vraie prévision future utilise `as_of`, sans attendre fictivement la veille
+du scrutin.
+
+**Contrat de prédiction : fournir le lot communal complet pour chaque objet**
+lorsqu'un ancrage national ou un centrage local est actif. Le modèle d'ancrage
+contrôle la couverture de population et refuse une commune isolée. Une
+requête sur une seule commune ne permettrait pas de calculer le même
+ajustement national.
+
 ## Lancer et reprendre une expérience
 
 Les commandes suivantes se lancent depuis la racine du dépôt, dans un
 environnement Python dédié contenant `requirements-experiments.txt`. Les
 tables `data/processed` doivent déjà avoir été préparées par le pipeline du
 projet. Le dossier distinct ci-dessous préserve les essais existants.
+Les entraînements CPU utilisent deux threads. Pour garder également cette
+limite dans les bibliothèques numériques lancées depuis le terminal :
 
 ```bash
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
 python -m pip install -r requirements-experiments.txt
 experiment_dir=reports/generated/municipal_v2_reproduction
 
@@ -149,6 +202,25 @@ Une configuration JSON peut être un objet ou une liste d'objets. Elle précise
 au minimum `name` et `model`, puis éventuellement `blocks`, `train_start`,
 `params`, `select_k` ou `half_life_years`. Le fichier de profils fournit des
 exemples exécutables.
+
+Les séries complémentaires se lancent avec le même moteur :
+
+```bash
+python -m scripts.modeling.municipal_v2 run --output "$experiment_dir" \
+  --config experiments/municipal_v2/round2_configs.json \
+  --hypothesis "Comparer profils, résidus hiérarchiques et sélection de variables"
+python -m scripts.modeling.municipal_v2 run --output "$experiment_dir" \
+  --config experiments/municipal_v2/poll_configs.json \
+  --hypothesis "Comparer les ancrages sur la dernière vague disponible"
+python -m scripts.modeling.municipal_v2 run --output "$experiment_dir" \
+  --config experiments/municipal_v2/trend_configs.json \
+  --hypothesis "Comparer une tendance atténuée ou complète à aucune extrapolation"
+```
+
+Préparer le dossier avec les sources et le code de cette série avant de
+lancer les essais. Si le fichier de sondages ou le code change, utiliser un
+nouveau dossier et refaire `prepare` ; les empreintes empêchent de mélanger
+silencieusement des versions différentes.
 
 ```bash
 python -m scripts.modeling.experiment_control_v2 tune --output "$experiment_dir" \
@@ -196,6 +268,36 @@ réutilisable pour la recherche ; sa précision après réentraînement n'a pas
 fait l'objet d'une nouvelle mesure indépendante. « Final » désigne ici le
 candidat retenu pour cette série d'essais, pas un modèle validé pour la
 production.
+
+## Enregistrer une prévision avant le scrutin
+
+Après `fit`, le dossier d'expérience contient le jeu historique, le modèle
+candidat et sa model card. Exemple pour une capture réalisée le 23 novembre
+2026, avant le scrutin du 29 novembre :
+
+```bash
+python -m scripts.modeling.forecast_municipal --output "$experiment_dir" \
+  --vote-date 2026-11-29 --as-of 2026-11-23
+```
+
+`--polls chemin.csv` permet de choisir explicitement le fichier de sondages.
+Une date seule dans `as_of` signifie minuit UTC ; un timestamp ISO permet un
+cutoff plus précis. Pour un autre scrutin, adapter les deux dates. La commande
+refuse une capture après le vote et l'écrasement d'un lot déjà enregistré.
+
+Les communes viennent de la dernière date du jeu historique. Les sources
+sont jointes au cutoff `as_of`, puis le modèle prédit en un appel l'ensemble
+communes × objets. Aucune cible future n'est créée, et les résultats OFS
+courants ne sont pas lus. Les fichiers `forecast_YYYYMMDD.csv`,
+`forecast_YYYYMMDD_summary.csv`, `forecast_YYYYMMDD_features.parquet` et
+`forecast_YYYYMMDD_provenance.json` conservent les prédictions, les deux
+moyennes distinctes, les entrées exactes et les hashes du modèle et des
+sources, avec l'heure réelle de capture.
+
+Ce lot permettra une évaluation prospective lorsque les résultats seront
+publiés. Sa création ne valide pas encore sa précision et ne change pas le
+statut `strict_forecast_ready: false` ni les limites des titres et des
+versions historiques.
 
 ## Place d'e-means
 

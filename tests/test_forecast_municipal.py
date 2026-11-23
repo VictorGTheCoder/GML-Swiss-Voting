@@ -1,4 +1,6 @@
 """Synthetic future batches: time cutoff, population and absent outcomes."""
+import hashlib
+import json
 import sys
 from types import SimpleNamespace
 
@@ -7,9 +9,12 @@ import pandas as pd
 import pytest
 
 from scripts.integration.build_modeling_dataset import DEMOGRAPHICS
+from scripts.modeling import experiment_control_v2 as control
+from scripts.modeling import forecast_municipal as forecast_module
 from scripts.modeling.forecast_municipal import (
     OUTCOME_COLUMNS,
     build_future_frame,
+    load_verified_candidate,
     summarize_forecast,
 )
 
@@ -174,3 +179,73 @@ def test_summary_separates_unweighted_mean_and_explicit_proxy():
     assert row.weight_coverage_share == 0
     with pytest.raises(ValueError, match="proportions"):
         summarize_forecast(future, [.2, 1.5])
+
+
+def frozen_candidate(tmp_path):
+    """Small authentic freeze signature; no model is trained or forecast made."""
+    model_path = tmp_path / "candidate_model.joblib"
+    model_path.write_bytes(b"model bytes, never deserialized by these tests")
+    manifest_path = tmp_path / "data_manifest.json"
+    manifest_path.write_text("{}")
+    frozen = {
+        "data_sha256": "fixture-dataset", "code": {"model.py": "frozen-code"},
+        "environment": {"python": "fixture-version"},
+        "data_manifest_sha256": hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
+    }
+    frozen["signature"] = hashlib.sha256(json.dumps(frozen, sort_keys=True, default=str).encode()).hexdigest()
+    (tmp_path / "frozen_selection.json").write_text(json.dumps(frozen))
+    card = {"model_sha256": hashlib.sha256(model_path.read_bytes()).hexdigest(),
+            "frozen_signature": frozen["signature"], "environment": frozen["environment"],
+            "training_start": "2024-11-24", "training_end": "2025-09-28"}
+    (tmp_path / "candidate_model_card.json").write_text(json.dumps(card))
+    return frozen, card
+
+
+@pytest.mark.parametrize("changed", ["code", "environment"])
+def test_frozen_implementation_or_environment_drift_blocks_deserialization(tmp_path, monkeypatch, changed):
+    frozen, _ = frozen_candidate(tmp_path)
+    monkeypatch.setattr(control, "read_data", lambda output: (training(), {"dataset_sha256": "fixture-dataset"}))
+    monkeypatch.setattr(control, "code_hashes", lambda: {"model.py": "new-code"} if changed == "code" else frozen["code"])
+    monkeypatch.setattr(control, "environment", lambda: {"python": "new-version"} if changed == "environment" else frozen["environment"])
+    loads = []
+    monkeypatch.setattr(forecast_module.joblib, "load", lambda path: loads.append(path))
+    with pytest.raises(ValueError, match="Frozen (code or data|environment) changed"):
+        load_verified_candidate(tmp_path)
+    assert loads == []
+
+
+def test_card_requires_the_same_frozen_signature_before_deserialization(tmp_path, monkeypatch):
+    frozen, card = frozen_candidate(tmp_path)
+    card["frozen_signature"] = "some-other-selection"
+    (tmp_path / "candidate_model_card.json").write_text(json.dumps(card))
+    monkeypatch.setattr(forecast_module, "verify_freeze", lambda output: (frozen, training(), {}))
+    loads = []
+    monkeypatch.setattr(forecast_module.joblib, "load", lambda path: loads.append(path))
+    with pytest.raises(ValueError, match="frozen selection signature"):
+        load_verified_candidate(tmp_path)
+    assert loads == []
+
+
+def test_verified_candidate_reuses_validated_history_before_loading(tmp_path, monkeypatch):
+    frozen, card = frozen_candidate(tmp_path)
+    events = []
+
+    def verify(output):
+        events.append("verify")
+        return frozen, training(), {}
+
+    model = object()
+
+    def load(path):
+        assert events == ["verify"]
+        events.append("load")
+        return model
+
+    monkeypatch.setattr(forecast_module, "verify_freeze", verify)
+    monkeypatch.setattr(forecast_module.joblib, "load", load)
+    loaded, history, observed_card, observed_frozen = load_verified_candidate(tmp_path)
+    assert loaded is model
+    assert len(history) == len(training())
+    assert observed_card == card
+    assert observed_frozen == frozen
+    assert events == ["verify", "load"]

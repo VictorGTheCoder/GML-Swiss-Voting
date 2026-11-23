@@ -1,10 +1,12 @@
 """Temporal selection and national-vs-municipal anchoring invariants."""
 
+import pickle
+
 import numpy as np
 import pandas as pd
 import pytest
 
-from scripts.modeling.poll_anchor import PollAnchoredRegressor, add_poll_features
+from scripts.modeling.poll_anchor import POLL_TREND_FEATURES, PollAnchoredRegressor, add_poll_features
 
 
 def municipal_rows(vote_key="6380", vote_date="2021-03-07", baseline=(0.1, 0.4, 0.9)):
@@ -29,6 +31,7 @@ def poll_rows():
             "vote_key": ["6380", "6380"],
             "vote_date": ["2021-03-07"] * 2,
             "published_at": ["2021-01-29T06:00:00+01:00", "2021-02-24T06:00:00+01:00"],
+            "survey_midpoint": ["2021-01-18", "2021-02-14"],
             "wave": [1, 2],
             "yes_total": [60.0, 50.0],
             "no_total": [30.0, 30.0],
@@ -86,6 +89,7 @@ def test_future_wave_is_not_exposed_before_publication():
     frame = municipal_rows("6900", "2026-11-29")
     polls = poll_rows().assign(vote_key="6900", vote_date="2026-11-29")
     polls["published_at"] = ["2026-10-23T06:00:00+02:00", "2026-11-18T06:00:00+01:00"]
+    polls["survey_midpoint"] = ["2026-10-11", "2026-11-07"]
     out, _ = add_poll_features(frame, polls, as_of="2026-11-10")
     assert out.poll_wave.eq(1).all()
     later, _ = add_poll_features(frame, polls, as_of="2026-11-23")
@@ -276,3 +280,151 @@ def test_inconsistent_national_shares_and_availability_fail():
 def test_invalid_anchor_parameters_fail(parameter, value):
     with pytest.raises(ValueError, match=parameter):
         anchored(**{parameter: value})
+
+
+def test_known_prevote_trend_rate_horizon_and_manifest():
+    frame, manifest = add_poll_features(municipal_rows(), poll_rows())
+    assert frame.poll_yes_trend_per_day.tolist() == pytest.approx([-0.1 / 27] * 3)
+    assert frame.poll_days_to_vote.tolist() == [21.0] * 3
+    assert frame.poll_trend_available.tolist() == [1.0] * 3
+    assert set(POLL_TREND_FEATURES) <= set(manifest["numeric_features"])
+    assert set(POLL_TREND_FEATURES) <= set(manifest["object_numeric_features"])
+    assert manifest["objects_with_prior_admissible_poll"] == 1
+
+
+def test_future_wave_cannot_influence_slope_before_it_is_published():
+    frame = municipal_rows()
+    initial = poll_rows()
+    modified = initial.copy()
+    modified.loc[1, ["yes_total", "no_total", "undecided"]] = [99.0, 0.0, 1.0]
+    early, _ = add_poll_features(frame, initial, as_of="2021-02-23")
+    unchanged, _ = add_poll_features(frame, modified, as_of="2021-02-23")
+    columns = ["poll_yes_share", "poll_no_share", "poll_undecided_share", *POLL_TREND_FEATURES]
+    pd.testing.assert_frame_equal(early[columns], unchanged[columns])
+    assert early.poll_yes_trend_per_day.eq(0).all()
+    assert early.poll_trend_available.eq(0).all()
+    assert early.poll_days_to_vote.eq(48).all()
+    assert np.array_equal(anchored(trend_factor=1).predict(early), anchored().predict(early))
+
+
+@pytest.mark.parametrize(
+    "midpoints",
+    [
+        ["2021-02-14", "2021-02-14"],
+        ["2021-02-15", "2021-02-14"],
+        ["2021-01-18", "2021-03-07"],
+        ["2021-01-30", "2021-02-14"],
+    ],
+)
+def test_invalid_midpoint_chronology_fails(midpoints):
+    with pytest.raises(ValueError, match="midpoint"):
+        add_poll_features(municipal_rows(), poll_rows().assign(survey_midpoint=midpoints))
+
+
+def test_midpoint_must_be_inside_the_reported_survey_interval():
+    polls = poll_rows().assign(survey_start=["2021-01-19", "2021-02-10"], survey_end=["2021-01-24", "2021-02-18"])
+    with pytest.raises(ValueError, match="survey interval"):
+        add_poll_features(municipal_rows(), polls)
+
+
+def test_trend_requires_explicit_midpoint_metadata():
+    with pytest.raises(ValueError, match="survey_midpoint"):
+        add_poll_features(municipal_rows(), poll_rows().drop(columns="survey_midpoint"))
+
+
+def test_default_predictions_match_old_frames_and_legacy_pickles_exactly():
+    frame = enriched()
+    old_frame = frame.drop(columns=POLL_TREND_FEATURES)
+    model = anchored()
+    expected = model.predict(old_frame)
+    assert np.array_equal(model.predict(frame), expected)
+    assert np.array_equal(anchored(trend_factor=0.0, max_trend_adjustment=1.0).predict(frame), expected)
+    legacy = anchored()
+    del legacy.trend_factor
+    del legacy.max_trend_adjustment
+    loaded = pickle.loads(pickle.dumps(legacy))
+    assert loaded.trend_factor == 0.0
+    assert loaded.max_trend_adjustment == 0.15
+    assert np.array_equal(loaded.predict(old_frame), expected)
+
+
+@pytest.mark.parametrize("weight", [0.0, 1.0])
+def test_active_trend_rejects_old_frames_with_missing_columns(weight):
+    frame = enriched().drop(columns=POLL_TREND_FEATURES)
+    with pytest.raises(ValueError, match="trend_factor != 0"):
+        anchored(weight=weight, trend_factor=1.0).predict(frame)
+
+
+def test_known_trend_adjusts_only_yes_no_and_reaches_weighted_target():
+    frame = enriched()
+    audit = anchored(trend_factor=1.0).predict_components(frame)
+    delta = -0.1 / 27 * 21
+    assert audit.trend_adjustment_applied.tolist() == pytest.approx([delta] * 3)
+    assert audit.poll_yes_share_before_trend.tolist() == [0.5] * 3
+    assert audit.poll_yes_share_after_trend.tolist() == pytest.approx([0.5 + delta] * 3)
+    assert audit.poll_no_share_after_trend.tolist() == pytest.approx([0.3 - delta] * 3)
+    assert audit.poll_undecided_share_after_trend.tolist() == [0.2] * 3
+    assert audit.national_poll_target_before_trend.tolist() == pytest.approx([0.6] * 3)
+    assert np.average(audit.prediction, weights=frame.poll_population_weight) == pytest.approx(0.6 + delta, abs=1e-12)
+
+
+@pytest.mark.parametrize("sign", [-1.0, 1.0])
+def test_trend_sign_and_maximum_adjustment_are_respected(sign):
+    frame = enriched().assign(poll_yes_trend_per_day=sign)
+    audit = anchored(trend_factor=0.5, max_trend_adjustment=0.1).predict_components(frame)
+    assert audit.trend_adjustment_raw.tolist() == pytest.approx([sign * 0.5 * 21] * 3)
+    assert audit.trend_adjustment_capped.tolist() == pytest.approx([sign * 0.1] * 3)
+    assert audit.trend_adjustment_applied.tolist() == pytest.approx([sign * 0.1] * 3)
+
+
+@pytest.mark.parametrize("yes,no,sign,expected_delta", [(0.95, 0.01, 1.0, 0.01), (0.01, 0.95, -1.0, -0.01)])
+def test_trend_cannot_transfer_more_support_than_a_camp_contains(yes, no, sign, expected_delta):
+    frame = enriched().assign(
+        poll_yes_share=yes, poll_no_share=no, poll_undecided_share=0.04, poll_yes_trend_per_day=sign
+    )
+    audit = anchored(trend_factor=1.0).predict_components(frame)
+    assert audit.trend_adjustment_applied.tolist() == pytest.approx([expected_delta] * 3)
+    assert audit.poll_undecided_share_after_trend.tolist() == [0.04] * 3
+    totals = audit[["poll_yes_share_after_trend", "poll_no_share_after_trend", "poll_undecided_share_after_trend"]].sum(
+        axis=1
+    )
+    assert totals.tolist() == pytest.approx([1.0] * 3)
+
+
+def test_trend_preserves_rounded_total_and_keeps_allocated_target_feasible():
+    frame = enriched().assign(
+        poll_yes_share=0.99, poll_no_share=0.01, poll_undecided_share=0.01, poll_yes_trend_per_day=1.0
+    )
+    audit = anchored(trend_factor=1.0).predict_components(frame)
+    totals = audit[["poll_yes_share_after_trend", "poll_no_share_after_trend", "poll_undecided_share_after_trend"]].sum(
+        axis=1
+    )
+    assert totals.tolist() == pytest.approx([1.01] * 3)
+    assert audit.poll_undecided_share_after_trend.tolist() == [0.01] * 3
+    assert audit.national_poll_target.tolist() == pytest.approx([1.0] * 3)
+    assert audit.trend_adjustment_applied.tolist() == pytest.approx([0.005] * 3)
+
+
+def test_trend_without_poll_keeps_exact_fallback():
+    frame = enriched(municipal_rows("9999", "2024-03-03"))
+    assert frame[POLL_TREND_FEATURES].eq(0).all().all()
+    assert np.array_equal(anchored(trend_factor=1.0).predict(frame), frame.baseline.to_numpy())
+
+
+@pytest.mark.parametrize(
+    "parameter,value",
+    [("trend_factor", -1.0), ("trend_factor", np.inf), ("max_trend_adjustment", -0.1), ("max_trend_adjustment", 1.1)],
+)
+def test_invalid_trend_parameters_fail(parameter, value):
+    with pytest.raises(ValueError, match=parameter):
+        anchored(**{parameter: value})
+
+
+def test_active_trend_features_must_be_consistent_and_available():
+    frame = enriched().assign(poll_days_to_vote=[20.0, 21.0, 21.0])
+    with pytest.raises(ValueError, match="constant"):
+        anchored(trend_factor=1.0).predict(frame)
+    with pytest.raises(ValueError, match="zero rate"):
+        anchored(trend_factor=1.0).predict(enriched().assign(poll_trend_available=0.0))
+    with pytest.raises(ValueError, match="available poll"):
+        anchored(trend_factor=1.0).predict(enriched().assign(poll_available=0.0))

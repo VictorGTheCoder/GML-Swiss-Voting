@@ -33,6 +33,7 @@ from scripts.integration.build_modeling_dataset import (
     unique_keys,
 )
 from scripts.modeling.direction_features_v2 import add_direction_features
+from scripts.modeling.experiment_control_v2 import verify_freeze
 from scripts.modeling.municipal_v2 import DEFAULT_OUTPUT, digest, freeze_history, write_json
 from scripts.modeling.political_features_v2 import add_political_features
 
@@ -273,6 +274,32 @@ def summarize_forecast(future, predictions):
     return pd.DataFrame(records)
 
 
+def load_verified_candidate(output):
+    """Verify frozen code/data/environment before loading current Python classes.
+
+    A matching joblib hash alone is insufficient: its serialized objects use
+    the class implementations currently imported from the workspace.
+    """
+    output = Path(output)
+    model_path = output / "candidate_model.joblib"
+    card = json.loads((output / "candidate_model_card.json").read_text())
+    if digest(model_path) != card["model_sha256"]:
+        raise ValueError("Candidate model hash differs from its model card")
+    frozen, training, _ = verify_freeze(output)
+    if card.get("frozen_signature") != frozen["signature"]:
+        raise ValueError("Candidate model card does not match the frozen selection signature")
+    if card.get("environment") != frozen["environment"]:
+        raise ValueError("Candidate model card environment differs from the frozen environment")
+    training_dates = _dates(training.vote_date, "training voting dates")
+    training = training.loc[training_dates.between(
+        _timestamp(card["training_start"], "model training_start"),
+        _timestamp(card["training_end"], "model training_end"),
+    )].copy()
+    if training.empty or str(pd.to_datetime(training.vote_date).max().date()) != card["training_end"]:
+        raise ValueError("Prepared training history does not match the model card end date")
+    return joblib.load(model_path), training, card, frozen
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT,
@@ -294,20 +321,7 @@ def main():
     card_path = output / "candidate_model_card.json"
     dataset_path = output / "dataset.parquet"
     data_manifest_path = output / "data_manifest.json"
-    card = json.loads(card_path.read_text())
-    data_manifest = json.loads(data_manifest_path.read_text())
-    if digest(model_path) != card["model_sha256"]:
-        raise ValueError("Candidate model hash differs from its model card")
-    if digest(dataset_path) != data_manifest["dataset_sha256"]:
-        raise ValueError("Prepared training dataset changed since its manifest")
-    training = pd.read_parquet(dataset_path)
-    training_dates = _dates(training.vote_date, "training voting dates")
-    training = training.loc[training_dates.between(
-        _timestamp(card["training_start"], "model training_start"),
-        _timestamp(card["training_end"], "model training_end"),
-    )].copy()
-    if training.empty or str(pd.to_datetime(training.vote_date).max().date()) != card["training_end"]:
-        raise ValueError("Prepared training history does not match the model card end date")
+    model, training, card, frozen = load_verified_candidate(output)
 
     sources, hashes = {}, {}
     for name in USED_SOURCES:
@@ -319,7 +333,6 @@ def main():
         sources["polls"] = pd.read_csv(poll_path, dtype={"vote_id": "string", "vote_key": "string"})
         hashes["polls"] = {"path": str(poll_path), "sha256": digest(poll_path)}
     future, manifest = build_future_frame(training, sources, voting_date, cutoff)
-    model = joblib.load(model_path)
     # Centered spatial models require the complete selected population here.
     with threadpool_limits(limits=2):
         predictions = np.asarray(model.predict(future), dtype=float)
@@ -338,6 +351,8 @@ def main():
         "model_card_sha256": digest(card_path), "training_dataset_sha256": digest(dataset_path),
         "data_manifest_sha256": digest(data_manifest_path), "sources": hashes,
         "model_selection": card.get("selection"), "model_environment": card.get("environment"),
+        "frozen_selection_signature": frozen["signature"],
+        "verified_model_code": frozen["code"], "verified_model_environment": frozen["environment"],
         "forecast_code_sha256": digest(Path(__file__)),
         "source_snapshot_at_capture_not_certified_archived_at_as_of": True,
     })

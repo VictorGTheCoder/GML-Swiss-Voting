@@ -13,6 +13,8 @@ import json
 import platform
 import time
 from dataclasses import dataclass
+from datetime import datetime, timezone
+from importlib.metadata import version
 from pathlib import Path
 
 import numpy as np
@@ -67,7 +69,11 @@ def source_hashes():
 
 def code_hashes():
     paths = [Path(__file__), PROTOCOL,
+             ROOT / "requirements-experiments.txt",
              ROOT / "scripts/integration/build_modeling_dataset.py",
+             ROOT / "scripts/integration/prepare_join.py",
+             ROOT / "scripts/common/config.py",
+             ROOT / "scripts/common/vote_keys.py",
              ROOT / "scripts/modeling/residual_voting_model.py",
              ROOT / "scripts/modeling/poll_anchor.py"]
     paths += sorted((ROOT / "scripts/modeling").glob("*_v2.py"))
@@ -81,7 +87,8 @@ def environment():
     return {"python": platform.python_version(), "numpy": np.__version__,
             "pandas": pd.__version__, "sklearn": sklearn.__version__,
             "xgboost": xgboost.__version__, "catboost": catboost.__version__,
-            "optuna": optuna.__version__}
+            "optuna": optuna.__version__,
+            **{name: version(name) for name in ("scipy", "joblib", "threadpoolctl")}}
 
 
 def prepare(output):
@@ -91,6 +98,8 @@ def prepare(output):
 
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
+    if (output / "dataset.parquet").exists() or (output / "data_manifest.json").exists():
+        raise FileExistsError("Preserve the existing prepared snapshot; use a new experiment directory")
     frames = {name: pd.read_parquet(ROOT / "data/processed" / relative)
               for name, relative in SOURCES.items()}
     table, audit = build(frames, start="1981-01-01")
@@ -110,6 +119,8 @@ def prepare(output):
         raise ValueError("Unreviewed 2026 outcomes cannot enter this experiment")
     table.to_parquet(output / "dataset.parquet", index=False)
     manifest = {"mode": "retrospective_fixed_2026_geography",
+                "prepared_at_utc": datetime.now(timezone.utc).isoformat(),
+                "preparation_code": code_hashes(), "preparation_environment": environment(),
                 "strict_forecast_ready": False, "sources": source_hashes(),
                 "dataset_sha256": digest(output / "dataset.parquet"),
                 "audit": audit, "political": political, "direction": direction, "polls": polls,
@@ -130,6 +141,8 @@ def prepare(output):
 def read_data(output):
     output = Path(output)
     manifest = json.loads((output / "data_manifest.json").read_text())
+    if manifest.get("preparation_code") != code_hashes() or manifest.get("preparation_environment") != environment():
+        raise ValueError("Prepared feature provenance is stale; prepare a new experiment directory")
     if digest(output / "dataset.parquet") != manifest["dataset_sha256"]:
         raise ValueError("Prepared dataset changed; rebuild and declare a new experiment")
     if source_hashes() != manifest["sources"]:
@@ -290,7 +303,8 @@ def fit_model(train, config, manifest):
         base_model = fit_model(base_train, base_config, manifest)
         model = PollAnchoredRegressor(base_model=base_model, **config.get("params", {})).fit(base_train)
         poll_numeric = ["poll_yes_share", "poll_no_share", "poll_undecided_share",
-                        "poll_available", "poll_population_weight"]
+                        "poll_available", "poll_population_weight", "poll_yes_trend_per_day",
+                        "poll_days_to_vote", "poll_trend_available"]
         return FittedModel(model, base_model.numeric + poll_numeric, base_model.categorical,
                            kind, config, base_model.selected_features + poll_numeric)
     if kind in ("profile", "hierarchical"):
@@ -384,6 +398,7 @@ def run_trial(config, data, manifest, protocol, output, *, hypothesis=""):
         raise ValueError(f"Existing run {run_id} has different provenance or failed; use a new run name")
     started = time.monotonic()
     record = {"run_id": run_id, "configuration": config, "hypothesis": hypothesis,
+              "started_at_utc": datetime.now(timezone.utc).isoformat(),
               "data_sha256": manifest["dataset_sha256"],
               "data_manifest_sha256": digest(output / "data_manifest.json"), "code": code_hashes(),
               "protocol": protocol, "protocol_sha256": protocol_hash,
@@ -425,6 +440,7 @@ def run_trial(config, data, manifest, protocol, output, *, hypothesis=""):
         raise
     finally:
         record["elapsed_seconds"] = time.monotonic() - started
+        record["finished_at_utc"] = datetime.now(timezone.utc).isoformat()
         write_json(folder / "trial.json", record)
     print(f"COMPLETE {run_id}: {record['metrics']['macro_object_mae_pp']:.4f} pp, {record['elapsed_seconds']:.1f}s", flush=True)
     return record

@@ -13,6 +13,8 @@ from scripts.modeling.municipal_v2 import (
     fit_model,
     freeze_history,
     metrics,
+    prepare,
+    read_data,
     training_weights,
     validate_config,
     windows,
@@ -144,3 +146,17 @@ def test_ignored_or_history_truncating_settings_are_rejected(config):
 def test_poll_wrapper_preserves_declared_base_history():
     validate_config({"model": "poll_anchor", "train_start": "1981-01-01",
                      "base": {"model": "profile", "train_start": "1990-01-01"}})
+
+
+def test_preparation_does_not_overwrite_an_existing_snapshot(tmp_path):
+    sentinel = tmp_path / "dataset.parquet"
+    sentinel.write_bytes(b"previous expensive experiment")
+    with pytest.raises(FileExistsError, match="Preserve"):
+        prepare(tmp_path)
+    assert sentinel.read_bytes() == b"previous expensive experiment"
+
+
+def test_stale_preparation_code_is_rejected_before_loading_features(tmp_path):
+    (tmp_path / "data_manifest.json").write_text(json.dumps({"preparation_code": {}}))
+    with pytest.raises(ValueError, match="provenance is stale"):
+        read_data(tmp_path)

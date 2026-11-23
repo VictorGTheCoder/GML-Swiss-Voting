@@ -1,0 +1,60 @@
+{
+  "retrieved_at_utc": "2026-11-23T12:32:01+00:00",
+  "requested_url": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-1703030000_101",
+  "final_url": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-1703030000_101",
+  "http_headers": {
+    "content-type": "application/octet-stream",
+    "date": "Mon, 23 Nov 2026 12:31:59 GMT",
+    "content-length": "53376455"
+  },
+  "scope": "PX header only; no outcome values parsed or stored",
+  "header_bytes": 247495,
+  "header_sha256": "67c3edef92340c9434b1fc1d8b5b47cd22e87050117998f4f1b10bef4f8e8f39",
+  "metadata": {
+    "CREATION-DATE": [
+      "20170825 09:00"
+    ],
+    "MATRIX": [
+      "px-x-1703030000_101"
+    ],
+    "TITLE[fr]": [
+      "Votations populaires (résultats au niveau des communes depuis 1960)"
+    ],
+    "CONTENTS[fr]": [
+      "Votations populaires (résultats au niveau des communes depuis 1981)"
+    ],
+    "LAST-UPDATED": [
+      "20260821 08:30"
+    ],
+    "CONTACT[fr]": [
+      "Section Politique, culture, médias, +41 58 463 61 58, e-mail: poku@bfs.admin.ch"
+    ],
+    "SOURCE[fr]": [
+      "OFS - Statistique des votations et des élections - © OFS"
+    ],
+    "NOTE[fr]": [
+      "<B>Métainformation:</B>#Dernière modification: ajout des résultats provisoires des votations de mars et juin 2026#Date de l'enquête: date de la votation#Résultats provisoires: novembre 2025, mars et juin 2026#Etat de la base de données: août ",
+      "2026#Référence spatiale: Résultats harmonisés, communes au 01.01.2026, y c. communes spéciales de la statistique politique (cf. enquête). Berne: Sans la commune de Moutier; Jura: Y compris la commune de Moutier. L'harmonisation concerne uniquement la ",
+      "répartition des résultats entre les communes et les districts ; les totaux cantonaux et suisse restent inchangés et correspondent à l'état original.#Source des données: Statistique des votations et des élections (base pour les votations 1960-1980: sotomo,",
+      " Institut de géographie de l'université de Zurich##<B>Signes utilisés:</B>#'...' : Chiffre inconnu, car pas (encore) relevé ou pas (encore) calculé##Questions subsidiaires sur les initiatives et contre-projets populaires: les votes oui sont pour ",
+      "l'initiative, les non pour le contre-projet.##Les données 1960-1980 sont incomplètes, les cantons de FR, AG et TI sont manquants.##Différents cantons disposent pour certaines élections de communes/districts spéciaux (communes/districts 'extra-",
+      "territoriaux'). Ces communes/districts spéciaux comprennent les Suisses de l'étranger (CH étranger) que plusieurs cantons considèrent séparément, ainsi que les suffrages qui n'ont pas été attribués par le canton à une commune officielle  (autres, par ",
+      "correspondance).##Communes partageant la 'même urne': ces communes procèdent au dépouillement des bulletins de concert avec d'autres communes.##<B>Commune sans bureau de vote / commune où les bulletins de vote sont dépouillés</B>#389 Meienried / 383 ",
+      "Büren BE#408 Hellsau / 410 Höchstetten BE#535 Deisswil bei Münchenbuchsee / 553 Wiggiswil BE#629 Oberhünigen / 629 Zäziwil BE#877 Niedermuhlern / 888 Wald BE##"
+    ]
+  },
+  "provisional_months": [
+    [
+      2025,
+      11
+    ],
+    [
+      2026,
+      3
+    ],
+    [
+      2026,
+      6
+    ]
+  ]
+}
