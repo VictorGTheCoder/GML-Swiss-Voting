@@ -1,0 +1,99 @@
+name: V5 historical semantic enrichment
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/semantic-v5.yml'
+      - 'scripts/modeling/historical_objects_v5.py'
+      - 'scripts/modeling/semantic_labels_v5.py'
+      - 'scripts/modeling/semantic_training_v5.py'
+      - 'data/annotations/yes_effects_historical_v5.json'
+      - 'experiments/municipal_v5/**'
+      - 'tests/test_semantic_v5.py'
+      - 'tests/test_semantic_v5_training.py'
+  workflow_dispatch:
+
+jobs:
+  historical-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install metadata dependencies
+        run: python -m pip install pandas pyarrow
+      - name: Reproduce 1990-2015 Swissvotes titles and IDs (no outcomes)
+        run: >-
+          python -m scripts.modeling.historical_objects_v5
+          --start-year 1990 --end-year 2015
+          --output reports/generated/semantic_v5/historic_inventory.csv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: semantic-v5-historical-object-inventory
+          path: reports/generated/semantic_v5/historic_inventory.csv
+
+  historical-benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      NUMEXPR_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - name: Install pinned model dependencies
+        run: python -m pip install -r requirements-experiments.txt
+      - name: Test provenance, exact IDs and chronological feature construction
+        run: >-
+          python -m pytest -q
+          tests/test_semantic_v5.py
+          tests/test_semantic_v5_training.py
+          tests/test_semantic_poll_comparison_v4.py
+          tests/test_semantic_features_v4.py
+          tests/test_poll_anchor.py
+      - name: Prepare historical data without changing the V2/V3 snapshots
+        run: >-
+          python -m scripts.modeling.municipal_v2 prepare
+          --output reports/generated/municipal_v5_base
+      - name: Compare fixed V3 and V5 models with identical V3 polls
+        run: >-
+          python -m scripts.modeling.semantic_training_v5
+          --base reports/generated/municipal_v5_base
+          --output reports/generated/municipal_v5_historical_semantics
+      - name: Print full comparison and retain unsuccessful variants
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source = Path("reports/generated/municipal_v5_historical_semantics/manifest.json")
+          m = json.loads(source.read_text(encoding="utf-8"))
+          assert m["status"] == "complete" and m["reference_reproduced"]
+          print("REFERENCE V3:", m["reference_mae_pp"])
+          for item in m["runs"]:
+              print(item["variant"], "structural", item["structural_mae_pp"],
+                    "with polls", item["macro_object_mae_pp"])
+              print("train coverage by fold:",
+                    [(f["window"], f["annotated"]) for f in item["folds"]])
+          for item in m["comparisons"]:
+              print("gain:", item)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-v5-historical-benchmark
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            reports/generated/municipal_v5_historical_semantics/manifest.json
+            reports/generated/municipal_v5_historical_semantics/*_by_object.csv
+            reports/generated/municipal_v5_historical_semantics/*_by_date.csv
+            reports/generated/municipal_v5_historical_semantics/paired_by_object.csv
+            reports/generated/municipal_v5_historical_semantics/*_predictions.parquet

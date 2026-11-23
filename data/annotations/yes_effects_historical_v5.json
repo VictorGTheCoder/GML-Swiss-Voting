@@ -1,0 +1,1610 @@
+{
+  "version": "historic-yes-effect-v5-1",
+  "status": "first_pass_source_supported_not_independently_reviewed",
+  "coverage_policy": "Historical evidence from official Federal Chancellery summaries and early pages of ballot brochures. Describes direct, intended effect of YES; no popular outcomes or post-vote surveys.",
+  "limitations": "The current official web/PDF edition has not been authenticated against the exact pre-vote published snapshot. Some sources use PDF text indexing and await independent visual and legal review. No official result may enter model features.",
+  "sources": {
+    "2005-06": {
+      "kind": "pdf",
+      "url": "https://www.bk.admin.ch/dam/bk/fr/dokumente/Abstimmungsbuechlein/erlaeuterungen_desbundesrates05062005.pdf.download.pdf/explications_du_conseilfederal05062005.pdf",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2005-09": {
+      "kind": "pdf",
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/pVZnbVK8NaIY/2005-09-25_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2005-11": {
+      "kind": "pdf",
+      "url": "https://www.bk.admin.ch/dam/bk/fr/dokumente/Abstimmungsbuechlein/erlaeuterungen_desbundesrates27112005.pdf.download.pdf/explications_du_conseilfederal27112005.pdf",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2006-05": {
+      "kind": "pdf",
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/UdTGSyKzGeuS/2006-05-21_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2006-09": {
+      "kind": "pdf",
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/Cvmjl7yJs0XG/2006-09-24_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2006-11": {
+      "kind": "pdf",
+      "url": "https://www.bk.admin.ch/dam/bk/fr/dokumente/Abstimmungsbuechlein/erlaeuterungen_desbundesrates26112006.pdf.download.pdf/explications_du_conseilfederal26112006.pdf",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2007-03": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-11-mars-2007",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2007-06": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-17-juin-2007",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2008-02": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-24-fevrier-2008",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2008-06": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-1er-juin-2008",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2008-11": {
+      "kind": "pdf",
+      "url": "https://www.bk.admin.ch/dam/bk/fr/dokumente/Abstimmungsbuechlein/erlaeuterungen_desbundesrates30112008.pdf.download.pdf/explications_du_conseilfederal30112008.pdf",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2009-02": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-8-fevrier-2009",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2009-05": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-17-mai-2009",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2009-09": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-federale-du-27-septembre-2009",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2009-11": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-federale-du-29-novembre-2009",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2010-03": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-federale-du-7-mars-2010",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2010-09": {
+      "kind": "pdf",
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/8Z5GoiPI1sE5/2010-09-26_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2010-11": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-28-novembre-2010",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2011-02": {
+      "kind": "pdf",
+      "url": "https://www.bk.admin.ch/dam/bk/fr/dokumente/Abstimmungsbuechlein/volksabstimmung_vom13februar2011.pdf.download.pdf/explications_du_conseilfederal13022011.pdf",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2012-03": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-11-mars-2012",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2012-06": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-17-juin-2012",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2012-09": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-federale-du-23-septembre-2012",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2012-11": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-federale-du-25-novembre-2012",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2013-03": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-federale-du-3-mars-2013",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2013-06": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-federale-du-9-juin-2013",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2013-09": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-federale-du-22-septembre-2013",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2013-11": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-federale-du-24-novembre-2013",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2014-02": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-federale-du-9-fevrier-2014",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2014-05": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-18-mai-2014",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2014-09": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-28-septembre-2014",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2014-11": {
+      "kind": "html",
+      "url": "https://www.bk.admin.ch/fr/votation-populaire-du-30-novembre-2014",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2015-03": {
+      "kind": "pdf",
+      "url": "https://www.bk.admin.ch/dam/bk/fr/dokumente/Abstimmungsbuechlein/objekt_52869.pdf.download.pdf/explications_du_conseilfederal08032015.pdf",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    },
+    "2015-06": {
+      "kind": "pdf",
+      "url": "https://www.bk.admin.ch/dam/bk/fr/dokumente/Abstimmungsbuechlein/erlaeuterungen_desbundesrates-volksabstimmungvom14062015.pdf.download.pdf/explications_du_conseilfederal14062015.pdf",
+      "editorial_cutoff": null,
+      "published_at_verified": null,
+      "checked_scope": "direct pre-vote legislative mechanism; current edition, not certified historical version"
+    }
+  },
+  "votes": [
+    {
+      "vote_id": "5170",
+      "vote_date": "2005-06-05",
+      "source": "2005-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "international",
+          "family": "international_agreement",
+          "direction": "extend",
+          "target": "general",
+          "evidence_note": "Participation suisse aux accords Schengen/Dublin: coopération policière et attribution d'un seul État responsable des demandes d'asile.",
+          "source_section_page": 4,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5180",
+      "vote_date": "2005-06-05",
+      "source": "2005-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "civil_rights",
+          "family": "legal_rights",
+          "direction": "introduce",
+          "target": "households",
+          "evidence_note": "Création d'un partenariat enregistré légal pour les couples de même sexe.",
+          "source_section_page": 16,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5190",
+      "vote_date": "2005-09-25",
+      "source": "2005-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "international",
+          "family": "international_agreement",
+          "direction": "extend",
+          "target": "workers",
+          "evidence_note": "Extension graduelle de la libre circulation aux dix nouveaux membres de l'UE.",
+          "source_section_page": 4,
+          "evidence_confidence": "high"
+        },
+        {
+          "domain": "labour",
+          "family": "labour_rule",
+          "direction": "restrict",
+          "target": "employers",
+          "evidence_note": "Renforcement des mesures d'accompagnement contre la sous-enchère salariale.",
+          "source_section_page": 5,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5200",
+      "vote_date": "2005-11-27",
+      "source": "2005-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "agriculture",
+          "family": "environment_regulation",
+          "direction": "restrict",
+          "target": "farmers",
+          "evidence_note": "Moratoire de cinq ans sur l'utilisation agricole de plantes et animaux génétiquement modifiés.",
+          "source_section_page": 4,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5210",
+      "vote_date": "2005-11-27",
+      "source": "2005-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "labour",
+          "family": "labour_rule",
+          "direction": "extend",
+          "target": "employers",
+          "evidence_note": "Permettre à davantage de commerces de gares et d'aéroports d'employer du personnel le dimanche.",
+          "source_section_page": 14,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5220",
+      "vote_date": "2006-05-21",
+      "source": "2006-05",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "education",
+          "family": "institutional_rule",
+          "direction": "extend",
+          "target": "cantons",
+          "evidence_note": "Harmonisation de paramètres de formation avec coordination fédérale et cantonale et intervention subsidiaire fédérale.",
+          "source_section_page": 4,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5230",
+      "vote_date": "2006-09-24",
+      "source": "2006-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "pensions",
+          "family": "public_financing",
+          "direction": "reallocate",
+          "target": "pensioners",
+          "evidence_note": "Attribuer les bénéfices nets annuels de la BNS à l'AVS après un milliard destiné aux cantons.",
+          "source_section_page": 4,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5240",
+      "vote_date": "2006-09-24",
+      "source": "2006-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "migration",
+          "family": "immigration_rule",
+          "direction": "restrict",
+          "target": "migrants",
+          "evidence_note": "Nouvelle loi sur les étrangers non UE/AELE: priorité aux qualifications et révision de l'intégration.",
+          "source_section_page": 12,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5250",
+      "vote_date": "2006-09-24",
+      "source": "2006-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "migration",
+          "family": "immigration_rule",
+          "direction": "restrict",
+          "target": "asylum_seekers",
+          "evidence_note": "Modifications des procédures d'asile et du retour des requérants déboutés.",
+          "source_section_page": 20,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5260",
+      "vote_date": "2006-11-26",
+      "source": "2006-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "international",
+          "family": "public_financing",
+          "direction": "extend",
+          "target": "foreign_cooperation",
+          "evidence_note": "Proroger la base de la coopération avec l'Europe de l'Est et des projets de cohésion dans l'UE élargie.",
+          "source_section_page": 4,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5270",
+      "vote_date": "2006-11-26",
+      "source": "2006-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "family",
+          "family": "social_benefit",
+          "direction": "extend",
+          "target": "families",
+          "evidence_note": "Harmoniser les conditions des allocations familiales et établir des minima nationaux.",
+          "source_section_page": 14,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5280",
+      "vote_date": "2007-03-11",
+      "source": "2007-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "insurance_rule",
+          "direction": "reallocate",
+          "target": "insured",
+          "evidence_note": "Remplacer les assureurs-maladie de base concurrents par une caisse nationale unique, avec primes liées à la capacité économique.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5290",
+      "vote_date": "2007-06-17",
+      "source": "2007-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "pensions",
+          "family": "social_insurance_rule",
+          "direction": "restrict",
+          "target": "beneficiaries",
+          "evidence_note": "Réviser l'AI avec priorité à la réadaptation professionnelle et des économies ciblées.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5300",
+      "vote_date": "2008-02-24",
+      "source": "2008-02",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "defense",
+          "family": "prohibition",
+          "direction": "introduce",
+          "target": "military",
+          "evidence_note": "Interdire, en temps de paix, les exercices d'avions de combat à réaction dans des zones de détente touristique.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5310",
+      "vote_date": "2008-02-24",
+      "source": "2008-02",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "taxation",
+          "family": "tax_rule",
+          "direction": "decrease",
+          "target": "companies",
+          "evidence_note": "Atténuer la fiscalité des bénéfices distribués et les impôts touchant le capital entrepreneurial.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5320",
+      "vote_date": "2008-06-01",
+      "source": "2008-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "institutions",
+          "family": "political_rule",
+          "direction": "extend",
+          "target": "cantons",
+          "evidence_note": "Laisser les communes déterminer la procédure de naturalisation et supprimer le recours judiciaire contre les décisions populaires.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5330",
+      "vote_date": "2008-06-01",
+      "source": "2008-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "institutions",
+          "family": "political_rule",
+          "direction": "restrict",
+          "target": "public_authorities",
+          "evidence_note": "Réduire les activités d'information du Conseil fédéral et de l'administration avant les scrutins.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5340",
+      "vote_date": "2008-06-01",
+      "source": "2008-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "institutional_rule",
+          "direction": "introduce",
+          "target": "insured",
+          "evidence_note": "Inscrire des principes constitutionnels de qualité et d'efficacité économique dans l'assurance-maladie.",
+          "source_section_page": null,
+          "evidence_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "vote_id": "5350",
+      "vote_date": "2008-11-30",
+      "source": "2008-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "justice",
+          "family": "legal_rights",
+          "direction": "extend",
+          "target": "children",
+          "evidence_note": "Rendre imprescriptibles les infractions sexuelles ou pornographiques commises sur des enfants impubères.",
+          "source_section_page": 4,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5360",
+      "vote_date": "2008-11-30",
+      "source": "2008-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "pensions",
+          "family": "social_benefit",
+          "direction": "extend",
+          "target": "workers",
+          "evidence_note": "Ouvrir l'accès à une rente AVS non réduite dès 62 ans pour des personnes actives sous un seuil de revenu.",
+          "source_section_page": 12,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5370",
+      "vote_date": "2008-11-30",
+      "source": "2008-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "environment",
+          "family": "legal_rights",
+          "direction": "restrict",
+          "target": "environmental_organizations",
+          "evidence_note": "Retirer le droit de recours des organisations environnementales contre certains projets approuvés par vote populaire ou parlementaire.",
+          "source_section_page": 22,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5380",
+      "vote_date": "2008-11-30",
+      "source": "2008-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "prohibition",
+          "direction": "remove",
+          "target": "consumers",
+          "evidence_note": "Dépénaliser la consommation de cannabis et encadrer son offre et la publicité.",
+          "source_section_page": 32,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5390",
+      "vote_date": "2008-11-30",
+      "source": "2008-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "health_rule",
+          "direction": "preserve",
+          "target": "patients",
+          "evidence_note": "Donner une base légale à la politique fédérale existante des stupéfiants et de la prévention.",
+          "source_section_page": 46,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5400",
+      "vote_date": "2009-02-08",
+      "source": "2009-02",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "international",
+          "family": "international_agreement",
+          "direction": "extend",
+          "target": "workers",
+          "evidence_note": "Poursuivre l'accord de libre circulation avec l'UE sans limite et l'étendre à la Bulgarie et à la Roumanie.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5410",
+      "vote_date": "2009-05-17",
+      "source": "2009-05",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "institutional_rule",
+          "direction": "extend",
+          "target": "patients",
+          "evidence_note": "Constitutionnaliser la prise en compte des médecines complémentaires par les autorités.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5420",
+      "vote_date": "2009-05-17",
+      "source": "2009-05",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "security",
+          "family": "identity_rule",
+          "direction": "introduce",
+          "target": "travellers",
+          "evidence_note": "Introduire définitivement des données biométriques enregistrées dans les passeports suisses.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5430",
+      "vote_date": "2009-09-27",
+      "source": "2009-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "social_insurance",
+          "family": "tax_rule",
+          "direction": "increase",
+          "target": "consumers",
+          "evidence_note": "Augmenter temporairement les taux de TVA pour financer l'assurance-invalidité.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5440",
+      "vote_date": "2009-09-27",
+      "source": "2009-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "institutions",
+          "family": "political_rule",
+          "direction": "remove",
+          "target": "voters",
+          "evidence_note": "Supprimer l'instrument constitutionnel de l'initiative populaire générale.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5450",
+      "vote_date": "2009-11-29",
+      "source": "2009-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "transport",
+          "family": "public_financing",
+          "direction": "reallocate",
+          "target": "aviation",
+          "evidence_note": "Affecter une part de la fiscalité du carburant aérien au financement de tâches liées à l'aviation.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5460",
+      "vote_date": "2009-11-29",
+      "source": "2009-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "defense",
+          "family": "prohibition",
+          "direction": "introduce",
+          "target": "arms_industry",
+          "evidence_note": "Interdire les exportations suisses de matériel de guerre.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5470",
+      "vote_date": "2009-11-29",
+      "source": "2009-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "civil_rights",
+          "family": "prohibition",
+          "direction": "introduce",
+          "target": "religious_communities",
+          "evidence_note": "Interdire la construction de nouveaux minarets.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5480",
+      "vote_date": "2010-03-07",
+      "source": "2010-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "institutional_rule",
+          "direction": "extend",
+          "target": "researchers",
+          "evidence_note": "Donner à la Confédération les compétences nécessaires pour harmoniser la réglementation de la recherche sur l'être humain.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5490",
+      "vote_date": "2010-03-07",
+      "source": "2010-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "animals",
+          "family": "legal_rights",
+          "direction": "introduce",
+          "target": "cantons",
+          "evidence_note": "Obliger les cantons à instituer une représentation juridique des animaux maltraités en matière pénale.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5500",
+      "vote_date": "2010-03-07",
+      "source": "2010-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "pensions",
+          "family": "social_insurance_rule",
+          "direction": "decrease",
+          "target": "pensioners",
+          "evidence_note": "Abaisser le taux minimal de conversion des nouvelles rentes de prévoyance professionnelle à 6,4%.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5510",
+      "vote_date": "2010-09-26",
+      "source": "2010-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "social_insurance",
+          "family": "social_insurance_rule",
+          "direction": "mixed",
+          "target": "workers",
+          "evidence_note": "Assurance-chômage: cotisations salariales augmentées et prestations ciblées réduites.",
+          "source_section_page": 4,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5521",
+      "vote_date": "2010-11-28",
+      "source": "2010-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "migration",
+          "family": "immigration_rule",
+          "direction": "restrict",
+          "target": "migrants",
+          "evidence_note": "Retrait automatique du séjour en cas de certaines infractions ou d'abus d'aide sociale.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5522",
+      "vote_date": "2010-11-28",
+      "source": "2010-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "migration",
+          "family": "immigration_rule",
+          "direction": "restrict",
+          "target": "migrants",
+          "evidence_note": "Contre-projet parlementaire fondé sur la gravité des infractions et les protections constitutionnelles.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5530",
+      "vote_date": "2010-11-28",
+      "source": "2010-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "taxation",
+          "family": "tax_rule",
+          "direction": "increase",
+          "target": "wealthy_households",
+          "evidence_note": "Imposer des taux minimaux sur les revenus élevés et les grandes fortunes dans tous les cantons.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5540",
+      "vote_date": "2011-02-13",
+      "source": "2011-02",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "security",
+          "family": "security_rule",
+          "direction": "restrict",
+          "target": "gun_owners",
+          "evidence_note": "Exiger un besoin et des compétences pour acquérir et utiliser les armes, registre fédéral et dépôt des armes militaires à l'arsenal.",
+          "source_section_page": 4,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5550",
+      "vote_date": "2012-03-11",
+      "source": "2012-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "housing",
+          "family": "prohibition",
+          "direction": "introduce",
+          "target": "property_owners",
+          "evidence_note": "Limiter la part de résidences secondaires à 20% du parc de logements de chaque commune.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5560",
+      "vote_date": "2012-03-11",
+      "source": "2012-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "housing",
+          "family": "tax_rule",
+          "direction": "decrease",
+          "target": "homeowners",
+          "evidence_note": "Créer des avantages fiscaux pour l'épargne d'un premier logement et pour certains travaux d'économie d'énergie.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5570",
+      "vote_date": "2012-03-11",
+      "source": "2012-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "labour",
+          "family": "labour_rule",
+          "direction": "extend",
+          "target": "workers",
+          "evidence_note": "Établir un minimum légal de six semaines de congés payés.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5580",
+      "vote_date": "2012-03-11",
+      "source": "2012-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "institutions",
+          "family": "institutional_rule",
+          "direction": "introduce",
+          "target": "public_authorities",
+          "evidence_note": "Inscrire dans la Constitution le cadre des jeux d'argent et de l'utilisation d'une partie des recettes pour l'utilité publique.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5590",
+      "vote_date": "2012-03-11",
+      "source": "2012-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "commerce",
+          "family": "market_rule",
+          "direction": "restrict",
+          "target": "retailers",
+          "evidence_note": "Imposer des prix fixes de vente du livre aux libraires.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5600",
+      "vote_date": "2012-06-17",
+      "source": "2012-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "housing",
+          "family": "tax_rule",
+          "direction": "decrease",
+          "target": "homeowners",
+          "evidence_note": "Créer une déduction fiscale obligatoire pour l'épargne destinée à l'achat d'un premier logement.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5610",
+      "vote_date": "2012-06-17",
+      "source": "2012-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "institutions",
+          "family": "political_rule",
+          "direction": "extend",
+          "target": "voters",
+          "evidence_note": "Élargir les accords internationaux soumis au référendum obligatoire.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5620",
+      "vote_date": "2012-06-17",
+      "source": "2012-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "insurance_rule",
+          "direction": "extend",
+          "target": "patients",
+          "evidence_note": "Inscrire les réseaux intégrés de soins dans l'assurance obligatoire.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5630",
+      "vote_date": "2012-09-23",
+      "source": "2012-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "education",
+          "family": "institutional_rule",
+          "direction": "extend",
+          "target": "children",
+          "evidence_note": "Renforcer la formation musicale des enfants et des jeunes dans la Constitution.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5640",
+      "vote_date": "2012-09-23",
+      "source": "2012-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "housing",
+          "family": "tax_rule",
+          "direction": "decrease",
+          "target": "retired_homeowners",
+          "evidence_note": "Permettre aux propriétaires retraités de ne plus imposer la valeur locative de leur habitation, avec déductions réduites en contrepartie.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5650",
+      "vote_date": "2012-09-23",
+      "source": "2012-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "prohibition",
+          "direction": "extend",
+          "target": "workers",
+          "evidence_note": "Étendre l'interdiction de fumer à davantage de lieux de travail et d'espaces publics fermés.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5660",
+      "vote_date": "2012-11-25",
+      "source": "2012-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "animals",
+          "family": "health_rule",
+          "direction": "extend",
+          "target": "farmers",
+          "evidence_note": "Renforcer les bases de prévention et de surveillance des épizooties.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5670",
+      "vote_date": "2013-03-03",
+      "source": "2013-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "family",
+          "family": "institutional_rule",
+          "direction": "extend",
+          "target": "families",
+          "evidence_note": "Inscrire un devoir fédéral et cantonal de promouvoir la conciliation famille, travail et formation.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5680",
+      "vote_date": "2013-03-03",
+      "source": "2013-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "commerce",
+          "family": "corporate_rule",
+          "direction": "restrict",
+          "target": "companies",
+          "evidence_note": "Renforcer les pouvoirs des actionnaires dans la fixation des rémunérations de dirigeants de sociétés cotées.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5690",
+      "vote_date": "2013-03-03",
+      "source": "2013-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "housing",
+          "family": "planning_rule",
+          "direction": "restrict",
+          "target": "property_owners",
+          "evidence_note": "Réduire les zones à bâtir surdimensionnées et encadrer l'aménagement territorial.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5700",
+      "vote_date": "2013-06-09",
+      "source": "2013-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "institutions",
+          "family": "political_rule",
+          "direction": "reallocate",
+          "target": "voters",
+          "evidence_note": "Transférer du Parlement au peuple l'élection du Conseil fédéral.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5710",
+      "vote_date": "2013-06-09",
+      "source": "2013-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "migration",
+          "family": "immigration_rule",
+          "direction": "restrict",
+          "target": "asylum_seekers",
+          "evidence_note": "Accélérer les procédures d'asile et mettre en oeuvre les dispositions urgentes de la loi.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5720",
+      "vote_date": "2013-09-22",
+      "source": "2013-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "defense",
+          "family": "military_rule",
+          "direction": "remove",
+          "target": "military",
+          "evidence_note": "Abolir le service militaire obligatoire au profit d'une armée de volontaires.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5730",
+      "vote_date": "2013-09-22",
+      "source": "2013-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "health_rule",
+          "direction": "extend",
+          "target": "public_authorities",
+          "evidence_note": "Réviser le dispositif de surveillance et de lutte contre les maladies transmissibles.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5740",
+      "vote_date": "2013-09-22",
+      "source": "2013-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "labour",
+          "family": "labour_rule",
+          "direction": "extend",
+          "target": "retailers",
+          "evidence_note": "Assouplir les horaires nocturnes de travail dans certains commerces des stations-service.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5750",
+      "vote_date": "2013-11-24",
+      "source": "2013-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "labour",
+          "family": "labour_rule",
+          "direction": "restrict",
+          "target": "companies",
+          "evidence_note": "Limiter le salaire le plus haut à douze fois le plus bas dans une même entreprise.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5760",
+      "vote_date": "2013-11-24",
+      "source": "2013-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "family",
+          "family": "tax_rule",
+          "direction": "decrease",
+          "target": "families",
+          "evidence_note": "Élargir les déductions fiscales aux parents qui gardent personnellement leurs enfants.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5770",
+      "vote_date": "2013-11-24",
+      "source": "2013-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "transport",
+          "family": "tax_rule",
+          "direction": "increase",
+          "target": "road_users",
+          "evidence_note": "Porter la vignette autoroutière annuelle de 40 à 100 francs et créer une vignette de deux mois.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5780",
+      "vote_date": "2014-02-09",
+      "source": "2014-02",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "transport",
+          "family": "public_financing",
+          "direction": "extend",
+          "target": "rail_users",
+          "evidence_note": "Créer un financement et un aménagement durables de l'infrastructure ferroviaire.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5790",
+      "vote_date": "2014-02-09",
+      "source": "2014-02",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "insurance_rule",
+          "direction": "restrict",
+          "target": "patients",
+          "evidence_note": "Retirer les interruptions volontaires de grossesse de la couverture obligatoire sauf exceptions.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5800",
+      "vote_date": "2014-02-09",
+      "source": "2014-02",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "migration",
+          "family": "immigration_rule",
+          "direction": "restrict",
+          "target": "migrants",
+          "evidence_note": "Créer des plafonds quantitatifs d'autorisations pour limiter l'immigration.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5810",
+      "vote_date": "2014-05-18",
+      "source": "2014-05",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "institutional_rule",
+          "direction": "extend",
+          "target": "patients",
+          "evidence_note": "Inscrire la garantie de soins médicaux de base accessibles et de qualité dans la Constitution.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5820",
+      "vote_date": "2014-05-18",
+      "source": "2014-05",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "justice",
+          "family": "prohibition",
+          "direction": "introduce",
+          "target": "convicted_persons",
+          "evidence_note": "Priver durablement de certaines activités avec des mineurs des auteurs condamnés d'infractions sexuelles.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5830",
+      "vote_date": "2014-05-18",
+      "source": "2014-05",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "labour",
+          "family": "labour_rule",
+          "direction": "introduce",
+          "target": "workers",
+          "evidence_note": "Introduire un salaire minimal national légal de 22 francs par heure.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5840",
+      "vote_date": "2014-05-18",
+      "source": "2014-05",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "defense",
+          "family": "public_financing",
+          "direction": "introduce",
+          "target": "military",
+          "evidence_note": "Créer un fonds pour l'achat de 22 avions de combat Gripen.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5850",
+      "vote_date": "2014-09-28",
+      "source": "2014-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "taxation",
+          "family": "tax_rule",
+          "direction": "decrease",
+          "target": "restaurants",
+          "evidence_note": "Aligner le taux de TVA de la restauration sur celui des denrées alimentaires à emporter.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5860",
+      "vote_date": "2014-09-28",
+      "source": "2014-09",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "insurance_rule",
+          "direction": "reallocate",
+          "target": "insured",
+          "evidence_note": "Remplacer les caisses privées de l'assurance maladie obligatoire par une caisse publique.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5870",
+      "vote_date": "2014-11-30",
+      "source": "2014-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "taxation",
+          "family": "tax_rule",
+          "direction": "increase",
+          "target": "wealthy_households",
+          "evidence_note": "Supprimer l'imposition forfaitaire basée sur la dépense pour certaines personnes étrangères fortunées.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5880",
+      "vote_date": "2014-11-30",
+      "source": "2014-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "migration",
+          "family": "immigration_rule",
+          "direction": "restrict",
+          "target": "migrants",
+          "evidence_note": "Limiter l'accroissement annuel de population attribuable à l'immigration à 0,2%.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5890",
+      "vote_date": "2014-11-30",
+      "source": "2014-11",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "finance",
+          "family": "institutional_rule",
+          "direction": "restrict",
+          "target": "central_bank",
+          "evidence_note": "Imposer une part minimale de 20% d'or dans les actifs de la BNS, stocké en Suisse et inaliénable.",
+          "source_section_page": null,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5900",
+      "vote_date": "2015-03-08",
+      "source": "2015-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "family",
+          "family": "tax_rule",
+          "direction": "decrease",
+          "target": "families",
+          "evidence_note": "Exonérer les allocations pour enfant et de formation de l'impôt sur le revenu.",
+          "source_section_page": 4,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5910",
+      "vote_date": "2015-03-08",
+      "source": "2015-03",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "energy",
+          "family": "tax_rule",
+          "direction": "mixed",
+          "target": "consumers",
+          "evidence_note": "Remplacer la TVA par une taxe sur les énergies non renouvelables.",
+          "source_section_page": 14,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5920",
+      "vote_date": "2015-06-14",
+      "source": "2015-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "health",
+          "family": "institutional_rule",
+          "direction": "extend",
+          "target": "patients",
+          "evidence_note": "Adapter l'article constitutionnel pour permettre de développer le cadre légal du diagnostic préimplantatoire dans des cas définis.",
+          "source_section_page": 4,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5930",
+      "vote_date": "2015-06-14",
+      "source": "2015-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "education",
+          "family": "social_benefit",
+          "direction": "extend",
+          "target": "students",
+          "evidence_note": "Transférer la compétence des bourses du supérieur aux règles fédérales uniformes et garantir un niveau minimal d'aide.",
+          "source_section_page": 14,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5940",
+      "vote_date": "2015-06-14",
+      "source": "2015-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "taxation",
+          "family": "tax_rule",
+          "direction": "introduce",
+          "target": "wealthy_households",
+          "evidence_note": "Créer un impôt fédéral de 20% sur les successions et donations au-delà de deux millions, avec produit affecté à l'AVS et aux cantons.",
+          "source_section_page": 24,
+          "evidence_confidence": "high"
+        }
+      ]
+    },
+    {
+      "vote_id": "5950",
+      "vote_date": "2015-06-14",
+      "source": "2015-06",
+      "review_status": "first_pass_not_independently_reviewed",
+      "effects": [
+        {
+          "domain": "media",
+          "family": "public_financing",
+          "direction": "reallocate",
+          "target": "households",
+          "evidence_note": "Remplacer la redevance radio/TV liée à un appareil par une redevance générale.",
+          "source_section_page": 34,
+          "evidence_confidence": "high"
+        }
+      ]
+    }
+  ]
+}

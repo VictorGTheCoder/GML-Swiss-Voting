@@ -1,0 +1,59 @@
+{
+  "version": "municipal-v5-historical-mechanism-enrichment-20261123",
+  "declared_before_new_scores": true,
+  "task": "80 2005-2015 first-pass direct policy effects + existing V4 42 first-pass labels; separate broad mechanism, direction, domain and recipient",
+  "metric": "Equal-object mean within-object municipal MAE, percentage points",
+  "training_start": "1990-01-01",
+  "validation_windows": [
+    {
+      "name": "2016-2018",
+      "start": "2016-01-01",
+      "end": "2018-12-31"
+    },
+    {
+      "name": "2019-2020",
+      "start": "2019-01-01",
+      "end": "2020-12-31"
+    },
+    {
+      "name": "2021-2022",
+      "start": "2021-01-01",
+      "end": "2022-12-31"
+    }
+  ],
+  "regressor_parameters": {
+    "dimensions": 5,
+    "model": "xgboost",
+    "alpha": 51.733073028958565,
+    "n_estimators": 300,
+    "max_depth": 6,
+    "min_samples_leaf": 11,
+    "reg_lambda": 26.39595644479291,
+    "random_state": 20261123
+  },
+  "frozen_poll_parameters": {
+    "weight": 1,
+    "undecided_yes_fraction": 0,
+    "min_population_fraction": 0.9,
+    "trend_factor": 1,
+    "max_trend_adjustment": 0.15
+  },
+  "reference": "baseline_pca5",
+  "reference_expected_mae_pp": 7.618292700184025,
+  "reference_expected_structural_mae_pp": 9.42099474882755,
+  "historical_source_start": "2005-01-01",
+  "mechanism_min_support_in_training_objects": 3,
+  "variants": [
+    "baseline_pca5",
+    "v3_domain_multihot",
+    "baseline_coarse_mechanisms",
+    "baseline_coarse_all",
+    "v3_domains_coarse_mechanisms",
+    "v3_domains_coarse_all"
+  ],
+  "scored_population": "66 objects 23 dates and 138868 municipality/object rows, 2016–2022",
+  "exclusion": "2023+ targets never loaded, V3 candidate/forecast unchanged",
+  "treatment_of_unknown": "no annotation means all multihot zero and separate documented indicator, never negative inference",
+  "selection": "All six variants are fixed for development ablation; no re-tuning or promotion without prospective dates",
+  "strict_forecast_ready": false
+}
