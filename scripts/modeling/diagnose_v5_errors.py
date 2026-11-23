@@ -100,23 +100,24 @@ def make_oracles(clean, base):
         for vote, rows in base[base.window.eq(window)].groupby("vote_id"):
             idx = m.columns.get_indexer(rows.municipality_id.astype(str))
             valid = idx >= 0
-            if not valid.all():
-                raise ValueError("Unseen commune; explicit oracle mapping needed")
             y = rows.yes_share.to_numpy(float)
-            historic_mean = pca.mean_[idx]
+            historic_mean = np.zeros(len(y))
+            historic_mean[valid] = pca.mean_[idx[valid]]
             yy = y - y.mean()
             row = {
                 "vote_id": str(vote), "window": window,
+                "unknown_municipalities": int((~valid).sum()),
                 "constant_oracle_mae": float(np.abs(y - np.median(y)).mean() * 100),
             }
             for rank in ranks:
-                basis = pca.components_[:rank, idx].T
+                basis = np.zeros((len(y), rank))
+                basis[valid] = pca.components_[:rank, idx[valid]].T
                 if rank:
                     # Use observed centered outcomes solely to select oracle
                     # coefficients, using an intercept for the available communes.
                     design = np.column_stack([np.ones(len(y)), basis])
-                    beta = np.linalg.lstsq(design, yy - historic_mean, rcond=None)[0]
-                    profile = historic_mean + design @ beta
+                    beta = np.linalg.lstsq(design[valid], (yy - historic_mean)[valid], rcond=None)[0]
+                    profile = historic_mean + basis @ beta[1:]
                 else:
                     profile = historic_mean
                 r = (profile - yy) * 100
