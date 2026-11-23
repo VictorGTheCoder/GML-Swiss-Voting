@@ -1,0 +1,45 @@
+name: V8.1 stage 02 — national fusion
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/national_fusion_v81.py'
+      - 'tests/test_national_fusion_v81.py'
+      - '.github/workflows/national-fusion-v81.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  fusion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      NUMEXPR_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-experiments.txt
+      - run: python -m pytest -q tests/test_national_fusion_v81.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: poll-acquisition-v81
+          run-id: 45292731014
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/acquisition_v81
+      - uses: actions/download-artifact@v4
+        with:
+          name: inductive-profiles-v8
+          run-id: 45288455272
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/inductive_v8
+      - run: python -m scripts.modeling.municipal_v2 prepare --output reports/generated/fusion_v81_base
+      - run: python -m scripts.modeling.national_fusion_v81 --base reports/generated/fusion_v81_base --predictions reports/generated/inductive_v8 --acquisition reports/generated/acquisition_v81 --output reports/generated/national_v81
+      - uses: actions/upload-artifact@v4
+        with:
+          name: national-fusion-v81
+          path: reports/generated/national_v81
