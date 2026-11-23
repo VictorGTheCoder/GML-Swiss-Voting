@@ -72,6 +72,6 @@ def test_weighted_pca_preserves_object_means_and_shape():
     pca, heads = weighted_profile(fold, rows, np.array([.5, 1, 1.5]),
                                   {"dimensions": 1, "random_state": 1})
     np.testing.assert_allclose(heads[:, 0], [.3, .5, .5])
-    residual = rows.pivot(index="vote_id", columns="municipality_id", values="yes_share").to_numpy()
+    residual = rows.pivot(index="vote_id", columns="municipality_id", values="yes_share").to_numpy(copy=True)
     residual -= residual.mean(axis=1)[:, None]
     np.testing.assert_allclose(pca.mean_[None, :] + heads[:, 1:] @ pca.components_, residual, atol=1e-12)
