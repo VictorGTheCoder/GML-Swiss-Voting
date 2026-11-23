@@ -1,6 +1,6 @@
 {
   "mode": "retrospective_fixed_2026_geography",
-  "prepared_at_utc": "2026-11-23T12:44:07.957779+00:00",
+  "prepared_at_utc": "2026-11-23T13:18:24.819717+00:00",
   "preparation_code": {
     "scripts/modeling/municipal_v2.py": "6dcb9a74b03c300317270d52a052a5f72481e31ad9982f7e6ba09c68c862e6bb",
     "experiments/municipal_v2/protocol.json": "d479c22b8a53916332d9c645a39aa7457801ee1e46a64e91b51c0b79a2864084",
@@ -10,7 +10,7 @@
     "scripts/common/config.py": "b87a3761bd1dd1a3a6d5e93515fc1437f4f5fd417872a2e74512b142e8c580a0",
     "scripts/common/vote_keys.py": "2314981bd033c49ba9b31609b9fe5f62b17dab09f75c85cfccabec43f2781a33",
     "scripts/modeling/residual_voting_model.py": "8bb5cd930f8a5ad69af84716cafda1a98543bde9cc0b2f41f9a6abce95b3d201",
-    "scripts/modeling/poll_anchor.py": "20afc6719613235f3a2e30d0f82942365f779fd97bfdb632ee644c1e13dd13c0",
+    "scripts/modeling/poll_anchor.py": "df34038dfb35f194b3ea406dd15e4b93ae6f607ce745453b223797e5f89255f2",
     "scripts/modeling/direction_features_v2.py": "836ba9a07d0b6685140c0f8be4d1ec9e00358eed089839c9fcca663844721485",
     "scripts/modeling/experiment_control_v2.py": "8fcf0feab0757d77c539234a813aee0d77e4725c0c49a737b16f96595749bbe0",
     "scripts/modeling/object_profile_v2.py": "3a5b251f7900635ffb56ea14ee6394eb1857c1afaf01dbb3630ca124989dfafe",

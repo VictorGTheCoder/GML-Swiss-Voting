@@ -9,7 +9,7 @@ sources.
 
 ## 1. Population retenue et exclusions
 
-Le [manifeste V2 round2](../../reports/generated/municipal_v2_round3/data_manifest.json)
+Le [manifeste V2 round2](../../reports/generated/municipal_v2_round4/data_manifest.json)
 et sa [couverture annuelle](../../reports/generated/municipal_v2_round2/coverage_by_year.csv)
 décrivent une table à clé unique `municipality_id × vote_id` :
 
@@ -162,8 +162,8 @@ sondages et du dataset assemblé. Références de cette vérification :
 
 - Dataset V2 :
   `cdbe2331bf50d5aef94fd0b7c89ccaf36d0a8321ba00807fe2aad42bd691a85c`.
-- Manifeste `municipal_v2_round3/data_manifest.json` :
-  `540d3445b816b1eb7f575fb0d0a57c68b63deaed944693948fa784dbf6642716`.
+- Manifeste `municipal_v2_round4/data_manifest.json` :
+  `b5675ef7fb6e4e81c0bbee994484eb8d59190ae5348e53863942f2e76faa3347`.
 - [Capture OFS et provenance](../../data/external/ofs_metadata_20261123/metadata.json),
   [provenance des sondages](../../data/external/polls/provenance.json) et
   [preuves des sources de sondages](../../data/external/polls/source_evidence.json).
@@ -187,4 +187,4 @@ ne suffit pas à certifier un jeu de prévision historique strict.
   les URL des pages et tableaux effectivement utilisés figurent dans la
   provenance conservée avec la collecte.
 
-Le [manifeste final versionné](../../reports/datasets/municipal_v2_20261123/data_manifest.json) ajoute les variables de tendance entre vagues sans modifier la population ni les cibles. Les manifestes des trois séries sont conservés avec le rapport.
+Le [manifeste final versionné](../../reports/datasets/municipal_v2_20261123/data_manifest.json) ajoute les variables de tendance entre vagues sans modifier la population ni les cibles. Les manifestes des quatre séries (dont une répétition de portabilité) sont conservés avec le rapport.

@@ -1,9 +1,9 @@
 {
   "status_counts": {
-    "complete": 51,
+    "complete": 52,
     "interrupted": 2
   },
-  "total_trials": 53,
+  "total_trials": 54,
   "selected_run_id": "poll_trend_t100_u0-6afc7cff30",
   "selected_configuration": {
     "name": "poll_trend_t100_u0",
@@ -126,8 +126,8 @@
     "strict_forecast_ready": false,
     "train_rows": 642939,
     "train_objects": 306,
-    "frozen_signature": "7be60eb2aa4aa2b35ba3d740dbaa0c4a2fa298578d414312a2c9bdd70757ff4c",
-    "elapsed_seconds": 6.392770714999642
+    "frozen_signature": "d2b401021274f45b82aa9655c866c9d0ee8d032ff87d62a4aa65205305776060",
+    "elapsed_seconds": 6.5412397679901915
   },
   "candidate": {
     "configuration": {
@@ -233,7 +233,7 @@
       "joblib": "1.5.3",
       "threadpoolctl": "3.6.0"
     },
-    "frozen_signature": "7be60eb2aa4aa2b35ba3d740dbaa0c4a2fa298578d414312a2c9bdd70757ff4c"
+    "frozen_signature": "d2b401021274f45b82aa9655c866c9d0ee8d032ff87d62a4aa65205305776060"
   },
   "data": {
     "rows": 797596,

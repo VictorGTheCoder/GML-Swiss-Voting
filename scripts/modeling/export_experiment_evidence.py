@@ -157,8 +157,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--rounds", type=Path, nargs="+", default=[
         ROOT / "reports/generated/municipal_v2", ROOT / "reports/generated/municipal_v2_round2",
-        ROOT / "reports/generated/municipal_v2_round3"])
-    parser.add_argument("--selected-output", type=Path, default=ROOT / "reports/generated/municipal_v2_round3")
+        ROOT / "reports/generated/municipal_v2_round3", ROOT / "reports/generated/municipal_v2_round4"])
+    parser.add_argument("--selected-output", type=Path, default=ROOT / "reports/generated/municipal_v2_round4")
     parser.add_argument("--destination", type=Path, default=ROOT / "reports/datasets/municipal_v2_20261123")
     args = parser.parse_args()
     export(args.rounds, args.selected_output, args.destination)

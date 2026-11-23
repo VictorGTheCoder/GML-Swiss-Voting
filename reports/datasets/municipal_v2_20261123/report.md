@@ -4,7 +4,7 @@
 
 **L’objectif de 4 points de MAE n’est pas atteint.** Le candidat retenu obtient **8,12 points** sur le développement chronologique 2016–2022 et **9,12 points** sur la comparaison rétrospective 2023–2025. Il améliore les références évaluées, mais sa précision reste insuffisante pour revendiquer le seuil demandé.
 
-La campagne comporte **53 essais enregistrés : 51 terminés et deux interrompus**. Le [registre CSV](experiments.csv) synthétise configurations, états et métriques par fenêtre ; le [registre JSON complet](experiments.json) conserve également les versions logicielles et empreintes du code et des données. Les échecs incomplets ne reçoivent pas de score global. Des relances contrôlent la reproduction des résultats après les améliorations de traçabilité : 51 essais terminés ne signifient donc pas 51 architectures différentes.
+La campagne comporte **53 essais enregistrés : 51 terminés et deux interrompus**, auxquels s’ajoute **une répétition technique de portabilité**. Le registre final contient donc 54 exécutions, dont 52 terminées. Le [registre CSV](experiments.csv) synthétise configurations, états et métriques par fenêtre ; le [registre JSON complet](experiments.json) conserve également les versions logicielles et empreintes du code et des données. Les échecs incomplets ne reçoivent pas de score global. Des relances contrôlent la reproduction des résultats après les améliorations de traçabilité : 51 essais terminés ne signifient donc pas 51 architectures différentes.
 
 La sélection a été gelée et poussée dans GitHub **avant** l’ouverture de cette comparaison, au [commit de gel 1786bf3](https://github.com/VictorGTheCoder/GML-Swiss-Voting/commit/1786bf3492eaff6f5641fa72e5ffa350c25973f4). La période 2023–2025 avait déjà été examinée dans les travaux précédents : ce gel améliore la discipline de sélection, mais **ne rend pas ce test indépendant**. Le modèle conserve `strict_forecast_ready=false`.
 
@@ -66,7 +66,7 @@ Le choix de 1981 pour la préparation est intentionnel. L’[OFS indique une cou
 
 La même source OFS a été consultée le 23 novembre 2026 : elle classe toujours novembre 2025, mars 2026 et juin 2026 parmi les mois provisoires. L’exclusion des deux objets de novembre 2025 et des objets 2026 correspond donc à la source servie à cette date. La [capture d’en-tête](../../../data/external/ofs_metadata_20261123/README.md) conserve la preuve, sans recopier le tableau de résultats. Ce contrôle des métadonnées ne prouve pas l’identité de toutes les valeurs entre chaque édition.
 
-Les résultats communaux sont harmonisés sur la géographie du 1er janvier 2026. La disponibilité historique réelle des typologies, valeurs démographiques et autres éditions n’est pas entièrement attestée. Cette géographie fixe et ces incertitudes de publication empêchent de qualifier l’évaluation de prévision historique stricte. L’[audit des données](../../../docs/project/municipal_v2_data_audit.md) détaille ces limites ; les trois [manifestes de préparation](preparation_manifests/) sont conservés.
+Les résultats communaux sont harmonisés sur la géographie du 1er janvier 2026. La disponibilité historique réelle des typologies, valeurs démographiques et autres éditions n’est pas entièrement attestée. Cette géographie fixe et ces incertitudes de publication empêchent de qualifier l’évaluation de prévision historique stricte. L’[audit des données](../../../docs/project/municipal_v2_data_audit.md) détaille ces limites ; les quatre [manifestes de préparation](preparation_manifests/) sont conservés.
 
 ## 4. Donner un sens au « oui »
 
@@ -99,7 +99,7 @@ Le modèle retient une ligne d’apprentissage par objet pour le niveau global. 
 | Facteur de tendance | 1 |
 | Correction maximale de tendance | ±15 points |
 
-Les champs `alpha` et `min_samples_leaf` présents dans le registre commun de recherche concernent les autres familles de régresseurs ; ils ne sont pas des paramètres effectifs de cet XGBoost. La [configuration gelée complète](frozen_selection.json) conserve les choix et les signatures, et la [model card](candidate_model_card.json) décrit le candidat réentraîné.
+Les champs `alpha` et `min_samples_leaf` présents dans le registre commun de recherche concernent les autres familles de régresseurs ; ils ne sont pas des paramètres effectifs de cet XGBoost. Le [gel original avant comparaison](frozen_selection_original.json) conserve le choix initial ; la [configuration réexécutée pour portabilité](frozen_selection.json) conserve les mêmes paramètres avec l’empreinte du correctif, et la [model card](candidate_model_card.json) décrit le candidat réentraîné.
 
 Une commune inconnue du modèle de profils reçoit le niveau moyen prévu pour l’objet. L’usage prévu concerne la géographie communale connue. Les modèles locaux utilisant directement la démographie ont été comparés, mais ne sont pas retenus ; ce résultat ne démontre pas que la démographie est inutile dans toute autre architecture.
 
@@ -200,4 +200,12 @@ Le modèle évalué (entraînement avant 2023) et le candidat réentraîné (jus
 
 Les grandes sorties binaires — modèles, dataset préparé, prédictions de validation et entrées de la prévision future — sont livrées séparément du code. Le registre versionné, les manifestes, la configuration gelée et la model card permettent d’en vérifier les identités. Le [journal du 23 novembre](../../../docs/project/journal/2026-11-23.md) consigne les décisions et leur raison.
 
-Le paquet binaire `GML_municipal_v2_20261123.zip` fait 25016283 octets. Son SHA-256 est `cca9a0ba7788e00c6b67de841765f92fb6a8a514cc9ca9def58028d022288dfd` ; voir [le reçu des artefacts](binary_artifacts.json). Les champs nommés `signature` dans les manifestes sont des empreintes de contenu pour contrôler l’intégrité, pas des signatures authentifiant un auteur.
+Le paquet binaire `GML_municipal_v2_20261123.zip` fait 25016574 octets. Son SHA-256 est `072f4bdea6fbab398fa9b4f17fd25ca051d0d02720fde5ca849cefacc96bc37e` ; voir [le reçu des artefacts](binary_artifacts.json). Les champs nommés `signature` dans les manifestes sont des empreintes de contenu pour contrôler l’intégrité, pas des signatures authentifiant un auteur.
+
+## 10. Portabilité vérifiée après la campagne
+
+Les contrôles généraux GitHub ont trouvé une incompatibilité avec les vues NumPy non modifiables de pandas 3 et une fixture mélangeant entier et texte. Le correctif ajoute une copie explicite du tableau de sondage modifié et garde le code de test sous forme de chaîne. Aucun algorithme ni paramètre de modèle ne change.
+
+Une répétition intégrale de la configuration déjà choisie a été effectuée dans `municipal_v2_round4`, sans nouvelle sélection. Les prédictions de développement, de comparaison et du scrutin futur sont **identiques bit à bit**, tout comme le dataset et le fichier binaire du modèle. Le [constat de compatibilité](compatibility_verification.json) lie les deux empreintes de configuration. Les métadonnées livrées avec le modèle correspondent au correctif ; le gel précomparaison et la capture prospective d’origine sont conservés. Cette répétition ne constitue ni un nouveau test indépendant ni un progrès de précision.
+
+Les trois jobs GitHub — tests Ubuntu, tests Windows et modèles avec versions verrouillées — ont ensuite réussi sur le [correctif de portabilité](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45182557773). Le guide [pandas sur la migration Copy-on-Write](https://pandas.pydata.org/docs/user_guide/migration.html) décrit cette évolution des vues NumPy.

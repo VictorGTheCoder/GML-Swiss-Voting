@@ -105,7 +105,7 @@
       "sha256": "2a5c6f0e953601cc92cd523fa14c67b8ce549f2cbecdbb8ce68ae647e45f9289"
     }
   },
-  "data_manifest_sha256": "540d3445b816b1eb7f575fb0d0a57c68b63deaed944693948fa784dbf6642716",
+  "data_manifest_sha256": "b5675ef7fb6e4e81c0bbee994484eb8d59190ae5348e53863942f2e76faa3347",
   "code": {
     "scripts/modeling/municipal_v2.py": "6dcb9a74b03c300317270d52a052a5f72481e31ad9982f7e6ba09c68c862e6bb",
     "experiments/municipal_v2/protocol.json": "d479c22b8a53916332d9c645a39aa7457801ee1e46a64e91b51c0b79a2864084",
@@ -115,7 +115,7 @@
     "scripts/common/config.py": "b87a3761bd1dd1a3a6d5e93515fc1437f4f5fd417872a2e74512b142e8c580a0",
     "scripts/common/vote_keys.py": "2314981bd033c49ba9b31609b9fe5f62b17dab09f75c85cfccabec43f2781a33",
     "scripts/modeling/residual_voting_model.py": "8bb5cd930f8a5ad69af84716cafda1a98543bde9cc0b2f41f9a6abce95b3d201",
-    "scripts/modeling/poll_anchor.py": "20afc6719613235f3a2e30d0f82942365f779fd97bfdb632ee644c1e13dd13c0",
+    "scripts/modeling/poll_anchor.py": "df34038dfb35f194b3ea406dd15e4b93ae6f607ce745453b223797e5f89255f2",
     "scripts/modeling/direction_features_v2.py": "836ba9a07d0b6685140c0f8be4d1ec9e00358eed089839c9fcca663844721485",
     "scripts/modeling/experiment_control_v2.py": "8fcf0feab0757d77c539234a813aee0d77e4725c0c49a737b16f96595749bbe0",
     "scripts/modeling/object_profile_v2.py": "3a5b251f7900635ffb56ea14ee6394eb1857c1afaf01dbb3630ca124989dfafe",
@@ -136,5 +136,5 @@
   "comparison_is_independent": false,
   "comparison_explanation": "2023-2025 outcomes were already consulted in prior project experiments",
   "strict_forecast_ready": false,
-  "signature": "7be60eb2aa4aa2b35ba3d740dbaa0c4a2fa298578d414312a2c9bdd70757ff4c"
+  "signature": "d2b401021274f45b82aa9655c866c9d0ee8d032ff87d62a4aa65205305776060"
 }
