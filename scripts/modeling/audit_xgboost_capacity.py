@@ -17,9 +17,9 @@ import pandas as pd
 from sklearn.decomposition import PCA
 from threadpoolctl import threadpool_limits
 
-from scripts.common.config import ROOT
 from scripts.modeling.object_profile_v2 import ObjectProfileRegressor
 from scripts.modeling.poll_anchor import PollAnchoredRegressor
+from scripts.modeling.semantic_poll_comparison_v4 import V3_PLAN, sha
 from scripts.modeling.semantic_training_v5 import (
     CURRENT_POLLS,
     EXTRAS,
@@ -31,7 +31,6 @@ from scripts.modeling.semantic_training_v5 import (
     fold_features,
     prepare_data,
 )
-from scripts.modeling.semantic_poll_comparison_v4 import V3_PLAN, sha
 
 # Declared before running: a capacity sweep, then one-at-a-time changes to
 # regularization, leaf support and learning rate. No adaptive tuning.
