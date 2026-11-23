@@ -1,0 +1,31 @@
+name: V8.1 stage 01 — audit and acquire polls
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/poll_acquisition_v81.py'
+      - 'tests/test_poll_acquisition_v81.py'
+      - 'data/external/polls_v81/**'
+      - '.github/workflows/poll-acquisition-v81.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy pandas pyarrow requests scipy scikit-learn pytest threadpoolctl
+      - run: python -m pytest -q tests/test_poll_acquisition_v81.py
+      - run: >-
+          python -m scripts.modeling.poll_acquisition_v81
+          --output reports/generated/poll_acquisition_v81
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: poll-acquisition-v81
+          path: reports/generated/poll_acquisition_v81/
+          if-no-files-found: warn
