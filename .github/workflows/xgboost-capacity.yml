@@ -1,0 +1,51 @@
+name: XGBoost capacity audit
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/audit_xgboost_capacity.py'
+      - 'tests/test_xgboost_capacity.py'
+      - '.github/workflows/xgboost-capacity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  capacity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        features: [v3, v5]
+    env:
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+      NUMEXPR_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements-experiments.txt
+      - name: Verify capacity diagnostics
+        run: python -m pytest -q tests/test_xgboost_capacity.py
+      - name: Prepare original historical snapshot
+        run: >-
+          python -m scripts.modeling.municipal_v2 prepare
+          --output reports/generated/capacity_base
+      - name: Audit training and validation at fixed checkpoints
+        run: >-
+          python -m scripts.modeling.audit_xgboost_capacity
+          --base reports/generated/capacity_base
+          --feature-set ${{ matrix.features }}
+          --output reports/generated/capacity_${{ matrix.features }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: xgboost-capacity-${{ matrix.features }}
+          path: reports/generated/capacity_${{ matrix.features }}/
+          if-no-files-found: warn
+          retention-days: 30
