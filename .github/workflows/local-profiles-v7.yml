@@ -1,0 +1,51 @@
+name: V7 local profiles and representative communes
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/local_profiles_v7.py'
+      - 'tests/test_local_profiles_v7.py'
+      - '.github/workflows/local-profiles-v7.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  profiles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [local, similarity, representative]
+    env:
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+      NUMEXPR_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements-experiments.txt
+      - name: Test training-only rankings and weighted reconstruction
+        run: python -m pytest -q tests/test_local_profiles_v7.py
+      - name: Prepare historical data
+        run: >-
+          python -m scripts.modeling.municipal_v2 prepare
+          --output reports/generated/local_v7_base
+      - name: Evaluate fixed hypotheses
+        run: >-
+          python -m scripts.modeling.local_profiles_v7
+          --base reports/generated/local_v7_base
+          --suite ${{ matrix.suite }}
+          --output reports/generated/local_v7_${{ matrix.suite }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: local-profiles-v7-${{ matrix.suite }}
+          path: reports/generated/local_v7_${{ matrix.suite }}/
+          if-no-files-found: warn
+          retention-days: 30
