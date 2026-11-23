@@ -219,7 +219,7 @@ def run(base, extras_path, annotations_path, polls_base, polls_historical, plan_
              V3_PLAN, plan_path, Path(__file__)]
     manifest_out = {
         "status": "running", "protocol": plan,
-        "evidence_sha256": {str(p.relative_to(ROOT)): sha(p) for p in paths},
+        "evidence_sha256": {str(p.resolve().relative_to(ROOT)): sha(p) for p in paths},
         "same_population_for_all_variants": True,
         "comparison_targets_loaded": False,
         "forecast_ready": False,
