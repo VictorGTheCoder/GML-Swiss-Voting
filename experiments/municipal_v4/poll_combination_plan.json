@@ -1,0 +1,57 @@
+{
+  "version": "municipal-v4-expanded-polls-comparison-20261123",
+  "purpose": "Apply the V3 full historical polling collection and the exact frozen V3 trend anchor to matched V4 structural variants",
+  "declared_before_new_scores": true,
+  "metric": "equal-weighted mean of within-object municipal MAE in percentage points",
+  "reference": "baseline_pca5",
+  "reference_expected_mae_pp": 7.6183,
+  "reference_expected_structural_mae_pp": 9.421,
+  "training_start": "1990-01-01",
+  "validation_windows": [
+    {
+      "name": "2016-2018",
+      "start": "2016-01-01",
+      "end": "2018-12-31"
+    },
+    {
+      "name": "2019-2020",
+      "start": "2019-01-01",
+      "end": "2020-12-31"
+    },
+    {
+      "name": "2021-2022",
+      "start": "2021-01-01",
+      "end": "2022-12-31"
+    }
+  ],
+  "regressor_parameters": {
+    "dimensions": 5,
+    "model": "xgboost",
+    "alpha": 51.733073028958565,
+    "n_estimators": 300,
+    "max_depth": 6,
+    "min_samples_leaf": 11,
+    "reg_lambda": 26.39595644479291,
+    "random_state": 20261123
+  },
+  "frozen_poll_parameters": {
+    "weight": 1,
+    "undecided_yes_fraction": 0,
+    "min_population_fraction": 0.9,
+    "trend_factor": 1,
+    "max_trend_adjustment": 0.15
+  },
+  "variants": [
+    "baseline_pca5",
+    "v3_domain_multihot",
+    "canonical_leaf",
+    "canonical_hierarchy",
+    "v3_domain_plus_effects",
+    "canonical_leaf_plus_effects"
+  ],
+  "fixed_population": "66 voting objects, 23 complete dates, 138868 municipalities x objects, 2016-2022",
+  "outcomes_from_2023_onward_forbidden": true,
+  "data_selection": "No new source collection or optimization. The V3 original and audited historical poll CSV are combined exactly as in enrichment_experiment_v3.polling_comparison. All variants retain objects with no polls.",
+  "selection_policy": "Exploratory development ablation; report all scores including worse variants and do not promote without fresh prospective validation.",
+  "strict_forecast_ready": false
+}
