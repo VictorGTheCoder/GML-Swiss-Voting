@@ -1,0 +1,7 @@
+{
+  "archive_name": "GML_municipal_v2_20261123.zip",
+  "size_bytes": 25016283,
+  "sha256": "cca9a0ba7788e00c6b67de841765f92fb6a8a514cc9ca9def58028d022288dfd",
+  "contents": "Serialized candidate and evaluated model, prepared dataset, selected predictions, future input features, Optuna state, per-object/date metrics for completed trials",
+  "source_branch": "experiment/municipal-v2-2026-11-23"
+}

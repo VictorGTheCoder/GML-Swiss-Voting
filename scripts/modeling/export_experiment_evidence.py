@@ -27,6 +27,9 @@ def export(rounds, selected_output, destination):
     records, flat = [], []
     for folder in rounds:
         folder = Path(folder)
+        manifests = destination / "preparation_manifests"
+        manifests.mkdir(exist_ok=True)
+        shutil.copyfile(folder / "data_manifest.json", manifests / f"{folder.name}.json")
         for path in sorted((folder / "trials").glob("*/trial.json")):
             record = json.loads(path.read_text())
             record["series"] = folder.name
@@ -139,7 +142,10 @@ def export(rounds, selected_output, destination):
                 fontsize=9, color="#4c5968")
     figure.tight_layout(rect=(0, .09, 1, 1))
     for suffix in ("png", "svg"):
-        figure.savefig(destination / f"model_comparison.{suffix}", dpi=180, facecolor="white")
+        path = destination / f"model_comparison.{suffix}"
+        figure.savefig(path, dpi=180, facecolor="white")
+        if suffix == "svg":
+            path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines()) + "\n")
     plt.close(figure)
     print(json.dumps({"destination": str(destination), "total_trials": len(ledger),
                       "development_mae_pp": chosen["metrics"]["macro_object_mae_pp"],

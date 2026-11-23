@@ -9,7 +9,7 @@ sources.
 
 ## 1. Population retenue et exclusions
 
-Le [manifeste V2 round2](../../reports/generated/municipal_v2_round2/data_manifest.json)
+Le [manifeste V2 round2](../../reports/generated/municipal_v2_round3/data_manifest.json)
 et sa [couverture annuelle](../../reports/generated/municipal_v2_round2/coverage_by_year.csv)
 décrivent une table à clé unique `municipality_id × vote_id` :
 
@@ -161,9 +161,9 @@ Le manifeste conserve les empreintes des cinq parquets sources, du fichier de
 sondages et du dataset assemblé. Références de cette vérification :
 
 - Dataset V2 :
-  `921d1f8e09b3cafe0db318b0eab95f5b459e31ae35c5fae624a33b42c92ea1f5`.
-- Manifeste `municipal_v2_round2/data_manifest.json` :
-  `2ae8e63f0ec2c650e25631de1d0ba11675e8cb4fda65986e85d213ce076a6ac8`.
+  `cdbe2331bf50d5aef94fd0b7c89ccaf36d0a8321ba00807fe2aad42bd691a85c`.
+- Manifeste `municipal_v2_round3/data_manifest.json` :
+  `540d3445b816b1eb7f575fb0d0a57c68b63deaed944693948fa784dbf6642716`.
 - [Capture OFS et provenance](../../data/external/ofs_metadata_20261123/metadata.json),
   [provenance des sondages](../../data/external/polls/provenance.json) et
   [preuves des sources de sondages](../../data/external/polls/source_evidence.json).
@@ -186,3 +186,5 @@ ne suffit pas à certifier un jeu de prévision historique strict.
 - [gfs.bern — sitemap des publications](https://cockpit.gfsbern.ch/de/wp-sitemap-posts-cpt_cockpit-1.xml) ;
   les URL des pages et tableaux effectivement utilisés figurent dans la
   provenance conservée avec la collecte.
+
+Le [manifeste final versionné](../../reports/datasets/municipal_v2_20261123/data_manifest.json) ajoute les variables de tendance entre vagues sans modifier la population ni les cibles. Les manifestes des trois séries sont conservés avec le rapport.

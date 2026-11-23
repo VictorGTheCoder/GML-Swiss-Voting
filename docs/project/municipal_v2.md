@@ -254,7 +254,7 @@ python -m scripts.modeling.experiment_control_v2 compare --output "$experiment_d
 python -m scripts.modeling.experiment_control_v2 fit --output "$experiment_dir"
 ```
 
-`freeze` signe la sélection, les sources, le code et l'environnement.
+`freeze` lie la sélection, les sources, le code et l'environnement par une empreinte SHA-256.
 `compare` enregistre la comparaison 2023–2025, ses prédictions et le modèle
 évalué dans `comparison/`. Une comparaison terminée n'est pas rouverte pour
 choisir une autre configuration. Son bootstrap rééchantillonne des dates

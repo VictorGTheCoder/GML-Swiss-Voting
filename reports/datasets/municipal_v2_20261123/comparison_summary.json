@@ -1,0 +1,57 @@
+{
+  "selected_run_id": "poll_trend_t100_u0-6afc7cff30",
+  "metrics": {
+    "macro_object_mae_pp": 9.124374301969302,
+    "row_mae_pp": 9.124374301969302,
+    "macro_date_mae_pp": 9.074183943977232,
+    "median_row_ae_pp": 8.030360170397728,
+    "p90_row_ae_pp": 17.978233064167675,
+    "within_4pp_share": 0.24776986012140406,
+    "majority_accuracy": 0.7455001319609396,
+    "rows": 37890,
+    "objects": 18,
+    "dates": 7
+  },
+  "reference_metrics": {
+    "constant": {
+      "macro_object_mae_pp": 14.651136199325347,
+      "row_mae_pp": 14.651136199325347,
+      "macro_date_mae_pp": 15.91627790917212,
+      "median_row_ae_pp": 13.345215550852178,
+      "p90_row_ae_pp": 28.169126097917307,
+      "within_4pp_share": 0.14143573502243337,
+      "majority_accuracy": 0.5523884930060702,
+      "rows": 37890,
+      "objects": 18,
+      "dates": 7
+    },
+    "history": {
+      "macro_object_mae_pp": 14.606547905639268,
+      "row_mae_pp": 14.606547905639271,
+      "macro_date_mae_pp": 15.865909886472394,
+      "median_row_ae_pp": 13.56508177355981,
+      "p90_row_ae_pp": 28.17697234287633,
+      "within_4pp_share": 0.14919503826867248,
+      "majority_accuracy": 0.5434679334916864,
+      "rows": 37890,
+      "objects": 18,
+      "dates": 7
+    }
+  },
+  "uncertainty": {
+    "status": "descriptive_cluster_bootstrap",
+    "lower_95_pp": 7.773196425795726,
+    "upper_95_pp": 10.60496508706081,
+    "replicates": 2000,
+    "unit": "whole voting date",
+    "dates": 7,
+    "limit": "Does not undo prior test exposure, selection optimism, or vintage uncertainty"
+  },
+  "goal_4pp_observed": false,
+  "comparison_is_independent": false,
+  "strict_forecast_ready": false,
+  "train_rows": 642939,
+  "train_objects": 306,
+  "frozen_signature": "7be60eb2aa4aa2b35ba3d740dbaa0c4a2fa298578d414312a2c9bdd70757ff4c",
+  "elapsed_seconds": 6.392770714999642
+}
