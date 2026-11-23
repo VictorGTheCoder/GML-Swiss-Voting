@@ -1,0 +1,50 @@
+name: V8 walk-forward poll calibration
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/poll_calibration_v8.py'
+      - 'tests/test_poll_calibration_v8.py'
+      - '.github/workflows/poll-calibration-v8.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  calibration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - run: python -m pip install -r requirements-experiments.txt
+      - run: python -m pytest -q tests/test_poll_calibration_v8.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: inductive-profiles-v8
+          run-id: 45288455272
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/inductive_v8
+      - run: >-
+          python -m scripts.modeling.municipal_v2 prepare
+          --output reports/generated/calibration_v8_base
+      - run: >-
+          python -m scripts.modeling.poll_calibration_v8
+          --base reports/generated/calibration_v8_base
+          --predictions reports/generated/inductive_v8
+          --regional data/external/polls_regional_v8/regional_polls.csv
+          --output reports/generated/calibration_v8
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: poll-calibration-v8
+          path: reports/generated/calibration_v8/
+          if-no-files-found: warn
+          retention-days: 30
