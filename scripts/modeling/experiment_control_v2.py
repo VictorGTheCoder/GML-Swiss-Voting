@@ -100,6 +100,9 @@ def freeze(output, run_id):
         raise ValueError("Environment changed since the selected trial")
     if selected["data_manifest_sha256"] != digest(output / "data_manifest.json"):
         raise ValueError("Data manifest changed since the selected trial")
+    current_protocol = json.loads(PROTOCOL.read_text())
+    if selected.get("protocol") != current_protocol:
+        raise ValueError("Selected trial used a different actual protocol")
     frozen = {"selected_run_id": run_id, "configuration": selected["configuration"],
               "development_metrics": selected["metrics"], "protocol": json.loads(PROTOCOL.read_text()),
               "data_sha256": manifest["dataset_sha256"], "sources": manifest["sources"],
@@ -193,8 +196,8 @@ def compare(output):
         "comparison_is_independent": False, "strict_forecast_ready": False,
         "train_rows": len(train), "train_objects": int(train.vote_id.nunique()),
         "frozen_signature": frozen["signature"], "elapsed_seconds": time.monotonic() - start}
-    write_json(destination / "summary.json", summary)
     joblib.dump(model, destination / "evaluated_model.joblib", compress=3)
+    write_json(destination / "summary.json", summary)
     write_json(status_path, {"status": "complete", "frozen_signature": frozen["signature"]})
     print(json.dumps(summary, ensure_ascii=False, indent=2), flush=True)
 
@@ -222,12 +225,12 @@ def fit_candidate(output):
         "training_rows": len(train), "training_objects": int(train.vote_id.nunique()),
         "model_sha256": digest(path), "features": model.numeric + model.categorical,
         "strict_forecast_ready": False, "mode": manifest["mode"],
-        "input_contract": "Prepared municipality-object features with audited correspondence; no outcome needed for predict",
+        "input_contract": "Prepared municipality-object features with audited correspondence; no outcome needed for predict. Poll anchoring and centered residuals require a complete municipal population batch for each object",
         "limitation": "Research candidate; historical vintages unverified, title directions are conservative proxies. Performance of the all-data refit is not separately measured",
         "environment": environment(), "frozen_signature": frozen["signature"]}
     write_json(output / "candidate_model_card.json", card)
     # Verify the actual serialized object on target-free inputs.
-    sample = train.tail(20).drop(columns="yes_share")
+    sample = train.loc[train.vote_id.eq(train.vote_id.iloc[-1])].drop(columns="yes_share")
     reloaded = joblib.load(path)
     np.testing.assert_allclose(model.predict(sample), reloaded.predict(sample), rtol=0, atol=1e-12)
     print(json.dumps(card, ensure_ascii=False, indent=2), flush=True)

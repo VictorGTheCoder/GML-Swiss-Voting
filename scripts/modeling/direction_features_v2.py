@@ -12,17 +12,16 @@ as-of admission remains the caller's responsibility.
 """
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
 import hashlib
 import json
 import re
 import unicodedata
+from dataclasses import asdict, dataclass
 
 import numpy as np
 import pandas as pd
 
 from scripts.common.vote_keys import ofs_keys
-
 
 VERSION = "title_direction_v2.1"
 SOURCE_URL = "https://swissvotes.ch/page/dataset"

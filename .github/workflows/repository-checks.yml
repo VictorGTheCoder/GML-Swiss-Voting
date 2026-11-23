@@ -24,3 +24,30 @@ jobs:
         run: python -m ruff check scripts tests
       - name: Run all tests (no source downloads)
         run: python -m pytest tests -q
+
+  municipal-experiments:
+    runs-on: ubuntu-latest
+    env:
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - name: Install pinned modeling dependencies
+        run: python -m pip install -r requirements-experiments.txt
+      - name: Verify actual estimators and prediction boundaries
+        run: >-
+          python -m pytest -q
+          tests/test_municipal_v2.py
+          tests/test_political_features_v2.py
+          tests/test_direction_features_v2.py
+          tests/test_object_profile_v2.py
+          tests/test_residual_voting_model.py
+          tests/test_collect_poll_features.py
+          tests/test_poll_anchor.py
+          tests/test_forecast_municipal.py

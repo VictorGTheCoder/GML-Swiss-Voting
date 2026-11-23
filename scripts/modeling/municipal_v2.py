@@ -7,6 +7,7 @@ Run ``python -m scripts.modeling.municipal_v2 --help`` for the staged CLI.
 from __future__ import annotations
 
 import argparse
+import gc
 import hashlib
 import json
 import platform
@@ -66,9 +67,11 @@ def source_hashes():
 
 def code_hashes():
     paths = [Path(__file__), PROTOCOL,
-             ROOT / "scripts/integration/build_modeling_dataset.py"]
+             ROOT / "scripts/integration/build_modeling_dataset.py",
+             ROOT / "scripts/modeling/residual_voting_model.py",
+             ROOT / "scripts/modeling/poll_anchor.py"]
     paths += sorted((ROOT / "scripts/modeling").glob("*_v2.py"))
-    return {str(p.relative_to(ROOT)): digest(p) for p in dict.fromkeys(paths)}
+    return {str(p.relative_to(ROOT)): digest(p) for p in dict.fromkeys(paths) if p.is_file()}
 
 
 def environment():
@@ -94,6 +97,13 @@ def prepare(output):
     table["log_population"] = np.log1p(table.statpop_pop_total.astype(float))
     table, political = add_political_features(table, frames["swissvotes"])
     table, direction = add_direction_features(table, frames["swissvotes"])
+    polls = None
+    poll_path = ROOT / "data/external/polls/srg_gfs_polls.csv"
+    if poll_path.exists():
+        from scripts.modeling.poll_anchor import add_poll_features
+        table, polls = add_poll_features(table, pd.read_csv(poll_path, dtype={"vote_key": "string"}))
+        polls["path"] = str(poll_path.relative_to(ROOT))
+        polls["sha256"] = digest(poll_path)
     if table.duplicated(KEYS).any() or not table.yes_share.between(0, 1).all():
         raise ValueError("Invalid target or duplicate municipal-object observations")
     if table.vote_date.max() >= pd.Timestamp("2026-01-01"):
@@ -102,7 +112,7 @@ def prepare(output):
     manifest = {"mode": "retrospective_fixed_2026_geography",
                 "strict_forecast_ready": False, "sources": source_hashes(),
                 "dataset_sha256": digest(output / "dataset.parquet"),
-                "audit": audit, "political": political, "direction": direction,
+                "audit": audit, "political": political, "direction": direction, "polls": polls,
                 "baseline_numeric": BASE_NUMERIC, "baseline_categorical": BASE_CATEGORICAL,
                 "rows": len(table), "objects": int(table.vote_id.nunique()),
                 "dates": int(table.vote_date.nunique()),
@@ -124,6 +134,8 @@ def read_data(output):
         raise ValueError("Prepared dataset changed; rebuild and declare a new experiment")
     if source_hashes() != manifest["sources"]:
         raise ValueError("Sources changed since preparation")
+    if manifest.get("polls") and digest(ROOT / manifest["polls"]["path"]) != manifest["polls"]["sha256"]:
+        raise ValueError("Poll snapshot changed since preparation")
     return pd.read_parquet(output / "dataset.parquet"), manifest
 
 
@@ -201,13 +213,17 @@ class SafeSelectKBest(TransformerMixin, BaseEstimator):
         k = "all" if self.k == "all" else min(int(self.k), x.shape[1])
         if k != "all" and k <= 0:
             raise ValueError("SelectKBest k must be positive or all")
-        self.selector_ = SelectKBest(f_regression, k=k).fit(x, y)
+        self.n_features_in_ = x.shape[1]
+        self.selector_ = None if k == "all" else SelectKBest(f_regression, k=k).fit(x, y)
         return self
 
     def transform(self, x):
-        return self.selector_.transform(x)
+        return x if self.selector_ is None else self.selector_.transform(x)
 
     def get_feature_names_out(self, input_features=None):
+        if self.selector_ is None:
+            return np.asarray(input_features if input_features is not None
+                              else [f"x{i}" for i in range(self.n_features_in_)], dtype=object)
         return self.selector_.get_feature_names_out(input_features)
 
 
@@ -236,13 +252,30 @@ class FittedModel:
             return np.full(len(frame), self.model)
         if self.kind == "history":
             return frame.history_mean_yes.fillna(self.model).to_numpy(float)
-        if self.kind == "profile":
+        if self.kind in ("profile", "hierarchical", "poll_anchor"):
             return np.clip(self.model.predict(frame), 0, 1)
         matrix = model_frame(frame, self.numeric, self.categorical)
         return np.clip(self.model.predict(matrix), 0, 1)
 
 
+def validate_config(config):
+    """Reject settings that an estimator would silently ignore."""
+    kind = config["model"]
+    if config.get("blocks", "base") not in {"base", "political", "direction"}:
+        raise ValueError("Unknown feature block")
+    if kind not in {"ridge", "xgboost"} and config.get("select_k", "all") != "all":
+        raise ValueError(f"select_k is not implemented for {kind}")
+    if kind in {"profile", "hierarchical", "poll_anchor"} and config.get("half_life_years") is not None:
+        raise ValueError(f"half_life_years is not implemented for {kind}")
+    if kind == "poll_anchor":
+        base = config["base"]
+        validate_config(base)
+        if pd.Timestamp(config.get("train_start", "2012-01-01")) > pd.Timestamp(base.get("train_start", "2012-01-01")):
+            raise ValueError("poll_anchor train_start would truncate the declared base training history")
+
+
 def fit_model(train, config, manifest):
+    validate_config(config)
     kind = config["model"]
     numeric, categorical = feature_columns(config, manifest)
     y = train.yes_share.to_numpy(float)
@@ -250,18 +283,36 @@ def fit_model(train, config, manifest):
     fallback = float(train.groupby("vote_id").yes_share.mean().mean())
     if kind in ("constant", "history"):
         return FittedModel(fallback, [], [], kind, config, [])
-    if kind == "profile":
+    if kind == "poll_anchor":
+        from scripts.modeling.poll_anchor import PollAnchoredRegressor
+        base_config = config["base"]
+        base_train = train.loc[train.vote_date.ge(base_config.get("train_start", "2012-01-01"))]
+        base_model = fit_model(base_train, base_config, manifest)
+        model = PollAnchoredRegressor(base_model=base_model, **config.get("params", {})).fit(base_train)
+        poll_numeric = ["poll_yes_share", "poll_no_share", "poll_undecided_share",
+                        "poll_available", "poll_population_weight"]
+        return FittedModel(model, base_model.numeric + poll_numeric, base_model.categorical,
+                           kind, config, base_model.selected_features + poll_numeric)
+    if kind in ("profile", "hierarchical"):
         from scripts.modeling.object_profile_v2 import ObjectProfileRegressor
-        # Only fields proven constant within objects are eligible, selected from
-        # the explicit source allowlist rather than from arbitrary numeric data.
+        # Object scope comes from explicit source contracts, not incidental
+        # constancy of a local feature in one training sample.
         obj_numeric = [c for c in manifest["political"]["object_numeric_features"] if c in numeric]
         obj_numeric += [c for c in manifest["direction"]["numeric_features"] if c in numeric]
         obj_cat = [c for c in categorical if c.startswith("object_")]
         obj_cat += [c for c in manifest["political"]["object_categorical_features"] if c in categorical]
-        model = ObjectProfileRegressor(object_features_numeric=obj_numeric,
-            object_features_categorical=obj_cat, **config.get("params", {}))
+        if kind == "profile":
+            model = ObjectProfileRegressor(object_features_numeric=obj_numeric,
+                object_features_categorical=obj_cat, **config.get("params", {}))
+        else:
+            from scripts.modeling.residual_voting_model import HierarchicalResidualRegressor
+            model = HierarchicalResidualRegressor(object_features_numeric=obj_numeric,
+                object_features_categorical=obj_cat, local_numeric=numeric,
+                local_categorical=categorical, **config.get("params", {}))
         model.fit(train)
-        return FittedModel(model, obj_numeric, obj_cat, "profile", config, obj_numeric + obj_cat)
+        selected = obj_numeric + obj_cat if kind == "profile" else numeric + categorical
+        return FittedModel(model, obj_numeric if kind == "profile" else numeric,
+                           obj_cat if kind == "profile" else categorical, kind, config, selected)
     x = model_frame(train, numeric, categorical)
     params = config.get("params", {})
     if kind == "catboost":
@@ -310,7 +361,7 @@ def metrics(predictions):
             "median_row_ae_pp": float(frame.absolute_error_pp.median()),
             "p90_row_ae_pp": float(frame.absolute_error_pp.quantile(.9)),
             "within_4pp_share": float(frame.absolute_error_pp.le(4).mean()),
-            "majority_accuracy": float((frame.yes_share.ge(.5) == frame.prediction.ge(.5)).mean()),
+            "majority_accuracy": float((frame.yes_share.gt(.5) == frame.prediction.gt(.5)).mean()),
             "rows": len(frame), "objects": len(objects), "dates": len(dates)}, objects, dates
 
 
@@ -318,6 +369,7 @@ def run_trial(config, data, manifest, protocol, output, *, hypothesis=""):
     """Persist successes and failures; every trial has its complete configuration."""
     output = Path(output)
     config_json = json.dumps(config, sort_keys=True)
+    protocol_hash = hashlib.sha256(json.dumps(protocol, sort_keys=True).encode()).hexdigest()
     run_id = config["name"] + "-" + hashlib.sha256(config_json.encode()).hexdigest()[:10]
     folder = output / "trials" / run_id
     folder.mkdir(parents=True, exist_ok=True)
@@ -325,6 +377,7 @@ def run_trial(config, data, manifest, protocol, output, *, hypothesis=""):
         prior = json.loads((folder / "trial.json").read_text())
         if (prior["data_sha256"] == manifest["dataset_sha256"] and prior["status"] == "complete"
                 and prior["code"] == code_hashes() and prior["environment"] == environment()
+                and prior.get("protocol_sha256") == protocol_hash
                 and prior["data_manifest_sha256"] == digest(output / "data_manifest.json")):
             print(f"CACHED {run_id} {prior['metrics']['macro_object_mae_pp']:.4f} pp", flush=True)
             return prior
@@ -333,6 +386,7 @@ def run_trial(config, data, manifest, protocol, output, *, hypothesis=""):
     record = {"run_id": run_id, "configuration": config, "hypothesis": hypothesis,
               "data_sha256": manifest["dataset_sha256"],
               "data_manifest_sha256": digest(output / "data_manifest.json"), "code": code_hashes(),
+              "protocol": protocol, "protocol_sha256": protocol_hash,
               "environment": environment(), "status": "running", "mode": manifest["mode"],
               "strict_forecast_ready": False, "folds": []}
     write_json(folder / "trial.json", record)
@@ -356,6 +410,8 @@ def run_trial(config, data, manifest, protocol, output, *, hypothesis=""):
             all_predictions.append(prediction)
             print(f"{run_id} {name}: {scored['macro_object_mae_pp']:.4f} pp; {len(model.selected_features)} features", flush=True)
             write_json(folder / "trial.json", record)
+            del model, train, evaluation
+            gc.collect()
         predictions = pd.concat(all_predictions, ignore_index=True)
         record["metrics"], objects, dates = metrics(predictions)
         predictions.to_parquet(folder / "predictions.parquet", index=False)
@@ -394,12 +450,17 @@ def baseline_configs():
 
 def leaderboard(output):
     records = []
+    current_code, current_environment = code_hashes(), environment()
+    manifest_path = Path(output) / "data_manifest.json"
+    manifest_hash = digest(manifest_path) if manifest_path.exists() else None
     for path in sorted((Path(output) / "trials").glob("*/trial.json")):
         trial = json.loads(path.read_text())
         if trial["status"] == "complete":
             records.append({"run_id": trial["run_id"], "model": trial["configuration"]["model"],
                 "blocks": trial["configuration"].get("blocks", "base"),
                 "train_start": trial["configuration"].get("train_start", "2012-01-01"),
+                "current_provenance": trial["code"] == current_code and trial["environment"] == current_environment
+                    and trial.get("data_manifest_sha256") == manifest_hash,
                 **trial["metrics"], "elapsed_seconds": trial["elapsed_seconds"]})
     result = pd.DataFrame(records).sort_values(["macro_object_mae_pp", "run_id"])
     result.to_csv(Path(output) / "leaderboard.csv", index=False)

@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "purpose": "Pre-vote national opinion features, no referendum outcomes read",
+  "percentage_unit": "percentage points (0..100), five response categories",
+  "historical_version_verified": false,
+  "strict_forecast_ready": false,
+  "availability_warning": "Dates are announced on currently retrieved pages. No historical archived version has been verified.",
+  "mapping_policy": "Exact date and individually reviewed chart-title/object-key mappings; unreviewed rows excluded",
+  "retrieved_at": "2026-11-23T12:05:57.016681+00:00",
+  "poll_rows": 96,
+  "mapped_rows": 96,
+  "requested_scope": {
+    "start_year": 2012,
+    "end_year": 2025,
+    "additional_vote_dates": [
+      "2026-11-29"
+    ]
+  },
+  "coverage": [
+    {
+      "year": 2012,
+      "swissvotes_objects": 12,
+      "mapped_poll_objects": 0,
+      "mapped_waves": 0
+    },
+    {
+      "year": 2013,
+      "swissvotes_objects": 11,
+      "mapped_poll_objects": 0,
+      "mapped_waves": 0
+    },
+    {
+      "year": 2014,
+      "swissvotes_objects": 12,
+      "mapped_poll_objects": 0,
+      "mapped_waves": 0
+    },
+    {
+      "year": 2015,
+      "swissvotes_objects": 6,
+      "mapped_poll_objects": 0,
+      "mapped_waves": 0
+    },
+    {
+      "year": 2016,
+      "swissvotes_objects": 13,
+      "mapped_poll_objects": 0,
+      "mapped_waves": 0
+    },
+    {
+      "year": 2017,
+      "swissvotes_objects": 7,
+      "mapped_poll_objects": 0,
+      "mapped_waves": 0
+    },
+    {
+      "year": 2018,
+      "swissvotes_objects": 10,
+      "mapped_poll_objects": 0,
+      "mapped_waves": 0
+    },
+    {
+      "year": 2019,
+      "swissvotes_objects": 3,
+      "mapped_poll_objects": 0,
+      "mapped_waves": 0
+    },
+    {
+      "year": 2020,
+      "swissvotes_objects": 9,
+      "mapped_poll_objects": 0,
+      "mapped_waves": 0
+    },
+    {
+      "year": 2021,
+      "swissvotes_objects": 13,
+      "mapped_poll_objects": 13,
+      "mapped_waves": 26
+    },
+    {
+      "year": 2022,
+      "swissvotes_objects": 11,
+      "mapped_poll_objects": 11,
+      "mapped_waves": 22
+    },
+    {
+      "year": 2023,
+      "swissvotes_objects": 3,
+      "mapped_poll_objects": 3,
+      "mapped_waves": 6
+    },
+    {
+      "year": 2024,
+      "swissvotes_objects": 12,
+      "mapped_poll_objects": 12,
+      "mapped_waves": 24
+    },
+    {
+      "year": 2025,
+      "swissvotes_objects": 5,
+      "mapped_poll_objects": 5,
+      "mapped_waves": 10
+    },
+    {
+      "year": 2026,
+      "swissvotes_objects": 4,
+      "mapped_poll_objects": 4,
+      "mapped_waves": 8
+    }
+  ],
+  "rejected_charts": [
+    {
+      "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/",
+      "chart_title": "3_Trinkwasser-InitiativeV1",
+      "reason": "No unique national row for current survey midpoint",
+      "national_rows": 0
+    },
+    {
+      "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/",
+      "chart_title": "5_PestizidverbotInitiativeV2",
+      "reason": "No unique national row for current survey midpoint",
+      "national_rows": 0
+    },
+    {
+      "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/",
+      "chart_title": "7_Covid-19-GesetzV3",
+      "reason": "No unique national row for current survey midpoint",
+      "national_rows": 0
+    },
+    {
+      "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/",
+      "chart_title": "9_CO2-GesetzV4",
+      "reason": "No unique national row for current survey midpoint",
+      "national_rows": 0
+    },
+    {
+      "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/",
+      "chart_title": "11_Terrorismus-GesetzV5",
+      "reason": "No unique national row for current survey midpoint",
+      "national_rows": 0
+    },
+    {
+      "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/",
+      "chart_title": "W2_3_argu_Trinkwasser-Initiative",
+      "reason": "No unique national row for current survey midpoint",
+      "national_rows": 0
+    },
+    {
+      "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/",
+      "chart_title": "W2_5_argu_PestizidverbotInitiative",
+      "reason": "No unique national row for current survey midpoint",
+      "national_rows": 0
+    },
+    {
+      "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/",
+      "chart_title": "W2_7_argu_Covid-19-Gesetz",
+      "reason": "No unique national row for current survey midpoint",
+      "national_rows": 0
+    },
+    {
+      "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/",
+      "chart_title": "W2_9_argu_CO2-Gesetz",
+      "reason": "No unique national row for current survey midpoint",
+      "national_rows": 0
+    },
+    {
+      "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/",
+      "chart_title": "W2_11_argu_Terrorismus-Gesetz",
+      "reason": "No unique national row for current survey midpoint",
+      "national_rows": 0
+    }
+  ],
+  "source_errors": [],
+  "source_evidence_file": "source_evidence.json",
+  "reviewed_mapping_file": "reviewed_mappings.json",
+  "source_evidence_sha256": "71940b484693ac5aadbcd88a79ba3455fc83f8c32e31a81c858acb22151bb6ed",
+  "reviewed_mappings_sha256": "939e0200ba101e25e004287362f833474424758f4217148160fe51f93ad082e6",
+  "poll_csv_sha256": "cf491f402341df2aa9e66fc5de384ae0d7c98fbc69ef3b2a6fa2a557d4d8a827",
+  "swissvotes_identifier_title_projection_sha256": "e87d06fe4ca068b8dfe70d68f4bdd75751275221674a7e44a389b4ff6ef59406",
+  "collector_sha256": "cc8dd924a0b14b2197fda6626401767a92805b596d2540a042587063ac6e501d",
+  "early_archive_limitation": "Cockpit pre-vote sitemap starts in 2021. 2012-2020 are not filled or inferred.",
+  "forecast_cutoff_rule": "Use only published_at <= forecast cutoff; do not expose wave2 at a wave1 forecast horizon.",
+  "population_rule": "Do not select evaluation objects according to poll availability; missing polls require a fitted fallback."
+}

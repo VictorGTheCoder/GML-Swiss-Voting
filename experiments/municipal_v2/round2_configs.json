@@ -1,0 +1,167 @@
+[
+  {
+    "name": "profile_best_round2",
+    "model": "profile",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "params": {
+      "dimensions": 5,
+      "model": "xgboost",
+      "alpha": 51.733073028958565,
+      "n_estimators": 300,
+      "max_depth": 6,
+      "min_samples_leaf": 11,
+      "reg_lambda": 26.39595644479291,
+      "random_state": 20261123
+    }
+  },
+  {
+    "name": "hier_xgboost_centered",
+    "model": "hierarchical",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "params": {
+      "mean_model": "xgboost",
+      "mean_params": {
+        "n_estimators": 300,
+        "max_depth": 6,
+        "learning_rate": 0.03,
+        "reg_lambda": 26.39595644479291,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8
+      },
+      "local_model": "xgboost",
+      "local_train_start": "2012-01-01",
+      "center_local_predictions": true,
+      "random_state": 20261123,
+      "n_jobs": 2,
+      "local_params": {
+        "n_estimators": 350,
+        "max_depth": 4,
+        "learning_rate": 0.04,
+        "min_child_weight": 100,
+        "reg_lambda": 20.0
+      }
+    }
+  },
+  {
+    "name": "hier_xgboost_uncentered",
+    "model": "hierarchical",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "params": {
+      "mean_model": "xgboost",
+      "mean_params": {
+        "n_estimators": 300,
+        "max_depth": 6,
+        "learning_rate": 0.03,
+        "reg_lambda": 26.39595644479291,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8
+      },
+      "local_model": "xgboost",
+      "local_train_start": "2012-01-01",
+      "center_local_predictions": false,
+      "random_state": 20261123,
+      "n_jobs": 2,
+      "local_params": {
+        "n_estimators": 350,
+        "max_depth": 4,
+        "learning_rate": 0.04,
+        "min_child_weight": 100,
+        "reg_lambda": 20.0
+      }
+    }
+  },
+  {
+    "name": "hier_catboost_centered",
+    "model": "hierarchical",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "params": {
+      "mean_model": "xgboost",
+      "mean_params": {
+        "n_estimators": 300,
+        "max_depth": 6,
+        "learning_rate": 0.03,
+        "reg_lambda": 26.39595644479291,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8
+      },
+      "local_model": "catboost",
+      "local_train_start": "2012-01-01",
+      "center_local_predictions": true,
+      "random_state": 20261123,
+      "n_jobs": 2,
+      "local_params": {
+        "iterations": 400,
+        "depth": 4,
+        "learning_rate": 0.04,
+        "l2_leaf_reg": 20.0,
+        "has_time": true
+      }
+    }
+  },
+  {
+    "name": "hier_ridge_centered",
+    "model": "hierarchical",
+    "blocks": "political",
+    "train_start": "1990-01-01",
+    "params": {
+      "mean_model": "xgboost",
+      "mean_params": {
+        "n_estimators": 300,
+        "max_depth": 6,
+        "learning_rate": 0.03,
+        "reg_lambda": 26.39595644479291,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8
+      },
+      "local_model": "ridge",
+      "local_train_start": "2012-01-01",
+      "center_local_predictions": true,
+      "random_state": 20261123,
+      "n_jobs": 2,
+      "local_params": {
+        "alpha": 1000.0,
+        "tol": 1e-05
+      }
+    }
+  },
+  {
+    "name": "xgb_direction_k64",
+    "model": "xgboost",
+    "blocks": "direction",
+    "train_start": "2012-01-01",
+    "select_k": 64,
+    "params": {
+      "n_estimators": 300,
+      "max_depth": 3,
+      "learning_rate": 0.04,
+      "min_child_weight": 200,
+      "reg_lambda": 20.0,
+      "reg_alpha": 0.0,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0,
+      "objective": "reg:squarederror"
+    }
+  },
+  {
+    "name": "xgb_direction_k128",
+    "model": "xgboost",
+    "blocks": "direction",
+    "train_start": "2012-01-01",
+    "select_k": 128,
+    "params": {
+      "n_estimators": 300,
+      "max_depth": 3,
+      "learning_rate": 0.04,
+      "min_child_weight": 200,
+      "reg_lambda": 20.0,
+      "reg_alpha": 0.0,
+      "subsample": 1.0,
+      "colsample_bytree": 1.0,
+      "objective": "reg:squarederror"
+    }
+  }
+]

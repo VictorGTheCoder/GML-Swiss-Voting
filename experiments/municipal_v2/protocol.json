@@ -22,6 +22,8 @@
   "strict_forecast_ready": false,
   "temporal_limit": "Source vintage and historical publication evidence remain unverified; original strict pipeline is unchanged",
   "text_policy": "Official titles only for conservative target-blind lexical direction proxies. Unreviewed brochure-object mappings are excluded",
+  "poll_policy": "Optional latest SSR/gfs.bern wave published before the prediction cutoff. Keep all objects, with exact structural fallback when no poll exists. Historical chart versions remain unverified. Polls anchor a population-proxy-weighted prediction, never the observed current result or the unweighted municipal mean",
+  "forecast_horizon": "Features available before each vote (default cutoff previous calendar day); the polling extension is a near-vote specification and must not be presented as an early forecast",
   "seed": 20261123,
   "stopping_policy": "Document each trial and next hypothesis; do not claim 4 points unless observed. Stop a search family when validation gains plateau, preserve the best honest result and the remaining data limitations"
 }

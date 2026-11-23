@@ -1,0 +1,686 @@
+[
+  {
+    "vote_date": "2021-03-07",
+    "chart_title": "1_stimm_SRG_Trend_Stimmabsicht_Verhüllung",
+    "vote_key": "6380",
+    "swissvotes_title": "Initiative für ein Verhüllungsverbot",
+    "poll_section": "Volksinitiative \"Ja zum Verhüllungsverbot\"",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-03-07",
+    "chart_title": "2_stimm_SRG_Trend_Stimmabsicht_ID",
+    "vote_key": "6390",
+    "swissvotes_title": "Gesetz über elektronische Identifizierungsdienste",
+    "poll_section": "Bundesgesetz über elektronische Identifizierungsdienste",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-03-07",
+    "chart_title": "3_stimm_SRG_Trend_Stimmabsicht_Freihandel",
+    "vote_key": "6400",
+    "swissvotes_title": "Freihandelsabkommen mit Indonesien",
+    "poll_section": "Wirtschaftspartnerschaftsabkommen mit Indonesien",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-03-07",
+    "chart_title": "X_W2_1_stimm_SRG_Trend_Stimmabsicht_Verhüllung",
+    "vote_key": "6380",
+    "swissvotes_title": "Initiative für ein Verhüllungsverbot",
+    "poll_section": "Volksinitiative \"Ja zum Verhüllungsverbot\"",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-03-07",
+    "chart_title": "X_W2_2_stimm_SRG_Trend_Stimmabsicht_ID",
+    "vote_key": "6390",
+    "swissvotes_title": "Gesetz über elektronische Identifizierungsdienste",
+    "poll_section": "Bundesgesetz E-ID",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-03-07",
+    "chart_title": "X_W2_3_stimm_SRG_Trend_Stimmabsicht_Freihandel",
+    "vote_key": "6400",
+    "swissvotes_title": "Freihandelsabkommen mit Indonesien",
+    "poll_section": "Freihandelsabkommen mit Indonesien",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-06-13",
+    "chart_title": "2_Trinkwasser-InitiativeV1",
+    "vote_key": "6410",
+    "swissvotes_title": "Trinkwasserinitiative",
+    "poll_section": "Trinkwasser-Initiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-06-13",
+    "chart_title": "4_PestizidverbotInitiativeV2",
+    "vote_key": "6420",
+    "swissvotes_title": "Pestizidinitiative",
+    "poll_section": "Initiative Pestizidverbot",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-06-13",
+    "chart_title": "6_Covid-19-GesetzV3",
+    "vote_key": "6430",
+    "swissvotes_title": "Covid-19-Gesetz",
+    "poll_section": "Covid-19-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-06-13",
+    "chart_title": "8_CO2-GesetzV4",
+    "vote_key": "6440",
+    "swissvotes_title": "CO2-Gesetz",
+    "poll_section": "CO2-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-06-13",
+    "chart_title": "10_Terrorismus-GesetzV5",
+    "vote_key": "6450",
+    "swissvotes_title": "Gesetz über polizeiliche Massnahmen gegen Terrorismus",
+    "poll_section": "Terrorismus-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-06-13",
+    "chart_title": "W2_2_stimm_Trinkwasser-Initiative",
+    "vote_key": "6410",
+    "swissvotes_title": "Trinkwasserinitiative",
+    "poll_section": "Trinkwasser-Initiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-06-13",
+    "chart_title": "W2_4_stimm_PestizidverbotInitiative",
+    "vote_key": "6420",
+    "swissvotes_title": "Pestizidinitiative",
+    "poll_section": "Initiative Pestizidverbot",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-06-13",
+    "chart_title": "W2_6_stimm_Covid-19-Gesetz",
+    "vote_key": "6430",
+    "swissvotes_title": "Covid-19-Gesetz",
+    "poll_section": "Covid-19-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-06-13",
+    "chart_title": "W2_8_stimm_CO2-Gesetz",
+    "vote_key": "6440",
+    "swissvotes_title": "CO2-Gesetz",
+    "poll_section": "CO2-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-06-13",
+    "chart_title": "W2___10_stimm_Terrorismus-Gesetz",
+    "vote_key": "6450",
+    "swissvotes_title": "Gesetz über polizeiliche Massnahmen gegen Terrorismus",
+    "poll_section": "Terrorismus-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-09-26",
+    "chart_title": "2_Initiative_Löhne_entlasten_Kapital_gerecht_besteuern",
+    "vote_key": "6460",
+    "swissvotes_title": "«99%-Initiative»",
+    "poll_section": "Volksinitiative \"Löhne entlasten, Kapital gerecht besteuern\"",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-09-26",
+    "chart_title": "4_Änderung_ZGB_Ehe_für_alle",
+    "vote_key": "6470",
+    "swissvotes_title": "Ehe für alle",
+    "poll_section": "Änderung des Schweizerischen Zivilgesetzbuches (Ehe für alle)",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-11-28",
+    "chart_title": "2_Pflegeinitiative",
+    "vote_key": "6480",
+    "swissvotes_title": "Pflegeinitiative",
+    "poll_section": "Pflegeinitiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-11-28",
+    "chart_title": "4_Justiz-Initiative",
+    "vote_key": "6490",
+    "swissvotes_title": "Justizinitiative",
+    "poll_section": "Justiz-Initiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-11-28",
+    "chart_title": "6_Covid-19-Gesetz",
+    "vote_key": "6500",
+    "swissvotes_title": "Änderung des Covid-19-Gesetzes (2. Revision)",
+    "poll_section": "Covid-19-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-02-13",
+    "chart_title": "2_Initiative_Ja_zum_Tier-_und_Menschenversuchsverbot",
+    "vote_key": "6510",
+    "swissvotes_title": "Initiative für ein Verbot von Tier- und Menschenversuchen",
+    "poll_section": "Initiative \"Ja zum Tier- und Menschenversuchsverbot\"",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-02-13",
+    "chart_title": "4_Initiative_Ja_zum_Schutz_ vor_Tabakwerbung",
+    "vote_key": "6520",
+    "swissvotes_title": "Initiative «Kinder und Jugendliche ohne Tabakwerbung»",
+    "poll_section": "Initiative \"Ja zum Schutz der Kinder und Jugendlichen vor Tabakwerbung\"",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-02-13",
+    "chart_title": "6_Änderung_Bundesgesetz_über_Stempelabgabe",
+    "vote_key": "6530",
+    "swissvotes_title": "Gesetz über die Stempelabgaben",
+    "poll_section": "Änderung des Bundesgesetzes über die Stempelabgaben",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-02-13",
+    "chart_title": "8_Bundesgesetz_über_ein_Massnahmenpaket_zugunsten_der_Medien",
+    "vote_key": "6540",
+    "swissvotes_title": "Medienpaket",
+    "poll_section": "Bundesgesetz über ein Massnahmenpaket zugunsten der Medien",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-05-15",
+    "chart_title": "2_Filmgesetz",
+    "vote_key": "6550",
+    "swissvotes_title": "Änderung des Filmgesetzes",
+    "poll_section": "Änderung des Filmgesetzes",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-05-15",
+    "chart_title": "4_Transplantationsgesetz",
+    "vote_key": "6560",
+    "swissvotes_title": "Widerspruchsregelung bei der Organspende",
+    "poll_section": "Änderung des Transplantationsgesetzes",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-05-15",
+    "chart_title": "6_Finanzierung Frontex",
+    "vote_key": "6570",
+    "swissvotes_title": "Beteiligung an der europäischen Grenz- und Küstenwache Frontex",
+    "poll_section": "Finanzierung Frontex",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-05-15",
+    "chart_title": "2_W2_Filmgesetz",
+    "vote_key": "6550",
+    "swissvotes_title": "Änderung des Filmgesetzes",
+    "poll_section": "Änderung des Filmgesetzes",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-05-15",
+    "chart_title": "4_W2_Transplantationsgesetz",
+    "vote_key": "6560",
+    "swissvotes_title": "Widerspruchsregelung bei der Organspende",
+    "poll_section": "Änderung des Transplantationsgesetzes",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-05-15",
+    "chart_title": "6_W2_Finanzierung Frontex",
+    "vote_key": "6570",
+    "swissvotes_title": "Beteiligung an der europäischen Grenz- und Küstenwache Frontex",
+    "poll_section": "Finanzierung Frontex",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-09-25",
+    "chart_title": "2_Massentierhaltungsinitiative",
+    "vote_key": "6580",
+    "swissvotes_title": "Massentierhaltungsinitiative",
+    "poll_section": "Massentierhaltungsinitiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-09-25",
+    "chart_title": "5_Änderung_BG_Alters- und Hinterlassenenversicherung",
+    "vote_key": "6600",
+    "swissvotes_title": "AHV-Gesetz (AHV 21)",
+    "poll_section": "AHV-Reform",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-09-25",
+    "chart_title": "4_Zusatzfinanzierung_AHV",
+    "vote_key": "6590",
+    "swissvotes_title": "Erhöhung der Mehrwertsteuer zugunsten der AHV",
+    "poll_section": "AHV-Reform",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-09-25",
+    "chart_title": "7_Verrechnungssteuergesetz",
+    "vote_key": "6610",
+    "swissvotes_title": "Verrechnungssteuergesetz",
+    "poll_section": "Verrechnungssteuergesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-09-25",
+    "chart_title": "2_W2_Massentierhaltungsinitiative",
+    "vote_key": "6580",
+    "swissvotes_title": "Massentierhaltungsinitiative",
+    "poll_section": "Massentierhaltungsinitiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-09-25",
+    "chart_title": "5_W2_Änderung_BG_Alters- und Hinterlassenenversicherung",
+    "vote_key": "6600",
+    "swissvotes_title": "AHV-Gesetz (AHV 21)",
+    "poll_section": "AHV-Reform",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-09-25",
+    "chart_title": "4_W2_Zusatzfinanzierung_AHV",
+    "vote_key": "6590",
+    "swissvotes_title": "Erhöhung der Mehrwertsteuer zugunsten der AHV",
+    "poll_section": "AHV-Reform",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2022-09-25",
+    "chart_title": "7_W2_Verrechnungssteuergesetz",
+    "vote_key": "6610",
+    "swissvotes_title": "Verrechnungssteuergesetz",
+    "poll_section": "Änderung des Verrechnungssteuergesetzes",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2023-06-18",
+    "chart_title": "Stimmabsicht: OECD-Mindestbesteuerung",
+    "vote_key": "6620",
+    "swissvotes_title": "OECD-Mindeststeuer für Unternehmen",
+    "poll_section": "OECD/G20-Mindestbesteuerung",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2023-06-18",
+    "chart_title": "Stimmabsicht: Klima-Gesetz",
+    "vote_key": "6630",
+    "swissvotes_title": "Klimagesetz",
+    "poll_section": "Klima-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2023-06-18",
+    "chart_title": "Stimmabsicht: Covid-19-Gesetz",
+    "vote_key": "6640",
+    "swissvotes_title": "Änderung des Covid-19-Gesetzes (5. Revision)",
+    "poll_section": "Covid-19-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-03-03",
+    "chart_title": "Stimmabsicht 13. AHV-Rente",
+    "vote_key": "6650",
+    "swissvotes_title": "Initiative für eine 13. AHV-Rente",
+    "poll_section": "Initiative für eine 13. AHV-Rente",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-03-03",
+    "chart_title": "Stimmabsicht Renteninitiative",
+    "vote_key": "6660",
+    "swissvotes_title": "Renteninitiative",
+    "poll_section": "Renteninitiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-06-09",
+    "chart_title": "Stimmabsicht Prämien-Entlastungs-Initiative",
+    "vote_key": "6670",
+    "swissvotes_title": "Prämien-Entlastungs-Initiative",
+    "poll_section": "Prämien-Entlastungs-Initiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-06-09",
+    "chart_title": "Stimmabsicht Kostenbremse-Initiative",
+    "vote_key": "6680",
+    "swissvotes_title": "Initiative für eine Kostenbremse im Gesundheitswesen",
+    "poll_section": "Initiative für eine Kostenbremse im Gesundheitswesen",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-06-09",
+    "chart_title": "Stimmabsicht Stopp Impfpflicht-Initiative",
+    "vote_key": "6690",
+    "swissvotes_title": "Initiative «Für Freiheit und körperliche Unversehrtheit»",
+    "poll_section": "Stopp Impfpflicht-Initiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-06-09",
+    "chart_title": "Stimmabsicht Mantelerlass",
+    "vote_key": "6700",
+    "swissvotes_title": "Stromgesetz (Mantelerlass Energie)",
+    "poll_section": "Stromversorgungs-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-06-09",
+    "chart_title": "Stimmabsicht Freiheits-Initiative",
+    "vote_key": "6690",
+    "swissvotes_title": "Initiative «Für Freiheit und körperliche Unversehrtheit»",
+    "poll_section": "Freiheits-Initiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-06-09",
+    "chart_title": "Stimmabsicht Stromversorgungsgesetz",
+    "vote_key": "6700",
+    "swissvotes_title": "Stromgesetz (Mantelerlass Energie)",
+    "poll_section": "Stromversorgungs-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-09-22",
+    "chart_title": "Stimmabsicht Biodiversitätsinitiative",
+    "vote_key": "6710",
+    "swissvotes_title": "Biodiversitäts-Initiative",
+    "poll_section": "Biodiversitätsinitiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-09-22",
+    "chart_title": "Stimmabsicht Reform der beruflichen Vorsorge",
+    "vote_key": "6720",
+    "swissvotes_title": "Reform der beruflichen Vorsorge",
+    "poll_section": "Reform der beruflichen Vorsorge BVG",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-11-24",
+    "chart_title": "Stimmabsicht Ausbau Autobahnen",
+    "vote_key": "6730",
+    "swissvotes_title": "Ausbau des Autobahnnetzes",
+    "poll_section": "Ausbau Autobahnen",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-11-24",
+    "chart_title": "Stimmabsicht Mietrecht: Untermiete",
+    "vote_key": "6740",
+    "swissvotes_title": "Bedingungen für Untermiete",
+    "poll_section": "Mietrecht",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-11-24",
+    "chart_title": "Stimmabsicht Mietrecht: Eigenbedarf",
+    "vote_key": "6750",
+    "swissvotes_title": "Kündigung wegen Eigenbedarfs (Mietrecht)",
+    "poll_section": "Mietrecht",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2024-11-24",
+    "chart_title": "Stimmabsicht Finanzierung Gesundheitswesen EFAS",
+    "vote_key": "6760",
+    "swissvotes_title": "Einheitliche Finanzierung ambulanter und stationärer Leistungen (EFAS)",
+    "poll_section": "Einheitliche Finanzierung Gesundheitswesen",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2025-02-09",
+    "chart_title": "Stimmabsicht Umweltverantwortungsinitiative",
+    "vote_key": "6770",
+    "swissvotes_title": "«Umweltverantwortungsinitiative»",
+    "poll_section": "Umweltverantwortungsinitiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2025-02-09",
+    "chart_title": "Trend Stimmabsicht Umweltverantwortungsinitiative",
+    "vote_key": "6770",
+    "swissvotes_title": "«Umweltverantwortungsinitiative»",
+    "poll_section": "Umweltverantwortungsinitiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2025-09-28",
+    "chart_title": "Stimmabsicht Liegenschaftssteuern auf Zweitliegenschaften",
+    "vote_key": "6780",
+    "swissvotes_title": "Kantonale Besteuerung von Zweitliegenschaften",
+    "poll_section": "Kantonale Liegenschaftssteuern auf Zweitliegenschaften",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2025-09-28",
+    "chart_title": "Stimmabsicht E-ID-Gesetz",
+    "vote_key": "6790",
+    "swissvotes_title": "E-ID-Gesetz",
+    "poll_section": "E-ID-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2025-09-28",
+    "chart_title": "Trend Stimmabsicht Liegenschaftssteuern auf Zweitliegenschaften",
+    "vote_key": "6780",
+    "swissvotes_title": "Kantonale Besteuerung von Zweitliegenschaften",
+    "poll_section": "Kantonale Liegenschaftssteuern auf Zweitliegenschaften",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2025-09-28",
+    "chart_title": "Trend Stimmabsicht E-ID-Gesetz",
+    "vote_key": "6790",
+    "swissvotes_title": "E-ID-Gesetz",
+    "poll_section": "E-ID-Gesetz",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2025-11-30",
+    "chart_title": "Stimmabsicht Service-citoyen-Initiative",
+    "vote_key": "6800",
+    "swissvotes_title": "«Service-Citoyen-Initiative»",
+    "poll_section": "Service-citoyen-Initiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2025-11-30",
+    "chart_title": "Stimmabsicht Initiative für eine Zukunft",
+    "vote_key": "6810",
+    "swissvotes_title": "«Initiative für eine Zukunft»",
+    "poll_section": "Initiative für eine Zukunft",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2025-11-30",
+    "chart_title": "Trend Stimmabsicht Service-citoyen-Initiative",
+    "vote_key": "6800",
+    "swissvotes_title": "«Service-Citoyen-Initiative»",
+    "poll_section": "Service-citoyen-Initiative",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2025-11-30",
+    "chart_title": "Trend Stimmabsicht Initiative für eine Zukunft",
+    "vote_key": "6810",
+    "swissvotes_title": "«Initiative für eine Zukunft»",
+    "poll_section": "Initiative für eine Zukunft",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Date exactly matches Swissvotes; chart and section title reviewed for the same referendum proposal. No results used."
+  },
+  {
+    "vote_date": "2021-09-26",
+    "chart_title": "2_Initiative_Kapitalbesteuerung",
+    "vote_key": "6460",
+    "swissvotes_title": "«99%-Initiative»",
+    "poll_section": "Volksinitiative \"Löhne entlasten, Kapital gerecht besteuern\"",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Exact date and reviewed title identify this Swissvotes object; no outcomes used."
+  },
+  {
+    "vote_date": "2021-09-26",
+    "chart_title": "4_Ehe_für_alle",
+    "vote_key": "6470",
+    "swissvotes_title": "Ehe für alle",
+    "poll_section": "Änderung des Schweizerischen Zivilgesetzbuches (Ehe für alle)",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Exact date and reviewed title identify this Swissvotes object; no outcomes used."
+  },
+  {
+    "vote_date": "2026-11-29",
+    "chart_title": "Stimmabsicht Erhöhung der MWST zugunsten der AHV",
+    "vote_key": "6900",
+    "swissvotes_title": "Erhöhung der Mehrwertsteuer zugunsten der AHV",
+    "poll_section": "Zusatzfinanzierung der AHV durch eine Erhöhung der Mehrwertsteuer - Pattsituation mit leichtem Nein-Vorsprung",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Exact date and reviewed title identify this Swissvotes object; no outcomes used."
+  },
+  {
+    "vote_date": "2026-11-29",
+    "chart_title": "Stimmabsicht Feuerwerksinitiative",
+    "vote_key": "6910",
+    "swissvotes_title": "Feuerwerksinitiative",
+    "poll_section": "«Für eine Einschränkung von Feuerwerk (Feuerwerksinitiative)» - Ja-Seite mit klarem Vorsprung",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Exact date and reviewed title identify this Swissvotes object; no outcomes used."
+  },
+  {
+    "vote_date": "2026-11-29",
+    "chart_title": "Stimmabsicht Fairness-Initiative",
+    "vote_key": "6920",
+    "swissvotes_title": "«Fairness-Initiative» (Besteuerung von Ehepaaren)",
+    "poll_section": "«Ja zu fairen Bundessteuern auch für Ehepaare - Diskriminierung der Ehe endlich abschaffen! (Fairness-Initiative)» – Knapper Ja-Vorsprung",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Exact date and reviewed title identify this Swissvotes object; no outcomes used."
+  },
+  {
+    "vote_date": "2026-11-29",
+    "chart_title": "Stimmabsicht Kriegsmaterialgesetz",
+    "vote_key": "6930",
+    "swissvotes_title": "Änderung des Kriegsmaterialgesetzes",
+    "poll_section": "Änderung des Bundesgesetzes über das Kriegsmaterial (Kriegsmaterialgesetz) – Pattsituation mit Ja-Vorsprung",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Exact date and reviewed title identify this Swissvotes object; no outcomes used."
+  },
+  {
+    "vote_date": "2026-11-29",
+    "chart_title": "Trend Stimmabsicht Erhöhung der MWST zugunsten der AHV",
+    "vote_key": "6900",
+    "swissvotes_title": "Erhöhung der Mehrwertsteuer zugunsten der AHV",
+    "poll_section": "Zusatzfinanzierung der AHV durch eine Erhöhung der Mehrwertsteuer",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Exact date and reviewed title identify this Swissvotes object; no outcomes used."
+  },
+  {
+    "vote_date": "2026-11-29",
+    "chart_title": "Trend Stimmabsicht Feuerwerksinitiative",
+    "vote_key": "6910",
+    "swissvotes_title": "Feuerwerksinitiative",
+    "poll_section": "«Für eine Einschränkung von Feuerwerk (Feuerwerksinitiative)» - weiterhin mit klarem Ja-Vorsprung, aber rückläufiger Zustimmung",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Exact date and reviewed title identify this Swissvotes object; no outcomes used."
+  },
+  {
+    "vote_date": "2026-11-29",
+    "chart_title": "Trend Stimmabsicht Fairness-Initiative",
+    "vote_key": "6920",
+    "swissvotes_title": "«Fairness-Initiative» (Besteuerung von Ehepaaren)",
+    "poll_section": "«Ja zu fairen Bundessteuern auch für Ehepaare - Diskriminierung der Ehe endlich abschaffen! (Fairness-Initiative)»",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Exact date and reviewed title identify this Swissvotes object; no outcomes used."
+  },
+  {
+    "vote_date": "2026-11-29",
+    "chart_title": "Trend Stimmabsicht Kriegsmaterialgesetz",
+    "vote_key": "6930",
+    "swissvotes_title": "Änderung des Kriegsmaterialgesetzes",
+    "poll_section": "Änderung des Bundesgesetzes über das Kriegsmaterial (Kriegsmaterialgesetz)",
+    "mapping_status": "reviewed_date_and_title",
+    "review_basis": "Exact date and reviewed title identify this Swissvotes object; no outcomes used."
+  }
+]

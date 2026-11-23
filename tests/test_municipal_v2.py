@@ -14,6 +14,7 @@ from scripts.modeling.municipal_v2 import (
     freeze_history,
     metrics,
     training_weights,
+    validate_config,
     windows,
 )
 
@@ -116,7 +117,8 @@ def test_real_estimators_predict_without_outcomes_or_fitting_future_categories(f
     train = pd.DataFrame(rows)
     manifest = {"political": {"numeric_features": [], "categorical_features": []},
                 "direction": {"numeric_features": []}}
-    fitted = fit_model(train, {"name": "test", "model": family, "params": params, "select_k": 12}, manifest)
+    fitted = fit_model(train, {"name": "test", "model": family, "params": params,
+                               "select_k": "all" if family == "catboost" else 12}, manifest)
     future = train.iloc[:4].drop(columns="yes_share").copy()
     future["object_domain_1"] = "unseen"
     before = fitted.predict(future)
@@ -125,3 +127,20 @@ def test_real_estimators_predict_without_outcomes_or_fitting_future_categories(f
     np.testing.assert_allclose(before, after)
     assert np.isfinite(before).all()
     assert ((before >= 0) & (before <= 1)).all()
+
+
+@pytest.mark.parametrize("config", [
+    {"model": "profile", "select_k": 10},
+    {"model": "hierarchical", "half_life_years": 8},
+    {"model": "catboost", "select_k": 10},
+    {"model": "xgboost", "blocks": "typo"},
+    {"model": "poll_anchor", "base": {"model": "profile", "train_start": "1990-01-01"}},
+])
+def test_ignored_or_history_truncating_settings_are_rejected(config):
+    with pytest.raises(ValueError):
+        validate_config(config)
+
+
+def test_poll_wrapper_preserves_declared_base_history():
+    validate_config({"model": "poll_anchor", "train_start": "1981-01-01",
+                     "base": {"model": "profile", "train_start": "1990-01-01"}})
