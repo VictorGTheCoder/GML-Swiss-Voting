@@ -1,0 +1,42 @@
+name: V10.6 hierarchical reconciliation
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/reconcile_v106.py'
+      - 'tests/test_reconcile_v106.py'
+      - '.github/workflows/reconcile-v106.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  reconciliation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - run: pip install -r requirements-experiments.txt
+      - run: python -m pytest -q tests/test_reconcile_v106.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: v105-canton
+          run-id: 45344880395
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/canton_v105
+      - run: python -m scripts.modeling.reconcile_v106 --source reports/generated/canton_v105 --output reports/generated/reconcile_v106
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v106-reconciliation
+          path: reports/generated/reconcile_v106/
+          if-no-files-found: warn
+          retention-days: 30
