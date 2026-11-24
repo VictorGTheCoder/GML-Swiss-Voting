@@ -38,7 +38,17 @@ KEYS = ["vote_id", "municipality_id", "vote_date"]
 METRICS = ("mae_pp", "centered_mae_pp", "national_mae_pp", "canton_mae_pp")
 
 
+def artifact_root(path):
+    """Allow one uniquely identified prediction bundle in a nested ZIP."""
+    matches = [p.parent for p in path.rglob("manifest.json")
+               if (p.parent / "predictions.parquet").is_file()]
+    if len(matches) != 1:
+        raise ValueError(f"Expected one prediction bundle: {path}")
+    return matches[0]
+
+
 def read_artifact(path, columns):
+    path = artifact_root(path)
     m = json.loads((path / "manifest.json").read_text())
     p = path / "predictions.parquet"
     if m["status"] not in ("complete", "pilot_complete") or m["prediction_sha256"] != sha(p):
@@ -110,7 +120,7 @@ def run(inputs, output):
             raise ValueError("OOF population differs: " + family)
         if not np.allclose(f.reference, base.reference, atol=1e-8, rtol=0):
             raise ValueError("OOF references differ: " + family)
-        manifest_hashes[family] = sha(path / "manifest.json")
+        manifest_hashes[family] = sha(artifact_root(path) / "manifest.json")
         for name in variants:
             vectors.append(f[name].to_numpy(float))
             names.append(family + "__" + name)

@@ -1,7 +1,8 @@
 import numpy as np
 import pandas as pd
+import pytest
 
-from scripts.modeling.ensemble_v1010 import gram, split_prediction, weights_from_history
+from scripts.modeling.ensemble_v1010 import artifact_root, gram, split_prediction, weights_from_history
 
 
 def test_stack_simplex_and_strict_chronology():
@@ -26,3 +27,15 @@ def test_split_level_and_missing_history():
     p,n=weights_from_history([],pd.Timestamp("2020-01-01"),prior,.1,"overall")
     np.testing.assert_array_equal(p,prior)
     assert n==0
+
+
+def test_nested_bundle_and_ambiguity(tmp_path):
+    root=tmp_path/"nested"
+    root.mkdir()
+    (root/"manifest.json").write_text("{}")
+    (root/"predictions.parquet").touch()
+    assert artifact_root(tmp_path)==root
+    (tmp_path/"manifest.json").write_text("{}")
+    (tmp_path/"predictions.parquet").touch()
+    with pytest.raises(ValueError,match="Expected one"):
+        artifact_root(tmp_path)
