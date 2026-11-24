@@ -27,3 +27,7 @@
 [Protocole V11.2](V11.2-protocol.md) : audit indépendant, question littérale, mécanismes contextuels et contrôles de couverture.
 
 [Résultats V11.2](V11.2-results.md) · [Benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45420998869). V10.8 reproduite exactement ; audit plus strict réduit la couverture de 59 à 41 objets. Aucun gain confirmé.
+
+## V11.4 en cours
+
+[Protocole](V11.4-protocol.md) : six combinaisons rang/ridge, sélection sur deux blocs internes, niveau national V11.3 fixé. Benchmark non vérifié ; aucun nouveau score.
