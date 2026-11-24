@@ -1,0 +1,57 @@
+name: V8.1 stages 03-04 — spatial margins and conditional profiles
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/spatial_margins_v81.py'
+      - 'scripts/modeling/conditional_profiles_v81.py'
+      - 'tests/test_spatial_margins_v81.py'
+      - 'tests/test_conditional_profiles_v81.py'
+      - '.github/workflows/spatial-conditional-v81.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  spatial-conditional:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      NUMEXPR_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-experiments.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: poll-acquisition-v81
+          run-id: 45292731014
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/acquisition_v81
+      - uses: actions/download-artifact@v4
+        with:
+          name: national-fusion-v81
+          run-id: 45293115635
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/national_v81
+      - run: python -m scripts.modeling.municipal_v2 prepare --output reports/generated/fusion_v81_base
+      - name: Stage 03 unit tests
+        run: python -m pytest -q tests/test_spatial_margins_v81.py
+      - name: Stage 03 matched benchmark
+        run: python -m scripts.modeling.spatial_margins_v81 --base reports/generated/fusion_v81_base --acquisition reports/generated/acquisition_v81 --fusion reports/generated/national_v81 --output reports/generated/spatial_v81
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spatial-margins-v81
+          path: reports/generated/spatial_v81
+      - name: Stage 04 unit tests
+        run: python -m pytest -q tests/test_conditional_profiles_v81.py
+      - name: Stage 04 matched benchmark
+        run: python -m scripts.modeling.conditional_profiles_v81 --base reports/generated/fusion_v81_base --acquisition reports/generated/acquisition_v81 --fusion reports/generated/national_v81 --spatial reports/generated/spatial_v81 --output reports/generated/conditional_v81
+      - uses: actions/upload-artifact@v4
+        with:
+          name: conditional-profiles-v81
+          path: reports/generated/conditional_v81

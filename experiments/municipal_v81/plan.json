@@ -1,0 +1,61 @@
+{
+  "status": "declared_before_scores",
+  "scope": "V8.1 only: polling acquisition, ensemble, settlement contrasts, conditional profiles; no embeddings/economic covariates/panel selection",
+  "population": {
+    "training_start": "1990-01-01",
+    "end": "2022-12-31",
+    "evaluation_objects": 66,
+    "evaluation_dates": 23,
+    "rows": 138868,
+    "reference_v7": 7.547181283176325,
+    "reference_v8": 7.340163035010155
+  },
+  "stages": [
+    {
+      "id": "01-acquire",
+      "tasks": [
+        "Extract only latest yes percentages from LeeWas comparison tables 43/44; align title/date with Swissvotes, no results fields",
+        "Recover independently documented first/last SRG waves missing in V3; prefer contemporaneous primary source over retrospective table, no imputed missing fields",
+        "Acquire explicit urban/rural survey cells with national-chart and wave verification; check subgroup labels and geographic proxy mapping",
+        "Keep provenance, report coverage and discrepancies, preserve raw values"
+      ],
+      "gate": "schema, chronology, uniqueness, exact mapping, source reconciliation, provenance; no post-vote outcomes in acquisition"
+    },
+    {
+      "id": "02-national",
+      "tasks": [
+        "Replay V7/V8 reference",
+        "Benchmark additional SRG observations, latest LeeWas, fixed mixtures, and forward-calibrated institute combination",
+        "Group-by-date past-only calibration; no same-day outcomes"
+      ],
+      "gate": "same population, baseline replay, fixed candidates, paired date bootstrap"
+    },
+    {
+      "id": "03-spatial",
+      "tasks": [
+        "Validate mapping and distinguish OFS proxy from survey taxonomy",
+        "Fit national-coherent joint language/settlement adjustments without pretending margins independent",
+        "Compare language-only, urban-only, additive joint adjustment"
+      ],
+      "gate": "weights positive, finite bounded predictions, national level preserved, same matched population"
+    },
+    {
+      "id": "04-conditional",
+      "tasks": [
+        "Learn a low-rank historical residual prior exclusively on earlier objects",
+        "Condition on linguistic and settlement contrasts, model covariance and regularized observation noise",
+        "Compare rank and noise alternatives; retain original global national prediction; combination with national ensemble as a fixed factorial ablation"
+      ],
+      "gate": "unit tests for rank, covariance, chronology and reference invariance; matched evaluation and paired bootstrap"
+    },
+    {
+      "id": "05-report",
+      "tasks": [
+        "Publish all measured scores, failures, coverage, caveats, evidence hashes, exact rerun commands",
+        "Keep original production model frozen; no 2023+ target read in modeling"
+      ]
+    }
+  ],
+  "availability": "LeeWas 2024 retrospective appendix describes last pre-vote survey but does not prove exact historical timestamp/version; separately identified as a weaker provenance tier. Historical survey field dates from contemporaneous reports, when available. All remain exploratory.",
+  "validation": "All results exploratory. Use national ballot proxy only for anchor, retain macro-object equal-commune MAE. Earlier outcome dates only for calibration. No promotion based on reused dates."
+}
