@@ -1,17 +1,17 @@
 {
   "campaign": "V10 — literature-driven municipal referendum prediction",
-  "status": "in_progress",
-  "active": "V10.5",
+  "status": "morning_checkpoint_incomplete",
+  "active": "V10.6",
   "updated": "2026-11-24",
   "completed": [
     "V10.1",
     "V10.2",
     "V10.3",
-    "V10.4"
+    "V10.4",
+    "V10.5"
   ],
   "blocked": [],
   "pending": [
-    "V10.5",
     "V10.6",
     "V10.7",
     "V10.8",
@@ -728,6 +728,134 @@
       "conclusion": "failure",
       "targeted_tests": 4,
       "reason": "ValueError: Missing prior canton mapping; no scores or output artifact"
+    },
+    {
+      "version": "V10.5",
+      "kind": "benchmark",
+      "run": 45344880395,
+      "artifact": 14897029894,
+      "artifact_digest": "sha256:21bdd9db9addd993c91e93b0230a4e2fe795efb3a3a7b1a4a25ab96dcac58b69",
+      "sha": "44c3253d9802ff79c6cfbf71c8f2872d763d961f",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "common_national_mae_pp": 3.7756692099920697,
+          "common_canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "pooled_weights_control",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7710384644973445,
+          "canton_mae_pp": 5.708957560058708,
+          "common_national_mae_pp": 3.7756692099920697,
+          "common_canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "absolute25",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.323201069579025,
+          "centered_mae_pp": 5.376561492157489,
+          "national_mae_pp": 4.20136061492265,
+          "canton_mae_pp": 5.822112959158407,
+          "common_national_mae_pp": 4.219801691877276,
+          "common_canton_mae_pp": 5.822177269980774,
+          "gain_interval": [
+            -0.36889528623896933,
+            0.17920548374650533
+          ]
+        },
+        {
+          "variant": "absolute50",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.93990222432274,
+          "centered_mae_pp": 5.435125899710453,
+          "national_mae_pp": 5.21862209682012,
+          "canton_mae_pp": 6.56692569940635,
+          "common_national_mae_pp": 5.222501898322331,
+          "common_canton_mae_pp": 6.564040840967608,
+          "gain_interval": [
+            -1.314885101358851,
+            -0.10201442857269938
+          ]
+        },
+        {
+          "variant": "centered25",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.244085854780014,
+          "centered_mae_pp": 5.380159451533714,
+          "national_mae_pp": 3.7710384644973574,
+          "canton_mae_pp": 5.701018920594779,
+          "common_national_mae_pp": 3.7760193530227597,
+          "common_canton_mae_pp": 5.694120297225565,
+          "gain_interval": [
+            -0.05344295872496744,
+            0.024238689592963065
+          ]
+        },
+        {
+          "variant": "centered50",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.302723536910151,
+          "centered_mae_pp": 5.44394657535122,
+          "national_mae_pp": 3.7710384644973574,
+          "canton_mae_pp": 5.735688268046402,
+          "common_national_mae_pp": 3.776369496053435,
+          "common_canton_mae_pp": 5.727550338071832,
+          "gain_interval": [
+            -0.15389466474655253,
+            0.008154896358102987
+          ]
+        },
+        {
+          "variant": "centered100",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.536718110956701,
+          "centered_mae_pp": 5.72379759783877,
+          "national_mae_pp": 3.7710384644973614,
+          "canton_mae_pp": 5.9581072894947,
+          "common_national_mae_pp": 3.777069782114792,
+          "common_canton_mae_pp": 5.948130242866736,
+          "gain_interval": [
+            -0.49190656746651806,
+            -0.12521932830555088
+          ]
+        }
+      ],
+      "targeted_tests": 5,
+      "repository_checks": {
+        "run": 45344880448,
+        "conclusion": "success"
+      }
     }
   ],
   "reference": {
@@ -744,7 +872,7 @@
     "V10.2": "completed_exploratory_no_robust_gain",
     "V10.3": "completed_exploratory_no_robust_vote_gain",
     "V10.4": "completed_exploratory_no_robust_gain",
-    "V10.5": "reference_geography_fix_pending_CI"
+    "V10.5": "completed_exploratory_no_gain"
   },
-  "notes": "Second V10.5 run failed: missing prior geography. Fix uses independent OFS 2026 harmonized reference lookup (retrospective, not as-of certified), no outcome-based geography imputation. No V10.5 score available yet."
+  "notes": "V10.5 corrected OFS geography benchmark succeeded, all 5 targeted tests and repository checks passed. Morning checkpoint: V10.1–V10.5 measured; V10.6–V10.10 pending. No promotion. No continuation scheduled beyond original morning campaign."
 }

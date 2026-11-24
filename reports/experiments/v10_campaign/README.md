@@ -16,7 +16,7 @@ Le [plan préenregistré](../../../experiments/municipal_v10/plan.json) détaill
 | V10.2 | Campaign media coverage | Terminé, gain non robuste (54 objets) | 7,2271 | 5,6743 | 3,8250 | [Extension](V10.2-extension.md) / [pilote](V10.2-pilot.md) |
 | V10.3 | Participation and ballot weights | Terminé, meilleur poids mais gain vote non robuste | 7,2169 | 5,7052 | 3,7757 | [Résultats](V10.3-results.md) |
 | V10.4 | Aggregate poststratification and multilevel regression | Terminé, gain non robuste | 7,2039 | 5,6974 | 3,7757 | [Résultats](V10.4-results.md) |
-| V10.5 | Independent canton forecasts / small area estimation | Deux benchmarks échoués ; correction via référentiel OFS, nouveau benchmark non vérifié | — | — | — | [Protocole](V10.5-protocol.md) |
+| V10.5 | Independent canton forecasts / small area estimation | Terminé après deux incidents ; aucun gain communal (meilleure correction active) | 7,2441 | 5,7010 | 3,7710 | [Résultats](V10.5-results.md) |
 | V10.6 | Hierarchical reconciliation (MinT) | En attente | — | — | — | — |
 | V10.7 | Hybrid Gaussian-process profiles | En attente | — | — | — | — |
 | V10.8 | Official brochure corpus and semantic effects | En attente | — | — | — | — |
@@ -27,4 +27,4 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 
 ## Bilan du matin
 
-[Rapport cumulatif du 24 novembre 2026](morning-report-20261124.md) : toutes les configurations mesurées, limites, incidents et prochaines étapes. V10.5 non validée, V10.6–10.10 non évaluées.
+[Rapport cumulatif du 24 novembre 2026](morning-report-20261124.md) : toutes les configurations mesurées, limites, incidents et prochaines étapes. V10.5 validée techniquement, sans gain ; V10.6–10.10 non évaluées.
