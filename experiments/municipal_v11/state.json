@@ -25,9 +25,18 @@
     "V11.5",
     "V11.6"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "version": "V11.1",
+      "kind": "benchmark",
+      "run": 45409817577,
+      "sha": "93402cf02143a5079cbb1d4370e8a00551a9d550",
+      "status": "in_progress",
+      "conclusion": null
+    }
+  ],
   "stage_status": {
-    "V11.1": "implemented_pending_ci"
+    "V11.1": "benchmark_in_progress"
   },
   "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access."
 }

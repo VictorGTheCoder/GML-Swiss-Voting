@@ -8,9 +8,9 @@
 ## Registre
 | Version | Hypothèse | État | Meilleure MAE |
 |---|---|---|---:|
-| V11.1 | Noyaux lexicaux intégraux et profil local complet | Implémenté, benchmark à vérifier | — |
+| V11.1 | Noyaux lexicaux intégraux et profil local complet | Implémenté, benchmark en cours | — |
 
-[Protocole V11.1](V11.1-protocol.md) · [Backlog et état](../../../experiments/municipal_v11/state.json).
+[Protocole V11.1](V11.1-protocol.md) · [Benchmark V11.1](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45409817577) · [Backlog et état](../../../experiments/municipal_v11/state.json).
 
 ## Backlog priorisé
 1. V11.1 : expérience factorielle noyaux et profil complet, analyse des erreurs par objet/thème/fenêtre/commune/canton.
