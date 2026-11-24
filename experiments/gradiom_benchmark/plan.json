@@ -16,5 +16,27 @@
   "horizon": "Retain printed generation date; require strictly before vote; historical snapshot authenticity not independently certified. No 2026-11-29 data.",
   "metrics": "Macro-object equal-municipality MAE in percentage points, centered local MAE, national MAE from published national forecast, equal-canton macro-object MAE when exact canton values available. Score only final/complete published official aggregate counts; label provisional releases. Report actual coverage, unmatched keys and uncertainty across dates.",
   "comparison": "Compare same objects on existing frozen V2 2023-25 retrospective comparison results when matched. Equal-geography matched rows required for strict paired commune comparison; if only per-object metrics or geography differs, label indicative. V10.8 score 6.9886 on separate 2016-22 population is contextual only. No fitting or selection on 2023+ results.",
-  "provenance": "Save URLs, published dates, retrieval time and hashes. Public values only; do not publish full proprietary tables or circumvent access restrictions."
+  "provenance": "Save URLs, published dates, retrieval time and hashes. Public values only; do not publish full proprietary tables or circumvent access restrictions.",
+  "expected_objects": 18,
+  "object_ids": [
+    "6730",
+    "6740",
+    "6750",
+    "6760",
+    "6770",
+    "6780",
+    "6790",
+    "6800",
+    "6810",
+    "6821",
+    "6822",
+    "6830",
+    "6840",
+    "6850",
+    "6860",
+    "6870",
+    "6880",
+    "6890"
+  ],
+  "geography": "Read declared SVG map vintage and official OGD spatial_reference, validate IDs against official registers and exclude both sides of all mutations, including territory transfers, between vintages. Require >=95% of count-valid official communes. Only use numeric data-approval in map data-quantile 50; not colors. Exclude special units. Allow complete provisional official votes but label them."
 }
