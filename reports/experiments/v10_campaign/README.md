@@ -19,9 +19,9 @@ Le [plan préenregistré](../../../experiments/municipal_v10/plan.json) détaill
 | V10.5 | Independent canton forecasts / small area estimation | Terminé après deux incidents ; aucun gain communal (meilleure correction active) | 7,2441 | 5,7010 | 3,7710 | [Résultats](V10.5-results.md) |
 | V10.6 | Hierarchical reconciliation (MinT) | Terminé, aucun gain communal (meilleur ajustement actif) | 7,2630 | 5,7157 | 3,7459 | [Résultats](V10.6-results.md) |
 | V10.7 | Hybrid Gaussian-process profiles | Terminé, gain exploratoire non confirmé | 7,1315 | 5,6408 | 3,7757 | [Résultats](V10.7-results.md) |
-| V10.8 | Official brochure corpus and semantic effects | En attente | — | — | — | — |
-| V10.9 | Socioeconomic data and object × commune interactions | En attente | — | — | — | — |
-| V10.10 | Chronological ensemble | En attente | — | — | — | — |
+| V10.8 | Official brochure corpus and semantic effects | Terminé, meilleur exploratoire non confirmé | 6,9886 | 5,5370 | 3,8465 | [Résultats](V10.8-results.md) |
+| V10.9 | Socioeconomic data and object × commune interactions | Terminé, aucun gain fiscal | 7,2332 | 5,7064 | 3,7746 | [Résultats](V10.9-results.md) |
+| V10.10 | Chronological ensemble | Terminé, pas de nouveau record | 7,1201 | 5,6053 | 3,8042 | [Résultats](V10.10-results.md) |
 
 Les résultats oracles, les données historiquement non certifiées, les échecs et les intervalles descriptifs seront explicitement distingués des prévisions. Les résultats de 2023+ sont exclus de la modélisation. Aucune conclusion de succès prospectif ne sera tirée de ces seules dates réutilisées.
 
@@ -31,4 +31,4 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 
 ## Reprise du 24 novembre
 
-[Rapport cumulatif actualisé](followup-report-20261124.md) : V10.6 terminée, V10.7–V10.10 à poursuivre.
+[Rapport cumulatif actualisé](followup-report-20261124.md) : 10/10 étapes mesurées ; meilleur exploratoire V10.8 à 6,9886. Aucun déploiement ni promotion. La tâche planifiée est désactivée.

@@ -1,7 +1,7 @@
 {
   "campaign": "V10 — literature-driven municipal referendum prediction",
-  "status": "interactive_continuation",
-  "active": "V10.9",
+  "status": "completed_exploratory_no_promotion",
+  "active": null,
   "updated": "2026-11-24",
   "completed": [
     "V10.1",
@@ -11,13 +11,12 @@
     "V10.5",
     "V10.6",
     "V10.7",
-    "V10.8"
-  ],
-  "blocked": [],
-  "pending": [
+    "V10.8",
     "V10.9",
     "V10.10"
   ],
+  "blocked": [],
+  "pending": [],
   "runs": [
     {
       "version": "V10.1",
@@ -1144,6 +1143,594 @@
           ]
         }
       ]
+    },
+    {
+      "version": "V10.8",
+      "kind": "benchmark",
+      "run": 45367633898,
+      "job": 138353399384,
+      "artifact": 14907756689,
+      "artifact_digest": "sha256:e36afc2fa51e127699a7c529376fb9d61c21d3c5608b2f77fd493b5f492219da",
+      "acquisition": 14906199977,
+      "sha": "26692e3dfe7e73cd13c549dde07778c8dec4b35f",
+      "conclusion": "success",
+      "targeted_tests": 3,
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "covered_mae_pp": 7.369982450967182,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "title_e5_16_all",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.2601516462357685,
+          "centered_mae_pp": 5.548244298216675,
+          "national_mae_pp": 3.77190574066917,
+          "canton_mae_pp": 5.628868382261348,
+          "covered_mae_pp": 7.44121007297591,
+          "gain_interval": [
+            -0.2577967917319206,
+            0.20304103938061596
+          ]
+        },
+        {
+          "variant": "title_e5_16_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.370489642489573,
+          "centered_mae_pp": 5.548244298216675,
+          "national_mae_pp": 3.7600134545644175,
+          "canton_mae_pp": 5.75061685523107,
+          "covered_mae_pp": 7.526584460732582,
+          "gain_interval": [
+            -0.31801773912991654,
+            0.03222777676904032
+          ]
+        },
+        {
+          "variant": "page_e5_16_all",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.412472813111079,
+          "centered_mae_pp": 5.450972558662253,
+          "national_mae_pp": 3.964396277270083,
+          "canton_mae_pp": 5.81745346095804,
+          "covered_mae_pp": 7.579901720583958,
+          "gain_interval": [
+            -0.4384412162717966,
+            0.10298570367540774
+          ]
+        },
+        {
+          "variant": "page_e5_16_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.306550042123096,
+          "centered_mae_pp": 5.450972558662253,
+          "national_mae_pp": 3.7601095303635734,
+          "canton_mae_pp": 5.700962045752953,
+          "covered_mae_pp": 7.448383028795442,
+          "gain_interval": [
+            -0.25465769163847707,
+            0.13285448730841923
+          ]
+        },
+        {
+          "variant": "page_tfidf_16_all",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.988599997055331,
+          "centered_mae_pp": 5.280965787730653,
+          "national_mae_pp": 3.846510449192281,
+          "canton_mae_pp": 5.536970110697117,
+          "covered_mae_pp": 7.138281038994082,
+          "gain_interval": [
+            -0.033474457237910864,
+            0.6263738724976635
+          ]
+        },
+        {
+          "variant": "page_tfidf_16_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.132888688811753,
+          "centered_mae_pp": 5.280965787730655,
+          "national_mae_pp": 3.8333250822268163,
+          "canton_mae_pp": 5.600319922780358,
+          "covered_mae_pp": 7.259680229636974,
+          "gain_interval": [
+            -0.017876142987138015,
+            0.23983025612242706
+          ]
+        },
+        {
+          "variant": "page_e5_cues_16_all",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.358568720589621,
+          "centered_mae_pp": 5.424837786127477,
+          "national_mae_pp": 3.9554454949756286,
+          "canton_mae_pp": 5.781726068164711,
+          "covered_mae_pp": 7.517871048031805,
+          "gain_interval": [
+            -0.39487217147382286,
+            0.15749016095860333
+          ]
+        },
+        {
+          "variant": "page_e5_cues_16_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.294304221719262,
+          "centered_mae_pp": 5.424837786127477,
+          "national_mae_pp": 3.7704947519075622,
+          "canton_mae_pp": 5.697233077216414,
+          "covered_mae_pp": 7.430834426566843,
+          "gain_interval": [
+            -0.22499185501678728,
+            0.13389548631829445
+          ]
+        },
+        {
+          "variant": "cues_only_all",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.145798929835907,
+          "centered_mae_pp": 5.3454753912015525,
+          "national_mae_pp": 3.822672247666385,
+          "canton_mae_pp": 5.647936317190486,
+          "covered_mae_pp": 7.288003432425891,
+          "gain_interval": [
+            -0.0235566107699023,
+            0.18699296791008294
+          ]
+        },
+        {
+          "variant": "cues_only_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.2046365947148026,
+          "centered_mae_pp": 5.3454753912015525,
+          "national_mae_pp": 3.7747642637232923,
+          "canton_mae_pp": 5.659010353598283,
+          "covered_mae_pp": 7.335023682897313,
+          "gain_interval": [
+            -0.033006277807233246,
+            0.08743463633599936
+          ]
+        }
+      ],
+      "coverage": {
+        "objects": 306,
+        "matched_pages": 217,
+        "validation_matches": 59,
+        "matching_policy": "unique title/question page, source identity and hash; retrospective candidate, not strict temporal certification"
+      }
+    },
+    {
+      "version": "V10.9",
+      "kind": "initial",
+      "run": 45367633898,
+      "job": 138353400034,
+      "artifact": 14908300588,
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "covered_mae_pp": 7.229527497606816,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "demographic_control_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.231211997464253,
+          "centered_mae_pp": 5.3729268816158715,
+          "national_mae_pp": 3.7754782013724264,
+          "canton_mae_pp": 5.685383621510735,
+          "covered_mae_pp": 7.231211997464253,
+          "gain_interval": [
+            -0.04055061702028574,
+            0.028636258703397244
+          ]
+        },
+        {
+          "variant": "demographic_control_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.228467802202902,
+          "centered_mae_pp": 5.369450449198144,
+          "national_mae_pp": 3.7782578971600165,
+          "canton_mae_pp": 5.689578437494813,
+          "covered_mae_pp": 7.228467802202902,
+          "gain_interval": [
+            -0.02270505561677064,
+            0.019870947630975022
+          ]
+        },
+        {
+          "variant": "income_means_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.233464347749036,
+          "centered_mae_pp": 5.377291667851218,
+          "national_mae_pp": 3.774497195547453,
+          "canton_mae_pp": 5.706100056085057,
+          "covered_mae_pp": 7.233464347749036,
+          "gain_interval": [
+            -0.009369040183951951,
+            0.0016218418855908447
+          ]
+        },
+        {
+          "variant": "income_means_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.233262366896976,
+          "centered_mae_pp": 5.376916191593386,
+          "national_mae_pp": 3.774938669861809,
+          "canton_mae_pp": 5.706413778118522,
+          "covered_mae_pp": 7.233262366896976,
+          "gain_interval": [
+            -0.008722189279951971,
+            0.0013329005024016944
+          ]
+        },
+        {
+          "variant": "income_distribution_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.238871774066832,
+          "centered_mae_pp": 5.386858678757679,
+          "national_mae_pp": 3.7735675337362875,
+          "canton_mae_pp": 5.707949027873756,
+          "covered_mae_pp": 7.238871774066832,
+          "gain_interval": [
+            -0.020199930158396818,
+            0.002350335724068533
+          ]
+        },
+        {
+          "variant": "income_distribution_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.237703778924684,
+          "centered_mae_pp": 5.3856766203353805,
+          "national_mae_pp": 3.774699230513505,
+          "canton_mae_pp": 5.708421013177852,
+          "covered_mae_pp": 7.237703778924684,
+          "gain_interval": [
+            -0.01754401503139897,
+            0.001796725739799429
+          ]
+        },
+        {
+          "variant": "income_demographic_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.240025413445162,
+          "centered_mae_pp": 5.388420072278704,
+          "national_mae_pp": 3.7756403060522055,
+          "canton_mae_pp": 5.6918059192105055,
+          "covered_mae_pp": 7.240025413445162,
+          "gain_interval": [
+            -0.05342113356459171,
+            0.024758084833906086
+          ]
+        },
+        {
+          "variant": "income_demographic_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.23692745731573,
+          "centered_mae_pp": 5.384706166801929,
+          "national_mae_pp": 3.778692710794569,
+          "canton_mae_pp": 5.69658475106544,
+          "covered_mae_pp": 7.23692745731573,
+          "gain_interval": [
+            -0.03472030463393392,
+            0.016621433147185862
+          ]
+        }
+      ]
+    },
+    {
+      "version": "V10.9",
+      "kind": "corrected",
+      "run": 45368450007,
+      "job": 138356180485,
+      "artifact": 14908660768,
+      "artifact_digest": "sha256:3cdb714c8c31de21e6cc115405c542b1ce95ed4b2e80dae92b1ba45dcd61bd5f",
+      "acquisition": 14907467639,
+      "sha": "4fa9fd5aadb07a841eb52fd8dae9a43eb9b5de71",
+      "conclusion": "success",
+      "targeted_tests": 4,
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "covered_mae_pp": 7.229527497606816,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "demographic_control_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.231211997464252,
+          "centered_mae_pp": 5.372926881615871,
+          "national_mae_pp": 3.775478201372421,
+          "canton_mae_pp": 5.685383621510733,
+          "covered_mae_pp": 7.231211997464252,
+          "gain_interval": [
+            -0.04055061702028692,
+            0.028636258703401734
+          ]
+        },
+        {
+          "variant": "demographic_control_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.228467802202903,
+          "centered_mae_pp": 5.369450449198143,
+          "national_mae_pp": 3.7782578971600187,
+          "canton_mae_pp": 5.689578437494814,
+          "covered_mae_pp": 7.228467802202903,
+          "gain_interval": [
+            -0.02270505561677203,
+            0.019870947630974002
+          ]
+        },
+        {
+          "variant": "income_means_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.233364072539397,
+          "centered_mae_pp": 5.377304766240023,
+          "national_mae_pp": 3.7739393497226166,
+          "canton_mae_pp": 5.706116523066864,
+          "covered_mae_pp": 7.233364072539397,
+          "gain_interval": [
+            -0.009381747234406101,
+            0.001800615048014769
+          ]
+        },
+        {
+          "variant": "income_means_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.233206589656054,
+          "centered_mae_pp": 5.377014403976105,
+          "national_mae_pp": 3.774596692288413,
+          "canton_mae_pp": 5.706407932641447,
+          "covered_mae_pp": 7.233206589656054,
+          "gain_interval": [
+            -0.008726087948750851,
+            0.001457135162003069
+          ]
+        },
+        {
+          "variant": "income_distribution_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.23908484233636,
+          "centered_mae_pp": 5.3874192183335055,
+          "national_mae_pp": 3.7728058085760217,
+          "canton_mae_pp": 5.7085294941102775,
+          "covered_mae_pp": 7.23908484233636,
+          "gain_interval": [
+            -0.021008984198126187,
+            0.002586341931167224
+          ]
+        },
+        {
+          "variant": "income_distribution_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.237702110114225,
+          "centered_mae_pp": 5.3859933906998805,
+          "national_mae_pp": 3.774344982679992,
+          "canton_mae_pp": 5.708648789825028,
+          "covered_mae_pp": 7.237702110114225,
+          "gain_interval": [
+            -0.017781730484417405,
+            0.0021484745966137263
+          ]
+        },
+        {
+          "variant": "income_demographic_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.240272294949261,
+          "centered_mae_pp": 5.38887843456139,
+          "national_mae_pp": 3.77462860536203,
+          "canton_mae_pp": 5.692119452407227,
+          "covered_mae_pp": 7.240272294949261,
+          "gain_interval": [
+            -0.05413696721173979,
+            0.02488222814596225
+          ]
+        },
+        {
+          "variant": "income_demographic_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.236884995804168,
+          "centered_mae_pp": 5.384909401248726,
+          "national_mae_pp": 3.778108725763605,
+          "canton_mae_pp": 5.696584699760604,
+          "covered_mae_pp": 7.236884995804168,
+          "gain_interval": [
+            -0.03495241449977384,
+            0.016952757986824243
+          ]
+        }
+      ],
+      "source_rows": 33645
+    },
+    {
+      "version": "V10.10",
+      "kind": "initial",
+      "run": 45368450007,
+      "job": 138357552211,
+      "conclusion": "failure",
+      "reason": "V10.1 nested bundle; repaired in next commit"
+    },
+    {
+      "version": "V10.10",
+      "kind": "benchmark",
+      "run": 45368857137,
+      "job": 138357575457,
+      "artifact": 14908236884,
+      "artifact_digest": "sha256:b7417b0678047778f1adc6196788d0fce7cccb4e1152ccc773b02f5b876cb3e8",
+      "sha": "5d5796c4804b5583892deb8405855e5631a61fa9",
+      "conclusion": "success",
+      "targeted_tests": 3,
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "fixed_equal_families",
+          "objects": 66,
+          "mae_pp": 7.159734773152613,
+          "centered_mae_pp": 5.322489266370778,
+          "national_mae_pp": 3.723011387757573,
+          "canton_mae_pp": 5.619998181256722,
+          "gain_interval": [
+            0.017960820661883568,
+            0.12088387345019792
+          ]
+        },
+        {
+          "variant": "fixed_half_reference",
+          "objects": 66,
+          "mae_pp": 7.190665985660315,
+          "centered_mae_pp": 5.343935976955363,
+          "national_mae_pp": 3.735238921130552,
+          "canton_mae_pp": 5.659434809596869,
+          "gain_interval": [
+            0.013132286296455428,
+            0.06408357158203719
+          ]
+        },
+        {
+          "variant": "adaptive_family_uniform",
+          "objects": 66,
+          "mae_pp": 7.1685977405378285,
+          "centered_mae_pp": 5.311250373259341,
+          "national_mae_pp": 3.7480716313933113,
+          "canton_mae_pp": 5.63246183138623,
+          "gain_interval": [
+            -0.02682564368290633,
+            0.1499557376367845
+          ]
+        },
+        {
+          "variant": "adaptive_family_reference",
+          "objects": 66,
+          "mae_pp": 7.187602372254118,
+          "centered_mae_pp": 5.32846467119564,
+          "national_mae_pp": 3.7570819560866666,
+          "canton_mae_pp": 5.659521105724763,
+          "gain_interval": [
+            -0.014106954679161777,
+            0.10088444418541208
+          ]
+        },
+        {
+          "variant": "adaptive_family_reference_weak",
+          "objects": 66,
+          "mae_pp": 7.169947183301791,
+          "centered_mae_pp": 5.312865729515867,
+          "national_mae_pp": 3.7643548896405195,
+          "canton_mae_pp": 5.6390415400527525,
+          "gain_interval": [
+            -0.0463706844013657,
+            0.17818626804305263
+          ]
+        },
+        {
+          "variant": "adaptive_all_variants",
+          "objects": 66,
+          "mae_pp": 7.12007485193935,
+          "centered_mae_pp": 5.304178105580161,
+          "national_mae_pp": 3.804177487433044,
+          "canton_mae_pp": 5.605303614424989,
+          "gain_interval": [
+            -0.026734717598327674,
+            0.2666489595660052
+          ]
+        },
+        {
+          "variant": "split_level_local",
+          "objects": 66,
+          "mae_pp": 7.190296340194523,
+          "centered_mae_pp": 5.3195596893500925,
+          "national_mae_pp": 3.7585460777174005,
+          "canton_mae_pp": 5.662853886313725,
+          "gain_interval": [
+            -0.0392403283417073,
+            0.11724573436392645
+          ]
+        }
+      ],
+      "repository_checks": {
+        "run": 45368856959,
+        "jobs": [
+          {
+            "name": "tests (windows-latest)",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "municipal-experiments",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "tests (ubuntu-latest)",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
     }
   ],
   "reference": {
@@ -1164,8 +1751,8 @@
     "V10.6": "completed_exploratory_no_gain",
     "V10.7": "completed_exploratory_gain_not_confirmed",
     "V10.8": "completed_exploratory_gain_not_confirmed",
-    "V10.9": "initial_benchmark_success_encoding_correction_in_progress",
-    "V10.10": "workflow_predeclared_dependencies"
+    "V10.9": "completed_exploratory_no_gain",
+    "V10.10": "completed_exploratory_no_new_best"
   },
-  "notes": "Automation paused on explicit user request. Interactive continuation; independent acquisition jobs for V10.8 and V10.9, ensemble after verified results."
+  "notes": "All ten stages measured; automation disabled at user's request. Best V10.8 6.9886 pp; no promotion, strict historic provenance incomplete. General checks snapshot recorded below."
 }
