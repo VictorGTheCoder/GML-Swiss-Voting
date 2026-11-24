@@ -1,15 +1,15 @@
 {
   "campaign": "V10 — literature-driven municipal referendum prediction",
   "status": "in_progress",
-  "active": "V10.3",
+  "active": "V10.4",
   "updated": "2026-11-24",
   "completed": [
     "V10.1",
-    "V10.2"
+    "V10.2",
+    "V10.3"
   ],
   "blocked": [],
   "pending": [
-    "V10.3",
     "V10.4",
     "V10.5",
     "V10.6",
@@ -455,6 +455,155 @@
         "run": 45309749468,
         "conclusion": "success"
       }
+    },
+    {
+      "version": "V10.3",
+      "kind": "benchmark",
+      "run": 45316679885,
+      "artifact": 14884454967,
+      "artifact_digest": "sha256:9e52af0bbd2acf23e13d5a281f35987804579961dfaa57c8412b2d74a6da2627",
+      "sha": "e5c56bd3fd0fbe7ccfacdc5f6dcf3da69bed27d1",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "common_weight_national_mae_pp": 3.7756692099920697,
+          "common_weight_canton_mae_pp": 5.703708259264076,
+          "ballot_weight_tv_pp": 4.99960427423866,
+          "turnout_mae_pp": null,
+          "valid_rate_mae_pp": null,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "eligible_only",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7763083857006094,
+          "canton_mae_pp": 5.705493948679002,
+          "common_weight_national_mae_pp": 3.7756692099920697,
+          "common_weight_canton_mae_pp": 5.703708259264076,
+          "ballot_weight_tv_pp": 5.061697617184871,
+          "turnout_mae_pp": null,
+          "valid_rate_mae_pp": null,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "last_weights_only",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7936091867321737,
+          "canton_mae_pp": 5.71776668420257,
+          "common_weight_national_mae_pp": 3.7756692099920697,
+          "common_weight_canton_mae_pp": 5.703708259264076,
+          "ballot_weight_tv_pp": 4.149759811076291,
+          "turnout_mae_pp": 12.825874957223306,
+          "valid_rate_mae_pp": 12.502903075214618,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "last_reanchor",
+          "objects": 66,
+          "mae_pp": 7.216935543585269,
+          "centered_mae_pp": 5.375808689690289,
+          "national_mae_pp": 3.77566920999207,
+          "canton_mae_pp": 5.705164190575249,
+          "common_weight_national_mae_pp": 3.76616396961402,
+          "common_weight_canton_mae_pp": 5.6944067485463385,
+          "ballot_weight_tv_pp": 4.149759811076291,
+          "turnout_mae_pp": 12.825874957223306,
+          "valid_rate_mae_pp": 12.502903075214618,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            -0.028204727642536627,
+            0.04943208572021167
+          ]
+        },
+        {
+          "variant": "pooled_weights_only",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7710384644973445,
+          "canton_mae_pp": 5.708957560058708,
+          "common_weight_national_mae_pp": 3.7756692099920697,
+          "common_weight_canton_mae_pp": 5.703708259264076,
+          "ballot_weight_tv_pp": 3.0517732518555745,
+          "turnout_mae_pp": 9.146923092115236,
+          "valid_rate_mae_pp": 8.919794571143674,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "pooled_reanchor",
+          "objects": 66,
+          "mae_pp": 7.230933363286588,
+          "centered_mae_pp": 5.375019389237864,
+          "national_mae_pp": 3.775669209992092,
+          "canton_mae_pp": 5.716673498551566,
+          "common_weight_national_mae_pp": 3.785086668761552,
+          "common_weight_canton_mae_pp": 5.713142345960711,
+          "ballot_weight_tv_pp": 3.0517732518555745,
+          "turnout_mae_pp": 9.146923092115236,
+          "valid_rate_mae_pp": 8.919794571143674,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            -0.022476944246329105,
+            0.018325028656403043
+          ]
+        },
+        {
+          "variant": "domain_reanchor",
+          "objects": 66,
+          "mae_pp": 7.228559598057313,
+          "centered_mae_pp": 5.375733877898977,
+          "national_mae_pp": 3.7756692099920395,
+          "canton_mae_pp": 5.716266088242728,
+          "common_weight_national_mae_pp": 3.778627042603447,
+          "common_weight_canton_mae_pp": 5.711815194165466,
+          "ballot_weight_tv_pp": 3.0794202506683575,
+          "turnout_mae_pp": 9.283238009318158,
+          "valid_rate_mae_pp": 9.068035186453727,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            -0.02324366415161577,
+            0.023695436564918626
+          ]
+        }
+      ],
+      "targeted_tests": 3,
+      "repository_checks": {
+        "run": 45316679915,
+        "conclusion": "success"
+      }
     }
   ],
   "reference": {
@@ -469,7 +618,8 @@
   "stage_status": {
     "V10.1": "completed_exploratory_no_robust_gain",
     "V10.2": "completed_exploratory_no_robust_gain",
-    "V10.3": "implemented_pending_CI"
+    "V10.3": "completed_exploratory_no_robust_vote_gain",
+    "V10.4": "implemented_pending_CI"
   },
-  "notes": "Media extension 54/66: tone_volume 7.227129 vs 7.229527; gain interval crosses zero; no promotion. V10.3 historical eligible and turnout weights implemented; await CI."
+  "notes": "V10.3 completed: pooled weights TV 3.0518 vs 4.9996; no robust vote MAE gain. V10.4 aggregate cross-classified residual partial pooling implemented; await CI."
 }
