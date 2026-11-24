@@ -1,0 +1,25 @@
+vote_key,vote_date,published_at,weeks,report_label,articles,tone,source_url,page,figure
+6380,2021-03-07,2021-02-12,8,Verhüllungsverbot,153,-1,https://www.foeg.uzh.ch/dam/jcr:c2100c5d-bea1-49c2-b001-7467e396efc6/AM_Zwischenbericht_M%C3%A4rz_2021.pdf,2,1
+6390,2021-03-07,2021-02-12,8,E-ID-Gesetz,114,2,https://www.foeg.uzh.ch/dam/jcr:c2100c5d-bea1-49c2-b001-7467e396efc6/AM_Zwischenbericht_M%C3%A4rz_2021.pdf,2,1
+6400,2021-03-07,2021-02-12,8,Freihandel Indonesien,83,12,https://www.foeg.uzh.ch/dam/jcr:c2100c5d-bea1-49c2-b001-7467e396efc6/AM_Zwischenbericht_M%C3%A4rz_2021.pdf,2,1
+6410,2021-06-13,2021-05-31,9,Trinkwasserinitiative,421,-4,https://www.foeg.uzh.ch/dam/jcr:3c5ca51e-07e0-4a6e-9157-b3c1585f4de3/Abstimmungsmonitor_ZB_Juni_2021.pdf,2,1
+6420,2021-06-13,2021-05-31,9,Initiative Pestizidverbot,407,-3,https://www.foeg.uzh.ch/dam/jcr:3c5ca51e-07e0-4a6e-9157-b3c1585f4de3/Abstimmungsmonitor_ZB_Juni_2021.pdf,2,1
+6430,2021-06-13,2021-05-31,9,Covid-19-Gesetz,186,12,https://www.foeg.uzh.ch/dam/jcr:3c5ca51e-07e0-4a6e-9157-b3c1585f4de3/Abstimmungsmonitor_ZB_Juni_2021.pdf,2,1
+6440,2021-06-13,2021-05-31,9,CO2-Gesetz,431,34,https://www.foeg.uzh.ch/dam/jcr:3c5ca51e-07e0-4a6e-9157-b3c1585f4de3/Abstimmungsmonitor_ZB_Juni_2021.pdf,2,1
+6450,2021-06-13,2021-05-31,9,Terrorismusgesetz,170,2,https://www.foeg.uzh.ch/dam/jcr:3c5ca51e-07e0-4a6e-9157-b3c1585f4de3/Abstimmungsmonitor_ZB_Juni_2021.pdf,2,1
+6460,2021-09-26,2021-09-14,9,99-Prozent-Initiative,134,-22,https://www.foeg.uzh.ch/dam/jcr:9034879e-f85f-4fd3-8ea4-40ee45182216/Abstimmungsmonitor_ZB_September_2021.pdf,2,1
+6470,2021-09-26,2021-09-14,9,Ehe für alle,308,32,https://www.foeg.uzh.ch/dam/jcr:9034879e-f85f-4fd3-8ea4-40ee45182216/Abstimmungsmonitor_ZB_September_2021.pdf,2,1
+6480,2021-11-28,2021-11-15,9,Pflegeinitiative,213,16,https://www.foeg.uzh.ch/dam/jcr:4efc1be0-2eb3-4adc-b7e2-c06eff0a21fe/Abstimmungsmonitor_ZB_November_2021.pdf,2,1
+6490,2021-11-28,2021-11-15,9,Justizinitiative,120,-27,https://www.foeg.uzh.ch/dam/jcr:4efc1be0-2eb3-4adc-b7e2-c06eff0a21fe/Abstimmungsmonitor_ZB_November_2021.pdf,2,1
+6500,2021-11-28,2021-11-15,9,Covid-19-Gesetz (Nov 21),485,6,https://www.foeg.uzh.ch/dam/jcr:4efc1be0-2eb3-4adc-b7e2-c06eff0a21fe/Abstimmungsmonitor_ZB_November_2021.pdf,2,1
+6510,2022-02-13,2022-02-01,9,Tierversuchsverbot,100,-29,https://www.foeg.uzh.ch/dam/jcr:8dead78f-e8c7-4ae7-92d5-92cc6cee6441/Abstimmungsmonitor_ZB_Februar_2022.pdf,2,1
+6520,2022-02-13,2022-02-01,9,Tabakwerbeverbot,133,20,https://www.foeg.uzh.ch/dam/jcr:8dead78f-e8c7-4ae7-92d5-92cc6cee6441/Abstimmungsmonitor_ZB_Februar_2022.pdf,2,1
+6530,2022-02-13,2022-02-01,9,Stempelabgaben,129,-2,https://www.foeg.uzh.ch/dam/jcr:8dead78f-e8c7-4ae7-92d5-92cc6cee6441/Abstimmungsmonitor_ZB_Februar_2022.pdf,2,1
+6540,2022-02-13,2022-02-01,9,Medienpaket,228,18,https://www.foeg.uzh.ch/dam/jcr:8dead78f-e8c7-4ae7-92d5-92cc6cee6441/Abstimmungsmonitor_ZB_Februar_2022.pdf,2,1
+6550,2022-05-15,2022-05-03,9,Filmgesetz,127,-6,https://www.foeg.uzh.ch/dam/jcr:016b2a64-05e2-4d2d-bada-e149375d2faa/Abstimmungsmonitor_ZB_Mai_2022.pdf,2,1
+6560,2022-05-15,2022-05-03,9,Transplantationsgesetz,125,9,https://www.foeg.uzh.ch/dam/jcr:016b2a64-05e2-4d2d-bada-e149375d2faa/Abstimmungsmonitor_ZB_Mai_2022.pdf,2,1
+6570,2022-05-15,2022-05-03,9,Finanzierung Frontex,134,24,https://www.foeg.uzh.ch/dam/jcr:016b2a64-05e2-4d2d-bada-e149375d2faa/Abstimmungsmonitor_ZB_Mai_2022.pdf,2,1
+6580,2022-09-25,2022-09-16,9,Massentierhaltungsinitiative,186,7,https://www.foeg.uzh.ch/dam/jcr:ad74bfb8-66a9-4b1f-8c4a-52c94ec42fc9/Abstimmungsmonitor_ZB_September_2022.pdf,2,1
+6590,2022-09-25,2022-09-16,9,AHV-Reform,291,24,https://www.foeg.uzh.ch/dam/jcr:ad74bfb8-66a9-4b1f-8c4a-52c94ec42fc9/Abstimmungsmonitor_ZB_September_2022.pdf,2,1
+6600,2022-09-25,2022-09-16,9,AHV-Reform,291,24,https://www.foeg.uzh.ch/dam/jcr:ad74bfb8-66a9-4b1f-8c4a-52c94ec42fc9/Abstimmungsmonitor_ZB_September_2022.pdf,2,1
+6610,2022-09-25,2022-09-16,9,Verrechnungssteuergesetz,169,12,https://www.foeg.uzh.ch/dam/jcr:ad74bfb8-66a9-4b1f-8c4a-52c94ec42fc9/Abstimmungsmonitor_ZB_September_2022.pdf,2,1

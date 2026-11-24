@@ -12,8 +12,8 @@ Le [plan préenregistré](../../../experiments/municipal_v10/plan.json) détaill
 
 | Version | Expérience | Statut | MAE communale | MAE cantonale | MAE nationale | Preuve |
 |---|---|---|---:|---:|---:|---|
-| V10.1 | Vote-expectation surveys | Pilote 9 objets ; extension en cours | 7,1708 | 5,6244 | 3,6853 | [Rapport pilote](V10.1-pilot.md) |
-| V10.2 | Campaign media coverage | En attente | — | — | — | — |
+| V10.1 | Vote-expectation surveys | Terminé, gain non robuste (20 objets) | 7,2145 | 5,6634 | 3,8082 | [Extension](V10.1-extension.md) / [pilote](V10.1-pilot.md) |
+| V10.2 | Campaign media coverage | Pilote 24 objets, CI à vérifier | — | — | — | — |
 | V10.3 | Participation and ballot weights | En attente | — | — | — | — |
 | V10.4 | Aggregate poststratification and multilevel regression | En attente | — | — | — | — |
 | V10.5 | Independent canton forecasts / small area estimation | En attente | — | — | — | — |

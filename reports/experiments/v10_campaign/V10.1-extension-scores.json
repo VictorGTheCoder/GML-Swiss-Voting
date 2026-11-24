@@ -1,0 +1,104 @@
+[
+  {
+    "variant": "reference",
+    "objects": 66,
+    "covered_objects": 20,
+    "mae_pp": 7.2295274976068145,
+    "centered_mae_pp": 5.370058554693702,
+    "national_mae_pp": 3.7756692099920626,
+    "canton_mae_pp": 5.703708259264074,
+    "covered_mae_pp": 6.267902960546729,
+    "covered_centered_mae_pp": 4.938348664398675,
+    "covered_national_mae_pp": 2.9508795975558613,
+    "covered_canton_mae_pp": 4.678559969485738,
+    "gain_interval": [
+      0,
+      0
+    ]
+  },
+  {
+    "variant": "expectation25",
+    "objects": 66,
+    "covered_objects": 20,
+    "mae_pp": 7.214546714658989,
+    "centered_mae_pp": 5.370058554693701,
+    "national_mae_pp": 3.808242905362406,
+    "canton_mae_pp": 5.663365332662745,
+    "covered_mae_pp": 6.218466376818905,
+    "covered_centered_mae_pp": 4.938348664398674,
+    "covered_national_mae_pp": 3.058372792277995,
+    "covered_canton_mae_pp": 4.545428311701351,
+    "gain_interval": [
+      -0.10656025795812546,
+      0.14638397317482463
+    ]
+  },
+  {
+    "variant": "expectation50",
+    "objects": 66,
+    "covered_objects": 20,
+    "mae_pp": 7.300310867216863,
+    "centered_mae_pp": 5.370058554693702,
+    "national_mae_pp": 4.026288949668666,
+    "canton_mae_pp": 5.7610518934401345,
+    "covered_mae_pp": 6.501488080259891,
+    "covered_centered_mae_pp": 4.938348664398673,
+    "covered_national_mae_pp": 3.7779247384886516,
+    "covered_canton_mae_pp": 4.8677939622667346,
+    "gain_interval": [
+      -0.3514835260342546,
+      0.20488027920401175
+    ]
+  },
+  {
+    "variant": "expectation75",
+    "objects": 66,
+    "covered_objects": 20,
+    "mae_pp": 7.472783747212772,
+    "centered_mae_pp": 5.370058554693701,
+    "national_mae_pp": 4.305413355736589,
+    "canton_mae_pp": 5.984110968138482,
+    "covered_mae_pp": 7.070648584246389,
+    "covered_centered_mae_pp": 4.938348664398676,
+    "covered_national_mae_pp": 4.6990352785128,
+    "covered_canton_mae_pp": 5.603888908771281,
+    "gain_interval": [
+      -0.7030843795764126,
+      0.18522806988129614
+    ]
+  },
+  {
+    "variant": "expectation100",
+    "objects": 66,
+    "covered_objects": 20,
+    "mae_pp": 7.717264748534885,
+    "centered_mae_pp": 5.370058554693701,
+    "national_mae_pp": 4.708337383119556,
+    "canton_mae_pp": 6.287067151320233,
+    "covered_mae_pp": 7.87743588860936,
+    "covered_centered_mae_pp": 4.938348664398675,
+    "covered_national_mae_pp": 6.028684568876593,
+    "covered_canton_mae_pp": 6.60364431327106,
+    "gain_interval": [
+      -1.1557205130147714,
+      0.1223421972364313
+    ]
+  },
+  {
+    "variant": "walk_forward",
+    "objects": 66,
+    "covered_objects": 20,
+    "mae_pp": 7.2494984642477585,
+    "centered_mae_pp": 5.370058554693701,
+    "national_mae_pp": 3.9384444928964495,
+    "canton_mae_pp": 5.705164250904623,
+    "covered_mae_pp": 6.333807150461842,
+    "covered_centered_mae_pp": 4.938348664398674,
+    "covered_national_mae_pp": 3.4880380311403405,
+    "covered_canton_mae_pp": 4.68336474189955,
+    "gain_interval": [
+      -0.2024223118047485,
+      0.16942816226486734
+    ]
+  }
+]

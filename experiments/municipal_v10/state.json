@@ -1,12 +1,13 @@
 {
   "campaign": "V10 — literature-driven municipal referendum prediction",
   "status": "in_progress",
-  "active": "V10.1",
+  "active": "V10.2",
   "updated": "2026-11-24",
-  "completed": [],
+  "completed": [
+    "V10.1"
+  ],
   "blocked": [],
   "pending": [
-    "V10.1",
     "V10.2",
     "V10.3",
     "V10.4",
@@ -134,6 +135,124 @@
         "conclusion": "failure",
         "reason": "ruff C417, corrected in next commit"
       }
+    },
+    {
+      "version": "V10.1",
+      "kind": "extension",
+      "run": 45301813438,
+      "artifact": 14879571160,
+      "artifact_digest": "sha256:7f4d38d0eb39b731df16921922c1c90533d902baf34dd79953b96fcedadad0f8",
+      "sha": "008a0c7684e1ce343efb4d9961f806d465c5ebe6",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.2295274976068145,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920626,
+          "canton_mae_pp": 5.703708259264074,
+          "covered_mae_pp": 6.267902960546729,
+          "covered_centered_mae_pp": 4.938348664398675,
+          "covered_national_mae_pp": 2.9508795975558613,
+          "covered_canton_mae_pp": 4.678559969485738,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "expectation25",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.214546714658989,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.808242905362406,
+          "canton_mae_pp": 5.663365332662745,
+          "covered_mae_pp": 6.218466376818905,
+          "covered_centered_mae_pp": 4.938348664398674,
+          "covered_national_mae_pp": 3.058372792277995,
+          "covered_canton_mae_pp": 4.545428311701351,
+          "gain_interval": [
+            -0.10656025795812546,
+            0.14638397317482463
+          ]
+        },
+        {
+          "variant": "expectation50",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.300310867216863,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 4.026288949668666,
+          "canton_mae_pp": 5.7610518934401345,
+          "covered_mae_pp": 6.501488080259891,
+          "covered_centered_mae_pp": 4.938348664398673,
+          "covered_national_mae_pp": 3.7779247384886516,
+          "covered_canton_mae_pp": 4.8677939622667346,
+          "gain_interval": [
+            -0.3514835260342546,
+            0.20488027920401175
+          ]
+        },
+        {
+          "variant": "expectation75",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.472783747212772,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 4.305413355736589,
+          "canton_mae_pp": 5.984110968138482,
+          "covered_mae_pp": 7.070648584246389,
+          "covered_centered_mae_pp": 4.938348664398676,
+          "covered_national_mae_pp": 4.6990352785128,
+          "covered_canton_mae_pp": 5.603888908771281,
+          "gain_interval": [
+            -0.7030843795764126,
+            0.18522806988129614
+          ]
+        },
+        {
+          "variant": "expectation100",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.717264748534885,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 4.708337383119556,
+          "canton_mae_pp": 6.287067151320233,
+          "covered_mae_pp": 7.87743588860936,
+          "covered_centered_mae_pp": 4.938348664398675,
+          "covered_national_mae_pp": 6.028684568876593,
+          "covered_canton_mae_pp": 6.60364431327106,
+          "gain_interval": [
+            -1.1557205130147714,
+            0.1223421972364313
+          ]
+        },
+        {
+          "variant": "walk_forward",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.2494984642477585,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.9384444928964495,
+          "canton_mae_pp": 5.705164250904623,
+          "covered_mae_pp": 6.333807150461842,
+          "covered_centered_mae_pp": 4.938348664398674,
+          "covered_national_mae_pp": 3.4880380311403405,
+          "covered_canton_mae_pp": 4.68336474189955,
+          "gain_interval": [
+            -0.2024223118047485,
+            0.16942816226486734
+          ]
+        }
+      ],
+      "repository_checks": {
+        "run": 45301813329,
+        "conclusion": "success"
+      },
+      "targeted_tests": 4
     }
   ],
   "reference": {
@@ -146,7 +265,8 @@
   },
   "instructions": "Read plan.json and this state before any work. Resume earliest unfinished version; update only after checking live CI/artifacts. Record exact links, don't skip unexamined stages. Mark source-blocked stage with evidence before moving to next; report partial progress honestly.",
   "stage_status": {
-    "V10.1": "pilot_scored_expansion_pending_CI"
+    "V10.1": "completed_exploratory_no_robust_gain",
+    "V10.2": "pilot_committed_pending_CI"
   },
-  "notes": "Pilot scores verified from CI SUMMARY and uploaded artifact metadata. Expanded reviewed rows 37, unique objects 20; full 2016–22 inventory and date-splitting fix pending CI. No promotion."
+  "notes": "V10.1 extension 20 objects, 37 rows; national calibration worsens, no promotion. V10.2 seven contemporaneous fög interim reports manually reviewed; 24 mapped objects (AHV joint report split into two), pilot benchmark pending CI; older archives and dynamic features pending."
 }
