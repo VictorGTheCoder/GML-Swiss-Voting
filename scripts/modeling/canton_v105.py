@@ -15,6 +15,7 @@ import pandas as pd
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import Ridge
 
+from scripts.common.config import ROOT
 from scripts.modeling.expectations_v101 import REFERENCE, multiscale
 from scripts.modeling.regional_anchor_v8 import shift_to
 from scripts.modeling.semantic_poll_comparison_v4 import paired_date_bootstrap, sha
@@ -29,6 +30,7 @@ SIGNS = tuple("political_direction_" + p for p in (
 ))
 NUMS = SIGNS + ("political_nr_yes_fraction", "political_sr_yes_fraction",
                 "political_national_yes_fraction_known")
+GEOGRAPHY = ROOT / "data/processed/typologies/commune_typologies.parquet"
 VARIANTS = ("reference", "pooled_weights_control", "absolute25", "absolute50",
             "centered25", "centered50", "centered100")
 
@@ -68,16 +70,23 @@ def direct_forecasts(history, day, obj, cantons):
     return pred, int(prior.vote_id.nunique())
 
 
-def prior_cantons(outcomes, day, ids):
-    """Lookup geographic labels only from strictly earlier reference-geography rows."""
-    earlier = outcomes.loc[outcomes.vote_date.lt(day), ["municipality_id", "canton"]]
-    labels = earlier.drop_duplicates()
-    if labels.municipality_id.duplicated().any():
-        raise ValueError("Inconsistent prior canton mapping")
-    mapped = labels.set_index("municipality_id").canton.reindex(ids)
+def reference_cantons(geography, ids):
+    """Fixed OFS 2026 geographic grid used throughout this retrospective benchmark.
+
+    This is a non-outcome lookup, not a historically certified as-of feature.
+    Do not derive missing labels from target-date or later ballot records.
+    """
+    g = geography[["municipality_id", "canton"]].copy()
+    g["municipality_id"] = g.municipality_id.astype(str)
+    if g.canton.isna().any() or g.municipality_id.duplicated().any():
+        raise ValueError("Invalid reference geography")
+    labels = g.set_index("municipality_id").canton.astype(str).str.strip().str.upper()
+    if not labels.str.fullmatch(r"[A-Z]{2}").all():
+        raise ValueError("Unexpected reference canton codes")
+    mapped = labels.reindex(pd.Index(ids, dtype=str))
     if mapped.isna().any():
-        raise ValueError("Missing prior canton mapping")
-    return mapped.astype(str).to_numpy()
+        raise ValueError("Missing reference canton mapping: " + str(mapped[mapped.isna()].index.tolist()))
+    return mapped.to_numpy()
 
 
 def aggregate(p, w, canton, labels):
@@ -114,6 +123,7 @@ def run(base, acquisition, fusion, turnout, output):
     if metadata.vote_id.duplicated().any():
         raise ValueError("Nonconstant object features")
     objects = metadata.set_index("vote_id")
+    geography = pd.read_parquet(GEOGRAPHY, columns=["municipality_id", "canton"])
     outcomes = load_ballots()
     outcomes["canton"] = outcomes.canton.astype(str)
     hist = outcomes.groupby(["vote_id", "vote_date", "canton"], as_index=False)[
@@ -135,7 +145,7 @@ def run(base, acquisition, fusion, turnout, output):
         pooled = f.pooled_weights_only_weight.to_numpy(float)
         if not np.isfinite(np.column_stack([p, w, pooled])).all():
             raise ValueError("Unmatched baseline")
-        canton = prior_cantons(outcomes, day, v.municipality_id)
+        canton = reference_cantons(geography, v.municipality_id)
         labels = np.unique(canton)
         if any(pooled[canton == c].sum() <= 0 for c in labels):
             raise ValueError("Canton without weights")
@@ -201,7 +211,8 @@ def run(base, acquisition, fusion, turnout, output):
     pd.DataFrame(summary).to_csv(output / "summary.csv", index=False)
     pd.concat(predictions, ignore_index=True).to_parquet(output / "predictions.parquet", index=False)
     result = {"status": "complete", "strict_forecast_ready": False, "fields": fields,
-              "source_prediction_sha256": sha(source), "direct_canton_mae": direct_scores,
+              "source_prediction_sha256": sha(source), "geography_sha256": sha(GEOGRAPHY),
+              "geography_vintage": "2026-01-01 retrospective reference grid", "direct_canton_mae": direct_scores,
               "direct_canton_sha256": sha(output / "direct_canton_predictions.csv"),
               "prediction_sha256": sha(output / "predictions.parquet"), "summary": summary}
     (output / "manifest.json").write_text(json.dumps(result, indent=2, allow_nan=False))

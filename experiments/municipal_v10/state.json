@@ -719,6 +719,15 @@
       "conclusion": "failure",
       "targeted_tests": 3,
       "reason": "AttributeError: contexts case dataframe has no canton column; benchmark failed before scoring."
+    },
+    {
+      "version": "V10.5",
+      "kind": "benchmark_attempt",
+      "run": 45337377817,
+      "sha": "a672480a93804a51e3c91feb57607a0291606717",
+      "conclusion": "failure",
+      "targeted_tests": 4,
+      "reason": "ValueError: Missing prior canton mapping; no scores or output artifact"
     }
   ],
   "reference": {
@@ -735,7 +744,7 @@
     "V10.2": "completed_exploratory_no_robust_gain",
     "V10.3": "completed_exploratory_no_robust_vote_gain",
     "V10.4": "completed_exploratory_no_robust_gain",
-    "V10.5": "corrected_pending_CI"
+    "V10.5": "reference_geography_fix_pending_CI"
   },
-  "notes": "V10.5 first run failed before scoring. Fix uses strictly prior municipality-to-canton geography on the harmonized reference grid, rejects missing/inconsistent labels, checks actual scoring geography only after prediction."
+  "notes": "Second V10.5 run failed: missing prior geography. Fix uses independent OFS 2026 harmonized reference lookup (retrospective, not as-of certified), no outcome-based geography imputation. No V10.5 score available yet."
 }

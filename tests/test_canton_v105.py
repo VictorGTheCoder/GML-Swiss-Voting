@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from scripts.modeling.canton_v105 import aggregate, apply_targets, direct_forecasts, feature_map, prior_cantons
+from scripts.modeling.canton_v105 import aggregate, apply_targets, direct_forecasts, feature_map, reference_cantons
 
 
 def test_prior_only():
@@ -35,11 +35,16 @@ def test_features_exclude_target():
     assert feature_map("a", {"yes_share": 1., "votes_yes": 42}) == feature_map("a", {})
 
 
-def test_canton_lookup_uses_only_prior_geography():
-    day = pd.Timestamp("2016-01-01")
-    geo = pd.DataFrame({
-        "municipality_id": ["a", "b", "a"],
-        "canton": ["VD", "ZH", "XX"],
-        "vote_date": [day - pd.Timedelta(days=1), day - pd.Timedelta(days=1), day],
-    })
-    assert prior_cantons(geo, day, ["b", "a"]).tolist() == ["ZH", "VD"]
+def test_reference_canton_lookup_handles_new_ids_without_outcomes():
+    geo = pd.DataFrame({"municipality_id": ["0001", "0002"], "canton": ["VD", "ZH"]})
+    assert reference_cantons(geo, ["0002", "0001"]).tolist() == ["ZH", "VD"]
+
+
+def test_reference_canton_lookup_fails_closed():
+    import pytest
+
+    geo = pd.DataFrame({"municipality_id": ["0001"], "canton": ["VD"]})
+    with pytest.raises(ValueError, match="Missing reference canton"):
+        reference_cantons(geo, ["0002"])
+    with pytest.raises(ValueError, match="Invalid reference geography"):
+        reference_cantons(pd.concat([geo, geo]), ["0001"])
