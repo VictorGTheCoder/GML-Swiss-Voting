@@ -1011,7 +1011,10 @@
       "repository_checks": {
         "run": 45358533607,
         "conclusion": "failure",
-        "reason": "Ruff C417; equivalent generator-expression fix committed with results, new CI not yet verified."
+        "reason": "Ruff C417, corrected",
+        "corrected_run": 45358831778,
+        "corrected_conclusion": "success",
+        "rerun_benchmark": 45358831971
       }
     }
   ],
@@ -1030,7 +1033,8 @@
     "V10.3": "completed_exploratory_no_robust_vote_gain",
     "V10.4": "completed_exploratory_no_robust_gain",
     "V10.5": "completed_exploratory_no_gain",
-    "V10.6": "completed_exploratory_no_gain"
+    "V10.6": "completed_exploratory_no_gain",
+    "V10.7": "implementation_committed_pending_CI"
   },
   "notes": "V10.6 measured and completed; no active reconciliation improves municipal MAE. Resume V10.7 after checking final CI. Follow-up automation scheduled hourly 10:00–17:00 Europe/Zurich 2026-11-24; stop experiments at end of plan."
 }
