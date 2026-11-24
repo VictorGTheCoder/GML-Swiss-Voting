@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
 jobs:
   benchmark:
     runs-on: ubuntu-latest
@@ -19,7 +20,13 @@ jobs:
           python-version: '3.12'
       - run: pip install numpy pandas pyarrow requests beautifulsoup4 pytest
       - run: python -m pytest -q tests/test_gradiom_benchmark.py
-      - run: python -m scripts.modeling.gradiom_benchmark --output reports/generated/gradiom_benchmark
+      - uses: actions/download-artifact@v4
+        with:
+          name: gradiom-historical-benchmark
+          run-id: 45373347714
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/gradiom_previous
+      - run: python -m scripts.modeling.gradiom_benchmark --output reports/generated/gradiom_benchmark --previous reports/generated/gradiom_previous
       - uses: actions/upload-artifact@v4
         if: always()
         with:

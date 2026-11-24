@@ -91,6 +91,14 @@ def parse_map(raw, vote, day, level):
                        datetime.strptime(raw_date, "%d.%m.%Y").replace(tzinfo=timezone.utc).date().isoformat())
         elif len(matches) > 1:
             raise ValueError("Conflicting municipality geometry comments")
+        else:
+            # Newer SVG uses the exact OFS geodata resource identifier:
+            # k4voge_YYYYMMDD_gf, with source label and opendata.swiss URL.
+            ids = set(re.findall(r"\bk4voge_(\d{8})_gf\b", "\n".join(comments)))
+            if len(ids) == 1 and any("Federal Statistical Office" in x for x in comments):
+                vintage = datetime.strptime(ids.pop(), "%Y%m%d").replace(tzinfo=timezone.utc).date().isoformat()
+            elif len(ids) > 1:
+                raise ValueError("Conflicting OFS geodata resource versions")
     records, sources = {}, {}
     for tag in container.select("[data-approval]"):
         key = re.fullmatch(re.escape(level) + r"-(\d+)", str(tag.get("id", "")))
@@ -246,7 +254,7 @@ class Collector:
         return rows
 
 
-def run(output):
+def run(output, previous=None):
     if output.exists() and any(output.iterdir()):
         raise FileExistsError("Do not overwrite evidence")
     output.mkdir(parents=True, exist_ok=True)
@@ -257,8 +265,24 @@ def run(output):
         if not any(x.endswith("/swiss-popular-votes/" + day) for x in links):
             raise ValueError("Archive date missing")
     rows, paired_rows, incidents, audit = [], [], [], []
+    completed = set()
+    if previous is not None:
+        m = json.loads((previous / "summary.json").read_text())
+        if (m["objects"] != 9 or m["matched_rows_sha256"] !=
+                hashlib.sha256((previous / "matched_rows.parquet").read_bytes()).hexdigest()):
+            raise ValueError("Partial source artifact mismatch")
+        prior = pd.read_csv(previous / "object_metrics.csv", dtype={"vote_id": str})
+        rows = prior.to_dict("records")
+        completed = set(prior.vote_id)
+        if completed != {v for day in DAYS[:4] for v in OBJECTS[day]}:
+            raise ValueError("Wrong previous objects")
+        paired_rows = pd.read_parquet(previous / "matched_rows.parquet").to_dict("records")
+        audit = json.loads((previous / "coverage_audit.json").read_text())
+        c.evidence = json.loads((previous / "source_manifest.json").read_text()) + c.evidence
     all_mutations = c.mutations("2024-01-01", "2026-09-27")
     for day in DAYS:
+        if set(OBJECTS[day]).issubset(completed):
+            continue
         # Date-limited archive only. Never request the forthcoming vote.
         day_page = soup(c.get(ARCHIVE + "/" + day))
         page_ids = {m.group(1) for a in day_page.select("a[href]")
@@ -291,8 +315,16 @@ def run(output):
                 if not "2024-01-01" <= min(src, dst) <= max(src, dst) <= "2026-09-27":
                     raise ValueError("Geography outside reviewed mutation range")
                 source_ids, target_ids = c.registry(src), c.registry(dst)
-                if not set(pred).issubset(source_ids):
-                    raise ValueError("Map ID outside official geometry roster")
+                extra_ids = set(pred) - source_ids
+                if extra_ids:
+                    # The new OFS political geodata includes special (overseas,
+                    # counting) units. Accept only explicitly present non-municipal
+                    # OFS result IDs, and never score these as municipalities.
+                    official_special = set(actual["municipalities"]) - target_ids
+                    if src != dst or not extra_ids.issubset(official_special):
+                        raise ValueError(f"Unverified extra map IDs: {sorted(extra_ids)}; "
+                                         f"known official special IDs: {sorted(official_special)}")
+                    print("EXCLUDED_SPECIAL", vote, sorted(extra_ids), flush=True)
                 obs = {k: v for k, v in actual["municipalities"].items() if k in target_ids and v[0] is not None}
                 affected = (changed_codes(all_mutations, "2024-01-01", "2026-09-27")
                             if comm["geometry"] is None else changed_codes(all_mutations, src, dst))
@@ -361,8 +393,9 @@ def run(output):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--output", type=Path, required=True)
+    p.add_argument("--previous", type=Path)
     a = p.parse_args()
-    run(a.output)
+    run(a.output, a.previous)
 
 
 if __name__ == "__main__":

@@ -37,3 +37,13 @@ def test_map_requires_point_quantile_and_predate():
         parse_map(raw.replace(b'data-quantile="50"',b'data-quantile="95"'),"6770","2025-02-09","commune")
     with pytest.raises(ValueError):
         parse_map(raw.replace(b"29 January 2025",b"10 February 2025"),"6770","2025-02-09","commune")
+
+
+def test_geodata_resource_id_is_explicit_vintage():
+    pytest.importorskip("bs4")
+    raw = b'''<h2>Prediction</h2><h2>Object title</h2><h4>Results generated and predicted on 25 February 2026</h4>
+        <a href="/en/swiss-popular-votes/2026-03-08">Back</a><div>Yes: 42.1%</div>
+        <div id="map-container" data-vote="6830" data-level="commune" data-quantile="50">
+        <svg><!-- Source: Federal Statistical Office FSO, k4voge_20260101_gf -->
+        <path id="commune-1" data-approval="42.4" data-name="X"/></svg></div>'''
+    assert parse_map(raw,"6830","2026-03-08","commune")["geometry"]=="2026-01-01"
