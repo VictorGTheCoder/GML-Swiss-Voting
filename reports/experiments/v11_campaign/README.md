@@ -9,7 +9,10 @@
 | Version | Hypothèse | État | Meilleure MAE |
 |---|---|---|---:|
 | V11.1 | Noyaux lexicaux intégraux et profil local complet | Terminé, aucun gain vs V10.8 | 7,0674 (nouveau candidat) |
-| V11.2 | Audit exact des pages et mécanismes textuels | Benchmark terminé, aucun gain ; lint corrigé, CI générale à vérifier | 7,1548 (nouveau candidat) | [Résultats](V11.2-results.md) |
+| V11.2 | Audit exact des pages et mécanismes textuels | Terminé, aucun gain ; CI générale vérifiée | 7,1548 (nouveau candidat) | [Résultats](V11.2-results.md) |
+| V11.3 | Délais et désaccord institutionnel | Implémenté ; benchmark à vérifier | — |
+
+[Protocole V11.3](V11.3-protocol.md).
 
 [Résultats V11.1](V11.1-results.md) · [Protocole V11.1](V11.1-protocol.md) · [Benchmark V11.1](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45409817577) · [Backlog et état](../../../experiments/municipal_v11/state.json).
 
