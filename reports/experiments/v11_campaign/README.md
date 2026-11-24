@@ -11,7 +11,7 @@
 | V11.1 | Noyaux lexicaux intégraux et profil local complet | Terminé, aucun gain vs V10.8 | 7,0674 (nouveau candidat) |
 | V11.2 | Audit exact des pages et mécanismes textuels | Terminé, aucun gain ; CI générale vérifiée | 7,1548 (nouveau candidat) | [Résultats](V11.2-results.md) |
 | V11.3 | Délais et désaccord institutionnel | Terminé, gain exploratoire non confirmé | 6,9558 |
-| V11.4 | Contrastes locaux, sélection imbriquée | Terminé, aucun gain; CI lint corrigé à vérifier | 7,0199 (nouveau candidat) |
+| V11.4 | Contrastes locaux, sélection imbriquée | Terminé, aucun gain; CI correction validée | 7,0199 (nouveau candidat) |
 
 [Protocole V11.3](V11.3-protocol.md) · [Résultats](V11.3-results.md) · [Benchmark réussi](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45444093555). Nouveau meilleur exploratoire 6,9558 pp ; aucune promotion.
 
@@ -32,3 +32,7 @@
 ## V11.4 — résultats
 
 [Protocole](V11.4-protocol.md) · [Résultats](V11.4-results.md) · [Benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45486898263). Aucun gain : nested 7,3718 pp, mélange 7,0199. V11.3 reste meilleur exploratoire. V11.5 : audit historique, vérifier CI de la correction F401.
+
+## V11.5 — historique
+
+[Protocole](V11.5-protocol.md) : audit de la couverture 1960–1989, extension de la base géographique 1981–1989 et contrôle de demi-vie. Benchmark à vérifier. [CI V11.4 corrigée](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45496886074) réussie. Meilleur exploratoire inchangé.

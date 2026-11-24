@@ -1274,6 +1274,10 @@
         "2016-2018": "rank5_alpha100",
         "2019-2020": "rank5_alpha100",
         "2021-2022": "rank5_alpha100"
+      },
+      "repository_checks_recheck": {
+        "run": 45496886074,
+        "conclusion": "success"
       }
     }
   ],
@@ -1281,7 +1285,19 @@
     "V11.1": "completed_no_gain",
     "V11.2": "completed_no_gain",
     "V11.3": "completed_exploratory_gain_unconfirmed",
-    "V11.4": "completed_no_gain_repository_lint_fix_pending_verification"
+    "V11.4": "completed_no_gain_repository_checks_verified",
+    "V11.5": "implemented_benchmark_pending"
   },
-  "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access."
+  "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access.",
+  "v115_protocol": {
+    "configurations": [
+      "replay",
+      "history1981_h5",
+      "modern_h15",
+      "history1981_h15"
+    ],
+    "source": "OFS pinned repository parquet",
+    "minimum_coverage": 0.95,
+    "minimum_canton_coverage": 0.8
+  }
 }
