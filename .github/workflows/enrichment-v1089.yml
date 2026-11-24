@@ -1,0 +1,76 @@
+name: V10.8 text and V10.9 income benchmarks
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/text_v108.py'
+      - 'scripts/modeling/income_v109.py'
+      - 'scripts/modeling/enrichment_v1089.py'
+      - 'tests/test_enrichment_v1089.py'
+      - '.github/workflows/enrichment-v1089.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [text, income]
+    timeout-minutes: 20
+    env:
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+      HF_HUB_DISABLE_XET: "1"
+      TOKENIZERS_PARALLELISM: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - run: pip install -r requirements-experiments.txt openpyxl
+      - run: python -m pytest -q tests/test_enrichment_v1089.py
+      - if: matrix.suite == 'text'
+        run: |
+          pip install --index-url https://download.pytorch.org/whl/cpu torch==2.6.0
+          pip install transformers==4.48.3 sentencepiece==0.2.0 safetensors
+          python -m scripts.modeling.text_v108 --output reports/generated/v1089_acquisition
+      - if: matrix.suite == 'income'
+        uses: actions/download-artifact@v4
+        with:
+          name: v1089-audit-income
+          run-id: 45366979764
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/income_raw
+      - if: matrix.suite == 'income'
+        run: python -m scripts.modeling.income_v109 --input reports/generated/income_raw --output reports/generated/v1089_acquisition
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v1089-acquisition-${{ matrix.suite }}
+          path: reports/generated/v1089_acquisition/
+          retention-days: 30
+      - uses: actions/download-artifact@v4
+        with:
+          name: poll-acquisition-v81
+          run-id: 45292731014
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/acquisition_v81
+      - uses: actions/download-artifact@v4
+        with:
+          name: national-fusion-v81
+          run-id: 45293115635
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/national_v81
+      - run: python -m scripts.modeling.municipal_v2 prepare --output reports/generated/v1089_base
+      - run: python -m scripts.modeling.enrichment_v1089 --suite ${{ matrix.suite }} --base reports/generated/v1089_base --acquisition reports/generated/v1089_acquisition --old-acquisition reports/generated/acquisition_v81 --fusion reports/generated/national_v81 --output reports/generated/v1089_results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1089-results-${{ matrix.suite }}
+          path: reports/generated/v1089_results/
+          retention-days: 30
+          if-no-files-found: warn
