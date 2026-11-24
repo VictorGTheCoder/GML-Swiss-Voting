@@ -15,8 +15,8 @@ Le [plan préenregistré](../../../experiments/municipal_v10/plan.json) détaill
 | V10.1 | Vote-expectation surveys | Terminé, gain non robuste (20 objets) | 7,2145 | 5,6634 | 3,8082 | [Extension](V10.1-extension.md) / [pilote](V10.1-pilot.md) |
 | V10.2 | Campaign media coverage | Terminé, gain non robuste (54 objets) | 7,2271 | 5,6743 | 3,8250 | [Extension](V10.2-extension.md) / [pilote](V10.2-pilot.md) |
 | V10.3 | Participation and ballot weights | Terminé, meilleur poids mais gain vote non robuste | 7,2169 | 5,7052 | 3,7757 | [Résultats](V10.3-results.md) |
-| V10.4 | Aggregate poststratification and multilevel regression | Implémenté, benchmark à vérifier | — | — | — | [Protocole](V10.4-protocol.md) |
-| V10.5 | Independent canton forecasts / small area estimation | En attente | — | — | — | — |
+| V10.4 | Aggregate poststratification and multilevel regression | Terminé, gain non robuste | 7,2039 | 5,6974 | 3,7757 | [Résultats](V10.4-results.md) |
+| V10.5 | Independent canton forecasts / small area estimation | Implémenté, benchmark à vérifier | — | — | — | [Protocole](V10.5-protocol.md) |
 | V10.6 | Hierarchical reconciliation (MinT) | En attente | — | — | — | — |
 | V10.7 | Hybrid Gaussian-process profiles | En attente | — | — | — | — |
 | V10.8 | Official brochure corpus and semantic effects | En attente | — | — | — | — |

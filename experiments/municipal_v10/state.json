@@ -1,16 +1,16 @@
 {
   "campaign": "V10 — literature-driven municipal referendum prediction",
   "status": "in_progress",
-  "active": "V10.4",
+  "active": "V10.5",
   "updated": "2026-11-24",
   "completed": [
     "V10.1",
     "V10.2",
-    "V10.3"
+    "V10.3",
+    "V10.4"
   ],
   "blocked": [],
   "pending": [
-    "V10.4",
     "V10.5",
     "V10.6",
     "V10.7",
@@ -604,6 +604,112 @@
         "run": 45316679915,
         "conclusion": "success"
       }
+    },
+    {
+      "version": "V10.4",
+      "kind": "benchmark",
+      "run": 45323525729,
+      "artifact": 14888717635,
+      "artifact_digest": "sha256:05e11c8bbe20373c7c3db22fb06c76492a8ce0d16583343c08f1cf099af307ef",
+      "sha": "4df06571e7e81122c9fa569f009c34383177727f",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 0,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "common_national_mae_pp": 3.7756692099920697,
+          "common_canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "additive_ridge",
+          "objects": 66,
+          "covered_objects": 62,
+          "mae_pp": 7.235679350486183,
+          "centered_mae_pp": 5.361803671202083,
+          "national_mae_pp": 3.775669209992036,
+          "canton_mae_pp": 5.728499245806106,
+          "common_national_mae_pp": 3.775669209992036,
+          "common_canton_mae_pp": 5.728499245806106,
+          "gain_interval": [
+            -0.1665045671154596,
+            0.15377488415854978
+          ]
+        },
+        {
+          "variant": "crossed_ridge",
+          "objects": 66,
+          "covered_objects": 62,
+          "mae_pp": 7.2385086303313475,
+          "centered_mae_pp": 5.364841737721359,
+          "national_mae_pp": 3.7756692099920626,
+          "canton_mae_pp": 5.730402914908688,
+          "common_national_mae_pp": 3.7756692099920626,
+          "common_canton_mae_pp": 5.730402914908688,
+          "gain_interval": [
+            -0.17615342611110812,
+            0.15649067427210325
+          ]
+        },
+        {
+          "variant": "domain_ridge",
+          "objects": 66,
+          "covered_objects": 62,
+          "mae_pp": 7.253717401048362,
+          "centered_mae_pp": 5.386379972606601,
+          "national_mae_pp": 3.7756692099920324,
+          "canton_mae_pp": 5.744612310862454,
+          "common_national_mae_pp": 3.7756692099920324,
+          "common_canton_mae_pp": 5.744612310862454,
+          "gain_interval": [
+            -0.19031969193232864,
+            0.1452145146701645
+          ]
+        },
+        {
+          "variant": "margin_ridge",
+          "objects": 66,
+          "covered_objects": 62,
+          "mae_pp": 7.203874353602405,
+          "centered_mae_pp": 5.324940660535149,
+          "national_mae_pp": 3.7756692099920532,
+          "canton_mae_pp": 5.697419821522563,
+          "common_national_mae_pp": 3.7756692099920532,
+          "common_canton_mae_pp": 5.697419821522563,
+          "gain_interval": [
+            -0.13732384221873312,
+            0.18798814908593214
+          ]
+        },
+        {
+          "variant": "domain_pooled_weights",
+          "objects": 66,
+          "covered_objects": 62,
+          "mae_pp": 7.2543688573983385,
+          "centered_mae_pp": 5.386379972606601,
+          "national_mae_pp": 3.771038464497307,
+          "canton_mae_pp": 5.745650468069738,
+          "common_national_mae_pp": 3.7753887362855645,
+          "common_canton_mae_pp": 5.745300809734625,
+          "gain_interval": [
+            -0.19120119311605593,
+            0.14513577671671005
+          ]
+        }
+      ],
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45323525765,
+        "conclusion": "success"
+      }
     }
   ],
   "reference": {
@@ -619,7 +725,8 @@
     "V10.1": "completed_exploratory_no_robust_gain",
     "V10.2": "completed_exploratory_no_robust_gain",
     "V10.3": "completed_exploratory_no_robust_vote_gain",
-    "V10.4": "implemented_pending_CI"
+    "V10.4": "completed_exploratory_no_robust_gain",
+    "V10.5": "implemented_pending_CI"
   },
-  "notes": "V10.3 completed: pooled weights TV 3.0518 vs 4.9996; no robust vote MAE gain. V10.4 aggregate cross-classified residual partial pooling implemented; await CI."
+  "notes": "V10.4 margin_ridge 7.203874, centered 5.324941, no robust gain; V10.5 direct historical canton models and shrinkage pending CI."
 }
