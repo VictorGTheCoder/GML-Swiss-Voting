@@ -26,5 +26,9 @@
     "version": "V9",
     "mae_pp": 7.131910681945383
   },
-  "instructions": "Read plan.json and this state before any work. Resume earliest unfinished version; update only after checking live CI/artifacts. Record exact links, don't skip unexamined stages. Mark source-blocked stage with evidence before moving to next; report partial progress honestly."
+  "instructions": "Read plan.json and this state before any work. Resume earliest unfinished version; update only after checking live CI/artifacts. Record exact links, don't skip unexamined stages. Mark source-blocked stage with evidence before moving to next; report partial progress honestly.",
+  "stage_status": {
+    "V10.1": "pilot_implemented_pending_CI"
+  },
+  "notes": "Initial 9 expected mean yes shares verified in June 2021 and September 2022 wave-2 primary reports; other source pages need review. New workflow inventories all 14 reviewed 2021–2022 pages without automatic admission and benchmarks fixed/chronological blends; inspect CI, repair if necessary, extend source coverage before finishing V10.1."
 }

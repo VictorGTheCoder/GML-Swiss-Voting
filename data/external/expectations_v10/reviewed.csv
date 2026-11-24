@@ -1,0 +1,10 @@
+vote_key,vote_date,wave,expected_yes_pp,source_url,section
+6410,2021-06-13,2,47,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/,Trinkwasser-Initiative
+6420,2021-06-13,2,48,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/,Initiative Pestizidverbot
+6430,2021-06-13,2,56,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/,Covid-19-Gesetz
+6440,2021-06-13,2,49.8,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/,CO2-Gesetz
+6450,2021-06-13,2,56,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/,Terrorismus-Gesetz
+6580,2022-09-25,2,45,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022_w2/,Massentierhaltungsinitiative
+6590,2022-09-25,2,52,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022_w2/,AHV-Reform
+6600,2022-09-25,2,52,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022_w2/,AHV-Reform
+6610,2022-09-25,2,51,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022_w2/,Änderung des Verrechnungssteuergesetzes
