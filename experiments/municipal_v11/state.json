@@ -1,6 +1,6 @@
 {
   "status": "in_progress",
-  "active": "V11.4",
+  "active": "V11.5",
   "base_v10_sha": "e590df739af56a18f08834399b8e37b0e5fc4ef3",
   "reference": {
     "version": "V8.1",
@@ -19,10 +19,10 @@
   "completed": [
     "V11.1",
     "V11.2",
-    "V11.3"
+    "V11.3",
+    "V11.4"
   ],
   "pending": [
-    "V11.4",
     "V11.5",
     "V11.6"
   ],
@@ -889,13 +889,399 @@
         "nr_binary_seat_fraction": 304,
         "sr_binary_seat_fraction": 304
       }
+    },
+    {
+      "version": "V11.4",
+      "kind": "benchmark",
+      "run": 45486898263,
+      "sha": "c120009052af972689a9ca21516ce5c32997775a",
+      "job": 138774562348,
+      "artifact": 14963573490,
+      "artifact_digest": "sha256:83b1d40c950ff466f80310295d17db7a96084d2c848583b4d3f07219b0a3433b",
+      "status": "completed",
+      "conclusion": "success",
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45486898085,
+        "conclusion": "failure",
+        "reason": "F401 unused numpy in tests/test_contrasts_v114.py; corrected in reporting commit; recheck pending"
+      },
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "vs_v113_interval": [
+            -0.6800955676185603,
+            0.043876748289161265
+          ]
+        },
+        {
+          "variant": "v113_institution",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 6.955753873756506,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.7811714402970824,
+          "canton_mae_pp": 5.500338667087431,
+          "gain_interval": [
+            -0.04387674828916126,
+            0.6800955676185607
+          ],
+          "vs_v113_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "rank5_alpha10",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 8.218595238797842,
+          "centered_mae_pp": 6.550226898751578,
+          "national_mae_pp": 3.78117144029707,
+          "canton_mae_pp": 6.503344648741876,
+          "gain_interval": [
+            -1.7189633678565488,
+            -0.21696602923214584
+          ],
+          "vs_v113_interval": [
+            -1.9125262049618603,
+            -0.6384923750714786
+          ]
+        },
+        {
+          "variant": "rank5_alpha100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.371790130132492,
+          "centered_mae_pp": 5.700846975386668,
+          "national_mae_pp": 3.7811714402970527,
+          "canton_mae_pp": 5.813605924902569,
+          "gain_interval": [
+            -0.6701208226489851,
+            0.45121148011433404
+          ],
+          "vs_v113_interval": [
+            -0.8334297900692181,
+            -0.0024791844605530945
+          ]
+        },
+        {
+          "variant": "rank10_alpha10",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 8.413664824818122,
+          "centered_mae_pp": 6.820800773316834,
+          "national_mae_pp": 3.781171440297104,
+          "canton_mae_pp": 6.608980524074897,
+          "gain_interval": [
+            -1.9474020233676572,
+            -0.38765074572003183
+          ],
+          "vs_v113_interval": [
+            -2.1296352259642006,
+            -0.8224021882022526
+          ]
+        },
+        {
+          "variant": "rank10_alpha100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.418316842819465,
+          "centered_mae_pp": 5.774181162676531,
+          "national_mae_pp": 3.7811714402970855,
+          "canton_mae_pp": 5.851259306589019,
+          "gain_interval": [
+            -0.7469053319549291,
+            0.4327603198304152
+          ],
+          "vs_v113_interval": [
+            -0.901792492530026,
+            -0.02946502478528635
+          ]
+        },
+        {
+          "variant": "rank20_alpha10",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 8.623110319811436,
+          "centered_mae_pp": 7.088115562636579,
+          "national_mae_pp": 3.781171440297065,
+          "canton_mae_pp": 6.668688146310963,
+          "gain_interval": [
+            -2.170782083252972,
+            -0.5755246871226233
+          ],
+          "vs_v113_interval": [
+            -2.3585297753741044,
+            -1.0154353869255395
+          ]
+        },
+        {
+          "variant": "rank20_alpha100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.5101852520492205,
+          "centered_mae_pp": 5.9069987139241915,
+          "national_mae_pp": 3.7811714402970966,
+          "canton_mae_pp": 5.8310426204018055,
+          "gain_interval": [
+            -0.8340584538787814,
+            0.3670858322796422
+          ],
+          "vs_v113_interval": [
+            -0.9981210147152799,
+            -0.1192286222684605
+          ]
+        },
+        {
+          "variant": "nested",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.371790130132492,
+          "centered_mae_pp": 5.700846975386668,
+          "national_mae_pp": 3.7811714402970527,
+          "canton_mae_pp": 5.813605924902569,
+          "gain_interval": [
+            -0.6701208226489851,
+            0.45121148011433404
+          ],
+          "vs_v113_interval": [
+            -0.8334297900692181,
+            -0.0024791844605530945
+          ]
+        },
+        {
+          "variant": "nested_blend50",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.0198545172578815,
+          "centered_mae_pp": 5.32194193747852,
+          "national_mae_pp": 3.781171440297067,
+          "canton_mae_pp": 5.5521549077831525,
+          "gain_interval": [
+            -0.15753391037101172,
+            0.6698011734508239
+          ],
+          "vs_v113_interval": [
+            -0.2509453702940812,
+            0.1346391555926041
+          ]
+        }
+      ],
+      "folds": {
+        "2016-2018": {
+          "nested": 7.8313307519,
+          "nested_blend50": 7.5644294318,
+          "rank10_alpha10": 8.7340133232,
+          "rank10_alpha100": 7.7864298566,
+          "rank20_alpha10": 8.8414937692,
+          "rank20_alpha100": 7.791936803,
+          "rank5_alpha10": 8.6400184197,
+          "rank5_alpha100": 7.8313307519,
+          "reference": 8.152475601,
+          "v113_institution": 7.5730560157
+        },
+        "2019-2020": {
+          "nested": 8.3967702571,
+          "nested_blend50": 7.4475721115,
+          "rank10_alpha10": 9.549552041,
+          "rank10_alpha100": 8.5795015098,
+          "rank20_alpha10": 9.7063071334,
+          "rank20_alpha100": 8.6314121231,
+          "rank5_alpha10": 9.3544810207,
+          "rank5_alpha100": 8.3967702571,
+          "reference": 7.1500595705,
+          "v113_institution": 6.9750709305
+        },
+        "2021-2022": {
+          "nested": 6.2848742894,
+          "nested_blend50": 6.1252770769,
+          "rank10_alpha10": 7.4452855938,
+          "rank10_alpha100": 6.3775832421,
+          "rank20_alpha10": 7.8085326012,
+          "rank20_alpha100": 6.5973823779,
+          "rank5_alpha10": 7.1238733717,
+          "rank5_alpha100": 6.2848742894,
+          "reference": 6.1155763319,
+          "v113_institution": 6.174467668
+        }
+      },
+      "domains": {
+        "1": {
+          "nested": 6.8782726389,
+          "nested_blend50": 6.7146036121,
+          "rank10_alpha10": 7.9618418424,
+          "rank10_alpha100": 6.908865114,
+          "rank20_alpha10": 8.0839131108,
+          "rank20_alpha100": 6.9205507567,
+          "rank5_alpha10": 7.7488019783,
+          "rank5_alpha100": 6.8782726389,
+          "reference": 6.4792925574,
+          "v113_institution": 6.7836818411
+        },
+        "2": {
+          "nested": 6.0392309902,
+          "nested_blend50": 5.7469692932,
+          "rank10_alpha10": 6.1084000129,
+          "rank10_alpha100": 6.1088828923,
+          "rank20_alpha10": 6.3009218387,
+          "rank20_alpha100": 6.2033599228,
+          "rank5_alpha10": 5.8596093628,
+          "rank5_alpha100": 6.0392309902,
+          "reference": 5.8630062992,
+          "v113_institution": 5.802332172
+        },
+        "3": {
+          "nested": 7.0703495714,
+          "nested_blend50": 6.8747379513,
+          "rank10_alpha10": 8.646216093,
+          "rank10_alpha100": 7.3179516442,
+          "rank20_alpha10": 8.9541742271,
+          "rank20_alpha100": 7.442154319,
+          "rank5_alpha10": 8.3755047676,
+          "rank5_alpha100": 7.0703495714,
+          "reference": 7.1680352648,
+          "v113_institution": 6.9152445706
+        },
+        "4": {
+          "nested": 11.8945613859,
+          "nested_blend50": 10.654511561,
+          "rank10_alpha10": 13.3906435239,
+          "rank10_alpha100": 11.7079519641,
+          "rank20_alpha10": 13.643763544,
+          "rank20_alpha100": 11.8137785852,
+          "rank5_alpha10": 13.4845996872,
+          "rank5_alpha100": 11.8945613859,
+          "reference": 12.6797406891,
+          "v113_institution": 10.1520500803
+        },
+        "5": {
+          "nested": 9.6361062032,
+          "nested_blend50": 9.6980849054,
+          "rank10_alpha10": 9.5228382589,
+          "rank10_alpha100": 9.6292324327,
+          "rank20_alpha10": 9.6242828986,
+          "rank20_alpha100": 9.6546069516,
+          "rank5_alpha10": 9.4513300526,
+          "rank5_alpha100": 9.6361062032,
+          "reference": 10.1693907323,
+          "v113_institution": 10.0416046951
+        },
+        "6": {
+          "nested": 7.633144198,
+          "nested_blend50": 7.2334335328,
+          "rank10_alpha10": 8.0807808913,
+          "rank10_alpha100": 7.6024666398,
+          "rank20_alpha10": 8.1403169041,
+          "rank20_alpha100": 7.6605591614,
+          "rank5_alpha10": 7.9567605301,
+          "rank5_alpha100": 7.633144198,
+          "reference": 7.7105377573,
+          "v113_institution": 6.9801270745
+        },
+        "7": {
+          "nested": 6.7030738104,
+          "nested_blend50": 6.7239410197,
+          "rank10_alpha10": 7.2587570649,
+          "rank10_alpha100": 6.6604394651,
+          "rank20_alpha10": 7.0964583866,
+          "rank20_alpha100": 6.4410437187,
+          "rank5_alpha10": 7.2584840123,
+          "rank5_alpha100": 6.7030738104,
+          "reference": 6.5839010403,
+          "v113_institution": 6.8863623743
+        },
+        "8": {
+          "nested": 7.2095451556,
+          "nested_blend50": 6.4265940188,
+          "rank10_alpha10": 9.114977641,
+          "rank10_alpha100": 7.1679661199,
+          "rank20_alpha10": 9.4503900597,
+          "rank20_alpha100": 7.1902488584,
+          "rank5_alpha10": 8.9868378686,
+          "rank5_alpha100": 7.2095451556,
+          "reference": 6.2725889719,
+          "v113_institution": 6.1048269459
+        },
+        "9": {
+          "nested": 6.3222234042,
+          "nested_blend50": 5.7744384037,
+          "rank10_alpha10": 7.7628024946,
+          "rank10_alpha100": 6.4168574635,
+          "rank20_alpha10": 7.9992788404,
+          "rank20_alpha100": 6.6014126759,
+          "rank5_alpha10": 7.5219212363,
+          "rank5_alpha100": 6.3222234042,
+          "reference": 5.6367797301,
+          "v113_institution": 5.6255283968
+        },
+        "10": {
+          "nested": 7.0197085882,
+          "nested_blend50": 6.7269264231,
+          "rank10_alpha10": 8.2547613785,
+          "rank10_alpha100": 7.1076448951,
+          "rank20_alpha10": 8.3889522991,
+          "rank20_alpha100": 7.2036197837,
+          "rank5_alpha10": 7.967493027,
+          "rank5_alpha100": 7.0197085882,
+          "reference": 6.9000078832,
+          "v113_institution": 6.6667452066
+        },
+        "11": {
+          "nested": 7.7973743863,
+          "nested_blend50": 7.7079199516,
+          "rank10_alpha10": 7.9957454888,
+          "rank10_alpha100": 7.9089583501,
+          "rank20_alpha10": 8.2723746814,
+          "rank20_alpha100": 7.9230050733,
+          "rank5_alpha10": 7.8948165845,
+          "rank5_alpha100": 7.7973743863,
+          "reference": 7.8350434359,
+          "v113_institution": 7.6769308663
+        },
+        "12": {
+          "nested": 5.4358965932,
+          "nested_blend50": 4.9583651465,
+          "rank10_alpha10": 6.8648971776,
+          "rank10_alpha100": 5.5022438032,
+          "rank20_alpha10": 8.0619836528,
+          "rank20_alpha100": 6.0338634627,
+          "rank5_alpha10": 6.5863833308,
+          "rank5_alpha100": 5.4358965932,
+          "reference": 4.8426383255,
+          "v113_institution": 4.8108858897
+        }
+      },
+      "source_coverage": {
+        "message_to_parliament_logdays": 277,
+        "parliament_to_vote_logdays": 306,
+        "parliamentary_initiative": 306,
+        "chamber_share_gap": 304,
+        "nr_binary_seat_fraction": 304,
+        "sr_binary_seat_fraction": 304
+      },
+      "selected_by_fold": {
+        "2016-2018": "rank5_alpha100",
+        "2019-2020": "rank5_alpha100",
+        "2021-2022": "rank5_alpha100"
+      }
     }
   ],
   "stage_status": {
     "V11.1": "completed_no_gain",
     "V11.2": "completed_no_gain",
     "V11.3": "completed_exploratory_gain_unconfirmed",
-    "V11.4": "implementation_committed_benchmark_unverified"
+    "V11.4": "completed_no_gain_repository_lint_fix_pending_verification"
   },
   "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access."
 }

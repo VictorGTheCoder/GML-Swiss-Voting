@@ -11,6 +11,7 @@
 | V11.1 | Noyaux lexicaux intégraux et profil local complet | Terminé, aucun gain vs V10.8 | 7,0674 (nouveau candidat) |
 | V11.2 | Audit exact des pages et mécanismes textuels | Terminé, aucun gain ; CI générale vérifiée | 7,1548 (nouveau candidat) | [Résultats](V11.2-results.md) |
 | V11.3 | Délais et désaccord institutionnel | Terminé, gain exploratoire non confirmé | 6,9558 |
+| V11.4 | Contrastes locaux, sélection imbriquée | Terminé, aucun gain; CI lint corrigé à vérifier | 7,0199 (nouveau candidat) |
 
 [Protocole V11.3](V11.3-protocol.md) · [Résultats](V11.3-results.md) · [Benchmark réussi](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45444093555). Nouveau meilleur exploratoire 6,9558 pp ; aucune promotion.
 
@@ -20,7 +21,7 @@
 1. V11.1 (terminé) : expérience factorielle noyaux et profil complet, analyse des erreurs par objet/thème/fenêtre/commune/canton.
 2. V11.2 (terminé) : contrôle documentaire indépendant de la correspondance des pages, extraction de passages complets et représentation des mécanismes/direction du texte. Sources officielles et dates vérifiées ; aucun contenu post-vote.
 3. V11.3 (terminé) : enrichir les signaux des objets par historiques parlementaires et analogues, sources datées ; contrôle redondances et ablations dans train.
-4. V11.4 : selon diagnostics de V11.1, comparaison de modèles de contrastes locaux avec sélection de rang et régularisation nested par dates, perte macro adaptée. Éviter la répétition des méthodes V6–V10.
+4. V11.4 (terminé) : selon diagnostics de V11.1, comparaison de modèles de contrastes locaux avec sélection de rang et régularisation nested par dates, perte macro adaptée. Éviter la répétition des méthodes V6–V10.
 5. V11.5 : audit d'extension historique (harmonisation communale, couverture et disponibilité ex ante), puis essai avec même évaluation.
 6. V11.6 : robustesse rolling-origin et validation imbriquée avant tout choix de protocole final. Aucun test final sans autorisation distincte.
 
@@ -28,6 +29,6 @@
 
 [Résultats V11.2](V11.2-results.md) · [Benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45420998869). V10.8 reproduite exactement ; audit plus strict réduit la couverture de 59 à 41 objets. Aucun gain confirmé.
 
-## V11.4 en cours
+## V11.4 — résultats
 
-[Protocole](V11.4-protocol.md) : six combinaisons rang/ridge, sélection sur deux blocs internes, niveau national V11.3 fixé. Benchmark non vérifié ; aucun nouveau score.
+[Protocole](V11.4-protocol.md) · [Résultats](V11.4-results.md) · [Benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45486898263). Aucun gain : nested 7,3718 pp, mélange 7,0199. V11.3 reste meilleur exploratoire. V11.5 : audit historique, vérifier CI de la correction F401.
