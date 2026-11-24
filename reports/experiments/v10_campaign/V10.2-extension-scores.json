@@ -1,0 +1,101 @@
+{
+  "version": "V10.2",
+  "kind": "extension",
+  "run": 45309749540,
+  "artifact": 14882292438,
+  "artifact_digest": "sha256:e701f510cf2fbc67c9aea9ff61cf5a766d45f508c12a79e527de96767aa557ea",
+  "sha": "f3f6126b41688236d89423934379cf35646e3748",
+  "conclusion": "success",
+  "scores": [
+    {
+      "variant": "reference",
+      "objects": 66,
+      "covered_objects": 54,
+      "mae_pp": 7.2295274976068145,
+      "centered_mae_pp": 5.370058554693702,
+      "national_mae_pp": 3.7756692099920626,
+      "canton_mae_pp": 5.703708259264074,
+      "covered_mae_pp": 7.097753088774736,
+      "covered_centered_mae_pp": 5.2920179068904805,
+      "covered_national_mae_pp": 3.7880438406505608,
+      "covered_canton_mae_pp": 5.5597750237689345,
+      "gain_interval": [
+        0,
+        0
+      ]
+    },
+    {
+      "variant": "bias_control",
+      "objects": 66,
+      "covered_objects": 54,
+      "mae_pp": 7.292968709941325,
+      "centered_mae_pp": 5.370058554693701,
+      "national_mae_pp": 3.8683017080723534,
+      "canton_mae_pp": 5.734333717356768,
+      "covered_mae_pp": 7.175292348294692,
+      "covered_centered_mae_pp": 5.2920179068904805,
+      "covered_national_mae_pp": 3.9012613383042503,
+      "covered_canton_mae_pp": 5.597206139215559,
+      "gain_interval": [
+        -0.18301376939248964,
+        0.04395981848597412
+      ]
+    },
+    {
+      "variant": "tone",
+      "objects": 66,
+      "covered_objects": 54,
+      "mae_pp": 7.2944945721775065,
+      "centered_mae_pp": 5.370058554693702,
+      "national_mae_pp": 3.894734557983656,
+      "canton_mae_pp": 5.742403169232977,
+      "covered_mae_pp": 7.177157291027803,
+      "covered_centered_mae_pp": 5.292017906890481,
+      "covered_national_mae_pp": 3.933568154862509,
+      "covered_canton_mae_pp": 5.607068802619814,
+      "gain_interval": [
+        -0.20198644272321772,
+        0.0626541745870796
+      ]
+    },
+    {
+      "variant": "tone_volume",
+      "objects": 66,
+      "covered_objects": 54,
+      "mae_pp": 7.227129083136027,
+      "centered_mae_pp": 5.370058554693702,
+      "national_mae_pp": 3.8249601124078576,
+      "canton_mae_pp": 5.674264368146242,
+      "covered_mae_pp": 7.094821693310438,
+      "covered_centered_mae_pp": 5.292017906890481,
+      "covered_national_mae_pp": 3.848288276936534,
+      "covered_canton_mae_pp": 5.52378804573603,
+      "gain_interval": [
+        -0.13436327160155037,
+        0.1598390771695917
+      ]
+    },
+    {
+      "variant": "tone_prominence",
+      "objects": 66,
+      "covered_objects": 54,
+      "mae_pp": 7.297802923432739,
+      "centered_mae_pp": 5.370058554693701,
+      "national_mae_pp": 3.8987720174326177,
+      "canton_mae_pp": 5.747561131489157,
+      "covered_mae_pp": 7.181200831450864,
+      "covered_centered_mae_pp": 5.2920179068904805,
+      "covered_national_mae_pp": 3.938502827522351,
+      "covered_canton_mae_pp": 5.613372978710704,
+      "gain_interval": [
+        -0.20422779613636677,
+        0.061618935642137745
+      ]
+    }
+  ],
+  "targeted_tests": 4,
+  "repository_checks": {
+    "run": 45309749468,
+    "conclusion": "success"
+  }
+}
