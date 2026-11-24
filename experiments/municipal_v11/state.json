@@ -1,6 +1,6 @@
 {
   "status": "in_progress",
-  "active": "V11.1",
+  "active": "V11.2",
   "base_v10_sha": "e590df739af56a18f08834399b8e37b0e5fc4ef3",
   "reference": {
     "version": "V8.1",
@@ -16,9 +16,10 @@
     "rows": 138868,
     "period": "2016-2022"
   },
-  "completed": [],
+  "completed": [
+    "V11.1"
+  ],
   "pending": [
-    "V11.1",
     "V11.2",
     "V11.3",
     "V11.4",
@@ -31,12 +32,259 @@
       "kind": "benchmark",
       "run": 45409817577,
       "sha": "93402cf02143a5079cbb1d4370e8a00551a9d550",
-      "status": "in_progress",
-      "conclusion": null
+      "status": "completed",
+      "conclusion": "success",
+      "note": "Initial successful run; latest verified reproduction below."
+    },
+    {
+      "version": "V11.1",
+      "kind": "verified_reproduction",
+      "run": 45409989257,
+      "sha": "d2c917aa1ae7efc54b345cbe5f8e1c5d98212924",
+      "job": 138500854325,
+      "artifact": 14928175592,
+      "artifact_digest": "sha256:d739cbee60166824dad2ba73372055c76cc4c1ad5ea8317f15f0f0011e659f78",
+      "status": "completed",
+      "conclusion": "success",
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45409989300,
+        "conclusion": "success"
+      },
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "vs_v108_interval": [
+            -0.6263738724976634,
+            0.03347445723791092
+          ]
+        },
+        {
+          "variant": "v108_tfidf",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.988599997055331,
+          "centered_mae_pp": 5.280965787730653,
+          "national_mae_pp": 3.846510449192281,
+          "canton_mae_pp": 5.536970110697117,
+          "gain_interval": [
+            -0.033474457237910864,
+            0.6263738724976635
+          ],
+          "vs_v108_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "structured_rank5",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.539221121318005,
+          "centered_mae_pp": 5.813818590634847,
+          "national_mae_pp": 3.7446144474708576,
+          "canton_mae_pp": 5.845858971579611,
+          "gain_interval": [
+            -0.7218535971077491,
+            0.105003220379067
+          ],
+          "vs_v108_interval": [
+            -1.013923616408521,
+            -0.088847937748751
+          ]
+        },
+        {
+          "variant": "structured_full",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.616838491567536,
+          "centered_mae_pp": 5.880546625722647,
+          "national_mae_pp": 3.7563502396455233,
+          "canton_mae_pp": 5.886942459291767,
+          "gain_interval": [
+            -0.8225097732555998,
+            0.05196158809967688
+          ],
+          "vs_v108_interval": [
+            -1.1022915143736234,
+            -0.1561766215454025
+          ]
+        },
+        {
+          "variant": "lexical_rank5",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 8.734377510237486,
+          "centered_mae_pp": 6.340296373140353,
+          "national_mae_pp": 4.482331646247393,
+          "canton_mae_pp": 7.055260314019886,
+          "gain_interval": [
+            -2.1683196622283076,
+            -0.8086657651194928
+          ],
+          "vs_v108_interval": [
+            -2.5023650898019105,
+            -1.013597586899995
+          ]
+        },
+        {
+          "variant": "lexical_full",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 8.822880798654337,
+          "centered_mae_pp": 6.455862266769717,
+          "national_mae_pp": 4.464740283924996,
+          "canton_mae_pp": 7.03620440493564,
+          "gain_interval": [
+            -2.2801305697435827,
+            -0.888485617023147
+          ],
+          "vs_v108_interval": [
+            -2.5957854491733405,
+            -1.0822523335859495
+          ]
+        },
+        {
+          "variant": "hybrid_rank5",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.571530885852016,
+          "centered_mae_pp": 5.724474691610721,
+          "national_mae_pp": 3.9014219274387334,
+          "canton_mae_pp": 5.929470088547871,
+          "gain_interval": [
+            -0.7733680163661886,
+            0.10777617436663268
+          ],
+          "vs_v108_interval": [
+            -1.0854226596292766,
+            -0.08127184988047552
+          ]
+        },
+        {
+          "variant": "hybrid_rank5_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.441864224592678,
+          "centered_mae_pp": 5.724474691610721,
+          "national_mae_pp": 3.8465104491922895,
+          "canton_mae_pp": 5.853480472465476,
+          "gain_interval": [
+            -0.7303781335468977,
+            0.3992290541593153
+          ],
+          "vs_v108_interval": [
+            -0.8280808969221587,
+            -0.06735764536537656
+          ]
+        },
+        {
+          "variant": "hybrid_full",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.658441542348415,
+          "centered_mae_pp": 5.809473850189728,
+          "national_mae_pp": 3.8999909124971808,
+          "canton_mae_pp": 5.935658453222032,
+          "gain_interval": [
+            -0.8769294703215549,
+            0.040669530866304426
+          ],
+          "vs_v108_interval": [
+            -1.1788375282433132,
+            -0.15445070475341488
+          ]
+        },
+        {
+          "variant": "hybrid_full_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.5249964729939,
+          "centered_mae_pp": 5.809473850189728,
+          "national_mae_pp": 3.846510449192273,
+          "canton_mae_pp": 5.8633317186308735,
+          "gain_interval": [
+            -0.8307232307554613,
+            0.33170983393465775
+          ],
+          "vs_v108_interval": [
+            -0.9376569331613198,
+            -0.12074643118206849
+          ]
+        },
+        {
+          "variant": "hybrid_full_blend50",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.067425378777571,
+          "centered_mae_pp": 5.336039174271922,
+          "national_mae_pp": 3.779842746177271,
+          "canton_mae_pp": 5.490547589626925,
+          "gain_interval": [
+            -0.1170181271109288,
+            0.48275831357499893
+          ],
+          "vs_v108_interval": [
+            -0.33622707462692675,
+            0.18719860644697917
+          ]
+        }
+      ],
+      "folds": {
+        "2016-2018": {
+          "hybrid_full": 7.9363852383,
+          "hybrid_full_blend50": 7.6040733182,
+          "hybrid_full_local": 7.6228300972,
+          "hybrid_rank5": 7.89246397,
+          "hybrid_rank5_local": 7.5857247347,
+          "lexical_full": 9.8572686108,
+          "lexical_rank5": 9.7961937806,
+          "reference": 8.152475601,
+          "structured_full": 7.7137228824,
+          "structured_rank5": 7.6863465664,
+          "v108_tfidf": 7.696815302
+        },
+        "2019-2020": {
+          "hybrid_full": 8.0357722793,
+          "hybrid_full_blend50": 7.2115166705,
+          "hybrid_full_local": 8.0857122506,
+          "hybrid_rank5": 7.8435888032,
+          "hybrid_rank5_local": 7.8972702544,
+          "lexical_full": 10.365502506,
+          "lexical_rank5": 10.1274529843,
+          "reference": 7.1500595705,
+          "structured_full": 8.0451756267,
+          "structured_rank5": 7.9685921454,
+          "v108_tfidf": 6.9429781706
+        },
+        "2021-2022": {
+          "hybrid_full": 7.1223465539,
+          "hybrid_full_blend50": 6.3245698087,
+          "hybrid_full_local": 7.1223465539,
+          "hybrid_rank5": 7.034335572,
+          "hybrid_rank5_local": 7.034335572,
+          "lexical_full": 6.7585851798,
+          "lexical_rank5": 6.7105694352,
+          "reference": 6.1155763319,
+          "structured_full": 7.2815644354,
+          "structured_rank5": 7.1406288029,
+          "v108_tfidf": 6.1261417791
+        }
+      }
     }
   ],
   "stage_status": {
-    "V11.1": "benchmark_in_progress"
+    "V11.1": "completed_no_gain"
   },
   "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access."
 }

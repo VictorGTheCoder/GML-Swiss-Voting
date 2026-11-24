@@ -8,12 +8,12 @@
 ## Registre
 | Version | Hypothèse | État | Meilleure MAE |
 |---|---|---|---:|
-| V11.1 | Noyaux lexicaux intégraux et profil local complet | Implémenté, benchmark en cours | — |
+| V11.1 | Noyaux lexicaux intégraux et profil local complet | Terminé, aucun gain vs V10.8 | 7,0674 (nouveau candidat) |
 
-[Protocole V11.1](V11.1-protocol.md) · [Benchmark V11.1](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45409817577) · [Backlog et état](../../../experiments/municipal_v11/state.json).
+[Résultats V11.1](V11.1-results.md) · [Protocole V11.1](V11.1-protocol.md) · [Benchmark V11.1](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45409817577) · [Backlog et état](../../../experiments/municipal_v11/state.json).
 
 ## Backlog priorisé
-1. V11.1 : expérience factorielle noyaux et profil complet, analyse des erreurs par objet/thème/fenêtre/commune/canton.
+1. V11.1 (terminé) : expérience factorielle noyaux et profil complet, analyse des erreurs par objet/thème/fenêtre/commune/canton.
 2. V11.2 : contrôle documentaire indépendant de la correspondance des pages, extraction de passages complets et représentation des mécanismes/direction du texte. Sources officielles et dates vérifiées ; aucun contenu post-vote.
 3. V11.3 : enrichir les signaux des objets par historiques parlementaires et analogues, sources datées ; contrôle redondances et ablations dans train.
 4. V11.4 : selon diagnostics de V11.1, comparaison de modèles de contrastes locaux avec sélection de rang et régularisation nested par dates, perte macro adaptée. Éviter la répétition des méthodes V6–V10.
