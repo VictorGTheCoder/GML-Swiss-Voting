@@ -1,0 +1,35 @@
+name: V9 STATENT encoding and geography recovery
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/statent-recovery-v9.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  economy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-experiments.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: v9-acquisition
+          run-id: 45295220148
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/acquisition_v9
+      - run: python -m pytest -q tests/test_acquire_v9.py
+      - run: python -m scripts.modeling.acquire_v9 --output reports/generated/acquisition_v9 --economic-only
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v9-acquisition-recovered
+          path: reports/generated/acquisition_v9

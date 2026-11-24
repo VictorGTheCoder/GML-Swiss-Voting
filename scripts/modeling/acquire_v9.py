@@ -21,7 +21,7 @@ import pandas as pd
 import requests
 
 from scripts.common.config import ROOT
-from scripts.ofs_votes.parse_ofs_votes import data_cube, read_px
+from scripts.ofs_votes.parse_ofs_votes import data_cube, parse_px_text
 from scripts.repertoire_communes.commune_crosswalk import load_mutations, resolve
 
 TEXT_ROOT = ROOT / "data/processed/federal_explanations"
@@ -216,14 +216,25 @@ def map_counts(frame, mapping):
 
 def economic_source(output):
     path=output/"statent.px"
-    prov=download(STATENT_URL,path)
-    px=read_px(path)
+    if path.exists():
+        prov={"url":STATENT_URL,"sha256":digest(path),"bytes":path.stat().st_size}
+    else:
+        prov=download(STATENT_URL,path)
+    raw=path.read_bytes()
+    try:
+        decoded=raw.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        if b'CODEPAGE="iso-8859-15"' not in raw[:1024]:
+            raise
+        decoded=raw.decode("iso-8859-15")
+    decoded=decoded.replace("\r\n","\n")
+    px=parse_px_text(decoded)
     m=px.metadata
     dims=m["STUB"]+m["HEADING"]
     print("STATENT_DIMENSIONS",json.dumps({d:{"count":len(m[f'CODES("{d}")']),
         "first_labels":m[f'VALUES("{d}")'][:12]} for d in dims},ensure_ascii=False),flush=True)
     # Validate source geography instead of inferring from a current snapshot.
-    header=path.read_text(encoding="utf-8-sig").split("DATA=",1)[0]
+    header=decoded.split("DATA=",1)[0]
     if "01.01.2024" not in header and "1.1.2024" not in header:
         raise ValueError("STATENT source geography differs from audited 2024 vintage")
     def dim(*terms):
@@ -246,8 +257,8 @@ def economic_source(output):
     sectors={
       "total":unique_index(sector,[r"total",r"wirtschaftssektor total",r"secteur economique total",r"alle sektoren"]),
       "primary":unique_index(sector,[r"primarsektor",r"1 sektor",r"1 sektor primarsektor",r"secteur primaire",r"1 secteur.*"]),
-      "secondary":unique_index(sector,[r"sekundarsektor",r"2 sektor",r"2 sektor sekundarsektor",r"secteur secondaire",r"2 secteur.*"]),
-      "tertiary":unique_index(sector,[r"tertiarsektor",r"3 sektor",r"3 sektor tertiarsektor",r"secteur tertiaire",r"3 secteur.*"]),
+      "secondary":unique_index(sector,[r"sekundarsektor",r"sekundarer sektor",r"2 sektor",r"2 sektor sekundarsektor",r"secteur secondaire",r"2 secteur.*"]),
+      "tertiary":unique_index(sector,[r"tertiarsektor",r"tertiarer sektor",r"3 sektor",r"3 sektor tertiarsektor",r"secteur tertiaire",r"3 secteur.*"]),
     }
     jobs=unique_index(unit,[r"beschaftigte",r"beschaftigte total",r"emplois",r"emplois total"])
     est=unique_index(unit,[r"arbeitsstatten",r"arbeitsstatten total",r"etablissements",r"etablissements total"])
@@ -298,8 +309,15 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--output",type=Path,required=True)
     p.add_argument("--skip-neural",action="store_true")
+    p.add_argument("--economic-only",action="store_true")
     a=p.parse_args()
     a.output.mkdir(parents=True,exist_ok=True)
+    if a.economic_only:
+        result=json.loads((a.output/"manifest.json").read_text())
+        result["economy"]=economic_source(a.output)
+        (a.output/"manifest.json").write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding="utf-8")
+        print("ACQUISITION",json.dumps(result,ensure_ascii=False),flush=True)
+        return
     text,audit=source_text(a.output)
     result={"status":"complete_with_explicit_gates","text":audit,"strict_forecast_ready":False}
     if not a.skip_neural:
