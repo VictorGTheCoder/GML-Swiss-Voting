@@ -1,0 +1,852 @@
+{
+  "status": "complete_exploratory",
+  "strict_forecast_ready": false,
+  "code_commit": "5a026cae9af17c9d5edbd18460b62dd0c371efff",
+  "reference": 7.229527497606818,
+  "objects": 66,
+  "dates": 23,
+  "municipal_rows": 138868,
+  "period": "2016–2022",
+  "acquisition": {
+    "run_id": 45295827067,
+    "artifact_id": 14876756029,
+    "manifest": {
+      "status": "complete_with_explicit_gates",
+      "text": {
+        "objects": 306,
+        "title_coverage": 306,
+        "candidate_matches": 99,
+        "usable_summaries": 68,
+        "evaluation_usable_summaries": 16,
+        "strict_forecast_ready": false,
+        "historical_version_verified": false,
+        "source_sha256": {
+          "sources.parquet": "6c46728515346cf7121fe5444d6eda16b1c0a2a430932d77c702dab96cba0124",
+          "objects.parquet": "5ca74d6aa78037e9764976b2eeef3461e08b660677f9783a4a140999ff6e0586",
+          "sections.parquet": "07756928aa9f93f830219f13f58e156b125014bafe65a1749699db0c187223aa",
+          "pages.parquet": "bcb69b0369a35bb35f95531febae03706c276de918f734d95b19aa106d525383",
+          "section_links.parquet": "15cf3c91bdf454125e945b6c654a5efceae185778f88712a30c9f68362a4e50e"
+        }
+      },
+      "strict_forecast_ready": false,
+      "embedding": {
+        "model": "intfloat/multilingual-e5-small",
+        "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+        "dimension": 384,
+        "sha256": "62f21a6b98f615aa171fce6ad87d534493b3a796b741b8e0421ad471f4bcf093"
+      },
+      "economy": {
+        "statent": {
+          "url": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0602010000_102",
+          "sha256": "8b849b3af7b4d87a787920c3f06944077ce8008d9cc2e69d04c0d2f44052bcfe",
+          "bytes": 4916492
+        },
+        "mutations": {
+          "url": "https://www.agvchapp.bfs.admin.ch/api/communes/mutations?includeTerritoryExchange=false&startPeriod=01-01-2024&endPeriod=01-01-2026&useBfsCode=true",
+          "sha256": "e9a33257cdd9b1ef4de59ce00951bae544204f7c27e34a9a5101ac856cf3ac88",
+          "bytes": 5900
+        },
+        "source_geography": "2024-01-01",
+        "target_geography": "2026-01-01",
+        "year_range": [
+          2011,
+          2020
+        ],
+        "rows": 21100,
+        "municipalities": 2110,
+        "unresolved": [],
+        "missingness": {
+          "econ_share_primary": 0.03042654028436019,
+          "econ_share_secondary": 0.0404739336492891,
+          "econ_share_tertiary": 0.01853080568720379,
+          "econ_log_jobs": 0,
+          "econ_log_establishments": 0.0007582938388625592
+        },
+        "sha256": "643b9f8e3d375c1f86bafa9783e0196d5abe677c976dac43e18e5467be28b484",
+        "availability": "year + 2 Jan 1 proxy; historical vintage unverified"
+      },
+      "text_corpus_sha256": "d3a85ef684f1de64f2fd37aef2d7987ae2adf1203d7fbc820cc3c0638d1183bf"
+    }
+  },
+  "text": {
+    "run_id": 45295665767,
+    "artifact_id": 14875374515,
+    "summary": [
+      {
+        "variant": "reference",
+        "mae": 7.229527497606816,
+        "centered_mae": 5.370058554693702,
+        "oracle": false,
+        "gain_interval": [
+          0,
+          0
+        ]
+      },
+      {
+        "variant": "tfidf_title_8_all",
+        "mae": 7.51809818322763,
+        "centered_mae": 5.433589779720711,
+        "oracle": false,
+        "gain_interval": [
+          -0.5804671784887062,
+          -0.017850507847332286
+        ]
+      },
+      {
+        "variant": "tfidf_title_8_local",
+        "mae": 7.239319117342702,
+        "centered_mae": 5.433589779720711,
+        "oracle": false,
+        "gain_interval": [
+          -0.11788500274048,
+          0.11692436555733729
+        ]
+      },
+      {
+        "variant": "tfidf_title_8_ridgeblend",
+        "mae": 7.210132690529088,
+        "centered_mae": 5.361135329833332,
+        "oracle": false,
+        "gain_interval": [
+          -0.09523087303104354,
+          0.12798321653720154
+        ]
+      },
+      {
+        "variant": "tfidf_document_8_all",
+        "mae": 7.332482189333231,
+        "centered_mae": 5.442836938641066,
+        "oracle": false,
+        "gain_interval": [
+          -0.3337018188161563,
+          0.07531775501328539
+        ]
+      },
+      {
+        "variant": "tfidf_document_8_local",
+        "mae": 7.255412606074907,
+        "centered_mae": 5.442836938641065,
+        "oracle": false,
+        "gain_interval": [
+          -0.10621582026770701,
+          0.04868865569924943
+        ]
+      },
+      {
+        "variant": "tfidf_document_8_ridgeblend",
+        "mae": 7.220257323671146,
+        "centered_mae": 5.3848197206458055,
+        "oracle": false,
+        "gain_interval": [
+          -0.10298015488162757,
+          0.11017204670623795
+        ]
+      },
+      {
+        "variant": "e5_title_8_all",
+        "mae": 7.326255559422805,
+        "centered_mae": 5.555726756166605,
+        "oracle": false,
+        "gain_interval": [
+          -0.3109262118777001,
+          0.12891606371684997
+        ]
+      },
+      {
+        "variant": "e5_title_8_local",
+        "mae": 7.398918032635254,
+        "centered_mae": 5.555726756166605,
+        "oracle": false,
+        "gain_interval": [
+          -0.34132437428954776,
+          -0.015636978147837412
+        ]
+      },
+      {
+        "variant": "e5_title_8_ridgeblend",
+        "mae": 7.222705603174864,
+        "centered_mae": 5.383762412193235,
+        "oracle": false,
+        "gain_interval": [
+          -0.10592049248922146,
+          0.11049470977570496
+        ]
+      },
+      {
+        "variant": "e5_document_8_all",
+        "mae": 7.254901613851688,
+        "centered_mae": 5.51260459125702,
+        "oracle": false,
+        "gain_interval": [
+          -0.24379057163516793,
+          0.22704474086460777
+        ]
+      },
+      {
+        "variant": "e5_document_8_local",
+        "mae": 7.35839424540474,
+        "centered_mae": 5.51260459125702,
+        "oracle": false,
+        "gain_interval": [
+          -0.2694058701275307,
+          0.005906360507663387
+        ]
+      },
+      {
+        "variant": "e5_document_8_ridgeblend",
+        "mae": 7.2370645301202705,
+        "centered_mae": 5.401087415486771,
+        "oracle": false,
+        "gain_interval": [
+          -0.1233726226472316,
+          0.09395401561995026
+        ]
+      },
+      {
+        "variant": "e5_document_16_all",
+        "mae": 7.131910681945383,
+        "centered_mae": 5.481518101136503,
+        "oracle": false,
+        "gain_interval": [
+          -0.12675567493851875,
+          0.3473906568782975
+        ]
+      },
+      {
+        "variant": "e5_document_16_local",
+        "mae": 7.320814656625302,
+        "centered_mae": 5.481518101136503,
+        "oracle": false,
+        "gain_interval": [
+          -0.2326566026083085,
+          0.05137029032219683
+        ]
+      },
+      {
+        "variant": "e5_document_16_ridgeblend",
+        "mae": 7.217923751451901,
+        "centered_mae": 5.366359217814872,
+        "oracle": false,
+        "gain_interval": [
+          -0.13921987756614393,
+          0.14139305829180948
+        ]
+      }
+    ],
+    "details": [
+      {
+        "window": "2016-2018",
+        "train_summary": 52,
+        "validation_summary": 5
+      },
+      {
+        "window": "2019-2020",
+        "train_summary": 57,
+        "validation_summary": 3
+      },
+      {
+        "window": "2021-2022",
+        "train_summary": 60,
+        "validation_summary": 8
+      }
+    ]
+  },
+  "economy": {
+    "run_id": 45296058385,
+    "artifact_id": 14877270072,
+    "summary": [
+      {
+        "variant": "reference",
+        "mae": 7.229527497606816,
+        "centered_mae": 5.370058554693702,
+        "oracle": false,
+        "gain_interval": [
+          0,
+          0
+        ]
+      },
+      {
+        "variant": "demographic_control_30",
+        "mae": 7.231211997464251,
+        "centered_mae": 5.37292688161587,
+        "oracle": false,
+        "gain_interval": [
+          -0.040550617020287,
+          0.02863625870340292
+        ]
+      },
+      {
+        "variant": "demographic_control_100",
+        "mae": 7.228467802202902,
+        "centered_mae": 5.369450449198143,
+        "oracle": false,
+        "gain_interval": [
+          -0.022705055616774245,
+          0.019870947630977038
+        ]
+      },
+      {
+        "variant": "economy_30",
+        "mae": 7.225038283124926,
+        "centered_mae": 5.368676264290852,
+        "oracle": false,
+        "gain_interval": [
+          -0.035098333580541326,
+          0.033862062788959646
+        ]
+      },
+      {
+        "variant": "economy_100",
+        "mae": 7.227709611491717,
+        "centered_mae": 5.3692662670312625,
+        "oracle": false,
+        "gain_interval": [
+          -0.021026195892692254,
+          0.020125597799618773
+        ]
+      },
+      {
+        "variant": "demographic_economy_30",
+        "mae": 7.227288765703456,
+        "centered_mae": 5.372277559743669,
+        "oracle": false,
+        "gain_interval": [
+          -0.03847133733788551,
+          0.0335051148670669
+        ]
+      },
+      {
+        "variant": "demographic_economy_100",
+        "mae": 7.228136429466197,
+        "centered_mae": 5.370825278275376,
+        "oracle": false,
+        "gain_interval": [
+          -0.022067788198052087,
+          0.020674523912108164
+        ]
+      }
+    ],
+    "details": [
+      {
+        "window": "2016-2018",
+        "mode": "demographic_control",
+        "train_objects": 41
+      },
+      {
+        "window": "2016-2018",
+        "mode": "economy",
+        "train_objects": 29
+      },
+      {
+        "window": "2016-2018",
+        "mode": "demographic_economy",
+        "train_objects": 29
+      },
+      {
+        "window": "2019-2020",
+        "mode": "demographic_control",
+        "train_objects": 71
+      },
+      {
+        "window": "2019-2020",
+        "mode": "economy",
+        "train_objects": 59
+      },
+      {
+        "window": "2019-2020",
+        "mode": "demographic_economy",
+        "train_objects": 59
+      },
+      {
+        "window": "2021-2022",
+        "mode": "demographic_control",
+        "train_objects": 83
+      },
+      {
+        "window": "2021-2022",
+        "mode": "economy",
+        "train_objects": 71
+      },
+      {
+        "window": "2021-2022",
+        "mode": "demographic_economy",
+        "train_objects": 71
+      }
+    ]
+  },
+  "panel": {
+    "run_id": 45295665767,
+    "artifact_id": 14876581949,
+    "summary": [
+      {
+        "variant": "reference",
+        "mae": 7.229527497606816,
+        "centered_mae": 5.370058554693702,
+        "oracle": false,
+        "gain_interval": [
+          0,
+          0
+        ]
+      },
+      {
+        "variant": "panel_diverse_10",
+        "mae": 7.586895227729075,
+        "centered_mae": 5.655330970992424,
+        "oracle": false,
+        "gain_interval": [
+          -0.7592647314308679,
+          0.012754006051333987
+        ]
+      },
+      {
+        "variant": "panel_diverse_10_local",
+        "mae": 7.417043901885991,
+        "centered_mae": 5.655330970992424,
+        "oracle": false,
+        "gain_interval": [
+          -0.3838329792254223,
+          0.009713983199253318
+        ]
+      },
+      {
+        "variant": "oracle_panel_diverse_10",
+        "mae": 5.476155102329737,
+        "centered_mae": 4.7772774089754435,
+        "oracle": true,
+        "gain_interval": [
+          1.0454602720002932,
+          2.4737030912749782
+        ]
+      },
+      {
+        "variant": "panel_random_10",
+        "mae": 7.786047499678821,
+        "centered_mae": 6.087930735032825,
+        "oracle": false,
+        "gain_interval": [
+          -0.7880882387804056,
+          -0.30777671311625626
+        ]
+      },
+      {
+        "variant": "panel_random_10_local",
+        "mae": 7.715468136436299,
+        "centered_mae": 6.088212512386304,
+        "oracle": false,
+        "gain_interval": [
+          -0.7063303531656316,
+          -0.26029903336197985
+        ]
+      },
+      {
+        "variant": "oracle_panel_random_10",
+        "mae": 5.981796372998355,
+        "centered_mae": 5.923133263154511,
+        "oracle": true,
+        "gain_interval": [
+          0.42016518131283376,
+          2.110519735322602
+        ]
+      },
+      {
+        "variant": "panel_diverse_20",
+        "mae": 7.465452427210494,
+        "centered_mae": 5.431271910710673,
+        "oracle": false,
+        "gain_interval": [
+          -0.5454990919163829,
+          0.034322864843428086
+        ]
+      },
+      {
+        "variant": "panel_diverse_20_local",
+        "mae": 7.27034031331331,
+        "centered_mae": 5.431271910710673,
+        "oracle": false,
+        "gain_interval": [
+          -0.1701497331752433,
+          0.08663537882028004
+        ]
+      },
+      {
+        "variant": "oracle_panel_diverse_20",
+        "mae": 4.708263225313646,
+        "centered_mae": 4.21897422031361,
+        "oracle": true,
+        "gain_interval": [
+          1.801902691414635,
+          3.2839554944822673
+        ]
+      },
+      {
+        "variant": "panel_random_20",
+        "mae": 7.319533430962711,
+        "centered_mae": 5.42087088277738,
+        "oracle": false,
+        "gain_interval": [
+          -0.2719184092117905,
+          0.07750125658781547
+        ]
+      },
+      {
+        "variant": "panel_random_20_local",
+        "mae": 7.249757654664166,
+        "centered_mae": 5.42087088277738,
+        "oracle": false,
+        "gain_interval": [
+          -0.13820607898689638,
+          0.09428667545686956
+        ]
+      },
+      {
+        "variant": "oracle_panel_random_20",
+        "mae": 4.2678600564781455,
+        "centered_mae": 4.21521750965713,
+        "oracle": true,
+        "gain_interval": [
+          2.29294409771327,
+          3.676141395967428
+        ]
+      }
+    ],
+    "details": [
+      {
+        "window": "2016-2018",
+        "method": "diverse",
+        "k": 10,
+        "communes": [
+          "6290",
+          "5009",
+          "6750",
+          "0709",
+          "5928",
+          "0161",
+          "0351",
+          "6202",
+          "5186",
+          "0715"
+        ],
+        "minimum_observed_oracle_panel": 10
+      },
+      {
+        "window": "2016-2018",
+        "method": "random",
+        "k": 10,
+        "communes": [
+          "5643",
+          "2786",
+          "0989",
+          "3360",
+          "2491",
+          "5609",
+          "2611",
+          "2308",
+          "0841",
+          "1099"
+        ],
+        "minimum_observed_oracle_panel": 10
+      },
+      {
+        "window": "2016-2018",
+        "method": "diverse",
+        "k": 20,
+        "communes": [
+          "6290",
+          "5009",
+          "6750",
+          "0709",
+          "5928",
+          "0161",
+          "0351",
+          "6202",
+          "5186",
+          "0715",
+          "5903",
+          "1375",
+          "0248",
+          "6087",
+          "5309",
+          "5683",
+          "0339",
+          "6706",
+          "0261",
+          "6011"
+        ],
+        "minimum_observed_oracle_panel": 20
+      },
+      {
+        "window": "2016-2018",
+        "method": "random",
+        "k": 20,
+        "communes": [
+          "2303",
+          "0356",
+          "3427",
+          "5523",
+          "2527",
+          "4461",
+          "0935",
+          "2583",
+          "1098",
+          "4041",
+          "5711",
+          "2457",
+          "0322",
+          "1008",
+          "6781",
+          "2855",
+          "5429",
+          "6281",
+          "2785",
+          "2842"
+        ],
+        "minimum_observed_oracle_panel": 20
+      },
+      {
+        "window": "2019-2020",
+        "method": "diverse",
+        "k": 10,
+        "communes": [
+          "6011",
+          "6290",
+          "0715",
+          "5911",
+          "6608",
+          "0248",
+          "0351",
+          "0709",
+          "6202",
+          "6750"
+        ],
+        "minimum_observed_oracle_panel": 10
+      },
+      {
+        "window": "2019-2020",
+        "method": "random",
+        "k": 10,
+        "communes": [
+          "5643",
+          "2786",
+          "0989",
+          "3360",
+          "2491",
+          "5609",
+          "2611",
+          "2308",
+          "0841",
+          "1099"
+        ],
+        "minimum_observed_oracle_panel": 10
+      },
+      {
+        "window": "2019-2020",
+        "method": "diverse",
+        "k": 20,
+        "communes": [
+          "6011",
+          "6290",
+          "0715",
+          "5911",
+          "6608",
+          "0248",
+          "0351",
+          "0709",
+          "6202",
+          "6750",
+          "1348",
+          "5684",
+          "0160",
+          "0339",
+          "5475",
+          "6294",
+          "6643",
+          "1375",
+          "0261",
+          "5855"
+        ],
+        "minimum_observed_oracle_panel": 20
+      },
+      {
+        "window": "2019-2020",
+        "method": "random",
+        "k": 20,
+        "communes": [
+          "2303",
+          "0356",
+          "3427",
+          "5523",
+          "2527",
+          "4461",
+          "0935",
+          "2583",
+          "1098",
+          "4041",
+          "5711",
+          "2457",
+          "0322",
+          "1008",
+          "6781",
+          "2855",
+          "5429",
+          "6281",
+          "2785",
+          "2842"
+        ],
+        "minimum_observed_oracle_panel": 20
+      },
+      {
+        "window": "2021-2022",
+        "method": "diverse",
+        "k": 10,
+        "communes": [
+          "6011",
+          "6197",
+          "0709",
+          "6750",
+          "5911",
+          "0160",
+          "0351",
+          "5186",
+          "5855",
+          "6202"
+        ],
+        "minimum_observed_oracle_panel": 10
+      },
+      {
+        "window": "2021-2022",
+        "method": "random",
+        "k": 10,
+        "communes": [
+          "5643",
+          "2786",
+          "0989",
+          "3360",
+          "2491",
+          "5609",
+          "2611",
+          "2308",
+          "0841",
+          "1099"
+        ],
+        "minimum_observed_oracle_panel": 10
+      },
+      {
+        "window": "2021-2022",
+        "method": "diverse",
+        "k": 20,
+        "communes": [
+          "6011",
+          "6197",
+          "0709",
+          "6750",
+          "5911",
+          "0160",
+          "0351",
+          "5186",
+          "5855",
+          "6202",
+          "0339",
+          "5488",
+          "0248",
+          "1375",
+          "6298",
+          "0261",
+          "5009",
+          "5728",
+          "0715",
+          "6643"
+        ],
+        "minimum_observed_oracle_panel": 20
+      },
+      {
+        "window": "2021-2022",
+        "method": "random",
+        "k": 20,
+        "communes": [
+          "2303",
+          "0356",
+          "3427",
+          "5523",
+          "2527",
+          "4461",
+          "0935",
+          "2583",
+          "1098",
+          "4041",
+          "5711",
+          "2457",
+          "0322",
+          "1008",
+          "6781",
+          "2855",
+          "5429",
+          "6281",
+          "2785",
+          "2842"
+        ],
+        "minimum_observed_oracle_panel": 20
+      }
+    ]
+  },
+  "initial_economic_control": {
+    "summary": [
+      {
+        "variant": "reference",
+        "mae": 7.229527497606816,
+        "centered_mae": 5.370058554693702,
+        "oracle": false,
+        "gain_interval": [
+          0,
+          0
+        ]
+      },
+      {
+        "variant": "demographic_control_30",
+        "mae": 7.231211997464251,
+        "centered_mae": 5.37292688161587,
+        "oracle": false,
+        "gain_interval": [
+          -0.040550617020287,
+          0.02863625870340292
+        ]
+      },
+      {
+        "variant": "demographic_control_100",
+        "mae": 7.228467802202902,
+        "centered_mae": 5.369450449198143,
+        "oracle": false,
+        "gain_interval": [
+          -0.022705055616774245,
+          0.019870947630977038
+        ]
+      }
+    ],
+    "details": [
+      {
+        "window": "2016-2018",
+        "mode": "demographic_control",
+        "train_objects": 41
+      },
+      {
+        "window": "2019-2020",
+        "mode": "demographic_control",
+        "train_objects": 71
+      },
+      {
+        "window": "2021-2022",
+        "mode": "demographic_control",
+        "train_objects": 83
+      }
+    ]
+  },
+  "best_observed": {
+    "variant": "e5_document_16_all",
+    "mae": 7.131910681945383,
+    "centered_mae": 5.481518101136503,
+    "oracle": false,
+    "gain_interval": [
+      -0.12675567493851875,
+      0.3473906568782975
+    ]
+  }
+}
