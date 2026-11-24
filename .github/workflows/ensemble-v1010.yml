@@ -1,0 +1,91 @@
+name: V10.10 chronological ensemble (pinned corrected income)
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/income_v109.py'
+      - 'scripts/modeling/ensemble_v1010.py'
+      - 'tests/test_ensemble_v1010.py'
+      - '.github/workflows/ensemble-v1010.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+env:
+  OMP_NUM_THREADS: "2"
+  OPENBLAS_NUM_THREADS: "2"
+  MKL_NUM_THREADS: "2"
+jobs:
+  ensemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - run: pip install -r requirements-experiments.txt openpyxl
+      - run: python -m pytest -q tests/test_ensemble_v1010.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: v101-expectation-pilot
+          run-id: 45301813438
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v1010_inputs/v101
+      - uses: actions/download-artifact@v4
+        with:
+          name: v102-media-pilot
+          run-id: 45309749540
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v1010_inputs/v102
+      - uses: actions/download-artifact@v4
+        with:
+          name: v103-turnout
+          run-id: 45316679885
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v1010_inputs/v103
+      - uses: actions/download-artifact@v4
+        with:
+          name: v104-pooling
+          run-id: 45323525729
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v1010_inputs/v104
+      - uses: actions/download-artifact@v4
+        with:
+          name: v105-canton
+          run-id: 45344880395
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v1010_inputs/v105
+      - uses: actions/download-artifact@v4
+        with:
+          name: v106-reconciliation
+          run-id: 45358533701
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v1010_inputs/v106
+      - uses: actions/download-artifact@v4
+        with:
+          name: v107-hybrid
+          run-id: 45361300769
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v1010_inputs/v107
+      - uses: actions/download-artifact@v4
+        with:
+          name: v1089-results-text
+          run-id: 45367633898
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v1010_inputs/v108
+      - uses: actions/download-artifact@v4
+        with:
+          name: v109-corrected-results
+          run-id: 45368450007
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v1010_inputs/v109
+      - run: python -m scripts.modeling.ensemble_v1010 --inputs reports/generated/v1010_inputs --output reports/generated/v1010_results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1010-ensemble
+          path: reports/generated/v1010_results/
+          if-no-files-found: warn
+          retention-days: 30

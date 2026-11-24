@@ -1,0 +1,167 @@
+{
+  "campaign": "V10 — literature-driven municipal referendum prediction",
+  "status": "predeclared",
+  "objective": "Predict aggregate yes-share by Swiss municipality before federal referendum, target macro-object equal-commune MAE <=4 pp.",
+  "frozen": {
+    "baseline_version": "V8.1",
+    "mae_pp": 7.229527497606818,
+    "exploratory_v9_best": 7.131910681945383,
+    "base_commit": "5af1477b1f22b00e9caf634efdf9d55acbdbaddd",
+    "prior_pr": 85,
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868,
+    "validation_windows": [
+      [
+        "2016-01-01",
+        "2018-12-31"
+      ],
+      [
+        "2019-01-01",
+        "2020-12-31"
+      ],
+      [
+        "2021-01-01",
+        "2022-12-31"
+      ]
+    ],
+    "target_cutoff": "2023-01-01",
+    "national_predictions": {
+      "run": 45293115635,
+      "artifact": 14875157414,
+      "name": "national-fusion-v81"
+    },
+    "poll_acquisition": {
+      "run": 45292731014,
+      "artifact": 14873834489,
+      "name": "poll-acquisition-v81"
+    },
+    "v9_acquisition": {
+      "run": 45295827067,
+      "artifact": 14876756029,
+      "name": "v9-acquisition-recovered"
+    }
+  },
+  "requirements": [
+    "Each version: fixed hypothesis/configurations before scores, implementation, targeted tests, chronological matched benchmark, analysis, report, immutable run and artifact IDs, source URLs/hashes, decision. Record negative results and failed runs; don't relabel blocked stages complete.",
+    "Maintain 66-object population and reference 7.229527497606818 unless a documented comparison explicitly uses a separate matched subset. No comparison outcomes from 2023 onward in fitting, calibration, selection or scoring. Existing prepared snapshot may contain them; project filtered modeling reads only. Avoid exposed 2023+ test.",
+    "Do not infer individual voting behavior or use personal-level data. Predict public aggregate outcomes only. No political persuasion, voter targeting or recommendations about campaigning. No current-election forecasts/deployment; do not touch frozen candidate, main, production.",
+    "Publication cutoff: at least day before vote, exact source identity and timing checked. Retrospective source revisions, dates and proxies explicitly flagged, no invented values. No actual participation/ballots/outcomes as features for target date. Observed results only historical training and scoring. No same-day calibration.",
+    "Report macro-object municipal MAE, centered municipal MAE, national and canton macro-object MAE using ex-ante ballot weights for predictions, actual valid yes/no counts for observed aggregates only; also report coverage, paired-by-date interval, per-object and per-fold scores. Distinguish equal-municipality vs ballot-weighted aggregate. Do not claim comparable international scores without same metric and horizon.",
+    "If a source or tool is blocked, try reasonable alternative official sources, record exact blocker and defer rather than invent. Keep a clean staged branch and use optimistic compare-and-swap ref updates.",
+    "Use existing V8.1 datasets and artifact hashes for reference. Retain exploratory V9 as separate candidate; no automatic promotion on reused dates. No blanket claim that 4 pp is feasible."
+  ],
+  "stages": [
+    {
+      "id": "V10.1",
+      "priority": 1,
+      "title": "Vote-expectation surveys",
+      "sources": [
+        "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022_w2/"
+      ],
+      "hypotheses": [
+        "Expected national yes share (not probability of majority yes) complements intention and trend",
+        "Compare expectation only, blend, regularized chronological calibration and structural fallback"
+      ],
+      "gate": "Review exact source/object/wave/number; check publication; do not mix majority probabilities and expected shares; same geographic correction and matched metrics"
+    },
+    {
+      "id": "V10.2",
+      "priority": 2,
+      "title": "Campaign media coverage",
+      "sources": [
+        "https://foeg.uzh.ch/de/research/1-Aktuelle-Projekte/abstimmungsmonitor.html"
+      ],
+      "hypotheses": [
+        "Pre-vote fög coverage volume and tone provide new campaign signal",
+        "Model tone level, relative prominence, change between truly dated windows"
+      ],
+      "gate": "Original report/date/period/label evidence; source must predate referendum; avoid post-election reports and campaign persuasion"
+    },
+    {
+      "id": "V10.3",
+      "priority": 3,
+      "title": "Participation and ballot weights",
+      "hypotheses": [
+        "Historical aggregate participation model improves ex-ante national/cantonal weighting and local calibration",
+        "Compare last historical turnout, shrinkage, object-conditioned estimates, survey participation if sourced"
+      ],
+      "gate": "No contemporaneous actual turnout as feature; validate turnout separately and vote share on same objects; include valid ballot denominator caveat"
+    },
+    {
+      "id": "V10.4",
+      "priority": 4,
+      "title": "Aggregate poststratification and multilevel regression",
+      "sources": [
+        "https://discovery.ucl.ac.uk/id/eprint/10074013/1/ijf_final_submission.pdf",
+        "https://doi.org/10.7910/DVN/I0VEMG"
+      ],
+      "hypotheses": [
+        "Aggregate ecological compositional models and survey margins can improve local contrasts",
+        "Compare partial pooling, regularized cross-classified aggregate models; do not pretend marginals are joint microdata"
+      ],
+      "gate": "Use public aggregate data only; explicit identifiability and ecological assumptions; no individual vote inference"
+    },
+    {
+      "id": "V10.5",
+      "priority": 5,
+      "title": "Independent canton forecasts / small area estimation",
+      "hypotheses": [
+        "Partial pooling across cantons and object features improves geographic levels; compare direct canton ridge/XGB, shrinkage, municipal bottom-up"
+      ],
+      "gate": "Actual target canton result not an input; canton targets only historical; keep municipality forecast all rows"
+    },
+    {
+      "id": "V10.6",
+      "priority": 6,
+      "title": "Hierarchical reconciliation (MinT)",
+      "hypotheses": [
+        "Joint national-canton-commune coherence using historical error covariance and ex-ante ballot weights improves forecasts"
+      ],
+      "gate": "Fit covariance on chronological out-of-fold predictions only; regularize small sample; keep probabilities bounded and hierarchy coherent"
+    },
+    {
+      "id": "V10.7",
+      "priority": 7,
+      "title": "Hybrid Gaussian-process profiles",
+      "sources": [
+        "https://indy.epfl.ch/grossglauser/Papers/dsaa2016_votepredict.pdf",
+        "https://aleximmer.com/assets/subsvd_kdd20.pdf"
+      ],
+      "hypotheses": [
+        "Hybrid structured object and geographic kernel plus latent profile may outperform current PCA"
+      ],
+      "gate": "No contemporaneous commune results; compare low-rank/kernel and simple controls; actual observation-based oracle clearly separated"
+    },
+    {
+      "id": "V10.8",
+      "priority": 8,
+      "title": "Official brochure corpus and semantic effects",
+      "hypotheses": [
+        "Improve V9's 16/66 validated-summary candidates via source-based mapping; extract policy direction, effects, affected institutions, cost/benefit and structured mechanisms from actual pre-vote text"
+      ],
+      "gate": "Evidence, source date/hash, title mapping; no retrospective outcomes or assumed links; train-only compression; compare titles, summaries and effects separately"
+    },
+    {
+      "id": "V10.9",
+      "priority": 9,
+      "title": "Socioeconomic data and object × commune interactions",
+      "hypotheses": [
+        "Income/housing/education/sector detail offer better exposure measures than 5 STATENT variables; explicit interactions"
+      ],
+      "gate": "OFS/AFC official source and vintage; harmonize geography; as-of availability; no individual profiling; compare matched support"
+    },
+    {
+      "id": "V10.10",
+      "priority": 10,
+      "title": "Chronological ensemble",
+      "hypotheses": [
+        "Complementary validated models reduce errors when selected by prior OOF folds; compare convex uniform/regularized stacking"
+      ],
+      "gate": "Out-of-fold fit and nested chronology; no selection on same held-out rows; report error correlations and gain intervals"
+    }
+  ],
+  "state_path": "experiments/municipal_v10/state.json",
+  "reports_path": "reports/experiments/v10_campaign/",
+  "morning_report": "Cumulative French report of all completed/blocked/running versions; per-version exact configurations, score tables, charts, coverage, CI, methodology, links, source caveats, remaining tasks. Update after every run. At final scheduled check report measured results, not promised scores."
+}

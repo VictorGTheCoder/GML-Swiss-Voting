@@ -1,0 +1,53 @@
+name: V10.1 vote expectation pilot
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/expectations_v101.py'
+      - 'scripts/modeling/inventory_expectations_v101.py'
+      - 'tests/test_expectations_v101.py'
+      - 'data/external/expectations_v10/**'
+      - '.github/workflows/expectations-v101.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  expectation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    env:
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+      NUMEXPR_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-experiments.txt
+      - run: python -m pytest -q tests/test_expectations_v101.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: poll-acquisition-v81
+          run-id: 45292731014
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/acquisition_v81
+      - uses: actions/download-artifact@v4
+        with:
+          name: national-fusion-v81
+          run-id: 45293115635
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/national_v81
+      - run: python -m scripts.modeling.inventory_expectations_v101 --output reports/generated/expectations_v101_inventory.json
+      - run: python -m scripts.modeling.municipal_v2 prepare --output reports/generated/v101_base
+      - run: python -m scripts.modeling.expectations_v101 --base reports/generated/v101_base --acquisition reports/generated/acquisition_v81 --fusion reports/generated/national_v81 --output reports/generated/expectations_v101
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v101-expectation-pilot
+          path: |
+            reports/generated/expectations_v101/
+            reports/generated/expectations_v101_inventory.json
+          if-no-files-found: warn
+          retention-days: 30

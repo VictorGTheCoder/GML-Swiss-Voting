@@ -1,0 +1,38 @@
+vote_key,vote_date,wave,expected_yes_pp,source_url,section
+6380,2021-03-07,1,51,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021/,"Volksinitiative ""Ja zum Verhüllungsverbot"""
+6380,2021-03-07,2,53,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-2/,"Volksinitiative ""Ja zum Verhüllungsverbot"""
+6400,2021-03-07,1,53,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021/,Wirtschaftspartnerschaftsabkommen mit Indonesien
+6400,2021-03-07,2,53,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-2/,Freihandelsabkommen mit Indonesien
+6410,2021-06-13,1,48,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/,Trinkwasser-Initiative
+6410,2021-06-13,2,47,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/,Trinkwasser-Initiative
+6420,2021-06-13,1,48,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/,Initiative Pestizidverbot
+6420,2021-06-13,2,48,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/,Initiative Pestizidverbot
+6430,2021-06-13,1,55,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/,Covid-19-Gesetz
+6430,2021-06-13,2,56,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/,Covid-19-Gesetz
+6440,2021-06-13,1,49,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/,CO2-Gesetz
+6440,2021-06-13,2,49.8,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/,CO2-Gesetz
+6450,2021-06-13,1,57,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/,Terrorismus-Gesetz
+6450,2021-06-13,2,56,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3-2/,Terrorismus-Gesetz
+6470,2021-09-26,1,55,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_26092021/,Änderung des Schweizerischen Zivilgesetzbuches (Ehe für alle)
+6470,2021-09-26,2,58,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_26092021-2/,Änderung des Schweizerischen Zivilgesetzbuches (Ehe für alle)
+6490,2021-11-28,1,46,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_28112021/,Justiz-Initiative
+6490,2021-11-28,2,45,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_28112021-2/,Justiz-Initiative
+6500,2021-11-28,1,53,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_28112021/,Änderung des Covid-19-Gesetzes
+6520,2022-02-13,1,53,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_13022022-2/,"Initiative ""Ja zum Schutz der Kinder und Jugendlichen vor Tabakwerbung"""
+6520,2022-02-13,2,53,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_13022022_w2/,"Initiative ""Ja zum Schutz der Kinder und Jugendlichen vor Tabakwerbung"""
+6530,2022-02-13,1,49.8,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_13022022-2/,Änderung des Bundesgesetzes über die Stempelabgaben
+6530,2022-02-13,2,49.9,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_13022022_w2/,Änderung des Bundesgesetzes über die Stempelabgaben
+6540,2022-02-13,1,49.3,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_13022022-2/,Bundesgesetz über ein Massnahmenpaket zugunsten der Medien
+6550,2022-05-15,1,50,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022/,Änderung des Filmgesetzes
+6550,2022-05-15,2,50.5,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022-w2/,Änderung des Filmgesetzes
+6560,2022-05-15,1,50,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022/,Änderung des Transplantationsgesetzes
+6560,2022-05-15,2,53.2,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022-w2/,Änderung des Transplantationsgesetzes
+6570,2022-05-15,1,52,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022/,Finanzierung Frontex
+6570,2022-05-15,2,55,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022-w2/,Finanzierung Frontex
+6580,2022-09-25,1,49,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022-2/,Massentierhaltungsinitiative
+6580,2022-09-25,2,45,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022_w2/,Massentierhaltungsinitiative
+6590,2022-09-25,1,50,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022-2/,AHV-Reform
+6590,2022-09-25,2,52,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022_w2/,AHV-Reform
+6600,2022-09-25,1,50,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022-2/,AHV-Reform
+6600,2022-09-25,2,52,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022_w2/,AHV-Reform
+6610,2022-09-25,2,51,https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022_w2/,Änderung des Verrechnungssteuergesetzes

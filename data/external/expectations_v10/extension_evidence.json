@@ -1,0 +1,254 @@
+[
+  {
+    "vote_key": "6380",
+    "wave": 1,
+    "expected_yes_pp": 51,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021/",
+    "source_sha256": "8da7320a934a47e61f141dd1aff6592bc838a4a3dfc468ee9ad6cee1b61260e0",
+    "section": "Volksinitiative \"Ja zum Verhüllungsverbot\"",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6400",
+    "wave": 1,
+    "expected_yes_pp": 53,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021/",
+    "source_sha256": "8da7320a934a47e61f141dd1aff6592bc838a4a3dfc468ee9ad6cee1b61260e0",
+    "section": "Wirtschaftspartnerschaftsabkommen mit Indonesien",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6380",
+    "wave": 2,
+    "expected_yes_pp": 53,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-2/",
+    "source_sha256": "dd8b7c49ab1e2ad7b17441ebb56ac9aaa1f6ae3da76a0256967cab88b61682ac",
+    "section": "Volksinitiative \"Ja zum Verhüllungsverbot\"",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6400",
+    "wave": 2,
+    "expected_yes_pp": 53,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-2/",
+    "source_sha256": "dd8b7c49ab1e2ad7b17441ebb56ac9aaa1f6ae3da76a0256967cab88b61682ac",
+    "section": "Freihandelsabkommen mit Indonesien",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6410",
+    "wave": 1,
+    "expected_yes_pp": 48,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/",
+    "source_sha256": "3d171024e1ce1449afc0b9318085541fd6d904390318bac0baf1e44c368ecc6a",
+    "section": "Trinkwasser-Initiative",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6420",
+    "wave": 1,
+    "expected_yes_pp": 48,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/",
+    "source_sha256": "3d171024e1ce1449afc0b9318085541fd6d904390318bac0baf1e44c368ecc6a",
+    "section": "Initiative Pestizidverbot",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6430",
+    "wave": 1,
+    "expected_yes_pp": 55,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/",
+    "source_sha256": "3d171024e1ce1449afc0b9318085541fd6d904390318bac0baf1e44c368ecc6a",
+    "section": "Covid-19-Gesetz",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6440",
+    "wave": 1,
+    "expected_yes_pp": 49,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/",
+    "source_sha256": "3d171024e1ce1449afc0b9318085541fd6d904390318bac0baf1e44c368ecc6a",
+    "section": "CO2-Gesetz",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6450",
+    "wave": 1,
+    "expected_yes_pp": 57,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_032021-3/",
+    "source_sha256": "3d171024e1ce1449afc0b9318085541fd6d904390318bac0baf1e44c368ecc6a",
+    "section": "Terrorismus-Gesetz",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6470",
+    "wave": 1,
+    "expected_yes_pp": 55,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_26092021/",
+    "source_sha256": "af014b8f5b8cf9a247285e5c8fa96fe4836abae24172e8ad91a6ec59e36c6f42",
+    "section": "Änderung des Schweizerischen Zivilgesetzbuches (Ehe für alle)",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6470",
+    "wave": 2,
+    "expected_yes_pp": 58,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_26092021-2/",
+    "source_sha256": "396e0beb72bbcc5cb2141b2f5c17b9dea5668d48fc65ad86801a6dc893133d5c",
+    "section": "Änderung des Schweizerischen Zivilgesetzbuches (Ehe für alle)",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6490",
+    "wave": 1,
+    "expected_yes_pp": 46,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_28112021/",
+    "source_sha256": "5e00935257786ae6720f1cbd6573733063657b920a568ac51d67ba36cdfb6e77",
+    "section": "Justiz-Initiative",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6500",
+    "wave": 1,
+    "expected_yes_pp": 53,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_28112021/",
+    "source_sha256": "5e00935257786ae6720f1cbd6573733063657b920a568ac51d67ba36cdfb6e77",
+    "section": "Änderung des Covid-19-Gesetzes",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6490",
+    "wave": 2,
+    "expected_yes_pp": 45,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_28112021-2/",
+    "source_sha256": "3275730ecc5e72ebef6411319e1001e52011a1c449274dbe6aa2d7af02b11dc4",
+    "section": "Justiz-Initiative",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6520",
+    "wave": 1,
+    "expected_yes_pp": 53,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_13022022-2/",
+    "source_sha256": "8d72172959d98cbf56e525ae4b7dbe3fb8148de0b2d9090c33ff15e047bcf51e",
+    "section": "Initiative \"Ja zum Schutz der Kinder und Jugendlichen vor Tabakwerbung\"",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6530",
+    "wave": 1,
+    "expected_yes_pp": 49.8,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_13022022-2/",
+    "source_sha256": "8d72172959d98cbf56e525ae4b7dbe3fb8148de0b2d9090c33ff15e047bcf51e",
+    "section": "Änderung des Bundesgesetzes über die Stempelabgaben",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6540",
+    "wave": 1,
+    "expected_yes_pp": 49.3,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_13022022-2/",
+    "source_sha256": "8d72172959d98cbf56e525ae4b7dbe3fb8148de0b2d9090c33ff15e047bcf51e",
+    "section": "Bundesgesetz über ein Massnahmenpaket zugunsten der Medien",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6520",
+    "wave": 2,
+    "expected_yes_pp": 53,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_13022022_w2/",
+    "source_sha256": "ef54d0510b9fd7d128995a9b5c58a6134e270d01f3cd5de89b2c369839593c75",
+    "section": "Initiative \"Ja zum Schutz der Kinder und Jugendlichen vor Tabakwerbung\"",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6530",
+    "wave": 2,
+    "expected_yes_pp": 49.9,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_13022022_w2/",
+    "source_sha256": "ef54d0510b9fd7d128995a9b5c58a6134e270d01f3cd5de89b2c369839593c75",
+    "section": "Änderung des Bundesgesetzes über die Stempelabgaben",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6550",
+    "wave": 1,
+    "expected_yes_pp": 50,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022/",
+    "source_sha256": "593c4c632cfd3127c14e650d999b0bddf7585f78f5b91c25fec87873a0cbce5a",
+    "section": "Änderung des Filmgesetzes",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6560",
+    "wave": 1,
+    "expected_yes_pp": 50,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022/",
+    "source_sha256": "593c4c632cfd3127c14e650d999b0bddf7585f78f5b91c25fec87873a0cbce5a",
+    "section": "Änderung des Transplantationsgesetzes",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6570",
+    "wave": 1,
+    "expected_yes_pp": 52,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022/",
+    "source_sha256": "593c4c632cfd3127c14e650d999b0bddf7585f78f5b91c25fec87873a0cbce5a",
+    "section": "Finanzierung Frontex",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6550",
+    "wave": 2,
+    "expected_yes_pp": 50.5,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022-w2/",
+    "source_sha256": "01321802f427475f716c01eae9ba5f7509827b5ab635589237300f2402480469",
+    "section": "Änderung des Filmgesetzes",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6560",
+    "wave": 2,
+    "expected_yes_pp": 53.2,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022-w2/",
+    "source_sha256": "01321802f427475f716c01eae9ba5f7509827b5ab635589237300f2402480469",
+    "section": "Änderung des Transplantationsgesetzes",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6570",
+    "wave": 2,
+    "expected_yes_pp": 55,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_15052022-w2/",
+    "source_sha256": "01321802f427475f716c01eae9ba5f7509827b5ab635589237300f2402480469",
+    "section": "Finanzierung Frontex",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6580",
+    "wave": 1,
+    "expected_yes_pp": 49,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022-2/",
+    "source_sha256": "7861c58cbf4c0663ab5fd57cadb66320bb4bdcef12669892c94978e0fc089ea4",
+    "section": "Massentierhaltungsinitiative",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6590",
+    "wave": 1,
+    "expected_yes_pp": 50,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022-2/",
+    "source_sha256": "7861c58cbf4c0663ab5fd57cadb66320bb4bdcef12669892c94978e0fc089ea4",
+    "section": "AHV-Reform",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  },
+  {
+    "vote_key": "6600",
+    "wave": 1,
+    "expected_yes_pp": 50,
+    "source_url": "https://cockpit.gfsbern.ch/de/cockpit/srg_trend_25092022-2/",
+    "source_sha256": "7861c58cbf4c0663ab5fd57cadb66320bb4bdcef12669892c94978e0fc089ea4",
+    "section": "AHV-Reform",
+    "extraction": "explicit mean, one percentage in source sentence; reviewed against poll title"
+  }
+]

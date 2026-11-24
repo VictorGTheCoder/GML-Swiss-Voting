@@ -1,0 +1,1758 @@
+{
+  "campaign": "V10 — literature-driven municipal referendum prediction",
+  "status": "completed_exploratory_no_promotion",
+  "active": null,
+  "updated": "2026-11-24",
+  "completed": [
+    "V10.1",
+    "V10.2",
+    "V10.3",
+    "V10.4",
+    "V10.5",
+    "V10.6",
+    "V10.7",
+    "V10.8",
+    "V10.9",
+    "V10.10"
+  ],
+  "blocked": [],
+  "pending": [],
+  "runs": [
+    {
+      "version": "V10.1",
+      "kind": "pilot",
+      "run": 45299149349,
+      "artifact": 14878720344,
+      "sha": "c7432deaf34a3a1ec108ab403a315ad46b890dae",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.2295274976068145,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920626,
+          "canton_mae_pp": 5.703708259264074,
+          "covered_mae_pp": 6.543001307196259,
+          "covered_centered_mae_pp": 5.061060914461718,
+          "covered_national_mae_pp": 3.29234291975975,
+          "covered_canton_mae_pp": 4.955333233156242,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "expectation25",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.1826717981899995,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.6692428777036508,
+          "canton_mae_pp": 5.641618218368549,
+          "covered_mae_pp": 6.199392844806281,
+          "covered_centered_mae_pp": 5.061060914461717,
+          "covered_national_mae_pp": 2.5118831496447296,
+          "covered_canton_mae_pp": 4.500006266589063,
+          "gain_interval": [
+            0,
+            0.1325415466591198
+          ]
+        },
+        {
+          "variant": "expectation50",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.1707614948495335,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.6852885281991683,
+          "canton_mae_pp": 5.624432245701415,
+          "covered_mae_pp": 6.112050620309519,
+          "covered_centered_mae_pp": 5.0610609144617165,
+          "covered_national_mae_pp": 2.629551253278525,
+          "covered_canton_mae_pp": 4.373975800363421,
+          "gain_interval": [
+            -0.01856967670603586,
+            0.20269820732463337
+          ]
+        },
+        {
+          "variant": "expectation75",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.194458250592248,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.762412540456365,
+          "canton_mae_pp": 5.6669950781975,
+          "covered_mae_pp": 6.285826829089438,
+          "covered_centered_mae_pp": 5.061060914461717,
+          "covered_national_mae_pp": 3.1951273431646343,
+          "covered_canton_mae_pp": 4.686103238668028,
+          "gain_interval": [
+            -0.11234157987431952,
+            0.23124987126221708
+          ]
+        },
+        {
+          "variant": "expectation100",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.2515203595877225,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.909515165843677,
+          "canton_mae_pp": 5.743239076551117,
+          "covered_mae_pp": 6.704282295056245,
+          "covered_centered_mae_pp": 5.0610609144617165,
+          "covered_national_mae_pp": 4.273879929338256,
+          "covered_canton_mae_pp": 5.245225893261219,
+          "gain_interval": [
+            -0.26271680357406635,
+            0.20556526528941693
+          ]
+        },
+        {
+          "variant": "walk_forward",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.1707614948495335,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.6852885281991683,
+          "canton_mae_pp": 5.624432245701415,
+          "covered_mae_pp": 6.112050620309519,
+          "covered_centered_mae_pp": 5.0610609144617165,
+          "covered_national_mae_pp": 2.629551253278525,
+          "covered_canton_mae_pp": 4.373975800363421,
+          "gain_interval": [
+            -0.01856967670603586,
+            0.20269820732463337
+          ]
+        }
+      ],
+      "repository_checks": {
+        "run": 45299149253,
+        "conclusion": "failure",
+        "reason": "ruff C417, corrected in next commit"
+      }
+    },
+    {
+      "version": "V10.1",
+      "kind": "extension",
+      "run": 45301813438,
+      "artifact": 14879571160,
+      "artifact_digest": "sha256:7f4d38d0eb39b731df16921922c1c90533d902baf34dd79953b96fcedadad0f8",
+      "sha": "008a0c7684e1ce343efb4d9961f806d465c5ebe6",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.2295274976068145,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920626,
+          "canton_mae_pp": 5.703708259264074,
+          "covered_mae_pp": 6.267902960546729,
+          "covered_centered_mae_pp": 4.938348664398675,
+          "covered_national_mae_pp": 2.9508795975558613,
+          "covered_canton_mae_pp": 4.678559969485738,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "expectation25",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.214546714658989,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.808242905362406,
+          "canton_mae_pp": 5.663365332662745,
+          "covered_mae_pp": 6.218466376818905,
+          "covered_centered_mae_pp": 4.938348664398674,
+          "covered_national_mae_pp": 3.058372792277995,
+          "covered_canton_mae_pp": 4.545428311701351,
+          "gain_interval": [
+            -0.10656025795812546,
+            0.14638397317482463
+          ]
+        },
+        {
+          "variant": "expectation50",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.300310867216863,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 4.026288949668666,
+          "canton_mae_pp": 5.7610518934401345,
+          "covered_mae_pp": 6.501488080259891,
+          "covered_centered_mae_pp": 4.938348664398673,
+          "covered_national_mae_pp": 3.7779247384886516,
+          "covered_canton_mae_pp": 4.8677939622667346,
+          "gain_interval": [
+            -0.3514835260342546,
+            0.20488027920401175
+          ]
+        },
+        {
+          "variant": "expectation75",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.472783747212772,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 4.305413355736589,
+          "canton_mae_pp": 5.984110968138482,
+          "covered_mae_pp": 7.070648584246389,
+          "covered_centered_mae_pp": 4.938348664398676,
+          "covered_national_mae_pp": 4.6990352785128,
+          "covered_canton_mae_pp": 5.603888908771281,
+          "gain_interval": [
+            -0.7030843795764126,
+            0.18522806988129614
+          ]
+        },
+        {
+          "variant": "expectation100",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.717264748534885,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 4.708337383119556,
+          "canton_mae_pp": 6.287067151320233,
+          "covered_mae_pp": 7.87743588860936,
+          "covered_centered_mae_pp": 4.938348664398675,
+          "covered_national_mae_pp": 6.028684568876593,
+          "covered_canton_mae_pp": 6.60364431327106,
+          "gain_interval": [
+            -1.1557205130147714,
+            0.1223421972364313
+          ]
+        },
+        {
+          "variant": "walk_forward",
+          "objects": 66,
+          "covered_objects": 20,
+          "mae_pp": 7.2494984642477585,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.9384444928964495,
+          "canton_mae_pp": 5.705164250904623,
+          "covered_mae_pp": 6.333807150461842,
+          "covered_centered_mae_pp": 4.938348664398674,
+          "covered_national_mae_pp": 3.4880380311403405,
+          "covered_canton_mae_pp": 4.68336474189955,
+          "gain_interval": [
+            -0.2024223118047485,
+            0.16942816226486734
+          ]
+        }
+      ],
+      "repository_checks": {
+        "run": 45301813329,
+        "conclusion": "success"
+      },
+      "targeted_tests": 4
+    },
+    {
+      "version": "V10.2",
+      "kind": "pilot",
+      "run": 45309363603,
+      "artifact": 14882172985,
+      "artifact_digest": "sha256:5d5bc30b1cafa60341f2f0d9da59f3d882f7ee0766ac1ede5b48b20e096c3bad",
+      "sha": "f7a71510d6c50d705a8eca3b8fc866fa404bb296",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 24,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "covered_mae_pp": 6.115576331894111,
+          "covered_centered_mae_pp": 4.784976610975612,
+          "covered_national_mae_pp": 3.1337843341550666,
+          "covered_canton_mae_pp": 4.6265876455014805,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "bias_control",
+          "objects": 66,
+          "covered_objects": 24,
+          "mae_pp": 7.255312117713952,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.76344840678349,
+          "canton_mae_pp": 5.71152865815139,
+          "covered_mae_pp": 6.186484037188737,
+          "covered_centered_mae_pp": 4.784976610975612,
+          "covered_national_mae_pp": 3.100177125331472,
+          "covered_canton_mae_pp": 4.648093742441596,
+          "gain_interval": [
+            -0.09133822715904498,
+            0.016722781089512813
+          ]
+        },
+        {
+          "variant": "tone",
+          "objects": 66,
+          "covered_objects": 24,
+          "mae_pp": 7.258409511504789,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.762712962620101,
+          "canton_mae_pp": 5.7146231850055855,
+          "covered_mae_pp": 6.195001870113537,
+          "covered_centered_mae_pp": 4.784976610975613,
+          "covered_national_mae_pp": 3.0981546538821525,
+          "covered_canton_mae_pp": 4.656603691290635,
+          "gain_interval": [
+            -0.08815527572276008,
+            0.01026383706794457
+          ]
+        },
+        {
+          "variant": "tone_volume",
+          "objects": 66,
+          "covered_objects": 24,
+          "mae_pp": 7.25997532344892,
+          "centered_mae_pp": 5.370058041503956,
+          "national_mae_pp": 3.7721250048904222,
+          "canton_mae_pp": 5.71563204387849,
+          "covered_mae_pp": 6.1993078529598975,
+          "covered_centered_mae_pp": 4.784975199703812,
+          "covered_national_mae_pp": 3.124037770125535,
+          "covered_canton_mae_pp": 4.659378053191124,
+          "gain_interval": [
+            -0.0872614765017689,
+            0.008225447435426777
+          ]
+        },
+        {
+          "variant": "tone_prominence",
+          "objects": 66,
+          "covered_objects": 24,
+          "mae_pp": 7.258915422363282,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.763260696418569,
+          "canton_mae_pp": 5.71484134182765,
+          "covered_mae_pp": 6.196393124974393,
+          "covered_centered_mae_pp": 4.784976610975613,
+          "covered_national_mae_pp": 3.099660921827939,
+          "covered_canton_mae_pp": 4.657203622551309,
+          "gain_interval": [
+            -0.09141360198779608,
+            0.01170012720148939
+          ]
+        }
+      ],
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45309363539,
+        "conclusion": "success"
+      }
+    },
+    {
+      "version": "V10.2",
+      "kind": "extension",
+      "run": 45309749540,
+      "artifact": 14882292438,
+      "artifact_digest": "sha256:e701f510cf2fbc67c9aea9ff61cf5a766d45f508c12a79e527de96767aa557ea",
+      "sha": "f3f6126b41688236d89423934379cf35646e3748",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.2295274976068145,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920626,
+          "canton_mae_pp": 5.703708259264074,
+          "covered_mae_pp": 7.097753088774736,
+          "covered_centered_mae_pp": 5.2920179068904805,
+          "covered_national_mae_pp": 3.7880438406505608,
+          "covered_canton_mae_pp": 5.5597750237689345,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "bias_control",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.292968709941325,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.8683017080723534,
+          "canton_mae_pp": 5.734333717356768,
+          "covered_mae_pp": 7.175292348294692,
+          "covered_centered_mae_pp": 5.2920179068904805,
+          "covered_national_mae_pp": 3.9012613383042503,
+          "covered_canton_mae_pp": 5.597206139215559,
+          "gain_interval": [
+            -0.18301376939248964,
+            0.04395981848597412
+          ]
+        },
+        {
+          "variant": "tone",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.2944945721775065,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.894734557983656,
+          "canton_mae_pp": 5.742403169232977,
+          "covered_mae_pp": 7.177157291027803,
+          "covered_centered_mae_pp": 5.292017906890481,
+          "covered_national_mae_pp": 3.933568154862509,
+          "covered_canton_mae_pp": 5.607068802619814,
+          "gain_interval": [
+            -0.20198644272321772,
+            0.0626541745870796
+          ]
+        },
+        {
+          "variant": "tone_volume",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.227129083136027,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.8249601124078576,
+          "canton_mae_pp": 5.674264368146242,
+          "covered_mae_pp": 7.094821693310438,
+          "covered_centered_mae_pp": 5.292017906890481,
+          "covered_national_mae_pp": 3.848288276936534,
+          "covered_canton_mae_pp": 5.52378804573603,
+          "gain_interval": [
+            -0.13436327160155037,
+            0.1598390771695917
+          ]
+        },
+        {
+          "variant": "tone_prominence",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.297802923432739,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.8987720174326177,
+          "canton_mae_pp": 5.747561131489157,
+          "covered_mae_pp": 7.181200831450864,
+          "covered_centered_mae_pp": 5.2920179068904805,
+          "covered_national_mae_pp": 3.938502827522351,
+          "covered_canton_mae_pp": 5.613372978710704,
+          "gain_interval": [
+            -0.20422779613636677,
+            0.061618935642137745
+          ]
+        }
+      ],
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45309749468,
+        "conclusion": "success"
+      }
+    },
+    {
+      "version": "V10.3",
+      "kind": "benchmark",
+      "run": 45316679885,
+      "artifact": 14884454967,
+      "artifact_digest": "sha256:9e52af0bbd2acf23e13d5a281f35987804579961dfaa57c8412b2d74a6da2627",
+      "sha": "e5c56bd3fd0fbe7ccfacdc5f6dcf3da69bed27d1",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "common_weight_national_mae_pp": 3.7756692099920697,
+          "common_weight_canton_mae_pp": 5.703708259264076,
+          "ballot_weight_tv_pp": 4.99960427423866,
+          "turnout_mae_pp": null,
+          "valid_rate_mae_pp": null,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "eligible_only",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7763083857006094,
+          "canton_mae_pp": 5.705493948679002,
+          "common_weight_national_mae_pp": 3.7756692099920697,
+          "common_weight_canton_mae_pp": 5.703708259264076,
+          "ballot_weight_tv_pp": 5.061697617184871,
+          "turnout_mae_pp": null,
+          "valid_rate_mae_pp": null,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "last_weights_only",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7936091867321737,
+          "canton_mae_pp": 5.71776668420257,
+          "common_weight_national_mae_pp": 3.7756692099920697,
+          "common_weight_canton_mae_pp": 5.703708259264076,
+          "ballot_weight_tv_pp": 4.149759811076291,
+          "turnout_mae_pp": 12.825874957223306,
+          "valid_rate_mae_pp": 12.502903075214618,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "last_reanchor",
+          "objects": 66,
+          "mae_pp": 7.216935543585269,
+          "centered_mae_pp": 5.375808689690289,
+          "national_mae_pp": 3.77566920999207,
+          "canton_mae_pp": 5.705164190575249,
+          "common_weight_national_mae_pp": 3.76616396961402,
+          "common_weight_canton_mae_pp": 5.6944067485463385,
+          "ballot_weight_tv_pp": 4.149759811076291,
+          "turnout_mae_pp": 12.825874957223306,
+          "valid_rate_mae_pp": 12.502903075214618,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            -0.028204727642536627,
+            0.04943208572021167
+          ]
+        },
+        {
+          "variant": "pooled_weights_only",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7710384644973445,
+          "canton_mae_pp": 5.708957560058708,
+          "common_weight_national_mae_pp": 3.7756692099920697,
+          "common_weight_canton_mae_pp": 5.703708259264076,
+          "ballot_weight_tv_pp": 3.0517732518555745,
+          "turnout_mae_pp": 9.146923092115236,
+          "valid_rate_mae_pp": 8.919794571143674,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "pooled_reanchor",
+          "objects": 66,
+          "mae_pp": 7.230933363286588,
+          "centered_mae_pp": 5.375019389237864,
+          "national_mae_pp": 3.775669209992092,
+          "canton_mae_pp": 5.716673498551566,
+          "common_weight_national_mae_pp": 3.785086668761552,
+          "common_weight_canton_mae_pp": 5.713142345960711,
+          "ballot_weight_tv_pp": 3.0517732518555745,
+          "turnout_mae_pp": 9.146923092115236,
+          "valid_rate_mae_pp": 8.919794571143674,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            -0.022476944246329105,
+            0.018325028656403043
+          ]
+        },
+        {
+          "variant": "domain_reanchor",
+          "objects": 66,
+          "mae_pp": 7.228559598057313,
+          "centered_mae_pp": 5.375733877898977,
+          "national_mae_pp": 3.7756692099920395,
+          "canton_mae_pp": 5.716266088242728,
+          "common_weight_national_mae_pp": 3.778627042603447,
+          "common_weight_canton_mae_pp": 5.711815194165466,
+          "ballot_weight_tv_pp": 3.0794202506683575,
+          "turnout_mae_pp": 9.283238009318158,
+          "valid_rate_mae_pp": 9.068035186453727,
+          "eligible_coverage": 0.9999640038107656,
+          "domain_coverage": 0.954394265077005,
+          "gain_interval": [
+            -0.02324366415161577,
+            0.023695436564918626
+          ]
+        }
+      ],
+      "targeted_tests": 3,
+      "repository_checks": {
+        "run": 45316679915,
+        "conclusion": "success"
+      }
+    },
+    {
+      "version": "V10.4",
+      "kind": "benchmark",
+      "run": 45323525729,
+      "artifact": 14888717635,
+      "artifact_digest": "sha256:05e11c8bbe20373c7c3db22fb06c76492a8ce0d16583343c08f1cf099af307ef",
+      "sha": "4df06571e7e81122c9fa569f009c34383177727f",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 0,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "common_national_mae_pp": 3.7756692099920697,
+          "common_canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "additive_ridge",
+          "objects": 66,
+          "covered_objects": 62,
+          "mae_pp": 7.235679350486183,
+          "centered_mae_pp": 5.361803671202083,
+          "national_mae_pp": 3.775669209992036,
+          "canton_mae_pp": 5.728499245806106,
+          "common_national_mae_pp": 3.775669209992036,
+          "common_canton_mae_pp": 5.728499245806106,
+          "gain_interval": [
+            -0.1665045671154596,
+            0.15377488415854978
+          ]
+        },
+        {
+          "variant": "crossed_ridge",
+          "objects": 66,
+          "covered_objects": 62,
+          "mae_pp": 7.2385086303313475,
+          "centered_mae_pp": 5.364841737721359,
+          "national_mae_pp": 3.7756692099920626,
+          "canton_mae_pp": 5.730402914908688,
+          "common_national_mae_pp": 3.7756692099920626,
+          "common_canton_mae_pp": 5.730402914908688,
+          "gain_interval": [
+            -0.17615342611110812,
+            0.15649067427210325
+          ]
+        },
+        {
+          "variant": "domain_ridge",
+          "objects": 66,
+          "covered_objects": 62,
+          "mae_pp": 7.253717401048362,
+          "centered_mae_pp": 5.386379972606601,
+          "national_mae_pp": 3.7756692099920324,
+          "canton_mae_pp": 5.744612310862454,
+          "common_national_mae_pp": 3.7756692099920324,
+          "common_canton_mae_pp": 5.744612310862454,
+          "gain_interval": [
+            -0.19031969193232864,
+            0.1452145146701645
+          ]
+        },
+        {
+          "variant": "margin_ridge",
+          "objects": 66,
+          "covered_objects": 62,
+          "mae_pp": 7.203874353602405,
+          "centered_mae_pp": 5.324940660535149,
+          "national_mae_pp": 3.7756692099920532,
+          "canton_mae_pp": 5.697419821522563,
+          "common_national_mae_pp": 3.7756692099920532,
+          "common_canton_mae_pp": 5.697419821522563,
+          "gain_interval": [
+            -0.13732384221873312,
+            0.18798814908593214
+          ]
+        },
+        {
+          "variant": "domain_pooled_weights",
+          "objects": 66,
+          "covered_objects": 62,
+          "mae_pp": 7.2543688573983385,
+          "centered_mae_pp": 5.386379972606601,
+          "national_mae_pp": 3.771038464497307,
+          "canton_mae_pp": 5.745650468069738,
+          "common_national_mae_pp": 3.7753887362855645,
+          "common_canton_mae_pp": 5.745300809734625,
+          "gain_interval": [
+            -0.19120119311605593,
+            0.14513577671671005
+          ]
+        }
+      ],
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45323525765,
+        "conclusion": "success"
+      }
+    },
+    {
+      "version": "V10.5",
+      "kind": "benchmark_attempt",
+      "run": 45330444424,
+      "sha": "eda8a6636f4c446858d726c3f619a427b5442454",
+      "conclusion": "failure",
+      "targeted_tests": 3,
+      "reason": "AttributeError: contexts case dataframe has no canton column; benchmark failed before scoring."
+    },
+    {
+      "version": "V10.5",
+      "kind": "benchmark_attempt",
+      "run": 45337377817,
+      "sha": "a672480a93804a51e3c91feb57607a0291606717",
+      "conclusion": "failure",
+      "targeted_tests": 4,
+      "reason": "ValueError: Missing prior canton mapping; no scores or output artifact"
+    },
+    {
+      "version": "V10.5",
+      "kind": "benchmark",
+      "run": 45344880395,
+      "artifact": 14897029894,
+      "artifact_digest": "sha256:21bdd9db9addd993c91e93b0230a4e2fe795efb3a3a7b1a4a25ab96dcac58b69",
+      "sha": "44c3253d9802ff79c6cfbf71c8f2872d763d961f",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "common_national_mae_pp": 3.7756692099920697,
+          "common_canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "pooled_weights_control",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7710384644973445,
+          "canton_mae_pp": 5.708957560058708,
+          "common_national_mae_pp": 3.7756692099920697,
+          "common_canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "absolute25",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.323201069579025,
+          "centered_mae_pp": 5.376561492157489,
+          "national_mae_pp": 4.20136061492265,
+          "canton_mae_pp": 5.822112959158407,
+          "common_national_mae_pp": 4.219801691877276,
+          "common_canton_mae_pp": 5.822177269980774,
+          "gain_interval": [
+            -0.36889528623896933,
+            0.17920548374650533
+          ]
+        },
+        {
+          "variant": "absolute50",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.93990222432274,
+          "centered_mae_pp": 5.435125899710453,
+          "national_mae_pp": 5.21862209682012,
+          "canton_mae_pp": 6.56692569940635,
+          "common_national_mae_pp": 5.222501898322331,
+          "common_canton_mae_pp": 6.564040840967608,
+          "gain_interval": [
+            -1.314885101358851,
+            -0.10201442857269938
+          ]
+        },
+        {
+          "variant": "centered25",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.244085854780014,
+          "centered_mae_pp": 5.380159451533714,
+          "national_mae_pp": 3.7710384644973574,
+          "canton_mae_pp": 5.701018920594779,
+          "common_national_mae_pp": 3.7760193530227597,
+          "common_canton_mae_pp": 5.694120297225565,
+          "gain_interval": [
+            -0.05344295872496744,
+            0.024238689592963065
+          ]
+        },
+        {
+          "variant": "centered50",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.302723536910151,
+          "centered_mae_pp": 5.44394657535122,
+          "national_mae_pp": 3.7710384644973574,
+          "canton_mae_pp": 5.735688268046402,
+          "common_national_mae_pp": 3.776369496053435,
+          "common_canton_mae_pp": 5.727550338071832,
+          "gain_interval": [
+            -0.15389466474655253,
+            0.008154896358102987
+          ]
+        },
+        {
+          "variant": "centered100",
+          "objects": 66,
+          "covered_objects": 66,
+          "minimum_prior_objects": 240,
+          "mae_pp": 7.536718110956701,
+          "centered_mae_pp": 5.72379759783877,
+          "national_mae_pp": 3.7710384644973614,
+          "canton_mae_pp": 5.9581072894947,
+          "common_national_mae_pp": 3.777069782114792,
+          "common_canton_mae_pp": 5.948130242866736,
+          "gain_interval": [
+            -0.49190656746651806,
+            -0.12521932830555088
+          ]
+        }
+      ],
+      "targeted_tests": 5,
+      "repository_checks": {
+        "run": 45344880448,
+        "conclusion": "success"
+      }
+    },
+    {
+      "version": "V10.6",
+      "kind": "benchmark",
+      "run": 45358533701,
+      "artifact": 14902549065,
+      "artifact_digest": "sha256:b638b5099b48911253765d5821dec79679853441432c142826829c92b2be2d3e",
+      "sha": "cbece4751c19207ab20f539602acf5f12ab3e750",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "common_national_mae_pp": 3.7756692099920697,
+          "common_canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "pooled_control",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7710384644973445,
+          "canton_mae_pp": 5.708957560058708,
+          "common_national_mae_pp": 3.7756692099920697,
+          "common_canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "abs_diag",
+          "objects": 66,
+          "mae_pp": 7.4560654806100635,
+          "centered_mae_pp": 5.394486052969659,
+          "national_mae_pp": 4.447585997686424,
+          "canton_mae_pp": 6.019592183455202,
+          "common_national_mae_pp": 4.461262859255099,
+          "common_canton_mae_pp": 6.017928990193701,
+          "gain_interval": [
+            -0.5936043753150753,
+            0.13112901093052134
+          ]
+        },
+        {
+          "variant": "abs_shrink75",
+          "objects": 66,
+          "mae_pp": 7.359464125530068,
+          "centered_mae_pp": 5.419806393675615,
+          "national_mae_pp": 4.097671802830995,
+          "canton_mae_pp": 5.8321215347768405,
+          "common_national_mae_pp": 4.112159723263081,
+          "common_canton_mae_pp": 5.828668261142045,
+          "gain_interval": [
+            -0.40849836784113425,
+            0.14112149635401033
+          ]
+        },
+        {
+          "variant": "abs_shrink25",
+          "objects": 66,
+          "mae_pp": 7.385665574835633,
+          "centered_mae_pp": 5.447409798161425,
+          "national_mae_pp": 3.9902941478130716,
+          "canton_mae_pp": 5.864573558212482,
+          "common_national_mae_pp": 4.003519630109892,
+          "common_canton_mae_pp": 5.858659923275386,
+          "gain_interval": [
+            -0.4451263606917365,
+            0.1101112239979982
+          ]
+        },
+        {
+          "variant": "center_diag",
+          "objects": 66,
+          "mae_pp": 7.28548184225358,
+          "centered_mae_pp": 5.424942524477915,
+          "national_mae_pp": 3.771459359105075,
+          "canton_mae_pp": 5.726629988767899,
+          "common_national_mae_pp": 3.776211728398656,
+          "common_canton_mae_pp": 5.71896570679492,
+          "gain_interval": [
+            -0.12332101822948731,
+            0.01200112616274572
+          ]
+        },
+        {
+          "variant": "center_shrink75",
+          "objects": 66,
+          "mae_pp": 7.268112777043265,
+          "centered_mae_pp": 5.41490427918865,
+          "national_mae_pp": 3.746227962956095,
+          "canton_mae_pp": 5.713744558618268,
+          "common_national_mae_pp": 3.747123093899649,
+          "common_canton_mae_pp": 5.705091662992137,
+          "gain_interval": [
+            -0.10875684501089017,
+            0.03251537251900163
+          ]
+        },
+        {
+          "variant": "center_shrink25",
+          "objects": 66,
+          "mae_pp": 7.26301032949432,
+          "centered_mae_pp": 5.4009313367416505,
+          "national_mae_pp": 3.745886905898506,
+          "canton_mae_pp": 5.71571449509875,
+          "common_national_mae_pp": 3.7397646559268427,
+          "common_canton_mae_pp": 5.705359743175125,
+          "gain_interval": [
+            -0.162661956222653,
+            0.09376017861102331
+          ]
+        },
+        {
+          "variant": "abs_anchor75",
+          "objects": 66,
+          "mae_pp": 7.295189900512479,
+          "centered_mae_pp": 5.435353368792841,
+          "national_mae_pp": 3.771038464497379,
+          "canton_mae_pp": 5.7189284308425625,
+          "common_national_mae_pp": 3.77662961271332,
+          "common_canton_mae_pp": 5.71187318440465,
+          "gain_interval": [
+            -0.16637295959566495,
+            0.02036597324277163
+          ]
+        },
+        {
+          "variant": "center_anchor75",
+          "objects": 66,
+          "mae_pp": 7.277965973227908,
+          "centered_mae_pp": 5.415691063603598,
+          "national_mae_pp": 3.771038464497339,
+          "canton_mae_pp": 5.724246845256792,
+          "common_national_mae_pp": 3.7763679997736705,
+          "common_canton_mae_pp": 5.716638786297135,
+          "gain_interval": [
+            -0.1128506697823574,
+            0.016399731093996717
+          ]
+        }
+      ],
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45358533607,
+        "conclusion": "failure",
+        "reason": "Ruff C417, corrected",
+        "corrected_run": 45358831778,
+        "corrected_conclusion": "success",
+        "rerun_benchmark": 45358831971
+      }
+    },
+    {
+      "version": "V10.7",
+      "kind": "benchmark",
+      "run": 45361300769,
+      "artifact": 14904333272,
+      "artifact_digest": "sha256:cf39954207bd79202fc55535e16eb923c9a9b44f7eb80264a3ac4800fce6b4c7",
+      "sha": "006a0f4e1a2e5e2dd3bb911b4979b1ac4a31bbc3",
+      "conclusion": "success",
+      "targeted_tests": 3,
+      "repository_checks": {
+        "run": 45361300668,
+        "conclusion": "success"
+      },
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "covered_mae_pp": 7.0447840593707145,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "mean_identity",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.2018433143286025,
+          "centered_mae_pp": 5.330925584889836,
+          "national_mae_pp": 3.7756692099920444,
+          "canton_mae_pp": 5.680990667832893,
+          "covered_mae_pp": 7.010947835364026,
+          "gain_interval": [
+            -0.06486787056405122,
+            0.1227716386271378
+          ]
+        },
+        {
+          "variant": "object_identity",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.131451502548646,
+          "centered_mae_pp": 5.262995652540392,
+          "national_mae_pp": 3.775669209992071,
+          "canton_mae_pp": 5.640761254430685,
+          "covered_mae_pp": 6.92491339874408,
+          "gain_interval": [
+            -0.0069611889028877725,
+            0.21529000157400596
+          ]
+        },
+        {
+          "variant": "object_latent",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.1327529972995185,
+          "centered_mae_pp": 5.269494408088045,
+          "national_mae_pp": 3.7756692099920244,
+          "canton_mae_pp": 5.639672614685164,
+          "covered_mae_pp": 6.926504114550699,
+          "gain_interval": [
+            -0.015012854452926126,
+            0.22135852095703448
+          ]
+        },
+        {
+          "variant": "object_geo",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.148954924698136,
+          "centered_mae_pp": 5.2863895545697375,
+          "national_mae_pp": 3.7756692099920586,
+          "canton_mae_pp": 5.64951087618545,
+          "covered_mae_pp": 6.94630647026012,
+          "gain_interval": [
+            -0.03011565329765014,
+            0.20800800017741258
+          ]
+        },
+        {
+          "variant": "object_hybrid",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.148269813320096,
+          "centered_mae_pp": 5.289658553901791,
+          "national_mae_pp": 3.7756692099920497,
+          "canton_mae_pp": 5.650243573876356,
+          "covered_mae_pp": 6.945469111909183,
+          "gain_interval": [
+            -0.03310069971839859,
+            0.21274992351835964
+          ]
+        },
+        {
+          "variant": "object_hybrid_strong",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.146765189831469,
+          "centered_mae_pp": 5.278335443457213,
+          "national_mae_pp": 3.775669209992047,
+          "canton_mae_pp": 5.646259557702803,
+          "covered_mae_pp": 6.943630127645306,
+          "gain_interval": [
+            -0.017522915758344648,
+            0.19311436717517697
+          ]
+        },
+        {
+          "variant": "object_hybrid_full",
+          "objects": 66,
+          "covered_objects": 54,
+          "mae_pp": 7.289369930055653,
+          "centered_mae_pp": 5.464927110162485,
+          "national_mae_pp": 3.7756692099920475,
+          "canton_mae_pp": 5.758502892076531,
+          "covered_mae_pp": 7.117924810141529,
+          "gain_interval": [
+            -0.3019960775336197,
+            0.2102253073701382
+          ]
+        }
+      ]
+    },
+    {
+      "version": "V10.8",
+      "kind": "benchmark",
+      "run": 45367633898,
+      "job": 138353399384,
+      "artifact": 14907756689,
+      "artifact_digest": "sha256:e36afc2fa51e127699a7c529376fb9d61c21d3c5608b2f77fd493b5f492219da",
+      "acquisition": 14906199977,
+      "sha": "26692e3dfe7e73cd13c549dde07778c8dec4b35f",
+      "conclusion": "success",
+      "targeted_tests": 3,
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "covered_mae_pp": 7.369982450967182,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "title_e5_16_all",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.2601516462357685,
+          "centered_mae_pp": 5.548244298216675,
+          "national_mae_pp": 3.77190574066917,
+          "canton_mae_pp": 5.628868382261348,
+          "covered_mae_pp": 7.44121007297591,
+          "gain_interval": [
+            -0.2577967917319206,
+            0.20304103938061596
+          ]
+        },
+        {
+          "variant": "title_e5_16_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.370489642489573,
+          "centered_mae_pp": 5.548244298216675,
+          "national_mae_pp": 3.7600134545644175,
+          "canton_mae_pp": 5.75061685523107,
+          "covered_mae_pp": 7.526584460732582,
+          "gain_interval": [
+            -0.31801773912991654,
+            0.03222777676904032
+          ]
+        },
+        {
+          "variant": "page_e5_16_all",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.412472813111079,
+          "centered_mae_pp": 5.450972558662253,
+          "national_mae_pp": 3.964396277270083,
+          "canton_mae_pp": 5.81745346095804,
+          "covered_mae_pp": 7.579901720583958,
+          "gain_interval": [
+            -0.4384412162717966,
+            0.10298570367540774
+          ]
+        },
+        {
+          "variant": "page_e5_16_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.306550042123096,
+          "centered_mae_pp": 5.450972558662253,
+          "national_mae_pp": 3.7601095303635734,
+          "canton_mae_pp": 5.700962045752953,
+          "covered_mae_pp": 7.448383028795442,
+          "gain_interval": [
+            -0.25465769163847707,
+            0.13285448730841923
+          ]
+        },
+        {
+          "variant": "page_tfidf_16_all",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.988599997055331,
+          "centered_mae_pp": 5.280965787730653,
+          "national_mae_pp": 3.846510449192281,
+          "canton_mae_pp": 5.536970110697117,
+          "covered_mae_pp": 7.138281038994082,
+          "gain_interval": [
+            -0.033474457237910864,
+            0.6263738724976635
+          ]
+        },
+        {
+          "variant": "page_tfidf_16_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.132888688811753,
+          "centered_mae_pp": 5.280965787730655,
+          "national_mae_pp": 3.8333250822268163,
+          "canton_mae_pp": 5.600319922780358,
+          "covered_mae_pp": 7.259680229636974,
+          "gain_interval": [
+            -0.017876142987138015,
+            0.23983025612242706
+          ]
+        },
+        {
+          "variant": "page_e5_cues_16_all",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.358568720589621,
+          "centered_mae_pp": 5.424837786127477,
+          "national_mae_pp": 3.9554454949756286,
+          "canton_mae_pp": 5.781726068164711,
+          "covered_mae_pp": 7.517871048031805,
+          "gain_interval": [
+            -0.39487217147382286,
+            0.15749016095860333
+          ]
+        },
+        {
+          "variant": "page_e5_cues_16_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.294304221719262,
+          "centered_mae_pp": 5.424837786127477,
+          "national_mae_pp": 3.7704947519075622,
+          "canton_mae_pp": 5.697233077216414,
+          "covered_mae_pp": 7.430834426566843,
+          "gain_interval": [
+            -0.22499185501678728,
+            0.13389548631829445
+          ]
+        },
+        {
+          "variant": "cues_only_all",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.145798929835907,
+          "centered_mae_pp": 5.3454753912015525,
+          "national_mae_pp": 3.822672247666385,
+          "canton_mae_pp": 5.647936317190486,
+          "covered_mae_pp": 7.288003432425891,
+          "gain_interval": [
+            -0.0235566107699023,
+            0.18699296791008294
+          ]
+        },
+        {
+          "variant": "cues_only_local",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.2046365947148026,
+          "centered_mae_pp": 5.3454753912015525,
+          "national_mae_pp": 3.7747642637232923,
+          "canton_mae_pp": 5.659010353598283,
+          "covered_mae_pp": 7.335023682897313,
+          "gain_interval": [
+            -0.033006277807233246,
+            0.08743463633599936
+          ]
+        }
+      ],
+      "coverage": {
+        "objects": 306,
+        "matched_pages": 217,
+        "validation_matches": 59,
+        "matching_policy": "unique title/question page, source identity and hash; retrospective candidate, not strict temporal certification"
+      }
+    },
+    {
+      "version": "V10.9",
+      "kind": "initial",
+      "run": 45367633898,
+      "job": 138353400034,
+      "artifact": 14908300588,
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "covered_mae_pp": 7.229527497606816,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "demographic_control_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.231211997464253,
+          "centered_mae_pp": 5.3729268816158715,
+          "national_mae_pp": 3.7754782013724264,
+          "canton_mae_pp": 5.685383621510735,
+          "covered_mae_pp": 7.231211997464253,
+          "gain_interval": [
+            -0.04055061702028574,
+            0.028636258703397244
+          ]
+        },
+        {
+          "variant": "demographic_control_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.228467802202902,
+          "centered_mae_pp": 5.369450449198144,
+          "national_mae_pp": 3.7782578971600165,
+          "canton_mae_pp": 5.689578437494813,
+          "covered_mae_pp": 7.228467802202902,
+          "gain_interval": [
+            -0.02270505561677064,
+            0.019870947630975022
+          ]
+        },
+        {
+          "variant": "income_means_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.233464347749036,
+          "centered_mae_pp": 5.377291667851218,
+          "national_mae_pp": 3.774497195547453,
+          "canton_mae_pp": 5.706100056085057,
+          "covered_mae_pp": 7.233464347749036,
+          "gain_interval": [
+            -0.009369040183951951,
+            0.0016218418855908447
+          ]
+        },
+        {
+          "variant": "income_means_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.233262366896976,
+          "centered_mae_pp": 5.376916191593386,
+          "national_mae_pp": 3.774938669861809,
+          "canton_mae_pp": 5.706413778118522,
+          "covered_mae_pp": 7.233262366896976,
+          "gain_interval": [
+            -0.008722189279951971,
+            0.0013329005024016944
+          ]
+        },
+        {
+          "variant": "income_distribution_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.238871774066832,
+          "centered_mae_pp": 5.386858678757679,
+          "national_mae_pp": 3.7735675337362875,
+          "canton_mae_pp": 5.707949027873756,
+          "covered_mae_pp": 7.238871774066832,
+          "gain_interval": [
+            -0.020199930158396818,
+            0.002350335724068533
+          ]
+        },
+        {
+          "variant": "income_distribution_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.237703778924684,
+          "centered_mae_pp": 5.3856766203353805,
+          "national_mae_pp": 3.774699230513505,
+          "canton_mae_pp": 5.708421013177852,
+          "covered_mae_pp": 7.237703778924684,
+          "gain_interval": [
+            -0.01754401503139897,
+            0.001796725739799429
+          ]
+        },
+        {
+          "variant": "income_demographic_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.240025413445162,
+          "centered_mae_pp": 5.388420072278704,
+          "national_mae_pp": 3.7756403060522055,
+          "canton_mae_pp": 5.6918059192105055,
+          "covered_mae_pp": 7.240025413445162,
+          "gain_interval": [
+            -0.05342113356459171,
+            0.024758084833906086
+          ]
+        },
+        {
+          "variant": "income_demographic_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.23692745731573,
+          "centered_mae_pp": 5.384706166801929,
+          "national_mae_pp": 3.778692710794569,
+          "canton_mae_pp": 5.69658475106544,
+          "covered_mae_pp": 7.23692745731573,
+          "gain_interval": [
+            -0.03472030463393392,
+            0.016621433147185862
+          ]
+        }
+      ]
+    },
+    {
+      "version": "V10.9",
+      "kind": "corrected",
+      "run": 45368450007,
+      "job": 138356180485,
+      "artifact": 14908660768,
+      "artifact_digest": "sha256:3cdb714c8c31de21e6cc115405c542b1ce95ed4b2e80dae92b1ba45dcd61bd5f",
+      "acquisition": 14907467639,
+      "sha": "4fa9fd5aadb07a841eb52fd8dae9a43eb9b5de71",
+      "conclusion": "success",
+      "targeted_tests": 4,
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "covered_mae_pp": 7.229527497606816,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "demographic_control_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.231211997464252,
+          "centered_mae_pp": 5.372926881615871,
+          "national_mae_pp": 3.775478201372421,
+          "canton_mae_pp": 5.685383621510733,
+          "covered_mae_pp": 7.231211997464252,
+          "gain_interval": [
+            -0.04055061702028692,
+            0.028636258703401734
+          ]
+        },
+        {
+          "variant": "demographic_control_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.228467802202903,
+          "centered_mae_pp": 5.369450449198143,
+          "national_mae_pp": 3.7782578971600187,
+          "canton_mae_pp": 5.689578437494814,
+          "covered_mae_pp": 7.228467802202903,
+          "gain_interval": [
+            -0.02270505561677203,
+            0.019870947630974002
+          ]
+        },
+        {
+          "variant": "income_means_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.233364072539397,
+          "centered_mae_pp": 5.377304766240023,
+          "national_mae_pp": 3.7739393497226166,
+          "canton_mae_pp": 5.706116523066864,
+          "covered_mae_pp": 7.233364072539397,
+          "gain_interval": [
+            -0.009381747234406101,
+            0.001800615048014769
+          ]
+        },
+        {
+          "variant": "income_means_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.233206589656054,
+          "centered_mae_pp": 5.377014403976105,
+          "national_mae_pp": 3.774596692288413,
+          "canton_mae_pp": 5.706407932641447,
+          "covered_mae_pp": 7.233206589656054,
+          "gain_interval": [
+            -0.008726087948750851,
+            0.001457135162003069
+          ]
+        },
+        {
+          "variant": "income_distribution_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.23908484233636,
+          "centered_mae_pp": 5.3874192183335055,
+          "national_mae_pp": 3.7728058085760217,
+          "canton_mae_pp": 5.7085294941102775,
+          "covered_mae_pp": 7.23908484233636,
+          "gain_interval": [
+            -0.021008984198126187,
+            0.002586341931167224
+          ]
+        },
+        {
+          "variant": "income_distribution_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.237702110114225,
+          "centered_mae_pp": 5.3859933906998805,
+          "national_mae_pp": 3.774344982679992,
+          "canton_mae_pp": 5.708648789825028,
+          "covered_mae_pp": 7.237702110114225,
+          "gain_interval": [
+            -0.017781730484417405,
+            0.0021484745966137263
+          ]
+        },
+        {
+          "variant": "income_demographic_30",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.240272294949261,
+          "centered_mae_pp": 5.38887843456139,
+          "national_mae_pp": 3.77462860536203,
+          "canton_mae_pp": 5.692119452407227,
+          "covered_mae_pp": 7.240272294949261,
+          "gain_interval": [
+            -0.05413696721173979,
+            0.02488222814596225
+          ]
+        },
+        {
+          "variant": "income_demographic_100",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.236884995804168,
+          "centered_mae_pp": 5.384909401248726,
+          "national_mae_pp": 3.778108725763605,
+          "canton_mae_pp": 5.696584699760604,
+          "covered_mae_pp": 7.236884995804168,
+          "gain_interval": [
+            -0.03495241449977384,
+            0.016952757986824243
+          ]
+        }
+      ],
+      "source_rows": 33645
+    },
+    {
+      "version": "V10.10",
+      "kind": "initial",
+      "run": 45368450007,
+      "job": 138357552211,
+      "conclusion": "failure",
+      "reason": "V10.1 nested bundle; repaired in next commit"
+    },
+    {
+      "version": "V10.10",
+      "kind": "benchmark",
+      "run": 45368857137,
+      "job": 138357575457,
+      "artifact": 14908236884,
+      "artifact_digest": "sha256:b7417b0678047778f1adc6196788d0fce7cccb4e1152ccc773b02f5b876cb3e8",
+      "sha": "5d5796c4804b5583892deb8405855e5631a61fa9",
+      "conclusion": "success",
+      "targeted_tests": 3,
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "fixed_equal_families",
+          "objects": 66,
+          "mae_pp": 7.159734773152613,
+          "centered_mae_pp": 5.322489266370778,
+          "national_mae_pp": 3.723011387757573,
+          "canton_mae_pp": 5.619998181256722,
+          "gain_interval": [
+            0.017960820661883568,
+            0.12088387345019792
+          ]
+        },
+        {
+          "variant": "fixed_half_reference",
+          "objects": 66,
+          "mae_pp": 7.190665985660315,
+          "centered_mae_pp": 5.343935976955363,
+          "national_mae_pp": 3.735238921130552,
+          "canton_mae_pp": 5.659434809596869,
+          "gain_interval": [
+            0.013132286296455428,
+            0.06408357158203719
+          ]
+        },
+        {
+          "variant": "adaptive_family_uniform",
+          "objects": 66,
+          "mae_pp": 7.1685977405378285,
+          "centered_mae_pp": 5.311250373259341,
+          "national_mae_pp": 3.7480716313933113,
+          "canton_mae_pp": 5.63246183138623,
+          "gain_interval": [
+            -0.02682564368290633,
+            0.1499557376367845
+          ]
+        },
+        {
+          "variant": "adaptive_family_reference",
+          "objects": 66,
+          "mae_pp": 7.187602372254118,
+          "centered_mae_pp": 5.32846467119564,
+          "national_mae_pp": 3.7570819560866666,
+          "canton_mae_pp": 5.659521105724763,
+          "gain_interval": [
+            -0.014106954679161777,
+            0.10088444418541208
+          ]
+        },
+        {
+          "variant": "adaptive_family_reference_weak",
+          "objects": 66,
+          "mae_pp": 7.169947183301791,
+          "centered_mae_pp": 5.312865729515867,
+          "national_mae_pp": 3.7643548896405195,
+          "canton_mae_pp": 5.6390415400527525,
+          "gain_interval": [
+            -0.0463706844013657,
+            0.17818626804305263
+          ]
+        },
+        {
+          "variant": "adaptive_all_variants",
+          "objects": 66,
+          "mae_pp": 7.12007485193935,
+          "centered_mae_pp": 5.304178105580161,
+          "national_mae_pp": 3.804177487433044,
+          "canton_mae_pp": 5.605303614424989,
+          "gain_interval": [
+            -0.026734717598327674,
+            0.2666489595660052
+          ]
+        },
+        {
+          "variant": "split_level_local",
+          "objects": 66,
+          "mae_pp": 7.190296340194523,
+          "centered_mae_pp": 5.3195596893500925,
+          "national_mae_pp": 3.7585460777174005,
+          "canton_mae_pp": 5.662853886313725,
+          "gain_interval": [
+            -0.0392403283417073,
+            0.11724573436392645
+          ]
+        }
+      ],
+      "repository_checks": {
+        "run": 45368856959,
+        "jobs": [
+          {
+            "name": "tests (windows-latest)",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "municipal-experiments",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "tests (ubuntu-latest)",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
+    }
+  ],
+  "reference": {
+    "version": "V8.1",
+    "mae_pp": 7.229527497606818
+  },
+  "best_observed": {
+    "version": "V10.8 page_tfidf_16_all",
+    "mae_pp": 6.988599997055331
+  },
+  "instructions": "Read plan.json and this state before any work. Resume earliest unfinished version; update only after checking live CI/artifacts. Record exact links, don't skip unexamined stages. Mark source-blocked stage with evidence before moving to next; report partial progress honestly.",
+  "stage_status": {
+    "V10.1": "completed_exploratory_no_robust_gain",
+    "V10.2": "completed_exploratory_no_robust_gain",
+    "V10.3": "completed_exploratory_no_robust_vote_gain",
+    "V10.4": "completed_exploratory_no_robust_gain",
+    "V10.5": "completed_exploratory_no_gain",
+    "V10.6": "completed_exploratory_no_gain",
+    "V10.7": "completed_exploratory_gain_not_confirmed",
+    "V10.8": "completed_exploratory_gain_not_confirmed",
+    "V10.9": "completed_exploratory_no_gain",
+    "V10.10": "completed_exploratory_no_new_best"
+  },
+  "notes": "All ten stages measured; automation disabled at user's request. Best V10.8 6.9886 pp; no promotion, strict historic provenance incomplete. General checks snapshot recorded below."
+}
