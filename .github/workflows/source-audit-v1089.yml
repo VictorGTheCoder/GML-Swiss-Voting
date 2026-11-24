@@ -1,0 +1,30 @@
+name: V10.8 and V10.9 parallel source audits
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/source_audit_v1089.py'
+      - '.github/workflows/source-audit-v1089.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [brochures, income]
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas pyarrow openpyxl requests
+      - run: python -m scripts.modeling.source_audit_v1089 --suite ${{ matrix.suite }} --output reports/generated/audit-${{ matrix.suite }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1089-audit-${{ matrix.suite }}
+          path: reports/generated/audit-${{ matrix.suite }}/
+          retention-days: 30

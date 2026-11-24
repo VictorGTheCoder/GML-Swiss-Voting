@@ -18,7 +18,7 @@ Le [plan préenregistré](../../../experiments/municipal_v10/plan.json) détaill
 | V10.4 | Aggregate poststratification and multilevel regression | Terminé, gain non robuste | 7,2039 | 5,6974 | 3,7757 | [Résultats](V10.4-results.md) |
 | V10.5 | Independent canton forecasts / small area estimation | Terminé après deux incidents ; aucun gain communal (meilleure correction active) | 7,2441 | 5,7010 | 3,7710 | [Résultats](V10.5-results.md) |
 | V10.6 | Hierarchical reconciliation (MinT) | Terminé, aucun gain communal (meilleur ajustement actif) | 7,2630 | 5,7157 | 3,7459 | [Résultats](V10.6-results.md) |
-| V10.7 | Hybrid Gaussian-process profiles | En attente | — | — | — | — |
+| V10.7 | Hybrid Gaussian-process profiles | Terminé, gain exploratoire non confirmé | 7,1315 | 5,6408 | 3,7757 | [Résultats](V10.7-results.md) |
 | V10.8 | Official brochure corpus and semantic effects | En attente | — | — | — | — |
 | V10.9 | Socioeconomic data and object × commune interactions | En attente | — | — | — | — |
 | V10.10 | Chronological ensemble | En attente | — | — | — | — |
