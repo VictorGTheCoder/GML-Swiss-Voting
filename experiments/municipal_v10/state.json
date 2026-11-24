@@ -710,6 +710,15 @@
         "run": 45323525765,
         "conclusion": "success"
       }
+    },
+    {
+      "version": "V10.5",
+      "kind": "benchmark_attempt",
+      "run": 45330444424,
+      "sha": "eda8a6636f4c446858d726c3f619a427b5442454",
+      "conclusion": "failure",
+      "targeted_tests": 3,
+      "reason": "AttributeError: contexts case dataframe has no canton column; benchmark failed before scoring."
     }
   ],
   "reference": {
@@ -726,7 +735,7 @@
     "V10.2": "completed_exploratory_no_robust_gain",
     "V10.3": "completed_exploratory_no_robust_vote_gain",
     "V10.4": "completed_exploratory_no_robust_gain",
-    "V10.5": "implemented_pending_CI"
+    "V10.5": "corrected_pending_CI"
   },
-  "notes": "V10.4 margin_ridge 7.203874, centered 5.324941, no robust gain; V10.5 direct historical canton models and shrinkage pending CI."
+  "notes": "V10.5 first run failed before scoring. Fix uses strictly prior municipality-to-canton geography on the harmonized reference grid, rejects missing/inconsistent labels, checks actual scoring geography only after prediction."
 }

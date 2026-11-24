@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from scripts.modeling.canton_v105 import aggregate, apply_targets, direct_forecasts, feature_map
+from scripts.modeling.canton_v105 import aggregate, apply_targets, direct_forecasts, feature_map, prior_cantons
 
 
 def test_prior_only():
@@ -33,3 +33,13 @@ def test_canton_target_and_bounds():
 
 def test_features_exclude_target():
     assert feature_map("a", {"yes_share": 1., "votes_yes": 42}) == feature_map("a", {})
+
+
+def test_canton_lookup_uses_only_prior_geography():
+    day = pd.Timestamp("2016-01-01")
+    geo = pd.DataFrame({
+        "municipality_id": ["a", "b", "a"],
+        "canton": ["VD", "ZH", "XX"],
+        "vote_date": [day - pd.Timedelta(days=1), day - pd.Timedelta(days=1), day],
+    })
+    assert prior_cantons(geo, day, ["b", "a"]).tolist() == ["ZH", "VD"]

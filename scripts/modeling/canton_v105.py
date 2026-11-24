@@ -68,6 +68,18 @@ def direct_forecasts(history, day, obj, cantons):
     return pred, int(prior.vote_id.nunique())
 
 
+def prior_cantons(outcomes, day, ids):
+    """Lookup geographic labels only from strictly earlier reference-geography rows."""
+    earlier = outcomes.loc[outcomes.vote_date.lt(day), ["municipality_id", "canton"]]
+    labels = earlier.drop_duplicates()
+    if labels.municipality_id.duplicated().any():
+        raise ValueError("Inconsistent prior canton mapping")
+    mapped = labels.set_index("municipality_id").canton.reindex(ids)
+    if mapped.isna().any():
+        raise ValueError("Missing prior canton mapping")
+    return mapped.astype(str).to_numpy()
+
+
 def aggregate(p, w, canton, labels):
     return np.array([np.average(p[canton == c], weights=w[canton == c]) for c in labels])
 
@@ -123,7 +135,7 @@ def run(base, acquisition, fusion, turnout, output):
         pooled = f.pooled_weights_only_weight.to_numpy(float)
         if not np.isfinite(np.column_stack([p, w, pooled])).all():
             raise ValueError("Unmatched baseline")
-        canton = v.canton.astype(str).to_numpy()
+        canton = prior_cantons(outcomes, day, v.municipality_id)
         labels = np.unique(canton)
         if any(pooled[canton == c].sum() <= 0 for c in labels):
             raise ValueError("Canton without weights")
