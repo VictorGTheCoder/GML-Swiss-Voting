@@ -1,0 +1,20 @@
+{
+  "purpose": "Independent external benchmark of Gradiom published pre-vote aggregate forecasts; no model training or promotion.",
+  "sources": {
+    "archive": "https://www.gradiom.ch/en/swiss-popular-votes",
+    "observed": "https://ogd-static.voteinfo-app.ch/v1/ogd/sd-t-17-02-{YYYYMMDD}-eidgAbstimmung.json"
+  },
+  "snapshot_dates": [
+    "2024-11-24",
+    "2025-02-09",
+    "2025-09-28",
+    "2025-11-30",
+    "2026-03-08",
+    "2026-06-14",
+    "2026-09-27"
+  ],
+  "horizon": "Retain printed generation date; require strictly before vote; historical snapshot authenticity not independently certified. No 2026-11-29 data.",
+  "metrics": "Macro-object equal-municipality MAE in percentage points, centered local MAE, national MAE from published national forecast, equal-canton macro-object MAE when exact canton values available. Score only final/complete published official aggregate counts; label provisional releases. Report actual coverage, unmatched keys and uncertainty across dates.",
+  "comparison": "Compare same objects on existing frozen V2 2023-25 retrospective comparison results when matched. Equal-geography matched rows required for strict paired commune comparison; if only per-object metrics or geography differs, label indicative. V10.8 score 6.9886 on separate 2016-22 population is contextual only. No fitting or selection on 2023+ results.",
+  "provenance": "Save URLs, published dates, retrieval time and hashes. Public values only; do not publish full proprietary tables or circumvent access restrictions."
+}
