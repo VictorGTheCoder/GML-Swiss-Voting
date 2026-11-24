@@ -9,6 +9,7 @@
 | Version | Hypothèse | État | Meilleure MAE |
 |---|---|---|---:|
 | V11.1 | Noyaux lexicaux intégraux et profil local complet | Terminé, aucun gain vs V10.8 | 7,0674 (nouveau candidat) |
+| V11.2 | Audit exact des pages et mécanismes textuels | Implémenté, CI à vérifier | — |
 
 [Résultats V11.1](V11.1-results.md) · [Protocole V11.1](V11.1-protocol.md) · [Benchmark V11.1](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45409817577) · [Backlog et état](../../../experiments/municipal_v11/state.json).
 
@@ -19,3 +20,5 @@
 4. V11.4 : selon diagnostics de V11.1, comparaison de modèles de contrastes locaux avec sélection de rang et régularisation nested par dates, perte macro adaptée. Éviter la répétition des méthodes V6–V10.
 5. V11.5 : audit d'extension historique (harmonisation communale, couverture et disponibilité ex ante), puis essai avec même évaluation.
 6. V11.6 : robustesse rolling-origin et validation imbriquée avant tout choix de protocole final. Aucun test final sans autorisation distincte.
+
+[Protocole V11.2](V11.2-protocol.md) : audit indépendant, question littérale, mécanismes contextuels et contrôles de couverture.

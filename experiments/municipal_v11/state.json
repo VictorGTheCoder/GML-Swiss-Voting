@@ -284,7 +284,8 @@
     }
   ],
   "stage_status": {
-    "V11.1": "completed_no_gain"
+    "V11.1": "completed_no_gain",
+    "V11.2": "implementation_submitted_pending_CI"
   },
   "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access."
 }
