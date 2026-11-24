@@ -9,16 +9,18 @@
 | Version | Hypothèse | État | Meilleure MAE |
 |---|---|---|---:|
 | V11.1 | Noyaux lexicaux intégraux et profil local complet | Terminé, aucun gain vs V10.8 | 7,0674 (nouveau candidat) |
-| V11.2 | Audit exact des pages et mécanismes textuels | Implémenté, CI à vérifier | — |
+| V11.2 | Audit exact des pages et mécanismes textuels | Benchmark terminé, aucun gain ; lint corrigé, CI générale à vérifier | 7,1548 (nouveau candidat) | [Résultats](V11.2-results.md) |
 
 [Résultats V11.1](V11.1-results.md) · [Protocole V11.1](V11.1-protocol.md) · [Benchmark V11.1](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45409817577) · [Backlog et état](../../../experiments/municipal_v11/state.json).
 
 ## Backlog priorisé
 1. V11.1 (terminé) : expérience factorielle noyaux et profil complet, analyse des erreurs par objet/thème/fenêtre/commune/canton.
-2. V11.2 : contrôle documentaire indépendant de la correspondance des pages, extraction de passages complets et représentation des mécanismes/direction du texte. Sources officielles et dates vérifiées ; aucun contenu post-vote.
+2. V11.2 (terminé) : contrôle documentaire indépendant de la correspondance des pages, extraction de passages complets et représentation des mécanismes/direction du texte. Sources officielles et dates vérifiées ; aucun contenu post-vote.
 3. V11.3 : enrichir les signaux des objets par historiques parlementaires et analogues, sources datées ; contrôle redondances et ablations dans train.
 4. V11.4 : selon diagnostics de V11.1, comparaison de modèles de contrastes locaux avec sélection de rang et régularisation nested par dates, perte macro adaptée. Éviter la répétition des méthodes V6–V10.
 5. V11.5 : audit d'extension historique (harmonisation communale, couverture et disponibilité ex ante), puis essai avec même évaluation.
 6. V11.6 : robustesse rolling-origin et validation imbriquée avant tout choix de protocole final. Aucun test final sans autorisation distincte.
 
 [Protocole V11.2](V11.2-protocol.md) : audit indépendant, question littérale, mécanismes contextuels et contrôles de couverture.
+
+[Résultats V11.2](V11.2-results.md) · [Benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45420998869). V10.8 reproduite exactement ; audit plus strict réduit la couverture de 59 à 41 objets. Aucun gain confirmé.

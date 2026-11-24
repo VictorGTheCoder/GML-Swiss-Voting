@@ -1,6 +1,6 @@
 {
   "status": "in_progress",
-  "active": "V11.2",
+  "active": "V11.3",
   "base_v10_sha": "e590df739af56a18f08834399b8e37b0e5fc4ef3",
   "reference": {
     "version": "V8.1",
@@ -17,10 +17,10 @@
     "period": "2016-2022"
   },
   "completed": [
-    "V11.1"
+    "V11.1",
+    "V11.2"
   ],
   "pending": [
-    "V11.2",
     "V11.3",
     "V11.4",
     "V11.5",
@@ -281,11 +281,295 @@
           "v108_tfidf": 6.1261417791
         }
       }
+    },
+    {
+      "version": "V11.2",
+      "kind": "benchmark",
+      "run": 45420998869,
+      "sha": "ac08bcdacd61d64d8f6b1067b48a8af7b772b9de",
+      "job": 138540158222,
+      "artifact": 14933349817,
+      "artifact_digest": "sha256:9408593319370cae87f2a55f3af354ea9c5a58da6e1a95d8a752c9b99b633db5",
+      "status": "completed",
+      "conclusion": "success",
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45420999003,
+        "conclusion": "failure",
+        "reason": "I001 import order in documentary_v112.py; corrected in results commit, verification pending"
+      },
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "vs_v108_interval": [
+            -0.6263738724976634,
+            0.03347445723791092
+          ]
+        },
+        {
+          "variant": "v108_tfidf",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.988599997055331,
+          "centered_mae_pp": 5.280965787730653,
+          "national_mae_pp": 3.846510449192281,
+          "canton_mae_pp": 5.536970110697117,
+          "gain_interval": [
+            -0.033474457237910864,
+            0.6263738724976635
+          ],
+          "vs_v108_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "original_replay",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.988599997055331,
+          "centered_mae_pp": 5.280965787730653,
+          "national_mae_pp": 3.846510449192281,
+          "canton_mae_pp": 5.536970110697117,
+          "gain_interval": [
+            -0.033474457237910864,
+            0.6263738724976635
+          ],
+          "vs_v108_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "exact_first",
+          "objects": 66,
+          "covered_objects": 41,
+          "mae_pp": 7.154758714076031,
+          "centered_mae_pp": 5.415486390616414,
+          "national_mae_pp": 3.7982170304025247,
+          "canton_mae_pp": 5.6721903557193025,
+          "gain_interval": [
+            -0.16710205349933238,
+            0.3808609382130928
+          ],
+          "vs_v108_interval": [
+            -0.48105615121942186,
+            0.07780735127413875
+          ]
+        },
+        {
+          "variant": "exact_multi",
+          "objects": 66,
+          "covered_objects": 41,
+          "mae_pp": 7.218335621056057,
+          "centered_mae_pp": 5.497484565445227,
+          "national_mae_pp": 3.8981105793221063,
+          "canton_mae_pp": 5.740111089948832,
+          "gain_interval": [
+            -0.31547842215187616,
+            0.3365727496256235
+          ],
+          "vs_v108_interval": [
+            -0.6978114515004525,
+            0.14046601697279254
+          ]
+        },
+        {
+          "variant": "literal_question",
+          "objects": 66,
+          "covered_objects": 34,
+          "mae_pp": 7.386049384807423,
+          "centered_mae_pp": 5.392323844458447,
+          "national_mae_pp": 4.083613691507778,
+          "canton_mae_pp": 5.892957247812924,
+          "gain_interval": [
+            -0.4677050180455953,
+            0.1152633621218118
+          ],
+          "vs_v108_interval": [
+            -0.8619383842591898,
+            0.0025011202256320017
+          ]
+        },
+        {
+          "variant": "mechanism_context",
+          "objects": 66,
+          "covered_objects": 41,
+          "mae_pp": 7.347721219669772,
+          "centered_mae_pp": 5.409903895677421,
+          "national_mae_pp": 3.945296062925523,
+          "canton_mae_pp": 5.832187226926824,
+          "gain_interval": [
+            -0.4498144567693216,
+            0.22605610025175393
+          ],
+          "vs_v108_interval": [
+            -0.80601360207508,
+            -0.018443699443586967
+          ]
+        }
+      ],
+      "coverage": {
+        "original_replay": 59,
+        "exact_first": 41,
+        "exact_multi": 41,
+        "literal_question": 34,
+        "mechanism_context": 41
+      },
+      "folds": {
+        "2016-2018": {
+          "exact_first": 7.9793424207,
+          "exact_multi": 7.9880869766,
+          "literal_question": 8.4907306588,
+          "mechanism_context": 8.228812521,
+          "original_replay": 7.696815302,
+          "reference": 8.152475601,
+          "v108_tfidf": 7.696815302
+        },
+        "2019-2020": {
+          "exact_first": 7.2022690158,
+          "exact_multi": 7.4218141036,
+          "literal_question": 7.1891629788,
+          "mechanism_context": 7.5301939342,
+          "original_replay": 6.9429781706,
+          "reference": 7.1500595705,
+          "v108_tfidf": 6.9429781706
+        },
+        "2021-2022": {
+          "exact_first": 6.10027393,
+          "exact_multi": 6.1544071854,
+          "literal_question": 6.1036409953,
+          "mechanism_context": 6.1551207357,
+          "original_replay": 6.1261417791,
+          "reference": 6.1155763319,
+          "v108_tfidf": 6.1261417791
+        }
+      },
+      "domains": {
+        "1": {
+          "exact_first": 6.6044010026,
+          "exact_multi": 6.878391297,
+          "literal_question": 6.576759952,
+          "mechanism_context": 6.8508760867,
+          "original_replay": 6.6859831747,
+          "reference": 6.4792925574,
+          "v108_tfidf": 6.6859831747
+        },
+        "2": {
+          "exact_first": 5.505198467,
+          "exact_multi": 5.6232574904,
+          "literal_question": 5.7618676024,
+          "mechanism_context": 5.5523523255,
+          "original_replay": 5.7477172272,
+          "reference": 5.8630062992,
+          "v108_tfidf": 5.7477172272
+        },
+        "3": {
+          "exact_first": 6.9706031981,
+          "exact_multi": 7.0602732378,
+          "literal_question": 7.2345965919,
+          "mechanism_context": 6.8683671971,
+          "original_replay": 6.8925439647,
+          "reference": 7.1680352648,
+          "v108_tfidf": 6.8925439647
+        },
+        "4": {
+          "exact_first": 13.5402883315,
+          "exact_multi": 14.0199025741,
+          "literal_question": 14.4966019197,
+          "mechanism_context": 14.2617479001,
+          "original_replay": 10.7609447807,
+          "reference": 12.6797406891,
+          "v108_tfidf": 10.7609447807
+        },
+        "5": {
+          "exact_first": 10.1326437559,
+          "exact_multi": 10.0243094732,
+          "literal_question": 10.2187993553,
+          "mechanism_context": 10.250591113,
+          "original_replay": 10.1571832957,
+          "reference": 10.1693907323,
+          "v108_tfidf": 10.1571832957
+        },
+        "6": {
+          "exact_first": 7.5995014445,
+          "exact_multi": 7.4310533142,
+          "literal_question": 7.4783092337,
+          "mechanism_context": 7.6353878553,
+          "original_replay": 7.1764459782,
+          "reference": 7.7105377573,
+          "v108_tfidf": 7.1764459782
+        },
+        "7": {
+          "exact_first": 6.6881630574,
+          "exact_multi": 6.6803267805,
+          "literal_question": 6.6083241474,
+          "mechanism_context": 6.5216254013,
+          "original_replay": 6.9445593052,
+          "reference": 6.5839010403,
+          "v108_tfidf": 6.9445593052
+        },
+        "8": {
+          "exact_first": 6.1408942262,
+          "exact_multi": 6.1168916483,
+          "literal_question": 5.90108627,
+          "mechanism_context": 6.0929694784,
+          "original_replay": 6.2585933766,
+          "reference": 6.2725889719,
+          "v108_tfidf": 6.2585933766
+        },
+        "9": {
+          "exact_first": 5.6228290889,
+          "exact_multi": 5.619444772,
+          "literal_question": 5.5010727306,
+          "mechanism_context": 5.5803499808,
+          "original_replay": 5.5780286772,
+          "reference": 5.6367797301,
+          "v108_tfidf": 5.5780286772
+        },
+        "10": {
+          "exact_first": 6.6346167752,
+          "exact_multi": 6.7815405542,
+          "literal_question": 7.3397949249,
+          "mechanism_context": 7.1446139699,
+          "original_replay": 6.581896391,
+          "reference": 6.9000078832,
+          "v108_tfidf": 6.581896391
+        },
+        "11": {
+          "exact_first": 7.7772591222,
+          "exact_multi": 7.4980689191,
+          "literal_question": 7.770856733,
+          "mechanism_context": 7.597915472,
+          "original_replay": 7.7094734326,
+          "reference": 7.8350434359,
+          "v108_tfidf": 7.7094734326
+        },
+        "12": {
+          "exact_first": 4.9843568164,
+          "exact_multi": 4.9122023014,
+          "literal_question": 4.8179570187,
+          "mechanism_context": 4.9243888904,
+          "original_replay": 4.8496702903,
+          "reference": 4.8426383255,
+          "v108_tfidf": 4.8496702903
+        }
+      }
     }
   ],
   "stage_status": {
     "V11.1": "completed_no_gain",
-    "V11.2": "implementation_submitted_pending_CI"
+    "V11.2": "completed_no_gain_lint_fix_pending"
   },
   "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access."
 }
