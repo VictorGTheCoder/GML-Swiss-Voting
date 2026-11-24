@@ -1,7 +1,7 @@
 {
   "campaign": "V10 — literature-driven municipal referendum prediction",
   "status": "interactive_continuation",
-  "active": "V10.8",
+  "active": "V10.9",
   "updated": "2026-11-24",
   "completed": [
     "V10.1",
@@ -10,11 +10,11 @@
     "V10.4",
     "V10.5",
     "V10.6",
-    "V10.7"
+    "V10.7",
+    "V10.8"
   ],
   "blocked": [],
   "pending": [
-    "V10.8",
     "V10.9",
     "V10.10"
   ],
@@ -1151,8 +1151,8 @@
     "mae_pp": 7.229527497606818
   },
   "best_observed": {
-    "version": "V10.7 object_identity",
-    "mae_pp": 7.131451502548646
+    "version": "V10.8 page_tfidf_16_all",
+    "mae_pp": 6.988599997055331
   },
   "instructions": "Read plan.json and this state before any work. Resume earliest unfinished version; update only after checking live CI/artifacts. Record exact links, don't skip unexamined stages. Mark source-blocked stage with evidence before moving to next; report partial progress honestly.",
   "stage_status": {
@@ -1163,8 +1163,9 @@
     "V10.5": "completed_exploratory_no_gain",
     "V10.6": "completed_exploratory_no_gain",
     "V10.7": "completed_exploratory_gain_not_confirmed",
-    "V10.8": "source_audit_started",
-    "V10.9": "source_audit_started_parallel"
+    "V10.8": "completed_exploratory_gain_not_confirmed",
+    "V10.9": "initial_benchmark_success_encoding_correction_in_progress",
+    "V10.10": "workflow_predeclared_dependencies"
   },
   "notes": "Automation paused on explicit user request. Interactive continuation; independent acquisition jobs for V10.8 and V10.9, ensemble after verified results."
 }

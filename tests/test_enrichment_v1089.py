@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from scripts.modeling.income_v109 import MEANS, NONSUM, aggregate_group
+from scripts.modeling.income_v109 import MEANS, NONSUM, aggregate_group, name_code_match
 from scripts.modeling.text_v108 import cues, pick_pages, title_match
 
 
@@ -28,3 +28,10 @@ def test_income_merger_weighted_means_not_medians():
     assert np.isnan(r["tax_median_steinka"])
     assert aggregate_group(a,3) is None
     assert aggregate_group(a.iloc[:1],1)["tax_median_steinka"]==.1
+
+
+def test_2012_name_encoding_correction_is_exact_and_year_limited():
+    assert name_code_match(2012,"Tr|llikon","Trüllikon")== (True,True)
+    assert name_code_match(2011,"Tr|llikon","Trüllikon")== (False,False)
+    assert name_code_match(2012,"Tr|llikon","Truttikon")== (False,False)
+    assert name_code_match(2012,"Trüllikon","Trüllikon")== (True,False)

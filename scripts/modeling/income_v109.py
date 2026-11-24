@@ -58,23 +58,49 @@ def read_source(path):
     return raw
 
 
-def acquire(input_dir,output):
+def name_code_match(year, source, official):
+    """2012 AFC workbook names have their high bits stripped (audited).
+    
+    Admit a corrupted name only when the municipality code identifies the
+    official roster entry AND its exact deterministic corruption matches.
+    """
+    if norm(source)==norm(official):
+        return True,False
+    if year==2012 and str(source)==''.join(chr(ord(c)&127) for c in str(official)):
+        return True,True
+    return False,False
+
+
+def acquire(input_dir,output,geography=None):
     records=json.loads((input_dir/"income_inventory.json").read_text())
     output.mkdir(parents=True,exist_ok=True)
     years=sorted(int(r["year"]) for r in records if "sha256" in r)
     if years!=list(range(2003,2019)):
         raise ValueError("Expected 16 audited annual files")
     mp=output/"mutations.csv"
-    prov=download(MUTATIONS_URL,mp,{"includeTerritoryExchange":"false","startPeriod":"01-01-2003","endPeriod":"01-01-2026","useBfsCode":"true"})
+    prior=json.loads((geography/"manifest.json").read_text()) if geography is not None else None
+    if prior is None:
+        prov=download(MUTATIONS_URL,mp,{"includeTerritoryExchange":"false","startPeriod":"01-01-2003","endPeriod":"01-01-2026","useBfsCode":"true"})
+    else:
+        prov=prior["mutations"]
+        mp.write_bytes((geography/"mutations.csv").read_bytes())
+        if digest(mp)!=prov["sha256"]:
+            raise ValueError("Cached mutations hash mismatch")
     mutations=load_mutations(mp)
     geo=pd.read_parquet(ROOT/"data/processed/typologies/commune_typologies.parquet",columns=["municipality_id"])
     target=set(geo.municipality_id.astype(str))
     def snapshot(year):
         path=output/f"snapshot_{year}.csv"
-        info=download(SNAPSHOT_URL,path,{"date":f"01-01-{year}","useBfsCode":"true"})
+        if prior is None:
+            info=download(SNAPSHOT_URL,path,{"date":f"01-01-{year}","useBfsCode":"true"})
+        else:
+            info=next(r["snapshot"] for r in prior["year_audit"] if r["year"]==year)
+            path.write_bytes((geography/path.name).read_bytes())
+            if digest(path)!=info["sha256"]:
+                raise ValueError("Cached snapshot hash mismatch")
         return year,path,info
     with ThreadPoolExecutor(max_workers=4) as pool:
-        snapshots=dict((y,(p,i)) for y,p,i in pool.map(snapshot,years))
+        snapshots={y:(p,i) for y,p,i in pool.map(snapshot,years)}
     results,report=[],[]
     for rec in records:
         y=int(rec["year"])
@@ -91,7 +117,9 @@ def acquire(input_dir,output):
         names=s.set_index("code").Name.to_dict()
         # Source code must exist in that year's official geographic roster.
         # Name comparison is audited (strict identity after normalisation).
-        raw["name_ok"]=[c in names and norm(n)==norm(names[c]) for c,n in zip(raw.code,raw.gdename)]
+        checks=[name_code_match(y,n,names[c]) if c in names else (False,False) for c,n in zip(raw.code,raw.gdename)]
+        raw["name_ok"]=[v[0] for v in checks]
+        encoding_recovered=sum(v[1] for v in checks)
         expected={}
         blocked=set()
         mapping={}
@@ -116,7 +144,7 @@ def acquire(input_dir,output):
                             "available_from_proxy":f"{y+4}-01-01",**row})
             present+=1
         report.append({"year":y,"source_rows":len(read_source(path)),"snapshot_communes":len(s),
-                       "name_code_matches":len(raw),"usable_target_communes":present,
+                       "name_code_matches":len(raw),"encoding_recovered":encoding_recovered,"usable_target_communes":present,
                        "split_targets_excluded":len(blocked),"snapshot":si,
                        "workbook_url":rec["url"],"workbook_sha256":rec["sha256"]})
         print("INCOME_YEAR",json.dumps(report[-1],ensure_ascii=False),flush=True)
@@ -139,8 +167,9 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--input",type=Path,required=True)
     p.add_argument("--output",type=Path,required=True)
+    p.add_argument("--geography",type=Path)
     a=p.parse_args()
-    acquire(a.input,a.output)
+    acquire(a.input,a.output,a.geography)
 
 
 if __name__=="__main__":
