@@ -27,7 +27,15 @@ from scripts.modeling.regional_anchor_v8 import (
     shift_to,
 )
 from scripts.modeling.semantic_poll_comparison_v4 import paired_date_bootstrap, sha
-from scripts.modeling.semantic_training_v5 import CURRENT_POLLS, EXTRAS, HISTORICAL, HISTORICAL_POLLS, PLAN, V4, prepare_data
+from scripts.modeling.semantic_training_v5 import (
+    CURRENT_POLLS,
+    EXTRAS,
+    HISTORICAL,
+    HISTORICAL_POLLS,
+    PLAN,
+    V4,
+    prepare_data,
+)
 
 VARIANTS = ("national", "language", "urban25", "urban50", "urban100",
             "joint_ridge10", "joint_ridge30", "joint_urban_weaker")

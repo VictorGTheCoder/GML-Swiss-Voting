@@ -98,7 +98,7 @@ def target_table(old_anchor, last, delta, tamedia, weights, structural_mean):
     """Predictions only; a missing source never becomes an invented survey."""
     trend = None if last is None else float(np.clip(last+delta, 0, 1))
     if trend is None and tamedia is None:
-        return {name: structural_mean for name in VARIANTS}
+        return dict.fromkeys(VARIANTS, structural_mean)
     both = trend is not None and tamedia is not None
     s = trend if trend is not None else tamedia
     t = tamedia if tamedia is not None else s
