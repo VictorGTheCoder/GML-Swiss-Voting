@@ -253,6 +253,108 @@
         "conclusion": "success"
       },
       "targeted_tests": 4
+    },
+    {
+      "version": "V10.2",
+      "kind": "pilot",
+      "run": 45309363603,
+      "artifact": 14882172985,
+      "artifact_digest": "sha256:5d5bc30b1cafa60341f2f0d9da59f3d882f7ee0766ac1ede5b48b20e096c3bad",
+      "sha": "f7a71510d6c50d705a8eca3b8fc866fa404bb296",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 24,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "covered_mae_pp": 6.115576331894111,
+          "covered_centered_mae_pp": 4.784976610975612,
+          "covered_national_mae_pp": 3.1337843341550666,
+          "covered_canton_mae_pp": 4.6265876455014805,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "bias_control",
+          "objects": 66,
+          "covered_objects": 24,
+          "mae_pp": 7.255312117713952,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.76344840678349,
+          "canton_mae_pp": 5.71152865815139,
+          "covered_mae_pp": 6.186484037188737,
+          "covered_centered_mae_pp": 4.784976610975612,
+          "covered_national_mae_pp": 3.100177125331472,
+          "covered_canton_mae_pp": 4.648093742441596,
+          "gain_interval": [
+            -0.09133822715904498,
+            0.016722781089512813
+          ]
+        },
+        {
+          "variant": "tone",
+          "objects": 66,
+          "covered_objects": 24,
+          "mae_pp": 7.258409511504789,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.762712962620101,
+          "canton_mae_pp": 5.7146231850055855,
+          "covered_mae_pp": 6.195001870113537,
+          "covered_centered_mae_pp": 4.784976610975613,
+          "covered_national_mae_pp": 3.0981546538821525,
+          "covered_canton_mae_pp": 4.656603691290635,
+          "gain_interval": [
+            -0.08815527572276008,
+            0.01026383706794457
+          ]
+        },
+        {
+          "variant": "tone_volume",
+          "objects": 66,
+          "covered_objects": 24,
+          "mae_pp": 7.25997532344892,
+          "centered_mae_pp": 5.370058041503956,
+          "national_mae_pp": 3.7721250048904222,
+          "canton_mae_pp": 5.71563204387849,
+          "covered_mae_pp": 6.1993078529598975,
+          "covered_centered_mae_pp": 4.784975199703812,
+          "covered_national_mae_pp": 3.124037770125535,
+          "covered_canton_mae_pp": 4.659378053191124,
+          "gain_interval": [
+            -0.0872614765017689,
+            0.008225447435426777
+          ]
+        },
+        {
+          "variant": "tone_prominence",
+          "objects": 66,
+          "covered_objects": 24,
+          "mae_pp": 7.258915422363282,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.763260696418569,
+          "canton_mae_pp": 5.71484134182765,
+          "covered_mae_pp": 6.196393124974393,
+          "covered_centered_mae_pp": 4.784976610975613,
+          "covered_national_mae_pp": 3.099660921827939,
+          "covered_canton_mae_pp": 4.657203622551309,
+          "gain_interval": [
+            -0.09141360198779608,
+            0.01170012720148939
+          ]
+        }
+      ],
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45309363539,
+        "status": "in_progress",
+        "conclusion": null
+      }
     }
   ],
   "reference": {
@@ -266,7 +368,7 @@
   "instructions": "Read plan.json and this state before any work. Resume earliest unfinished version; update only after checking live CI/artifacts. Record exact links, don't skip unexamined stages. Mark source-blocked stage with evidence before moving to next; report partial progress honestly.",
   "stage_status": {
     "V10.1": "completed_exploratory_no_robust_gain",
-    "V10.2": "pilot_committed_pending_CI"
+    "V10.2": "pilot_scored_extension_pending_CI"
   },
-  "notes": "V10.1 extension 20 objects, 37 rows; national calibration worsens, no promotion. V10.2 seven contemporaneous fög interim reports manually reviewed; 24 mapped objects (AHV joint report split into two), pilot benchmark pending CI; older archives and dynamic features pending."
+  "notes": "V10.1 complete, no robust gain. V10.2 pilot 24 objects: all media corrections worsen municipal MAE, tiny national gains. Extended source audit to 54 objects, 19 dates; 12 objects without verified interim reports remain uncovered. Same fixed variants, extension CI pending. No promotion."
 }

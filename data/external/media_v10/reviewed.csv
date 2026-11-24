@@ -1,4 +1,34 @@
 vote_key,vote_date,published_at,weeks,report_label,articles,tone,source_url,page,figure
+6000,2016-06-05,2016-05-24,11,Service public,146,-34,https://www.foeg.uzh.ch/dam/jcr:3634aaeb-fc13-4f37-bb75-4330d85b0d0b/AbstMonitor_Zwischenbericht_Vorlagen_050616.pdf,3,1
+6010,2016-06-05,2016-05-24,11,Grundeinkommen,191,-25,https://www.foeg.uzh.ch/dam/jcr:3634aaeb-fc13-4f37-bb75-4330d85b0d0b/AbstMonitor_Zwischenbericht_Vorlagen_050616.pdf,3,1
+6020,2016-06-05,2016-05-24,11,Verkehrsfinanzierung,166,-27,https://www.foeg.uzh.ch/dam/jcr:3634aaeb-fc13-4f37-bb75-4330d85b0d0b/AbstMonitor_Zwischenbericht_Vorlagen_050616.pdf,3,1
+6030,2016-06-05,2016-05-24,11,Fortpflanzungsmedizin,46,37,https://www.foeg.uzh.ch/dam/jcr:3634aaeb-fc13-4f37-bb75-4330d85b0d0b/AbstMonitor_Zwischenbericht_Vorlagen_050616.pdf,3,1
+6040,2016-06-05,2016-05-24,11,Asylgesetz,213,16,https://www.foeg.uzh.ch/dam/jcr:3634aaeb-fc13-4f37-bb75-4330d85b0d0b/AbstMonitor_Zwischenbericht_Vorlagen_050616.pdf,3,1
+6050,2016-09-25,2016-09-09,9,Grüne Wirtschaft,124,-8,https://www.foeg.uzh.ch/dam/jcr:87693b97-3532-4572-a6c3-2e3f822e860e/AbstMonitor_Zwischenbericht_Vorlagen_20160925.pdf,3,1
+6060,2016-09-25,2016-09-09,9,AHVplus,93,-14,https://www.foeg.uzh.ch/dam/jcr:87693b97-3532-4572-a6c3-2e3f822e860e/AbstMonitor_Zwischenbericht_Vorlagen_20160925.pdf,3,1
+6070,2016-09-25,2016-09-09,9,Nachrichtendienstgesetz,128,36,https://www.foeg.uzh.ch/dam/jcr:87693b97-3532-4572-a6c3-2e3f822e860e/AbstMonitor_Zwischenbericht_Vorlagen_20160925.pdf,3,1
+6080,2016-11-27,2016-11-11,9,Atomausstieg,223,-4,https://www.foeg.uzh.ch/dam/jcr:d8bfda39-791f-4ddc-93e4-813fcb6871b8/AbstMonitor_Zwischenbericht_Vorlagen_20161127.pdf,3,1
+6090,2017-02-12,2017-01-26,9,Einbürgerung,147,33,https://www.foeg.uzh.ch/dam/jcr:9808f783-8a63-4c9a-8f65-95fdee40bfa4/AbstMonitor_Zwischenbericht_Vorlagen_20170212.pdf,3,1
+6100,2017-02-12,2017-01-26,9,Nationalstrassen,115,39,https://www.foeg.uzh.ch/dam/jcr:9808f783-8a63-4c9a-8f65-95fdee40bfa4/AbstMonitor_Zwischenbericht_Vorlagen_20170212.pdf,3,1
+6110,2017-02-12,2017-01-26,9,USR III,407,15,https://www.foeg.uzh.ch/dam/jcr:9808f783-8a63-4c9a-8f65-95fdee40bfa4/AbstMonitor_Zwischenbericht_Vorlagen_20170212.pdf,3,1
+6120,2017-05-21,2017-05-04,9,Energiegesetz (EnG),348,9,https://www.foeg.uzh.ch/dam/jcr:9da44590-b38b-4fa3-8cd6-30d0cf0598f0/AbstMonitor_Zwischenbericht_Vorlagen_20170521.pdf,3,1
+6130,2017-09-24,2017-09-08,9,Ernährungssicherheit,70,24,https://www.foeg.uzh.ch/dam/jcr:67c5c32a-a2b3-48ce-84b3-3bef19956ecc/AbstMonitor_Zwischenbericht_Vorlagen_20170924.pdf,3,1
+6140,2017-09-24,2017-09-08,9,Altersvorsorge 2020,385,-3,https://www.foeg.uzh.ch/dam/jcr:67c5c32a-a2b3-48ce-84b3-3bef19956ecc/AbstMonitor_Zwischenbericht_Vorlagen_20170924.pdf,3,1
+6150,2017-09-24,2017-09-08,9,Altersvorsorge 2020,385,-3,https://www.foeg.uzh.ch/dam/jcr:67c5c32a-a2b3-48ce-84b3-3bef19956ecc/AbstMonitor_Zwischenbericht_Vorlagen_20170924.pdf,3,1
+6160,2018-03-04,2017-12-21,7,Finanzordnung,1,100,https://www.foeg.uzh.ch/dam/jcr:cee2916e-d3fb-4163-92d5-a36f56db0ea4/AbstMonitor_Zwischenbericht_Vorlagen_20180304.pdf,3,1
+6170,2018-03-04,2017-12-21,7,No Billag,377,-28,https://www.foeg.uzh.ch/dam/jcr:cee2916e-d3fb-4163-92d5-a36f56db0ea4/AbstMonitor_Zwischenbericht_Vorlagen_20180304.pdf,3,1
+6180,2018-06-10,2018-05-18,8,Vollgeld-Initiative,136,-32,https://www.foeg.uzh.ch/dam/jcr:1ce4ebe8-5e7c-46fb-adfc-58df70fbc7d5/AbstMonitor_Zwischenbericht_Vorlagen_20180610.pdf,3,1
+6190,2018-06-10,2018-05-18,8,Geldspielgesetz,201,-10,https://www.foeg.uzh.ch/dam/jcr:1ce4ebe8-5e7c-46fb-adfc-58df70fbc7d5/AbstMonitor_Zwischenbericht_Vorlagen_20180610.pdf,3,1
+6200,2018-09-23,2018-09-07,9,Velowege,104,44,https://www.foeg.uzh.ch/dam/jcr:0d3eec15-6617-431f-a388-e06f44dc6ae5/AbstMonitor_Zwischenbericht_Vorlagen.pdf,3,1
+6210,2018-09-23,2018-09-07,9,Fair Food,216,-17,https://www.foeg.uzh.ch/dam/jcr:0d3eec15-6617-431f-a388-e06f44dc6ae5/AbstMonitor_Zwischenbericht_Vorlagen.pdf,3,1
+6220,2018-09-23,2018-09-07,9,Ernährungssouveränität,159,-27,https://www.foeg.uzh.ch/dam/jcr:0d3eec15-6617-431f-a388-e06f44dc6ae5/AbstMonitor_Zwischenbericht_Vorlagen.pdf,3,1
+6230,2018-11-25,2018-11-09,9,Hornkuh-Initiative,158,10,https://www.foeg.uzh.ch/dam/jcr:e67f4690-0f0c-4315-8a99-1b9c41a1e514/AbstMonitor_Zwischenbericht_Vorlagen_20181125.pdf,3,1
+6240,2018-11-25,2018-11-09,9,Selbstbestimmungs-Initiative,462,-31,https://www.foeg.uzh.ch/dam/jcr:e67f4690-0f0c-4315-8a99-1b9c41a1e514/AbstMonitor_Zwischenbericht_Vorlagen_20181125.pdf,3,1
+6250,2018-11-25,2018-11-09,9,Sozialdetektive,195,-12,https://www.foeg.uzh.ch/dam/jcr:e67f4690-0f0c-4315-8a99-1b9c41a1e514/AbstMonitor_Zwischenbericht_Vorlagen_20181125.pdf,3,1
+6290,2020-02-09,2020-01-24,9,Mietwohnungs-Initiative,143,-2,https://www.foeg.uzh.ch/dam/jcr:2ca43fcf-5370-4d7b-a4b3-e14f2b189d9a/Abstimmungsmonitor_Zwischenbericht_Vorlagen_Februar_2020.pdf,3,1
+6300,2020-02-09,2020-01-24,9,Antirassismus-Strafnorm,144,35,https://www.foeg.uzh.ch/dam/jcr:2ca43fcf-5370-4d7b-a4b3-e14f2b189d9a/Abstimmungsmonitor_Zwischenbericht_Vorlagen_Februar_2020.pdf,3,1
+6360,2020-11-29,2020-11-13,9,Konzernverantwortungsinitiative,443,-11,https://www.foeg.uzh.ch/dam/jcr:1fa14c2f-b22e-4572-9fcc-20a6157a3c4c/Abstimmungsmonitor_Zwischenbericht_November_2020.pdf,2,1
+6370,2020-11-29,2020-11-13,9,Kriegsgeschäfteinitiative,124,-4,https://www.foeg.uzh.ch/dam/jcr:1fa14c2f-b22e-4572-9fcc-20a6157a3c4c/Abstimmungsmonitor_Zwischenbericht_November_2020.pdf,2,1
 6380,2021-03-07,2021-02-12,8,Verhüllungsverbot,153,-1,https://www.foeg.uzh.ch/dam/jcr:c2100c5d-bea1-49c2-b001-7467e396efc6/AM_Zwischenbericht_M%C3%A4rz_2021.pdf,2,1
 6390,2021-03-07,2021-02-12,8,E-ID-Gesetz,114,2,https://www.foeg.uzh.ch/dam/jcr:c2100c5d-bea1-49c2-b001-7467e396efc6/AM_Zwischenbericht_M%C3%A4rz_2021.pdf,2,1
 6400,2021-03-07,2021-02-12,8,Freihandel Indonesien,83,12,https://www.foeg.uzh.ch/dam/jcr:c2100c5d-bea1-49c2-b001-7467e396efc6/AM_Zwischenbericht_M%C3%A4rz_2021.pdf,2,1
