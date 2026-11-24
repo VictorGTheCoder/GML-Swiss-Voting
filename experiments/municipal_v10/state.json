@@ -17,7 +17,125 @@
     "V10.9",
     "V10.10"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "version": "V10.1",
+      "kind": "pilot",
+      "run": 45299149349,
+      "artifact": 14878720344,
+      "sha": "c7432deaf34a3a1ec108ab403a315ad46b890dae",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.2295274976068145,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920626,
+          "canton_mae_pp": 5.703708259264074,
+          "covered_mae_pp": 6.543001307196259,
+          "covered_centered_mae_pp": 5.061060914461718,
+          "covered_national_mae_pp": 3.29234291975975,
+          "covered_canton_mae_pp": 4.955333233156242,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "expectation25",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.1826717981899995,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.6692428777036508,
+          "canton_mae_pp": 5.641618218368549,
+          "covered_mae_pp": 6.199392844806281,
+          "covered_centered_mae_pp": 5.061060914461717,
+          "covered_national_mae_pp": 2.5118831496447296,
+          "covered_canton_mae_pp": 4.500006266589063,
+          "gain_interval": [
+            0,
+            0.1325415466591198
+          ]
+        },
+        {
+          "variant": "expectation50",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.1707614948495335,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.6852885281991683,
+          "canton_mae_pp": 5.624432245701415,
+          "covered_mae_pp": 6.112050620309519,
+          "covered_centered_mae_pp": 5.0610609144617165,
+          "covered_national_mae_pp": 2.629551253278525,
+          "covered_canton_mae_pp": 4.373975800363421,
+          "gain_interval": [
+            -0.01856967670603586,
+            0.20269820732463337
+          ]
+        },
+        {
+          "variant": "expectation75",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.194458250592248,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.762412540456365,
+          "canton_mae_pp": 5.6669950781975,
+          "covered_mae_pp": 6.285826829089438,
+          "covered_centered_mae_pp": 5.061060914461717,
+          "covered_national_mae_pp": 3.1951273431646343,
+          "covered_canton_mae_pp": 4.686103238668028,
+          "gain_interval": [
+            -0.11234157987431952,
+            0.23124987126221708
+          ]
+        },
+        {
+          "variant": "expectation100",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.2515203595877225,
+          "centered_mae_pp": 5.370058554693701,
+          "national_mae_pp": 3.909515165843677,
+          "canton_mae_pp": 5.743239076551117,
+          "covered_mae_pp": 6.704282295056245,
+          "covered_centered_mae_pp": 5.0610609144617165,
+          "covered_national_mae_pp": 4.273879929338256,
+          "covered_canton_mae_pp": 5.245225893261219,
+          "gain_interval": [
+            -0.26271680357406635,
+            0.20556526528941693
+          ]
+        },
+        {
+          "variant": "walk_forward",
+          "objects": 66,
+          "covered_objects": 9,
+          "mae_pp": 7.1707614948495335,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.6852885281991683,
+          "canton_mae_pp": 5.624432245701415,
+          "covered_mae_pp": 6.112050620309519,
+          "covered_centered_mae_pp": 5.0610609144617165,
+          "covered_national_mae_pp": 2.629551253278525,
+          "covered_canton_mae_pp": 4.373975800363421,
+          "gain_interval": [
+            -0.01856967670603586,
+            0.20269820732463337
+          ]
+        }
+      ],
+      "repository_checks": {
+        "run": 45299149253,
+        "conclusion": "failure",
+        "reason": "ruff C417, corrected in next commit"
+      }
+    }
+  ],
   "reference": {
     "version": "V8.1",
     "mae_pp": 7.229527497606818
@@ -28,7 +146,7 @@
   },
   "instructions": "Read plan.json and this state before any work. Resume earliest unfinished version; update only after checking live CI/artifacts. Record exact links, don't skip unexamined stages. Mark source-blocked stage with evidence before moving to next; report partial progress honestly.",
   "stage_status": {
-    "V10.1": "pilot_implemented_pending_CI"
+    "V10.1": "pilot_scored_expansion_pending_CI"
   },
-  "notes": "Initial 9 expected mean yes shares verified in June 2021 and September 2022 wave-2 primary reports; other source pages need review. New workflow inventories all 14 reviewed 2021–2022 pages without automatic admission and benchmarks fixed/chronological blends; inspect CI, repair if necessary, extend source coverage before finishing V10.1."
+  "notes": "Pilot scores verified from CI SUMMARY and uploaded artifact metadata. Expanded reviewed rows 37, unique objects 20; full 2016–22 inventory and date-splitting fix pending CI. No promotion."
 }

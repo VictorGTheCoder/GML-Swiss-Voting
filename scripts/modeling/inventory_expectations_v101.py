@@ -59,7 +59,7 @@ def inspect(record):
                 continue
             if not re.search(r"mittel|durchschnitt|geschätzt|erwartet", content, re.I):
                 continue
-            for sentence in re.split(r"(?<=[.!?])\s+(?=[A-ZÄÖÜ])", content):
+            for sentence in re.split(r"(?<!\d)(?<=[.!?])\s+(?=[A-ZÄÖÜ])", content):
                 if re.search(r"ja[-– ]?(?:stimmen)?anteil", sentence, re.I) and re.search(
                     r"mittel|durchschnitt|geschätzt|erwartet", sentence, re.I
                 ):
@@ -76,7 +76,7 @@ def main():
     p.add_argument("--output", type=Path, required=True)
     a = p.parse_args()
     national = pd.read_csv(POLL_SOURCE, dtype={"vote_key": str})
-    records = national[national.vote_date.between("2021-01-01", "2022-12-31")][
+    records = national[national.vote_date.between("2016-01-01", "2022-12-31")][
         ["vote_date", "wave", "source_url", "published_at"]
     ].drop_duplicates().to_dict("records")
     with ThreadPoolExecutor(max_workers=4) as pool:

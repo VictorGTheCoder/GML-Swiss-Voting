@@ -80,8 +80,9 @@ def multiscale(y, prediction, forecast_weights, actual_yes, actual_no, cantons):
     exact official national total (special units may be excluded). Equal weight
     across cantons within an object; equal weight across objects in summaries.
     """
-    y, p, w, yes, no = map(lambda x: np.asarray(x, float),
-                            (y, prediction, forecast_weights, actual_yes, actual_no))
+    y, p, w, yes, no = (
+        np.asarray(x, float) for x in (y, prediction, forecast_weights, actual_yes, actual_no)
+    )
     if not (len(y) == len(p) == len(w) == len(yes) == len(no) == len(cantons)):
         raise ValueError("Mismatched scoring population")
     if not np.isfinite(np.column_stack([y, p, w, yes, no])).all():
