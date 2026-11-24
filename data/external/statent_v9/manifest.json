@@ -1,0 +1,30 @@
+{
+  "statent": {
+    "url": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0602010000_102",
+    "sha256": "8b849b3af7b4d87a787920c3f06944077ce8008d9cc2e69d04c0d2f44052bcfe",
+    "bytes": 4916492
+  },
+  "mutations": {
+    "url": "https://www.agvchapp.bfs.admin.ch/api/communes/mutations?includeTerritoryExchange=false&startPeriod=01-01-2024&endPeriod=01-01-2026&useBfsCode=true",
+    "sha256": "e9a33257cdd9b1ef4de59ce00951bae544204f7c27e34a9a5101ac856cf3ac88",
+    "bytes": 5900
+  },
+  "source_geography": "2024-01-01",
+  "target_geography": "2026-01-01",
+  "year_range": [
+    2011,
+    2020
+  ],
+  "rows": 21100,
+  "municipalities": 2110,
+  "unresolved": [],
+  "missingness": {
+    "econ_share_primary": 0.03042654028436019,
+    "econ_share_secondary": 0.0404739336492891,
+    "econ_share_tertiary": 0.01853080568720379,
+    "econ_log_jobs": 0,
+    "econ_log_establishments": 0.0007582938388625592
+  },
+  "sha256": "643b9f8e3d375c1f86bafa9783e0196d5abe677c976dac43e18e5467be28b484",
+  "availability": "year + 2 Jan 1 proxy; historical vintage unverified"
+}

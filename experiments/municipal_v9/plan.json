@@ -1,0 +1,60 @@
+{
+  "version": "V9",
+  "status": "declared_before_scores",
+  "scope": "Remaining priorities 3–5: text embeddings, municipal economic exposures, complementary municipalities. V8.1 remains frozen.",
+  "evaluation": {
+    "reference": 7.229527497606818,
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868,
+    "windows": [
+      "2016-2018",
+      "2019-2020",
+      "2021-2022"
+    ],
+    "max_target_date": "2022-12-31",
+    "metric": "macro-object equal-municipality MAE pp"
+  },
+  "stages": [
+    {
+      "id": "01",
+      "name": "Target-blind text corpus and embeddings",
+      "tasks": [
+        "Read only object title metadata and source-specific pre-vote brochure tables",
+        "Audit source/date/hash and unique high-confidence title correspondences; abstain from uncertain links; do not certify historical editions",
+        "Compare title and brochure-enhanced text separately; lexical TF-IDF and frozen multilingual E5 embeddings; train-only transformations",
+        "Compare text additions to the same PCA5 recent structural regressor and V8.1 anchor"
+      ],
+      "gate": "Exact object keys; no outcome columns; documented coverage, model revision and hashes; matched V8.1 reference"
+    },
+    {
+      "id": "02",
+      "name": "Economic source and interactions",
+      "tasks": [
+        "Acquire official STATENT annual counts, employment sectors and establishments; audit codes, suppressed cells, geography",
+        "Harmonize 2024 to 2026 via official mutations, reject unresolved splits; use data year at least two years before vote",
+        "Fit regularized object × municipality interactions to residuals, compare control, economic-only and demographic + economy where available; all municipalities remain scored"
+      ],
+      "gate": "Publication proxy documented, no future-year join, no zero filling of suppressed cells, matched baseline"
+    },
+    {
+      "id": "03",
+      "name": "Complementary commune profiles",
+      "tasks": [
+        "Select diverse municipalities using only train-period PCA loadings and coverage; fixed D-optimal criterion with random control",
+        "Measure held-out reconstruction from observed panel shares as explicitly non-forecast oracle",
+        "Fit predictive panel heads from pre-vote object features; reconstruct all municipalities using predicted panel shares only; compare direct PCA regression"
+      ],
+      "gate": "Never use actual held-out panel votes in forecast; same full population; report oracle separately"
+    },
+    {
+      "id": "04",
+      "name": "Report",
+      "tasks": [
+        "Keep separate ablations and uncertainty; report failures and data limitations",
+        "Archive code, scores, provenance, and no promotion on reused dates"
+      ]
+    }
+  ],
+  "limitations": "Retrospective source versions, geography and E5 pretraining cannot be certified as available at historical forecast cutoff. The strict pipeline is unchanged. No 2023+ outcomes used in scoring or fitting. No individual vote inference."
+}

@@ -1,0 +1,48 @@
+name: V9 stage 03 — validated STATENT interactions
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/economy-v9.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  economy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-experiments.txt
+      - run: python -m pytest -q tests/test_acquire_v9.py tests/test_remaining_priorities_v9.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: v9-acquisition-recovered
+          run-id: 45295827067
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/acquisition_v9
+      - uses: actions/download-artifact@v4
+        with:
+          name: poll-acquisition-v81
+          run-id: 45292731014
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/acquisition_v81
+      - uses: actions/download-artifact@v4
+        with:
+          name: national-fusion-v81
+          run-id: 45293115635
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/national_v81
+      - run: python -m scripts.modeling.municipal_v2 prepare --output reports/generated/v9_base
+      - run: python -m scripts.modeling.remaining_priorities_v9 --base reports/generated/v9_base --acquisition reports/generated/acquisition_v9 --old-acquisition reports/generated/acquisition_v81 --fusion reports/generated/national_v81 --output reports/generated/v9_economy --suite economy
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v9-validated-economy
+          path: reports/generated/v9_economy
