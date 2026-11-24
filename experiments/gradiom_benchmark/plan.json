@@ -38,5 +38,29 @@
     "6880",
     "6890"
   ],
-  "geography": "Read declared SVG map vintage and official OGD spatial_reference, validate IDs against official registers and exclude both sides of all mutations, including territory transfers, between vintages. Require >=95% of count-valid official communes. Only use numeric data-approval in map data-quantile 50; not colors. Exclude special units. Allow complete provisional official votes but label them."
+  "geography": "Read declared SVG map vintage and official OGD spatial_reference, validate IDs against official registers and exclude both sides of all mutations, including territory transfers, between vintages. Require >=95% of count-valid official communes. Only use numeric data-approval in map data-quantile 50; not colors. Exclude special units. Allow complete provisional official votes but label them.",
+  "paired_replay": {
+    "objects": [
+      "6730",
+      "6740",
+      "6750",
+      "6760",
+      "6770",
+      "6780",
+      "6790"
+    ],
+    "predeclared_after_external_only_pilot_before_any_new_gml_scores": true,
+    "training": "1990-2022 (306 objects), no post-2022 targets in fitting or tuning; V2 exact historical replay checked against all 18 archived comparison object scores",
+    "variants": [
+      "published Gradiom",
+      "frozen V2 as originally compared",
+      "same V2 cutoff aligned to printed Gradiom generation day",
+      "V7 recent-PCA5 structure + national anchor",
+      "fixed V10.8 page_tfidf_16_all with national anchor and preexisting missing regional margins fallback"
+    ],
+    "horizon": "11-day same-calendar-date cutoff at 23:59:59 Europe/Zurich; exact Gradiom generation hour unverified. SSR wave 2 printed publication same date for all seven. No later surveys. Source version/publication proxies unchanged.",
+    "corpus": "Frozen V10.8 historical corpus artifact 14906199977; existing unique source/date/hash/question page matching for all seven query objects; title fallback. No text extraction from outcomes.",
+    "metrics": "Identical matched municipality-object keys and latest official observed percentages; per-object macro MAE, centered MAE, signed bias, paired-date bootstrap on three dates. Report V2 replay error and any revisions; exposed 2023-25 comparison, not independent.",
+    "no_promotion": true
+  }
 }
