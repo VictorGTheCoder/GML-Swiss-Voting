@@ -58,7 +58,7 @@ def reconcile(anchor, bottom, direct, mass, covariance, fixed_national=False):
     S maps canton means to [national, bottom-up cantons, direct cantons].
     The optional equality constraint holds the original national anchor.
     """
-    bottom, direct, mass = map(lambda x: np.asarray(x, float), (bottom, direct, mass))
+    bottom, direct, mass = (np.asarray(x, float) for x in (bottom, direct, mass))
     n = len(bottom)
     if (direct.shape != bottom.shape or mass.shape != bottom.shape
             or not np.isfinite(np.r_[anchor, bottom, direct, mass]).all()

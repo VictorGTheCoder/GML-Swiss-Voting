@@ -1,18 +1,18 @@
 {
   "campaign": "V10 — literature-driven municipal referendum prediction",
-  "status": "morning_checkpoint_incomplete",
-  "active": "V10.6",
+  "status": "in_progress",
+  "active": "V10.7",
   "updated": "2026-11-24",
   "completed": [
     "V10.1",
     "V10.2",
     "V10.3",
     "V10.4",
-    "V10.5"
+    "V10.5",
+    "V10.6"
   ],
   "blocked": [],
   "pending": [
-    "V10.6",
     "V10.7",
     "V10.8",
     "V10.9",
@@ -856,6 +856,163 @@
         "run": 45344880448,
         "conclusion": "success"
       }
+    },
+    {
+      "version": "V10.6",
+      "kind": "benchmark",
+      "run": 45358533701,
+      "artifact": 14902549065,
+      "artifact_digest": "sha256:b638b5099b48911253765d5821dec79679853441432c142826829c92b2be2d3e",
+      "sha": "cbece4751c19207ab20f539602acf5f12ab3e750",
+      "conclusion": "success",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7756692099920697,
+          "canton_mae_pp": 5.703708259264076,
+          "common_national_mae_pp": 3.7756692099920697,
+          "common_canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "pooled_control",
+          "objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.7710384644973445,
+          "canton_mae_pp": 5.708957560058708,
+          "common_national_mae_pp": 3.7756692099920697,
+          "common_canton_mae_pp": 5.703708259264076,
+          "gain_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "abs_diag",
+          "objects": 66,
+          "mae_pp": 7.4560654806100635,
+          "centered_mae_pp": 5.394486052969659,
+          "national_mae_pp": 4.447585997686424,
+          "canton_mae_pp": 6.019592183455202,
+          "common_national_mae_pp": 4.461262859255099,
+          "common_canton_mae_pp": 6.017928990193701,
+          "gain_interval": [
+            -0.5936043753150753,
+            0.13112901093052134
+          ]
+        },
+        {
+          "variant": "abs_shrink75",
+          "objects": 66,
+          "mae_pp": 7.359464125530068,
+          "centered_mae_pp": 5.419806393675615,
+          "national_mae_pp": 4.097671802830995,
+          "canton_mae_pp": 5.8321215347768405,
+          "common_national_mae_pp": 4.112159723263081,
+          "common_canton_mae_pp": 5.828668261142045,
+          "gain_interval": [
+            -0.40849836784113425,
+            0.14112149635401033
+          ]
+        },
+        {
+          "variant": "abs_shrink25",
+          "objects": 66,
+          "mae_pp": 7.385665574835633,
+          "centered_mae_pp": 5.447409798161425,
+          "national_mae_pp": 3.9902941478130716,
+          "canton_mae_pp": 5.864573558212482,
+          "common_national_mae_pp": 4.003519630109892,
+          "common_canton_mae_pp": 5.858659923275386,
+          "gain_interval": [
+            -0.4451263606917365,
+            0.1101112239979982
+          ]
+        },
+        {
+          "variant": "center_diag",
+          "objects": 66,
+          "mae_pp": 7.28548184225358,
+          "centered_mae_pp": 5.424942524477915,
+          "national_mae_pp": 3.771459359105075,
+          "canton_mae_pp": 5.726629988767899,
+          "common_national_mae_pp": 3.776211728398656,
+          "common_canton_mae_pp": 5.71896570679492,
+          "gain_interval": [
+            -0.12332101822948731,
+            0.01200112616274572
+          ]
+        },
+        {
+          "variant": "center_shrink75",
+          "objects": 66,
+          "mae_pp": 7.268112777043265,
+          "centered_mae_pp": 5.41490427918865,
+          "national_mae_pp": 3.746227962956095,
+          "canton_mae_pp": 5.713744558618268,
+          "common_national_mae_pp": 3.747123093899649,
+          "common_canton_mae_pp": 5.705091662992137,
+          "gain_interval": [
+            -0.10875684501089017,
+            0.03251537251900163
+          ]
+        },
+        {
+          "variant": "center_shrink25",
+          "objects": 66,
+          "mae_pp": 7.26301032949432,
+          "centered_mae_pp": 5.4009313367416505,
+          "national_mae_pp": 3.745886905898506,
+          "canton_mae_pp": 5.71571449509875,
+          "common_national_mae_pp": 3.7397646559268427,
+          "common_canton_mae_pp": 5.705359743175125,
+          "gain_interval": [
+            -0.162661956222653,
+            0.09376017861102331
+          ]
+        },
+        {
+          "variant": "abs_anchor75",
+          "objects": 66,
+          "mae_pp": 7.295189900512479,
+          "centered_mae_pp": 5.435353368792841,
+          "national_mae_pp": 3.771038464497379,
+          "canton_mae_pp": 5.7189284308425625,
+          "common_national_mae_pp": 3.77662961271332,
+          "common_canton_mae_pp": 5.71187318440465,
+          "gain_interval": [
+            -0.16637295959566495,
+            0.02036597324277163
+          ]
+        },
+        {
+          "variant": "center_anchor75",
+          "objects": 66,
+          "mae_pp": 7.277965973227908,
+          "centered_mae_pp": 5.415691063603598,
+          "national_mae_pp": 3.771038464497339,
+          "canton_mae_pp": 5.724246845256792,
+          "common_national_mae_pp": 3.7763679997736705,
+          "common_canton_mae_pp": 5.716638786297135,
+          "gain_interval": [
+            -0.1128506697823574,
+            0.016399731093996717
+          ]
+        }
+      ],
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45358533607,
+        "conclusion": "failure",
+        "reason": "Ruff C417; equivalent generator-expression fix committed with results, new CI not yet verified."
+      }
     }
   ],
   "reference": {
@@ -872,7 +1029,8 @@
     "V10.2": "completed_exploratory_no_robust_gain",
     "V10.3": "completed_exploratory_no_robust_vote_gain",
     "V10.4": "completed_exploratory_no_robust_gain",
-    "V10.5": "completed_exploratory_no_gain"
+    "V10.5": "completed_exploratory_no_gain",
+    "V10.6": "completed_exploratory_no_gain"
   },
-  "notes": "V10.5 corrected OFS geography benchmark succeeded, all 5 targeted tests and repository checks passed. Morning checkpoint: V10.1–V10.5 measured; V10.6–V10.10 pending. No promotion. No continuation scheduled beyond original morning campaign."
+  "notes": "V10.6 measured and completed; no active reconciliation improves municipal MAE. Resume V10.7 after checking final CI. Follow-up automation scheduled hourly 10:00–17:00 Europe/Zurich 2026-11-24; stop experiments at end of plan."
 }
