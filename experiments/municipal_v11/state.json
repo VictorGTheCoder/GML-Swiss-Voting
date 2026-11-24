@@ -1,0 +1,33 @@
+{
+  "status": "in_progress",
+  "active": "V11.1",
+  "base_v10_sha": "e590df739af56a18f08834399b8e37b0e5fc4ef3",
+  "reference": {
+    "version": "V8.1",
+    "mae_pp": 7.229527497606818
+  },
+  "best_observed": {
+    "version": "V10.8 page_tfidf_16_all",
+    "mae_pp": 6.988599997055331
+  },
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868,
+    "period": "2016-2022"
+  },
+  "completed": [],
+  "pending": [
+    "V11.1",
+    "V11.2",
+    "V11.3",
+    "V11.4",
+    "V11.5",
+    "V11.6"
+  ],
+  "runs": [],
+  "stage_status": {
+    "V11.1": "implemented_pending_ci"
+  },
+  "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access."
+}
