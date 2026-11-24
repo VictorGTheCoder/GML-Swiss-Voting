@@ -62,8 +62,8 @@ def main():
                     for x in soup.find_all("script")
                 ],
                 "frames": [dict(x.attrs) for x in soup.find_all("iframe")],
-                "links": sorted(set(urljoin(r.url, a.get("href")) for a in soup.find_all("a", href=True)
-                                    if "swiss-popular-votes" in a.get("href", ""))),
+                "links": sorted({urljoin(r.url, a.get("href")) for a in soup.find_all("a", href=True)
+                                    if "swiss-popular-votes" in a.get("href", "")}),
                 "headings": [x.get_text(" ", strip=True) for x in soup.find_all(["h2", "h3", "h4", "h5"])],
                 "map_tags": [],
             }

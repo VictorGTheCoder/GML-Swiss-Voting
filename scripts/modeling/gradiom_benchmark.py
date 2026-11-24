@@ -50,7 +50,7 @@ def parse_stamp(text):
     match = re.search(r"(\d{1,2}\s+[A-Za-z]+\s+\d{4})", text)
     if not match:
         raise ValueError("Missing displayed date")
-    return datetime.strptime(match.group(1), "%d %B %Y").date().isoformat()
+    return datetime.strptime(match.group(1), "%d %B %Y").replace(tzinfo=timezone.utc).date().isoformat()
 
 
 def parse_map(raw, vote, day, level):
@@ -79,11 +79,18 @@ def parse_map(raw, vote, day, level):
     if len(set(national)) != 1 or not 0 <= national[0] <= 100:
         raise ValueError("No unambiguous national point forecast")
     vintage = None
+    comments = []
     if level == "commune":
-        matches = re.findall(r"Communes\s+(\d{2}\.\d{2}\.\d{4})", str(container))
-        if len(set(matches)) != 1:
-            raise ValueError("Municipality geometry vintage not explicit")
-        vintage = datetime.strptime(matches[0], "%d.%m.%Y").date().isoformat()
+        from bs4 import Comment
+        comments = [str(x)[:300] for x in container.find_all(string=lambda x: isinstance(x, Comment))]
+        patterns = r"(?:communes?|gemeinden?|municipalities)\s*(?:au\s+|am\s+|as of\s+)?(\d{1,2}\.\d{1,2}\.\d{4}|\d{4}-\d{2}-\d{2})"
+        matches = set(re.findall(patterns, "\n".join(comments), re.I))
+        if len(matches) == 1:
+            raw_date = matches.pop()
+            vintage = (date.fromisoformat(raw_date).isoformat() if "-" in raw_date else
+                       datetime.strptime(raw_date, "%d.%m.%Y").replace(tzinfo=timezone.utc).date().isoformat())
+        elif len(matches) > 1:
+            raise ValueError("Conflicting municipality geometry comments")
     records, sources = {}, {}
     for tag in container.select("[data-approval]"):
         key = re.fullmatch(re.escape(level) + r"-(\d+)", str(tag.get("id", "")))
@@ -108,7 +115,8 @@ def parse_map(raw, vote, day, level):
     if not records:
         raise ValueError("No numerical forecasts")
     return {"vote": vote, "day": day, "generated": generated, "title": headings[1],
-            "national": national[0], "geometry": vintage, "records": records, "sources": sources}
+            "national": national[0], "geometry": vintage, "records": records, "sources": sources,
+            "geometry_comments": comments}
 
 
 def observed_share(record):
@@ -160,7 +168,7 @@ def changed_codes(events, source_date, target_date):
     lo, hi = sorted((source_date, target_date))
     out = set()
     for event in events:
-        stamp = datetime.strptime(event["MutationDate"], "%d.%m.%Y").date().isoformat()
+        stamp = datetime.strptime(event["MutationDate"], "%d.%m.%Y").replace(tzinfo=timezone.utc).date().isoformat()
         if lo < stamp <= hi:
             for key in ("InitialCode", "TerminalCode"):
                 raw = event[key].strip()
@@ -267,14 +275,27 @@ def run(output):
                         or comm["title"] != cant["title"]):
                     raise ValueError("Map forecasts disagree on national identity")
                 src, dst = comm["geometry"], actual["geometry"]
+                pred = comm["records"]
+                source_basis = "SVG vintage comment"
+                if src is None:
+                    # Require an exact official code roster rather than guessing from date.
+                    # Conservatively exclude every 2024--2026 changed code because a
+                    # roster alone cannot date unchanged-ID territory exchanges.
+                    candidates = [stamp for stamp in ("2024-01-01", "2025-01-01", "2026-01-01")
+                                  if stamp <= day and set(pred) == c.registry(stamp)]
+                    if not candidates:
+                        raise ValueError("No explicit map vintage or exact official roster: "
+                                         + repr(comm["geometry_comments"]))
+                    src = candidates[0]
+                    source_basis = "exact register roster only; exclude all 2024--2026 mutations"
                 if not "2024-01-01" <= min(src, dst) <= max(src, dst) <= "2026-09-27":
                     raise ValueError("Geography outside reviewed mutation range")
                 source_ids, target_ids = c.registry(src), c.registry(dst)
-                pred = comm["records"]
                 if not set(pred).issubset(source_ids):
                     raise ValueError("Map ID outside official geometry roster")
                 obs = {k: v for k, v in actual["municipalities"].items() if k in target_ids and v[0] is not None}
-                affected = changed_codes(all_mutations, src, dst)
+                affected = (changed_codes(all_mutations, "2024-01-01", "2026-09-27")
+                            if comm["geometry"] is None else changed_codes(all_mutations, src, dst))
                 common = sorted((set(pred) & set(obs)) - affected)
                 if len(common) < .95 * len(obs):
                     raise ValueError("Less than 95% of official scored communes matched")
@@ -290,6 +311,7 @@ def run(output):
                        "title": comm["title"], "municipal_forecasts": len(pred),
                        "official_scored_communes": len(obs), "matched_communes": len(common),
                        "coverage": len(common) / len(obs), "source_geometry": src, "official_geometry": dst,
+                       "source_geometry_basis": source_basis,
                        "provisional": actual["provisional"],
                        "national_prediction_pp": comm["national"], "national_actual_pp": actual["national"],
                        "national_mae_pp": abs(comm["national"] - actual["national"]),
@@ -299,7 +321,7 @@ def run(output):
                               "official_title": actual["title"], "excluded_changed": sorted((set(pred) & set(obs)) & affected),
                               "forecast_only": sorted(set(pred)-set(obs)),
                               "observed_only": sorted(set(obs)-set(pred)),
-                              "map_flags": comm["sources"]})
+                              "map_flags": comm["sources"], "geometry_comments": comm["geometry_comments"]})
                 # Retain research-only matched rows in short-lived artifact.
                 paired_rows.extend({"vote_id": vote, "vote_date": day, "municipality_id": str(k).zfill(4),
                                     "gradiom_prediction": pred[k][0]/100, "official_yes_share": obs[k][0]/100,
@@ -330,6 +352,7 @@ def run(output):
                               "v2_mae_pp_original_population": float(matched.mae_pp_v2.mean()),
                               "warning": "same objects, not yet same municipalities"},
                "incidents": incidents, "historical_generation_stamp_verified": True,
+               "matched_rows_sha256": hashlib.sha256((output / "matched_rows.parquet").read_bytes()).hexdigest(),
                "independent_historical_snapshot_verified": False}
     (output / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2, allow_nan=False))
     print("SUMMARY", json.dumps(summary, ensure_ascii=False, allow_nan=False), flush=True)
