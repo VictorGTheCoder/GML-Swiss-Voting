@@ -23,7 +23,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: gradiom-historical-benchmark
-          run-id: 45373347714
+          run-id: 45373726297
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: reports/generated/gradiom_previous
       - run: python -m scripts.modeling.gradiom_benchmark --output reports/generated/gradiom_benchmark --previous reports/generated/gradiom_previous

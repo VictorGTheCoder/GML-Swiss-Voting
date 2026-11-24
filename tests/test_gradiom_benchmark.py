@@ -1,7 +1,7 @@
 """Public archive extraction and geography gates."""
 import pytest
 
-from scripts.modeling.gradiom_benchmark import changed_codes, errors, observed_share, parse_map
+from scripts.modeling.gradiom_benchmark import changed_codes, errors, observed_share, parse_map, stable_matches
 
 
 def test_mutations_exclude_both_initial_and_terminal_retained_ids():
@@ -47,3 +47,11 @@ def test_geodata_resource_id_is_explicit_vintage():
         <svg><!-- Source: Federal Statistical Office FSO, k4voge_20260101_gf -->
         <path id="commune-1" data-approval="42.4" data-name="X"/></svg></div>'''
     assert parse_map(raw,"6830","2026-03-08","commune")["geometry"]=="2026-01-01"
+
+
+def test_stale_codes_never_scored_and_successors_excluded():
+    events = [{"MutationDate": "01.01.2025", "InitialCode": "100", "TerminalCode": "101"}]
+    common, affected = stable_matches({100, 101, 200}, {101, 200}, {101, 200}, events,
+                                      "2026-01-01", "2026-01-01", conservative=True)
+    assert common == [200]
+    assert affected == {100, 101}

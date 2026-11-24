@@ -62,5 +62,6 @@
     "corpus": "Frozen V10.8 historical corpus artifact 14906199977; existing unique source/date/hash/question page matching for all seven query objects; title fallback. No text extraction from outcomes.",
     "metrics": "Identical matched municipality-object keys and latest official observed percentages; per-object macro MAE, centered MAE, signed bias, paired-date bootstrap on three dates. Report V2 replay error and any revisions; exposed 2023-25 comparison, not independent.",
     "no_promotion": true
-  }
+  },
+  "geography_conflict_rule": "March maps contain five unregistered IDs despite the 2026 SVG vintage. Exclude every unregistered forecast ID and both sides of all register mutations in the full 2024-01-01 to 2026-09-27 interval for these maps, retain only valid matched IDs; coverage gate remains 95%. This source-only correction changes no forecast or scored outcome and was necessary before obtaining any March score."
 }

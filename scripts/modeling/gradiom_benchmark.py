@@ -185,6 +185,13 @@ def changed_codes(events, source_date, target_date):
     return out
 
 
+def stable_matches(pred_ids, obs_ids, source_ids, mutations, src, dst, conservative=False):
+    """Match only registered, unchanged geographic units; never remap stale IDs."""
+    lo, hi = ("2024-01-01", "2026-09-27") if conservative else (src, dst)
+    affected = changed_codes(mutations, lo, hi)
+    return sorted((pred_ids & obs_ids & source_ids) - affected), affected
+
+
 def errors(predicted, actual):
     err = np.asarray(predicted, float) - np.asarray(actual, float)
     if not len(err) or not np.isfinite(err).all():
@@ -268,14 +275,17 @@ def run(output, previous=None):
     completed = set()
     if previous is not None:
         m = json.loads((previous / "summary.json").read_text())
-        if (m["objects"] != 9 or m["matched_rows_sha256"] !=
+        if (m["status"] != "partial" or m["matched_rows_sha256"] !=
                 hashlib.sha256((previous / "matched_rows.parquet").read_bytes()).hexdigest()):
             raise ValueError("Partial source artifact mismatch")
         prior = pd.read_csv(previous / "object_metrics.csv", dtype={"vote_id": str})
         rows = prior.to_dict("records")
         completed = set(prior.vote_id)
-        if completed != {v for day in DAYS[:4] for v in OBJECTS[day]}:
-            raise ValueError("Wrong previous objects")
+        if (len(prior) != m["objects"] or len(completed) != len(prior)
+                or not completed.issubset({v for day in DAYS for v in OBJECTS[day]})
+                or any(completed.intersection(OBJECTS[day]) not in (set(), set(OBJECTS[day]))
+                       for day in DAYS)):
+            raise ValueError("Wrong previous complete-date roster")
         paired_rows = pd.read_parquet(previous / "matched_rows.parquet").to_dict("records")
         audit = json.loads((previous / "coverage_audit.json").read_text())
         c.evidence = json.loads((previous / "source_manifest.json").read_text()) + c.evidence
@@ -316,19 +326,17 @@ def run(output, previous=None):
                     raise ValueError("Geography outside reviewed mutation range")
                 source_ids, target_ids = c.registry(src), c.registry(dst)
                 extra_ids = set(pred) - source_ids
+                # Some March maps contain obsolete codes despite the declared
+                # OFS 2026 map vintage. Do not score any unregistered code, and
+                # exclude all mutated units over the entire reviewed interval
+                # when the roster conflicts with the declared vintage.
                 if extra_ids:
-                    # The new OFS political geodata includes special (overseas,
-                    # counting) units. Accept only explicitly present non-municipal
-                    # OFS result IDs, and never score these as municipalities.
-                    official_special = set(actual["municipalities"]) - target_ids
-                    if src != dst or not extra_ids.issubset(official_special):
-                        raise ValueError(f"Unverified extra map IDs: {sorted(extra_ids)}; "
-                                         f"known official special IDs: {sorted(official_special)}")
-                    print("EXCLUDED_SPECIAL", vote, sorted(extra_ids), flush=True)
+                    print("EXCLUDED_UNREGISTERED", vote, sorted(extra_ids), flush=True)
+                    source_basis += "; roster conflict, exclude all 2024-26 mutations"
                 obs = {k: v for k, v in actual["municipalities"].items() if k in target_ids and v[0] is not None}
-                affected = (changed_codes(all_mutations, "2024-01-01", "2026-09-27")
-                            if comm["geometry"] is None else changed_codes(all_mutations, src, dst))
-                common = sorted((set(pred) & set(obs)) - affected)
+                common, affected = stable_matches(set(pred), set(obs), source_ids,
+                                                  all_mutations, src, dst,
+                                                  conservative=comm["geometry"] is None or bool(extra_ids))
                 if len(common) < .95 * len(obs):
                     raise ValueError("Less than 95% of official scored communes matched")
                 ccommon = sorted(set(cant["records"]) & set(actual["cantons"]))
@@ -352,6 +360,7 @@ def run(output, previous=None):
                 audit.append({"vote_id": vote, "vote_date": day, "official_timestamp": actual["timestamp"],
                               "official_title": actual["title"], "excluded_changed": sorted((set(pred) & set(obs)) & affected),
                               "forecast_only": sorted(set(pred)-set(obs)),
+                              "excluded_unregistered": sorted(extra_ids),
                               "observed_only": sorted(set(obs)-set(pred)),
                               "map_flags": comm["sources"], "geometry_comments": comm["geometry_comments"]})
                 # Retain research-only matched rows in short-lived artifact.
