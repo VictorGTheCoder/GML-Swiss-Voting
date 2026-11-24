@@ -1,0 +1,37 @@
+name: V9 stage 01 — audit text and economic sources
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/acquire_v9.py'
+      - 'tests/test_acquire_v9.py'
+      - '.github/workflows/acquire-v9.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      HF_HUB_DISABLE_XET: "1"
+      TOKENIZERS_PARALLELISM: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-experiments.txt
+      - run: python -m pytest -q tests/test_acquire_v9.py
+      - name: Install CPU embedding runtime
+        run: |
+          pip install --index-url https://download.pytorch.org/whl/cpu torch==2.6.0
+          pip install transformers==4.48.3 sentencepiece==0.2.0 safetensors
+      - run: python -m scripts.modeling.acquire_v9 --output reports/generated/v9_acquisition
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v9-acquisition
+          path: reports/generated/v9_acquisition/
+          if-no-files-found: warn
