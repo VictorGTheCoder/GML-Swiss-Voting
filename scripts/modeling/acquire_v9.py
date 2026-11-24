@@ -49,9 +49,8 @@ def title_score(a, b):
     if a == b:
         return 1.
     # Exact full phrase containment for headers with additional words.
-    if (" "+a+" ") in (" "+b+" ") or (" "+b+" ") in (" "+a+" "):
-        if min(len(a),len(b)) / max(len(a),len(b)) >= .65:
-            return .97
+    if ((" "+a+" ") in (" "+b+" ") or (" "+b+" ") in (" "+a+" ")) and min(len(a),len(b)) / max(len(a),len(b)) >= .65:
+        return .97
     return SequenceMatcher(None,a,b,autojunk=False).ratio()
 
 
@@ -162,7 +161,8 @@ def embeddings(text,output):
     model=AutoModel.from_pretrained(MODEL_ID,revision=MODEL_REVISION,trust_remote_code=False,
                                     use_safetensors=True).eval()
     def encode(values):
-        chunks=[]; owners=[]
+        chunks=[]
+        owners=[]
         for i,value in enumerate(values):
             tokens=tokenizer("query: "+value,add_special_tokens=False,truncation=False)["input_ids"]
             for start in range(0,len(tokens),400):

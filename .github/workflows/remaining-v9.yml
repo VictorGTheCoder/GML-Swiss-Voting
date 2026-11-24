@@ -1,0 +1,80 @@
+name: V9 stages 02-04 — remaining priority benchmarks
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/remaining_priorities_v9.py'
+      - 'tests/test_remaining_priorities_v9.py'
+      - '.github/workflows/remaining-v9.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  benchmarks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+      NUMEXPR_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-experiments.txt
+      - name: Unit tests for each independent data/model block
+        run: python -m pytest -q tests/test_acquire_v9.py tests/test_remaining_priorities_v9.py
+      - name: Wait for the original acquisition gate
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for i in $(seq 1 60); do
+            status=$(gh api repos/$GITHUB_REPOSITORY/actions/runs/45295220148 --jq '.status')
+            if [ "$status" = "completed" ]; then
+              conclusion=$(gh api repos/$GITHUB_REPOSITORY/actions/runs/45295220148 --jq '.conclusion')
+              test "$conclusion" = success
+              exit $?
+            fi
+            sleep 15
+          done
+          exit 1
+      - uses: actions/download-artifact@v4
+        with:
+          name: v9-acquisition
+          run-id: 45295220148
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/acquisition_v9
+      - uses: actions/download-artifact@v4
+        with:
+          name: poll-acquisition-v81
+          run-id: 45292731014
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/acquisition_v81
+      - uses: actions/download-artifact@v4
+        with:
+          name: national-fusion-v81
+          run-id: 45293115635
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/national_v81
+      - name: Prepare frozen historical dataset
+        run: python -m scripts.modeling.municipal_v2 prepare --output reports/generated/v9_base
+      - name: Stage 02 text ablations
+        run: python -m scripts.modeling.remaining_priorities_v9 --base reports/generated/v9_base --acquisition reports/generated/acquisition_v9 --old-acquisition reports/generated/acquisition_v81 --fusion reports/generated/national_v81 --output reports/generated/v9_text --suite text
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v9-text
+          path: reports/generated/v9_text
+      - name: Stage 03 economic interactions
+        run: python -m scripts.modeling.remaining_priorities_v9 --base reports/generated/v9_base --acquisition reports/generated/acquisition_v9 --old-acquisition reports/generated/acquisition_v81 --fusion reports/generated/national_v81 --output reports/generated/v9_economy --suite economy
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v9-economy
+          path: reports/generated/v9_economy
+      - name: Stage 04 complementary panels
+        run: python -m scripts.modeling.remaining_priorities_v9 --base reports/generated/v9_base --acquisition reports/generated/acquisition_v9 --old-acquisition reports/generated/acquisition_v81 --fusion reports/generated/national_v81 --output reports/generated/v9_panels --suite panels
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v9-panels
+          path: reports/generated/v9_panels
