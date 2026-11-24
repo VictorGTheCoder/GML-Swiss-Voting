@@ -1,0 +1,35 @@
+name: Gradiom matched historical benchmark
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/gradiom_benchmark.py'
+      - 'tests/test_gradiom_benchmark.py'
+      - '.github/workflows/gradiom-benchmark.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy pandas pyarrow requests beautifulsoup4 pytest
+      - run: python -m pytest -q tests/test_gradiom_benchmark.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: gradiom-historical-benchmark
+          run-id: 45373726297
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/gradiom_previous
+      - run: python -m scripts.modeling.gradiom_benchmark --output reports/generated/gradiom_benchmark --previous reports/generated/gradiom_previous
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gradiom-historical-benchmark
+          path: reports/generated/gradiom_benchmark/
+          retention-days: 7

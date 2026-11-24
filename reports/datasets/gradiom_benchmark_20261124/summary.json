@@ -1,0 +1,230 @@
+{
+  "gradiom": {
+    "status": "complete",
+    "expected_objects": 18,
+    "objects": 18,
+    "dates": 7,
+    "rows": 37666,
+    "mean_coverage": 0.9940881499076275,
+    "provisional_objects": 9,
+    "all": {
+      "mae_pp": 7.727264377665013,
+      "centered_mae_pp": 5.350743139461368,
+      "national_mae_pp": 4.022868348469569,
+      "canton_mae_pp": 5.514868569137337,
+      "bias_pp": -1.8395518691939223,
+      "rmse_pp": 9.324090606046623
+    },
+    "mae_interval_descriptive": [
+      6.711042786417584,
+      8.749060411762095
+    ],
+    "overlap_v2": {
+      "objects": 7,
+      "gradiom_mae_pp": 8.275539133381644,
+      "v2_mae_pp_original_population": 10.50958076248885,
+      "warning": "same objects, not yet same municipalities"
+    },
+    "incidents": [],
+    "historical_generation_stamp_verified": true,
+    "matched_rows_sha256": "4540f7f6a7d2a179b20002944151b99c4efdbe87e8f9854203677f11af300b94",
+    "independent_historical_snapshot_verified": false
+  },
+  "by_period": {
+    "definitive": {
+      "mae_pp": 8.532331278419816,
+      "centered_mae_pp": 5.089593785668005,
+      "national_mae_pp": 4.479038711363703,
+      "canton_mae_pp": 6.16005045183633
+    },
+    "provisional": {
+      "mae_pp": 6.92219747691021,
+      "centered_mae_pp": 5.611892493254731,
+      "national_mae_pp": 3.5666979855754337,
+      "canton_mae_pp": 4.869686686438343
+    }
+  },
+  "matched_replay": {
+    "status": "complete",
+    "strict_forecast_ready": false,
+    "comparison_is_independent": false,
+    "training_objects": 306,
+    "evaluation_objects": 7,
+    "evaluation_dates": 3,
+    "matched_rows": 14623,
+    "v2_replay_max_error_pp": 1.7763568394002505e-15,
+    "query_pages_matched": 7,
+    "national_anchors": 7,
+    "same_day_publication_time_unknown": true,
+    "regional_margin_fallback": "national only; current reviewed regional margins unavailable",
+    "observed_revisions_rows": 0,
+    "poll_selection": [
+      {
+        "vote_key": "6730",
+        "vote_date": "2024-11-24",
+        "published_at": "2024-11-13T05:00:00+00:00",
+        "wave": 2,
+        "poll_yes_trend_per_day": -0.0014814814814814814,
+        "poll_days_to_vote": 23,
+        "poll_trend_available": 1,
+        "latest_midpoint": "2024-11-01",
+        "prior_midpoint": "2024-10-05",
+        "prior_published_at": "2024-10-18T04:00:00+00:00"
+      },
+      {
+        "vote_key": "6740",
+        "vote_date": "2024-11-24",
+        "published_at": "2024-11-13T05:00:00+00:00",
+        "wave": 2,
+        "poll_yes_trend_per_day": -0.003333333333333333,
+        "poll_days_to_vote": 23,
+        "poll_trend_available": 1,
+        "latest_midpoint": "2024-11-01",
+        "prior_midpoint": "2024-10-05",
+        "prior_published_at": "2024-10-18T04:00:00+00:00"
+      },
+      {
+        "vote_key": "6750",
+        "vote_date": "2024-11-24",
+        "published_at": "2024-11-13T05:00:00+00:00",
+        "wave": 2,
+        "poll_yes_trend_per_day": -0.001851851851851852,
+        "poll_days_to_vote": 23,
+        "poll_trend_available": 1,
+        "latest_midpoint": "2024-11-01",
+        "prior_midpoint": "2024-10-05",
+        "prior_published_at": "2024-10-18T04:00:00+00:00"
+      },
+      {
+        "vote_key": "6760",
+        "vote_date": "2024-11-24",
+        "published_at": "2024-11-13T05:00:00+00:00",
+        "wave": 2,
+        "poll_yes_trend_per_day": -0.002592592592592593,
+        "poll_days_to_vote": 23,
+        "poll_trend_available": 1,
+        "latest_midpoint": "2024-11-01",
+        "prior_midpoint": "2024-10-05",
+        "prior_published_at": "2024-10-18T04:00:00+00:00"
+      },
+      {
+        "vote_key": "6770",
+        "vote_date": "2025-02-09",
+        "published_at": "2025-01-29T05:00:00+00:00",
+        "wave": 2,
+        "poll_yes_trend_per_day": -0.001951219512195122,
+        "poll_days_to_vote": 22,
+        "poll_trend_available": 1,
+        "latest_midpoint": "2025-01-18",
+        "prior_midpoint": "2024-12-08",
+        "prior_published_at": "2024-12-20T05:00:00+00:00"
+      },
+      {
+        "vote_key": "6780",
+        "vote_date": "2025-09-28",
+        "published_at": "2025-09-17T04:00:00+00:00",
+        "wave": 2,
+        "poll_yes_trend_per_day": -0.002592592592592593,
+        "poll_days_to_vote": 22,
+        "poll_trend_available": 1,
+        "latest_midpoint": "2025-09-06",
+        "prior_midpoint": "2025-08-10",
+        "prior_published_at": "2025-08-22T04:00:00+00:00"
+      },
+      {
+        "vote_key": "6790",
+        "vote_date": "2025-09-28",
+        "published_at": "2025-09-17T04:00:00+00:00",
+        "wave": 2,
+        "poll_yes_trend_per_day": -0.00037037037037037035,
+        "poll_days_to_vote": 22,
+        "poll_trend_available": 1,
+        "latest_midpoint": "2025-09-06",
+        "prior_midpoint": "2025-08-10",
+        "prior_published_at": "2025-08-22T04:00:00+00:00"
+      }
+    ],
+    "archive_matched_sha256": "997fb33923dc6a3356f1e86c0d6e42f9516cea847a9cf8f7866767710956fb53",
+    "historical_corpus_sha256": "f9458deb8bba815f1b7ecd7b620bb43559ae874a31733a11bdec7d4ae711f487",
+    "summary": [
+      {
+        "variant": "gradiom",
+        "objects": 7,
+        "rows": 14623,
+        "mae_pp": 8.275539133381644,
+        "centered_mae_pp": 5.549147761292171,
+        "bias_pp": -3.731691820372883,
+        "gain_vs_gradiom": 0,
+        "gain_interval_descriptive": [
+          0,
+          0
+        ]
+      },
+      {
+        "variant": "gml_v2_original",
+        "objects": 7,
+        "rows": 14623,
+        "mae_pp": 10.523160780150592,
+        "centered_mae_pp": 6.291921768890118,
+        "bias_pp": -5.146011288037314,
+        "gain_vs_gradiom": -2.2476216467689487,
+        "gain_interval_descriptive": [
+          -3.878482464359145,
+          0.04417213168543643
+        ]
+      },
+      {
+        "variant": "gml_v2_aligned",
+        "objects": 7,
+        "rows": 14623,
+        "mae_pp": 10.523160780150592,
+        "centered_mae_pp": 6.291921768890118,
+        "bias_pp": -5.146011288037314,
+        "gain_vs_gradiom": -2.2476216467689487,
+        "gain_interval_descriptive": [
+          -3.878482464359145,
+          0.04417213168543643
+        ]
+      },
+      {
+        "variant": "gml_recent_pca_aligned",
+        "objects": 7,
+        "rows": 14623,
+        "mae_pp": 10.206024524231113,
+        "centered_mae_pp": 6.1164362750314885,
+        "bias_pp": -5.336347978769767,
+        "gain_vs_gradiom": -1.930485390849469,
+        "gain_interval_descriptive": [
+          -3.1598710039750793,
+          1.0783772065043271
+        ]
+      },
+      {
+        "variant": "gml_v108_aligned",
+        "objects": 7,
+        "rows": 14623,
+        "mae_pp": 9.96674133650034,
+        "centered_mae_pp": 6.152568728368259,
+        "bias_pp": -4.875549063586345,
+        "gain_vs_gradiom": -1.691202203118695,
+        "gain_interval_descriptive": [
+          -3.5623140097154598,
+          1.127233326996529
+        ]
+      }
+    ]
+  },
+  "mean_absolute_object_bias_pp": {
+    "gradiom": 6.7059265942714275,
+    "gml_v2_original": 9.002001572085714,
+    "gml_v2_aligned": 9.002001572085714,
+    "gml_recent_pca_aligned": 8.676707880042857,
+    "gml_v108_aligned": 8.228582722142857
+  },
+  "benchmark_runs": [
+    45373347714,
+    45373726297,
+    45374128912
+  ],
+  "paired_run": 45373542924
+}

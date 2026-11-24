@@ -1,0 +1,26 @@
+name: Gradiom public forecast inventory
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/gradiom_inventory.py'
+      - '.github/workflows/gradiom-inventory.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests beautifulsoup4
+      - run: python -m scripts.modeling.gradiom_inventory
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gradiom-public-inventory
+          path: reports/generated/gradiom_inventory/
+          retention-days: 7
