@@ -1,14 +1,14 @@
 {
   "status": "in_progress",
-  "active": "V11.3",
+  "active": null,
   "base_v10_sha": "e590df739af56a18f08834399b8e37b0e5fc4ef3",
   "reference": {
     "version": "V8.1",
     "mae_pp": 7.229527497606818
   },
   "best_observed": {
-    "version": "V10.8 page_tfidf_16_all",
-    "mae_pp": 6.988599997055331
+    "version": "V11.3 institution_text",
+    "mae_pp": 6.955753873756506
   },
   "population": {
     "objects": 66,
@@ -18,10 +18,10 @@
   },
   "completed": [
     "V11.1",
-    "V11.2"
+    "V11.2",
+    "V11.3"
   ],
   "pending": [
-    "V11.3",
     "V11.4",
     "V11.5",
     "V11.6"
@@ -573,12 +573,328 @@
       "sha": "eedc32f28835b665571baa8562f2e17ddc1d3078",
       "status": "completed",
       "conclusion": "success"
+    },
+    {
+      "version": "V11.3",
+      "kind": "benchmark",
+      "run": 45444093555,
+      "sha": "85666e7c6f4aa96f6d0fd164ccb39d505d64c963",
+      "job": 138622944353,
+      "artifact": 14945871233,
+      "artifact_digest": "sha256:56f659fab173c1d34c28ec6648aa656281b7215e30857a5d7973e09b6eb51d21",
+      "status": "completed",
+      "conclusion": "success",
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45444093330,
+        "conclusion": "success"
+      },
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "vs_v108_interval": [
+            -0.6263738724976634,
+            0.03347445723791092
+          ]
+        },
+        {
+          "variant": "v108_tfidf",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.988599997055331,
+          "centered_mae_pp": 5.280965787730653,
+          "national_mae_pp": 3.846510449192281,
+          "canton_mae_pp": 5.536970110697117,
+          "gain_interval": [
+            -0.033474457237910864,
+            0.6263738724976635
+          ],
+          "vs_v108_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "original_replay",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.988599997055331,
+          "centered_mae_pp": 5.280965787730655,
+          "national_mae_pp": 3.8465104491922815,
+          "canton_mae_pp": 5.536970110697118,
+          "gain_interval": [
+            -0.03347445723791114,
+            0.6263738724976637
+          ],
+          "vs_v108_interval": [
+            -3.89569645371261e-16,
+            3.665801128258228e-16
+          ]
+        },
+        {
+          "variant": "timing_text",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.406256107801143,
+          "centered_mae_pp": 5.376048681511593,
+          "national_mae_pp": 4.275106746635878,
+          "canton_mae_pp": 5.965925048809712,
+          "gain_interval": [
+            -0.5312163200523625,
+            0.18031688535822177
+          ],
+          "vs_v108_interval": [
+            -0.70085944255787,
+            -0.17915791577073598
+          ]
+        },
+        {
+          "variant": "institution_text",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 6.955753873756506,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.7811714402970824,
+          "canton_mae_pp": 5.500338667087431,
+          "gain_interval": [
+            -0.04387674828916126,
+            0.6800955676185607
+          ],
+          "vs_v108_interval": [
+            -0.09439308477954603,
+            0.1829269888926353
+          ]
+        },
+        {
+          "variant": "all_text",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.264781875098961,
+          "centered_mae_pp": 5.393771136163818,
+          "national_mae_pp": 4.054635246607128,
+          "canton_mae_pp": 5.78103805488525,
+          "gain_interval": [
+            -0.35973233626778506,
+            0.3228939409920467
+          ],
+          "vs_v108_interval": [
+            -0.4838588642923456,
+            -0.10450566486211314
+          ]
+        },
+        {
+          "variant": "all_structured",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.489409961337727,
+          "centered_mae_pp": 5.474869334052652,
+          "national_mae_pp": 4.032124933775799,
+          "canton_mae_pp": 5.9092177086471755,
+          "gain_interval": [
+            -0.5341358460707815,
+            -0.012625700599524465
+          ],
+          "vs_v108_interval": [
+            -0.9521133302547684,
+            -0.13559466923935493
+          ]
+        },
+        {
+          "variant": "pruned_text",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.264781875098961,
+          "centered_mae_pp": 5.393771136163818,
+          "national_mae_pp": 4.054635246607128,
+          "canton_mae_pp": 5.78103805488525,
+          "gain_interval": [
+            -0.35973233626778506,
+            0.3228939409920467
+          ],
+          "vs_v108_interval": [
+            -0.4838588642923456,
+            -0.10450566486211314
+          ]
+        }
+      ],
+      "folds": {
+        "2016-2018": {
+          "all_structured": 8.732815258,
+          "all_text": 8.2137743819,
+          "institution_text": 7.5730560157,
+          "original_replay": 7.696815302,
+          "pruned_text": 8.2137743819,
+          "reference": 8.152475601,
+          "timing_text": 8.5484489792,
+          "v108_tfidf": 7.696815302
+        },
+        "2019-2020": {
+          "all_structured": 7.0733631613,
+          "all_text": 7.1268932728,
+          "institution_text": 6.9750709305,
+          "original_replay": 6.9429781706,
+          "pruned_text": 7.1268932728,
+          "reference": 7.1500595705,
+          "timing_text": 7.1022934295,
+          "v108_tfidf": 6.9429781706
+        },
+        "2021-2022": {
+          "all_structured": 6.1431767406,
+          "all_text": 6.1474855427,
+          "institution_text": 6.174467668,
+          "original_replay": 6.1261417791,
+          "pruned_text": 6.1474855427,
+          "reference": 6.1155763319,
+          "timing_text": 6.1304963578,
+          "v108_tfidf": 6.1261417791
+        }
+      },
+      "domains": {
+        "1": {
+          "all_structured": 6.5533408194,
+          "all_text": 6.8998002524,
+          "institution_text": 6.7836818411,
+          "original_replay": 6.6859831747,
+          "pruned_text": 6.8998002524,
+          "reference": 6.4792925574,
+          "timing_text": 6.8950711378,
+          "v108_tfidf": 6.6859831747
+        },
+        "2": {
+          "all_structured": 6.1153518488,
+          "all_text": 5.8701890023,
+          "institution_text": 5.802332172,
+          "original_replay": 5.7477172272,
+          "pruned_text": 5.8701890023,
+          "reference": 5.8630062992,
+          "timing_text": 5.9214994704,
+          "v108_tfidf": 5.7477172272
+        },
+        "3": {
+          "all_structured": 7.7927065866,
+          "all_text": 7.5931295302,
+          "institution_text": 6.9152445706,
+          "original_replay": 6.8925439647,
+          "pruned_text": 7.5931295302,
+          "reference": 7.1680352648,
+          "timing_text": 7.7062367932,
+          "v108_tfidf": 6.8925439647
+        },
+        "4": {
+          "all_structured": 13.3614929824,
+          "all_text": 11.1714951018,
+          "institution_text": 10.1520500803,
+          "original_replay": 10.7609447807,
+          "pruned_text": 11.1714951018,
+          "reference": 12.6797406891,
+          "timing_text": 12.1132067225,
+          "v108_tfidf": 10.7609447807
+        },
+        "5": {
+          "all_structured": 9.8085354774,
+          "all_text": 10.1500734487,
+          "institution_text": 10.0416046951,
+          "original_replay": 10.1571832957,
+          "pruned_text": 10.1500734487,
+          "reference": 10.1693907323,
+          "timing_text": 10.2332697795,
+          "v108_tfidf": 10.1571832957
+        },
+        "6": {
+          "all_structured": 7.6500225327,
+          "all_text": 7.371647997,
+          "institution_text": 6.9801270745,
+          "original_replay": 7.1764459782,
+          "pruned_text": 7.371647997,
+          "reference": 7.7105377573,
+          "timing_text": 7.5115643432,
+          "v108_tfidf": 7.1764459782
+        },
+        "7": {
+          "all_structured": 7.4495453605,
+          "all_text": 7.644639501,
+          "institution_text": 6.8863623743,
+          "original_replay": 6.9445593052,
+          "pruned_text": 7.644639501,
+          "reference": 6.5839010403,
+          "timing_text": 7.4199280893,
+          "v108_tfidf": 6.9445593052
+        },
+        "8": {
+          "all_structured": 6.5676759431,
+          "all_text": 6.3913775336,
+          "institution_text": 6.1048269459,
+          "original_replay": 6.2585933766,
+          "pruned_text": 6.3913775336,
+          "reference": 6.2725889719,
+          "timing_text": 6.7658720267,
+          "v108_tfidf": 6.2585933766
+        },
+        "9": {
+          "all_structured": 5.8443673512,
+          "all_text": 5.8568902042,
+          "institution_text": 5.6255283968,
+          "original_replay": 5.5780286772,
+          "pruned_text": 5.8568902042,
+          "reference": 5.6367797301,
+          "timing_text": 5.7503013182,
+          "v108_tfidf": 5.5780286772
+        },
+        "10": {
+          "all_structured": 7.3331456254,
+          "all_text": 6.9460232496,
+          "institution_text": 6.6667452066,
+          "original_replay": 6.581896391,
+          "pruned_text": 6.9460232496,
+          "reference": 6.9000078832,
+          "timing_text": 7.1215825222,
+          "v108_tfidf": 6.581896391
+        },
+        "11": {
+          "all_structured": 7.8999769431,
+          "all_text": 7.7051050748,
+          "institution_text": 7.6769308663,
+          "original_replay": 7.7094734326,
+          "pruned_text": 7.7051050748,
+          "reference": 7.8350434359,
+          "timing_text": 7.7577803564,
+          "v108_tfidf": 7.7094734326
+        },
+        "12": {
+          "all_structured": 5.0507187146,
+          "all_text": 4.8056902984,
+          "institution_text": 4.8108858897,
+          "original_replay": 4.8496702903,
+          "pruned_text": 4.8056902984,
+          "reference": 4.8426383255,
+          "timing_text": 4.8625773883,
+          "v108_tfidf": 4.8496702903
+        }
+      },
+      "source_coverage": {
+        "message_to_parliament_logdays": 277,
+        "parliament_to_vote_logdays": 306,
+        "parliamentary_initiative": 306,
+        "chamber_share_gap": 304,
+        "nr_binary_seat_fraction": 304,
+        "sr_binary_seat_fraction": 304
+      }
     }
   ],
   "stage_status": {
     "V11.1": "completed_no_gain",
     "V11.2": "completed_no_gain",
-    "V11.3": "implemented_awaiting_benchmark"
+    "V11.3": "completed_exploratory_gain_unconfirmed"
   },
   "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access."
 }
