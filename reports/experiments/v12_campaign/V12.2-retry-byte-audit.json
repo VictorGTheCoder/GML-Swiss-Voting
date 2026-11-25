@@ -1,0 +1,219 @@
+{
+  "status": "audit_only_not_admitted",
+  "sources": [
+    {
+      "vote_date": "2017-09-24",
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/nQa1iYBWTOLV/2017-09-24_explications_du_conseil_federal.pdf",
+      "status": "blocked",
+      "error": "Remote end closed connection without response"
+    },
+    {
+      "vote_date": "2017-09-24",
+      "url": "https://www.admin.ch/dam/fr/sd-web/jZZ8sYmiwOVF/24.09.2017%20-%20Explications%20du%20Conseil%20fe%CC%81de%CC%81ral.pdf",
+      "pdf_sha256": "f62261805f92a060cec4a51c319757b2c8ce6d03d397ed8ac7fc7f0a312f14a3",
+      "bytes": 830529,
+      "page_count": 64,
+      "toc_identity_pass": true,
+      "pages": [
+        {
+          "vote_id": "6130",
+          "physical_page": 4,
+          "text_sha256": "68912c5b9e4017825954fb573e40c8e5489cf9b80589752e96ccc23066be3499",
+          "text_chars": 654
+        },
+        {
+          "vote_id": "6130",
+          "physical_page": 5,
+          "text_sha256": "d2a79a70e417defe64e2c907fa28f753b8f75d9d07f01993fdc84138cb667295",
+          "text_chars": 1814
+        },
+        {
+          "vote_id": "6130",
+          "physical_page": 8,
+          "text_sha256": "98a8204e54ccd194ec6b70156d3998893d63bc9c3996d1682b129b7899f6c9b5",
+          "text_chars": 2199
+        },
+        {
+          "vote_id": "6140",
+          "physical_page": 12,
+          "text_sha256": "75371df6582513a4fb5405f5abfc1dc075af5fdc70ea7c95f2f8f4265fbe009c",
+          "text_chars": 1102
+        },
+        {
+          "vote_id": "6140",
+          "physical_page": 13,
+          "text_sha256": "73e3f3bf947e7d334ed2a86bf1194caa5bdd6fc328dd41b2803dd01adca8605b",
+          "text_chars": 2003
+        },
+        {
+          "vote_id": "6140",
+          "physical_page": 24,
+          "text_sha256": "317421a1bcefbe3e5cbc0add5f193b80ee174d6cfcd9113ff275104488aa3fb3",
+          "text_chars": 2302
+        },
+        {
+          "vote_id": "6140",
+          "physical_page": 25,
+          "text_sha256": "aa8df11001b84804a49e4a2698f2cea9d7c63862c6d3b16d03768ef0a69d7e27",
+          "text_chars": 422
+        },
+        {
+          "vote_id": "6150",
+          "physical_page": 12,
+          "text_sha256": "75371df6582513a4fb5405f5abfc1dc075af5fdc70ea7c95f2f8f4265fbe009c",
+          "text_chars": 1102
+        },
+        {
+          "vote_id": "6150",
+          "physical_page": 13,
+          "text_sha256": "73e3f3bf947e7d334ed2a86bf1194caa5bdd6fc328dd41b2803dd01adca8605b",
+          "text_chars": 2003
+        },
+        {
+          "vote_id": "6150",
+          "physical_page": 26,
+          "text_sha256": "6af0ead509148e4528d5992ecf7839ed281ba526b678746d70772bf19a3d0de2",
+          "text_chars": 2125
+        }
+      ],
+      "status": "hashed_candidate"
+    },
+    {
+      "vote_date": "2017-09-24",
+      "url": "https://www.fr.ch/sites/default/files/2018-06/20170924_fr-abstimmungserlauterungen-pdf.pdf",
+      "pdf_sha256": "f62261805f92a060cec4a51c319757b2c8ce6d03d397ed8ac7fc7f0a312f14a3",
+      "bytes": 830529,
+      "page_count": 64,
+      "toc_identity_pass": true,
+      "pages": [
+        {
+          "vote_id": "6130",
+          "physical_page": 4,
+          "text_sha256": "68912c5b9e4017825954fb573e40c8e5489cf9b80589752e96ccc23066be3499",
+          "text_chars": 654
+        },
+        {
+          "vote_id": "6130",
+          "physical_page": 5,
+          "text_sha256": "d2a79a70e417defe64e2c907fa28f753b8f75d9d07f01993fdc84138cb667295",
+          "text_chars": 1814
+        },
+        {
+          "vote_id": "6130",
+          "physical_page": 8,
+          "text_sha256": "98a8204e54ccd194ec6b70156d3998893d63bc9c3996d1682b129b7899f6c9b5",
+          "text_chars": 2199
+        },
+        {
+          "vote_id": "6140",
+          "physical_page": 12,
+          "text_sha256": "75371df6582513a4fb5405f5abfc1dc075af5fdc70ea7c95f2f8f4265fbe009c",
+          "text_chars": 1102
+        },
+        {
+          "vote_id": "6140",
+          "physical_page": 13,
+          "text_sha256": "73e3f3bf947e7d334ed2a86bf1194caa5bdd6fc328dd41b2803dd01adca8605b",
+          "text_chars": 2003
+        },
+        {
+          "vote_id": "6140",
+          "physical_page": 24,
+          "text_sha256": "317421a1bcefbe3e5cbc0add5f193b80ee174d6cfcd9113ff275104488aa3fb3",
+          "text_chars": 2302
+        },
+        {
+          "vote_id": "6140",
+          "physical_page": 25,
+          "text_sha256": "aa8df11001b84804a49e4a2698f2cea9d7c63862c6d3b16d03768ef0a69d7e27",
+          "text_chars": 422
+        },
+        {
+          "vote_id": "6150",
+          "physical_page": 12,
+          "text_sha256": "75371df6582513a4fb5405f5abfc1dc075af5fdc70ea7c95f2f8f4265fbe009c",
+          "text_chars": 1102
+        },
+        {
+          "vote_id": "6150",
+          "physical_page": 13,
+          "text_sha256": "73e3f3bf947e7d334ed2a86bf1194caa5bdd6fc328dd41b2803dd01adca8605b",
+          "text_chars": 2003
+        },
+        {
+          "vote_id": "6150",
+          "physical_page": 26,
+          "text_sha256": "6af0ead509148e4528d5992ecf7839ed281ba526b678746d70772bf19a3d0de2",
+          "text_chars": 2125
+        }
+      ],
+      "status": "hashed_candidate"
+    },
+    {
+      "vote_date": "2022-05-15",
+      "url": "https://www.admin.ch/dam/fr/sd-web/fPSuNq0RJHhu/15.05.2022%20%E2%80%93%20Explications%20du%20Conseil%20fe%CC%81de%CC%81ral.pdf",
+      "pdf_sha256": "f9c5d7830a90b9af3b0c8fde853e036a14ca1b111958342bb39ad98576adc308",
+      "bytes": 1994060,
+      "page_count": 56,
+      "toc_identity_pass": true,
+      "pages": [
+        {
+          "vote_id": "6550",
+          "physical_page": 4,
+          "text_sha256": "126a7880a91509af8af0ec024c4831003c364c3b38a53c521aea8e70b8b1ab1f",
+          "text_chars": 1517
+        },
+        {
+          "vote_id": "6550",
+          "physical_page": 5,
+          "text_sha256": "812cb4edc91322bfafba61f157d160746673dda7b34c03647b11223e33858d14",
+          "text_chars": 1785
+        },
+        {
+          "vote_id": "6560",
+          "physical_page": 6,
+          "text_sha256": "18c9e8ced16e91a899c8aaf1d7c8f5ba8423b4098e428ff86e9fcbe439e8b3f7",
+          "text_chars": 2490
+        },
+        {
+          "vote_id": "6560",
+          "physical_page": 7,
+          "text_sha256": "4a8676597bfe397c033f39869890f187de110ae698018380bce48586d97585d0",
+          "text_chars": 1828
+        },
+        {
+          "vote_id": "6570",
+          "physical_page": 8,
+          "text_sha256": "5d307afe8fb37efbab60f5a61b4da8c672abc58bd09dbafb92e991a12548e615",
+          "text_chars": 2296
+        },
+        {
+          "vote_id": "6570",
+          "physical_page": 9,
+          "text_sha256": "e5f12d58b5efd7704d889ba0fd191ae1167d630af5508d308b1b65f090d1cf49",
+          "text_chars": 2001
+        }
+      ],
+      "status": "hashed_candidate"
+    },
+    {
+      "vote_date": "2022-05-15",
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/PCWaDg8-GOcJ/2022-05-15_explications_du_conseil_federal.pdf",
+      "status": "blocked",
+      "error": "Remote end closed connection without response"
+    }
+  ],
+  "by_date": {
+    "2017-09-24": {
+      "hashed_mirrors": 2,
+      "mirror_bytes_equal": true
+    },
+    "2022-05-15": {
+      "hashed_mirrors": 1,
+      "mirror_bytes_equal": null
+    }
+  },
+  "mirror_bytes_equal": null,
+  "strict_forecast_ready": false,
+  "training_rows": 0
+}

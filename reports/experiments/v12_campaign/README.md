@@ -25,3 +25,5 @@ Hypothèse falsifiable : la page exacte apporte un gain par rapport à matched_o
 [Audit V12.2](V12.2-acquisition-audit.md) : preuve contemporaine 2017, second miroir 2022, cadre de réutilisation documenté ; acquisition binaire transférée au runner, résultat non confirmé.
 
 Premier [audit binaire et reprise](V12.2-acquisition-audit.md) : 1 PDF / 3 objets / 6 pages hachés ; deux connexions bloquées, deux nouveaux miroirs 2017 identifiés. Aucune admission. Voir [manifeste du premier run](V12.2-first-byte-audit.json).
+
+[Deuxième audit binaire](V12.2-retry-byte-audit.json) : 2 dates / 6 objets, miroirs 2017 identiques, 2022 révision non confirmée ; CI générale réussie, audit partiel. V12.2b : diagnostic des liens de pages à date égale, sans admission ni entraînement. Aucun nouveau score.

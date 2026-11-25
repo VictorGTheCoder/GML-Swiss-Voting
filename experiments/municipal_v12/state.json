@@ -193,7 +193,7 @@
   ],
   "instructions": "Verify Actions and output roster before acquiring sources. No 2023+ targets, no promotion, no holdout.",
   "v122": {
-    "status": "partial_byte_audit_retry_prepared",
+    "status": "both_dates_hashed_provenance_pending_gap_audit_prepared",
     "objects": 6,
     "dates": 2,
     "manifest": "experiments/municipal_v12/recovery_candidates.json",
@@ -216,6 +216,32 @@
         "reason": "I001 test import spacing (fixed in this patch)"
       }
     },
-    "next": "Verify retry and compare mirror evidence. No admission."
+    "next": "Audit same-date gaps from pinned corpus, diagnose unique title matches separately from missing links and marker/ambiguity failures. No admission. Confirm 2022 revision independently; no unchanged retry.",
+    "retry": {
+      "run": 45550890702,
+      "artifact": 14994400070,
+      "artifact_digest": "sha256:89b92063fbcb49d43cea38d6bb1c5ac482509c2882643f1562f55c240254daf5",
+      "conclusion": "failure",
+      "hashed_sources": 3,
+      "blocked_sources": 2,
+      "distinct_pdfs": 2,
+      "hashed_objects": 6,
+      "targeted_tests": 6,
+      "repository_checks": {
+        "run": 45550890707,
+        "conclusion": "success"
+      },
+      "training_rows": 0,
+      "by_date": {
+        "2017-09-24": {
+          "hashed_mirrors": 2,
+          "mirror_bytes_equal": true
+        },
+        "2022-05-15": {
+          "hashed_mirrors": 1,
+          "mirror_bytes_equal": null
+        }
+      }
+    }
   }
 }
