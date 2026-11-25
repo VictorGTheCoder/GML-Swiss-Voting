@@ -34,3 +34,7 @@ Toutes les mesures futures sur la population de référence, MAE macro par objet
 ## V13.2d — Extension 2020
 
 [Acquisition et contrôle](V13.2d-2020-waves.md) : 39 observations, 14 objets multi-vagues sur 5 dates, 14/14 accords des dernières vagues. CI précédente 3/3 réussie. Zéro admission ; provenance et couverture restent insuffisantes, reprendre V13.3 en parallèle.
+
+## V13.3 — Diagnostic prioritaire
+
+[Protocole](V13.3-protocol.md) : oracle L1 de translation constante sur prédictions V11.3/V8.1, comparaison de l'erreur résiduelle à 4 pp, bootstrap par date, diagnostic par domaine/fenêtre. Exécution à vérifier ; aucun fit ni nouveau score. V13.2 certification en attente, V13.1 admission différée. CI précédente 3/3 réussie.

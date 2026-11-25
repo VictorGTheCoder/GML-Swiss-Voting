@@ -1,7 +1,7 @@
 {
   "campaign": "V13",
   "status": "in_progress",
-  "active": "V13.2",
+  "active": "V13.3",
   "base_v12": "c35595736b21b7d535e0ff7fbaf4b2c584f2bae3",
   "best_observed": {
     "version": "V11.3",
@@ -75,7 +75,7 @@
     "status": "multiwave_inventory_extended_no_admission",
     "objects": 14,
     "dates": 5,
-    "latest_value_agreements": 12,
+    "latest_value_agreements": 14,
     "early_waves": 25,
     "training_rows_admitted": 0,
     "strict_forecast_ready": false,
@@ -90,6 +90,19 @@
       "conclusion": "success",
       "jobs": 3
     },
-    "notes": "V13.2d: six additional national candidates, five multiwave dates; second wave indexed source direct HTTP 403, no admission; start independent V13.3 while source certification pending."
+    "notes": "V13.2d: six additional national candidates, five multiwave dates; second wave indexed source direct HTTP 403, no admission; start independent V13.3 while source certification pending.",
+    "repository_checks": {
+      "run": 45650868526,
+      "conclusion": "success",
+      "jobs": 3
+    }
+  },
+  "v133": {
+    "status": "implemented_diagnostic_pending_ci",
+    "source_run": 45444093555,
+    "source_artifact": 14945871233,
+    "source_digest": "sha256:56f659fab173c1d34c28ec6648aa656281b7215e30857a5d7973e09b6eb51d21",
+    "targeted_tests_implemented": 4,
+    "model_changed": false
   }
 }
