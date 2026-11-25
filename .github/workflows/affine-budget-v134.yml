@@ -1,12 +1,5 @@
 name: V13.4 affine contrast diagnostic
 on:
-  push:
-    branches:
-      - 'experiment/municipal-v13-aps-source-20261125'
-    paths:
-      - '.github/workflows/affine-budget-v134.yml'
-      - 'scripts/modeling/affine_budget_v134.py'
-      - 'tests/test_affine_budget_v134.py'
   workflow_dispatch:
 permissions:
   contents: read
