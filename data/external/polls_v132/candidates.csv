@@ -19,3 +19,16 @@ vote_key,vote_date,wave,fieldwork_start,fieldwork_end,stated_release_date,yes_sh
 6520,2022-02-13,3,2022-01-27,2022-01-28,2022-02-02,60,https://leewas.ch/wp-content/uploads/2022/02/Bericht_Welle3_Adobe.pdf,printed page 15,latest_candidate
 6530,2022-02-13,3,2022-01-27,2022-01-28,2022-02-02,35,https://leewas.ch/wp-content/uploads/2022/02/Bericht_Welle3_Adobe.pdf,printed page 22,latest_candidate
 6540,2022-02-13,3,2022-01-27,2022-01-28,2022-02-02,42,https://leewas.ch/wp-content/uploads/2022/02/Bericht_Welle3_Adobe.pdf,printed page 29,latest_candidate
+6050,2016-09-25,1,2016-08-08,2016-08-09,2016-08-12,49,https://www.watson.ch/schweiz/ahv/859993152-eher-ja-fuer-ahv-initiative-gruene-wirtschaft-und-nachrichtendienst-gesetz,national totals corroborated by cached primary PDF,early_wave
+6060,2016-09-25,1,2016-08-08,2016-08-09,2016-08-12,60,https://www.watson.ch/schweiz/ahv/859993152-eher-ja-fuer-ahv-initiative-gruene-wirtschaft-und-nachrichtendienst-gesetz,national totals corroborated by cached primary PDF,early_wave
+6070,2016-09-25,1,2016-08-08,2016-08-09,2016-08-12,55,https://www.watson.ch/schweiz/ahv/859993152-eher-ja-fuer-ahv-initiative-gruene-wirtschaft-und-nachrichtendienst-gesetz,national totals corroborated by cached primary PDF,early_wave
+6160,2018-03-04,2,2018-02-01,2018-02-01,2018-02-07,59,https://www.watson.ch/schweiz/abstimmungen-2018/379615397-no-billag-gegner-liegen-laut-umfrage-weiterhin-in-fuehrung,national SDA report,early_wave
+6170,2018-03-04,2,2018-02-01,2018-02-01,2018-02-07,38,https://www.watson.ch/schweiz/abstimmungen-2018/379615397-no-billag-gegner-liegen-laut-umfrage-weiterhin-in-fuehrung,national SDA report,early_wave
+6160,2018-03-04,3,2018-02-15,2018-02-15,2018-02-21,71,https://e1.marco.ch/publish/tamedia/33_7799/20180221_MM_Tamedia_Abstimmungsumfrage_3.Welle_DE.pdf,printed page 2,latest_candidate
+6170,2018-03-04,3,2018-02-15,2018-02-15,2018-02-21,39,https://e1.marco.ch/publish/tamedia/33_7799/20180221_MM_Tamedia_Abstimmungsumfrage_3.Welle_DE.pdf,printed page 1,latest_candidate
+6230,2018-11-25,1,2018-10-08,2018-10-09,2018-10-12,53,https://www.nau.ch/politik/bundeshaus/umfrage-erwartet-knappes-ergebnis-fur-selbstbestimmungsinitiative-65445555,national SDA report sum of yes and rather yes,early_wave
+6240,2018-11-25,1,2018-10-08,2018-10-09,2018-10-12,45,https://www.nau.ch/politik/bundeshaus/umfrage-erwartet-knappes-ergebnis-fur-selbstbestimmungsinitiative-65445555,national SDA report sum of yes and rather yes,early_wave
+6250,2018-11-25,1,2018-10-08,2018-10-09,2018-10-12,67,https://www.nau.ch/politik/bundeshaus/umfrage-erwartet-knappes-ergebnis-fur-selbstbestimmungsinitiative-65445555,national SDA report sum of yes and rather yes,early_wave
+6230,2018-11-25,2,2018-10-25,2018-10-26,2018-10-31,51,https://www.watson.ch/schweiz/gesellschaft-politik/385490280-umfrage-nein-zur-sbi-ja-zu-sozialdetektiven-enges-rennen-um-hornkuehe,national SDA report,early_wave
+6240,2018-11-25,2,2018-10-25,2018-10-26,2018-10-31,44,https://www.watson.ch/schweiz/gesellschaft-politik/385490280-umfrage-nein-zur-sbi-ja-zu-sozialdetektiven-enges-rennen-um-hornkuehe,national SDA report,early_wave
+6250,2018-11-25,2,2018-10-25,2018-10-26,2018-10-31,68,https://www.watson.ch/schweiz/gesellschaft-politik/385490280-umfrage-nein-zur-sbi-ja-zu-sozialdetektiven-enges-rennen-um-hornkuehe,national SDA report,early_wave

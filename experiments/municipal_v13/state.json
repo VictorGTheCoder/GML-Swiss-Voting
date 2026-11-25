@@ -72,24 +72,24 @@
     }
   },
   "v132": {
-    "status": "multiwave_inventory_partial_no_admission",
+    "status": "multiwave_inventory_extended_no_admission",
     "objects": 12,
     "dates": 4,
-    "latest_value_agreements": 6,
-    "early_waves": 10,
+    "latest_value_agreements": 12,
+    "early_waves": 21,
     "training_rows_admitted": 0,
     "strict_forecast_ready": false,
-    "rows": 20,
-    "latest_candidates": 10,
-    "latest_agreements": 10,
-    "multiwave_objects": 4,
-    "three_wave_objects": 4,
-    "multiwave_dates": 1,
+    "rows": 33,
+    "latest_candidates": 12,
+    "latest_agreements": 12,
+    "multiwave_objects": 12,
+    "three_wave_objects": 9,
+    "multiwave_dates": 4,
     "previous_repository_checks": {
-      "run": 45618744427,
+      "run": 45629440893,
       "conclusion": "success",
       "jobs": 3
     },
-    "notes": "First wave press release; wave 2 indexed PDF, visual fetch blocked; wave 3 visually checked. Multiwave coverage one date only. No benchmark."
+    "notes": "V13.2c: 13 additional national observations; four multiwave dates, still sparse; 2016 wave 2 excluded until exact fieldwork confirmed; no admission or benchmark. Latest agreement with frozen CSV, not proof of source vintage."
   }
 }

@@ -26,3 +26,7 @@ Toutes les mesures futures sur la population de référence, MAE macro par objet
 ## V13.2b — Trois vagues pour une même date
 
 [Audit de provenance et couverture multi-vagues](V13.2b-multiwave.md) : 20 observations/12 objets/4 dates, 10/10 accords de dernière vague, 4 objets à trois vagues mais une seule date multi-vagues. CI précédente 3/3 réussie. Aucun score ni admission. Étendre à plusieurs dates anciennes avant benchmark ; sinon reprendre V13.3.
+
+## V13.2c — Extension 2016–2018
+
+[Acquisition et contrôle](V13.2c-historical-waves.md) : 33 observations, 12 objets multi-vagues sur 4 dates, 12/12 accords des dernières vagues. CI précédente 3/3 réussie. Zéro admission ; prochaine priorité : élargir les dates et certifier les versions, puis V13.3 si bloqué.
