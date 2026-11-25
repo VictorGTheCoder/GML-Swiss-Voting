@@ -1,6 +1,6 @@
 {
   "status": "in_progress",
-  "active": "V11.5",
+  "active": "V11.6",
   "base_v10_sha": "e590df739af56a18f08834399b8e37b0e5fc4ef3",
   "reference": {
     "version": "V8.1",
@@ -20,10 +20,10 @@
     "V11.1",
     "V11.2",
     "V11.3",
-    "V11.4"
+    "V11.4",
+    "V11.5"
   ],
   "pending": [
-    "V11.5",
     "V11.6"
   ],
   "runs": [
@@ -1316,6 +1316,300 @@
         "run": 45506576382,
         "conclusion": "success"
       }
+    },
+    {
+      "version": "V11.5",
+      "kind": "corrected_benchmark",
+      "run": 45514950645,
+      "sha": "2761bd10d5e342d73c5d303363ef6abe0a03e3d0",
+      "job": 138871872064,
+      "artifact": 14977223783,
+      "artifact_digest": "sha256:9f86b26e3ea2e29c1d2eafca574164bdd69dce350a0de65d34738c8ef21c5f49",
+      "status": "completed",
+      "conclusion": "success",
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45514950612,
+        "conclusion": "success"
+      },
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "vs_v113_interval": [
+            -0.6800955676185603,
+            0.043876748289161265
+          ]
+        },
+        {
+          "variant": "v113_institution",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 6.955753873756506,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.7811714402970824,
+          "canton_mae_pp": 5.500338667087431,
+          "gain_interval": [
+            -0.04387674828916126,
+            0.6800955676185607
+          ],
+          "vs_v113_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "replay",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 6.955753873756506,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.7811714402970824,
+          "canton_mae_pp": 5.500338667087431,
+          "gain_interval": [
+            -0.04387674828916126,
+            0.6800955676185607
+          ],
+          "vs_v113_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "history1981_h5",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 6.967767287519173,
+          "centered_mae_pp": 5.302007314190233,
+          "national_mae_pp": 3.792673623410331,
+          "canton_mae_pp": 5.521176347277943,
+          "gain_interval": [
+            -0.05523734908849011,
+            0.6672854964704311
+          ],
+          "vs_v113_interval": [
+            -0.03298285502550533,
+            0.008197143871667926
+          ]
+        },
+        {
+          "variant": "modern_h15",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.061578017983611,
+          "centered_mae_pp": 5.390520931734014,
+          "national_mae_pp": 3.7902946113693554,
+          "canton_mae_pp": 5.5377891860569495,
+          "gain_interval": [
+            -0.15831507550777488,
+            0.5873827368288067
+          ],
+          "vs_v113_interval": [
+            -0.1562861780361313,
+            -0.05658698370077037
+          ]
+        },
+        {
+          "variant": "history1981_h15",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.084203496611098,
+          "centered_mae_pp": 5.401563153352723,
+          "national_mae_pp": 3.7878133104286205,
+          "canton_mae_pp": 5.549113338180648,
+          "gain_interval": [
+            -0.17654364495827693,
+            0.5622221318223876
+          ],
+          "vs_v113_interval": [
+            -0.18907178693821433,
+            -0.0700226695580599
+          ]
+        }
+      ],
+      "folds": {
+        "2016-2018": {
+          "history1981_h15": 7.6523140787,
+          "history1981_h5": 7.5884610878,
+          "modern_h15": 7.6425078017,
+          "reference": 8.152475601,
+          "replay": 7.5730560157,
+          "v113_institution": 7.5730560157
+        },
+        "2019-2020": {
+          "history1981_h15": 7.2937973947,
+          "history1981_h5": 6.9760443007,
+          "modern_h15": 7.1866811048,
+          "reference": 7.1500595705,
+          "replay": 6.9750709305,
+          "v113_institution": 6.9750709305
+        },
+        "2021-2022": {
+          "history1981_h15": 6.2692683199,
+          "history1981_h5": 6.1877615306,
+          "modern_h15": 6.2728642449,
+          "reference": 6.1155763319,
+          "replay": 6.174467668,
+          "v113_institution": 6.174467668
+        }
+      },
+      "domains": {
+        "1": {
+          "history1981_h15": 6.8861295918,
+          "history1981_h5": 6.8275984999,
+          "modern_h15": 6.9478433082,
+          "reference": 6.4792925574,
+          "replay": 6.7836818411,
+          "v113_institution": 6.7836818411
+        },
+        "2": {
+          "history1981_h15": 6.0681855123,
+          "history1981_h5": 5.8722799895,
+          "modern_h15": 6.0293387969,
+          "reference": 5.8630062992,
+          "replay": 5.802332172,
+          "v113_institution": 5.802332172
+        },
+        "3": {
+          "history1981_h15": 7.1997396294,
+          "history1981_h5": 6.9210718916,
+          "modern_h15": 7.1824666109,
+          "reference": 7.1680352648,
+          "replay": 6.9152445706,
+          "v113_institution": 6.9152445706
+        },
+        "4": {
+          "history1981_h15": 10.2398443498,
+          "history1981_h5": 10.1397185488,
+          "modern_h15": 10.1963382961,
+          "reference": 12.6797406891,
+          "replay": 10.1520500803,
+          "v113_institution": 10.1520500803
+        },
+        "5": {
+          "history1981_h15": 9.9595699275,
+          "history1981_h5": 10.0176637093,
+          "modern_h15": 9.8961918151,
+          "reference": 10.1693907323,
+          "replay": 10.0416046951,
+          "v113_institution": 10.0416046951
+        },
+        "6": {
+          "history1981_h15": 7.2819563415,
+          "history1981_h5": 7.0413563042,
+          "modern_h15": 7.1724447138,
+          "reference": 7.7105377573,
+          "replay": 6.9801270745,
+          "v113_institution": 6.9801270745
+        },
+        "7": {
+          "history1981_h15": 6.644196783,
+          "history1981_h5": 6.8416057782,
+          "modern_h15": 6.672739909,
+          "reference": 6.5839010403,
+          "replay": 6.8863623743,
+          "v113_institution": 6.8863623743
+        },
+        "8": {
+          "history1981_h15": 6.1674155279,
+          "history1981_h5": 6.1155288357,
+          "modern_h15": 6.1792487031,
+          "reference": 6.2725889719,
+          "replay": 6.1048269459,
+          "v113_institution": 6.1048269459
+        },
+        "9": {
+          "history1981_h15": 5.8645245382,
+          "history1981_h5": 5.6114325816,
+          "modern_h15": 5.7853944907,
+          "reference": 5.6367797301,
+          "replay": 5.6255283968,
+          "v113_institution": 5.6255283968
+        },
+        "10": {
+          "history1981_h15": 6.8053599776,
+          "history1981_h5": 6.6717247702,
+          "modern_h15": 6.7904767871,
+          "reference": 6.9000078832,
+          "replay": 6.6667452066,
+          "v113_institution": 6.6667452066
+        },
+        "11": {
+          "history1981_h15": 7.9693647641,
+          "history1981_h5": 7.6797275436,
+          "modern_h15": 7.9645156127,
+          "reference": 7.8350434359,
+          "replay": 7.6769308663,
+          "v113_institution": 7.6769308663
+        },
+        "12": {
+          "history1981_h15": 4.6676429214,
+          "history1981_h5": 4.8327563723,
+          "modern_h15": 4.755265424,
+          "reference": 4.8426383255,
+          "replay": 4.8108858897,
+          "v113_institution": 4.8108858897
+        }
+      },
+      "historical_audit": [
+        {
+          "fold": "2016-2018",
+          "period": "1960-1980",
+          "objects": 118,
+          "rows": 197673,
+          "eligible": 0,
+          "mean_coverage": 0.7965739017
+        },
+        {
+          "fold": "2016-2018",
+          "period": "1981-1989",
+          "objects": 56,
+          "rows": 116767,
+          "eligible": 55,
+          "mean_coverage": 0.9915002378
+        },
+        {
+          "fold": "2019-2020",
+          "period": "1960-1980",
+          "objects": 118,
+          "rows": 197673,
+          "eligible": 0,
+          "mean_coverage": 0.7961953019
+        },
+        {
+          "fold": "2019-2020",
+          "period": "1981-1989",
+          "objects": 56,
+          "rows": 116767,
+          "eligible": 55,
+          "mean_coverage": 0.9910289924
+        },
+        {
+          "fold": "2021-2022",
+          "period": "1960-1980",
+          "objects": 118,
+          "rows": 197673,
+          "eligible": 0,
+          "mean_coverage": 0.7961953019
+        },
+        {
+          "fold": "2021-2022",
+          "period": "1981-1989",
+          "objects": 56,
+          "rows": 116767,
+          "eligible": 55,
+          "mean_coverage": 0.9910289924
+        }
+      ]
     }
   ],
   "stage_status": {
@@ -1323,7 +1617,8 @@
     "V11.2": "completed_no_gain",
     "V11.3": "completed_exploratory_gain_unconfirmed",
     "V11.4": "completed_no_gain_repository_checks_verified",
-    "V11.5": "benchmark_failed_export_corrected_retry_required"
+    "V11.5": "completed_no_gain",
+    "V11.6": "rolling_local_refit_predeclared"
   },
   "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access.",
   "v115_protocol": {
@@ -1336,5 +1631,14 @@
     "source": "OFS pinned repository parquet",
     "minimum_coverage": 0.95,
     "minimum_canton_coverage": 0.8
+  },
+  "next_campaign": {
+    "version": "V12",
+    "priority": [
+      "recover documentary coverage with official object-specific pre-vote text and dated provenance",
+      "audit direction and multiple topics; evaluate same-coverage ablation",
+      "evaluate source complementarity and confidence; only then new models"
+    ],
+    "status": "planned"
   }
 }

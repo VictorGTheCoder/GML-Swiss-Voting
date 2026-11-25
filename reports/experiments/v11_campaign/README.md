@@ -40,3 +40,11 @@
 ### V11.5 — incident du benchmark (25 novembre 2026)
 
 [Run 45506576707](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45506576707) : 3 tests ciblés réussis, les trois plis calculés et contrôles de replay/population franchis, puis `KeyError` à l’export : la variable `audit` documentaire était écrasée par l’audit historique dans la boucle. Artefact partiel [14971834596](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45506576707/artifacts/14971834596), aucun score validé avant manifeste complet. Correction : variables distinctes, export strict et test de régression, sans changer les configurations. Reproduction nécessaire. L’audit mesuré confirme 0/118 objets admissibles en 1960–1980 (couverture moyenne 79,62–79,66 %) et 55/56 en 1981–1989 (99,10–99,15 %). CI générale de la première tentative réussie. V11.3 demeure le meilleur exploratoire ; V11.6 reste prioritaire après résolution.
+
+### V11.5 — clôture
+
+[Résultats définitifs](V11.5-results.md) · [Reproduction réussie](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45514950645). 6,9678 pp avec extension à 1981 (5 ans), 7,0616 avec 15 ans sans extension et 7,0842 avec extension. Référence V11.3 reproduite exactement à 6,9558. Aucun gain.
+
+### V11.6 — robustesse
+
+[Protocole](V11.6-protocol.md) : refit local à 23 dates, deux variantes fixes, ancres nationales inchangées. Benchmark à vérifier. V12 : récupération des textes officiels manquants et contrôle apparié de couverture, puis descriptions multi-enjeux ; maintenir le registre et la séparation du test final.
