@@ -1,0 +1,32 @@
+{
+  "campaign": "V13",
+  "status": "in_progress",
+  "active": "V13.1",
+  "base_v12": "c35595736b21b7d535e0ff7fbaf4b2c584f2bae3",
+  "best_observed": {
+    "version": "V11.3",
+    "mae_pp": 6.955753873756506
+  },
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868,
+    "period": "2016-2022"
+  },
+  "completed": [],
+  "pending": [
+    "V13.1",
+    "V13.2",
+    "V13.3"
+  ],
+  "deferred": [
+    "V12.2"
+  ],
+  "v131": {
+    "status": "implemented_acquisition_unverified",
+    "doi": "10.48620/98224",
+    "source_vintage": "2026-03-08",
+    "workflow": ".github/workflows/aps-audit-v131.yml",
+    "training_rows_admitted": 0
+  }
+}

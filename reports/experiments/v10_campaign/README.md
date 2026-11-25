@@ -35,3 +35,7 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 
 ## Campagnes suivantes
 [V11](../v11_campaign/README.md) · [V12](../v12_campaign/README.md). V11.3 meilleur exploratoire 6,9558 pp ; V12.1 mesurée sans gain. Aucun modèle promu.
+
+## Continuité de recherche
+
+[V11](../v11_campaign/README.md) · [V12](../v12_campaign/README.md) · [V13](../v13_campaign/README.md) (index présent sur la branche V13). Meilleur exploratoire V11.3 6,9558 pp ; V12.4 sans gain. V12.2 différée, V13 audit de nouvelles sources. Aucun modèle promu.
