@@ -1,6 +1,6 @@
 {
   "status": "in_progress",
-  "active": "V12.2",
+  "active": "V12.3",
   "base_v11_sha": "64d368dbe815fbf43bbf43b097ed3c4d97c57381",
   "best_observed": {
     "version": "V11.3 institution_text",
@@ -193,7 +193,7 @@
   ],
   "instructions": "Verify Actions and output roster before acquiring sources. No 2023+ targets, no promotion, no holdout.",
   "v122": {
-    "status": "structural_audit_completed_provenance_unresolved",
+    "status": "deferred_provenance_unresolved",
     "objects": 6,
     "dates": 2,
     "manifest": "experiments/municipal_v12/recovery_candidates.json",
@@ -298,7 +298,13 @@
         "run": 45564553117,
         "conclusion": "failure",
         "reason": "I001 tests/test_toc_audit_v122c.py; corrected in next commit"
-      }
+      },
+      "repository_checks_repair": {
+        "run": 45572683378,
+        "conclusion": "success",
+        "jobs": 3
+      },
+      "recheck_run": 45572676447
     },
     "repeated_workflows": {
       "coverage": 45564553240,
@@ -306,5 +312,18 @@
       "byte": 45564553178,
       "decision": "Change V12 experiment triggers to scoped push paths, not PR-wide paths; no unchanged benchmark repeats."
     }
+  },
+  "v123": {
+    "status": "implemented_benchmark_unverified",
+    "configs": [
+      "pooled_exact",
+      "split_title_body",
+      "split_question_mechanism"
+    ],
+    "coverage_expected": 41,
+    "dimensions": 16,
+    "workflow": ".github/workflows/views-v123.yml",
+    "protocol": "reports/experiments/v12_campaign/V12.3-protocol.md",
+    "no_new_documents": true
   }
 }
