@@ -1,0 +1,32 @@
+name: V12.2 official brochure byte audit
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/recovery_v122.py'
+      - 'tests/test_recovery_v122.py'
+      - '.github/workflows/recovery-v122.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: recovery-v122-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - run: python -m unittest discover -s tests -p test_recovery_v122.py
+      - run: python -m scripts.modeling.recovery_v122 --manifest experiments/municipal_v12/recovery_candidates.json --output reports/generated/v122_audit/manifest.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v122-byte-audit
+          path: reports/generated/v122_audit/
+          retention-days: 30
+          if-no-files-found: warn

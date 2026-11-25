@@ -1,5 +1,5 @@
 {
-  "status": "candidates_only_not_admitted_to_training",
+  "status": "audit_prepared_not_admitted",
   "page_numbering": "printed page numbers; confirm physical index against downloaded PDF",
   "sources": [
     {
@@ -44,7 +44,9 @@
             "6140"
           ]
         }
-      ]
+      ],
+      "publication_evidence_url": "https://www.bk.admin.ch/fr/avis-du-4-aout-2017-concernant-larticle-du-tages-anzeiger-et-du-bund-consacre-aux-explications-du-conseil-federal-sur-la-reforme-de-la-prevoyance-vieillesse-soumise-au-vote-le-24-septembre-prochain",
+      "publication_evidence_date": "2017-08-04"
     },
     {
       "vote_date": "2022-05-15",
@@ -80,12 +82,19 @@
           ],
           "detail_start": 42
         }
-      ]
+      ],
+      "alternate_url": "https://www.bk.admin.ch/dam/fr/sd-web/PCWaDg8-GOcJ/2022-05-15_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2022-02-16",
+      "publication_evidence_note": "Editorial cutoff is not publication date; both official mirrors have matching visually checked TOC, bytes still unverified."
     }
   ],
   "requirements": [
     "No use of post-vote HTML outcomes. Download original brochures and hash bytes; check original publication evidence and reuse conditions, archive identity, title/section, no other-object contamination. Do not substitute 2026 migration date for historical availability.",
     "For linked 2017 objects distinguish shared context from separate legal text; no same-date outcomes. Do not assume same text is separate independent evidence.",
     "Reconcile candidates with original source hashes before replacing existing text. Keep all configurations and support masks explicit."
-  ]
+  ],
+  "reuse_evidence": {
+    "url": "https://www.edoeb.admin.ch/fr/principe-de-transparence-administration-federale",
+    "scope": "Official administrative explanations and legal text: art. 5 LDA; do not infer a blanket license for third-party illustrations or committee text. Hash-only artifact, no PDF redistribution."
+  }
 }

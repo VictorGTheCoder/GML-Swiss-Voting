@@ -21,3 +21,5 @@ Hypothèse falsifiable : la page exacte apporte un gain par rapport à matched_o
 
 ## Reprise V12.2
 [Résultats V12.1](V12.1-results.md) · [Benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45530118302) · [Candidats de récupération](../../../experiments/municipal_v12/recovery_candidates.json). 25 lacunes exactes, 19 dates-objets déjà associées à une brochure via un autre objet de la date, 6 candidats sur deux dates sans page exacte. Avant entraînement : vérifier PDF/hashes, publication et conditions de réutilisation, conserver contexte commun vs textes légaux distincts. Aucun nouveau score V12.2.
+
+[Audit V12.2](V12.2-acquisition-audit.md) : preuve contemporaine 2017, second miroir 2022, cadre de réutilisation documenté ; acquisition binaire transférée au runner, résultat non confirmé.

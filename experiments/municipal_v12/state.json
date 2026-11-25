@@ -193,9 +193,11 @@
   ],
   "instructions": "Verify Actions and output roster before acquiring sources. No 2023+ targets, no promotion, no holdout.",
   "v122": {
-    "status": "source_candidates_identified_not_admitted",
+    "status": "hash_audit_implemented_pending_ci",
     "objects": 6,
     "dates": 2,
-    "manifest": "experiments/municipal_v12/recovery_candidates.json"
+    "manifest": "experiments/municipal_v12/recovery_candidates.json",
+    "new_workflow": ".github/workflows/recovery-v122.yml",
+    "blocker": "Local DNS and binary download failed; runner acquisition not yet verified. 2022 exact publication date unresolved."
   }
 }
