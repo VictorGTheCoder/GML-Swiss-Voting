@@ -1,0 +1,42 @@
+name: V12.2c structural TOC audit
+on:
+  pull_request:
+    paths:
+      - 'scripts/modeling/toc_audit_v122c.py'
+      - 'tests/test_toc_audit_v122c.py'
+      - 'experiments/municipal_v12/toc_candidates.json'
+      - '.github/workflows/toc-audit-v122c.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: toc-audit-v122c-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - run: pip install -r requirements-experiments.txt
+      - run: python -m pytest -q tests/test_toc_audit_v122c.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: v1089-acquisition-text
+          run-id: 45367633898
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v122c_text
+      - run: python -m scripts.modeling.toc_audit_v122c --acquisition reports/generated/v122c_text --gaps reports/experiments/v12_campaign/V12.2b-gap-audit.json --toc experiments/municipal_v12/toc_candidates.json --output reports/generated/v122c_audit/manifest.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v122c-toc-audit
+          path: reports/generated/v122c_audit/
+          retention-days: 30
+          if-no-files-found: warn

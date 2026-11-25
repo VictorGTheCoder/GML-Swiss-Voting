@@ -27,3 +27,5 @@ Hypothèse falsifiable : la page exacte apporte un gain par rapport à matched_o
 Premier [audit binaire et reprise](V12.2-acquisition-audit.md) : 1 PDF / 3 objets / 6 pages hachés ; deux connexions bloquées, deux nouveaux miroirs 2017 identifiés. Aucune admission. Voir [manifeste du premier run](V12.2-first-byte-audit.json).
 
 [Deuxième audit binaire](V12.2-retry-byte-audit.json) : 2 dates / 6 objets, miroirs 2017 identiques, 2022 révision non confirmée ; CI générale réussie, audit partiel. V12.2b : diagnostic des liens de pages à date égale, sans admission ni entraînement. Aucun nouveau score.
+
+[V12.2b résultats et V12.2c](V12.2b-results.md) : 25/25 lacunes ont déjà une source unique et une liaison cohérente ; zéro candidat strict. 7/19 lacunes à date partagée ont des pistes. Audit structurel préparé sur 3 dates (8 lacunes), preuves et hashes versionnés ; ne pas relancer les téléchargements inchangés. V12.2 reste en cours et aucun texte n'est admis. Priorité : audit structurel puis V12.3, sans répéter V11.2.

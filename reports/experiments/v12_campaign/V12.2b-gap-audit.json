@@ -1,0 +1,522 @@
+{
+  "status": "audit_only_not_admitted",
+  "training_rows": 0,
+  "strict_forecast_ready": false,
+  "gaps": [
+    {
+      "vote_id": "5970",
+      "vote_date": "2016-02-28",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2016-02-28-6f225f6cd08c",
+      "pdf_sha256": "6f225f6cd08cc238db33069de7c06f2278b068fbeb4bf8ccccd6b8136d6cc43c",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/W1ntyhaPtfLI/2016-02-28_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "5990",
+      "vote_date": "2016-02-28",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2016-02-28-6f225f6cd08c",
+      "pdf_sha256": "6f225f6cd08cc238db33069de7c06f2278b068fbeb4bf8ccccd6b8136d6cc43c",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/W1ntyhaPtfLI/2016-02-28_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6110",
+      "vote_date": "2017-02-12",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [
+        {
+          "page": 38,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "06695bb12646822a5703d62df469f17ec342eb51b741414680c60d0f00f7ea17"
+        }
+      ],
+      "source_id": "bk-fr-2017-02-12-69dca2016952",
+      "pdf_sha256": "69dca20169524ea2184f3901cd5ca4d4ccf5b403ad4b9ea043d349dffbdb26a9",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/75Z9OV-noR2C/2017-02-12_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6130",
+      "vote_date": "2017-09-24",
+      "same_day_exact_elsewhere": false,
+      "source_count": 1,
+      "leads": [
+        {
+          "page": 3,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6140",
+            "6150"
+          ],
+          "sha256": "37e027e846a56675ae358cbe520b034b3732eba30a0576efedb587de2d8d57e6"
+        },
+        {
+          "page": 11,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "f97a209dca11888363ff8811af3071dc5aa76313af3f67748824f68abff5a7b2"
+        },
+        {
+          "page": 64,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6140",
+            "6150"
+          ],
+          "sha256": "574524ae57a1a14f8179535a9980c82a28f2f028c0a2343c159a057b73c38aaa"
+        }
+      ],
+      "source_id": "bk-fr-2017-09-24-f62261805f92",
+      "pdf_sha256": "f62261805f92a060cec4a51c319757b2c8ce6d03d397ed8ac7fc7f0a312f14a3",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/nQa1iYBWTOLV/2017-09-24_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6140",
+      "vote_date": "2017-09-24",
+      "same_day_exact_elsewhere": false,
+      "source_count": 1,
+      "leads": [
+        {
+          "page": 3,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6130",
+            "6150"
+          ],
+          "sha256": "37e027e846a56675ae358cbe520b034b3732eba30a0576efedb587de2d8d57e6"
+        },
+        {
+          "page": 12,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6150"
+          ],
+          "sha256": "91cde4b4ed88bbae58c85c1e501c8c6757d0c6284cec2c6255648782eaba5daa"
+        },
+        {
+          "page": 13,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6150"
+          ],
+          "sha256": "cfd87b42618856c81951be5874a61647b84ea180c51421e9b48609fa927b4cd0"
+        },
+        {
+          "page": 15,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6150"
+          ],
+          "sha256": "c861eb63122863546654b57751528ee76ae0fccd65faf6f95bc8129267b7c401"
+        },
+        {
+          "page": 24,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "c7507f32bfa7d7fb733bb27d54a717ed70453bb621a4c3529f2e3bfa2bbab6d9"
+        },
+        {
+          "page": 64,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6130",
+            "6150"
+          ],
+          "sha256": "574524ae57a1a14f8179535a9980c82a28f2f028c0a2343c159a057b73c38aaa"
+        }
+      ],
+      "source_id": "bk-fr-2017-09-24-f62261805f92",
+      "pdf_sha256": "f62261805f92a060cec4a51c319757b2c8ce6d03d397ed8ac7fc7f0a312f14a3",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/nQa1iYBWTOLV/2017-09-24_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6150",
+      "vote_date": "2017-09-24",
+      "same_day_exact_elsewhere": false,
+      "source_count": 1,
+      "leads": [
+        {
+          "page": 3,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6130",
+            "6140"
+          ],
+          "sha256": "37e027e846a56675ae358cbe520b034b3732eba30a0576efedb587de2d8d57e6"
+        },
+        {
+          "page": 12,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6140"
+          ],
+          "sha256": "91cde4b4ed88bbae58c85c1e501c8c6757d0c6284cec2c6255648782eaba5daa"
+        },
+        {
+          "page": 13,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6140"
+          ],
+          "sha256": "cfd87b42618856c81951be5874a61647b84ea180c51421e9b48609fa927b4cd0"
+        },
+        {
+          "page": 15,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6140"
+          ],
+          "sha256": "c861eb63122863546654b57751528ee76ae0fccd65faf6f95bc8129267b7c401"
+        },
+        {
+          "page": 26,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "ffee0138f292ac0feb1c8720c57ad8393647d0b3b5b37eacbdfbf2a2254d69bf"
+        },
+        {
+          "page": 64,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6130",
+            "6140"
+          ],
+          "sha256": "574524ae57a1a14f8179535a9980c82a28f2f028c0a2343c159a057b73c38aaa"
+        }
+      ],
+      "source_id": "bk-fr-2017-09-24-f62261805f92",
+      "pdf_sha256": "f62261805f92a060cec4a51c319757b2c8ce6d03d397ed8ac7fc7f0a312f14a3",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/nQa1iYBWTOLV/2017-09-24_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6170",
+      "vote_date": "2018-03-04",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [
+        {
+          "page": 3,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "7b1515f3a5aff5e33e29be4afc99ef9924dc94b9101e30ae2148c612913b9062"
+        },
+        {
+          "page": 14,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6160"
+          ],
+          "sha256": "c28e67934b2710b3c578278ae061134ab912f931aa3f4cf97633fca12da5060e"
+        },
+        {
+          "page": 23,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "53c7524390ba85dedc20a1edcccdf897b20a31bb84ab9cafc5de2d77737708a5"
+        },
+        {
+          "page": 24,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "0844f8092222c8db59e974f187c6f2853eb5f743bcb9666eb12ae17afee877f1"
+        }
+      ],
+      "source_id": "bk-fr-2018-03-04-a13c00fbc970",
+      "pdf_sha256": "a13c00fbc97017eb76e88bf7e6b8a69e003f91cd73f0e6f91cd236a1f75a929f",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/hlgHH906tARM/2018-03-04_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6190",
+      "vote_date": "2018-06-10",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [
+        {
+          "page": 26,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "a1b60a1a49574ce8aaf4cb5eb4bf9ca702d0829933dac8cc1285a3d325c8503c"
+        }
+      ],
+      "source_id": "bk-fr-2018-06-10-130b34f97d96",
+      "pdf_sha256": "130b34f97d964c350585c993f444c982dcd4a0f8cce0e3360665994ccc60fde5",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/WBiy0Vj6fgqY/2018-06-10_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6200",
+      "vote_date": "2018-09-23",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [
+        {
+          "page": 3,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6210",
+            "6220"
+          ],
+          "sha256": "aa68492d704581777b8a36ab8f2f2b150dea773ef571d07390bb4329ef255c7d"
+        },
+        {
+          "page": 17,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "f734df70f57b2f078d197ca888df459d46415844031a82d4e96189de541e6bec"
+        },
+        {
+          "page": 18,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "46604ad1893fc594ae47ea1b4f489666dbae5f7e0a9617aea76f4fe025205dd7"
+        },
+        {
+          "page": 40,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6210",
+            "6220"
+          ],
+          "sha256": "29d40f00e1b0ffbad719589138af51da2398c0e80e4a51301d81d4c215f8cabb"
+        }
+      ],
+      "source_id": "bk-fr-2018-09-23-7ee348a85b77",
+      "pdf_sha256": "7ee348a85b776f803125f86dca419750e618978446f0051e0202909d7af13681",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/vGKL0XXiP381/2018-09-23_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6280",
+      "vote_date": "2019-05-19",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2019-05-19-f563e6146d12",
+      "pdf_sha256": "f563e6146d12777b6235a63cc36a887385f07de02936b43e356c3cc9afb7bf25",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/JidqjDWbXbrM/2019-05-19_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6300",
+      "vote_date": "2020-02-09",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2020-02-09-e57074725ce3",
+      "pdf_sha256": "e57074725ce371592bfb0760665c3d90d99b972ca48dfcb0577022276da9a54e",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/aSmZ7rOvZDrG/2020-02-09_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6320",
+      "vote_date": "2020-09-27",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2020-09-27-8e3c67fd515a",
+      "pdf_sha256": "8e3c67fd515a7438d1ec687be65001c01a0ece56eb952fdd23f9ca23c8393355",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/XuiMCko39BzI/2020-09-27_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6330",
+      "vote_date": "2020-09-27",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2020-09-27-8e3c67fd515a",
+      "pdf_sha256": "8e3c67fd515a7438d1ec687be65001c01a0ece56eb952fdd23f9ca23c8393355",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/XuiMCko39BzI/2020-09-27_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6340",
+      "vote_date": "2020-09-27",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2020-09-27-8e3c67fd515a",
+      "pdf_sha256": "8e3c67fd515a7438d1ec687be65001c01a0ece56eb952fdd23f9ca23c8393355",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/XuiMCko39BzI/2020-09-27_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6400",
+      "vote_date": "2021-03-07",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [
+        {
+          "page": 54,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "06064b8f96c86f4639edb5df9b2ec37305cad4aefae23b81ee11e68bc9690b73"
+        }
+      ],
+      "source_id": "bk-fr-2021-03-07-127fe5bf3548",
+      "pdf_sha256": "127fe5bf35487ae5327cf27553838123974263f140d924fc5c1e73c0fca0bfcf",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/jezxrs8DLj5a/2021-03-07_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6430",
+      "vote_date": "2021-06-13",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2021-06-13-65c54df2537b",
+      "pdf_sha256": "65c54df2537b8ab9d6e155c0e602d6bc2379e47741004bc66565064d0aee4ab4",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/UxUxfYD5ma0h/2021-06-13_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6470",
+      "vote_date": "2021-09-26",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2021-09-26-ae46dce97c0e",
+      "pdf_sha256": "ae46dce97c0eb0b000339159ba998f373126f1879eff6bcfed6398d147d30ecf",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/NJXQlhZXHqDA/2021-09-26_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6510",
+      "vote_date": "2022-02-13",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [
+        {
+          "page": 21,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "5fa6897909b7cd29be3f51bed645ee7e363ac4211980c4e1aa208c77122b7637"
+        },
+        {
+          "page": 22,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "ad1b6c3015f6d30dd939a967c6bdf8d0350592d68de757e73f190c338dee9e5c"
+        },
+        {
+          "page": 64,
+          "kind": "other_object_title",
+          "other_ids": [
+            "6520",
+            "6540"
+          ],
+          "sha256": "53abf76e4ae8a76a38d7fa40e262ba6ca5aab67d69cbe8bb62a00d349c87eeec"
+        }
+      ],
+      "source_id": "bk-fr-2022-02-13-2d8cb9710acf",
+      "pdf_sha256": "2d8cb9710acf095b5bdb2f5cf431f1bdd93e21b5e250b168170a1e249b0b7a22",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/JwKnnvQMcYT2/2022-02-13_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6530",
+      "vote_date": "2022-02-13",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2022-02-13-2d8cb9710acf",
+      "pdf_sha256": "2d8cb9710acf095b5bdb2f5cf431f1bdd93e21b5e250b168170a1e249b0b7a22",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/JwKnnvQMcYT2/2022-02-13_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6550",
+      "vote_date": "2022-05-15",
+      "same_day_exact_elsewhere": false,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2022-05-15-f9c5d7830a90",
+      "pdf_sha256": "f9c5d7830a90b9af3b0c8fde853e036a14ca1b111958342bb39ad98576adc308",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/PCWaDg8-GOcJ/2022-05-15_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6560",
+      "vote_date": "2022-05-15",
+      "same_day_exact_elsewhere": false,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2022-05-15-f9c5d7830a90",
+      "pdf_sha256": "f9c5d7830a90b9af3b0c8fde853e036a14ca1b111958342bb39ad98576adc308",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/PCWaDg8-GOcJ/2022-05-15_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6570",
+      "vote_date": "2022-05-15",
+      "same_day_exact_elsewhere": false,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2022-05-15-f9c5d7830a90",
+      "pdf_sha256": "f9c5d7830a90b9af3b0c8fde853e036a14ca1b111958342bb39ad98576adc308",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/PCWaDg8-GOcJ/2022-05-15_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6590",
+      "vote_date": "2022-09-25",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [
+        {
+          "page": 36,
+          "kind": "no_summary_marker",
+          "other_ids": [],
+          "sha256": "6328cacdc156c551762c5b65c3dc41ecd72c8c9e849fefbbf68c5a1959571a94"
+        }
+      ],
+      "source_id": "bk-fr-2022-09-25-ed311ed79502",
+      "pdf_sha256": "ed311ed79502a5ffb79d33e83d6ed177cb01aa3b9d1fdb9b5e324fadb443ca78",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/SwAIDvDocLte/2022-09-25_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6600",
+      "vote_date": "2022-09-25",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2022-09-25-ed311ed79502",
+      "pdf_sha256": "ed311ed79502a5ffb79d33e83d6ed177cb01aa3b9d1fdb9b5e324fadb443ca78",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/SwAIDvDocLte/2022-09-25_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    },
+    {
+      "vote_id": "6610",
+      "vote_date": "2022-09-25",
+      "same_day_exact_elsewhere": true,
+      "source_count": 1,
+      "leads": [],
+      "source_id": "bk-fr-2022-09-25-ed311ed79502",
+      "pdf_sha256": "ed311ed79502a5ffb79d33e83d6ed177cb01aa3b9d1fdb9b5e324fadb443ca78",
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/SwAIDvDocLte/2022-09-25_explications_du_conseil_federal.pdf",
+      "link_matches": true
+    }
+  ],
+  "same_day_exact_elsewhere": 19,
+  "strict_candidate_objects": 0,
+  "source_sha256": {
+    "sources.parquet": "6c46728515346cf7121fe5444d6eda16b1c0a2a430932d77c702dab96cba0124",
+    "objects.parquet": "5ca74d6aa78037e9764976b2eeef3461e08b660677f9783a4a140999ff6e0586",
+    "sections.parquet": "07756928aa9f93f830219f13f58e156b125014bafe65a1749699db0c187223aa",
+    "pages.parquet": "bcb69b0369a35bb35f95531febae03706c276de918f734d95b19aa106d525383",
+    "section_links.parquet": "15cf3c91bdf454125e945b6c654a5efceae185778f88712a30c9f68362a4e50e"
+  }
+}
