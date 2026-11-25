@@ -22,3 +22,7 @@ Toutes les mesures futures sur la population de référence, MAE macro par objet
 ## Reprise du 25 novembre — V13.1 et V13.2
 
 [Résultats de couverture APS](V13.1-cover-results.md) : 42/66 candidats datés, 14/23 dates, zéro admission ; acquisition intégrale différée. [Pilote V13.2](V13.2-source-pilot.md) : 8 candidats de sondages nationaux, six accords de dernière vague, deux premières vagues, aucun nouveau score. Priorité : compléter les vagues et vérifier provenance/licence ; V13.3 demeure en attente. Aucun benchmark répété.
+
+## V13.2b — Trois vagues pour une même date
+
+[Audit de provenance et couverture multi-vagues](V13.2b-multiwave.md) : 20 observations/12 objets/4 dates, 10/10 accords de dernière vague, 4 objets à trois vagues mais une seule date multi-vagues. CI précédente 3/3 réussie. Aucun score ni admission. Étendre à plusieurs dates anciennes avant benchmark ; sinon reprendre V13.3.

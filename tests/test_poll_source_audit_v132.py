@@ -31,3 +31,24 @@ def test_latest_agreement():
     result = audit([row], {"6230": 45}, {"6230": vote})
     assert result["latest_candidates"] == result["latest_agreements"] == 1
     assert result["strict_forecast_ready"] is False
+
+
+def test_multiple_waves_require_chronological_order():
+    vote = date(2022, 2, 13)
+    first = {"vote_key": "6510", "vote_date": vote.isoformat(), "wave": "1",
+             "fieldwork_start": "2022-01-03", "fieldwork_end": "2022-01-04",
+             "stated_release_date": "2022-01-07", "yes_share_pp": "34",
+             "comparison_role": "early_wave"}
+    third = {**first, "wave": "3", "fieldwork_start": "2022-01-27",
+             "fieldwork_end": "2022-01-28", "stated_release_date": "2022-02-02",
+             "yes_share_pp": "18", "comparison_role": "latest_candidate"}
+    result = audit([third, first], {"6510": 18}, {"6510": vote})
+    assert result["rows"] == 2
+    assert result["multiwave_objects"] == result["multiwave_dates"] == 1
+    assert result["latest_agreements"] == 1
+    with pytest.raises(ValueError, match="Overlapping or reversed"):
+        audit([first, {**third, "fieldwork_start": "2022-01-03"}],
+              {"6510": 18}, {"6510": vote})
+    with pytest.raises(ValueError, match="Overlapping or reversed"):
+        audit([{**first, "stated_release_date": "2022-02-03"}, third],
+              {"6510": 18}, {"6510": vote})

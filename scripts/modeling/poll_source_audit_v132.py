@@ -16,6 +16,7 @@ ROSTER = ROOT / "data/processed/municipal_v3/object_features.csv"
 
 def audit(candidates, reference, expected):
     seen = set()
+    waves = {}
     latest = 0
     agrees = 0
     early = 0
@@ -33,6 +34,7 @@ def audit(candidates, reference, expected):
                 or not start <= end <= release < vote or not 0 <= yes <= 100):
             raise ValueError("Invalid candidate identity, timing or share")
         seen.add(identity)
+        waves.setdefault(key, []).append((wave, start, end, release, vote))
         dates.add(vote)
         role = row["comparison_role"]
         if role == "latest_candidate":
@@ -42,7 +44,16 @@ def audit(candidates, reference, expected):
             early += 1
         else:
             raise ValueError("Unknown comparison role")
-    return {"objects": len({key for key, _ in seen}), "dates": len(dates),
+    for observations in waves.values():
+        ordered = sorted(observations)
+        for previous, current in zip(ordered, ordered[1:]):
+            if not previous[2] < current[1] or not previous[3] < current[3]:
+                raise ValueError("Overlapping or reversed survey waves")
+    multiwave = [values for values in waves.values() if len(values) >= 2]
+    return {"rows": len(seen), "objects": len(waves), "dates": len(dates),
+            "multiwave_objects": len(multiwave),
+            "three_wave_objects": sum(len(values) == 3 for values in waves.values()),
+            "multiwave_dates": len({values[0][4] for values in multiwave}),
             "latest_candidates": latest, "latest_agreements": agrees,
             "early_waves": early, "training_rows_admitted": 0,
             "strict_forecast_ready": False}

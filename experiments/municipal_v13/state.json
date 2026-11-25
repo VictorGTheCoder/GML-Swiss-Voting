@@ -72,12 +72,24 @@
     }
   },
   "v132": {
-    "status": "pilot_source_inventory_reviewed",
-    "objects": 8,
-    "dates": 3,
+    "status": "multiwave_inventory_partial_no_admission",
+    "objects": 12,
+    "dates": 4,
     "latest_value_agreements": 6,
-    "early_waves": 2,
+    "early_waves": 10,
     "training_rows_admitted": 0,
-    "strict_forecast_ready": false
+    "strict_forecast_ready": false,
+    "rows": 20,
+    "latest_candidates": 10,
+    "latest_agreements": 10,
+    "multiwave_objects": 4,
+    "three_wave_objects": 4,
+    "multiwave_dates": 1,
+    "previous_repository_checks": {
+      "run": 45618744427,
+      "conclusion": "success",
+      "jobs": 3
+    },
+    "notes": "First wave press release; wave 2 indexed PDF, visual fetch blocked; wave 3 visually checked. Multiwave coverage one date only. No benchmark."
   }
 }
