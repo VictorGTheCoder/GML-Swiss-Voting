@@ -32,3 +32,6 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 ## Reprise du 24 novembre
 
 [Rapport cumulatif actualisé](followup-report-20261124.md) : 10/10 étapes mesurées ; meilleur exploratoire V10.8 à 6,9886. Aucun déploiement ni promotion. La tâche planifiée est désactivée.
+
+## Campagnes suivantes
+[V11](../v11_campaign/README.md) · [V12](../v12_campaign/README.md). V11.3 meilleur exploratoire 6,9558 pp ; V12.1 mesurée sans gain. Aucun modèle promu.

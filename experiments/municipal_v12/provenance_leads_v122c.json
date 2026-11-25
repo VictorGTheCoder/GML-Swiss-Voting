@@ -1,0 +1,23 @@
+{
+  "status": "provenance_leads_not_admitted",
+  "records": [
+    {
+      "vote_date": "2020-09-27",
+      "source": "https://www.uvek.admin.ch/fr/loi-sur-la-chasse-interviews-et-documents",
+      "evidence_date": "2020-07-29",
+      "evidence": "Official departmental dossier lists brochure with this date; exact pinned bytes still not independently linked to this vintage."
+    },
+    {
+      "vote_date": "2022-02-13",
+      "source": "https://www.admin.ch/fr/nsb?id=86621",
+      "evidence_date": "2021-12-22",
+      "evidence": "Contemporaneous Chancellery correction confirms original print and corrected online PDF; changes pages 32 and 33; verify exact archived revision, not just page identity."
+    },
+    {
+      "vote_date": "2022-09-25",
+      "source": "https://www.bsv.admin.ch/fr/avs-21-votation",
+      "evidence_date": "2022-06-27",
+      "evidence": "Official dossier lists dated fact sheets on AVS reform; potential independent pre-vote texts; only dated documents may be considered, never page-level retrospective content. No exact brochure vintage certified."
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "status": "audit_only_not_admitted",
+  "evidence": "Official PDF tables of contents visually inspected, physical one-based page numbers; keyword terms are identity checks, not features. No ordinal-to-vote-ID assumption. Shared blocks never considered separate independent text.",
+  "dates": [
+    {
+      "date": "2020-09-27",
+      "toc_pages": [
+        2,
+        3
+      ],
+      "entries": [
+        {
+          "terms": [
+            [
+              "immigration"
+            ]
+          ],
+          "summary": [
+            4,
+            5
+          ],
+          "detail": 14,
+          "arguments": 20,
+          "legal": 24
+        },
+        {
+          "terms": [
+            [
+              "chasse"
+            ]
+          ],
+          "summary": [
+            6,
+            7
+          ],
+          "detail": 26,
+          "arguments": 34,
+          "legal": 38
+        },
+        {
+          "terms": [
+            [
+              "impot",
+              "direct"
+            ],
+            [
+              "frais",
+              "garde"
+            ]
+          ],
+          "summary": [
+            8,
+            9
+          ],
+          "detail": 46,
+          "arguments": 52,
+          "legal": 56
+        },
+        {
+          "terms": [
+            [
+              "allocations",
+              "gain"
+            ],
+            [
+              "conge",
+              "paternite"
+            ]
+          ],
+          "summary": [
+            10,
+            11
+          ],
+          "detail": 58,
+          "arguments": 62,
+          "legal": 66
+        },
+        {
+          "terms": [
+            [
+              "avions",
+              "combat"
+            ]
+          ],
+          "summary": [
+            12,
+            13
+          ],
+          "detail": 74,
+          "arguments": 80,
+          "legal": 84
+        }
+      ],
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/XuiMCko39BzI/2020-09-27_explications_du_conseil_federal.pdf",
+      "source_id": "bk-fr-2020-09-27-8e3c67fd515a",
+      "pdf_sha256": "8e3c67fd515a7438d1ec687be65001c01a0ece56eb952fdd23f9ca23c8393355",
+      "gap_ids": [
+        "6320",
+        "6330",
+        "6340"
+      ],
+      "status": "visual_toc_candidate_pending_pinned_page_audit"
+    },
+    {
+      "date": "2022-02-13",
+      "toc_pages": [
+        3
+      ],
+      "entries": [
+        {
+          "terms": [
+            [
+              "experimentation",
+              "animale"
+            ]
+          ],
+          "summary": [
+            4,
+            5
+          ],
+          "detail": 12,
+          "arguments": 18,
+          "legal": 22
+        },
+        {
+          "terms": [
+            [
+              "tabac"
+            ]
+          ],
+          "summary": [
+            6,
+            7
+          ],
+          "detail": 24,
+          "arguments": 30,
+          "legal": 34
+        },
+        {
+          "terms": [
+            [
+              "timbre"
+            ]
+          ],
+          "summary": [
+            8,
+            9
+          ],
+          "detail": 36,
+          "arguments": 40,
+          "legal": 44
+        },
+        {
+          "terms": [
+            [
+              "medias"
+            ]
+          ],
+          "summary": [
+            10,
+            11
+          ],
+          "detail": 46,
+          "arguments": 52,
+          "legal": 56
+        }
+      ],
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/JwKnnvQMcYT2/2022-02-13_explications_du_conseil_federal.pdf",
+      "source_id": "bk-fr-2022-02-13-2d8cb9710acf",
+      "pdf_sha256": "2d8cb9710acf095b5bdb2f5cf431f1bdd93e21b5e250b168170a1e249b0b7a22",
+      "gap_ids": [
+        "6510",
+        "6530"
+      ],
+      "status": "visual_toc_candidate_pending_pinned_page_audit"
+    },
+    {
+      "date": "2022-09-25",
+      "toc_pages": [
+        3
+      ],
+      "entries": [
+        {
+          "terms": [
+            [
+              "elevage",
+              "intensif"
+            ]
+          ],
+          "summary": [
+            4,
+            5
+          ],
+          "detail": 12,
+          "arguments": 18,
+          "legal": 22
+        },
+        {
+          "terms": [
+            [
+              "tva"
+            ],
+            [
+              "taxe",
+              "valeur",
+              "ajoutee"
+            ]
+          ],
+          "summary": [
+            6,
+            9
+          ],
+          "detail": 24,
+          "arguments": 30,
+          "legal": 36,
+          "shared": "avs2022"
+        },
+        {
+          "terms": [
+            [
+              "avs",
+              "21"
+            ],
+            [
+              "assurance",
+              "vieillesse",
+              "survivants"
+            ]
+          ],
+          "summary": [
+            6,
+            9
+          ],
+          "detail": 24,
+          "arguments": 30,
+          "legal": 36,
+          "shared": "avs2022"
+        },
+        {
+          "terms": [
+            [
+              "impot",
+              "anticipe"
+            ]
+          ],
+          "summary": [
+            10,
+            11
+          ],
+          "detail": 58,
+          "arguments": 64,
+          "legal": 68
+        }
+      ],
+      "source_url": "https://www.bk.admin.ch/dam/fr/sd-web/SwAIDvDocLte/2022-09-25_explications_du_conseil_federal.pdf",
+      "source_id": "bk-fr-2022-09-25-ed311ed79502",
+      "pdf_sha256": "ed311ed79502a5ffb79d33e83d6ed177cb01aa3b9d1fdb9b5e324fadb443ca78",
+      "gap_ids": [
+        "6590",
+        "6600",
+        "6610"
+      ],
+      "status": "visual_toc_candidate_pending_pinned_page_audit"
+    }
+  ]
+}

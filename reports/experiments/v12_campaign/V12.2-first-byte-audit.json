@@ -1,0 +1,67 @@
+{
+  "status": "audit_only_not_admitted",
+  "sources": [
+    {
+      "vote_date": "2017-09-24",
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/nQa1iYBWTOLV/2017-09-24_explications_du_conseil_federal.pdf",
+      "status": "blocked",
+      "error": "Remote end closed connection without response"
+    },
+    {
+      "vote_date": "2022-05-15",
+      "url": "https://www.admin.ch/dam/fr/sd-web/fPSuNq0RJHhu/15.05.2022%20%E2%80%93%20Explications%20du%20Conseil%20fe%CC%81de%CC%81ral.pdf",
+      "pdf_sha256": "f9c5d7830a90b9af3b0c8fde853e036a14ca1b111958342bb39ad98576adc308",
+      "bytes": 1994060,
+      "page_count": 56,
+      "toc_identity_pass": true,
+      "pages": [
+        {
+          "vote_id": "6550",
+          "physical_page": 4,
+          "text_sha256": "126a7880a91509af8af0ec024c4831003c364c3b38a53c521aea8e70b8b1ab1f",
+          "text_chars": 1517
+        },
+        {
+          "vote_id": "6550",
+          "physical_page": 5,
+          "text_sha256": "812cb4edc91322bfafba61f157d160746673dda7b34c03647b11223e33858d14",
+          "text_chars": 1785
+        },
+        {
+          "vote_id": "6560",
+          "physical_page": 6,
+          "text_sha256": "18c9e8ced16e91a899c8aaf1d7c8f5ba8423b4098e428ff86e9fcbe439e8b3f7",
+          "text_chars": 2490
+        },
+        {
+          "vote_id": "6560",
+          "physical_page": 7,
+          "text_sha256": "4a8676597bfe397c033f39869890f187de110ae698018380bce48586d97585d0",
+          "text_chars": 1828
+        },
+        {
+          "vote_id": "6570",
+          "physical_page": 8,
+          "text_sha256": "5d307afe8fb37efbab60f5a61b4da8c672abc58bd09dbafb92e991a12548e615",
+          "text_chars": 2296
+        },
+        {
+          "vote_id": "6570",
+          "physical_page": 9,
+          "text_sha256": "e5f12d58b5efd7704d889ba0fd191ae1167d630af5508d308b1b65f090d1cf49",
+          "text_chars": 2001
+        }
+      ],
+      "status": "hashed_candidate"
+    },
+    {
+      "vote_date": "2022-05-15",
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/PCWaDg8-GOcJ/2022-05-15_explications_du_conseil_federal.pdf",
+      "status": "blocked",
+      "error": "Remote end closed connection without response"
+    }
+  ],
+  "mirror_bytes_equal": null,
+  "strict_forecast_ready": false,
+  "training_rows": 0
+}

@@ -1,0 +1,107 @@
+{
+  "status": "audit_only",
+  "remaining": [
+    {
+      "vote_id": "5970",
+      "vote_date": "2016-02-28",
+      "source_id": "bk-fr-2016-02-28-6f225f6cd08c",
+      "pdf_sha256": "6f225f6cd08cc238db33069de7c06f2278b068fbeb4bf8ccccd6b8136d6cc43c"
+    },
+    {
+      "vote_id": "5990",
+      "vote_date": "2016-02-28",
+      "source_id": "bk-fr-2016-02-28-6f225f6cd08c",
+      "pdf_sha256": "6f225f6cd08cc238db33069de7c06f2278b068fbeb4bf8ccccd6b8136d6cc43c"
+    },
+    {
+      "vote_id": "6110",
+      "vote_date": "2017-02-12",
+      "source_id": "bk-fr-2017-02-12-69dca2016952",
+      "pdf_sha256": "69dca20169524ea2184f3901cd5ca4d4ccf5b403ad4b9ea043d349dffbdb26a9"
+    },
+    {
+      "vote_id": "6130",
+      "vote_date": "2017-09-24",
+      "source_id": "bk-fr-2017-09-24-f62261805f92",
+      "pdf_sha256": "f62261805f92a060cec4a51c319757b2c8ce6d03d397ed8ac7fc7f0a312f14a3"
+    },
+    {
+      "vote_id": "6140",
+      "vote_date": "2017-09-24",
+      "source_id": "bk-fr-2017-09-24-f62261805f92",
+      "pdf_sha256": "f62261805f92a060cec4a51c319757b2c8ce6d03d397ed8ac7fc7f0a312f14a3"
+    },
+    {
+      "vote_id": "6150",
+      "vote_date": "2017-09-24",
+      "source_id": "bk-fr-2017-09-24-f62261805f92",
+      "pdf_sha256": "f62261805f92a060cec4a51c319757b2c8ce6d03d397ed8ac7fc7f0a312f14a3"
+    },
+    {
+      "vote_id": "6170",
+      "vote_date": "2018-03-04",
+      "source_id": "bk-fr-2018-03-04-a13c00fbc970",
+      "pdf_sha256": "a13c00fbc97017eb76e88bf7e6b8a69e003f91cd73f0e6f91cd236a1f75a929f"
+    },
+    {
+      "vote_id": "6190",
+      "vote_date": "2018-06-10",
+      "source_id": "bk-fr-2018-06-10-130b34f97d96",
+      "pdf_sha256": "130b34f97d964c350585c993f444c982dcd4a0f8cce0e3360665994ccc60fde5"
+    },
+    {
+      "vote_id": "6200",
+      "vote_date": "2018-09-23",
+      "source_id": "bk-fr-2018-09-23-7ee348a85b77",
+      "pdf_sha256": "7ee348a85b776f803125f86dca419750e618978446f0051e0202909d7af13681"
+    },
+    {
+      "vote_id": "6280",
+      "vote_date": "2019-05-19",
+      "source_id": "bk-fr-2019-05-19-f563e6146d12",
+      "pdf_sha256": "f563e6146d12777b6235a63cc36a887385f07de02936b43e356c3cc9afb7bf25"
+    },
+    {
+      "vote_id": "6300",
+      "vote_date": "2020-02-09",
+      "source_id": "bk-fr-2020-02-09-e57074725ce3",
+      "pdf_sha256": "e57074725ce371592bfb0760665c3d90d99b972ca48dfcb0577022276da9a54e"
+    },
+    {
+      "vote_id": "6400",
+      "vote_date": "2021-03-07",
+      "source_id": "bk-fr-2021-03-07-127fe5bf3548",
+      "pdf_sha256": "127fe5bf35487ae5327cf27553838123974263f140d924fc5c1e73c0fca0bfcf"
+    },
+    {
+      "vote_id": "6430",
+      "vote_date": "2021-06-13",
+      "source_id": "bk-fr-2021-06-13-65c54df2537b",
+      "pdf_sha256": "65c54df2537b8ab9d6e155c0e602d6bc2379e47741004bc66565064d0aee4ab4"
+    },
+    {
+      "vote_id": "6470",
+      "vote_date": "2021-09-26",
+      "source_id": "bk-fr-2021-09-26-ae46dce97c0e",
+      "pdf_sha256": "ae46dce97c0eb0b000339159ba998f373126f1879eff6bcfed6398d147d30ecf"
+    },
+    {
+      "vote_id": "6550",
+      "vote_date": "2022-05-15",
+      "source_id": "bk-fr-2022-05-15-f9c5d7830a90",
+      "pdf_sha256": "f9c5d7830a90b9af3b0c8fde853e036a14ca1b111958342bb39ad98576adc308"
+    },
+    {
+      "vote_id": "6560",
+      "vote_date": "2022-05-15",
+      "source_id": "bk-fr-2022-05-15-f9c5d7830a90",
+      "pdf_sha256": "f9c5d7830a90b9af3b0c8fde853e036a14ca1b111958342bb39ad98576adc308"
+    },
+    {
+      "vote_id": "6570",
+      "vote_date": "2022-05-15",
+      "source_id": "bk-fr-2022-05-15-f9c5d7830a90",
+      "pdf_sha256": "f9c5d7830a90b9af3b0c8fde853e036a14ca1b111958342bb39ad98576adc308"
+    }
+  ]
+}

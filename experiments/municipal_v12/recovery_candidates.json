@@ -1,0 +1,108 @@
+{
+  "status": "audit_prepared_not_admitted",
+  "page_numbering": "printed page numbers; confirm physical index against downloaded PDF",
+  "sources": [
+    {
+      "vote_date": "2017-09-24",
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/nQa1iYBWTOLV/2017-09-24_explications_du_conseil_federal.pdf",
+      "catalog_url": "https://www.admin.ch/fr/votation-populaire-du-24-septembre-2017",
+      "catalog_publication": "2017-07-31",
+      "editorial_cutoff": "2017-06-16",
+      "toc_page": 3,
+      "pdf_sha256": null,
+      "license_status": "unverified",
+      "objects": [
+        {
+          "vote_id": "6130",
+          "summary_pages": [
+            4,
+            5
+          ],
+          "legal_pages": [
+            8
+          ]
+        },
+        {
+          "vote_id": "6140",
+          "shared_explanation_start": 12,
+          "legal_pages": [
+            24,
+            25
+          ],
+          "linked_vote_ids": [
+            "6150"
+          ]
+        },
+        {
+          "vote_id": "6150",
+          "shared_explanation_start": 12,
+          "legal_range": [
+            26,
+            61
+          ],
+          "linked_vote_ids": [
+            "6140"
+          ]
+        }
+      ],
+      "publication_evidence_url": "https://www.bk.admin.ch/fr/avis-du-4-aout-2017-concernant-larticle-du-tages-anzeiger-et-du-bund-consacre-aux-explications-du-conseil-federal-sur-la-reforme-de-la-prevoyance-vieillesse-soumise-au-vote-le-24-septembre-prochain",
+      "publication_evidence_date": "2017-08-04",
+      "additional_urls": [
+        "https://www.admin.ch/dam/fr/sd-web/jZZ8sYmiwOVF/24.09.2017%20-%20Explications%20du%20Conseil%20fe%CC%81de%CC%81ral.pdf",
+        "https://www.fr.ch/sites/default/files/2018-06/20170924_fr-abstimmungserlauterungen-pdf.pdf"
+      ],
+      "mirror_note": "Both additional mirrors' printed page 3 visually checked; cantonal archive upload path 2018 is not historical publication evidence."
+    },
+    {
+      "vote_date": "2022-05-15",
+      "url": "https://www.admin.ch/dam/fr/sd-web/fPSuNq0RJHhu/15.05.2022%20%E2%80%93%20Explications%20du%20Conseil%20fe%CC%81de%CC%81ral.pdf",
+      "catalog_url": "https://www.admin.ch/fr/votation-populaire-du-15-mai-2022",
+      "catalog_revision": "2026-02-12",
+      "publication_date": null,
+      "toc_page": 3,
+      "pdf_sha256": null,
+      "license_status": "unverified",
+      "objects": [
+        {
+          "vote_id": "6550",
+          "summary_pages": [
+            4,
+            5
+          ],
+          "detail_start": 10
+        },
+        {
+          "vote_id": "6560",
+          "summary_pages": [
+            6,
+            7
+          ],
+          "detail_start": 26
+        },
+        {
+          "vote_id": "6570",
+          "summary_pages": [
+            8,
+            9
+          ],
+          "detail_start": 42
+        }
+      ],
+      "alternate_url": "https://www.bk.admin.ch/dam/fr/sd-web/PCWaDg8-GOcJ/2022-05-15_explications_du_conseil_federal.pdf",
+      "editorial_cutoff": "2022-02-16",
+      "publication_evidence_note": "Contemporary Keystone-ATS report establishes existence and correction on 2022-04-13, not exact first release or identity of current archive bytes. Digital revision must be tracked separately from print. No admission yet.",
+      "publication_evidence_date": "2022-04-13",
+      "publication_evidence_url": "https://www.lfm.ch/actualite/suisse/loi-sur-le-cinema-la-chancellerie-precise-la-brochure-de-vote/",
+      "observed_pdf_sha256": "f9c5d7830a90b9af3b0c8fde853e036a14ca1b111958342bb39ad98576adc308"
+    }
+  ],
+  "requirements": [
+    "No use of post-vote HTML outcomes. Download original brochures and hash bytes; check original publication evidence and reuse conditions, archive identity, title/section, no other-object contamination. Do not substitute 2026 migration date for historical availability.",
+    "For linked 2017 objects distinguish shared context from separate legal text; no same-date outcomes. Do not assume same text is separate independent evidence.",
+    "Reconcile candidates with original source hashes before replacing existing text. Keep all configurations and support masks explicit."
+  ],
+  "reuse_evidence": {
+    "url": "https://www.edoeb.admin.ch/fr/principe-de-transparence-administration-federale",
+    "scope": "Official administrative explanations and legal text: art. 5 LDA; do not infer a blanket license for third-party illustrations or committee text. Hash-only artifact, no PDF redistribution."
+  }
+}

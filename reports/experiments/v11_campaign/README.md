@@ -52,3 +52,6 @@
 ### V11.6 — clôture de V11
 
 [Résultats](V11.6-results.md) · [Benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45522712083). Refit institution 7,0170 pp, refit texte 7,0532 pp ; aucun gain. V11.3 reste meilleur exploratoire (6,9558 pp). V11 : 6/6 étapes terminées, aucune promotion. V12 prioritaire : ablation documentaire à support strictement apparié, récupération des textes officiels manquants et contrôle de provenance, puis représentations multi-enjeux.
+
+## Suite V12
+[Registre V12](../v12_campaign/README.md) — V12.1 mesurée, V12.2 en audit documentaire. Aucun changement du meilleur exploratoire.
