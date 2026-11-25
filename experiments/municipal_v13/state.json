@@ -23,10 +23,30 @@
     "V12.2"
   ],
   "v131": {
-    "status": "implemented_acquisition_unverified",
+    "status": "csv_http_403_report_audit_implemented",
     "doi": "10.48620/98224",
     "source_vintage": "2026-03-08",
     "workflow": ".github/workflows/aps-audit-v131.yml",
-    "training_rows_admitted": 0
+    "training_rows_admitted": 0,
+    "failed_run": {
+      "run": 45600074384,
+      "job": 139156363248,
+      "targeted_tests": 2,
+      "conclusion": "failure",
+      "reason": "HTTP 403",
+      "artifacts": 0
+    },
+    "repository_checks": {
+      "run": 45600097679,
+      "conclusion": "failure",
+      "reason": "DTZ007, corrected; municipal-experiments passed"
+    },
+    "fallback": {
+      "workflow": ".github/workflows/aps-report-audit-v131.yml",
+      "status": "implemented_unverified",
+      "example_url": "https://swissvotes.ch/vote/661.00/inserateanalyse.pdf",
+      "example_cover_date": "2022-09-15",
+      "example_vote_date": "2022-09-25"
+    }
   }
 }

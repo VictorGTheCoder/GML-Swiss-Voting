@@ -20,7 +20,7 @@ COLUMNS = {"id.of.ad", "publication.date", "voting.date", "link.to.swissvotes"}
 def day(value):
     for fmt in ("%Y-%m-%d", "%d.%m.%Y", "%d/%m/%Y", "%Y/%m/%d"):
         try:
-            return datetime.strptime(value.strip(), fmt).date()
+            return datetime.strptime(value.strip(), fmt).date()  # noqa: DTZ007 — calendar date only
         except ValueError:
             continue
     raise ValueError("Unrecognized date format")

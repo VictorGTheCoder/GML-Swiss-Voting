@@ -14,3 +14,7 @@ La base d'annonces de presse APS (Université de Berne) est distincte des rappor
 4. V12.2 : reprendre si nouvelle preuve d'édition historique. Ne pas répéter les téléchargements inchangés.
 
 Toutes les mesures futures sur la population de référence, MAE macro par objet, centrée, nationale et cantonale ; poids ex ante pour prédiction, bulletins réels uniquement pour scoring. Bootstrap apparié par date, diagnostic par objet/pli/thème/canton/commune ; ajustement uniquement sur dates antérieures. Risque de surajustement aux mêmes 23 dates. Ne pas utiliser de résultats 2023+ ni promouvoir.
+
+## Reprise V13.1 — alternative aux données CSV
+
+[Incident HTTP 403 et audit des couvertures contemporaines](V13.1-report-fallback.md). Deux tests CSV réussis, aucune acquisition ; audit de rapports Swissvotes indépendant implémenté, aucun résultat nouveau. Le CSV reste manuel, ne pas relancer sans changement de source. V13.2 reste prioritaire si l'audit de couvertures échoue.

@@ -1,12 +1,5 @@
 name: V13.1 APS archive audit
 on:
-  push:
-    branches:
-      - 'experiment/municipal-v13-aps-source-20261125'
-    paths:
-      - '.github/workflows/aps-audit-v131.yml'
-      - 'scripts/modeling/aps_audit_v131.py'
-      - 'tests/test_aps_audit_v131.py'
   workflow_dispatch:
 permissions:
   contents: read
