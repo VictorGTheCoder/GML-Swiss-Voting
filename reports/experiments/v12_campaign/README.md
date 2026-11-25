@@ -36,3 +36,5 @@ Premier [audit binaire et reprise](V12.2-acquisition-audit.md) : 1 PDF / 3 objet
 
 
 [V12.3 résultats](V12.3-results.md) : contrôle exact reproduit, splits 7,3053 et 7,4083 pp, aucun gain. Benchmark et 3 tests réussis, CI générale C420 corrigée sans changement fonctionnel ; ne pas relancer V12.3 automatiquement. [V12.4 protocole](V12.4-protocol.md) : complémentarité niveau/forme et sensibilité par date, expérience implémentée, résultat en attente de vérification. V12.2 reste différée (provenance). Après V12.4, V13 : priorité à un inventaire indépendant de données ex ante supplémentaires et signaux nationaux sous-couverts, puis méthodes locales si justifiées par diagnostics. Ne pas ouvrir le holdout.
+
+[V12.4 résultats](V12.4-results.md) : 8 configurations dont 4 nouvelles, 3 tests et CI réussis, meilleur nouveau mélange 6,9705 pp, V11.3 reste à 6,9558. V12 clôturée pour les benchmarks ; V12.2 différée sans admission. Prochaine campagne V13 : audit d'une source indépendante, [index](../v13_campaign/README.md) sur la branche V13.
