@@ -1,11 +1,12 @@
 name: V12.1 matched documentary coverage
 on:
-  pull_request:
+  push:
+    branches:
+      - 'experiment/municipal-v12-document-coverage-20261125'
     paths:
       - 'scripts/modeling/coverage_v121.py'
       - 'scripts/modeling/documentary_audit_v112.py'
       - 'tests/test_coverage_v121.py'
-      - '.github/workflows/coverage-v121.yml'
   workflow_dispatch:
 permissions:
   contents: read

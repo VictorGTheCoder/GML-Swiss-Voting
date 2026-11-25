@@ -193,7 +193,7 @@
   ],
   "instructions": "Verify Actions and output roster before acquiring sources. No 2023+ targets, no promotion, no holdout.",
   "v122": {
-    "status": "gap_audit_completed_structural_toc_candidates_prepared",
+    "status": "structural_audit_completed_provenance_unresolved",
     "objects": 6,
     "dates": 2,
     "manifest": "experiments/municipal_v12/recovery_candidates.json",
@@ -216,7 +216,7 @@
         "reason": "I001 test import spacing (fixed in this patch)"
       }
     },
-    "next": "Run structural page audit for three visually checked dates (8 missing objects); extend TOC manifest to remaining dates; verify 2022 archive revision separately. No admission until provenance and identity pass.",
+    "next": "Finish TOC mapping for the 17 remaining gaps; prioritize validating independent pre-vote version evidence and shared AVS text separation; V12.3 may proceed with matched coverage without admitting unverified pages.",
     "retry": {
       "run": 45550890702,
       "artifact": 14994400070,
@@ -270,11 +270,41 @@
       "reason": "Same two closed connections; no new provenance; stop unchanged retries"
     },
     "toc_audit": {
-      "status": "prepared_not_run",
+      "status": "completed_audit_only",
+      "run": 45564553271,
+      "job": 139036075530,
+      "artifact": 14999910575,
+      "artifact_digest": "sha256:90718a7ed8f59e3fb4d43334f591c1e6fe907a785c8af813578f4f9d18c18603",
+      "sha": "4eb3afcfb616e15c8108d7caa3562b41f4b71e07",
       "dates": 3,
       "entries": 13,
-      "gaps": 8,
-      "manifest": "experiments/municipal_v12/toc_candidates.json"
+      "unique_candidates": 11,
+      "shared_candidates": 2,
+      "gap_ids": [
+        "6320",
+        "6330",
+        "6340",
+        "6510",
+        "6530",
+        "6590",
+        "6600",
+        "6610"
+      ],
+      "remaining_gaps": 17,
+      "training_rows": 0,
+      "targeted_tests": 3,
+      "manifest": "reports/experiments/v12_campaign/V12.2c-toc-audit.json",
+      "repository_checks": {
+        "run": 45564553117,
+        "conclusion": "failure",
+        "reason": "I001 tests/test_toc_audit_v122c.py; corrected in next commit"
+      }
+    },
+    "repeated_workflows": {
+      "coverage": 45564553240,
+      "gap": 45564553142,
+      "byte": 45564553178,
+      "decision": "Change V12 experiment triggers to scoped push paths, not PR-wide paths; no unchanged benchmark repeats."
     }
   }
 }

@@ -1,6 +1,6 @@
 """TOC aliases are identity checks, not ordinal assumptions or admission."""
-from scripts.modeling.toc_audit_v122c import review_entry
 
+from scripts.modeling.toc_audit_v122c import review_entry
 
 ENTRY = {"terms": [["taxe", "valeur"]], "summary": [4, 5], "detail": 8,
          "arguments": 10, "legal": 12}

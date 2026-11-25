@@ -1,11 +1,12 @@
 name: V12.2 official brochure byte audit
 on:
-  pull_request:
+  push:
+    branches:
+      - 'experiment/municipal-v12-document-coverage-20261125'
     paths:
       - 'scripts/modeling/recovery_v122.py'
       - 'experiments/municipal_v12/recovery_candidates.json'
       - 'tests/test_recovery_v122.py'
-      - '.github/workflows/recovery-v122.yml'
   workflow_dispatch:
 permissions:
   contents: read

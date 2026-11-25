@@ -1,10 +1,11 @@
 name: V12.2b same-date gap audit
 on:
-  pull_request:
+  push:
+    branches:
+      - 'experiment/municipal-v12-document-coverage-20261125'
     paths:
       - 'scripts/modeling/gap_audit_v122b.py'
       - 'tests/test_gap_audit_v122b.py'
-      - '.github/workflows/gap-audit-v122b.yml'
   workflow_dispatch:
 permissions:
   contents: read

@@ -1,11 +1,12 @@
 name: V12.2c structural TOC audit
 on:
-  pull_request:
+  push:
+    branches:
+      - 'experiment/municipal-v12-document-coverage-20261125'
     paths:
       - 'scripts/modeling/toc_audit_v122c.py'
       - 'tests/test_toc_audit_v122c.py'
       - 'experiments/municipal_v12/toc_candidates.json'
-      - '.github/workflows/toc-audit-v122c.yml'
   workflow_dispatch:
 permissions:
   contents: read

@@ -1,0 +1,392 @@
+{
+  "status": "audit_only_not_admitted",
+  "training_rows": 0,
+  "strict_forecast_ready": false,
+  "records": [
+    {
+      "vote_ids": [
+        "6310"
+      ],
+      "summary_pages": [
+        4,
+        5
+      ],
+      "shared": null,
+      "status": "unique_candidate",
+      "page_hashes": [
+        {
+          "page": 4,
+          "sha256": "cc08e40bb0994cf19cc114480bb03f77561ffea4d4f0fc6c4be506b0a1906d00",
+          "chars": 1629
+        },
+        {
+          "page": 5,
+          "sha256": "3f61cd4abb6e8c93b0c0bc04ab50fd685b053cae587d7cb97cba7f414b7e988d",
+          "chars": 1093
+        }
+      ],
+      "date": "2020-09-27",
+      "source_id": "bk-fr-2020-09-27-8e3c67fd515a",
+      "gap_ids": []
+    },
+    {
+      "vote_ids": [
+        "6320"
+      ],
+      "summary_pages": [
+        6,
+        7
+      ],
+      "shared": null,
+      "status": "unique_candidate",
+      "page_hashes": [
+        {
+          "page": 6,
+          "sha256": "98ba7167ca306bdd743aeb1218d9405c793811fcc043e188d5f7c35e68dcc466",
+          "chars": 1578
+        },
+        {
+          "page": 7,
+          "sha256": "3d5a094d602296aa84f4954c9a7f0c10bc1b852c0053dd37d14e24b4ce7dd4c2",
+          "chars": 1140
+        }
+      ],
+      "date": "2020-09-27",
+      "source_id": "bk-fr-2020-09-27-8e3c67fd515a",
+      "gap_ids": [
+        "6320"
+      ]
+    },
+    {
+      "vote_ids": [
+        "6330"
+      ],
+      "summary_pages": [
+        8,
+        9
+      ],
+      "shared": null,
+      "status": "unique_candidate",
+      "page_hashes": [
+        {
+          "page": 8,
+          "sha256": "ef004b862ec29a43c279d64efd800bb58e128d920c144a0571d838f3176f0bcf",
+          "chars": 1996
+        },
+        {
+          "page": 9,
+          "sha256": "9e05e9ffac639d5fb9781bfaa528cf1caeb2fc6041b050eb3e418cf097f3a95a",
+          "chars": 1228
+        }
+      ],
+      "date": "2020-09-27",
+      "source_id": "bk-fr-2020-09-27-8e3c67fd515a",
+      "gap_ids": [
+        "6330"
+      ]
+    },
+    {
+      "vote_ids": [
+        "6340"
+      ],
+      "summary_pages": [
+        10,
+        11
+      ],
+      "shared": null,
+      "status": "unique_candidate",
+      "page_hashes": [
+        {
+          "page": 10,
+          "sha256": "7bf7acf2b6321f505a7269545c4bf151857bc10585910ffa6c5d4a3b7f705624",
+          "chars": 1614
+        },
+        {
+          "page": 11,
+          "sha256": "8f7e3a4ce262f0d5536f11e51526052de9bc3c280f164b45bf791aca674e5308",
+          "chars": 1190
+        }
+      ],
+      "date": "2020-09-27",
+      "source_id": "bk-fr-2020-09-27-8e3c67fd515a",
+      "gap_ids": [
+        "6340"
+      ]
+    },
+    {
+      "vote_ids": [
+        "6350"
+      ],
+      "summary_pages": [
+        12,
+        13
+      ],
+      "shared": null,
+      "status": "unique_candidate",
+      "page_hashes": [
+        {
+          "page": 12,
+          "sha256": "d21f2b07bfddeedeca0c90baade1a391c371be8482abac4f635ded25eca7c8c3",
+          "chars": 1206
+        },
+        {
+          "page": 13,
+          "sha256": "57b6ed8d8e15ef9e40e106730e2209341218c2d42088617225607d704cbb347a",
+          "chars": 1107
+        }
+      ],
+      "date": "2020-09-27",
+      "source_id": "bk-fr-2020-09-27-8e3c67fd515a",
+      "gap_ids": []
+    },
+    {
+      "vote_ids": [
+        "6510"
+      ],
+      "summary_pages": [
+        4,
+        5
+      ],
+      "shared": null,
+      "status": "unique_candidate",
+      "page_hashes": [
+        {
+          "page": 4,
+          "sha256": "2d387e41d5e18db92a7351d45ca68b1ce6a0889439510e2ac4513de407af0558",
+          "chars": 1903
+        },
+        {
+          "page": 5,
+          "sha256": "82b7219bd50d38523c0cada132c99af5a6973f8b73f508d53f568c39ae4e5f77",
+          "chars": 1258
+        }
+      ],
+      "date": "2022-02-13",
+      "source_id": "bk-fr-2022-02-13-2d8cb9710acf",
+      "gap_ids": [
+        "6510"
+      ]
+    },
+    {
+      "vote_ids": [
+        "6520"
+      ],
+      "summary_pages": [
+        6,
+        7
+      ],
+      "shared": null,
+      "status": "unique_candidate",
+      "page_hashes": [
+        {
+          "page": 6,
+          "sha256": "220529fb28182221c925ec407832a0900c477f8e0891341bb783567e979f6987",
+          "chars": 1916
+        },
+        {
+          "page": 7,
+          "sha256": "c05ea11b1f1b0fb7a4e54c63c761c153b606095f6fe1389c9fa899a226386e1b",
+          "chars": 1197
+        }
+      ],
+      "date": "2022-02-13",
+      "source_id": "bk-fr-2022-02-13-2d8cb9710acf",
+      "gap_ids": []
+    },
+    {
+      "vote_ids": [
+        "6530"
+      ],
+      "summary_pages": [
+        8,
+        9
+      ],
+      "shared": null,
+      "status": "unique_candidate",
+      "page_hashes": [
+        {
+          "page": 8,
+          "sha256": "bd76d2772cede5e9f69b714b377d03db84423be24a78748dc1ebd7ab8521b999",
+          "chars": 1724
+        },
+        {
+          "page": 9,
+          "sha256": "5e51f10e744285bb045db07bdca40d0074251f7642127e612651a6e63d086063",
+          "chars": 1134
+        }
+      ],
+      "date": "2022-02-13",
+      "source_id": "bk-fr-2022-02-13-2d8cb9710acf",
+      "gap_ids": [
+        "6530"
+      ]
+    },
+    {
+      "vote_ids": [
+        "6540"
+      ],
+      "summary_pages": [
+        10,
+        11
+      ],
+      "shared": null,
+      "status": "unique_candidate",
+      "page_hashes": [
+        {
+          "page": 10,
+          "sha256": "e2322dba6952f404e6bf10293c006c8c2ba2420241cb1010b88a8b7dab0e89c3",
+          "chars": 1728
+        },
+        {
+          "page": 11,
+          "sha256": "e2bb7e1111674a00bbecd501b9639f9eb60379666568f4387f29b8acbd300b1a",
+          "chars": 1077
+        }
+      ],
+      "date": "2022-02-13",
+      "source_id": "bk-fr-2022-02-13-2d8cb9710acf",
+      "gap_ids": []
+    },
+    {
+      "vote_ids": [
+        "6580"
+      ],
+      "summary_pages": [
+        4,
+        5
+      ],
+      "shared": null,
+      "status": "unique_candidate",
+      "page_hashes": [
+        {
+          "page": 4,
+          "sha256": "018de147edb81b929e4d0b5ac21786734c305c6f0d6eaaf6814dfe6a7424373e",
+          "chars": 1890
+        },
+        {
+          "page": 5,
+          "sha256": "c68868bc8d39a2e5ae8bba517fc19b04a6a9fd6ee5d545b0d59cdca8a1f30b88",
+          "chars": 1195
+        }
+      ],
+      "date": "2022-09-25",
+      "source_id": "bk-fr-2022-09-25-ed311ed79502",
+      "gap_ids": []
+    },
+    {
+      "vote_ids": [
+        "6590"
+      ],
+      "summary_pages": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "shared": "avs2022",
+      "status": "shared_candidate",
+      "page_hashes": [
+        {
+          "page": 6,
+          "sha256": "27e647346dfcc8d4b6c4042942726051f8943f17d5d6b17cd0803d0a0fcc49d4",
+          "chars": 279
+        },
+        {
+          "page": 7,
+          "sha256": "95f2f5f6e565ac81bc9491b751ced9c94be35e6e6a6dee8a23901fb4e14a1da7",
+          "chars": 2035
+        },
+        {
+          "page": 8,
+          "sha256": "0529aa08d876e9e9c36657a40ebd6f10cdf14ab06f086aef3371fdadc2ba5ad5",
+          "chars": 1116
+        },
+        {
+          "page": 9,
+          "sha256": "83685d108ab8422a7f81672686969e949a66601672ede24a978941cd93033ba9",
+          "chars": 1114
+        }
+      ],
+      "date": "2022-09-25",
+      "source_id": "bk-fr-2022-09-25-ed311ed79502",
+      "gap_ids": [
+        "6590"
+      ]
+    },
+    {
+      "vote_ids": [
+        "6600"
+      ],
+      "summary_pages": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "shared": "avs2022",
+      "status": "shared_candidate",
+      "page_hashes": [
+        {
+          "page": 6,
+          "sha256": "27e647346dfcc8d4b6c4042942726051f8943f17d5d6b17cd0803d0a0fcc49d4",
+          "chars": 279
+        },
+        {
+          "page": 7,
+          "sha256": "95f2f5f6e565ac81bc9491b751ced9c94be35e6e6a6dee8a23901fb4e14a1da7",
+          "chars": 2035
+        },
+        {
+          "page": 8,
+          "sha256": "0529aa08d876e9e9c36657a40ebd6f10cdf14ab06f086aef3371fdadc2ba5ad5",
+          "chars": 1116
+        },
+        {
+          "page": 9,
+          "sha256": "83685d108ab8422a7f81672686969e949a66601672ede24a978941cd93033ba9",
+          "chars": 1114
+        }
+      ],
+      "date": "2022-09-25",
+      "source_id": "bk-fr-2022-09-25-ed311ed79502",
+      "gap_ids": [
+        "6600"
+      ]
+    },
+    {
+      "vote_ids": [
+        "6610"
+      ],
+      "summary_pages": [
+        10,
+        11
+      ],
+      "shared": null,
+      "status": "unique_candidate",
+      "page_hashes": [
+        {
+          "page": 10,
+          "sha256": "bf0e309a38256b993505af492a3a6d2da8307c5eeb86665f5a07a19827b5f281",
+          "chars": 1329
+        },
+        {
+          "page": 11,
+          "sha256": "80015bc50f7f20d28cc87c0e69923e66d89f53f4c24382836db00bcc74c1d278",
+          "chars": 1103
+        }
+      ],
+      "date": "2022-09-25",
+      "source_id": "bk-fr-2022-09-25-ed311ed79502",
+      "gap_ids": [
+        "6610"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "sources.parquet": "6c46728515346cf7121fe5444d6eda16b1c0a2a430932d77c702dab96cba0124",
+    "objects.parquet": "5ca74d6aa78037e9764976b2eeef3461e08b660677f9783a4a140999ff6e0586",
+    "sections.parquet": "07756928aa9f93f830219f13f58e156b125014bafe65a1749699db0c187223aa",
+    "pages.parquet": "bcb69b0369a35bb35f95531febae03706c276de918f734d95b19aa106d525383",
+    "section_links.parquet": "15cf3c91bdf454125e945b6c654a5efceae185778f88712a30c9f68362a4e50e"
+  }
+}
