@@ -1,0 +1,273 @@
+{
+  "run": 45581661878,
+  "job": 139092947530,
+  "artifact": 15007041275,
+  "artifact_digest": "sha256:46502ff37d6d454628dfbf4911b86bd60fd17b7515a6268e1aecddde5ddf8ce8",
+  "sha": "ae96145f438188eca9f0ff847919f7d7548d29a2",
+  "conclusion": "success",
+  "targeted_tests": 3,
+  "repository_checks": {
+    "run": 45581670638,
+    "conclusion": "failure",
+    "reason": "C420 dict comprehension views_v123.py, repaired without changing semantics; new CI unverified"
+  },
+  "verification": "Actions logs, successful population/hash assertions and artifact metadata; artifact bytes not independently downloaded",
+  "strict_forecast_ready": false,
+  "scores": [
+    {
+      "variant": "reference",
+      "objects": 66,
+      "covered_objects": 59,
+      "mae_pp": 7.229527497606816,
+      "centered_mae_pp": 5.370058554693702,
+      "national_mae_pp": 3.775669209992063,
+      "canton_mae_pp": 5.703708259264074,
+      "gain_interval": [
+        0,
+        0
+      ],
+      "vs_v108_interval": [
+        -0.6263738724976634,
+        0.03347445723791092
+      ],
+      "vs_pooled_exact_interval": [
+        -0.4026748413631445,
+        0.1067245647443586
+      ]
+    },
+    {
+      "variant": "v108_tfidf",
+      "objects": 66,
+      "covered_objects": 59,
+      "mae_pp": 6.988599997055331,
+      "centered_mae_pp": 5.280965787730653,
+      "national_mae_pp": 3.846510449192281,
+      "canton_mae_pp": 5.536970110697117,
+      "gain_interval": [
+        -0.033474457237910864,
+        0.6263738724976635
+      ],
+      "vs_v108_interval": [
+        0,
+        0
+      ],
+      "vs_pooled_exact_interval": [
+        -0.08765575767196808,
+        0.379714705487638
+      ]
+    },
+    {
+      "variant": "v113_institution",
+      "objects": 66,
+      "covered_objects": 59,
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "gain_interval": [
+        -0.04387674828916126,
+        0.6800955676185607
+      ],
+      "vs_v108_interval": [
+        -0.09439308477954603,
+        0.1829269888926353
+      ],
+      "vs_pooled_exact_interval": [
+        -0.13668022775890623,
+        0.49598900338148283
+      ]
+    },
+    {
+      "variant": "pooled_exact",
+      "objects": 66,
+      "covered_objects": 41,
+      "mae_pp": 7.118590149986709,
+      "centered_mae_pp": 5.471543469769223,
+      "national_mae_pp": 3.7280041925830356,
+      "canton_mae_pp": 5.609014879725723,
+      "gain_interval": [
+        -0.1067245647443585,
+        0.40267484136314463
+      ],
+      "vs_v108_interval": [
+        -0.37971470548763797,
+        0.0876557576719682
+      ],
+      "vs_pooled_exact_interval": [
+        0,
+        0
+      ]
+    },
+    {
+      "variant": "split_title_body",
+      "objects": 66,
+      "covered_objects": 41,
+      "mae_pp": 7.305299474358674,
+      "centered_mae_pp": 5.453956465312697,
+      "national_mae_pp": 3.915788132598934,
+      "canton_mae_pp": 5.785756262014414,
+      "gain_interval": [
+        -0.28893766897949374,
+        0.1266065712449468
+      ],
+      "vs_v108_interval": [
+        -0.7032554524286334,
+        -0.02750769092909697
+      ],
+      "vs_pooled_exact_interval": [
+        -0.4098396684189221,
+        0.018511001748721542
+      ]
+    },
+    {
+      "variant": "split_question_mechanism",
+      "objects": 66,
+      "covered_objects": 41,
+      "mae_pp": 7.408292774654622,
+      "centered_mae_pp": 5.4379940354981215,
+      "national_mae_pp": 4.047733834992843,
+      "canton_mae_pp": 5.909751512569036,
+      "gain_interval": [
+        -0.39103661684666796,
+        0.02722624308634238
+      ],
+      "vs_v108_interval": [
+        -0.8261251863184669,
+        -0.10019023159046204
+      ],
+      "vs_pooled_exact_interval": [
+        -0.5761048033375148,
+        -0.030247824335181722
+      ]
+    }
+  ],
+  "folds": {
+    "2016-2018": {
+      "pooled_exact": 7.8567299746,
+      "reference": 8.152475601,
+      "split_question_mechanism": 8.4594095687,
+      "split_title_body": 8.186698673,
+      "v108_tfidf": 7.696815302,
+      "v113_institution": 7.5730560157
+    },
+    "2019-2020": {
+      "pooled_exact": 7.3045112104,
+      "reference": 7.1500595705,
+      "split_question_mechanism": 7.2482136128,
+      "split_title_body": 7.3884777742,
+      "v108_tfidf": 6.9429781706,
+      "v113_institution": 6.9750709305
+    },
+    "2021-2022": {
+      "pooled_exact": 6.102954839,
+      "reference": 6.1155763319,
+      "split_question_mechanism": 6.1744363631,
+      "split_title_body": 6.1619613262,
+      "v108_tfidf": 6.1261417791,
+      "v113_institution": 6.174467668
+    }
+  },
+  "domains": {
+    "1": {
+      "pooled_exact": 6.3603982557,
+      "reference": 6.4792925574,
+      "split_question_mechanism": 6.9644077997,
+      "split_title_body": 6.848975487,
+      "v108_tfidf": 6.6859831747,
+      "v113_institution": 6.7836818411
+    },
+    "2": {
+      "pooled_exact": 5.7225554981,
+      "reference": 5.8630062992,
+      "split_question_mechanism": 5.8971877773,
+      "split_title_body": 5.764226461,
+      "v108_tfidf": 5.7477172272,
+      "v113_institution": 5.802332172
+    },
+    "3": {
+      "pooled_exact": 7.0750639138,
+      "reference": 7.1680352648,
+      "split_question_mechanism": 7.1099575716,
+      "split_title_body": 7.1086578716,
+      "v108_tfidf": 6.8925439647,
+      "v113_institution": 6.9152445706
+    },
+    "4": {
+      "pooled_exact": 12.5436764801,
+      "reference": 12.6797406891,
+      "split_question_mechanism": 14.5009131297,
+      "split_title_body": 13.5835223826,
+      "v108_tfidf": 10.7609447807,
+      "v113_institution": 10.1520500803
+    },
+    "5": {
+      "pooled_exact": 10.3275201404,
+      "reference": 10.1693907323,
+      "split_question_mechanism": 10.5907148804,
+      "split_title_body": 10.4155380907,
+      "v108_tfidf": 10.1571832957,
+      "v113_institution": 10.0416046951
+    },
+    "6": {
+      "pooled_exact": 7.5959777749,
+      "reference": 7.7105377573,
+      "split_question_mechanism": 7.3498310704,
+      "split_title_body": 7.4691312852,
+      "v108_tfidf": 7.1764459782,
+      "v113_institution": 6.9801270745
+    },
+    "7": {
+      "pooled_exact": 6.7873582266,
+      "reference": 6.5839010403,
+      "split_question_mechanism": 6.1493573443,
+      "split_title_body": 6.5677181505,
+      "v108_tfidf": 6.9445593052,
+      "v113_institution": 6.8863623743
+    },
+    "8": {
+      "pooled_exact": 5.6021298411,
+      "reference": 6.2725889719,
+      "split_question_mechanism": 6.4591146826,
+      "split_title_body": 5.9979061964,
+      "v108_tfidf": 6.2585933766,
+      "v113_institution": 6.1048269459
+    },
+    "9": {
+      "pooled_exact": 5.524543759,
+      "reference": 5.6367797301,
+      "split_question_mechanism": 5.5477837707,
+      "split_title_body": 5.6069367671,
+      "v108_tfidf": 5.5780286772,
+      "v113_institution": 5.6255283968
+    },
+    "10": {
+      "pooled_exact": 6.8171408534,
+      "reference": 6.9000078832,
+      "split_question_mechanism": 7.1498582602,
+      "split_title_body": 7.0502559676,
+      "v108_tfidf": 6.581896391,
+      "v113_institution": 6.6667452066
+    },
+    "11": {
+      "pooled_exact": 7.6831916056,
+      "reference": 7.8350434359,
+      "split_question_mechanism": 7.8758653102,
+      "split_title_body": 7.9228499891,
+      "v108_tfidf": 7.7094734326,
+      "v113_institution": 7.6769308663
+    },
+    "12": {
+      "pooled_exact": 4.8040278539,
+      "reference": 4.8426383255,
+      "split_question_mechanism": 4.6065053317,
+      "split_title_body": 4.6826425659,
+      "v108_tfidf": 4.8496702903,
+      "v113_institution": 4.8108858897
+    }
+  },
+  "coverage": {
+    "pooled_exact": 41,
+    "split_title_body": 41,
+    "split_question_mechanism": 41
+  }
+}

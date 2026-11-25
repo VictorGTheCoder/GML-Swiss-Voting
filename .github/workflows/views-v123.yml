@@ -1,13 +1,5 @@
 name: V12.3 matched multi-view documentary representation
 on:
-  push:
-    branches:
-      - 'experiment/municipal-v12-document-coverage-20261125'
-    paths:
-      - '.github/workflows/views-v123.yml'
-      - 'scripts/modeling/multiview_v123.py'
-      - 'scripts/modeling/views_v123.py'
-      - 'tests/test_views_v123.py'
   workflow_dispatch:
 permissions:
   contents: read

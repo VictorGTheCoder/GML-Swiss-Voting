@@ -25,7 +25,7 @@ def make_documents(audit):
     doc["body"] = audit.exact_text.where(doc.usable_summary, "")
     doc["question"] = doc.body.map(question_text)
     doc["mechanism"] = doc.body.map(mechanism_text)
-    return {name: doc for name in CONFIGS}
+    return dict.fromkeys(CONFIGS, doc)
 
 
 def block_features(train, query, n):
