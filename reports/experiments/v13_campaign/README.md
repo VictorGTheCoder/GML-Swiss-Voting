@@ -42,3 +42,7 @@ Toutes les mesures futures sur la population de référence, MAE macro par objet
 ## V13.3 — Résultats et réorientation
 
 [Diagnostic terminé](V13.3-results.md) : V11.3 6,9558 pp, oracle de translation 5,2246 pp (IC [4,7902 ; 5,7036]), 55/66 objets restent au-dessus de 4 pp. Quatre tests ciblés et 3/3 jobs CI réussis. Aucun gain prédictif. Priorité 1 : V13.4, séparer amplitude des contrastes et structure géographique (oracle affine scoring-only, puis calibration chronologique seulement si justifiée). Priorité 2 : nouvelles informations historiques agrégées indépendantes ; priorité 3 : V13.2 certification des sources multi-vagues et V13.1/V12.2 uniquement sur nouvelle preuve. Pas de répétition des corrections cantonales V10.5/V10.6 sans hypothèse distincte.
+
+## V13.4 — Amplitude contre structure
+
+[Protocole préenregistré](V13.4-protocol.md) : diagnostic affine monotone scoring-only sur V8.1/V11.3, contrôle V13.3, cinq tests dont comparaison à un programme linéaire indépendant. Aucun coefficient exporté, aucun nouveau score prédictif. Benchmark à vérifier ; V13.2 toujours en attente de certification. CI précédente réussie (45670689207).

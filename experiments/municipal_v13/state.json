@@ -1,7 +1,7 @@
 {
   "campaign": "V13",
   "status": "in_progress",
-  "active": null,
+  "active": "V13.4",
   "base_v12": "c35595736b21b7d535e0ff7fbaf4b2c584f2bae3",
   "best_observed": {
     "version": "V11.3",
@@ -18,7 +18,6 @@
     "V13.3"
   ],
   "pending": [
-    "V13.4",
     "V13.2"
   ],
   "deferred": [
@@ -292,7 +291,17 @@
     "decision": "Constant translation oracle remains above 4 pp; prioritize geographic contrast diagnosis and independent aggregate signals. No prediction gain or promotion."
   },
   "v134": {
-    "status": "pending_predeclare",
-    "hypothesis": "Distinguish contrast amplitude versus shape using monotone affine scoring-only oracle; if independently verified geography permits, separate inter/intra-canton errors; no oracle coefficients in prediction."
+    "status": "implemented_pending_execution",
+    "hypothesis": "Distinguish contrast amplitude versus shape using monotone affine scoring-only oracle; if independently verified geography permits, separate inter/intra-canton errors; no oracle coefficients in prediction.",
+    "source_run": 45444093555,
+    "prior_run": 45659936355,
+    "workflow": ".github/workflows/affine-budget-v134.yml",
+    "targeted_tests_implemented": 5,
+    "previous_repository_checks": {
+      "run": 45670689207,
+      "conclusion": "success"
+    },
+    "model_changed": false,
+    "protocol": "reports/experiments/v13_campaign/V13.4-protocol.md"
   }
 }
