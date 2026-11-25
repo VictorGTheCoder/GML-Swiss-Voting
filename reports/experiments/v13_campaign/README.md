@@ -30,3 +30,7 @@ Toutes les mesures futures sur la population de référence, MAE macro par objet
 ## V13.2c — Extension 2016–2018
 
 [Acquisition et contrôle](V13.2c-historical-waves.md) : 33 observations, 12 objets multi-vagues sur 4 dates, 12/12 accords des dernières vagues. CI précédente 3/3 réussie. Zéro admission ; prochaine priorité : élargir les dates et certifier les versions, puis V13.3 si bloqué.
+
+## V13.2d — Extension 2020
+
+[Acquisition et contrôle](V13.2d-2020-waves.md) : 39 observations, 14 objets multi-vagues sur 5 dates, 14/14 accords des dernières vagues. CI précédente 3/3 réussie. Zéro admission ; provenance et couverture restent insuffisantes, reprendre V13.3 en parallèle.

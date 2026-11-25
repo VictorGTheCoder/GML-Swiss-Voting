@@ -73,23 +73,23 @@
   },
   "v132": {
     "status": "multiwave_inventory_extended_no_admission",
-    "objects": 12,
-    "dates": 4,
+    "objects": 14,
+    "dates": 5,
     "latest_value_agreements": 12,
-    "early_waves": 21,
+    "early_waves": 25,
     "training_rows_admitted": 0,
     "strict_forecast_ready": false,
-    "rows": 33,
-    "latest_candidates": 12,
-    "latest_agreements": 12,
-    "multiwave_objects": 12,
-    "three_wave_objects": 9,
-    "multiwave_dates": 4,
+    "rows": 39,
+    "latest_candidates": 14,
+    "latest_agreements": 14,
+    "multiwave_objects": 14,
+    "three_wave_objects": 11,
+    "multiwave_dates": 5,
     "previous_repository_checks": {
-      "run": 45629440893,
+      "run": 45640055380,
       "conclusion": "success",
       "jobs": 3
     },
-    "notes": "V13.2c: 13 additional national observations; four multiwave dates, still sparse; 2016 wave 2 excluded until exact fieldwork confirmed; no admission or benchmark. Latest agreement with frozen CSV, not proof of source vintage."
+    "notes": "V13.2d: six additional national candidates, five multiwave dates; second wave indexed source direct HTTP 403, no admission; start independent V13.3 while source certification pending."
   }
 }
