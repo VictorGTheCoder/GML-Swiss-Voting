@@ -1,7 +1,7 @@
 {
   "campaign": "V13",
   "status": "in_progress",
-  "active": "V13.3",
+  "active": null,
   "base_v12": "c35595736b21b7d535e0ff7fbaf4b2c584f2bae3",
   "best_observed": {
     "version": "V11.3",
@@ -14,11 +14,12 @@
     "period": "2016-2022"
   },
   "completed": [
-    "V13.1-cover-feasibility"
+    "V13.1-cover-feasibility",
+    "V13.3"
   ],
   "pending": [
-    "V13.2",
-    "V13.3"
+    "V13.4",
+    "V13.2"
   ],
   "deferred": [
     "V12.2",
@@ -98,11 +99,200 @@
     }
   },
   "v133": {
-    "status": "implemented_diagnostic_pending_ci",
+    "status": "completed_scoring_only",
     "source_run": 45444093555,
     "source_artifact": 14945871233,
     "source_digest": "sha256:56f659fab173c1d34c28ec6648aa656281b7215e30857a5d7973e09b6eb51d21",
     "targeted_tests_implemented": 4,
-    "model_changed": false
+    "model_changed": false,
+    "run": 45659936355,
+    "artifact": 15044661153,
+    "digest": "sha256:1105a052b3989d196dfff77d4c0a2950b5510afc05eaeb03a6ea51bfe2f81f17",
+    "job": 139366759647,
+    "commit": "ce756d7bd2fb368315c996055ff6d34bfac69d3b",
+    "targeted_tests_passed": 4,
+    "repository_checks": {
+      "run": 45659950280,
+      "conclusion": "success",
+      "jobs": 3
+    },
+    "results": {
+      "status": "diagnostic_complete",
+      "prediction_model_changed": false,
+      "oracle_scoring_only": true,
+      "objects": 66,
+      "dates": 23,
+      "rows": 138868,
+      "prediction_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+      "summary": [
+        {
+          "variant": "reference",
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "median_offset_oracle_pp": 5.290908984308818,
+          "local_oracle_gain_pp": 1.9386185132979974,
+          "oracle_gain_interval": [
+            1.3447081262642306,
+            2.634663797586559
+          ],
+          "oracle_remaining_interval": [
+            4.882321025656458,
+            5.74980221502919
+          ],
+          "objects_oracle_over_4pp": 57
+        },
+        {
+          "variant": "institution_text",
+          "mae_pp": 6.955753873756504,
+          "centered_mae_pp": 5.289917065218622,
+          "median_offset_oracle_pp": 5.224621045388158,
+          "local_oracle_gain_pp": 1.731132828368345,
+          "oracle_gain_interval": [
+            1.2569404952951304,
+            2.264348752386349
+          ],
+          "oracle_remaining_interval": [
+            4.79018254474123,
+            5.703593054481961
+          ],
+          "objects_oracle_over_4pp": 55
+        }
+      ],
+      "oracle_difference_interval": [
+        -0.08874417950756087,
+        0.24249181804351505
+      ],
+      "local_distribution": [
+        {
+          "variant": "reference",
+          "municipalities": 2105,
+          "mae_quantiles_pp": [
+            5.204218804812021,
+            7.077581627592758,
+            9.306069224105256
+          ]
+        },
+        {
+          "variant": "institution_text",
+          "municipalities": 2105,
+          "mae_quantiles_pp": [
+            5.044715632145193,
+            6.799351193148373,
+            9.049506810208305
+          ]
+        }
+      ]
+    },
+    "domains": {
+      "mae_pp": {
+        "('institution_text', 1)": 6.7836818411,
+        "('institution_text', 2)": 5.802332172,
+        "('institution_text', 3)": 6.9152445706,
+        "('institution_text', 4)": 10.1520500803,
+        "('institution_text', 5)": 10.0416046951,
+        "('institution_text', 6)": 6.9801270745,
+        "('institution_text', 7)": 6.8863623743,
+        "('institution_text', 8)": 6.1048269459,
+        "('institution_text', 9)": 5.6255283968,
+        "('institution_text', 10)": 6.6667452066,
+        "('institution_text', 11)": 7.6769308663,
+        "('institution_text', 12)": 4.8108858897,
+        "('reference', 1)": 6.4792925574,
+        "('reference', 2)": 5.8630062992,
+        "('reference', 3)": 7.1680352648,
+        "('reference', 4)": 12.6797406891,
+        "('reference', 5)": 10.1693907323,
+        "('reference', 6)": 7.7105377573,
+        "('reference', 7)": 6.5839010403,
+        "('reference', 8)": 6.2725889719,
+        "('reference', 9)": 5.6367797301,
+        "('reference', 10)": 6.9000078832,
+        "('reference', 11)": 7.8350434359,
+        "('reference', 12)": 4.8426383255
+      },
+      "centered_mae_pp": {
+        "('institution_text', 1)": 4.8798974325,
+        "('institution_text', 2)": 4.9931216842,
+        "('institution_text', 3)": 5.8426710949,
+        "('institution_text', 4)": 3.9804942378,
+        "('institution_text', 5)": 8.4474405966,
+        "('institution_text', 6)": 5.3078088855,
+        "('institution_text', 7)": 6.0032718485,
+        "('institution_text', 8)": 4.8329479875,
+        "('institution_text', 9)": 4.7629063902,
+        "('institution_text', 10)": 4.9354273504,
+        "('institution_text', 11)": 4.0486928694,
+        "('institution_text', 12)": 4.4370327292,
+        "('reference', 1)": 4.5526536405,
+        "('reference', 2)": 4.945384742,
+        "('reference', 3)": 5.5091606386,
+        "('reference', 4)": 5.167174256,
+        "('reference', 5)": 8.6166239873,
+        "('reference', 6)": 5.5603069767,
+        "('reference', 7)": 5.3613927023,
+        "('reference', 8)": 4.9095413799,
+        "('reference', 9)": 4.9925779913,
+        "('reference', 10)": 5.0601441593,
+        "('reference', 11)": 3.7817735093,
+        "('reference', 12)": 4.4840323438
+      },
+      "median_offset_oracle_pp": {
+        "('institution_text', 1)": 4.8728276438,
+        "('institution_text', 2)": 4.9442672982,
+        "('institution_text', 3)": 5.7893959167,
+        "('institution_text', 4)": 3.9790899156,
+        "('institution_text', 5)": 8.0534278279,
+        "('institution_text', 6)": 5.231690693,
+        "('institution_text', 7)": 5.9629076452,
+        "('institution_text', 8)": 4.822682685,
+        "('institution_text', 9)": 4.7442599956,
+        "('institution_text', 10)": 4.8991712414,
+        "('institution_text', 11)": 4.0472470639,
+        "('institution_text', 12)": 4.43076025,
+        "('reference', 1)": 4.5373148011,
+        "('reference', 2)": 4.9003106573,
+        "('reference', 3)": 5.4217396718,
+        "('reference', 4)": 5.156307616,
+        "('reference', 5)": 8.1366026876,
+        "('reference', 6)": 5.4655436185,
+        "('reference', 7)": 5.3483592538,
+        "('reference', 8)": 4.9037943484,
+        "('reference', 9)": 4.9667081355,
+        "('reference', 10)": 5.0210318212,
+        "('reference', 11)": 3.7807605491,
+        "('reference', 12)": 4.4742751032
+      },
+      "local_oracle_gain_pp": {
+        "('institution_text', 1)": 1.9108541972,
+        "('institution_text', 2)": 0.8580648738,
+        "('institution_text', 3)": 1.1258486539,
+        "('institution_text', 4)": 6.1729601647,
+        "('institution_text', 5)": 1.9881768672,
+        "('institution_text', 6)": 1.7484363815,
+        "('institution_text', 7)": 0.9234547291,
+        "('institution_text', 8)": 1.2821442609,
+        "('institution_text', 9)": 0.8812684012,
+        "('institution_text', 10)": 1.7675739652,
+        "('institution_text', 11)": 3.6296838024,
+        "('institution_text', 12)": 0.3801256397,
+        "('reference', 1)": 1.9419777563,
+        "('reference', 2)": 0.9626956419,
+        "('reference', 3)": 1.746295593,
+        "('reference', 4)": 7.5234330731,
+        "('reference', 5)": 2.0327880447,
+        "('reference', 6)": 2.2449941388,
+        "('reference', 7)": 1.2355417864,
+        "('reference', 8)": 1.3687946236,
+        "('reference', 9)": 0.6700715947,
+        "('reference', 10)": 1.878976062,
+        "('reference', 11)": 4.0542828868,
+        "('reference', 12)": 0.3683632223
+      }
+    },
+    "decision": "Constant translation oracle remains above 4 pp; prioritize geographic contrast diagnosis and independent aggregate signals. No prediction gain or promotion."
+  },
+  "v134": {
+    "status": "pending_predeclare",
+    "hypothesis": "Distinguish contrast amplitude versus shape using monotone affine scoring-only oracle; if independently verified geography permits, separate inter/intra-canton errors; no oracle coefficients in prediction."
   }
 }

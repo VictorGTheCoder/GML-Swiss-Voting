@@ -38,3 +38,7 @@ Toutes les mesures futures sur la population de référence, MAE macro par objet
 ## V13.3 — Diagnostic prioritaire
 
 [Protocole](V13.3-protocol.md) : oracle L1 de translation constante sur prédictions V11.3/V8.1, comparaison de l'erreur résiduelle à 4 pp, bootstrap par date, diagnostic par domaine/fenêtre. Exécution à vérifier ; aucun fit ni nouveau score. V13.2 certification en attente, V13.1 admission différée. CI précédente 3/3 réussie.
+
+## V13.3 — Résultats et réorientation
+
+[Diagnostic terminé](V13.3-results.md) : V11.3 6,9558 pp, oracle de translation 5,2246 pp (IC [4,7902 ; 5,7036]), 55/66 objets restent au-dessus de 4 pp. Quatre tests ciblés et 3/3 jobs CI réussis. Aucun gain prédictif. Priorité 1 : V13.4, séparer amplitude des contrastes et structure géographique (oracle affine scoring-only, puis calibration chronologique seulement si justifiée). Priorité 2 : nouvelles informations historiques agrégées indépendantes ; priorité 3 : V13.2 certification des sources multi-vagues et V13.1/V12.2 uniquement sur nouvelle preuve. Pas de répétition des corrections cantonales V10.5/V10.6 sans hypothèse distincte.

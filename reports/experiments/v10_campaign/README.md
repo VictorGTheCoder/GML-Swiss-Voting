@@ -39,3 +39,7 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 ## Continuité de recherche
 
 [V11](../v11_campaign/README.md) · [V12](../v12_campaign/README.md) · [V13](../v13_campaign/README.md) (index présent sur la branche V13). Meilleur exploratoire V11.3 6,9558 pp ; V12.4 sans gain. V12.2 différée, V13 audit de nouvelles sources. Aucun modèle promu.
+
+## Diagnostic V13.3
+
+[Résultats](../v13_campaign/V13.3-results.md) : oracle de translation V11.3 à 5,2246 pp, 55/66 objets restent au-dessus de 4 pp. Meilleur prédictif exploratoire 6,9558 pp inchangé ; priorité au diagnostic des contrastes, pas de promotion ni test final.
