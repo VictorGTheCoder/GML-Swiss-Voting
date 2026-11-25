@@ -1,6 +1,6 @@
 {
   "status": "in_progress",
-  "active": "V12.1",
+  "active": "V12.2",
   "base_v11_sha": "64d368dbe815fbf43bbf43b097ed3c4d97c57381",
   "best_observed": {
     "version": "V11.3 institution_text",
@@ -12,19 +12,190 @@
     "rows": 138868,
     "period": "2016-2022"
   },
-  "completed": [],
+  "completed": [
+    "V12.1"
+  ],
   "pending": [
-    "V12.1",
     "V12.2",
     "V12.3",
     "V12.4"
   ],
-  "runs": [],
+  "runs": [
+    {
+      "version": "V12.1",
+      "sha": "f9239ed41282261e193bb519768a9dc7d4189e7e",
+      "run": 45530118302,
+      "artifact": 14983954165,
+      "artifact_digest": "sha256:fea2abc67b4a2102d7f5a828eaadde9baba403d9c4e206228b68a430a3c15a56",
+      "conclusion": "success",
+      "targeted_tests": 2,
+      "repository_checks": {
+        "run": 45530118239,
+        "conclusion": "success"
+      },
+      "strict_forecast_ready": false,
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "vs_v108_interval": [
+            -0.6263738724976634,
+            0.03347445723791092
+          ],
+          "vs_matched_original_interval": [
+            -0.4190461972079583,
+            0.0962689822962904
+          ]
+        },
+        {
+          "variant": "v108_tfidf",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.988599997055331,
+          "centered_mae_pp": 5.280965787730653,
+          "national_mae_pp": 3.846510449192281,
+          "canton_mae_pp": 5.536970110697117,
+          "gain_interval": [
+            -0.033474457237910864,
+            0.6263738724976635
+          ],
+          "vs_v108_interval": [
+            0,
+            0
+          ],
+          "vs_matched_original_interval": [
+            -0.09274994396966857,
+            0.3521789121807976
+          ]
+        },
+        {
+          "variant": "v113_institution",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.955753873756506,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.7811714402970824,
+          "canton_mae_pp": 5.500338667087431,
+          "gain_interval": [
+            -0.04387674828916126,
+            0.6800955676185607
+          ],
+          "vs_v108_interval": [
+            -0.09439308477954603,
+            0.1829269888926353
+          ],
+          "vs_matched_original_interval": [
+            -0.13880345007075232,
+            0.47038257464451466
+          ]
+        },
+        {
+          "variant": "matched_original",
+          "objects": 66,
+          "covered_objects": 41,
+          "mae_pp": 7.107465348662275,
+          "centered_mae_pp": 5.473138436081281,
+          "national_mae_pp": 3.7134006763888787,
+          "canton_mae_pp": 5.582078986330609,
+          "gain_interval": [
+            -0.09626898229629034,
+            0.41904619720795844
+          ],
+          "vs_v108_interval": [
+            -0.3521789121807975,
+            0.09274994396966858
+          ],
+          "vs_matched_original_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "matched_exact",
+          "objects": 66,
+          "covered_objects": 41,
+          "mae_pp": 7.118590149986709,
+          "centered_mae_pp": 5.471543469769223,
+          "national_mae_pp": 3.7280041925830356,
+          "canton_mae_pp": 5.609014879725723,
+          "gain_interval": [
+            -0.1067245647443585,
+            0.40267484136314463
+          ],
+          "vs_v108_interval": [
+            -0.37971470548763797,
+            0.0876557576719682
+          ],
+          "vs_matched_original_interval": [
+            -0.05808860045301941,
+            0.023629556575152578
+          ]
+        },
+        {
+          "variant": "title_only",
+          "objects": 66,
+          "covered_objects": 0,
+          "mae_pp": 7.633687579095218,
+          "centered_mae_pp": 5.417962728499683,
+          "national_mae_pp": 4.293157143084254,
+          "canton_mae_pp": 6.17292983170024,
+          "gain_interval": [
+            -0.7934792401056989,
+            -0.036292058564142
+          ],
+          "vs_v108_interval": [
+            -1.3392012315769761,
+            -0.11091506808900153
+          ],
+          "vs_matched_original_interval": [
+            -1.1226083517075227,
+            -0.06806306688754318
+          ]
+        },
+        {
+          "variant": "union_prefer_exact",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.323606842247562,
+          "centered_mae_pp": 5.438379580757822,
+          "national_mae_pp": 4.099662078101895,
+          "canton_mae_pp": 5.862125564009582,
+          "gain_interval": [
+            -0.33250264293012755,
+            0.15600631921330232
+          ],
+          "vs_v108_interval": [
+            -0.7865546732215247,
+            0.02200101865585704
+          ],
+          "vs_matched_original_interval": [
+            -0.5932189680952384,
+            0.11841520726992688
+          ]
+        }
+      ]
+    }
+  ],
   "configs": [
     "matched_original",
     "matched_exact",
     "title_only",
     "union_prefer_exact"
   ],
-  "instructions": "Verify Actions and output roster before acquiring sources. No 2023+ targets, no promotion, no holdout."
+  "instructions": "Verify Actions and output roster before acquiring sources. No 2023+ targets, no promotion, no holdout.",
+  "v122": {
+    "status": "source_candidates_identified_not_admitted",
+    "objects": 6,
+    "dates": 2,
+    "manifest": "experiments/municipal_v12/recovery_candidates.json"
+  }
 }

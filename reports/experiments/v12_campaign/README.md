@@ -11,10 +11,13 @@ V11.2 réduit la couverture brute de 59 à 41 objets, donc son échec ne disting
 - union_prefer_exact : page exacte si disponible, sinon ancien texte couvert, sinon titre.
 - Références figées V8.1, V10.8 et V11.3 sur les mêmes lignes.
 
-Hypothèse falsifiable : la page exacte apporte un gain par rapport à matched_original si le contenu, plutôt que sa simple disponibilité, est déterminant ; l'union teste séparément une politique de repli pragmatique. Les textes d'origine restent des candidats rétrospectifs non certifiés, pas une source strictement as-of. Ne pas présenter les pages non confirmées comme incorrectes. Exporter la liste des lacunes (identité, date, titre, indicateurs de couverture), les métriques multi-échelles et bootstrap apparié par date, et les diagnostics par objet/pli/domaine/commune/canton. Aucun choix rétrospectif ne vaut validation prospective. Résultats à vérifier dans Actions.
+Hypothèse falsifiable : la page exacte apporte un gain par rapport à matched_original si le contenu, plutôt que sa simple disponibilité, est déterminant ; l'union teste séparément une politique de repli pragmatique. Les textes d'origine restent des candidats rétrospectifs non certifiés, pas une source strictement as-of. Ne pas présenter les pages non confirmées comme incorrectes. Exporter la liste des lacunes (identité, date, titre, indicateurs de couverture), les métriques multi-échelles et bootstrap apparié par date, et les diagnostics par objet/pli/domaine/commune/canton. Aucun choix rétrospectif ne vaut validation prospective. [Résultats vérifiés](V12.1-results.md) : aucun gain.
 
 ## Backlog
-1. V12.1 : ablation appariée et inventaire des lacunes (implémentation initiale, benchmark non vérifié).
+1. V12.1 : ablation appariée et inventaire des lacunes (terminé, 7,1075 pp pour le meilleur nouveau candidat).
 2. V12.2 : récupérer par objet les documents officiels manquants et les correspondances de pages ambiguës ; enregistrer URL, date, identité, SHA-256, licence et limites d'archive ; refuser les textes post-vote ou non vérifiables.
 3. V12.3 : tester représentation de plusieurs enjeux et sens du texte, avec ablation couverture égale, sans variables de ciblage.
 4. V12.4 : contrôler robustesse des gains et complémentarité avec les signaux institutionnels, puis définir protocole final distinct (sans exécuter le holdout sans autorisation).
+
+## Reprise V12.2
+[Résultats V12.1](V12.1-results.md) · [Benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45530118302) · [Candidats de récupération](../../../experiments/municipal_v12/recovery_candidates.json). 25 lacunes exactes, 19 dates-objets déjà associées à une brochure via un autre objet de la date, 6 candidats sur deux dates sans page exacte. Avant entraînement : vérifier PDF/hashes, publication et conditions de réutilisation, conserver contexte commun vs textes légaux distincts. Aucun nouveau score V12.2.

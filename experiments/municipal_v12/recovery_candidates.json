@@ -1,0 +1,91 @@
+{
+  "status": "candidates_only_not_admitted_to_training",
+  "page_numbering": "printed page numbers; confirm physical index against downloaded PDF",
+  "sources": [
+    {
+      "vote_date": "2017-09-24",
+      "url": "https://www.bk.admin.ch/dam/fr/sd-web/nQa1iYBWTOLV/2017-09-24_explications_du_conseil_federal.pdf",
+      "catalog_url": "https://www.admin.ch/fr/votation-populaire-du-24-septembre-2017",
+      "catalog_publication": "2017-07-31",
+      "editorial_cutoff": "2017-06-16",
+      "toc_page": 3,
+      "pdf_sha256": null,
+      "license_status": "unverified",
+      "objects": [
+        {
+          "vote_id": "6130",
+          "summary_pages": [
+            4,
+            5
+          ],
+          "legal_pages": [
+            8
+          ]
+        },
+        {
+          "vote_id": "6140",
+          "shared_explanation_start": 12,
+          "legal_pages": [
+            24,
+            25
+          ],
+          "linked_vote_ids": [
+            "6150"
+          ]
+        },
+        {
+          "vote_id": "6150",
+          "shared_explanation_start": 12,
+          "legal_range": [
+            26,
+            61
+          ],
+          "linked_vote_ids": [
+            "6140"
+          ]
+        }
+      ]
+    },
+    {
+      "vote_date": "2022-05-15",
+      "url": "https://www.admin.ch/dam/fr/sd-web/fPSuNq0RJHhu/15.05.2022%20%E2%80%93%20Explications%20du%20Conseil%20fe%CC%81de%CC%81ral.pdf",
+      "catalog_url": "https://www.admin.ch/fr/votation-populaire-du-15-mai-2022",
+      "catalog_revision": "2026-02-12",
+      "publication_date": null,
+      "toc_page": 3,
+      "pdf_sha256": null,
+      "license_status": "unverified",
+      "objects": [
+        {
+          "vote_id": "6550",
+          "summary_pages": [
+            4,
+            5
+          ],
+          "detail_start": 10
+        },
+        {
+          "vote_id": "6560",
+          "summary_pages": [
+            6,
+            7
+          ],
+          "detail_start": 26
+        },
+        {
+          "vote_id": "6570",
+          "summary_pages": [
+            8,
+            9
+          ],
+          "detail_start": 42
+        }
+      ]
+    }
+  ],
+  "requirements": [
+    "No use of post-vote HTML outcomes. Download original brochures and hash bytes; check original publication evidence and reuse conditions, archive identity, title/section, no other-object contamination. Do not substitute 2026 migration date for historical availability.",
+    "For linked 2017 objects distinguish shared context from separate legal text; no same-date outcomes. Do not assume same text is separate independent evidence.",
+    "Reconcile candidates with original source hashes before replacing existing text. Keep all configurations and support masks explicit."
+  ]
+}
