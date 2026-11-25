@@ -1,0 +1,30 @@
+{
+  "status": "in_progress",
+  "active": "V12.1",
+  "base_v11_sha": "64d368dbe815fbf43bbf43b097ed3c4d97c57381",
+  "best_observed": {
+    "version": "V11.3 institution_text",
+    "mae_pp": 6.955753873756506
+  },
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868,
+    "period": "2016-2022"
+  },
+  "completed": [],
+  "pending": [
+    "V12.1",
+    "V12.2",
+    "V12.3",
+    "V12.4"
+  ],
+  "runs": [],
+  "configs": [
+    "matched_original",
+    "matched_exact",
+    "title_only",
+    "union_prefer_exact"
+  ],
+  "instructions": "Verify Actions and output roster before acquiring sources. No 2023+ targets, no promotion, no holdout."
+}
