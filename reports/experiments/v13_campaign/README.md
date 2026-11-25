@@ -50,3 +50,7 @@ Toutes les mesures futures sur la population de référence, MAE macro par objet
 ## V13.4 — Résultats et décision
 
 [Résultats vérifiés](V13.4-results.md) : oracle affine V11.3 4,9266 pp (IC [4,5402 ; 5,3762]), gain d'amplitude de 0,2980 pp, 49/66 objets restent >4 pp. 5/5 tests ciblés, CI générale 3/3. V11.3 inchangée. Priorité V13.5 : diagnostic inter/intra-canton avec géographie vérifiée ; puis V14 sources agrégées indépendantes et audit de redondance. V11.5 extension historique déjà sans gain ; ne pas répéter. V13.2/1 et V12.2 restent conditionnées aux preuves de provenance. Pas de fit ni de promotion.
+
+## V13.5 — Décomposition géographique
+
+[Protocole préenregistré](V13.5-protocol.md) : oracle de translation cantonale et décomposition L2 exacte inter/intra sur les résidus historiques, jointure OFS contrôlée et reproduction des quatre métriques. Cinq tests implémentés ; CI précédente 3/3 réussie (45691590687). Aucun score nouveau ; priorité après diagnostic : V14 données indépendantes, puis certification V13.2. Aucun accès au holdout.

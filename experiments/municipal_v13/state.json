@@ -1,7 +1,7 @@
 {
   "campaign": "V13",
   "status": "in_progress",
-  "active": "V13.4",
+  "active": "V13.5",
   "base_v12": "c35595736b21b7d535e0ff7fbaf4b2c584f2bae3",
   "best_observed": {
     "version": "V11.3",
@@ -15,7 +15,8 @@
   },
   "completed": [
     "V13.1-cover-feasibility",
-    "V13.3"
+    "V13.3",
+    "V13.4"
   ],
   "pending": [
     "V13.2"
@@ -503,8 +504,18 @@
     "decision": "Affine oracle leaves 4.9266 pp (date bootstrap lower 4.5402); amplitude accounts for only 0.2980 pp beyond median shift. Prioritize genuinely independent aggregate data and historical documentation; no promotion."
   },
   "v135": {
-    "status": "planned_not_started",
-    "hypothesis": "Separate between-canton and within-canton structural residuals using a scoring-only audit with verified historical geographic mapping, then prioritize independent aggregate source acquisition. Avoid re-running V10.5/6 or V11.5. Audit historical provenance and overlap of candidate public official data first.",
+    "status": "implemented_scoring_only",
+    "hypothesis": "Separate between-canton and within-canton residual structure via nested median offsets and exact L2 decomposition; no model fit",
+    "source_run": 45444093555,
+    "source_artifact": 14945871233,
+    "workflow": ".github/workflows/geographic-budget-v135.yml",
+    "protocol": "reports/experiments/v13_campaign/V13.5-protocol.md",
+    "targeted_tests_implemented": 5,
+    "previous_repository_checks": {
+      "run": 45691590687,
+      "conclusion": "success",
+      "jobs": 3
+    },
     "model_changed": false
   }
 }
