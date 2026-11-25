@@ -193,11 +193,29 @@
   ],
   "instructions": "Verify Actions and output roster before acquiring sources. No 2023+ targets, no promotion, no holdout.",
   "v122": {
-    "status": "hash_audit_implemented_pending_ci",
+    "status": "partial_byte_audit_retry_prepared",
     "objects": 6,
     "dates": 2,
     "manifest": "experiments/municipal_v12/recovery_candidates.json",
     "new_workflow": ".github/workflows/recovery-v122.yml",
-    "blocker": "Local DNS and binary download failed; runner acquisition not yet verified. 2022 exact publication date unresolved."
+    "blocker": "bk.admin.ch closed connections; added two 2017 mirrors. 2022 first publication date and exact archive revision still unresolved.",
+    "prior_audit": {
+      "run": 45544031066,
+      "artifact": 14990044267,
+      "artifact_digest": "sha256:e57d4ed4a02f39f7c2c2c3494d81d2c454bea8ce26564c800e5e2c0da91bdda6",
+      "conclusion": "failure",
+      "hashed_sources": 1,
+      "blocked_sources": 2,
+      "hashed_objects": 3,
+      "hashed_pages": 6,
+      "training_rows": 0,
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 45544031036,
+        "conclusion": "failure",
+        "reason": "I001 test import spacing (fixed in this patch)"
+      }
+    },
+    "next": "Verify retry and compare mirror evidence. No admission."
   }
 }

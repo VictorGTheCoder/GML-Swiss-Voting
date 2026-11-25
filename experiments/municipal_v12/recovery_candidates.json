@@ -46,7 +46,12 @@
         }
       ],
       "publication_evidence_url": "https://www.bk.admin.ch/fr/avis-du-4-aout-2017-concernant-larticle-du-tages-anzeiger-et-du-bund-consacre-aux-explications-du-conseil-federal-sur-la-reforme-de-la-prevoyance-vieillesse-soumise-au-vote-le-24-septembre-prochain",
-      "publication_evidence_date": "2017-08-04"
+      "publication_evidence_date": "2017-08-04",
+      "additional_urls": [
+        "https://www.admin.ch/dam/fr/sd-web/jZZ8sYmiwOVF/24.09.2017%20-%20Explications%20du%20Conseil%20fe%CC%81de%CC%81ral.pdf",
+        "https://www.fr.ch/sites/default/files/2018-06/20170924_fr-abstimmungserlauterungen-pdf.pdf"
+      ],
+      "mirror_note": "Both additional mirrors' printed page 3 visually checked; cantonal archive upload path 2018 is not historical publication evidence."
     },
     {
       "vote_date": "2022-05-15",
@@ -85,7 +90,10 @@
       ],
       "alternate_url": "https://www.bk.admin.ch/dam/fr/sd-web/PCWaDg8-GOcJ/2022-05-15_explications_du_conseil_federal.pdf",
       "editorial_cutoff": "2022-02-16",
-      "publication_evidence_note": "Editorial cutoff is not publication date; both official mirrors have matching visually checked TOC, bytes still unverified."
+      "publication_evidence_note": "Contemporary Keystone-ATS report establishes existence and correction on 2022-04-13, not exact first release or identity of current archive bytes. Digital revision must be tracked separately from print. No admission yet.",
+      "publication_evidence_date": "2022-04-13",
+      "publication_evidence_url": "https://www.lfm.ch/actualite/suisse/loi-sur-le-cinema-la-chancellerie-precise-la-brochure-de-vote/",
+      "observed_pdf_sha256": "f9c5d7830a90b9af3b0c8fde853e036a14ca1b111958342bb39ad98576adc308"
     }
   ],
   "requirements": [

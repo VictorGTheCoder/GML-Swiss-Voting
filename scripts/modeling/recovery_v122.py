@@ -31,7 +31,9 @@ def normalized(value):
 def valid_url(url):
     parsed = urlparse(url)
     return (parsed.scheme == "https" and parsed.hostname in
-            {"www.admin.ch", "www.bk.admin.ch"} and not parsed.username)
+            {"www.admin.ch", "www.bk.admin.ch", "www.fr.ch"}
+            and not parsed.username and not parsed.password
+            and parsed.port in (None, 443))
 
 
 def validate_source(source):
@@ -90,11 +92,18 @@ def inspect_pdf(data, source):
                 "toc_identity_pass": True, "pages": records}
 
 
+def source_urls(source):
+    """Preserve order and record each distinct, explicitly listed mirror."""
+    return list(dict.fromkeys([source["url"]] +
+                              ([source["alternate_url"]] if source.get("alternate_url") else []) +
+                              source.get("additional_urls", [])))
+
+
 def audit(manifest):
     results = []
     for source in manifest["sources"]:
         validate_source(source)
-        for url in [source["url"]] + ([source["alternate_url"]] if source.get("alternate_url") else []):
+        for url in source_urls(source):
             record = {"vote_date": source["vote_date"], "url": url}
             try:
                 record.update(inspect_pdf(download(url), source))
@@ -102,10 +111,16 @@ def audit(manifest):
             except (OSError, ValueError, subprocess.SubprocessError, AttributeError) as exc:
                 record.update(status="blocked", error=str(exc))
             results.append(record)
-    hashes = [x["pdf_sha256"] for x in results
-              if x["vote_date"] == "2022-05-15" and x["status"] == "hashed_candidate"]
+    by_date = {}
+    for vote_date in sorted({x["vote_date"] for x in results}):
+        candidates = [x for x in results if x["vote_date"] == vote_date
+                      and x["status"] == "hashed_candidate"]
+        hashes = [x["pdf_sha256"] for x in candidates]
+        by_date[vote_date] = {"hashed_mirrors": len(hashes),
+                              "mirror_bytes_equal": len(set(hashes)) == 1 if len(hashes) >= 2 else None}
     return {"status": "audit_only_not_admitted", "sources": results,
-            "mirror_bytes_equal": hashes[0] == hashes[1] if len(hashes) == 2 else None,
+            "by_date": by_date,
+            "mirror_bytes_equal": by_date.get("2022-05-15", {}).get("mirror_bytes_equal"),
             "strict_forecast_ready": False, "training_rows": 0}
 
 

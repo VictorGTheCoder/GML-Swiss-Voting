@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'scripts/modeling/recovery_v122.py'
+      - 'experiments/municipal_v12/recovery_candidates.json'
       - 'tests/test_recovery_v122.py'
       - '.github/workflows/recovery-v122.yml'
   workflow_dispatch:
