@@ -48,3 +48,7 @@
 ### V11.6 — robustesse
 
 [Protocole](V11.6-protocol.md) : refit local à 23 dates, deux variantes fixes, ancres nationales inchangées. Benchmark à vérifier. V12 : récupération des textes officiels manquants et contrôle apparié de couverture, puis descriptions multi-enjeux ; maintenir le registre et la séparation du test final.
+
+### V11.6 — clôture de V11
+
+[Résultats](V11.6-results.md) · [Benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45522712083). Refit institution 7,0170 pp, refit texte 7,0532 pp ; aucun gain. V11.3 reste meilleur exploratoire (6,9558 pp). V11 : 6/6 étapes terminées, aucune promotion. V12 prioritaire : ablation documentaire à support strictement apparié, récupération des textes officiels manquants et contrôle de provenance, puis représentations multi-enjeux.

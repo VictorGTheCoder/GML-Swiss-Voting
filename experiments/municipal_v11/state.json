@@ -1,6 +1,6 @@
 {
-  "status": "in_progress",
-  "active": "V11.6",
+  "status": "completed_exploratory_no_promotion",
+  "active": null,
   "base_v10_sha": "e590df739af56a18f08834399b8e37b0e5fc4ef3",
   "reference": {
     "version": "V8.1",
@@ -21,11 +21,10 @@
     "V11.2",
     "V11.3",
     "V11.4",
-    "V11.5"
-  ],
-  "pending": [
+    "V11.5",
     "V11.6"
   ],
+  "pending": [],
   "runs": [
     {
       "version": "V11.1",
@@ -1610,6 +1609,356 @@
           "mean_coverage": 0.9910289924
         }
       ]
+    },
+    {
+      "version": "V11.6",
+      "run": 45522712083,
+      "job": 138898310014,
+      "artifact": 14981651433,
+      "artifact_digest": "sha256:386cd737d1e379ee00ccbc4c0842947708aeb3a00033643140a6d24d4fb7217a",
+      "sha": "fc6716175e08dfa105965568ef68ea8a8d327f84",
+      "conclusion": "success",
+      "targeted_tests": 2,
+      "repository_checks": {
+        "run": 45522711963,
+        "conclusion": "success"
+      },
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "vs_v113_interval": [
+            -0.6800955676185603,
+            0.043876748289161265
+          ]
+        },
+        {
+          "variant": "v108_tfidf",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.988599997055331,
+          "centered_mae_pp": 5.280965787730653,
+          "national_mae_pp": 3.846510449192281,
+          "canton_mae_pp": 5.536970110697117,
+          "gain_interval": [
+            -0.033474457237910864,
+            0.6263738724976635
+          ],
+          "vs_v113_interval": [
+            -0.18292698889263526,
+            0.09439308477954603
+          ]
+        },
+        {
+          "variant": "v113_institution",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.955753873756506,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.7811714402970824,
+          "canton_mae_pp": 5.500338667087431,
+          "gain_interval": [
+            -0.04387674828916126,
+            0.6800955676185607
+          ],
+          "vs_v113_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "rolling_text",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.0532181751257585,
+          "centered_mae_pp": 5.312823001355449,
+          "national_mae_pp": 3.8888417793018086,
+          "canton_mae_pp": 5.618199174420483,
+          "gain_interval": [
+            -0.13152434596302204,
+            0.5495152291829918
+          ],
+          "vs_v113_interval": [
+            -0.2555834922597338,
+            0.045297215639256934
+          ]
+        },
+        {
+          "variant": "rolling_institution",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.0170061960082215,
+          "centered_mae_pp": 5.304041764308014,
+          "national_mae_pp": 3.811874651629404,
+          "canton_mae_pp": 5.596996072771663,
+          "gain_interval": [
+            -0.16402811185263727,
+            0.6448923399901377
+          ],
+          "vs_v113_interval": [
+            -0.21116690041810285,
+            0.059278750231554975
+          ]
+        }
+      ],
+      "fold_means": {
+        "2016-02-28": {
+          "reference": 8.7632061698,
+          "rolling_institution": 8.0888004079,
+          "rolling_text": 8.8828423076,
+          "v108_tfidf": 8.8828423076,
+          "v113_institution": 8.0888004079
+        },
+        "2016-06-05": {
+          "reference": 7.0623200371,
+          "rolling_institution": 7.542074118,
+          "rolling_text": 7.156862703,
+          "v108_tfidf": 7.034755193,
+          "v113_institution": 7.3765580302
+        },
+        "2016-09-25": {
+          "reference": 8.7886835905,
+          "rolling_institution": 6.177728856,
+          "rolling_text": 6.3158164476,
+          "v108_tfidf": 5.7626944671,
+          "v113_institution": 6.0414035536
+        },
+        "2016-11-27": {
+          "reference": 5.3439065605,
+          "rolling_institution": 5.9055156785,
+          "rolling_text": 6.0552330991,
+          "v108_tfidf": 5.8254305132,
+          "v113_institution": 5.860835409
+        },
+        "2017-02-12": {
+          "reference": 8.9125966537,
+          "rolling_institution": 8.7409888187,
+          "rolling_text": 8.8495108411,
+          "v108_tfidf": 8.8142713699,
+          "v113_institution": 8.268717455
+        },
+        "2017-05-21": {
+          "reference": 7.8238955201,
+          "rolling_institution": 8.2066833689,
+          "rolling_text": 8.3435951045,
+          "v108_tfidf": 8.0636880972,
+          "v113_institution": 7.9118893396
+        },
+        "2017-09-24": {
+          "reference": 6.5828354794,
+          "rolling_institution": 6.7736648425,
+          "rolling_text": 6.5936581548,
+          "v108_tfidf": 6.8329056013,
+          "v113_institution": 6.9075400752
+        },
+        "2018-03-04": {
+          "reference": 6.0931465884,
+          "rolling_institution": 5.8041533152,
+          "rolling_text": 5.8362211382,
+          "v108_tfidf": 5.7352976359,
+          "v113_institution": 5.6371515163
+        },
+        "2018-06-10": {
+          "reference": 14.3620509239,
+          "rolling_institution": 11.1082262779,
+          "rolling_text": 11.7694982794,
+          "v108_tfidf": 11.9490792958,
+          "v113_institution": 11.2261065091
+        },
+        "2018-09-23": {
+          "reference": 9.2823980997,
+          "rolling_institution": 8.1680363522,
+          "rolling_text": 8.5896555147,
+          "v108_tfidf": 8.826641755,
+          "v113_institution": 8.5045034163
+        },
+        "2018-11-25": {
+          "reference": 6.477368197,
+          "rolling_institution": 8.2951435088,
+          "rolling_text": 7.8306680997,
+          "v108_tfidf": 6.7439672704,
+          "v113_institution": 7.0959847964
+        },
+        "2019-02-10": {
+          "reference": 4.7755703229,
+          "rolling_institution": 6.3936313083,
+          "rolling_text": 6.5844779875,
+          "v108_tfidf": 6.5844779875,
+          "v113_institution": 6.3936313083
+        },
+        "2019-05-19": {
+          "reference": 6.4493691696,
+          "rolling_institution": 6.4577765701,
+          "rolling_text": 6.311533603,
+          "v108_tfidf": 6.1801543618,
+          "v113_institution": 6.372643578
+        },
+        "2020-02-09": {
+          "reference": 5.9860079693,
+          "rolling_institution": 5.007109308,
+          "rolling_text": 5.1843538173,
+          "v108_tfidf": 5.3800335763,
+          "v113_institution": 5.2123346382
+        },
+        "2020-09-27": {
+          "reference": 8.2286029414,
+          "rolling_institution": 8.5887914345,
+          "rolling_text": 8.5344506463,
+          "v108_tfidf": 8.2782617484,
+          "v113_institution": 8.3853537866
+        },
+        "2020-11-29": {
+          "reference": 7.5056877692,
+          "rolling_institution": 5.9497985524,
+          "rolling_text": 5.688148051,
+          "v108_tfidf": 6.1097877211,
+          "v113_institution": 6.1052472459
+        },
+        "2021-03-07": {
+          "reference": 6.6486079249,
+          "rolling_institution": 6.5805863881,
+          "rolling_text": 6.5816574111,
+          "v108_tfidf": 6.5816574111,
+          "v113_institution": 6.5805863881
+        },
+        "2021-06-13": {
+          "reference": 5.8386012002,
+          "rolling_institution": 5.8146523789,
+          "rolling_text": 5.7644774252,
+          "v108_tfidf": 5.8782466246,
+          "v113_institution": 5.9505072604
+        },
+        "2021-09-26": {
+          "reference": 5.2860405428,
+          "rolling_institution": 5.8635771422,
+          "rolling_text": 5.881431379,
+          "v108_tfidf": 5.5226056121,
+          "v113_institution": 5.5221790359
+        },
+        "2021-11-28": {
+          "reference": 6.5966532469,
+          "rolling_institution": 6.6560540168,
+          "rolling_text": 6.7463421179,
+          "v108_tfidf": 6.5103457981,
+          "v113_institution": 6.6529368415
+        },
+        "2022-02-13": {
+          "reference": 5.4523679671,
+          "rolling_institution": 5.5237401365,
+          "rolling_text": 5.4894299535,
+          "v108_tfidf": 5.5034297575,
+          "v113_institution": 5.5198423586
+        },
+        "2022-05-15": {
+          "reference": 5.2564945772,
+          "rolling_institution": 5.0425867264,
+          "rolling_text": 5.0178749879,
+          "v108_tfidf": 5.1726726104,
+          "v113_institution": 5.2286373358
+        },
+        "2022-09-25": {
+          "reference": 7.423501441,
+          "rolling_institution": 7.1882939716,
+          "rolling_text": 7.2107817973,
+          "v108_tfidf": 7.4458029655,
+          "v113_institution": 7.4811196317
+        }
+      },
+      "domain_means": {
+        "1": {
+          "reference": 6.4792925574,
+          "rolling_institution": 6.5478145573,
+          "rolling_text": 6.3938076902,
+          "v108_tfidf": 6.6859831747,
+          "v113_institution": 6.7836818411
+        },
+        "2": {
+          "reference": 5.8630062992,
+          "rolling_institution": 5.8965432193,
+          "rolling_text": 5.8383524924,
+          "v108_tfidf": 5.7477172272,
+          "v113_institution": 5.802332172
+        },
+        "3": {
+          "reference": 7.1680352648,
+          "rolling_institution": 6.9004502123,
+          "rolling_text": 6.8256975548,
+          "v108_tfidf": 6.8925439647,
+          "v113_institution": 6.9152445706
+        },
+        "4": {
+          "reference": 12.6797406891,
+          "rolling_institution": 10.8525376055,
+          "rolling_text": 11.4546529987,
+          "v108_tfidf": 10.7609447807,
+          "v113_institution": 10.1520500803
+        },
+        "5": {
+          "reference": 10.1693907323,
+          "rolling_institution": 9.9979486877,
+          "rolling_text": 10.1351242048,
+          "v108_tfidf": 10.1571832957,
+          "v113_institution": 10.0416046951
+        },
+        "6": {
+          "reference": 7.7105377573,
+          "rolling_institution": 7.2786263205,
+          "rolling_text": 7.3889742424,
+          "v108_tfidf": 7.1764459782,
+          "v113_institution": 6.9801270745
+        },
+        "7": {
+          "reference": 6.5839010403,
+          "rolling_institution": 7.0560995237,
+          "rolling_text": 7.1994141018,
+          "v108_tfidf": 6.9445593052,
+          "v113_institution": 6.8863623743
+        },
+        "8": {
+          "reference": 6.2725889719,
+          "rolling_institution": 6.1196351898,
+          "rolling_text": 6.2240941062,
+          "v108_tfidf": 6.2585933766,
+          "v113_institution": 6.1048269459
+        },
+        "9": {
+          "reference": 5.6367797301,
+          "rolling_institution": 5.5418202568,
+          "rolling_text": 5.6035737471,
+          "v108_tfidf": 5.5780286772,
+          "v113_institution": 5.6255283968
+        },
+        "10": {
+          "reference": 6.9000078832,
+          "rolling_institution": 6.7201697259,
+          "rolling_text": 6.6797897923,
+          "v108_tfidf": 6.581896391,
+          "v113_institution": 6.6667452066
+        },
+        "11": {
+          "reference": 7.8350434359,
+          "rolling_institution": 8.2001614604,
+          "rolling_text": 8.1700244882,
+          "v108_tfidf": 7.7094734326,
+          "v113_institution": 7.6769308663
+        },
+        "12": {
+          "reference": 4.8426383255,
+          "rolling_institution": 4.7677562988,
+          "rolling_text": 4.7939041617,
+          "v108_tfidf": 4.8496702903,
+          "v113_institution": 4.8108858897
+        }
+      }
     }
   ],
   "stage_status": {
@@ -1618,7 +1967,7 @@
     "V11.3": "completed_exploratory_gain_unconfirmed",
     "V11.4": "completed_no_gain_repository_checks_verified",
     "V11.5": "completed_no_gain",
-    "V11.6": "rolling_local_refit_predeclared"
+    "V11.6": "completed_no_gain"
   },
   "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access.",
   "v115_protocol": {
@@ -1639,6 +1988,6 @@
       "audit direction and multiple topics; evaluate same-coverage ablation",
       "evaluate source complementarity and confidence; only then new models"
     ],
-    "status": "planned"
+    "status": "ready"
   }
 }
