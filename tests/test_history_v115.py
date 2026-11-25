@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from scripts.modeling.history_v115 import audit_history, basis_for_history
+from scripts.modeling.history_v115 import audit_history, basis_for_history, export_document_roster
 
 
 def rows():
@@ -40,3 +40,16 @@ def test_older_basis_only_modern_heads():
     np.testing.assert_allclose(heads[:, 1:], (m - basis.mean_) @ basis.components_.T)
     with pytest.raises(ValueError, match="strictly precede"):
         basis_for_history(m, mu, dates, o, older, "1985-01-01", 5, 2)
+
+
+def test_document_roster_is_not_historical_audit(tmp_path):
+    document = pd.DataFrame({name: ["text"] for name in (
+        "original_text", "exact_text", "multi_text", "question_text", "mechanism_text")},
+        index=pd.Index(["vote-a"], name="vote_id"))
+    document["source"] = "official"
+    _, historical = audit_history(rows(), pd.Series({"1": "A", "2": "B"}))
+    path = tmp_path / "audit_roster.csv"
+    export_document_roster(document, path)
+    assert pd.read_csv(path).to_dict("records") == [{"vote_id": "vote-a", "source": "official"}]
+    with pytest.raises(KeyError):
+        export_document_roster(historical, path)

@@ -36,3 +36,7 @@
 ## V11.5 — historique
 
 [Protocole](V11.5-protocol.md) : audit de la couverture 1960–1989, extension de la base géographique 1981–1989 et contrôle de demi-vie. Benchmark à vérifier. [CI V11.4 corrigée](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45496886074) réussie. Meilleur exploratoire inchangé.
+
+### V11.5 — incident du benchmark (25 novembre 2026)
+
+[Run 45506576707](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45506576707) : 3 tests ciblés réussis, les trois plis calculés et contrôles de replay/population franchis, puis `KeyError` à l’export : la variable `audit` documentaire était écrasée par l’audit historique dans la boucle. Artefact partiel [14971834596](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45506576707/artifacts/14971834596), aucun score validé avant manifeste complet. Correction : variables distinctes, export strict et test de régression, sans changer les configurations. Reproduction nécessaire. L’audit mesuré confirme 0/118 objets admissibles en 1960–1980 (couverture moyenne 79,62–79,66 %) et 55/56 en 1981–1989 (99,10–99,15 %). CI générale de la première tentative réussie. V11.3 demeure le meilleur exploratoire ; V11.6 reste prioritaire après résolution.

@@ -1279,6 +1279,43 @@
         "run": 45496886074,
         "conclusion": "success"
       }
+    },
+    {
+      "version": "V11.5",
+      "kind": "benchmark_attempt",
+      "run": 45506576707,
+      "sha": "e055d641944a80b626f92edc1f1abe4bba9bcb78",
+      "job": 138843280000,
+      "artifact": 14971834596,
+      "artifact_digest": "sha256:637aee66c29f0e08db6b685008cb82008ce243f7968829062643114a2b9f152b",
+      "status": "completed",
+      "conclusion": "failure",
+      "targeted_tests": 3,
+      "reason": "Document audit variable shadowed by fold historical audit, KeyError on export; partial artifacts only, no complete manifest or verified score.",
+      "historical_coverage": [
+        {
+          "period": "1960-1980",
+          "objects": 118,
+          "eligible": 0,
+          "mean_coverage_range": [
+            0.7961953019,
+            0.7965739017
+          ]
+        },
+        {
+          "period": "1981-1989",
+          "objects": 56,
+          "eligible": 55,
+          "mean_coverage_range": [
+            0.9910289924,
+            0.9915002378
+          ]
+        }
+      ],
+      "repository_checks": {
+        "run": 45506576382,
+        "conclusion": "success"
+      }
     }
   ],
   "stage_status": {
@@ -1286,7 +1323,7 @@
     "V11.2": "completed_no_gain",
     "V11.3": "completed_exploratory_gain_unconfirmed",
     "V11.4": "completed_no_gain_repository_checks_verified",
-    "V11.5": "implemented_benchmark_pending"
+    "V11.5": "benchmark_failed_export_corrected_retry_required"
   },
   "instructions": "Resume this branch, verify live CI before scoring; update this index and backlog, no targets 2023+, no final holdout access.",
   "v115_protocol": {

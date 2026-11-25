@@ -72,6 +72,12 @@ def basis_for_history(modern, mu, dates, older, older_dates, cutoff, half_life, 
     return basis, heads[:len(modern)]
 
 
+def export_document_roster(document_audit, path):
+    """Export only document metadata, failing if the wrong audit is supplied."""
+    document_audit.drop(columns=["original_text", "exact_text", "multi_text",
+                                 "question_text", "mechanism_text"]).to_csv(path)
+
+
 def run(base, acquisition, old_acquisition, fusion, frozen, output):
     if output.exists() and any(output.iterdir()):
         raise FileExistsError("Preserve earlier experiments")
@@ -84,8 +90,8 @@ def run(base, acquisition, old_acquisition, fusion, frozen, output):
     corpus["vote_date"] = pd.to_datetime(corpus.vote_date)
     if len(corpus) != 306 or corpus.vote_date.ge("2023-01-01").any():
         raise ValueError("Unexpected text population")
-    audit, evidence = audited_documents(corpus, m)
-    doc = variant_corpus(audit, "original_text")
+    document_audit, evidence = audited_documents(corpus, m)
+    doc = variant_corpus(document_audit, "original_text")
     fixed = read_artifact(frozen, ["reference", "reference_weight", "institution_text"])
     plan = json.loads(PLAN.read_text())
     params = dict(plan["regressor_parameters"])
@@ -131,9 +137,9 @@ def run(base, acquisition, old_acquisition, fusion, frozen, output):
                       [["municipality_id", "canton"]].drop_duplicates().set_index("municipality_id").canton)
             if set(roster.index) != set(munis):
                 raise ValueError("Historical roster differs from supervised training")
-            aligned, audit = audit_history(old, roster)
-            audits.append(audit.assign(fold=window["name"]))
-            selected = audit[audit.eligible].set_index("vote_id")
+            aligned, fold_history_audit = audit_history(old, roster)
+            audits.append(fold_history_audit.assign(fold=window["name"]))
+            selected = fold_history_audit[fold_history_audit.eligible].set_index("vote_id")
             if selected.empty:
                 raise ValueError("No admissible additional historical object")
             matrix = aligned[aligned.vote_id.isin(selected.index)].pivot(
@@ -222,8 +228,7 @@ def run(base, acquisition, old_acquisition, fusion, frozen, output):
         detail.groupby(["variant", column])[list(METRICS)].agg(["mean", "size"]).to_csv(output / f"{column}_metrics.csv")
     pd.DataFrame(canton_rows).to_csv(output / "canton_metrics.csv", index=False)
     evidence.to_csv(output / "document_evidence.csv", index=False)
-    audit.drop(columns=["original_text", "exact_text", "multi_text", "question_text",
-                        "mechanism_text"]).to_csv(output / "audit_roster.csv")
+    export_document_roster(document_audit, output / "audit_roster.csv")
     coverage = {s["variant"]: s["covered_objects"] for s in summary}
     (output / "coverage.json").write_text(json.dumps(coverage, indent=2), encoding="utf-8")
     (output / "selection.json").write_text(json.dumps(selection, indent=2), encoding="utf-8")
