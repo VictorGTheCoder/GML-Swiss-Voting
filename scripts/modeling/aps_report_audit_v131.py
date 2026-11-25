@@ -8,12 +8,9 @@ import json
 import re
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
-from datetime import date
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
-
-from pypdf import PdfReader
 
 from scripts.modeling.aps_audit_v131 import day, roster
 
@@ -46,6 +43,8 @@ def cover_status(text, vote_date):
 
 
 def inspect(item):
+    from pypdf import PdfReader
+
     key, vote_date = item
     url = report_url(key)
     entry = {"vote_key": key, "vote_date": vote_date.isoformat(), "url": url}

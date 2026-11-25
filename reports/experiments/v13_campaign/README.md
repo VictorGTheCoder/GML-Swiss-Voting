@@ -18,3 +18,7 @@ Toutes les mesures futures sur la population de référence, MAE macro par objet
 ## Reprise V13.1 — alternative aux données CSV
 
 [Incident HTTP 403 et audit des couvertures contemporaines](V13.1-report-fallback.md). Deux tests CSV réussis, aucune acquisition ; audit de rapports Swissvotes indépendant implémenté, aucun résultat nouveau. Le CSV reste manuel, ne pas relancer sans changement de source. V13.2 reste prioritaire si l'audit de couvertures échoue.
+
+## Reprise du 25 novembre — V13.1 et V13.2
+
+[Résultats de couverture APS](V13.1-cover-results.md) : 42/66 candidats datés, 14/23 dates, zéro admission ; acquisition intégrale différée. [Pilote V13.2](V13.2-source-pilot.md) : 8 candidats de sondages nationaux, six accords de dernière vague, deux premières vagues, aucun nouveau score. Priorité : compléter les vagues et vérifier provenance/licence ; V13.3 demeure en attente. Aucun benchmark répété.

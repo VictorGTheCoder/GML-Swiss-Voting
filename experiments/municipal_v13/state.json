@@ -1,7 +1,7 @@
 {
   "campaign": "V13",
   "status": "in_progress",
-  "active": "V13.1",
+  "active": "V13.2",
   "base_v12": "c35595736b21b7d535e0ff7fbaf4b2c584f2bae3",
   "best_observed": {
     "version": "V11.3",
@@ -13,14 +13,16 @@
     "rows": 138868,
     "period": "2016-2022"
   },
-  "completed": [],
+  "completed": [
+    "V13.1-cover-feasibility"
+  ],
   "pending": [
-    "V13.1",
     "V13.2",
     "V13.3"
   ],
   "deferred": [
-    "V12.2"
+    "V12.2",
+    "V13.1-full-admission"
   ],
   "v131": {
     "status": "csv_http_403_report_audit_implemented",
@@ -43,10 +45,39 @@
     },
     "fallback": {
       "workflow": ".github/workflows/aps-report-audit-v131.yml",
-      "status": "implemented_unverified",
+      "status": "cover_audit_completed_no_admission",
       "example_url": "https://swissvotes.ch/vote/661.00/inserateanalyse.pdf",
       "example_cover_date": "2022-09-15",
-      "example_vote_date": "2022-09-25"
+      "example_vote_date": "2022-09-25",
+      "run": 45609354921,
+      "artifact": 15019741222,
+      "digest": "sha256:9ce1cf93a48994cab557b1fa06da120009ebdc6848036291866aab418d7db3f8",
+      "summary": {
+        "objects": 66,
+        "dates": 23,
+        "dated_candidate": 42,
+        "candidate_dates": 14,
+        "candidate_distinct_pdf_hashes": 20,
+        "cover_date_unverified": 9,
+        "cover_identity_unverified": 11,
+        "http_404": 4,
+        "training_rows_admitted": 0
+      },
+      "targeted_tests": 4,
+      "ci": {
+        "run": 45609360519,
+        "conclusion": "failure",
+        "reason": "F401 unused date; lazy PDF dependency to avoid collection failure; corrected, verification pending"
+      }
     }
+  },
+  "v132": {
+    "status": "pilot_source_inventory_reviewed",
+    "objects": 8,
+    "dates": 3,
+    "latest_value_agreements": 6,
+    "early_waves": 2,
+    "training_rows_admitted": 0,
+    "strict_forecast_ready": false
   }
 }

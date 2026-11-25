@@ -1,12 +1,5 @@
 name: V13.1 APS report cover audit
 on:
-  push:
-    branches:
-      - 'experiment/municipal-v13-aps-source-20261125'
-    paths:
-      - '.github/workflows/aps-report-audit-v131.yml'
-      - 'scripts/modeling/aps_report_audit_v131.py'
-      - 'tests/test_aps_report_audit_v131.py'
   workflow_dispatch:
 permissions:
   contents: read
