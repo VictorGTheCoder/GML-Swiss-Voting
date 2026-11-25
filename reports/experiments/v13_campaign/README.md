@@ -54,3 +54,8 @@ Toutes les mesures futures sur la population de référence, MAE macro par objet
 ## V13.5 — Décomposition géographique
 
 [Protocole préenregistré](V13.5-protocol.md) : oracle de translation cantonale et décomposition L2 exacte inter/intra sur les résidus historiques, jointure OFS contrôlée et reproduction des quatre métriques. Cinq tests implémentés ; CI précédente 3/3 réussie (45691590687). Aucun score nouveau ; priorité après diagnostic : V14 données indépendantes, puis certification V13.2. Aucun accès au holdout.
+
+
+### Incident V13.5 — correction numérique
+
+Le [premier benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45700042334) échoue avant chargement de l'artefact : le test des groupes inégaux exigeait une inégalité flottante stricte (28,93244816772078 contre 28,93244816772077 pp). [CI générale](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45700052778) : 683 tests réussis, 1 échec, 9 ignorés sur Ubuntu ; job municipal réussi. Correction du test avec tolérance absolue de 1e-8 pp, déjà appliquée à l'invariant du diagnostic. Aucun changement des métriques, du modèle, des données ou de la population. Le benchmark est relancé par le changement de test ; résultats réels non encore mesurés.

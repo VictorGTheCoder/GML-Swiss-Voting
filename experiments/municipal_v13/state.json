@@ -504,7 +504,7 @@
     "decision": "Affine oracle leaves 4.9266 pp (date bootstrap lower 4.5402); amplitude accounts for only 0.2980 pp beyond median shift. Prioritize genuinely independent aggregate data and historical documentation; no promotion."
   },
   "v135": {
-    "status": "implemented_scoring_only",
+    "status": "retry_after_roundoff_test_failure",
     "hypothesis": "Separate between-canton and within-canton residual structure via nested median offsets and exact L2 decomposition; no model fit",
     "source_run": 45444093555,
     "source_artifact": 14945871233,
@@ -516,6 +516,18 @@
       "conclusion": "success",
       "jobs": 3
     },
-    "model_changed": false
+    "model_changed": false,
+    "failed_attempt": {
+      "run": 45700042334,
+      "job": 139507459010,
+      "repository_checks": 45700052778,
+      "reason": "Strict floating-point inequality in synthetic unequal groups: 28.93244816772078 vs 28.93244816772077 pp; no real-data scoring reached.",
+      "ubuntu_tests": {
+        "passed": 683,
+        "failed": 1,
+        "skipped": 9
+      },
+      "fix": "Use absolute tolerance 1e-8 pp consistent with diagnostic invariant; scoring logic unchanged."
+    }
   }
 }

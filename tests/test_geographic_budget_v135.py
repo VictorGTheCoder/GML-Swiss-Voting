@@ -26,7 +26,7 @@ def test_unequal_groups_and_l2_identity():
     result = geographic_diagnosis(y, p, ["A"] * 2 + ["B"] * 11)
     assert result["mse_pp2"] == pytest.approx(
         sum(result[k] for k in ("global_bias_pp2", "between_canton_pp2", "within_canton_pp2")))
-    assert result["canton_offset_oracle_pp"] <= result["median_offset_oracle_pp"]
+    assert result["canton_offset_oracle_pp"] <= result["median_offset_oracle_pp"] + 1e-8
     assert "predictions" not in result
 
 
