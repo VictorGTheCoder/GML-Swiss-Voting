@@ -1,6 +1,6 @@
 {
   "campaign": "V14",
-  "status": "source_audit_open",
+  "status": "source_audit_partial_candidates_no_admission",
   "active": "V14.1",
   "best_observed": {
     "version": "V11.3",
@@ -29,5 +29,67 @@
   ],
   "training_rows_admitted": 0,
   "source_diagnostic_run": 45709347921,
-  "prior_source_inventory_ref": "aea65e15f4897b5ef34b9eba4d1e250c92665253"
+  "prior_source_inventory_ref": "aea65e15f4897b5ef34b9eba4d1e250c92665253",
+  "v141": {
+    "status": "six_consultation_reports_transcribed",
+    "candidate_rows": 156,
+    "years": 6,
+    "cantons": 26,
+    "compared_rows": 130,
+    "changed_rows": 32,
+    "year_stats": [
+      {
+        "year": 2017,
+        "rows": 26,
+        "compared": 26,
+        "changed": 0,
+        "max_change": 0
+      },
+      {
+        "year": 2018,
+        "rows": 26,
+        "compared": 26,
+        "changed": 10,
+        "max_change": 0.2
+      },
+      {
+        "year": 2019,
+        "rows": 26,
+        "compared": 26,
+        "changed": 0,
+        "max_change": 0
+      },
+      {
+        "year": 2020,
+        "rows": 26,
+        "compared": 26,
+        "changed": 0,
+        "max_change": 0
+      },
+      {
+        "year": 2021,
+        "rows": 26,
+        "compared": 26,
+        "changed": 22,
+        "max_change": 0.4
+      },
+      {
+        "year": 2022,
+        "rows": 26,
+        "compared": 0,
+        "changed": 0,
+        "max_change": null
+      }
+    ],
+    "source_month_only": true,
+    "source_hashes_pending": true,
+    "license_pending": true,
+    "missing_reference_year": 2016,
+    "training_rows_admitted": 0,
+    "previous_ci": {
+      "run": 45717992954,
+      "jobs": 3,
+      "conclusion": "success"
+    }
+  }
 }
