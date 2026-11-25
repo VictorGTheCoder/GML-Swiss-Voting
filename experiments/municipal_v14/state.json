@@ -1,0 +1,33 @@
+{
+  "campaign": "V14",
+  "status": "source_audit_open",
+  "active": "V14.1",
+  "best_observed": {
+    "version": "V11.3",
+    "mae_pp": 6.955753873756506
+  },
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868,
+    "period": "2016-2022"
+  },
+  "completed": [],
+  "pending": [
+    "V14.1",
+    "V14.2"
+  ],
+  "sources": [
+    {
+      "url": "https://www.efv.admin.ch/en/data-fiscal-equalization",
+      "status": "candidate_archive_publication_vintage_unverified"
+    },
+    {
+      "url": "https://www.efv.admin.ch/fr/documents-techniques-et-rapports",
+      "status": "candidate_methods"
+    }
+  ],
+  "training_rows_admitted": 0,
+  "source_diagnostic_run": 45709347921,
+  "prior_source_inventory_ref": "aea65e15f4897b5ef34b9eba4d1e250c92665253"
+}

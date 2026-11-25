@@ -1,12 +1,5 @@
 name: V13.5 geographic error diagnostic
 on:
-  push:
-    branches:
-      - 'experiment/municipal-v13-aps-source-20261125'
-    paths:
-      - '.github/workflows/geographic-budget-v135.yml'
-      - 'scripts/modeling/geographic_budget_v135.py'
-      - 'tests/test_geographic_budget_v135.py'
   workflow_dispatch:
 permissions:
   contents: read

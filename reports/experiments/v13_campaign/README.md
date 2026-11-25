@@ -59,3 +59,7 @@ Toutes les mesures futures sur la population de référence, MAE macro par objet
 ### Incident V13.5 — correction numérique
 
 Le [premier benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45700042334) échoue avant chargement de l'artefact : le test des groupes inégaux exigeait une inégalité flottante stricte (28,93244816772078 contre 28,93244816772077 pp). [CI générale](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45700052778) : 683 tests réussis, 1 échec, 9 ignorés sur Ubuntu ; job municipal réussi. Correction du test avec tolérance absolue de 1e-8 pp, déjà appliquée à l'invariant du diagnostic. Aucun changement des métriques, du modèle, des données ou de la population. Le benchmark est relancé par le changement de test ; résultats réels non encore mesurés.
+
+## V13.5 — clôture et suite V14
+
+[Résultats vérifiés](V13.5-results.md) : oracle cantonal V11.3 3,7517 pp [3,5636 ; 3,9575], 18/66 objets >4 pp ; gain supplémentaire 1,4729 pp. 5 tests ciblés et 3/3 jobs CI réussis. Aucun gain prédictif. [Index et backlog V14](../v14_campaign/README.md) : audit de nouvelles sources institutionnelles agrégées, V13.2 encore en attente. Aucun test final.
