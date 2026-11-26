@@ -83,3 +83,7 @@ Le [premier benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actio
 ## V13.2i — Corroboration et droits
 
 [Audit](V13.2i-corroboration.md) : 6/6 valeurs et dates de publication corroborées, deux conflits de terrain, zéro admission ; cinq contrôles négatifs réussis, CI parent 3/3. Inventaire gelé jusqu'à preuve nouvelle. Priorité V15.1 : audit de documents institutionnels historiques datés, distincts des brochures déjà testées. Aucun nouveau score.
+
+## Suite V15.1a
+
+[Registre V15](../v15_campaign/README.md) : 7 dossiers/3 dates, 34 entrées candidates, 15 familles provisoires, 6 contrôles négatifs, zéro admission. Priorité aux preuves primaires et à la couverture indépendante. CI parent 3/3. Meilleur V11.3 inchangé.

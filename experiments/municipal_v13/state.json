@@ -20,7 +20,7 @@
     "V13.5"
   ],
   "pending": [
-    "V15.1-dated-institutional-document-audit",
+    "V15.1b-independent-date-coverage-and-primary-provenance",
     "V13.2",
     "V14.1-source-audit"
   ],
@@ -908,5 +908,28 @@
       }
     },
     "decision": "Canton-offset oracle 3.7517 pp; no prediction gain; prioritize independent aggregate institutional source audit, no repetition of V10.5/V10.6 without new information."
+  },
+  "v151": {
+    "status": "pilot_metadata_only",
+    "results": {
+      "sample_objects": 7,
+      "sample_dates": 3,
+      "candidate_objects": 6,
+      "candidate_dates": 3,
+      "catalog_entries": 34,
+      "object_family_pairs": 17,
+      "provisional_distinct_families": 15,
+      "month_precision_entries": 10,
+      "excluded_catalog_entries": 9,
+      "primary_mirror_checks": 2,
+      "training_rows_admitted": 0,
+      "negative_controls_passed": 6
+    },
+    "previous_repository_checks": {
+      "run": 45816362190,
+      "conclusion": "success",
+      "jobs": 3
+    },
+    "next": "Expand metadata pilot across independent historical dates using fixed eligibility, resolve identity, duplicate languages, historical release, rights and overlap before admission."
   }
 }

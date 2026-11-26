@@ -1,0 +1,246 @@
+{
+  "status": "quarantine",
+  "population_reference": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "selection": "Purposive pilot: linked 2017 pension objects, May 2019 and May 2022 sessions, previously audited documentary gaps. Not random or population coverage estimate.",
+  "rows": [
+    {
+      "vote_key": "6140",
+      "vote_date": "2017-09-24",
+      "catalog_url": "https://swissvotes.ch/vote/614.00/campaign-material",
+      "families": [
+        {
+          "id": "pension_proposal",
+          "doc_date": "2017-07-11",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "pension_research",
+          "doc_date": "2017-08-14",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        }
+      ],
+      "excluded": [
+        {
+          "count": 2,
+          "reason": "same reform documentation labelled Ja / Argumentarium on this catalog, neutral on 6150"
+        }
+      ]
+    },
+    {
+      "vote_key": "6150",
+      "vote_date": "2017-09-24",
+      "catalog_url": "https://swissvotes.ch/vote/615.00/campaign-material",
+      "families": [
+        {
+          "id": "pension_proposal",
+          "doc_date": "2017-07-11",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "pension_research",
+          "doc_date": "2017-08-14",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        }
+      ],
+      "excluded": [
+        {
+          "count": 2,
+          "reason": "shared reform documentation labelled inconsistently across 6140 and 6150; exclude both"
+        }
+      ]
+    },
+    {
+      "vote_key": "6270",
+      "vote_date": "2019-05-19",
+      "catalog_url": "https://swissvotes.ch/vote/627.00/campaign-material",
+      "families": [
+        {
+          "id": "tax_measures",
+          "doc_date": "2019-02-12",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "ahv_financing",
+          "doc_date": "2019-02-18",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "tax_comparison",
+          "doc_date": "2018-06-14",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        }
+      ],
+      "excluded": []
+    },
+    {
+      "vote_key": "6280",
+      "vote_date": "2019-05-19",
+      "catalog_url": "https://swissvotes.ch/vote/628.00/campaign-material",
+      "families": [],
+      "excluded": []
+    },
+    {
+      "vote_key": "6550",
+      "vote_date": "2022-05-15",
+      "catalog_url": "https://swissvotes.ch/vote/655.00/campaign-material",
+      "families": [
+        {
+          "id": "film_csec_annex",
+          "doc_date": "2020-11-02",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "film_questions",
+          "doc_date": "2021-04-20",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "film_supplement",
+          "doc_date": "2021-01-25",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "film_report",
+          "doc_date": "2020-06-22",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        }
+      ],
+      "excluded": [
+        {
+          "count": 1,
+          "reason": "university study outside institutional scope"
+        },
+        {
+          "count": 2,
+          "reason": "brochure correction already known in V12; exclude"
+        }
+      ]
+    },
+    {
+      "vote_key": "6560",
+      "vote_date": "2022-05-15",
+      "catalog_url": "https://swissvotes.ch/vote/656.00/campaign-material",
+      "families": [
+        {
+          "id": "organ_ethics",
+          "doc_date": "2019-06-27",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "organ_consultation",
+          "doc_date": "2020-10",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "organ_international",
+          "doc_date": "2022-02",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "organ_counts",
+          "doc_date": "2022-04",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        }
+      ],
+      "excluded": []
+    },
+    {
+      "vote_key": "6570",
+      "vote_date": "2022-05-15",
+      "catalog_url": "https://swissvotes.ch/vote/657.00/campaign-material",
+      "families": [
+        {
+          "id": "frontex_qa",
+          "doc_date": "2022-02",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "frontex_glossary",
+          "doc_date": "2022-02",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        }
+      ],
+      "excluded": [
+        {
+          "count": 2,
+          "reason": "undated neutral documentation"
+        }
+      ]
+    }
+  ],
+  "primary_checks": [
+    {
+      "family": "ahv_financing",
+      "mirror": "https://swissvotes.ch/attachments/69b17672838a7df845336ca65d3c854e639edab41d0b9d0cd70f7a4c529c2821",
+      "official": "https://www.bsv.admin.ch/dam/de/sd-web/6f8MNYVSc5ZA/hintergrund-staf-berechnungen-ahv.pdf",
+      "cover_match": "visual_both",
+      "publication_proof": null,
+      "sha256": null,
+      "license": null
+    },
+    {
+      "family": "organ_counts",
+      "mirror": "https://swissvotes.ch/attachments/20b6223a9ee2fb1cbbfc730ed227eff930c17f1a30f4e9177efdd3f9ad447f1e",
+      "official": "https://www.bag.admin.ch/dam/bag/fr/dokumente/biomed/transplantationsmedizin/faktenblatt-organspendezahlen.pdf.download.pdf/faktenblatt-organspendezahlen.pdf",
+      "cover_match": "mirror_visual_official_indexed_only_http404",
+      "publication_proof": null,
+      "sha256": null,
+      "license": null
+    }
+  ]
+}
