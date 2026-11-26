@@ -76,30 +76,30 @@
   },
   "v132": {
     "status": "multiwave_inventory_extended_no_admission",
-    "objects": 18,
-    "dates": 7,
-    "latest_value_agreements": 18,
-    "early_waves": 33,
+    "objects": 19,
+    "dates": 8,
+    "latest_value_agreements": 19,
+    "early_waves": 35,
     "training_rows_admitted": 0,
     "strict_forecast_ready": false,
-    "rows": 51,
-    "latest_candidates": 18,
-    "latest_agreements": 18,
-    "multiwave_objects": 18,
-    "three_wave_objects": 15,
-    "multiwave_dates": 7,
+    "rows": 54,
+    "latest_candidates": 19,
+    "latest_agreements": 19,
+    "multiwave_objects": 19,
+    "three_wave_objects": 16,
+    "multiwave_dates": 8,
     "previous_repository_checks": {
-      "run": 45779316153,
+      "run": 45788130797,
       "conclusion": "success",
       "jobs": 3
     },
-    "notes": "V13.2f: six national candidates 2018-06-10, contemporaneous reports. Original PDFs and license not certified. Next 2017/2019 or primary source certification; no training.",
+    "notes": "V13.2g: three national candidates 2019-02-10; primary final press release has year typo, contemporary SDA confirms publication. No admission. Next: May 2019 and 2017 or source certification; no training.",
     "repository_checks": {
       "run": 45650868526,
       "conclusion": "success",
       "jobs": 3
     },
-    "rows_at_least_11_days": 51
+    "rows_at_least_11_days": 54
   },
   "v133": {
     "status": "completed_scoring_only",
