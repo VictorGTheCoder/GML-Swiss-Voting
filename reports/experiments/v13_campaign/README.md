@@ -75,3 +75,7 @@ Le [premier benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actio
 ## V13.2g — Extension février 2019
 
 [Acquisition et audit](V13.2g-2019-february-waves.md) : 54 observations, 19 objets, 8 dates, 19/19 accords dernière vague ; CI du parent 3/3 réussie. Aucun nouveau score ni admission. Priorité : mai 2019/2017 puis certification ; ne pas prolonger l'inventaire sans preuve nouvelle.
+
+## V13.2h — Extension mai 2019
+
+[Acquisition et audit](V13.2h-2019-may-waves.md) : 60 observations, 21 objets, 9 dates, 21/21 accords dernière vague ; CI du parent 3/3 réussie. Divergence de terrain vague 1 documentée. Aucun nouveau score ni admission. Priorité à la certification ou piste indépendante, plutôt qu'à l'inventaire seul.
