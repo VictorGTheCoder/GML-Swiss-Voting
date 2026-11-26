@@ -79,3 +79,7 @@ Le [premier benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actio
 ## V13.2h — Extension mai 2019
 
 [Acquisition et audit](V13.2h-2019-may-waves.md) : 60 observations, 21 objets, 9 dates, 21/21 accords dernière vague ; CI du parent 3/3 réussie. Divergence de terrain vague 1 documentée. Aucun nouveau score ni admission. Priorité à la certification ou piste indépendante, plutôt qu'à l'inventaire seul.
+
+## V13.2i — Corroboration et droits
+
+[Audit](V13.2i-corroboration.md) : 6/6 valeurs et dates de publication corroborées, deux conflits de terrain, zéro admission ; cinq contrôles négatifs réussis, CI parent 3/3. Inventaire gelé jusqu'à preuve nouvelle. Priorité V15.1 : audit de documents institutionnels historiques datés, distincts des brochures déjà testées. Aucun nouveau score.

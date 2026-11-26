@@ -20,6 +20,7 @@
     "V13.5"
   ],
   "pending": [
+    "V15.1-dated-institutional-document-audit",
     "V13.2",
     "V14.1-source-audit"
   ],
@@ -75,7 +76,7 @@
     }
   },
   "v132": {
-    "status": "multiwave_inventory_extended_no_admission",
+    "status": "corroboration_audit_no_admission",
     "objects": 21,
     "dates": 9,
     "latest_value_agreements": 21,
@@ -89,17 +90,29 @@
     "three_wave_objects": 18,
     "multiwave_dates": 9,
     "previous_repository_checks": {
-      "run": 45797632074,
+      "run": 45806555406,
       "conclusion": "success",
       "jobs": 3
     },
-    "notes": "V13.2h: six national candidates 2019-05-19; fieldwork end wave 1 differs across reports, conservative later date pending primary. No admission. Prioritize source certification and freeze inventory; no training.",
+    "notes": "V13.2i: six contemporaneous corroborations; two fieldwork conflicts, no license certification, zero admission. Freeze inventory pending new evidence; prioritize independent dated institutional documentation audit.",
     "repository_checks": {
       "run": 45650868526,
       "conclusion": "success",
       "jobs": 3
     },
-    "rows_at_least_11_days": 60
+    "rows_at_least_11_days": 60,
+    "corroboration_v132i": {
+      "candidate_rows": 60,
+      "source_urls": 26,
+      "evidence_rows": 6,
+      "exact_value_and_release_matches": 6,
+      "fieldwork_end_matches": 2,
+      "fieldwork_end_conflicts": 2,
+      "fieldwork_end_not_reported": 2,
+      "verified_evidence_dates": 2,
+      "training_rows_admitted": 0
+    },
+    "negative_controls": 5
   },
   "v133": {
     "status": "completed_scoring_only",

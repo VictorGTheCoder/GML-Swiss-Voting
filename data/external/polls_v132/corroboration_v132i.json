@@ -1,0 +1,77 @@
+{
+  "status": "quarantine",
+  "evidence": [
+    {
+      "vote_key": "6460",
+      "wave": 1,
+      "yes": 45,
+      "published": "2021-08-13",
+      "url": "https://www.watson.ch/schweiz/abstimmungen-2021/417810714-erste-umfrage-klares-ja-zur-ehe-fuer-alle-probleme-fuer-99-initiative",
+      "kind": "contemporary_sda",
+      "fieldwork_end": "2021-08-10",
+      "note": "Date and national total agree with primary Tamedia release"
+    },
+    {
+      "vote_key": "6470",
+      "wave": 1,
+      "yes": 64,
+      "published": "2021-08-13",
+      "url": "https://www.watson.ch/schweiz/abstimmungen-2021/417810714-erste-umfrage-klares-ja-zur-ehe-fuer-alle-probleme-fuer-99-initiative",
+      "kind": "contemporary_sda",
+      "fieldwork_end": "2021-08-10",
+      "note": "Date and national total agree with primary Tamedia release"
+    },
+    {
+      "vote_key": "6460",
+      "wave": 2,
+      "yes": 40,
+      "published": "2021-09-01",
+      "url": "https://www.nau.ch/news/schweiz/umfrage-ehe-fur-alle-ja-und-nein-zu-99-prozent-initiative-65993363",
+      "kind": "contemporary_sda",
+      "fieldwork_end": "2021-08-28",
+      "note": "SDA end date differs by one day from indexed primary; LaRegione reports 27 Aug"
+    },
+    {
+      "vote_key": "6470",
+      "wave": 2,
+      "yes": 66,
+      "published": "2021-09-01",
+      "url": "https://www.nau.ch/news/schweiz/umfrage-ehe-fur-alle-ja-und-nein-zu-99-prozent-initiative-65993363",
+      "kind": "contemporary_sda",
+      "fieldwork_end": "2021-08-28",
+      "note": "SDA end date differs by one day from indexed primary; LaRegione reports 27 Aug"
+    },
+    {
+      "vote_key": "6270",
+      "wave": 1,
+      "yes": 62,
+      "published": "2019-04-05",
+      "url": "https://www.sp-ps.ch/artikel/tamedia-abstimmungsumfrage-zeigt-bevoelkerung-will-ahv-staerken/",
+      "kind": "contemporary_party_citing_poll",
+      "fieldwork_end": null,
+      "note": "Contemporary party statement confirms national total only; not independent survey or proof of fieldwork"
+    },
+    {
+      "vote_key": "6280",
+      "wave": 1,
+      "yes": 53,
+      "published": "2019-04-05",
+      "url": "https://www.sp-ps.ch/artikel/tamedia-abstimmungsumfrage-zeigt-bevoelkerung-will-ahv-staerken/",
+      "kind": "contemporary_party_citing_poll",
+      "fieldwork_end": null,
+      "note": "Contemporary party statement confirms national total only; not independent survey or proof of fieldwork"
+    }
+  ],
+  "result": {
+    "candidate_rows": 60,
+    "source_urls": 26,
+    "evidence_rows": 6,
+    "exact_value_and_release_matches": 6,
+    "fieldwork_end_matches": 2,
+    "fieldwork_end_conflicts": 2,
+    "fieldwork_end_not_reported": 2,
+    "verified_evidence_dates": 2,
+    "training_rows_admitted": 0
+  },
+  "negative_controls": 5
+}
