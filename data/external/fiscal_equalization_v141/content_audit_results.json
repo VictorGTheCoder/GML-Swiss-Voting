@@ -1,0 +1,263 @@
+{
+  "run": 45752233594,
+  "job": 139682494080,
+  "artifact": 15085488973,
+  "artifact_digest": "sha256:8e88f0834e19c258bb8282f3452740ef9043f206f4f3918b4835e62630276b85",
+  "source_commit": "ecc765c60384f650c4f68eb782f30c6f705b3b1a",
+  "extraction": "JSON printed in successful job log; artifact digest reported by GitHub, ZIP not independently downloaded",
+  "audit": {
+    "pinned_sources": 13,
+    "pairs": [
+      {
+        "year": 2017,
+        "family": "geographic",
+        "member": "2.2_GLA_2017.xlsx",
+        "nested_sha256": "5b85f494db4c6892a35d3ebf06e0fa1b12298ac6ad447456e12ca58917d7d065",
+        "identical": true
+      },
+      {
+        "year": 2017,
+        "family": "population_structure",
+        "member": "2.3_SLA_AC_2017.xlsx",
+        "nested_sha256": "2bbfc11fb4569ef3a2e37ea7546a335156de7c99e4a65cfc058b6b88b7283bba",
+        "identical": true
+      },
+      {
+        "year": 2017,
+        "family": "core_city",
+        "member": "2.4_SLA_F_2017.xlsx",
+        "nested_sha256": "b3b55e43bb94fd0d403384ab846c948622f1dcb38310f5da64f67cd3112ee54c",
+        "identical": true
+      },
+      {
+        "year": 2018,
+        "family": "geographic",
+        "member": "2.2_GLA_2018.xlsx",
+        "nested_sha256": "2660ee7b6d50e92cce37cb722d7207fa87485196c96586b46976fa421731dc3e",
+        "identical": true
+      },
+      {
+        "year": 2018,
+        "family": "population_structure",
+        "member": "2.3_SLA_AC_2018.xlsx",
+        "nested_sha256": "555ce29348e655fecda543b678293a5647bff7e3ec5afe4c7408a96095a2cb99",
+        "identical": true
+      },
+      {
+        "year": 2018,
+        "family": "core_city",
+        "member": "2.4_SLA_F_2018.xlsx",
+        "nested_sha256": "da5da8c399e02a62e4b5d1fe435871f8bb0d0c27869cb66cfb1ae549824f80b5",
+        "identical": true
+      }
+    ],
+    "schemas": [
+      {
+        "year": 2017,
+        "family": "geographic",
+        "sheets": [
+          "Info",
+          "GLA_1",
+          "GLA_2",
+          "GLA_3",
+          "GLA_4",
+          "Total_GLA"
+        ]
+      },
+      {
+        "year": 2017,
+        "family": "population_structure",
+        "sheets": [
+          "Info",
+          "SLA_A",
+          "SLA_B",
+          "SLA_C",
+          "Index",
+          "Total_SLA_AC"
+        ]
+      },
+      {
+        "year": 2017,
+        "family": "core_city",
+        "sheets": [
+          "Info",
+          "Gemeinden",
+          "Total_SLA_F"
+        ]
+      },
+      {
+        "year": 2018,
+        "family": "geographic",
+        "sheets": [
+          "Info",
+          "GLA_1",
+          "GLA_2",
+          "GLA_3",
+          "GLA_4",
+          "Total_GLA"
+        ]
+      },
+      {
+        "year": 2018,
+        "family": "population_structure",
+        "sheets": [
+          "Info",
+          "SLA_A",
+          "SLA_B",
+          "SLA_C",
+          "Index",
+          "Total_SLA_AC"
+        ]
+      },
+      {
+        "year": 2018,
+        "family": "core_city",
+        "sheets": [
+          "Info",
+          "Gemeinden",
+          "Total_SLA_F"
+        ]
+      },
+      {
+        "year": 2019,
+        "family": "cost_compensation",
+        "sheets": [
+          "INTRO",
+          "TOTAL",
+          "DOT",
+          "GLA_1",
+          "GLA_2",
+          "SLA_AC_1",
+          "SLA_AC_2",
+          "SLA_F_1",
+          "SLA_F_2",
+          "DFIE"
+        ]
+      },
+      {
+        "year": 2020,
+        "family": "cost_compensation",
+        "sheets": [
+          "INTRO",
+          "TOTAL",
+          "DOT",
+          "GLA_1",
+          "GLA_2",
+          "SLA_AC_1",
+          "SLA_AC_2",
+          "SLA_F_1",
+          "SLA_F_2",
+          "DFIE"
+        ]
+      },
+      {
+        "year": 2021,
+        "family": "cost_compensation",
+        "sheets": [
+          "INTRO",
+          "TOTAL",
+          "DOT",
+          "GLA_1",
+          "GLA_2",
+          "SLA_AC_1",
+          "SLA_AC_2",
+          "SLA_F_1",
+          "SLA_F_2",
+          "DFIE"
+        ]
+      },
+      {
+        "year": 2022,
+        "family": "cost_compensation",
+        "sheets": [
+          "INTRO",
+          "TOTAL",
+          "DOT",
+          "GLA_1",
+          "GLA_2",
+          "SLA_AC_1",
+          "SLA_AC_2",
+          "SLA_F_1",
+          "SLA_F_2",
+          "DFIE"
+        ]
+      },
+      {
+        "year": 2016,
+        "member": "2.2_GLA_2016.xlsx",
+        "sha256": "e425edab1c614e95a7240220d8a1986e9599496dc4338761b130f0bbabcfe1a0",
+        "sheets": [
+          "Info",
+          "GLA_1",
+          "GLA_2",
+          "GLA_3",
+          "GLA_4",
+          "Total_GLA"
+        ]
+      },
+      {
+        "year": 2016,
+        "member": "2.3_SLA_AC_2016.xlsx",
+        "sha256": "3ba664c0b922c698676ea6c46c42262ff381eec91ad5faea590afa204d7aa763",
+        "sheets": [
+          "Info",
+          "SLA_A",
+          "SLA_B",
+          "SLA_C",
+          "Index",
+          "Total_SLA_AC"
+        ]
+      },
+      {
+        "year": 2016,
+        "member": "2.4_SLA_F_2016.xlsx",
+        "sha256": "a4ec88c723da8e1823e5df53380f27b234ce9017f402e3b1f2c09f2bad369a66",
+        "sheets": [
+          "Info",
+          "Gemeinden",
+          "Total_SLA_F"
+        ]
+      },
+      {
+        "year": 2016,
+        "member": "1.7_RA_2016.xlsx",
+        "sha256": "fd49e585af26bac5193801a1909ec01ece62ba74329e12ae38527931bfe75ba8",
+        "sheets": [
+          "Info",
+          "RP",
+          "BEV",
+          "Wachstum_RP",
+          "Dotation_RA",
+          "Einzahlungen",
+          "Auszahlungen",
+          "SSE"
+        ]
+      }
+    ],
+    "training_rows_admitted": 0,
+    "publication_vintage_verified": false,
+    "license_verified": false,
+    "pdf_2016": {
+      "sha256": "39b78dcd806fb0abc6cac7fd4f78108c81a764ab5a7109d58e6f117a74949271",
+      "bytes": 1879436,
+      "cover_june_2015": true,
+      "table_checks": [
+        {
+          "page_1based": 27,
+          "candidate_vectors": 3,
+          "exact_vectors": 1
+        }
+      ],
+      "candidate_count": 26
+    }
+  },
+  "independent_visual_check": {
+    "url": "https://www.newsd.admin.ch/newsd/message/attachments/40273.pdf",
+    "pdf_page_1based": 27,
+    "table": 7,
+    "cover": "Juin 2015",
+    "matches": 26,
+    "compared": 26,
+    "training_rows_admitted": 0
+  }
+}
