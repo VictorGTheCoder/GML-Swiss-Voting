@@ -31,13 +31,20 @@
   "source_diagnostic_run": 45709347921,
   "prior_source_inventory_ref": "aea65e15f4897b5ef34b9eba4d1e250c92665253",
   "v141": {
-    "status": "six_consultation_reports_transcribed",
-    "candidate_rows": 156,
-    "years": 6,
+    "status": "seven_years_candidates_2016_cached_text_crosscheck_only",
+    "candidate_rows": 182,
+    "years": 7,
     "cantons": 26,
-    "compared_rows": 130,
+    "compared_rows": 156,
     "changed_rows": 32,
     "year_stats": [
+      {
+        "year": 2016,
+        "rows": 26,
+        "compared": 26,
+        "changed": 0,
+        "max_change": 0
+      },
       {
         "year": 2017,
         "rows": 26,
@@ -84,10 +91,18 @@
     "source_month_only": true,
     "source_hashes_pending": true,
     "license_pending": true,
-    "missing_reference_year": 2016,
+    "missing_reference_year": null,
     "training_rows_admitted": 0,
     "previous_ci": {
       "run": 45717992954,
+      "jobs": 3,
+      "conclusion": "success"
+    },
+    "publication_evidence_years": 7,
+    "publication_evidence_primary_years": 2,
+    "missing_original_pdf_2016": true,
+    "latest_verified_ci": {
+      "run": 45725267596,
       "jobs": 3,
       "conclusion": "success"
     }
