@@ -25,3 +25,7 @@ Suite de [V16](../v16_campaign/README.md), [V13](../v13_campaign/README.md), [V1
 ## V17.1b — clôture et V17.2a
 
 [Couverture mesurée](V17.1b-coverage-results.md) : 4/7 années au seuil de 90 % (5 requises), 90.44 % de lignes à ID unique, 15/15 tests. ElCom suspendue sans changer le seuil ni les frontières. [V17.2a](V17.2a-stru-candidate.md) : deux éditions OFS STRU OPEN-BY, données structurelles agricoles agrégées ; priorité aux publications contemporaines et contrôle de redondance STATENT. Zéro admission et aucun nouveau score.
+
+## V17.2b — archives historiques
+
+[Audit et protocole](V17.2b-stru-vintages.md) : deux éditions contemporaines OPEN-BY (2016 et 2018), une avec lien binaire explicite. Quatre autres dates de publications nationales confirmées sans cube historique certifié. 8 contrôles synthétiques réussis; acquisition via CI à vérifier. Zéro admission, aucun score. Priorité à la provenance et géographie avant couverture, sinon piste indépendante.

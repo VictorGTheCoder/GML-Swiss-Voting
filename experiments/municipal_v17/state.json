@@ -1,9 +1,9 @@
 {
-  "version": "V17.2a",
-  "status": "elcom_suspended_coverage_gate_failed_stru_metadata_candidate",
+  "version": "V17.2b",
+  "status": "stru_historical_metadata_found_binary_audit_pending",
   "parent_commit": "6ea59fd0977aca934b3cdfd3ca62d80d3091ce18",
   "prior_ci": {
-    "run": 45894687488,
+    "run": 45901722213,
     "jobs": 3,
     "conclusion": "success"
   },
@@ -23,7 +23,7 @@
     "version": "V11.3",
     "mae_pp": 6.955753873756506
   },
-  "next": "V17.2a: seek dated original STRU releases before acquiring historical values, verify publication lag and exact geographic vintage; compare agriculture variables to STATENT already admitted. If no pre-vote data edition or low coverage, defer; no relaxed ElCom gate.",
+  "next": "Verify V17.2b CI and artifact, then certify geography and archive vintage before matched coverage audit; if blocked, pivot to independent source without duplicate downloads.",
   "acquisition": {
     "version": "V17.1a",
     "source_run": 45887564938,
@@ -259,5 +259,32 @@
     ],
     "status": "metadata_only_not_admitted",
     "admitted": 0
+  },
+  "stru_vintages": {
+    "sources": [
+      {
+        "year": 2016,
+        "published": "2017-05-11",
+        "asset": 3022184,
+        "metadata": "https://statistik.admin.ch/de/asset/3022184",
+        "publication": "https://statistik.admin.ch/de/news/2017-0455",
+        "license": "OPEN-BY",
+        "master_link_verified": false,
+        "scope_metadata": "Switzerland only; municipal dimension not verified"
+      },
+      {
+        "year": 2018,
+        "published": "2019-05-28",
+        "asset": 8346718,
+        "metadata": "https://statistik.admin.ch/de/asset/8346718",
+        "license": "OPEN-BY",
+        "master_link_verified": true,
+        "scope_metadata": "Switzerland, cantons, districts, municipalities"
+      }
+    ],
+    "synthetic_checks": 8,
+    "admitted": 0,
+    "network_local": "curl exit 6 DNS",
+    "status": "awaiting_ci_binary_probe"
   }
 }
