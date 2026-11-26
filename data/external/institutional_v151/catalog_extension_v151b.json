@@ -1,0 +1,245 @@
+{
+  "status": "quarantine",
+  "selection": "Complete June 2021 session plus March 2021 Indonesia object; two previously unsampled dates, purposive, membership in fixed modeling panel not independently joined in this audit.",
+  "rows": [
+    {
+      "vote_key": "6400",
+      "vote_date": "2021-03-07",
+      "catalog_url": "https://swissvotes.ch/vote/640.00/campaign-material",
+      "families": [
+        {
+          "id": "indonesia_palm_oil",
+          "doc_date": "2020-12-04",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "indonesia_cepa",
+          "doc_date": "2020-12-04",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        }
+      ],
+      "excluded": []
+    },
+    {
+      "vote_key": "6410",
+      "vote_date": "2021-06-13",
+      "catalog_url": "https://swissvotes.ch/vote/641.00/campaign-material",
+      "families": [
+        {
+          "id": "agri_measures",
+          "doc_date": "2021-03-22",
+          "languages": [
+            "de"
+          ],
+          "mirror": "https://swissvotes.ch/attachments/e40fd7238e859857b7be77deab6b0682e5b80834e00d3468fe87ff1f7873f4ae"
+        }
+      ],
+      "excluded": [
+        "Three non-neutral impact studies; excluded by original catalog rule, not evidence of invalid science."
+      ]
+    },
+    {
+      "vote_key": "6420",
+      "vote_date": "2021-06-13",
+      "catalog_url": "https://swissvotes.ch/vote/642.00/campaign-material",
+      "families": [
+        {
+          "id": "agri_measures",
+          "doc_date": "2021-03-22",
+          "languages": [
+            "de"
+          ],
+          "mirror": "https://swissvotes.ch/attachments/4db26cb1a67e0756048949eb5d4f6adb11f9cb07b84b05c4da1bc8b94aa6f4f1"
+        }
+      ],
+      "excluded": []
+    },
+    {
+      "vote_key": "6430",
+      "vote_date": "2021-06-13",
+      "catalog_url": "https://swissvotes.ch/vote/643.00/campaign-material",
+      "families": [
+        {
+          "id": "covid_explanation",
+          "doc_date": "2021-05-22",
+          "languages": [
+            "de"
+          ]
+        }
+      ],
+      "excluded": []
+    },
+    {
+      "vote_key": "6440",
+      "vote_date": "2021-06-13",
+      "catalog_url": "https://swissvotes.ch/vote/644.00/campaign-material",
+      "families": [
+        {
+          "id": "co2_buildings_mobility",
+          "doc_date": "2021-03-29",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "co2_levies",
+          "doc_date": "2021-03-29",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "co2_compensation",
+          "doc_date": "2021-03-29",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "co2_household_cost",
+          "doc_date": "2021-03-29",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "co2_main_measures",
+          "doc_date": "2021-03-29",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "co2_climate_fund",
+          "doc_date": "2021-03-29",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        },
+        {
+          "id": "co2_international",
+          "doc_date": "2021-03-29",
+          "languages": [
+            "de",
+            "fr"
+          ]
+        }
+      ],
+      "excluded": [
+        "Four language entries of two documents classified Ja; excluded."
+      ]
+    },
+    {
+      "vote_key": "6450",
+      "vote_date": "2021-06-13",
+      "catalog_url": "https://swissvotes.ch/vote/645.00/campaign-material",
+      "families": [
+        {
+          "id": "pmt_consultation",
+          "doc_date": "2018",
+          "languages": [
+            "de",
+            "fr"
+          ],
+          "mirror": "https://swissvotes.ch/attachments/18dad3772fdecfa950fc795852f659c1dabebbe3106619e6e603313757aeec94"
+        }
+      ],
+      "excluded": [
+        "Two undated FAQ entries; excluded."
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "family": "pmt_consultation",
+      "kind": "visual_cover_match",
+      "official": "https://www.newsd.admin.ch/newsd/message/attachments/76845.pdf",
+      "date_evidence": "Summer 2018 on both covers; latest possible calendar year bound 2018-12-31; not proof of first publication",
+      "sha256": null,
+      "license": null
+    },
+    {
+      "family": "agri_measures",
+      "kind": "shared_visual_cover_match",
+      "official": null,
+      "date_evidence": "Both distinct archive URLs render identical first pages; binary identity not established",
+      "sha256": null,
+      "license": null
+    },
+    {
+      "family": "co2_buildings_mobility",
+      "kind": "official_title_match_only",
+      "official": "https://www.uvek.admin.ch/de/co2-gesetz-interviews-dokumente-anlaesse-videos-und-medienmitteilungen",
+      "date_evidence": "Official dossier lists matching fact sheet titles; 2021-03-29 official press release corroborates policy context only, not exact attachment publication.",
+      "context": "https://www.eda.admin.ch/countries/austria/de/home/aktuell/news.html/content/countries/austria/de/meta/news/2021/Maerz/29/revidiertes-CO2-Gesetz",
+      "sha256": null,
+      "license": null
+    },
+    {
+      "family": "co2_levies",
+      "kind": "official_title_match_only",
+      "official": "https://www.uvek.admin.ch/de/co2-gesetz-interviews-dokumente-anlaesse-videos-und-medienmitteilungen",
+      "date_evidence": "Official dossier lists matching fact sheet titles; 2021-03-29 official press release corroborates policy context only, not exact attachment publication.",
+      "context": "https://www.eda.admin.ch/countries/austria/de/home/aktuell/news.html/content/countries/austria/de/meta/news/2021/Maerz/29/revidiertes-CO2-Gesetz",
+      "sha256": null,
+      "license": null
+    },
+    {
+      "family": "co2_compensation",
+      "kind": "official_title_match_only",
+      "official": "https://www.uvek.admin.ch/de/co2-gesetz-interviews-dokumente-anlaesse-videos-und-medienmitteilungen",
+      "date_evidence": "Official dossier lists matching fact sheet titles; 2021-03-29 official press release corroborates policy context only, not exact attachment publication.",
+      "context": "https://www.eda.admin.ch/countries/austria/de/home/aktuell/news.html/content/countries/austria/de/meta/news/2021/Maerz/29/revidiertes-CO2-Gesetz",
+      "sha256": null,
+      "license": null
+    },
+    {
+      "family": "co2_household_cost",
+      "kind": "official_title_match_only",
+      "official": "https://www.uvek.admin.ch/de/co2-gesetz-interviews-dokumente-anlaesse-videos-und-medienmitteilungen",
+      "date_evidence": "Official dossier lists matching fact sheet titles; 2021-03-29 official press release corroborates policy context only, not exact attachment publication.",
+      "context": "https://www.eda.admin.ch/countries/austria/de/home/aktuell/news.html/content/countries/austria/de/meta/news/2021/Maerz/29/revidiertes-CO2-Gesetz",
+      "sha256": null,
+      "license": null
+    },
+    {
+      "family": "co2_main_measures",
+      "kind": "official_title_match_only",
+      "official": "https://www.uvek.admin.ch/de/co2-gesetz-interviews-dokumente-anlaesse-videos-und-medienmitteilungen",
+      "date_evidence": "Official dossier lists matching fact sheet titles; 2021-03-29 official press release corroborates policy context only, not exact attachment publication.",
+      "context": "https://www.eda.admin.ch/countries/austria/de/home/aktuell/news.html/content/countries/austria/de/meta/news/2021/Maerz/29/revidiertes-CO2-Gesetz",
+      "sha256": null,
+      "license": null
+    },
+    {
+      "family": "co2_climate_fund",
+      "kind": "official_title_match_only",
+      "official": "https://www.uvek.admin.ch/de/co2-gesetz-interviews-dokumente-anlaesse-videos-und-medienmitteilungen",
+      "date_evidence": "Official dossier lists matching fact sheet titles; 2021-03-29 official press release corroborates policy context only, not exact attachment publication.",
+      "context": "https://www.eda.admin.ch/countries/austria/de/home/aktuell/news.html/content/countries/austria/de/meta/news/2021/Maerz/29/revidiertes-CO2-Gesetz",
+      "sha256": null,
+      "license": null
+    },
+    {
+      "family": "co2_international",
+      "kind": "official_title_match_only",
+      "official": "https://www.uvek.admin.ch/de/co2-gesetz-interviews-dokumente-anlaesse-videos-und-medienmitteilungen",
+      "date_evidence": "Official dossier lists matching fact sheet titles; 2021-03-29 official press release corroborates policy context only, not exact attachment publication.",
+      "context": "https://www.eda.admin.ch/countries/austria/de/home/aktuell/news.html/content/countries/austria/de/meta/news/2021/Maerz/29/revidiertes-CO2-Gesetz",
+      "sha256": null,
+      "license": null
+    }
+  ]
+}

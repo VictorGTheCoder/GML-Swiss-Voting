@@ -39,3 +39,32 @@ Reproduction : `node experiments/municipal_v15/audit_catalog_pilot.mjs`. Six con
 3. V13.2 et V14.1 : reprendre uniquement si nouvelle preuve de provenance/droits; aucun benchmark sur données en quarantaine.
 
 Motivation : V13.5 oracle cantonal 3,7517 pp (scoring seul) contre V11.3 6,9558; des données nouvelles sont nécessaires, pas une calibration sur le scrutin cible. Pas de ciblage, données publiques agrégées uniquement.
+
+## V15.1b — Deux dates supplémentaires, métadonnées seulement
+
+CI du pilote V15.1a : [45824937943](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/45824937943), 3/3 jobs réussis. Extension ciblée sur le 7 mars et le 13 juin 2021, six dossiers (session de juin complète, mars partiel), non aléatoire. La jointure au panel fixe reste à vérifier avant toute admission. Les dates d'année seule sont bornées au 31 décembre, les documents monolingues sont acceptés comme candidats (pas de traduction inventée). Les exclusions non neutres restent en place. Résultats exécutés :
+
+```json
+{
+  "new_objects": 6,
+  "new_dates": 2,
+  "new_entries": 23,
+  "new_object_family_pairs": 13,
+  "new_distinct_families": 12,
+  "new_year_precision_pairs": 1,
+  "new_single_language_pairs": 3,
+  "combined_objects": 13,
+  "combined_dates": 5,
+  "combined_candidate_objects": 12,
+  "combined_entries": 57,
+  "combined_object_family_pairs": 30,
+  "combined_distinct_families": 27,
+  "evidence_families": 9,
+  "training_rows_admitted": 0,
+  "negative_controls_passed": 10
+}
+```
+
+Les deux dossiers agricoles contiennent des URLs différentes pour un document dont les premières pages rendues sont visuellement identiques. Une seule famille provisoire, deux associations. Le rapport de consultation PMT existe sur le serveur officiel et dans Swissvotes : les couvertures correspondent (été 2018), sans preuve binaire ni date de première mise en ligne. Sept fiches CO2 correspondent par titre au dossier officiel du DETEC; le communiqué du 29 mars 2021 atteste le contexte, pas la disponibilité exacte de chaque pièce. Liens et limites dans [le manifeste](../../../data/external/institutional_v151/catalog_extension_v151b.json). Aucun texte intégral, résultat de scrutin ni donnée individuelle exporté. La couverture est celle de l'échantillon, pas du panel 66 objets. Pas de nouveau score.
+
+Reproduction : `node experiments/municipal_v15/audit_catalog_extension.mjs`. Dix contrôles négatifs exécutés. Prochain jalon : établir les hashes et preuves contemporaines de publication des paires officielles, vérifier droits et jointure au panel; mesurer recouvrement avec corpus existant avant de poursuivre l'inventaire. Si les sources restent bloquées, suspendre V15.1 et reprendre une piste prédictive indépendante sur données déjà admises. Aucun accès test final.

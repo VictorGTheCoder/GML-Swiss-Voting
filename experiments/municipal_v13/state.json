@@ -20,7 +20,7 @@
     "V13.5"
   ],
   "pending": [
-    "V15.1b-independent-date-coverage-and-primary-provenance",
+    "V15.1c-primary-identity-provenance-and-overlap",
     "V13.2",
     "V14.1-source-audit"
   ],
@@ -910,7 +910,7 @@
     "decision": "Canton-offset oracle 3.7517 pp; no prediction gain; prioritize independent aggregate institutional source audit, no repetition of V10.5/V10.6 without new information."
   },
   "v151": {
-    "status": "pilot_metadata_only",
+    "status": "extension_metadata_only",
     "results": {
       "sample_objects": 7,
       "sample_dates": 3,
@@ -926,10 +926,28 @@
       "negative_controls_passed": 6
     },
     "previous_repository_checks": {
-      "run": 45816362190,
+      "run": 45824937943,
       "conclusion": "success",
       "jobs": 3
     },
-    "next": "Expand metadata pilot across independent historical dates using fixed eligibility, resolve identity, duplicate languages, historical release, rights and overlap before admission."
+    "next": "V15.1c: primary attachment identity/hashes, contemporaneous publication and reuse rights, frozen-panel join, corpus overlap; suspend if blocked, no training on candidates.",
+    "extension_v151b": {
+      "new_objects": 6,
+      "new_dates": 2,
+      "new_entries": 23,
+      "new_object_family_pairs": 13,
+      "new_distinct_families": 12,
+      "new_year_precision_pairs": 1,
+      "new_single_language_pairs": 3,
+      "combined_objects": 13,
+      "combined_dates": 5,
+      "combined_candidate_objects": 12,
+      "combined_entries": 57,
+      "combined_object_family_pairs": 30,
+      "combined_distinct_families": 27,
+      "evidence_families": 9,
+      "training_rows_admitted": 0,
+      "negative_controls_passed": 10
+    }
   }
 }
