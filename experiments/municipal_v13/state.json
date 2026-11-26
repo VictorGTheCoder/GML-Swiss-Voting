@@ -17,9 +17,13 @@
     "V13.1-cover-feasibility",
     "V13.3",
     "V13.4",
-    "V13.5"
+    "V13.5",
+    "V16.1",
+    "V16.2",
+    "V16.3"
   ],
   "pending": [
+    "V17.1-independent-ex-ante-source",
     "V15.1c-primary-identity-provenance-and-overlap",
     "V13.2",
     "V14.1-source-audit"
@@ -1341,7 +1345,7 @@
     }
   },
   "v163": {
-    "status": "predeclared_benchmark_pending",
+    "status": "completed_exploratory_no_gain",
     "parent_commit": "56e85a1242d5219031ccd3903ca19084926447f0",
     "control": "rolling_institution",
     "variants": [
@@ -1360,6 +1364,148 @@
       "dates": 23,
       "rows": 138868
     },
-    "next": "Verify benchmark logs and manifest, record all scores and paired intervals, no holdout, no promotion."
+    "next": "V17 independent historical source admission audit; no further level-only blend without new evidence.",
+    "run": 45872896363,
+    "job": 140092572301,
+    "artifact": 15143153808,
+    "artifact_digest": "sha256:deca3a9b3d5ffe6a3936ce50776fbc877b561b8f82ac32bc9d401479d1620149",
+    "tested_commit": "46035c995c78f25671f2241bb814738ff49b774b",
+    "tests_passed": 4,
+    "summary": [
+      {
+        "variant": "reference",
+        "objects": 66,
+        "covered_objects": 59,
+        "mae_pp": 7.229527497606816,
+        "centered_mae_pp": 5.370058554693702,
+        "national_mae_pp": 3.775669209992063,
+        "canton_mae_pp": 5.703708259264074,
+        "gain_interval": [
+          0,
+          0
+        ],
+        "vs_v113_interval": [
+          -0.6800955676185603,
+          0.043876748289161265
+        ]
+      },
+      {
+        "variant": "v108_tfidf",
+        "objects": 66,
+        "covered_objects": 59,
+        "mae_pp": 6.988599997055331,
+        "centered_mae_pp": 5.280965787730653,
+        "national_mae_pp": 3.846510449192281,
+        "canton_mae_pp": 5.536970110697117,
+        "gain_interval": [
+          -0.033474457237910864,
+          0.6263738724976635
+        ],
+        "vs_v113_interval": [
+          -0.18292698889263526,
+          0.09439308477954603
+        ]
+      },
+      {
+        "variant": "v113_institution",
+        "objects": 66,
+        "covered_objects": 59,
+        "mae_pp": 6.955753873756506,
+        "centered_mae_pp": 5.289917065218622,
+        "national_mae_pp": 3.7811714402970824,
+        "canton_mae_pp": 5.500338667087431,
+        "gain_interval": [
+          -0.04387674828916126,
+          0.6800955676185607
+        ],
+        "vs_v113_interval": [
+          0,
+          0
+        ]
+      },
+      {
+        "variant": "rolling_institution",
+        "objects": 66,
+        "covered_objects": 66,
+        "mae_pp": 7.0170061960082215,
+        "centered_mae_pp": 5.304041764308014,
+        "national_mae_pp": 3.811874651629404,
+        "canton_mae_pp": 5.596996072771663,
+        "gain_interval": [
+          -0.16402811185263727,
+          0.6448923399901377
+        ],
+        "vs_v113_interval": [
+          -0.21116690041810285,
+          0.059278750231554975
+        ]
+      },
+      {
+        "variant": "structural_only",
+        "objects": 66,
+        "covered_objects": 66,
+        "mae_pp": 8.78891694157177,
+        "centered_mae_pp": 5.304041764308015,
+        "national_mae_pp": 6.574661293744483,
+        "canton_mae_pp": 7.675411414922386,
+        "gain_interval": [
+          -2.821997848575143,
+          -0.29456867669932674
+        ],
+        "vs_v113_interval": [
+          -2.9651706370226285,
+          -0.7133737775758068
+        ]
+      },
+      {
+        "variant": "structural_quarter",
+        "objects": 66,
+        "covered_objects": 66,
+        "mae_pp": 7.041454825990948,
+        "centered_mae_pp": 5.304041764308014,
+        "national_mae_pp": 4.026762319534728,
+        "canton_mae_pp": 5.601352671384949,
+        "gain_interval": [
+          -0.26015563590643964,
+          0.6664995933102447
+        ],
+        "vs_v113_interval": [
+          -0.3506873223408832,
+          0.16949279832617817
+        ]
+      },
+      {
+        "variant": "structural_adaptive",
+        "objects": 66,
+        "covered_objects": 66,
+        "mae_pp": 7.007595691489697,
+        "centered_mae_pp": 5.304041764308014,
+        "national_mae_pp": 3.7909903409258856,
+        "canton_mae_pp": 5.575111946525399,
+        "gain_interval": [
+          -0.1602818879872377,
+          0.6560144214313635
+        ],
+        "vs_v113_interval": [
+          -0.20777141802617807,
+          0.07521350269655237
+        ]
+      }
+    ],
+    "diagnostics": {
+      "adaptive_vs_rolling_gain_pp": 0.009410504518524654,
+      "adaptive_vs_rolling_national_gain_pp": 0.020884310703518594,
+      "adaptive_vs_rolling_canton_gain_pp": 0.021884126246264124,
+      "adaptive_vs_v113_gain_pp": -0.051841817733190965,
+      "dates_improved": 6,
+      "dates_worse": 4,
+      "dates_tied": 13
+    },
+    "repository_checks": {
+      "run": 45872896266,
+      "success": 1,
+      "failure": 2,
+      "reason": "I001 import order only; Ubuntu and Windows full test steps skipped."
+    }
   }
 }

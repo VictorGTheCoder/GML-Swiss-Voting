@@ -32,3 +32,7 @@ Les deux méthodes à 80 % manquent les mêmes deux dates (23.09.2018, 27.09.202
 ## V16.3 — Protocole et exécution
 
 [Protocole préenregistré](V16.3-protocol.md) : quatre variantes conjointes, contrôle V11.6 ; poids structural adaptatif calibré exclusivement sur scores de dates passées. CI parent 3/3 réussie. Benchmark à vérifier, aucun gain revendiqué. Priorité suivante : analyser le gain national et local apparié, puis décider si des entrées agrégées indépendantes sont nécessaires. Ne pas répéter le benchmark sauf incident justifié.
+
+## V16.3 — Clôture mesurée
+
+[Résultats](V16.3-results.md) : 4/4 tests ciblés et 23 plis réussis, contrôle rolling 7,0170 pp, adaptatif 7,0076 pp, structurel seul 8,7889 pp, mélange fixe 7,0415 pp. Aucun nouveau record. Lint I001 corrigé sans changement fonctionnel ; nouvelle CI à vérifier. Benchmark passé en manuel. Priorité [V17](../v17_campaign/README.md) : source ex ante indépendante et contrôle de provenance, plutôt que nouveau mélange du niveau.

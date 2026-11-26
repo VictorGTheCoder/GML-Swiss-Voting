@@ -1,10 +1,5 @@
 name: V16.3 joint national-local refit
 on:
-  pull_request:
-    paths:
-      - 'scripts/modeling/rolling_v163.py'
-      - 'tests/test_rolling_v163.py'
-      - '.github/workflows/rolling-v163.yml'
   workflow_dispatch:
 permissions:
   contents: read

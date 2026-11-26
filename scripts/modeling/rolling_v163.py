@@ -18,10 +18,10 @@ from scripts.modeling.expectations_v101 import REFERENCE, multiscale
 from scripts.modeling.local_profiles_v7 import fit_heads, historical_matrix, metric_basis
 from scripts.modeling.object_profile_v2 import ObjectProfileRegressor
 from scripts.modeling.procedure_v113 import INSTITUTION, RAW, SOURCE, encode_extra, match_procedure
+from scripts.modeling.regional_anchor_v8 import shift_to
 from scripts.modeling.remaining_priorities_v9 import text_features
 from scripts.modeling.semantic_poll_comparison_v4 import paired_date_bootstrap, sha
 from scripts.modeling.semantic_training_v5 import PLAN
-from scripts.modeling.regional_anchor_v8 import shift_to
 from scripts.modeling.spatial_margins_v81 import contexts, joint_adjust, observation_system
 from scripts.modeling.temporal_drift_v6 import recency_weights
 from scripts.modeling.turnout_v103 import load_ballots

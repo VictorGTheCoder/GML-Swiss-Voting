@@ -87,3 +87,7 @@ Le [premier benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actio
 ## Suite V15.1a
 
 [Registre V15](../v15_campaign/README.md) : 7 dossiers/3 dates, 34 entrées candidates, 15 familles provisoires, 6 contrôles négatifs, zéro admission. Priorité aux preuves primaires et à la couverture indépendante. CI parent 3/3. Meilleur V11.3 inchangé.
+
+## Suites V16 et V17
+
+[Registre V16](../v16_campaign/README.md) : risque d'erreur et refit conjoint, V16.3 sans gain (7,0076 pp). [Index V17](../v17_campaign/README.md) : priorité à la disponibilité de signaux indépendants, aucun nouveau score ni admission à l'ouverture.
