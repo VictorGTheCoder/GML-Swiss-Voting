@@ -1,0 +1,295 @@
+{
+  "status": "complete",
+  "prediction_model_changed": false,
+  "prediction_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+  "object_metrics_sha256": "44cba3f9c6626b99f1733289d2f879491301901d952f73b7ad22dfaa3534c5cf",
+  "source_run": 45444093555,
+  "source_artifact": 14945871233,
+  "population": {
+    "rows": 138868,
+    "objects": 66,
+    "dates": 23
+  },
+  "historical_metrics_pp": {
+    "mae_pp": 6.955753873756506,
+    "centered_mae_pp": 5.289917065218622,
+    "national_mae_pp": 3.781171440297082,
+    "canton_mae_pp": 5.500338667087431
+  },
+  "warmup_dates": 9,
+  "evaluation": [
+    {
+      "level": 0.8,
+      "mode": "expanding",
+      "method": "date_max",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 42,
+      "all_covered_dates": 14,
+      "covered_date_means": 14,
+      "mean_upper_pp_date": 12.200383407622578,
+      "mean_upper_pp_object": 12.11365258136021,
+      "object_coverage_ci": [
+        1,
+        1
+      ],
+      "simultaneous_date_coverage_ci": [
+        1,
+        1
+      ]
+    },
+    {
+      "level": 0.8,
+      "mode": "expanding",
+      "method": "date_mean",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 34,
+      "all_covered_dates": 9,
+      "covered_date_means": 12,
+      "mean_upper_pp_date": 8.369409538659088,
+      "mean_upper_pp_object": 8.346953732819301,
+      "object_coverage_ci": [
+        0.68,
+        0.9347826086956522
+      ],
+      "simultaneous_date_coverage_ci": [
+        0.35714285714285715,
+        0.8571428571428571
+      ]
+    },
+    {
+      "level": 0.8,
+      "mode": "expanding",
+      "method": "pooled_object",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 39,
+      "all_covered_dates": 11,
+      "covered_date_means": 14,
+      "mean_upper_pp_date": 10.051497651822999,
+      "mean_upper_pp_object": 10.016292342369113,
+      "object_coverage_ci": [
+        0.8604651162790697,
+        1
+      ],
+      "simultaneous_date_coverage_ci": [
+        0.5714285714285714,
+        1
+      ]
+    },
+    {
+      "level": 0.8,
+      "mode": "fixed",
+      "method": "date_max",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 42,
+      "all_covered_dates": 14,
+      "covered_date_means": 14,
+      "mean_upper_pp_date": 12.784550944325249,
+      "mean_upper_pp_object": 12.78455094432525,
+      "object_coverage_ci": [
+        1,
+        1
+      ],
+      "simultaneous_date_coverage_ci": [
+        1,
+        1
+      ]
+    },
+    {
+      "level": 0.8,
+      "mode": "fixed",
+      "method": "date_mean",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 33,
+      "all_covered_dates": 8,
+      "covered_date_means": 12,
+      "mean_upper_pp_date": 8.268717454959774,
+      "mean_upper_pp_object": 8.268717454959775,
+      "object_coverage_ci": [
+        0.6595744680851063,
+        0.9090909090909091
+      ],
+      "simultaneous_date_coverage_ci": [
+        0.2857142857142857,
+        0.7857142857142857
+      ]
+    },
+    {
+      "level": 0.8,
+      "mode": "fixed",
+      "method": "pooled_object",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 41,
+      "all_covered_dates": 13,
+      "covered_date_means": 14,
+      "mean_upper_pp_date": 10.830583246510567,
+      "mean_upper_pp_object": 10.830583246510566,
+      "object_coverage_ci": [
+        0.9302325581395349,
+        1
+      ],
+      "simultaneous_date_coverage_ci": [
+        0.7857142857142857,
+        1
+      ]
+    },
+    {
+      "level": 0.9,
+      "mode": "expanding",
+      "method": "date_max",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 42,
+      "all_covered_dates": 14,
+      "covered_date_means": 14,
+      "mean_upper_pp_date": 15.101086428766859,
+      "mean_upper_pp_object": 14.946650729804084,
+      "object_coverage_ci": [
+        1,
+        1
+      ],
+      "simultaneous_date_coverage_ci": [
+        1,
+        1
+      ]
+    },
+    {
+      "level": 0.9,
+      "mode": "expanding",
+      "method": "date_mean",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 38,
+      "all_covered_dates": 11,
+      "covered_date_means": 14,
+      "mean_upper_pp_date": 10.448505625454418,
+      "mean_upper_pp_object": 10.318905478175957,
+      "object_coverage_ci": [
+        0.8,
+        1
+      ],
+      "simultaneous_date_coverage_ci": [
+        0.5714285714285714,
+        1
+      ]
+    },
+    {
+      "level": 0.9,
+      "mode": "expanding",
+      "method": "pooled_object",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 42,
+      "all_covered_dates": 14,
+      "covered_date_means": 14,
+      "mean_upper_pp_date": 11.676896060074125,
+      "mean_upper_pp_object": 11.650790185647269,
+      "object_coverage_ci": [
+        1,
+        1
+      ],
+      "simultaneous_date_coverage_ci": [
+        1,
+        1
+      ]
+    },
+    {
+      "level": 0.9,
+      "mode": "fixed",
+      "method": "date_max",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 42,
+      "all_covered_dates": 14,
+      "covered_date_means": 14,
+      "mean_upper_pp_date": 16.027700622543502,
+      "mean_upper_pp_object": 16.027700622543506,
+      "object_coverage_ci": [
+        1,
+        1
+      ],
+      "simultaneous_date_coverage_ci": [
+        1,
+        1
+      ]
+    },
+    {
+      "level": 0.9,
+      "mode": "fixed",
+      "method": "date_mean",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 41,
+      "all_covered_dates": 13,
+      "covered_date_means": 14,
+      "mean_upper_pp_date": 11.22610650912517,
+      "mean_upper_pp_object": 11.226106509125165,
+      "object_coverage_ci": [
+        0.9302325581395349,
+        1
+      ],
+      "simultaneous_date_coverage_ci": [
+        0.7857142857142857,
+        1
+      ]
+    },
+    {
+      "level": 0.9,
+      "mode": "fixed",
+      "method": "pooled_object",
+      "dates": 14,
+      "objects": 42,
+      "covered_objects": 42,
+      "all_covered_dates": 14,
+      "covered_date_means": 14,
+      "mean_upper_pp_date": 12.784550944325249,
+      "mean_upper_pp_object": 12.78455094432525,
+      "object_coverage_ci": [
+        1,
+        1
+      ],
+      "simultaneous_date_coverage_ci": [
+        1,
+        1
+      ]
+    }
+  ],
+  "bootstrap": {
+    "draws": 5000,
+    "seed": 162,
+    "unit": "date",
+    "interpretation": "descriptive only; reused development dates"
+  },
+  "run": 45863467736,
+  "job": 140060194811,
+  "artifact": 15140150018,
+  "artifact_digest": "sha256:8e8ec4e1eca30c8fde6adb7cda73cf7cb902d0300c7701639476113a1363b0d9",
+  "tests_passed": 8,
+  "tested_commit": "1e780d4b87a5cca3636b616755f14637d9f95f70",
+  "repository_checks": {
+    "run": 45863467627,
+    "jobs": [
+      {
+        "name": "municipal-experiments",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "tests (ubuntu-latest)",
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "tests (windows-latest)",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "incident": "Ubuntu lint I001: two missing import separators; corrected without changing experiment logic."
+  }
+}

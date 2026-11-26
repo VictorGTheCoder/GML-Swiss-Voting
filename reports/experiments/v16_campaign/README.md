@@ -24,3 +24,7 @@ Les deux méthodes à 80 % manquent les mêmes deux dates (23.09.2018, 27.09.202
 ## V16.2 — implémentation et protocole
 
 [Protocole](V16.2-protocol.md) : 12 configurations chronologiques sur l'artefact V11.3 immuable, contrôle de la MAE exacte et bootstrap par date. Benchmark à vérifier, aucun résultat nouveau. CI parent 3/3. V16.3 ensuite prioritaire pour la précision prédictive.
+
+## V16.2 — clôture mesurée
+
+[Résultats](V16.2-results.md) : 12 configurations, 42 objets sur 14 dates évaluées ; maximum par date 42/42 et 14/14, contrôle poolé aussi à 90% croissant avec une borne plus étroite. 8/8 tests ciblés ; deux erreurs de lint corrigées, CI nouvelle à vérifier. Pas de nouveau score prédictif. V16.3 priorité au refit niveau structural et local, contrôle V11.6.
