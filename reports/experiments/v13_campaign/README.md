@@ -63,3 +63,7 @@ Le [premier benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actio
 ## V13.5 — clôture et suite V14
 
 [Résultats vérifiés](V13.5-results.md) : oracle cantonal V11.3 3,7517 pp [3,5636 ; 3,9575], 18/66 objets >4 pp ; gain supplémentaire 1,4729 pp. 5 tests ciblés et 3/3 jobs CI réussis. Aucun gain prédictif. [Index et backlog V14](../v14_campaign/README.md) : audit de nouvelles sources institutionnelles agrégées, V13.2 encore en attente. Aucun test final.
+
+## V13.2e — Extension 2021
+
+[Acquisition et audit](V13.2e-2021-waves.md) : 45 observations, 16 objets, 6 dates multi-vagues, 16/16 accords dernière vague. CI du parent 3/3 réussie. Aucune admission ni nouveau score ; priorité aux dates indépendantes 2017–2019 et à la certification. V14.1 différée.
