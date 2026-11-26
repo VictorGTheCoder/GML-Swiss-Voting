@@ -1,9 +1,9 @@
 {
   "version": "V17.1b",
-  "status": "acquisition_complete_coverage_implemented_pending_ci",
+  "status": "coverage_failed_id_format_fix_pending_ci",
   "parent_commit": "6ea59fd0977aca934b3cdfd3ca62d80d3091ce18",
   "prior_ci": {
-    "run": 45887564749,
+    "run": 45894687488,
     "jobs": 3,
     "conclusion": "success"
   },
@@ -23,7 +23,7 @@
     "version": "V11.3",
     "mae_pp": 6.955753873756506
   },
-  "next": "Verify matched coverage CI. If gate fails, suspend ElCom; otherwise verify historical boundary and 10 primary comparisons per year before admission. If blocked, switch to independent source or nonduplicate experiment.",
+  "next": "Verify corrected CI; exact numeric ID coverage is not geography certification (fixed 2026 reference). If gate fails, suspend ElCom. No target observations read and no admission.",
   "acquisition": {
     "version": "V17.1a",
     "source_run": 45887564938,
@@ -107,5 +107,15 @@
     "multiple_rows": 1185,
     "single_rows": 14471,
     "admitted": 0
-  }
+  },
+  "coverage_attempts": [
+    {
+      "run": 45894687664,
+      "job": 140165563585,
+      "commit": "ce37a10ed2aadcea1123d52f26323ae17733277a",
+      "conclusion": "failure",
+      "targeted_checks": 8,
+      "error": "Unexpected municipality ID in immutable reference; parquet SHA verified before projection, both ZIP digests verified"
+    }
+  ]
 }

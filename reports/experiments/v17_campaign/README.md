@@ -17,3 +17,7 @@ Suite de [V16](../v16_campaign/README.md), [V13](../v13_campaign/README.md), [V1
 ## V17.1a/b — Acquisition réussie et jointure
 
 [Résultats et protocole de jointure](V17.1a-elcom-results.md) : 7/7 requêtes, 15656 commune-années brutes, 14471 à ligne unique ; 9/9 tests acquis. V17.1b mesure la couverture sur les clés exactes du benchmark, CI à vérifier. Les valeurs restent en quarantaine. V17.2 dépend de la géographie et des vintages certifiés ; sinon reprendre une piste indépendante sans relancer ces requêtes. Aucun nouveau score.
+
+## V17.1b — correction de jointure
+
+[Incident et correction](V17.1b-id-fix.md) : CI générale 3/3, couverture échouée sur format ID après huit tests réussis. Normalisation numérique stricte et garde d'injectivité ; 7 nouveaux contrôles à vérifier. La géographie fixe 2026 rend indispensable un audit distinct des mutations. Aucun résultat de couverture encore disponible, zéro admission.

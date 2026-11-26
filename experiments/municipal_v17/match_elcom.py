@@ -16,7 +16,8 @@ def require(condition, message):
 
 def municipality(value):
     value = str(value)
-    require(re.fullmatch(r"[1-9][0-9]*", value) is not None, "Unexpected municipality ID")
+    require(re.fullmatch(r"[0-9]+", value) is not None and int(value) > 0,
+            "Unexpected municipality ID format")
     return int(value)
 
 
@@ -61,7 +62,16 @@ def self_test():
             pass
         else:
             raise AssertionError("Invalid input accepted")
-    print("8 synthetic checks passed", flush=True)
+    assert municipality("0001") == municipality(1) == 1
+    assert municipality("0123") == 123
+    for invalid in ("0000", "12.0", " 12", "CH12", None):
+        try:
+            municipality(invalid)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("Invalid identifier accepted")
+    print("15 synthetic checks passed", flush=True)
 
 
 def digest(path):
@@ -78,6 +88,9 @@ def run(source, reference, output):
     table = pq.read_table(path, columns=["vote_date", "vote_id", "municipality_id"])
     keys = table.to_pylist()
     require(len(keys) == 138868, "Wrong number of rows")
+    raw_ids = {str(r["municipality_id"]) for r in keys}
+    normalized_ids = {municipality(i) for i in raw_ids}
+    require(len(raw_ids) == len(normalized_ids), "Reference ID normalization collision")
     triples = [(str(r["vote_date"])[:10], str(r["vote_id"]), municipality(r["municipality_id"]))
                for r in keys]
     require(len(set(triples)) == len(triples), "Duplicate reference keys")
@@ -97,6 +110,10 @@ def run(source, reference, output):
         results.append(result)
     summary = {"version": "V17.1b", "reference_rows": len(keys), "objects": 66, "dates": 23,
                "source_run": expected["source_run"], "source_artifact": expected["source_artifact"],
+               "reference_id_normalization": {"distinct_raw": len(raw_ids),
+                                              "distinct_normalized": len(normalized_ids),
+                                              "zero_padded_distinct": sum(i.startswith("0") for i in raw_ids)},
+               "reference_geography": "fixed_2026_not_harmonized_to_tariff_year",
                "years": results, "years_strict_ge_90pct": sum(r["strict_id_coverage"] >= .9 for r in results),
                "admitted": 0, "boundary_certified": False, "historical_vintage_certified": False}
     output.mkdir(parents=True, exist_ok=False)
