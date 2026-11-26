@@ -13,3 +13,7 @@ Suite de [V16](../v16_campaign/README.md), [V13](../v13_campaign/README.md), [V1
 ## V17.1 — ElCom
 
 [Protocole et audit](V17.1-elcom-protocol.md) : source publique de tarifs communaux, conditions ouvertes explicites au niveau ressource ; 7 années ciblées, neuf contrôles synthétiques réussis. DNS local bloqué, acquisition via CI à vérifier. Zéro admission, aucun nouveau score. Priorité : couverture mesurée, géographie historique et preuve de version avant ablation ; ne pas relancer à l'identique en cas de blocage persistant. [Checkpoint](../../../experiments/municipal_v17/state.json).
+
+## V17.1a/b — Acquisition réussie et jointure
+
+[Résultats et protocole de jointure](V17.1a-elcom-results.md) : 7/7 requêtes, 15656 commune-années brutes, 14471 à ligne unique ; 9/9 tests acquis. V17.1b mesure la couverture sur les clés exactes du benchmark, CI à vérifier. Les valeurs restent en quarantaine. V17.2 dépend de la géographie et des vintages certifiés ; sinon reprendre une piste indépendante sans relancer ces requêtes. Aucun nouveau score.

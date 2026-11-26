@@ -1,0 +1,39 @@
+name: V17.1b ElCom matched ID coverage
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'experiments/municipal_v17/match_elcom.py'
+      - '.github/workflows/municipal-v171b-coverage.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyarrow==19.0.1
+      - run: python experiments/municipal_v17/match_elcom.py --self-test
+      - uses: actions/download-artifact@v4
+        with:
+          name: v171-elcom-source-audit
+          run-id: 45887564938
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifacts/v171-elcom
+      - uses: actions/download-artifact@v4
+        with:
+          name: v113-procedure
+          run-id: 45444093555
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifacts/v113-reference
+      - run: python experiments/municipal_v17/match_elcom.py --source artifacts/v171-elcom --reference artifacts/v113-reference --output artifacts/v171b
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v171b-matched-coverage
+          path: artifacts/v171b/manifest.json
+          if-no-files-found: error

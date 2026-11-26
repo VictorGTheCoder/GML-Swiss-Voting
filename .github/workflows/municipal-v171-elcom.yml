@@ -1,10 +1,6 @@
 name: V17.1 ElCom historical tariff source audit
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - 'experiments/municipal_v17/audit_elcom.mjs'
-      - '.github/workflows/municipal-v171-elcom.yml'
 permissions:
   contents: read
 jobs:

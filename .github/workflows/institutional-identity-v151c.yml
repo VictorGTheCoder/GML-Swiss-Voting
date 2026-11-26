@@ -1,10 +1,5 @@
 name: V15.1c institutional PDF identity
 on:
-  pull_request:
-    paths:
-      - 'experiments/municipal_v15/audit_identity.mjs'
-      - 'data/external/institutional_v151/identity_pairs_v151c.json'
-      - '.github/workflows/institutional-identity-v151c.yml'
   workflow_dispatch:
 permissions:
   contents: read

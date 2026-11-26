@@ -1,10 +1,5 @@
 name: V16.2 object risk diagnostic
 on:
-  pull_request:
-    paths:
-      - 'scripts/modeling/object_risk_v162.py'
-      - 'tests/test_object_risk_v162.py'
-      - '.github/workflows/object-risk-v162.yml'
   workflow_dispatch:
 permissions:
   contents: read
