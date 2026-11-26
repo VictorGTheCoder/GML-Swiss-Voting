@@ -1,6 +1,6 @@
 {
-  "version": "V17.1b",
-  "status": "coverage_failed_id_format_fix_pending_ci",
+  "version": "V17.2a",
+  "status": "elcom_suspended_coverage_gate_failed_stru_metadata_candidate",
   "parent_commit": "6ea59fd0977aca934b3cdfd3ca62d80d3091ce18",
   "prior_ci": {
     "run": 45894687488,
@@ -23,7 +23,7 @@
     "version": "V11.3",
     "mae_pp": 6.955753873756506
   },
-  "next": "Verify corrected CI; exact numeric ID coverage is not geography certification (fixed 2026 reference). If gate fails, suspend ElCom. No target observations read and no admission.",
+  "next": "V17.2a: seek dated original STRU releases before acquiring historical values, verify publication lag and exact geographic vintage; compare agriculture variables to STATENT already admitted. If no pre-vote data edition or low coverage, defer; no relaxed ElCom gate.",
   "acquisition": {
     "version": "V17.1a",
     "source_run": 45887564938,
@@ -116,6 +116,148 @@
       "conclusion": "failure",
       "targeted_checks": 8,
       "error": "Unexpected municipality ID in immutable reference; parquet SHA verified before projection, both ZIP digests verified"
+    },
+    {
+      "run": 45901600587,
+      "job": 140188446294,
+      "artifact": 15155508762,
+      "artifact_digest": "sha256:c37768092b2c2e19c436d69f4d0a7596807ffe072d1edaa453f88096b9d6e8f7",
+      "commit": "b3c7fe427b08b91a66d2d6ff9c93747841df125d",
+      "conclusion": "success",
+      "targeted_checks": 15,
+      "extraction": "Summary printed in verified CI log; artifact digest from API",
+      "summary": {
+        "version": "V17.1b",
+        "reference_rows": 138868,
+        "objects": 66,
+        "dates": 23,
+        "source_run": 45887564938,
+        "source_artifact": 15149792981,
+        "reference_id_normalization": {
+          "distinct_raw": 2105,
+          "distinct_normalized": 2105,
+          "zero_padded_distinct": 489
+        },
+        "reference_geography": "fixed_2026_not_harmonized_to_tariff_year",
+        "years": [
+          {
+            "year": 2016,
+            "reference_unique_ids": 2103,
+            "reference_rows": 27339,
+            "source_unique_ids": 2321,
+            "matched_ids": 2049,
+            "matched_single_ids": 1865,
+            "source_only_ids": 272,
+            "missing_ids": 54,
+            "raw_id_coverage": 0.9743223965763196,
+            "strict_id_coverage": 0.8868283404660009,
+            "strict_row_coverage": 0.8868283404660009,
+            "normalized_sha256": "8d71baa3984b40f4feb877077783d165764c77eef79497230d9070ca5487f0d9"
+          },
+          {
+            "year": 2017,
+            "reference_unique_ids": 2103,
+            "reference_rows": 14721,
+            "source_unique_ids": 2277,
+            "matched_ids": 2052,
+            "matched_single_ids": 1876,
+            "source_only_ids": 225,
+            "missing_ids": 51,
+            "raw_id_coverage": 0.9757489300998573,
+            "strict_id_coverage": 0.8920589633856396,
+            "strict_row_coverage": 0.8920589633856396,
+            "normalized_sha256": "01cff02b9345cac04ca6b7bcd965628c55381ef980d814a3a8590dcc6ccc84c5"
+          },
+          {
+            "year": 2018,
+            "reference_unique_ids": 2104,
+            "reference_rows": 21040,
+            "source_unique_ids": 2255,
+            "matched_ids": 2073,
+            "matched_single_ids": 1920,
+            "source_only_ids": 182,
+            "missing_ids": 31,
+            "raw_id_coverage": 0.9852661596958175,
+            "strict_id_coverage": 0.9125475285171103,
+            "strict_row_coverage": 0.9125475285171103,
+            "normalized_sha256": "b1759a4e23f4f104d65fd457884131f804716adc377d477e49562442d916e747"
+          },
+          {
+            "year": 2019,
+            "reference_unique_ids": 2104,
+            "reference_rows": 6312,
+            "source_unique_ids": 2233,
+            "matched_ids": 2078,
+            "matched_single_ids": 1927,
+            "source_only_ids": 155,
+            "missing_ids": 26,
+            "raw_id_coverage": 0.9876425855513308,
+            "strict_id_coverage": 0.9158745247148289,
+            "strict_row_coverage": 0.9158745247148289,
+            "normalized_sha256": "da1f6c23aa51b344eca66df811f701f838423859b3e01a9ccf544bcace8ddc56"
+          },
+          {
+            "year": 2020,
+            "reference_unique_ids": 2104,
+            "reference_rows": 18936,
+            "source_unique_ids": 2210,
+            "matched_ids": 2077,
+            "matched_single_ids": 1940,
+            "source_only_ids": 133,
+            "missing_ids": 27,
+            "raw_id_coverage": 0.9871673003802282,
+            "strict_id_coverage": 0.9220532319391636,
+            "strict_row_coverage": 0.9220532319391636,
+            "normalized_sha256": "35ebf61da1adfbd153005683a26d1ea11c035f1755e26235cde450a5f262a21c"
+          },
+          {
+            "year": 2021,
+            "reference_unique_ids": 2105,
+            "reference_rows": 27365,
+            "source_unique_ids": 2201,
+            "matched_ids": 2083,
+            "matched_single_ids": 1933,
+            "source_only_ids": 118,
+            "missing_ids": 22,
+            "raw_id_coverage": 0.9895486935866984,
+            "strict_id_coverage": 0.918289786223278,
+            "strict_row_coverage": 0.918289786223278,
+            "normalized_sha256": "c8ebe547f85e21fd634e72dbe95cd02ada51f29084bb50aa784771ba2c2c6192"
+          },
+          {
+            "year": 2022,
+            "reference_unique_ids": 2105,
+            "reference_rows": 23155,
+            "source_unique_ids": 2159,
+            "matched_ids": 2076,
+            "matched_single_ids": 1877,
+            "source_only_ids": 83,
+            "missing_ids": 29,
+            "raw_id_coverage": 0.9862232779097387,
+            "strict_id_coverage": 0.891686460807601,
+            "strict_row_coverage": 0.891686460807601,
+            "normalized_sha256": "9fdf28c7a6dc8678a4bea2c88fc20e1ae7ade6f0896a1472e83e6496cc126bdc"
+          }
+        ],
+        "years_strict_ge_90pct": 4,
+        "admitted": 0,
+        "boundary_certified": false,
+        "historical_vintage_certified": false
+      },
+      "matched_single_rows": 125594,
+      "strict_row_coverage": 0.9044128236886828,
+      "gate_passed": false
     }
-  ]
+  ],
+  "stru_candidate": {
+    "source": "OFS STRU",
+    "table": "px-x-0702000000_104",
+    "sources": [
+      "https://statistik.admin.ch/fr/asset/35187259",
+      "https://statistik.admin.ch/fr/asset/36581537",
+      "https://www.pxweb-admin-a.bfs.admin.ch/pxweb/de/px-x-0702000000_104/-/px-x-0702000000_104.px/"
+    ],
+    "status": "metadata_only_not_admitted",
+    "admitted": 0
+  }
 }

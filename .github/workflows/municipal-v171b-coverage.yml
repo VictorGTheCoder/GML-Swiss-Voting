@@ -1,10 +1,6 @@
 name: V17.1b ElCom matched ID coverage
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - 'experiments/municipal_v17/match_elcom.py'
-      - '.github/workflows/municipal-v171b-coverage.yml'
 permissions:
   contents: read
   actions: read

@@ -21,3 +21,7 @@ Suite de [V16](../v16_campaign/README.md), [V13](../v13_campaign/README.md), [V1
 ## V17.1b — correction de jointure
 
 [Incident et correction](V17.1b-id-fix.md) : CI générale 3/3, couverture échouée sur format ID après huit tests réussis. Normalisation numérique stricte et garde d'injectivité ; 7 nouveaux contrôles à vérifier. La géographie fixe 2026 rend indispensable un audit distinct des mutations. Aucun résultat de couverture encore disponible, zéro admission.
+
+## V17.1b — clôture et V17.2a
+
+[Couverture mesurée](V17.1b-coverage-results.md) : 4/7 années au seuil de 90 % (5 requises), 90.44 % de lignes à ID unique, 15/15 tests. ElCom suspendue sans changer le seuil ni les frontières. [V17.2a](V17.2a-stru-candidate.md) : deux éditions OFS STRU OPEN-BY, données structurelles agricoles agrégées ; priorité aux publications contemporaines et contrôle de redondance STATENT. Zéro admission et aucun nouveau score.
