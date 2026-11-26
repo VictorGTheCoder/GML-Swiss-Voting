@@ -76,30 +76,30 @@
   },
   "v132": {
     "status": "multiwave_inventory_extended_no_admission",
-    "objects": 16,
-    "dates": 6,
-    "latest_value_agreements": 16,
-    "early_waves": 29,
+    "objects": 18,
+    "dates": 7,
+    "latest_value_agreements": 18,
+    "early_waves": 33,
     "training_rows_admitted": 0,
     "strict_forecast_ready": false,
-    "rows": 45,
-    "latest_candidates": 16,
-    "latest_agreements": 16,
-    "multiwave_objects": 16,
-    "three_wave_objects": 13,
-    "multiwave_dates": 6,
+    "rows": 51,
+    "latest_candidates": 18,
+    "latest_agreements": 18,
+    "multiwave_objects": 18,
+    "three_wave_objects": 15,
+    "multiwave_dates": 7,
     "previous_repository_checks": {
-      "run": 45772436517,
+      "run": 45779316153,
       "conclusion": "success",
       "jobs": 3
     },
-    "notes": "V13.2e: 6 national candidates for 2021-09-26, three waves; second wave indexed PDF screenshot HTTP 404, no admission; continue independent historical date acquisition and certification.",
+    "notes": "V13.2f: six national candidates 2018-06-10, contemporaneous reports. Original PDFs and license not certified. Next 2017/2019 or primary source certification; no training.",
     "repository_checks": {
       "run": 45650868526,
       "conclusion": "success",
       "jobs": 3
     },
-    "rows_at_least_11_days": 45
+    "rows_at_least_11_days": 51
   },
   "v133": {
     "status": "completed_scoring_only",

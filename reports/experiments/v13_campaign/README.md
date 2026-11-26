@@ -67,3 +67,7 @@ Le [premier benchmark](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actio
 ## V13.2e — Extension 2021
 
 [Acquisition et audit](V13.2e-2021-waves.md) : 45 observations, 16 objets, 6 dates multi-vagues, 16/16 accords dernière vague. CI du parent 3/3 réussie. Aucune admission ni nouveau score ; priorité aux dates indépendantes 2017–2019 et à la certification. V14.1 différée.
+
+## V13.2f — Extension juin 2018
+
+[Acquisition et audit](V13.2f-2018-june-waves.md) : 51 observations, 18 objets, 7 dates multi-vagues, 18/18 accords dernière vague, 51/51 publications à J−11 ou avant. CI du parent 3/3 réussie. Aucun nouveau score ni admission ; priorité aux dates 2017/2019 et à la certification.
