@@ -102,7 +102,7 @@
     "publication_evidence_primary_years": 2,
     "missing_original_pdf_2016": true,
     "latest_verified_ci": {
-      "run": 45740122013,
+      "run": 45745923326,
       "jobs": 3,
       "conclusion": "success"
     },
@@ -135,6 +135,15 @@
       "license_verified": false,
       "latest_verified_ci": 45740122013,
       "next": "Pin archive SHA; inspect original 2016 report and selected canton-level workbook schema, verify publication evidence and reuse terms; compare nested/direct SHA for six pairs before extracting candidates."
+    },
+    "content_audit": {
+      "status": "implementation_pending_ci",
+      "pinned_sources": 13,
+      "expected_pairs": 6,
+      "expected_2016_indices": 26,
+      "training_rows_admitted": 0,
+      "publication_vintage_verified": false,
+      "license_verified": false
     }
   }
 }
