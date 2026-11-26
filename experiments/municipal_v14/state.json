@@ -102,7 +102,7 @@
     "publication_evidence_primary_years": 2,
     "missing_original_pdf_2016": false,
     "latest_verified_ci": {
-      "run": 45752233520,
+      "run": 45758505951,
       "jobs": 3,
       "conclusion": "success"
     },
@@ -165,6 +165,36 @@
       "publication_vintage_verified": false,
       "license_verified": false
     },
-    "next": "Prioriser une preuve datée reliant le document exact au communiqué historique et les annexes légales originales ; réutilisation à établir. Aucun nouveau téléchargement des 13 sources sans changement. En parallèle reprendre V13.2 si certification bloque."
+    "next": "V14.1g: Fedlex official historical annexes offer a separate reuse route; obtain exact official files via SPARQL manifestation metadata, not guessed URLs. V14.2 remains blocked. Next passage prioritize independent V13.2 source certification if official retrieval unavailable.",
+    "legal_crosscheck": {
+      "status": "partial_mirror_comparison_official_bytes_pending",
+      "compared_rows": 52,
+      "changed_rows": 22,
+      "year_stats": [
+        {
+          "year": 2021,
+          "compared": 26,
+          "changed": 22,
+          "max_abs_change": 0.4
+        },
+        {
+          "year": 2022,
+          "compared": 26,
+          "changed": 0,
+          "max_abs_change": 0
+        }
+      ],
+      "legal_reuse_evidence": "https://fedlex.data.admin.ch/",
+      "primary_verified": false,
+      "training_rows_admitted": 0,
+      "source": "OPFCC annex 8 section 4, historical ODAT mirrors; Fedlex official version links return JS shell",
+      "older_years_missing": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ]
+    }
   }
 }
