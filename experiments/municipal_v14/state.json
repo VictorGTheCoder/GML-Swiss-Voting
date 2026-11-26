@@ -1,7 +1,7 @@
 {
   "campaign": "V14",
-  "status": "source_audit_content_verified_vintage_license_pending",
-  "active": "V14.1",
+  "status": "source_audit_deferred_primary_vintage_pending",
+  "active": null,
   "best_observed": {
     "version": "V11.3",
     "mae_pp": 6.955753873756506
@@ -102,7 +102,7 @@
     "publication_evidence_primary_years": 2,
     "missing_original_pdf_2016": false,
     "latest_verified_ci": {
-      "run": 45758505951,
+      "run": 45765482116,
       "jobs": 3,
       "conclusion": "success"
     },
@@ -165,7 +165,7 @@
       "publication_vintage_verified": false,
       "license_verified": false
     },
-    "next": "V14.1g: Fedlex official historical annexes offer a separate reuse route; obtain exact official files via SPARQL manifestation metadata, not guessed URLs. V14.2 remains blocked. Next passage prioritize independent V13.2 source certification if official retrieval unavailable.",
+    "next": "Priorité indépendante V13.2; V14.1 deferred until primary legal bytes and publication proof; V14.2 blocked. Compare certified source redundancy before modeling.",
     "legal_crosscheck": {
       "status": "partial_mirror_comparison_official_bytes_pending",
       "compared_rows": 52,
@@ -195,6 +195,29 @@
         2019,
         2020
       ]
+    },
+    "panel_diagnostic": {
+      "rows": 182,
+      "cantons": 26,
+      "years": 7,
+      "annual_pairs": 156,
+      "between_share": 0.9930349382895629,
+      "within_share": 0.00696506171043718,
+      "mean_abs_annual_change": 1.8269230769230778,
+      "median_abs_annual_change": 0.9000000000000057,
+      "median_range": 6.300000000000004,
+      "correlation_2016_2022": 0.9896434461865454,
+      "training_rows_admitted": 0,
+      "source_git_blob": "ca88a69cbacd1cc645ace1ff4178262acf9dbbbd",
+      "checks_passed": 5,
+      "legal_2022_pdf_mirror_matches": 26,
+      "legal_2022_pdf_mirror": "https://www.lexfind.ch/tolv/219588/fr",
+      "status": "diagnostic_only_no_admission"
     }
-  }
+  },
+  "backlog_priority": [
+    "V13.2 independent source certification",
+    "V14.1 official legal manifestation and publication proof",
+    "V14.2 certified source redundancy audit"
+  ]
 }
