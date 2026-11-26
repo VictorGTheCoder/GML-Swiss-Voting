@@ -28,3 +28,7 @@ Les deux méthodes à 80 % manquent les mêmes deux dates (23.09.2018, 27.09.202
 ## V16.2 — clôture mesurée
 
 [Résultats](V16.2-results.md) : 12 configurations, 42 objets sur 14 dates évaluées ; maximum par date 42/42 et 14/14, contrôle poolé aussi à 90% croissant avec une borne plus étroite. 8/8 tests ciblés ; deux erreurs de lint corrigées, CI nouvelle à vérifier. Pas de nouveau score prédictif. V16.3 priorité au refit niveau structural et local, contrôle V11.6.
+
+## V16.3 — Protocole et exécution
+
+[Protocole préenregistré](V16.3-protocol.md) : quatre variantes conjointes, contrôle V11.6 ; poids structural adaptatif calibré exclusivement sur scores de dates passées. CI parent 3/3 réussie. Benchmark à vérifier, aucun gain revendiqué. Priorité suivante : analyser le gain national et local apparié, puis décider si des entrées agrégées indépendantes sont nécessaires. Ne pas répéter le benchmark sauf incident justifié.

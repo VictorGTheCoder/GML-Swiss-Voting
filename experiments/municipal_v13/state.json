@@ -1333,6 +1333,33 @@
         }
       ],
       "incident": "Ubuntu lint I001: two missing import separators; corrected without changing experiment logic."
+    },
+    "final_repository_checks": {
+      "run": 45863687181,
+      "jobs": 3,
+      "conclusion": "success"
     }
+  },
+  "v163": {
+    "status": "predeclared_benchmark_pending",
+    "parent_commit": "56e85a1242d5219031ccd3903ca19084926447f0",
+    "control": "rolling_institution",
+    "variants": [
+      "rolling_institution",
+      "structural_only",
+      "structural_quarter",
+      "structural_adaptive"
+    ],
+    "prior_repository_checks": {
+      "run": 45863687181,
+      "jobs": 3,
+      "conclusion": "success"
+    },
+    "population": {
+      "objects": 66,
+      "dates": 23,
+      "rows": 138868
+    },
+    "next": "Verify benchmark logs and manifest, record all scores and paired intervals, no holdout, no promotion."
   }
 }
