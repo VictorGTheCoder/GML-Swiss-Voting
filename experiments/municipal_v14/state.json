@@ -31,7 +31,7 @@
   "source_diagnostic_run": 45709347921,
   "prior_source_inventory_ref": "aea65e15f4897b5ef34b9eba4d1e250c92665253",
   "v141": {
-    "status": "seven_years_candidates_2016_cached_text_crosscheck_only",
+    "status": "archive_inventory_complete_candidate_vintage_pending",
     "candidate_rows": 182,
     "years": 7,
     "cantons": 26,
@@ -102,18 +102,39 @@
     "publication_evidence_primary_years": 2,
     "missing_original_pdf_2016": true,
     "latest_verified_ci": {
-      "run": 45725267596,
+      "run": 45740122013,
       "jobs": 3,
       "conclusion": "success"
     },
     "archive_inventory": {
-      "status": "manifest_and_ci_probe_prepared_results_pending",
+      "status": "inventory_success_metadata_verified_vintage_and_license_pending",
       "sources": 13,
       "years": 7,
       "local_download": "DNS failure; direct download failed; web binary unsupported",
-      "source_hashes_verified": 0,
+      "source_hashes_verified": 13,
       "training_rows_admitted": 0,
-      "latest_prior_ci": 45732311992
+      "latest_prior_ci": 45732311992,
+      "source_hashes_scope": "downloaded runner bytes; verified metadata ZIP digest, not independently rehashed source binaries locally",
+      "downloaded": 13,
+      "source_bytes": 12020413,
+      "zip_members": 46,
+      "direct_worksheet_parts": 70,
+      "run": 45740122118,
+      "job": 139642769397,
+      "artifact": 15080861587,
+      "artifact_digest": "sha256:6d5a7de5577b803d144272062c643ed207a69241dddfeed85880039087101fb2",
+      "retrieved_at": "2026-11-26T02:06:17.683109+00:00",
+      "target_pdf_2016": {
+        "member": "Bericht_FDK_2016_Anhoerung.pdf",
+        "bytes": 1879436,
+        "crc32": "88937def",
+        "content_verified": false
+      },
+      "same_size_archive_direct_pairs": 6,
+      "publication_vintage_verified": false,
+      "license_verified": false,
+      "latest_verified_ci": 45740122013,
+      "next": "Pin archive SHA; inspect original 2016 report and selected canton-level workbook schema, verify publication evidence and reuse terms; compare nested/direct SHA for six pairs before extracting candidates."
     }
   }
 }

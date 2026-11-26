@@ -1,13 +1,6 @@
 name: V14 AFF source inventory
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - experiment/municipal-v12-document-coverage-20261125
-    paths:
-      - '.github/workflows/municipal-v14-aff-inventory.yml'
-      - 'experiments/municipal_v14/inventory_aff.py'
-      - 'data/external/fiscal_equalization_v141/archive_sources.json'
 permissions:
   contents: read
 concurrency:
