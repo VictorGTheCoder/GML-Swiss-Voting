@@ -20,3 +20,7 @@ Les deux méthodes à 80 % manquent les mêmes deux dates (23.09.2018, 27.09.202
 1. V16.2 : sur artefact V11.3 figé et haché, comparer bornes par date macro et par objet (maximum par bloc de date) avec métriques exactes, couverture, largeur et bootstrap par date ; pas de garantie prospective, pas de sélection selon les résultats. Préserver les 23 dates, distinguer warm-up/calibration et scoring, ne pas exporter de données individuelles.
 2. V16.3 : rechercher une hypothèse prédictive indépendante sur données déjà admises, distincte des corrections et ensembles V10–V12 déjà testés. Préenregistrer l'ablation, vérifier la chronologie et la population, mesurer quatre métriques, gain apparié par date et diagnostics agrégés. En particulier vérifier la possibilité de refit national + local (V11.6 ne testait que local) avant tout run.
 3. V13.2/V14/V15 : reprises uniquement sur nouvelle preuve de droits et disponibilité historique. Aucun entraînement avec données en quarantaine.
+
+## V16.2 — implémentation et protocole
+
+[Protocole](V16.2-protocol.md) : 12 configurations chronologiques sur l'artefact V11.3 immuable, contrôle de la MAE exacte et bootstrap par date. Benchmark à vérifier, aucun résultat nouveau. CI parent 3/3. V16.3 ensuite prioritaire pour la précision prédictive.

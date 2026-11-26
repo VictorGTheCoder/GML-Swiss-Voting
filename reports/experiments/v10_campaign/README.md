@@ -47,3 +47,5 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 ## Campagnes V14–V16
 
 [V14](../v14_campaign/README.md) · [V15](../v15_campaign/README.md) · [V16](../v16_campaign/README.md). V15 identité binaire 3/3, données en quarantaine. V16.1 pilote d'incertitude par date mesuré ; meilleur prédictif V11.3 6,9558 pp inchangé. Aucun test final.
+
+[V16.2 protocole](../v16_campaign/V16.2-protocol.md) : calibration du risque objet par bloc date, benchmark à vérifier, meilleur prédictif inchangé.

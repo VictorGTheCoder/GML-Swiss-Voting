@@ -1050,5 +1050,20 @@
       }
     ],
     "next": "V16.2 exact artifact-based object-level date-block uncertainty; no holdout or promotion"
+  },
+  "v162": {
+    "status": "implementation_committed_benchmark_pending",
+    "source_run": 45444093555,
+    "source_artifact": 14945871233,
+    "source_artifact_digest": "sha256:56f659fab173c1d34c28ec6648aa656281b7215e30857a5d7973e09b6eb51d21",
+    "configurations": 12,
+    "warmup_dates": 9,
+    "evaluation_dates": 14,
+    "prior_repository_checks": {
+      "run": 45855597203,
+      "jobs": 3,
+      "conclusion": "success"
+    },
+    "next": "Verify V16.2 run and record actual results; then prioritize V16.3 joint national and local rolling refit."
   }
 }
