@@ -43,3 +43,7 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 ## Diagnostic V13.3
 
 [Résultats](../v13_campaign/V13.3-results.md) : oracle de translation V11.3 à 5,2246 pp, 55/66 objets restent au-dessus de 4 pp. Meilleur prédictif exploratoire 6,9558 pp inchangé ; priorité au diagnostic des contrastes, pas de promotion ni test final.
+
+## Campagnes V14–V16
+
+[V14](../v14_campaign/README.md) · [V15](../v15_campaign/README.md) · [V16](../v16_campaign/README.md). V15 identité binaire 3/3, données en quarantaine. V16.1 pilote d'incertitude par date mesuré ; meilleur prédictif V11.3 6,9558 pp inchangé. Aucun test final.

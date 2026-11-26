@@ -1,0 +1,440 @@
+{
+  "source": "reports/experiments/v11_campaign/V11.6-results.md",
+  "source_precision_pp": 0.0001,
+  "unit": "date-level mean of object MAE, not municipality prediction interval",
+  "warmup_dates": 9,
+  "results": [
+    {
+      "level": 0.8,
+      "mode": "fixed_initial_9",
+      "evaluation_dates": 14,
+      "covered_dates": 12,
+      "mean_upper_pp": 8.268699999999999,
+      "detail": [
+        {
+          "date": "2018-09-23",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 8.5045,
+          "covered": false
+        },
+        {
+          "date": "2018-11-25",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 7.096,
+          "covered": true
+        },
+        {
+          "date": "2019-02-10",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 6.3936,
+          "covered": true
+        },
+        {
+          "date": "2019-05-19",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 6.3726,
+          "covered": true
+        },
+        {
+          "date": "2020-02-09",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 5.2123,
+          "covered": true
+        },
+        {
+          "date": "2020-09-27",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 8.3854,
+          "covered": false
+        },
+        {
+          "date": "2020-11-29",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 6.1052,
+          "covered": true
+        },
+        {
+          "date": "2021-03-07",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 6.5806,
+          "covered": true
+        },
+        {
+          "date": "2021-06-13",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 5.9505,
+          "covered": true
+        },
+        {
+          "date": "2021-09-26",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 5.5222,
+          "covered": true
+        },
+        {
+          "date": "2021-11-28",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 6.6529,
+          "covered": true
+        },
+        {
+          "date": "2022-02-13",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 5.5198,
+          "covered": true
+        },
+        {
+          "date": "2022-05-15",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 5.2286,
+          "covered": true
+        },
+        {
+          "date": "2022-09-25",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 7.4811,
+          "covered": true
+        }
+      ]
+    },
+    {
+      "level": 0.8,
+      "mode": "expanding",
+      "evaluation_dates": 14,
+      "covered_dates": 12,
+      "mean_upper_pp": 8.369414285714287,
+      "detail": [
+        {
+          "date": "2018-09-23",
+          "training_dates": 9,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 8.5045,
+          "covered": false
+        },
+        {
+          "date": "2018-11-25",
+          "training_dates": 10,
+          "upper_pp": 8.5045,
+          "observed_date_macro_mae_pp": 7.096,
+          "covered": true
+        },
+        {
+          "date": "2019-02-10",
+          "training_dates": 11,
+          "upper_pp": 8.5045,
+          "observed_date_macro_mae_pp": 6.3936,
+          "covered": true
+        },
+        {
+          "date": "2019-05-19",
+          "training_dates": 12,
+          "upper_pp": 8.5045,
+          "observed_date_macro_mae_pp": 6.3726,
+          "covered": true
+        },
+        {
+          "date": "2020-02-09",
+          "training_dates": 13,
+          "upper_pp": 8.5045,
+          "observed_date_macro_mae_pp": 5.2123,
+          "covered": true
+        },
+        {
+          "date": "2020-09-27",
+          "training_dates": 14,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 8.3854,
+          "covered": false
+        },
+        {
+          "date": "2020-11-29",
+          "training_dates": 15,
+          "upper_pp": 8.3854,
+          "observed_date_macro_mae_pp": 6.1052,
+          "covered": true
+        },
+        {
+          "date": "2021-03-07",
+          "training_dates": 16,
+          "upper_pp": 8.3854,
+          "observed_date_macro_mae_pp": 6.5806,
+          "covered": true
+        },
+        {
+          "date": "2021-06-13",
+          "training_dates": 17,
+          "upper_pp": 8.3854,
+          "observed_date_macro_mae_pp": 5.9505,
+          "covered": true
+        },
+        {
+          "date": "2021-09-26",
+          "training_dates": 18,
+          "upper_pp": 8.3854,
+          "observed_date_macro_mae_pp": 5.5222,
+          "covered": true
+        },
+        {
+          "date": "2021-11-28",
+          "training_dates": 19,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 6.6529,
+          "covered": true
+        },
+        {
+          "date": "2022-02-13",
+          "training_dates": 20,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 5.5198,
+          "covered": true
+        },
+        {
+          "date": "2022-05-15",
+          "training_dates": 21,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 5.2286,
+          "covered": true
+        },
+        {
+          "date": "2022-09-25",
+          "training_dates": 22,
+          "upper_pp": 8.2687,
+          "observed_date_macro_mae_pp": 7.4811,
+          "covered": true
+        }
+      ]
+    },
+    {
+      "level": 0.9,
+      "mode": "fixed_initial_9",
+      "evaluation_dates": 14,
+      "covered_dates": 14,
+      "mean_upper_pp": 11.2261,
+      "detail": [
+        {
+          "date": "2018-09-23",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 8.5045,
+          "covered": true
+        },
+        {
+          "date": "2018-11-25",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 7.096,
+          "covered": true
+        },
+        {
+          "date": "2019-02-10",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 6.3936,
+          "covered": true
+        },
+        {
+          "date": "2019-05-19",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 6.3726,
+          "covered": true
+        },
+        {
+          "date": "2020-02-09",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 5.2123,
+          "covered": true
+        },
+        {
+          "date": "2020-09-27",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 8.3854,
+          "covered": true
+        },
+        {
+          "date": "2020-11-29",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 6.1052,
+          "covered": true
+        },
+        {
+          "date": "2021-03-07",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 6.5806,
+          "covered": true
+        },
+        {
+          "date": "2021-06-13",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 5.9505,
+          "covered": true
+        },
+        {
+          "date": "2021-09-26",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 5.5222,
+          "covered": true
+        },
+        {
+          "date": "2021-11-28",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 6.6529,
+          "covered": true
+        },
+        {
+          "date": "2022-02-13",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 5.5198,
+          "covered": true
+        },
+        {
+          "date": "2022-05-15",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 5.2286,
+          "covered": true
+        },
+        {
+          "date": "2022-09-25",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 7.4811,
+          "covered": true
+        }
+      ]
+    },
+    {
+      "level": 0.9,
+      "mode": "expanding",
+      "evaluation_dates": 14,
+      "covered_dates": 14,
+      "mean_upper_pp": 10.448500000000001,
+      "detail": [
+        {
+          "date": "2018-09-23",
+          "training_dates": 9,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 8.5045,
+          "covered": true
+        },
+        {
+          "date": "2018-11-25",
+          "training_dates": 10,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 7.096,
+          "covered": true
+        },
+        {
+          "date": "2019-02-10",
+          "training_dates": 11,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 6.3936,
+          "covered": true
+        },
+        {
+          "date": "2019-05-19",
+          "training_dates": 12,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 6.3726,
+          "covered": true
+        },
+        {
+          "date": "2020-02-09",
+          "training_dates": 13,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 5.2123,
+          "covered": true
+        },
+        {
+          "date": "2020-09-27",
+          "training_dates": 14,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 8.3854,
+          "covered": true
+        },
+        {
+          "date": "2020-11-29",
+          "training_dates": 15,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 6.1052,
+          "covered": true
+        },
+        {
+          "date": "2021-03-07",
+          "training_dates": 16,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 6.5806,
+          "covered": true
+        },
+        {
+          "date": "2021-06-13",
+          "training_dates": 17,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 5.9505,
+          "covered": true
+        },
+        {
+          "date": "2021-09-26",
+          "training_dates": 18,
+          "upper_pp": 11.2261,
+          "observed_date_macro_mae_pp": 5.5222,
+          "covered": true
+        },
+        {
+          "date": "2021-11-28",
+          "training_dates": 19,
+          "upper_pp": 8.5045,
+          "observed_date_macro_mae_pp": 6.6529,
+          "covered": true
+        },
+        {
+          "date": "2022-02-13",
+          "training_dates": 20,
+          "upper_pp": 8.5045,
+          "observed_date_macro_mae_pp": 5.5198,
+          "covered": true
+        },
+        {
+          "date": "2022-05-15",
+          "training_dates": 21,
+          "upper_pp": 8.5045,
+          "observed_date_macro_mae_pp": 5.2286,
+          "covered": true
+        },
+        {
+          "date": "2022-09-25",
+          "training_dates": 22,
+          "upper_pp": 8.5045,
+          "observed_date_macro_mae_pp": 7.4811,
+          "covered": true
+        }
+      ]
+    }
+  ],
+  "source_git_blob": "2c783778458e32d5886af9fa710e59ca2aee5824",
+  "source_commit": "0f085e93e77d2ab66a1c17e6abbceb26f928d45c",
+  "tests_passed": 6,
+  "prediction_model_changed": false
+}

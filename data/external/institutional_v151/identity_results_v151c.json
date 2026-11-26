@@ -1,0 +1,65 @@
+{
+  "status": "quarantine",
+  "tests_passed": 8,
+  "results": [
+    {
+      "id": "ahv_financing",
+      "left": {
+        "status": "pdf",
+        "bytes": 858402,
+        "sha256": "1c20e3c042b3421fd86b128aed73a593727b2d176729622f3bd30160039be094",
+        "final_url": "https://swissvotes.ch/attachments/69b17672838a7df845336ca65d3c854e639edab41d0b9d0cd70f7a4c529c2821"
+      },
+      "right": {
+        "status": "pdf",
+        "bytes": 858402,
+        "sha256": "1c20e3c042b3421fd86b128aed73a593727b2d176729622f3bd30160039be094",
+        "final_url": "https://www.bsv.admin.ch/dam/de/sd-web/6f8MNYVSc5ZA/hintergrund-staf-berechnungen-ahv.pdf"
+      },
+      "comparison": "identical"
+    },
+    {
+      "id": "pmt_consultation",
+      "left": {
+        "status": "pdf",
+        "bytes": 288620,
+        "sha256": "af8db89dffb2b245e31e67be99b67902dbc051bbe0a51c7484982cba8d59130c",
+        "final_url": "https://swissvotes.ch/attachments/18dad3772fdecfa950fc795852f659c1dabebbe3106619e6e603313757aeec94"
+      },
+      "right": {
+        "status": "pdf",
+        "bytes": 288620,
+        "sha256": "af8db89dffb2b245e31e67be99b67902dbc051bbe0a51c7484982cba8d59130c",
+        "final_url": "https://www.newsd.admin.ch/newsd/message/attachments/76845.pdf"
+      },
+      "comparison": "identical"
+    },
+    {
+      "id": "agri_measures",
+      "left": {
+        "status": "pdf",
+        "bytes": 3934442,
+        "sha256": "22c100595e77e86abc52c01937878c4c56a29b98b9d584d7f149a190b4cfe4fe",
+        "final_url": "https://swissvotes.ch/attachments/e40fd7238e859857b7be77deab6b0682e5b80834e00d3468fe87ff1f7873f4ae"
+      },
+      "right": {
+        "status": "pdf",
+        "bytes": 3934442,
+        "sha256": "22c100595e77e86abc52c01937878c4c56a29b98b9d584d7f149a190b4cfe4fe",
+        "final_url": "https://swissvotes.ch/attachments/4db26cb1a67e0756048949eb5d4f6adb11f9cb07b84b05c4da1bc8b94aa6f4f1"
+      },
+      "comparison": "identical"
+    }
+  ],
+  "training_rows_admitted": 0,
+  "run": 45844866664,
+  "job": 139995784152,
+  "artifact": 15131196112,
+  "artifact_digest": "sha256:5df3a718c833ce54622428d4081eac2e4269a350e518ae4cafed838fd9058717",
+  "source_commit": "0f085e93e77d2ab66a1c17e6abbceb26f928d45c",
+  "repository_checks": {
+    "run": 45844866530,
+    "jobs": 3,
+    "conclusion": "success"
+  }
+}
