@@ -930,7 +930,7 @@
       "conclusion": "success",
       "jobs": 3
     },
-    "next": "V15.1c: primary attachment identity/hashes, contemporaneous publication and reuse rights, frozen-panel join, corpus overlap; suspend if blocked, no training on candidates.",
+    "next": "V15.1c: inspect identity run/artifact, record all failures; no PDF or feature admission. General terms reserve reproduction rights; suspend text extension until specific rights and publication proven. Next independent experiment on admitted historical data if blocked.",
     "extension_v151b": {
       "new_objects": 6,
       "new_dates": 2,
@@ -948,6 +948,18 @@
       "evidence_families": 9,
       "training_rows_admitted": 0,
       "negative_controls_passed": 10
+    },
+    "identity_v151c": {
+      "status": "ci_pending",
+      "synthetic_checks_passed": 8,
+      "pairs": 3,
+      "local_probe": "curl exit 6: DNS resolution failed for www.newsd.admin.ch",
+      "previous_repository_checks": {
+        "run": 45835239455,
+        "conclusion": "success",
+        "jobs": 3
+      },
+      "training_rows_admitted": 0
     }
   }
 }

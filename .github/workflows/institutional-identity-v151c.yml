@@ -1,0 +1,27 @@
+name: V15.1c institutional PDF identity
+on:
+  pull_request:
+    paths:
+      - 'experiments/municipal_v15/audit_identity.mjs'
+      - 'data/external/institutional_v151/identity_pairs_v151c.json'
+      - '.github/workflows/institutional-identity-v151c.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node experiments/municipal_v15/audit_identity.mjs --self-test
+      - run: node experiments/municipal_v15/audit_identity.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v151c-identity
+          path: reports/generated/v151c/identity.json
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,31 @@
+{
+  "status": "quarantine",
+  "pairs": [
+    {
+      "id": "ahv_financing",
+      "left": "https://swissvotes.ch/attachments/69b17672838a7df845336ca65d3c854e639edab41d0b9d0cd70f7a4c529c2821",
+      "right": "https://www.bsv.admin.ch/dam/de/sd-web/6f8MNYVSc5ZA/hintergrund-staf-berechnungen-ahv.pdf"
+    },
+    {
+      "id": "pmt_consultation",
+      "left": "https://swissvotes.ch/attachments/18dad3772fdecfa950fc795852f659c1dabebbe3106619e6e603313757aeec94",
+      "right": "https://www.newsd.admin.ch/newsd/message/attachments/76845.pdf"
+    },
+    {
+      "id": "agri_measures",
+      "left": "https://swissvotes.ch/attachments/e40fd7238e859857b7be77deab6b0682e5b80834e00d3468fe87ff1f7873f4ae",
+      "right": "https://swissvotes.ch/attachments/4db26cb1a67e0756048949eb5d4f6adb11f9cb07b84b05c4da1bc8b94aa6f4f1"
+    }
+  ],
+  "rights": {
+    "url": "https://www.admin.ch/fr/conditions-utilisation",
+    "finding": "General terms reserve reproduction rights; specific permission or statutory exception remains unverified."
+  },
+  "publication_context": {
+    "url": "https://www.ejpd.admin.ch/fr/nsb?id=75156",
+    "date": "2019-05-22",
+    "finding": "Adoption of message, not proof of exact attachment publication."
+  },
+  "local_probe": "curl exit 6: DNS resolution failed for www.newsd.admin.ch",
+  "training_rows_admitted": 0
+}
