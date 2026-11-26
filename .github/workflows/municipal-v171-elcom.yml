@@ -1,0 +1,25 @@
+name: V17.1 ElCom historical tariff source audit
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'experiments/municipal_v17/audit_elcom.mjs'
+      - '.github/workflows/municipal-v171-elcom.yml'
+permissions:
+  contents: read
+jobs:
+  source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node experiments/municipal_v17/audit_elcom.mjs --self-test
+      - run: node experiments/municipal_v17/audit_elcom.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v171-elcom-source-audit
+          path: artifacts/v171-elcom/

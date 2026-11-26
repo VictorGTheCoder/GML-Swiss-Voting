@@ -9,3 +9,7 @@ Suite de [V16](../v16_campaign/README.md), [V13](../v13_campaign/README.md), [V1
 3. V17.3 : audit de robustesse temporelle et d'incertitude du meilleur candidat exploratoire uniquement si un gain justifie la comparaison. Pas de sélection avec 2023+ ni de promotion. Éviter les mélanges de niveau déjà testés (V16.3) et les corrections déjà négatives (V10.5–6, V11.4, V12.4).
 
 État : ouverture du registre, aucun benchmark V17 encore effectué. Les dates de développement répétées ne permettent pas de conclure à une généralisation inédite.
+
+## V17.1 — ElCom
+
+[Protocole et audit](V17.1-elcom-protocol.md) : source publique de tarifs communaux, conditions ouvertes explicites au niveau ressource ; 7 années ciblées, neuf contrôles synthétiques réussis. DNS local bloqué, acquisition via CI à vérifier. Zéro admission, aucun nouveau score. Priorité : couverture mesurée, géographie historique et preuve de version avant ablation ; ne pas relancer à l'identique en cas de blocage persistant. [Checkpoint](../../../experiments/municipal_v17/state.json).

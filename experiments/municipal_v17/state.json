@@ -1,0 +1,27 @@
+{
+  "version": "V17.1",
+  "status": "source_audit_implemented_pending_ci",
+  "parent_commit": "6ea59fd0977aca934b3cdfd3ca62d80d3091ce18",
+  "prior_ci": {
+    "run": 45880917160,
+    "jobs": 3,
+    "conclusion": "success"
+  },
+  "synthetic_checks": 9,
+  "source": "electricityprice@elcom",
+  "years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "admitted": 0,
+  "best_exploratory": {
+    "version": "V11.3",
+    "mae_pp": 6.955753873756506
+  },
+  "next": "Verify audit CI and actual coverage; obtain year-specific contemporaneous values and historical geography; if blocked, move to an independent aggregate source. No holdout."
+}
