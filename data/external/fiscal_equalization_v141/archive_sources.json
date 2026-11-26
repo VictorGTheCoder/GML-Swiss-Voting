@@ -1,0 +1,86 @@
+{
+  "catalog": "https://www.efv.admin.ch/de/zahlen-tabellen-berichte-finanzausgleich",
+  "catalog_checked": "2026-11-26",
+  "availability": "not certified",
+  "license": "not certified",
+  "sources": [
+    {
+      "year": 2016,
+      "family": "archive",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/iYGpVDgQb71c/Finanzausgleich_2016.zip",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2017,
+      "family": "archive",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/QKjtRfii4ymB/Finanzausgleich_2017.zip",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2018,
+      "family": "archive",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/sCoo1TisFPRX/Finanzausgleich_2018.zip",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2017,
+      "family": "geographic",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/woiPZzStu97w/2.2_GLA_2017.xlsx",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2017,
+      "family": "population_structure",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/pQQgAWgLo723/2.3_SLA_AC_2017.xlsx",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2017,
+      "family": "core_city",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/1myfMBJWY1H2/2.4_SLA_F_2017.xlsx",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2018,
+      "family": "geographic",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/tzlrCvGOiRlI/2.2_GLA_2018.xlsx",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2018,
+      "family": "population_structure",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/872fOcpeKE-I/2.3_SLA_AC_2018.xlsx",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2018,
+      "family": "core_city",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/sDsjF2WuDc1g/2.4_SLA_F_2018.xlsx",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2019,
+      "family": "cost_compensation",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/SYEpWHDBZYl-/LA_2019.xlsx",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2020,
+      "family": "cost_compensation",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/IAZfmUodARH6/LA_2020.xlsx",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2021,
+      "family": "cost_compensation",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/q1FxdRohB9Pt/LA_2021.xlsx",
+      "status": "candidate_not_admitted"
+    },
+    {
+      "year": 2022,
+      "family": "cost_compensation",
+      "url": "https://www.efv.admin.ch/dam/de/sd-web/xeOKCnnm1v6H/LA_2022.xlsx",
+      "status": "candidate_not_admitted"
+    }
+  ]
+}

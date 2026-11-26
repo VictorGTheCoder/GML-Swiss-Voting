@@ -105,6 +105,15 @@
       "run": 45725267596,
       "jobs": 3,
       "conclusion": "success"
+    },
+    "archive_inventory": {
+      "status": "manifest_and_ci_probe_prepared_results_pending",
+      "sources": 13,
+      "years": 7,
+      "local_download": "DNS failure; direct download failed; web binary unsupported",
+      "source_hashes_verified": 0,
+      "training_rows_admitted": 0,
+      "latest_prior_ci": 45732311992
     }
   }
 }
