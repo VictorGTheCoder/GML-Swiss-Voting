@@ -1,6 +1,6 @@
 {
   "version": "V19",
-  "status": "v192_completed_v193a_pilot_metadata",
+  "status": "v193a_structured_pilot_pending",
   "parent_commit": "0808f2ae98889cc2f0d55433765aeab2296cc979",
   "best_exploratory": 6.955753873756506,
   "population": {
@@ -70,9 +70,9 @@
     }
   ],
   "next": [
-    "V19.3a verify coverage of historical parliamentary deliberation documents and first publication; only object-level aggregate chronology, no person data; stop if inadequate",
-    "V19.3b matched ablation of procedure detail vs V11.3 delays; only admitted sources, rolling-origin train-only selection, same population and four metrics",
-    "Independent architecture if source blocked; no more amplitude or repeated geography audits"
+    "V19.3a structured pilot: inspect manifest and CI; no retry without new evidence; no training on quarantined sources",
+    "If no exact pre-vote project-level identity and rights, close source and prioritize independent robustness/benchmark design on admitted data",
+    "V19.3b only if source admissible: matched rolling-origin ablation vs V11.3"
   ],
   "target_rows_admitted": 0,
   "workflow": ".github/workflows/geography-v192.yml",
@@ -102,5 +102,16 @@
     "vote_dates": 1,
     "target_rows_admitted": 0,
     "targeted_checks": 8
+  },
+  "structured_pilot": {
+    "status": "implemented_network_unverified",
+    "targeted_checks": 8,
+    "parent_ci": {
+      "run": 45978798798,
+      "conclusion": "success"
+    },
+    "cases": 3,
+    "source": "https://ws.parlament.ch/odata.svc/",
+    "admitted": 0
   }
 }
