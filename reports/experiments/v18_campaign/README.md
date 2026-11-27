@@ -23,3 +23,7 @@ Suite [V17](../v17_campaign/README.md), [V16](../v16_campaign/README.md), [V10](
 ## V18.2b — résultat et correction r1
 
 [Résultats et correctif](V18.2b-results-r1.md) : 14 tentatives, zéro URL acceptée, zéro admission. CI générale 3/3. Hôte officiel documenté manquant dans le filtre ; reprise unique avec diagnostic détaillé, puis V18.3 si blocage. Aucun nouveau score.
+
+## V18.2b-r1 — Clôture et V18.3
+
+[Résultats](V18.2b-r1-results.md) : 14/14 PDF téléchargés et hachés (5436838 octets), 0 pagination corroborée, zéro admission ; deux self-tests et CI 3/3 réussis. Fedlex suspendue, aucun nouvel essai réseau sans preuve indépendante. [V18.3](V18.3-protocol.md) : ablation des contrastes inter/intra-canton, quatre configurations, code et CI configurés, résultat à vérifier. Aucun nouveau score. V11.3 inchangée.

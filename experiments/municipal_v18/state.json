@@ -9,15 +9,15 @@
     "rows": 138868
   },
   "next": [
-    "V18.2b-r1 vérifier le diagnostic corrigé une seule fois ; si aucune preuve, suspendre Fedlex et passer à V18.3",
-    "V18.2c uniquement si preuve suffisante, étendre aux historiques et mesurer recouvrement avant ablation",
-    "V18.3 architecture indépendante après non-redondance si blocage",
-    "STRU/ElCom uniquement sur preuve nouvelle"
+    "V18.3 mesurer l'ablation inter/intra-canton et vérifier les tests; arrêter les corrections d'amplitude si aucun gain",
+    "V19 rechercher une source indépendante avec preuve nouvelle ou architecture réellement distincte",
+    "Fedlex/STRU/ElCom suspendues, reprise seulement avec preuve indépendante de provenance et identité"
   ],
   "completed": [
     "V18.1",
     "V18.2a",
-    "V18.2b"
+    "V18.2b",
+    "V18.2b-r1"
   ],
   "evidence": {
     "run": 45926062218,
@@ -80,40 +80,66 @@
   ],
   "adaptive_scale_one_dates": 23,
   "active": {
-    "version": "V18.2b-r1",
-    "status": "host_allowlist_corrected_pending_ci",
-    "parent_commit": "224c51426fd3b324b2fd4f407e10a8c4d580db00",
-    "metadata_evidence": {
-      "run": 45937853512,
-      "job": 140305093385,
-      "artifact": 15170759732,
-      "artifact_digest": "sha256:8f6f489d93db014d2ab607788d94c53c97795b5a2331bfd34a539cb6a78b098b",
-      "queries": 12,
-      "errors": 0,
-      "unique_candidates": 8,
-      "ambiguous": 4,
-      "all_matches": 18,
-      "remaining_matches": 14,
-      "unique_after_document_date": 11,
-      "repository_checks": {
-        "run": 45937853372,
-        "passed": 3,
-        "total": 3
+    "version": "V18.3",
+    "status": "implemented_pending_ci_and_benchmark",
+    "parent_commit": "481786083e84466244915a59a4760225c42488e3",
+    "workflow": ".github/workflows/two-scale-v183.yml"
+  },
+  "fedlex": {
+    "status": "suspended_identity_unverified",
+    "prior": {
+      "version": "V18.2b-r1",
+      "status": "host_allowlist_corrected_pending_ci",
+      "parent_commit": "224c51426fd3b324b2fd4f407e10a8c4d580db00",
+      "metadata_evidence": {
+        "run": 45937853512,
+        "job": 140305093385,
+        "artifact": 15170759732,
+        "artifact_digest": "sha256:8f6f489d93db014d2ab607788d94c53c97795b5a2331bfd34a539cb6a78b098b",
+        "queries": 12,
+        "errors": 0,
+        "unique_candidates": 8,
+        "ambiguous": 4,
+        "all_matches": 18,
+        "remaining_matches": 14,
+        "unique_after_document_date": 11,
+        "repository_checks": {
+          "run": 45937853372,
+          "passed": 3,
+          "total": 3
+        },
+        "targeted_checks": 11
       },
-      "targeted_checks": 11
+      "training_rows_admitted": 0,
+      "workflow": ".github/workflows/fedlex-v182b.yml",
+      "pdf_initial_evidence": {
+        "run": 45943555169,
+        "job": 140323018856,
+        "artifact": 15173981054,
+        "artifact_digest": "sha256:cbf7ea4f1709ddcb68b55cd261bad13a3d6d03c4e227f09d272607d88c148ab2",
+        "objects": 12,
+        "unverified_attempts": 14,
+        "unique_page_candidates": 0,
+        "repository_checks": {
+          "run": 45943555085,
+          "passed": 3,
+          "total": 3
+        }
+      }
     },
-    "training_rows_admitted": 0,
-    "workflow": ".github/workflows/fedlex-v182b.yml",
-    "pdf_initial_evidence": {
-      "run": 45943555169,
-      "job": 140323018856,
-      "artifact": 15173981054,
-      "artifact_digest": "sha256:cbf7ea4f1709ddcb68b55cd261bad13a3d6d03c4e227f09d272607d88c148ab2",
+    "revision_evidence": {
+      "run": 45949680231,
+      "job": 140342384792,
+      "artifact": 15176132195,
+      "artifact_digest": "sha256:8934ecbd2aea9457d9452ab6ad83bd26ef6cc9158f55fbfe141b0490931dc53b",
+      "source_commit": "481786083e84466244915a59a4760225c42488e3",
       "objects": 12,
-      "unverified_attempts": 14,
-      "unique_page_candidates": 0,
+      "pdf_downloaded": 14,
+      "bytes": 5436838,
+      "printed_page_matches": 0,
+      "training_rows_admitted": 0,
       "repository_checks": {
-        "run": 45943555085,
+        "run": 45949680232,
         "passed": 3,
         "total": 3
       }

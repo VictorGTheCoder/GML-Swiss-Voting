@@ -61,3 +61,7 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 [V18.2a résultats et V18.2b](../v18_campaign/V18.2a-results-v182b-protocol.md) : acquisition de métadonnées 12/12, vérification PDF en attente. Aucun score nouveau, aucun test final.
 
 - V18.2b : [audit PDF et correction r1](../v18_campaign/V18.2b-results-r1.md) ; 0/14 URL acceptée initialement, correctif de validation d'hôte documenté ; aucun score nouveau.
+
+## Suites de recherche
+
+[Index V11](../v11_campaign/README.md), [V18 et backlog courant](../v18_campaign/README.md). Les versions suivantes restent exploratoires et ne changent pas le modèle gelé.
