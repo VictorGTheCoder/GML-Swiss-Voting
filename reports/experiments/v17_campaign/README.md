@@ -37,3 +37,7 @@ Suite de [V16](../v16_campaign/README.md), [V13](../v13_campaign/README.md), [V1
 ## V17.2c — incident et correction conservatrice
 
 [Diagnostic de l'échec](V17.2c-geography-incident.md) : 12/12 contrôles, CI générale 3/3, mais désaccord entre label et code sur l'en-tête réel. Exclure conflits et doublons, mesurer séparément les IDs corroborés ; nouveau diagnostic à vérifier. Zéro admission, aucun score. Suspendre si géographie non certifiable.
+
+## V17.2c — clôture mesurée et suite V18
+
+[Résultats](V17.2c-results.md) : 17/17 contrôles, CI 3/3, 2212 discordances, zéro jointure corroborée ; 33/66 objets et 69456 lignes temporellement éligibles. STRU suspendue, V17 clôturée sans admission. [V18](../v18_campaign/README.md) prioritaire.

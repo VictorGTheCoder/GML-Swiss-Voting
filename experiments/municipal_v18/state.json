@@ -1,0 +1,16 @@
+{
+  "version": "V18.1",
+  "status": "implemented_pending_benchmark",
+  "parent_commit": "34746647f85a24f5f77727e7533f91966b01304f",
+  "best_exploratory": 6.955753873756506,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "next": [
+    "verify V18.1 CI and scores",
+    "V18.2 independent ex-ante source",
+    "V18.3 nonduplicate aggregate contrast hypothesis"
+  ]
+}

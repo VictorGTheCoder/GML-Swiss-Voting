@@ -1,9 +1,5 @@
 name: V17.2c STRU historical geography and availability
 on:
-  pull_request:
-    paths:
-      - 'experiments/municipal_v17/audit_stru_geography.py'
-      - '.github/workflows/municipal-v172c-stru-geography.yml'
   workflow_dispatch:
 permissions:
   contents: read

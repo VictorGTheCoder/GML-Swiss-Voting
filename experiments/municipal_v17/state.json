@@ -1,6 +1,6 @@
 {
   "version": "V17.2c",
-  "status": "stru_geography_label_code_conflict_diagnostic_fix_pending",
+  "status": "completed_source_audits_no_admission",
   "parent_commit": "6ea59fd0977aca934b3cdfd3ca62d80d3091ce18",
   "prior_ci": {
     "run": 45908472499,
@@ -23,7 +23,7 @@
     "version": "V11.3",
     "mae_pp": 6.955753873756506
   },
-  "next": "Verify corrected V17.2c diagnostic once; retain quarantine, no selection between disagreeing label/code. If coverage or historical boundaries cannot be certified, suspend STRU and move to independent predictive experiment.",
+  "next": "V18.1 global contrast amplitude calibration on past OOF dates, no new data; STRU suspended until independent historical geography and vintage evidence",
   "acquisition": {
     "version": "V17.1a",
     "source_run": 45887564938,
@@ -447,6 +447,187 @@
           "conclusion": "success"
         },
         "decision": "Exclude conflicting labels and duplicate candidate IDs, report separately corroborated and single-channel candidates; no source admission, no gate relaxation."
+      },
+      {
+        "version": "V17.2c",
+        "archive_sha256": "b341a57a0eb8c2d589f7232db5775a0bf69169ba03fa73688f0bfe4b4d129f36",
+        "publication": "2019-05-28",
+        "geography": {
+          "dimension": "Kanton (-) / Bezirk (>>) / Gemeinde (......)",
+          "total_categories": 2382,
+          "code_dimension_present": true,
+          "unresolved_municipal_labels": 0,
+          "unresolved_examples": [],
+          "label_examples": [
+            "Schweiz",
+            "- Zürich",
+            ">> Bezirk Affoltern",
+            "......0001 Aeugst am Albis",
+            "......0002 Affoltern am Albis",
+            "......0003 Bonstetten",
+            "......0004 Hausen am Albis",
+            "......0005 Hedingen",
+            "......0006 Kappel am Albis",
+            "......0007 Knonau",
+            "......0008 Maschwanden",
+            "......0009 Mettmenstetten"
+          ],
+          "conflicting_labels": 2212,
+          "conflict_examples": [
+            {
+              "index": 3,
+              "label": "......0001 Aeugst am Albis",
+              "code": "4"
+            },
+            {
+              "index": 4,
+              "label": "......0002 Affoltern am Albis",
+              "code": "5"
+            },
+            {
+              "index": 5,
+              "label": "......0003 Bonstetten",
+              "code": "6"
+            },
+            {
+              "index": 6,
+              "label": "......0004 Hausen am Albis",
+              "code": "7"
+            },
+            {
+              "index": 7,
+              "label": "......0005 Hedingen",
+              "code": "8"
+            },
+            {
+              "index": 8,
+              "label": "......0006 Kappel am Albis",
+              "code": "9"
+            },
+            {
+              "index": 9,
+              "label": "......0007 Knonau",
+              "code": "10"
+            },
+            {
+              "index": 10,
+              "label": "......0008 Maschwanden",
+              "code": "11"
+            },
+            {
+              "index": 11,
+              "label": "......0009 Mettmenstetten",
+              "code": "12"
+            },
+            {
+              "index": 12,
+              "label": "......0010 Obfelden",
+              "code": "13"
+            },
+            {
+              "index": 13,
+              "label": "......0011 Ottenbach",
+              "code": "14"
+            },
+            {
+              "index": 14,
+              "label": "......0012 Rifferswil",
+              "code": "15"
+            }
+          ],
+          "duplicate_ids": 0,
+          "duplicate_id_examples": [],
+          "single_channel_ids": 0,
+          "code_examples": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "geography_metadata": [],
+          "corroborated_id_count": 0
+        },
+        "recognized_municipal_ids": 0,
+        "coverage": {
+          "rows": 138868,
+          "available_rows": 69456,
+          "available_objects": 33,
+          "available_dates": 10,
+          "raw_matched_rows": 0,
+          "raw_matched_fraction_of_available": 0,
+          "available_by_date": {
+            "2020-02-09": 4208,
+            "2020-09-27": 10520,
+            "2020-11-29": 4208,
+            "2021-03-07": 6315,
+            "2021-06-13": 10525,
+            "2021-09-26": 4210,
+            "2021-11-28": 6315,
+            "2022-02-13": 8420,
+            "2022-05-15": 6315,
+            "2022-09-25": 8420
+          },
+          "raw_matched_by_date": {},
+          "raw_matched_by_year": {},
+          "available_by_year": {
+            "2020": 18936,
+            "2021": 27365,
+            "2022": 23155
+          },
+          "boundary_certified": false,
+          "admitted": 0
+        },
+        "corroborated_coverage": {
+          "rows": 138868,
+          "available_rows": 69456,
+          "available_objects": 33,
+          "available_dates": 10,
+          "raw_matched_rows": 0,
+          "raw_matched_fraction_of_available": 0,
+          "available_by_date": {
+            "2020-02-09": 4208,
+            "2020-09-27": 10520,
+            "2020-11-29": 4208,
+            "2021-03-07": 6315,
+            "2021-06-13": 10525,
+            "2021-09-26": 4210,
+            "2021-11-28": 6315,
+            "2022-02-13": 8420,
+            "2022-05-15": 6315,
+            "2022-09-25": 8420
+          },
+          "raw_matched_by_date": {},
+          "raw_matched_by_year": {},
+          "available_by_year": {
+            "2020": 18936,
+            "2021": 27365,
+            "2022": 23155
+          },
+          "boundary_certified": false,
+          "admitted": 0
+        },
+        "status": "raw_identifier_diagnostic_only",
+        "warning": "Conflicts and duplicate candidate IDs excluded; single-channel IDs unverified. No boundary certification or values extracted.",
+        "run": 45920094969,
+        "job": 140248505682,
+        "artifact": 15163742344,
+        "artifact_digest": "sha256:3cb1e21387cc8fa1ffc1d1f3633bf8f05db0ce28e360f0ad3b67daf5e3b1028f",
+        "tested_commit": "34746647f85a24f5f77727e7533f91966b01304f",
+        "synthetic_checks": 17,
+        "repository_checks": {
+          "run": 45920094994,
+          "jobs": 3,
+          "conclusion": "success"
+        },
+        "decision": "suspended_no_admission; codes appear ordinal, not independently corroborated OFS identifiers; boundary unresolved, only 33/66 objects temporally eligible"
       }
     ]
   }
