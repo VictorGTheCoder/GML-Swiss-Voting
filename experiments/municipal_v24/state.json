@@ -1,0 +1,24 @@
+{
+  "version": "V24",
+  "active": "V24.1",
+  "status": "implemented_benchmark_unverified",
+  "parent_commit": "70ac10dfaafc4433377f015cedd87d31e031675d",
+  "best_exploratory": 6.955753873756506,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "completed": [],
+  "runs": [],
+  "configs": {
+    "institution_replay": "native_squared",
+    "scaled_squared": "reg:squarederror",
+    "scaled_huber": "reg:pseudohubererror delta 1"
+  },
+  "admitted": 0,
+  "next": [
+    "Verify benchmark and CI; report paired outcomes",
+    "If no gain, do not tune delta opportunistically; investigate independent signal or selection stability"
+  ]
+}
