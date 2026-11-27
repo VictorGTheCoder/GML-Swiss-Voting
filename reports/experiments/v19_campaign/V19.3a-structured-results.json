@@ -1,0 +1,104 @@
+{
+  "version": "V19.3a-structured",
+  "source": "Services du Parlement de l'Assemblée fédérale, Berne",
+  "retrieved": "2026-11-27T12:06:14.259Z",
+  "unofficial": true,
+  "checks": 8,
+  "metadata": {
+    "sha256": "9a00f53df4d1f0769e3d72e90c1b4e82537e600cf496cc006481fbe74f2f25e6",
+    "bytes": 130191
+  },
+  "entities": [
+    {
+      "name": "Bill",
+      "available": true,
+      "spec": {
+        "id": "BusinessNumber",
+        "date": "SubmissionDate",
+        "dateType": "Edm.DateTime",
+        "project": "BillNumber",
+        "council": null,
+        "lang": true
+      },
+      "counts": [
+        {
+          "id": 20140088,
+          "date": "2017-09-24",
+          "count": 4,
+          "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+        },
+        {
+          "id": 20130085,
+          "date": "2016-02-28",
+          "count": 3,
+          "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+        },
+        {
+          "id": 20170071,
+          "date": "2021-06-13",
+          "count": 2,
+          "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+        }
+      ]
+    },
+    {
+      "name": "Preconsultation",
+      "available": true,
+      "spec": {
+        "id": "BusinessNumber",
+        "date": null,
+        "dateType": null,
+        "project": "BillNumber",
+        "council": null,
+        "lang": true
+      },
+      "counts": []
+    },
+    {
+      "name": "Subject",
+      "available": true,
+      "spec": {
+        "id": null,
+        "date": null,
+        "dateType": null,
+        "project": null,
+        "council": null,
+        "lang": true
+      },
+      "counts": []
+    },
+    {
+      "name": "BusinessStatus",
+      "available": true,
+      "spec": {
+        "id": "BusinessNumber",
+        "date": "BusinessStatusDate",
+        "dateType": "Edm.DateTime",
+        "project": null,
+        "council": null,
+        "lang": true
+      },
+      "counts": [
+        {
+          "id": 20140088,
+          "date": "2017-09-24",
+          "count": 4,
+          "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+        },
+        {
+          "id": 20130085,
+          "date": "2016-02-28",
+          "count": 4,
+          "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+        },
+        {
+          "id": 20170071,
+          "date": "2021-06-13",
+          "count": 4,
+          "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+        }
+      ]
+    }
+  ],
+  "admitted": 0
+}

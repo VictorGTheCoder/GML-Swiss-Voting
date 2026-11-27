@@ -31,3 +31,7 @@ Le script et son workflow ont été ajoutés. Les deux réponses sont comparées
 ## V19.3a — pilote structuré
 
 [Protocole](V19.3a-structured-protocol.md) : une tentative OData bornée sur trois affaires, quatre collections, compteurs uniquement et 8 assertions réussies. Réseau à vérifier. Aucun score ni admission. En cas de blocage, suspendre et changer de piste.
+
+## Clôture V19
+
+[Résultats OData](V19.3a-structured-results.md) : 6/6 comptes, 4 collections, aucune admission, CI 3/3. Source suspendue. [V20](../v20_campaign/README.md) prioritaire.

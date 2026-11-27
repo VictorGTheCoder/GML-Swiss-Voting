@@ -1,0 +1,38 @@
+name: V20.1 chronological residual intercepts
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - experiment/municipal-v13-aps-source-20261125
+    paths:
+      - scripts/modeling/residual_intercepts_v201.py
+      - .github/workflows/residual-v201.yml
+permissions:
+  contents: read
+  actions: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - run: pip install -r requirements-experiments.txt
+      - run: python -m scripts.modeling.residual_intercepts_v201 --self-test
+      - uses: actions/download-artifact@v4
+        with:
+          name: v113-procedure
+          run-id: 45444093555
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v201_source
+      - run: python -m scripts.modeling.residual_intercepts_v201 --source reports/generated/v201_source --output reports/generated/v201_results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v201-residual-intercepts
+          path: reports/generated/v201_results/
+          retention-days: 30
+          if-no-files-found: error

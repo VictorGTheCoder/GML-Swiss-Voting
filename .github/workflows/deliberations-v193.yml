@@ -1,12 +1,6 @@
 name: V19.3 structured parliamentary source pilot
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - experiment/municipal-v13-aps-source-20261125
-    paths:
-      - experiments/municipal_v19/audit_structured.mjs
-      - .github/workflows/deliberations-v193.yml
 permissions:
   contents: read
 concurrency:

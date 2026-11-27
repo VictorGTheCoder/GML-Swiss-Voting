@@ -1,0 +1,24 @@
+{
+  "version": "V20",
+  "active": "V20.1",
+  "status": "implemented_unverified",
+  "parent_commit": "93b536ec6a6ffb7b6f55496cb31fd702fe550432",
+  "best_exploratory": 6.955753873756506,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "variants": [
+    "reference",
+    "canton_intercept",
+    "municipality_intercept",
+    "hierarchical"
+  ],
+  "warmup_dates": 4,
+  "prior_pseudo_dates": 5,
+  "next": [
+    "verify V20.1 CI and scores",
+    "record matched results and decide"
+  ]
+}

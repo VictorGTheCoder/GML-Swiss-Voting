@@ -1,6 +1,6 @@
 {
   "version": "V19",
-  "status": "v193a_structured_pilot_pending",
+  "status": "completed_source_suspended",
   "parent_commit": "0808f2ae98889cc2f0d55433765aeab2296cc979",
   "best_exploratory": 6.955753873756506,
   "population": {
@@ -8,7 +8,7 @@
     "dates": 23,
     "rows": 138868
   },
-  "active": "V19.3a",
+  "active": null,
   "completed": [
     {
       "version": "V19.1",
@@ -70,9 +70,8 @@
     }
   ],
   "next": [
-    "V19.3a structured pilot: inspect manifest and CI; no retry without new evidence; no training on quarantined sources",
-    "If no exact pre-vote project-level identity and rights, close source and prioritize independent robustness/benchmark design on admitted data",
-    "V19.3b only if source admissible: matched rolling-origin ablation vs V11.3"
+    "V20.1: chronological additive residual hierarchy, no source admission",
+    "V19.3b only if new exact project identity and historical publication evidence"
   ],
   "target_rows_admitted": 0,
   "workflow": ".github/workflows/geography-v192.yml",
@@ -104,7 +103,7 @@
     "targeted_checks": 8
   },
   "structured_pilot": {
-    "status": "implemented_network_unverified",
+    "status": "completed_no_admission",
     "targeted_checks": 8,
     "parent_ci": {
       "run": 45978798798,
@@ -112,6 +111,18 @@
     },
     "cases": 3,
     "source": "https://ws.parlament.ch/odata.svc/",
-    "admitted": 0
+    "admitted": 0,
+    "run": 45995815647,
+    "job": 140494810014,
+    "artifact": 15196056289,
+    "artifact_digest": "sha256:8d57570e58d759861845d5c2b452e366eed9baee0f813d68bfa73ff78856820f",
+    "repository_ci": {
+      "run": 45995825440,
+      "successful_jobs": 3
+    },
+    "metadata_sha256": "9a00f53df4d1f0769e3d72e90c1b4e82537e600cf496cc006481fbe74f2f25e6",
+    "collections": 4,
+    "count_queries": 6,
+    "project_level_date_queries": 3
   }
 }

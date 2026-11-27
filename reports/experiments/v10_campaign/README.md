@@ -73,3 +73,5 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 [V19.2 résultats](../v19_campaign/V19.2-results.md) : diagnostic terminé, 12870/138868 lignes exposées numériquement, aucune admission. [V19.3a](../v19_campaign/V19.3a-deliberations-pilot.md) : pilote des délibérations par projet, aucune prédiction nouvelle. Meilleur V11.3 inchangé.
 
 [V19.3a pilote structuré](../v19_campaign/V19.3a-structured-protocol.md) : trois affaires et quatre collections candidates ; aucun score nouveau ni admission.
+
+[V19.3a résultats](../v19_campaign/V19.3a-structured-results.md) : 6 comptes, zéro admission. [V20](../v20_campaign/README.md) nouvelle expérience prédictive, score en attente. V11.3 inchangée.
