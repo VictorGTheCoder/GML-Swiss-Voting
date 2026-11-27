@@ -1,0 +1,20 @@
+{
+  "version": "V23",
+  "active": "V23.1",
+  "status": "implemented_unverified",
+  "parent_commit": "a339081832ec9a0a2a8d1e2da85ea36ea239d78f",
+  "best_exploratory": 6.955753873756506,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "completed": [],
+  "runs": [],
+  "admitted": 0,
+  "next": [
+    "verify catalogue job and six self-tests",
+    "source novelty and historical availability only if candidates exist",
+    "otherwise independent experiment"
+  ]
+}

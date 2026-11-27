@@ -13,3 +13,7 @@ Trois fenêtres d'origine strictes, 66/23/138868, contrôles de replay exact, 20
 1. Mesurer V22.1 et comparer au replay et au contrôle de dimension ; aucun réglage supplémentaire sans gain informatif.
 2. Chercher source indépendante ex ante avec provenance et licence explicites ; reprendre les sources en quarantaine seulement sur nouvelles preuves.
 3. Vérifier robustesse sur développement et documenter le risque de réutilisation des dates, sans ouvrir le holdout. Aucun ciblage politique, aucune donnée individuelle, aucune promotion.
+
+## Clôture mesurée
+
+[Résultats V22.1](V22.1-results.md) : replay exact 6,9558 pp ; SVD6 7,0323 pp ; cross-cov6 7,4959 pp. Trois tests ciblés, CI 3/3. Aucun gain ni admission. [V23](../v23_campaign/README.md) prioritaire.

@@ -1,13 +1,6 @@
 name: V22.1 supervised lexical compression
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - experiment/municipal-v13-aps-source-20261125
-    paths:
-      - scripts/modeling/lexical_v221.py
-      - tests/test_lexical_v221.py
-      - .github/workflows/lexical-v221.yml
 permissions:
   contents: read
   actions: read
