@@ -1,0 +1,29 @@
+name: V23.2 procedural schema metadata
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - experiment/municipal-v13-aps-source-20261125
+    paths:
+      - experiments/municipal_v23/audit_schema.mjs
+      - .github/workflows/procedure-v232-schema.yml
+permissions:
+  contents: read
+jobs:
+  schema:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node experiments/municipal_v23/audit_schema.mjs --self-test
+      - run: node experiments/municipal_v23/audit_schema.mjs v232-schema.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v232-schema
+          path: v232-schema.json
+          if-no-files-found: error
+          retention-days: 30

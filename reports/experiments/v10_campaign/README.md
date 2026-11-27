@@ -83,3 +83,5 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 [V21.1 résultats](../v21_campaign/V21.1-results.md) : aucun gain de contexte ; [V22](../v22_campaign/README.md) compression supervisée préspécifiée. Meilleur V11.3 inchangé.
 
 [V22.1 résultats](../v22_campaign/V22.1-results.md) : aucun gain, supervision 7,4959 pp. [V23](../v23_campaign/README.md) audit de source indépendant préspécifié. Meilleur exploratoire V11.3 inchangé.
+
+[V23.1 résultats et V23.2](../v23_campaign/README.md) : six cubes identifiés, schéma des deux cubes détaillés préspécifié, aucune admission ni nouveau score.

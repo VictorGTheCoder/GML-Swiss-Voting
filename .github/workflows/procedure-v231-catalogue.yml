@@ -1,12 +1,6 @@
 name: V23.1 procedural catalogue metadata
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - experiment/municipal-v13-aps-source-20261125
-    paths:
-      - experiments/municipal_v23/audit_catalogue.mjs
-      - .github/workflows/procedure-v231-catalogue.yml
 permissions:
   contents: read
 jobs:

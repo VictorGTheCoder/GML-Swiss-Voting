@@ -1,0 +1,110 @@
+{
+  "endpoint": "https://lindas.admin.ch/query",
+  "query": "PREFIX cube: <https://cube.link/>\nPREFIX schema: <http://schema.org/>\nPREFIX dct: <http://purl.org/dc/terms/>\nSELECT DISTINCT ?cube ?title WHERE {\n  ?cube a cube:Cube .\n  ?cube (schema:name|<https://schema.org/name>|dct:title) ?title .\n  FILTER(REGEX(STR(?title), \"Volksinitiativ|Referend|initiative populaire|référendum|iniziativ|referendum\", \"i\"))\n} ORDER BY ?cube ?title LIMIT 100",
+  "retrieved_at": "2026-11-27T17:06:09.238Z",
+  "metadata_sha256": "c19c1af6426db9c4592e050460ce9ab55b444e7b5483402cc1d1d23e35384277",
+  "response_bytes": 5838,
+  "candidate_rows": 18,
+  "distinct_cubes": 6,
+  "truncated_possible": false,
+  "candidates": [
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative-keyfigures-stat/1",
+      "title": "Kennzahlen zu Volksinitiativen",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative-keyfigures-stat/1",
+      "title": "Cifre chiave relative alle iniziative popolari",
+      "language": "it"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative-stat/1",
+      "title": "Geschäftsstände Volksinitiativen",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative-stat/1",
+      "title": "Stato delle iniziative popolari",
+      "language": "it"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "title": "Volksinitiativen",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "title": "Iniziative popolari",
+      "language": "it"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum-keyfigures-stat/1",
+      "title": "Kennzahlen zu Referenden",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum-keyfigures-stat/1",
+      "title": "Key figures on referendums",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum-keyfigures-stat/1",
+      "title": "Chiffres clés relatifs aux référendums",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum-keyfigures-stat/1",
+      "title": "Dati chiave sui referendum",
+      "language": "it"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum-stat/1",
+      "title": "Geschäftsstände der Referendumsvorlagen und dringlichen Gesetzgebung",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum-stat/1",
+      "title": "Statuses of referendum proposals and emergency legislation",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum-stat/1",
+      "title": "État des objets soumis au référendum et de la législation urgente",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum-stat/1",
+      "title": "Stato degli oggetti sottoposti a referendum e della legislazione urgente",
+      "language": "it"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "title": "Referendumsvorlagen und dringliche Gesetzgebung",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "title": "Referendum proposals and emergency legislation",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "title": "Objets soumis au référendum et législation urgente",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "title": "Oggetti sottoposti a referendum e legislazione urgente",
+      "language": "it"
+    }
+  ],
+  "observations_read": 0,
+  "admitted": 0,
+  "run": 46039082230,
+  "artifact": 15217809237,
+  "artifact_digest": "sha256:e76acdaa2df48a356b83f1365dfe2355fe378be60ddc82c74965d9604c2d08b6",
+  "self_tests": 6,
+  "ci_run": 46039090307,
+  "ci_jobs_successful": 3
+}

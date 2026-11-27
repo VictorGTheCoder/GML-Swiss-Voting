@@ -1,6 +1,6 @@
 {
   "version": "V23",
-  "active": "V23.1",
+  "active": "V23.2",
   "status": "implemented_unverified",
   "parent_commit": "a339081832ec9a0a2a8d1e2da85ea36ea239d78f",
   "best_exploratory": 6.955753873756506,
@@ -9,12 +9,28 @@
     "dates": 23,
     "rows": 138868
   },
-  "completed": [],
-  "runs": [],
+  "completed": [
+    "V23.1"
+  ],
+  "runs": [
+    {
+      "version": "V23.1",
+      "run": 46039082230,
+      "artifact": 15217809237,
+      "artifact_digest": "sha256:e76acdaa2df48a356b83f1365dfe2355fe378be60ddc82c74965d9604c2d08b6",
+      "metadata_sha256": "c19c1af6426db9c4592e050460ce9ab55b444e7b5483402cc1d1d23e35384277",
+      "candidate_rows": 18,
+      "distinct_cubes": 6,
+      "observations_read": 0,
+      "admitted": 0,
+      "conclusion": "success",
+      "self_tests": 6,
+      "ci_run": 46039090307
+    }
+  ],
   "admitted": 0,
   "next": [
-    "verify catalogue job and six self-tests",
-    "source novelty and historical availability only if candidates exist",
-    "otherwise independent experiment"
+    "verify V23.2 schema and licence metadata; compare against V11.3 and Swissvotes source fields",
+    "if novel field and contemporaneous publication proof, plan limited historical object join; otherwise close source audit and independent predictive experiment"
   ]
 }
