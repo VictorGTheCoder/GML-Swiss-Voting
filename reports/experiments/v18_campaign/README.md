@@ -11,3 +11,7 @@ Suite [V17](../v17_campaign/README.md), [V16](../v16_campaign/README.md), [V10](
 ## V18.1 — Clôture mesurée
 
 [Résultats](V18.1-results.md) : contrôle et adaptatif 6,9558 pp, 23/23 échelles égales à 1 ; fixe 0,75 = 7,1046 pp, fixe 1,25 = 7,1528 pp. Cinq contrôles ciblés, CI générale 3/3. Aucun gain. Suspendre les recalibrations globales ; V18.2 puis V18.3 prioritaires. Aucun test final.
+
+## V18.2a — Actes juridiques originaux
+
+[Pilote et protocole](V18.2a-fedlex-protocol.md) : 12 références distinctes/3 dates, 11 affaires, 9 années de publication antérieures, 11 contrôles exécutés, zéro admission. Fedlex réutilisation explicitement annoncée ; identité exacte, dates et recouvrement à vérifier. CI parent 3/3. Priorité audit réseau puis V18.3 si bloqué. Aucun nouveau score.

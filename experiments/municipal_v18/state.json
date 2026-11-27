@@ -9,8 +9,9 @@
     "rows": 138868
   },
   "next": [
-    "V18.2 source ex ante indépendante: inventaire des lacunes et preuve primaire avant acquisition",
-    "V18.3 architecture indépendante seulement après audit de non-redondance; pas de nouvelle grille d'amplitude",
+    "V18.2a vérifier le résultat réseau et l’identité des références imprimées ; aucune admission automatique",
+    "V18.2b si admissible, audit recouvrement texte légal et brochure, extension historique puis ablation appariée",
+    "V18.3 architecture indépendante uniquement après audit de non-redondance",
     "Reprendre STRU/ElCom uniquement sur preuve nouvelle"
   ],
   "completed": [
@@ -75,5 +76,22 @@
       ]
     }
   ],
-  "adaptive_scale_one_dates": 23
+  "adaptive_scale_one_dates": 23,
+  "active": {
+    "version": "V18.2a",
+    "status": "metadata_pilot_measured_network_pending",
+    "parent_commit": "f864f67d48e71ebdc4a7d58b33a0e2b4c9b7f849",
+    "summary": {
+      "objects": 12,
+      "dates": 3,
+      "affairs": 11,
+      "prior_publication_year": 9,
+      "exact_publication_date_required": 12,
+      "training_rows_admitted": 0,
+      "targeted_checks": 11
+    },
+    "training_rows_admitted": 0,
+    "source_rights": "https://fedlex.data.admin.ch/",
+    "workflow": ".github/workflows/fedlex-v182a.yml"
+  }
 }
