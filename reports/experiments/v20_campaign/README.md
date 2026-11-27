@@ -15,3 +15,13 @@ Reproduction : workflow V20.1 sur artefact v113-procedure du run 45444093555. Te
 1. Mesurer V20.1, analyser différences appariées et hétérogénéité ; aucun réglage opportuniste si échec.
 2. Si échec, privilégier une méthode de représentation d'objet indépendante (informations déjà admises), ou un audit ciblé d'une source avec preuve de publication et de droits ; éviter répétition de V11–V19.
 3. V19.3b, Fedlex et autres sources en quarantaine seulement sur preuve nouvelle.
+
+## V20.1 — Clôture mesurée
+
+[Résultats](V20.1-results.md) : 6,9805 / 6,9809 / 6,9808 pp, aucun gain, contrôle 6,9558 ; self-test et CI 3/3 réussis. Aucun test final.
+
+## Backlog actualisé
+
+1. [V20.2](V20.2-protocol.md) : transfert conditionnel selon signature des prévisions cantonales, contrôle V20.1 exact ; implémenté, résultat à vérifier. Une seule variante nouvelle, aucun réglage après observation.
+2. Si échec, clôturer la famille des corrections de résidus et privilégier une information d'objet indépendante déjà certifiable ; ne pas rouvrir les acquisitions suspendues sans preuve nouvelle.
+3. Aucun accès au test final ni promotion.

@@ -1,12 +1,6 @@
 name: V20.1 chronological residual intercepts
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - experiment/municipal-v13-aps-source-20261125
-    paths:
-      - scripts/modeling/residual_intercepts_v201.py
-      - .github/workflows/residual-v201.yml
 permissions:
   contents: read
   actions: read

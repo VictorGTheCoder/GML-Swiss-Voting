@@ -1,6 +1,6 @@
 {
   "version": "V20",
-  "active": "V20.1",
+  "active": "V20.2",
   "status": "implemented_unverified",
   "parent_commit": "93b536ec6a6ffb7b6f55496cb31fd702fe550432",
   "best_exploratory": 6.955753873756506,
@@ -11,14 +11,93 @@
   },
   "variants": [
     "reference",
-    "canton_intercept",
-    "municipality_intercept",
-    "hierarchical"
+    "canton_uniform",
+    "canton_similarity"
   ],
   "warmup_dates": 4,
   "prior_pseudo_dates": 5,
   "next": [
-    "verify V20.1 CI and scores",
-    "record matched results and decide"
+    "verify V20.2 CI and metrics",
+    "if no gain close residual post-correction family",
+    "prioritize independent object-level information; reopen quarantined sources only on new evidence"
+  ],
+  "completed": [
+    "V20.1"
+  ],
+  "runs": [
+    {
+      "version": "V20.1",
+      "status": "complete",
+      "prediction_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+      "geography_sha256": "2a5c6f0e953601cc92cd523fa14c67b8ce549f2cbecdbb8ce68ae647e45f9289",
+      "rows": 138868,
+      "objects": 66,
+      "dates": 23,
+      "coverage": 1,
+      "prior_pseudo_dates": 5,
+      "warmup_dates": 4,
+      "summary": [
+        {
+          "variant": "reference",
+          "mae_pp": 6.955753873756506,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.7811714402970824,
+          "canton_mae_pp": 5.500338667087431,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "active_objects": 0
+        },
+        {
+          "variant": "canton_intercept",
+          "mae_pp": 6.980529312872354,
+          "centered_mae_pp": 5.316501099245059,
+          "national_mae_pp": 3.7811714402970686,
+          "canton_mae_pp": 5.544067633603641,
+          "gain_interval": [
+            -0.14650369184275486,
+            0.10052832353189035
+          ],
+          "active_objects": 53
+        },
+        {
+          "variant": "municipality_intercept",
+          "mae_pp": 6.980870799546626,
+          "centered_mae_pp": 5.32834642998994,
+          "national_mae_pp": 3.781171440297088,
+          "canton_mae_pp": 5.535465526675337,
+          "gain_interval": [
+            -0.1706468718354655,
+            0.12257842150265578
+          ],
+          "active_objects": 53
+        },
+        {
+          "variant": "hierarchical",
+          "mae_pp": 6.980790174885989,
+          "centered_mae_pp": 5.328204153285234,
+          "national_mae_pp": 3.781171440297063,
+          "canton_mae_pp": 5.535463780164256,
+          "gain_interval": [
+            -0.17060071204483615,
+            0.12269295244519055
+          ],
+          "active_objects": 53
+        }
+      ],
+      "artifact": {
+        "run": 46002965250,
+        "id": 15198249271,
+        "digest": "sha256:c65f408292c1782e6fdc2010535e3b3a24e396fb8c4553cfc3701bb0e9ce215e",
+        "head": "f29be01b2e177bf5dfbc739950c393caf5f86070",
+        "ci": 46002972225,
+        "job": 140519002638
+      },
+      "self_test": "success",
+      "repository_checks": "3/3 success",
+      "decision": "no_gain_no_promotion",
+      "source": "SUMMARY line from successful job; ZIP digest from artifact metadata; archive not independently decoded"
+    }
   ]
 }

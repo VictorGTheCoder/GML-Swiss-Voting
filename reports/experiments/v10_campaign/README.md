@@ -75,3 +75,5 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 [V19.3a pilote structuré](../v19_campaign/V19.3a-structured-protocol.md) : trois affaires et quatre collections candidates ; aucun score nouveau ni admission.
 
 [V19.3a résultats](../v19_campaign/V19.3a-structured-results.md) : 6 comptes, zéro admission. [V20](../v20_campaign/README.md) nouvelle expérience prédictive, score en attente. V11.3 inchangée.
+
+[V20.1 résultats](../v20_campaign/V20.1-results.md) : aucun gain des trois intercepts historiques, CI 3/3 ; [V20.2](../v20_campaign/V20.2-protocol.md) transfert contextuel préspécifié, score à vérifier. V11.3 6,9558 pp inchangée.
