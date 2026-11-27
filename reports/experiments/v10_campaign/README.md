@@ -85,3 +85,5 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 [V22.1 résultats](../v22_campaign/V22.1-results.md) : aucun gain, supervision 7,4959 pp. [V23](../v23_campaign/README.md) audit de source indépendant préspécifié. Meilleur exploratoire V11.3 inchangé.
 
 [V23.1 résultats et V23.2](../v23_campaign/README.md) : six cubes identifiés, schéma des deux cubes détaillés préspécifié, aucune admission ni nouveau score.
+
+[V23.2–V23.3a](../v23_campaign/README.md) : schéma vérifié, 139 lignes, deux décisions historiques repérées, aucune admission. Source suspendue; V11.3 meilleur exploratoire inchangé.

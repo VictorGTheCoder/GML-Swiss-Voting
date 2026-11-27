@@ -1,12 +1,6 @@
 name: V23.2 procedural schema metadata
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - experiment/municipal-v13-aps-source-20261125
-    paths:
-      - experiments/municipal_v23/audit_schema.mjs
-      - .github/workflows/procedure-v232-schema.yml
 permissions:
   contents: read
 jobs:

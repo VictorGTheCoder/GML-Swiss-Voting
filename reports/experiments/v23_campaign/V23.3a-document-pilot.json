@@ -1,0 +1,28 @@
+{
+  "version": "V23.3a",
+  "status": "candidate_only",
+  "scope": "national historical document metadata, not observations of the target vote",
+  "admitted": 0,
+  "documents": [
+    {
+      "title": "En faveur du service public",
+      "decision_date": "2013-06-20",
+      "federal_gazette": "FF 2013 4307",
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2013/923/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2013-923-fr-pdf-a.pdf",
+      "page": 1,
+      "verified_visual": true
+    },
+    {
+      "title": "Entreprises responsables – pour protéger l’être humain et l’environnement",
+      "decision_date": "2016-11-01",
+      "federal_gazette": "FF 2016 7885",
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2016/1839/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2016-1839-fr-pdf-a.pdf",
+      "page": 1,
+      "verified_visual": true
+    }
+  ],
+  "limitations": [
+    "No PDF hash obtained; exact publication day, license, benchmark join and full coverage not certified.",
+    "No signature values retained for modeling; no individual or territorial signature data; no outcome read."
+  ]
+}
