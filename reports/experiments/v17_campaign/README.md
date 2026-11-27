@@ -33,3 +33,7 @@ Suite de [V16](../v16_campaign/README.md), [V13](../v13_campaign/README.md), [V1
 ## V17.2b clôturée / V17.2c — disponibilité et géographie
 
 [Résultats et protocole](V17.2b-results-v172c-protocol.md) : 1/2 binaires, 2016 HTTP 404, 2018 SHA vérifié et LAST-UPDATED cohérent avec 28.05.2019. 8/8 contrôles, CI 3/3. Plafond temporel 75768/138868 (54.56 %). Diagnostic des clés et notes géographiques préenregistré ; aucune admission, aucun nouveau score. V17.2c doit mesurer la disponibilité exacte et la couverture brute avant toute harmonisation. Ne pas relancer l'audit 2016 sans preuve nouvelle.
+
+## V17.2c — incident et correction conservatrice
+
+[Diagnostic de l'échec](V17.2c-geography-incident.md) : 12/12 contrôles, CI générale 3/3, mais désaccord entre label et code sur l'en-tête réel. Exclure conflits et doublons, mesurer séparément les IDs corroborés ; nouveau diagnostic à vérifier. Zéro admission, aucun score. Suspendre si géographie non certifiable.

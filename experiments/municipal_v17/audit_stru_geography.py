@@ -37,19 +37,29 @@ def geographic_header(header):
     require(codes is None or len(codes) == len(values), "Geographic codes length mismatch")
     ids = []
     unresolved = []
+    conflicts = []
+    corroborated = []
+    single_channel = []
     for i, label in enumerate(values):
         if not re.match(r"^\s*\.{6}\s*", label):
             continue
         label_id = re.match(r"^\s*\.{6}\s*(\d{1,4})(?:\s|$)", label)
         code_id = re.fullmatch(r"\s*(?:\.{6}\s*)?(\d{1,4})\s*", codes[i]) if codes else None
         if label_id and code_id:
-            require(int(label_id[1]) == int(code_id[1]), "Label/code disagreement")
+            if int(label_id[1]) != int(code_id[1]):
+                conflicts.append({"index": i, "label": label[:120], "code": codes[i][:120]})
+                continue
         match = label_id or code_id
         if match:
-            ids.append(municipality(match[1]))
+            ident = municipality(match[1])
+            ids.append(ident)
+            (corroborated if label_id and code_id else single_channel).append(ident)
         else:
             unresolved.append(label[:120])
-    require(len(ids) == len(set(ids)), "Duplicate geographic municipality IDs")
+    duplicate_ids = {ident for ident, n in Counter(ids).items() if n > 1}
+    ids = [ident for ident in ids if ident not in duplicate_ids]
+    corroborated = [ident for ident in corroborated if ident not in duplicate_ids]
+    single_channel = [ident for ident in single_channel if ident not in duplicate_ids]
     metadata = [
         line[:400] for line in header.splitlines()
         if re.search(r"Gebietsstand|Gemeindestand|territorial|état des communes|état au|Raumgliederung", line, re.I)
@@ -59,6 +69,9 @@ def geographic_header(header):
         "code_dimension_present": codes is not None,
         "municipal_ids": ids, "unresolved_municipal_labels": len(unresolved),
         "unresolved_examples": unresolved[:8], "label_examples": values[:12],
+        "conflicting_labels": len(conflicts), "conflict_examples": conflicts[:12],
+        "duplicate_ids": len(duplicate_ids), "duplicate_id_examples": sorted(duplicate_ids)[:12],
+        "corroborated_ids": corroborated, "single_channel_ids": len(single_channel),
         "code_examples": codes[:12] if codes else [], "geography_metadata": metadata[:30],
     }
 
@@ -71,6 +84,9 @@ def coverage(triples, ids):
         "available_objects": len({v for _, v, _ in available}),
         "available_dates": len({d for d, _, _ in available}),
         "raw_matched_rows": len(matched),
+        "raw_matched_fraction_of_available": len(matched) / len(available) if available else None,
+        "available_by_date": dict(sorted(Counter(d for d, _, _ in available).items())),
+        "raw_matched_by_date": dict(sorted(Counter(d for d, _, _ in matched).items())),
         "raw_matched_by_year": dict(sorted(Counter(d[:4] for d, _, _ in matched).items())),
         "available_by_year": dict(sorted(Counter(d[:4] for d, _, _ in available).items())),
         "boundary_certified": False, "admitted": 0,
@@ -87,21 +103,28 @@ def self_test():
     assert got["unresolved_municipal_labels"] == 0
     assert geographic_header(header.splitlines()[0])["unresolved_municipal_labels"] == 1
     assert geographic_header(header.splitlines()[0])["municipal_ids"] == [1]
-    for bad in (header.replace('"0002"', '"1"'), header.replace('"1","0002"', '"3","0002"'),
-                header.replace(',"0002"', "")):
-        try:
-            geographic_header(bad)
-        except ValueError:
-            pass
-        else:
-            raise AssertionError("Invalid geography accepted")
+    duplicate = geographic_header(header.replace('"0002"', '"1"'))
+    assert duplicate["municipal_ids"] == [] and duplicate["duplicate_ids"] == 1
+    conflict = geographic_header(header.replace('"1","0002"', '"3","0002"'))
+    assert conflict["municipal_ids"] == [2] and conflict["conflicting_labels"] == 1
+    assert conflict["corroborated_ids"] == [] and conflict["single_channel_ids"] == 1
+    assert conflict["conflict_examples"][0]["code"] == "3"
+    assert got["corroborated_ids"] == [1] and got["single_channel_ids"] == 1
+    try:
+        geographic_header(header.replace(',"0002"', ""))
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Invalid geography accepted")
     c = coverage([("2019-05-28", "a", 1), ("2019-05-29", "b", 1),
                   ("2020-01-01", "c", 3)], {1})
     assert c["available_rows"] == 2
     assert c["raw_matched_rows"] == 1
     assert c["available_objects"] == 2
     assert not c["boundary_certified"] and c["admitted"] == 0
-    print("12 synthetic checks passed", flush=True)
+    assert c["raw_matched_fraction_of_available"] == 0.5
+    assert c["available_by_date"] == {"2019-05-29": 1, "2020-01-01": 1}
+    print("17 synthetic checks passed", flush=True)
 
 
 def run(reference, output):
@@ -125,12 +148,15 @@ def run(reference, output):
     require(end is not None, "PX header unavailable")
     geo = geographic_header(prefix[:end.start()])
     ids = set(geo.pop("municipal_ids"))
+    corroborated = set(geo.pop("corroborated_ids"))
+    geo["corroborated_id_count"] = len(corroborated)
     result = {
         "version": "V17.2c", "archive_sha256": ARCHIVE_SHA, "publication": PUBLICATION,
         "geography": geo, "recognized_municipal_ids": len(ids),
         "coverage": coverage(triples, ids),
+        "corroborated_coverage": coverage(triples, corroborated),
         "status": "raw_identifier_diagnostic_only",
-        "warning": "IDs alone cannot certify stable boundaries; no values extracted.",
+        "warning": "Conflicts and duplicate candidate IDs excluded; single-channel IDs unverified. No boundary certification or values extracted.",
     }
     output.mkdir(parents=True, exist_ok=False)
     (output / "manifest.json").write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n")

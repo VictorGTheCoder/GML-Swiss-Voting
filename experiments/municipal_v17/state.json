@@ -1,6 +1,6 @@
 {
   "version": "V17.2c",
-  "status": "stru_2018_binary_verified_geographic_coverage_pending",
+  "status": "stru_geography_label_code_conflict_diagnostic_fix_pending",
   "parent_commit": "6ea59fd0977aca934b3cdfd3ca62d80d3091ce18",
   "prior_ci": {
     "run": 45908472499,
@@ -23,7 +23,7 @@
     "version": "V11.3",
     "mae_pp": 6.955753873756506
   },
-  "next": "Verify V17.2c exact temporal and raw ID coverage; no boundary certification from equal IDs. If not certifiable, suspend STRU and move to independent predictive experiment; do not retry 2016 master.",
+  "next": "Verify corrected V17.2c diagnostic once; retain quarantine, no selection between disagreeing label/code. If coverage or historical boundaries cannot be certified, suspend STRU and move to independent predictive experiment.",
   "acquisition": {
     "version": "V17.1a",
     "source_run": 45887564938,
@@ -432,6 +432,22 @@
         "maximum_possible_fraction": 0.545611659993663,
         "explanation": "2019 dates not yet separated; bounds ignore municipality joins and missing values; no source admission"
       }
-    }
+    },
+    "geography_attempts": [
+      {
+        "run": 45914551546,
+        "job": 140230538659,
+        "commit": "738cfac23b97f863ff6cda5e7d90a8f7c8c6ba8c",
+        "conclusion": "failure",
+        "targeted_checks": 12,
+        "error": "Label/code disagreement on real PX header; exact benchmark artifact digest matched, archive hash guard passed before parser",
+        "repository_checks": {
+          "run": 45914551512,
+          "jobs": 3,
+          "conclusion": "success"
+        },
+        "decision": "Exclude conflicting labels and duplicate candidate IDs, report separately corroborated and single-channel candidates; no source admission, no gate relaxation."
+      }
+    ]
   }
 }
