@@ -1,7 +1,7 @@
 {
   "version": "V20",
-  "active": "V20.2",
-  "status": "implemented_unverified",
+  "active": null,
+  "status": "completed_no_gain",
   "parent_commit": "93b536ec6a6ffb7b6f55496cb31fd702fe550432",
   "best_exploratory": 6.955753873756506,
   "population": {
@@ -17,12 +17,12 @@
   "warmup_dates": 4,
   "prior_pseudo_dates": 5,
   "next": [
-    "verify V20.2 CI and metrics",
-    "if no gain close residual post-correction family",
-    "prioritize independent object-level information; reopen quarantined sources only on new evidence"
+    "V21.1 ballot-session context ablation",
+    "new source only with new provenance evidence"
   ],
   "completed": [
-    "V20.1"
+    "V20.1",
+    "V20.2"
   ],
   "runs": [
     {
@@ -98,6 +98,68 @@
       "repository_checks": "3/3 success",
       "decision": "no_gain_no_promotion",
       "source": "SUMMARY line from successful job; ZIP digest from artifact metadata; archive not independently decoded"
+    },
+    {
+      "status": "complete",
+      "prediction_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+      "geography_sha256": "2a5c6f0e953601cc92cd523fa14c67b8ce549f2cbecdbb8ce68ae647e45f9289",
+      "rows": 138868,
+      "objects": 66,
+      "dates": 23,
+      "coverage": 1,
+      "prior_pseudo_dates": 5,
+      "warmup_dates": 4,
+      "summary": [
+        {
+          "variant": "reference",
+          "mae_pp": 6.955753873756506,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.7811714402970824,
+          "canton_mae_pp": 5.500338667087431,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "active_objects": 0
+        },
+        {
+          "variant": "canton_uniform",
+          "mae_pp": 6.980529312872354,
+          "centered_mae_pp": 5.316501099245059,
+          "national_mae_pp": 3.7811714402970686,
+          "canton_mae_pp": 5.544067633603641,
+          "gain_interval": [
+            -0.14517380343931363,
+            0.10083509715209163
+          ],
+          "active_objects": 53
+        },
+        {
+          "variant": "canton_similarity",
+          "mae_pp": 6.981624804097539,
+          "centered_mae_pp": 5.320725226788173,
+          "national_mae_pp": 3.7811714402970606,
+          "canton_mae_pp": 5.548459478897194,
+          "gain_interval": [
+            -0.14598704307836757,
+            0.0966662973380542
+          ],
+          "active_objects": 53
+        }
+      ],
+      "artifact": {
+        "run": 46012429456,
+        "id": 15204438379,
+        "digest": "sha256:d830b9978af3f2de6e75591a5d8d7671c03fa8fe8ec4c91083ba8e29a965d14e",
+        "head": "8003b9d7890d48d0f21be76fb050a8879b869436",
+        "ci": 46012437825,
+        "job": 140551036651
+      },
+      "version": "V20.2",
+      "self_test": "success",
+      "repository_checks": "3/3 success",
+      "decision": "no_gain_close_residual_family",
+      "source": "Successful job SUMMARY log; artifact digest from metadata, ZIP not independently decoded."
     }
   ]
 }

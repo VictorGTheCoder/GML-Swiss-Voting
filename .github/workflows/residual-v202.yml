@@ -1,12 +1,6 @@
 name: V20.2 contextual residual transfer
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - experiment/municipal-v13-aps-source-20261125
-    paths:
-      - scripts/modeling/residual_similarity_v202.py
-      - .github/workflows/residual-v202.yml
 permissions:
   contents: read
   actions: read

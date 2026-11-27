@@ -25,3 +25,7 @@ Reproduction : workflow V20.1 sur artefact v113-procedure du run 45444093555. Te
 1. [V20.2](V20.2-protocol.md) : transfert conditionnel selon signature des prévisions cantonales, contrôle V20.1 exact ; implémenté, résultat à vérifier. Une seule variante nouvelle, aucun réglage après observation.
 2. Si échec, clôturer la famille des corrections de résidus et privilégier une information d'objet indépendante déjà certifiable ; ne pas rouvrir les acquisitions suspendues sans preuve nouvelle.
 3. Aucun accès au test final ni promotion.
+
+## Clôture V20.2
+
+[Résultats](V20.2-results.md) : transfert conditionnel 6,9816 pp contre 6,9558, aucun gain. CI 3/3. Famille résiduelle suspendue. [V21](../v21_campaign/README.md) : contexte ex ante de session, aucun nouveau score.

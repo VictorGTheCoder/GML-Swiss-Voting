@@ -1,0 +1,24 @@
+{
+  "version": "V21",
+  "active": "V21.1",
+  "status": "implemented_unverified",
+  "parent_commit": "8003b9d7890d48d0f21be76fb050a8879b869436",
+  "best_exploratory": 6.955753873756506,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "variants": [
+    "institution_replay",
+    "session_count",
+    "session_peers"
+  ],
+  "completed": [],
+  "runs": [],
+  "next": [
+    "verify CI and matched benchmark",
+    "compare peer context against count and exact replay",
+    "new provenance-certified independent source"
+  ]
+}
