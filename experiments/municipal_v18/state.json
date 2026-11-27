@@ -9,14 +9,15 @@
     "rows": 138868
   },
   "next": [
-    "V18.2b vérifier résultats PDF et pagination, sans admission automatique",
-    "V18.2c si preuve suffisante, étendre aux historiques et mesurer recouvrement avant ablation",
+    "V18.2b-r1 vérifier le diagnostic corrigé une seule fois ; si aucune preuve, suspendre Fedlex et passer à V18.3",
+    "V18.2c uniquement si preuve suffisante, étendre aux historiques et mesurer recouvrement avant ablation",
     "V18.3 architecture indépendante après non-redondance si blocage",
     "STRU/ElCom uniquement sur preuve nouvelle"
   ],
   "completed": [
     "V18.1",
-    "V18.2a"
+    "V18.2a",
+    "V18.2b"
   ],
   "evidence": {
     "run": 45926062218,
@@ -79,9 +80,9 @@
   ],
   "adaptive_scale_one_dates": 23,
   "active": {
-    "version": "V18.2b",
-    "status": "pdf_identity_audit_implemented_pending_ci",
-    "parent_commit": "863893b9546eaa80d6371d45a29d6c50bb63e2c0",
+    "version": "V18.2b-r1",
+    "status": "host_allowlist_corrected_pending_ci",
+    "parent_commit": "224c51426fd3b324b2fd4f407e10a8c4d580db00",
     "metadata_evidence": {
       "run": 45937853512,
       "job": 140305093385,
@@ -102,6 +103,20 @@
       "targeted_checks": 11
     },
     "training_rows_admitted": 0,
-    "workflow": ".github/workflows/fedlex-v182b.yml"
+    "workflow": ".github/workflows/fedlex-v182b.yml",
+    "pdf_initial_evidence": {
+      "run": 45943555169,
+      "job": 140323018856,
+      "artifact": 15173981054,
+      "artifact_digest": "sha256:cbf7ea4f1709ddcb68b55cd261bad13a3d6d03c4e227f09d272607d88c148ab2",
+      "objects": 12,
+      "unverified_attempts": 14,
+      "unique_page_candidates": 0,
+      "repository_checks": {
+        "run": 45943555085,
+        "passed": 3,
+        "total": 3
+      }
+    }
   }
 }

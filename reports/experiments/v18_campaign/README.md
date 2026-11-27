@@ -19,3 +19,7 @@ Suite [V17](../v17_campaign/README.md), [V16](../v16_campaign/README.md), [V10](
 ## V18.2a mesurée et V18.2b
 
 [Résultats et protocole](V18.2a-results-v182b-protocol.md) : 12/12 requêtes, 8 uniques/4 ambiguës ; contrôle des dates exactes parlementaires : 11 uniques/1 ambiguë, 14 candidats restants. Audit PDF implémenté, CI à vérifier, zéro admission. V18.3 ensuite si blocage. Aucun score nouveau.
+
+## V18.2b — résultat et correction r1
+
+[Résultats et correctif](V18.2b-results-r1.md) : 14 tentatives, zéro URL acceptée, zéro admission. CI générale 3/3. Hôte officiel documenté manquant dans le filtre ; reprise unique avec diagnostic détaillé, puis V18.3 si blocage. Aucun nouveau score.

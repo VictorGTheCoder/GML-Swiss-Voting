@@ -59,3 +59,5 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 [V18.2a](../v18_campaign/V18.2a-fedlex-protocol.md) : pilote des textes légaux originaux, 12 références/3 dates, 11 contrôles, aucun score ni admission. V11.3 reste meilleur exploratoire.
 
 [V18.2a résultats et V18.2b](../v18_campaign/V18.2a-results-v182b-protocol.md) : acquisition de métadonnées 12/12, vérification PDF en attente. Aucun score nouveau, aucun test final.
+
+- V18.2b : [audit PDF et correction r1](../v18_campaign/V18.2b-results-r1.md) ; 0/14 URL acceptée initialement, correctif de validation d'hôte documenté ; aucun score nouveau.
