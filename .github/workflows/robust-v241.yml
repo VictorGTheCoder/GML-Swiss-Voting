@@ -1,12 +1,6 @@
 name: V24.1 robust head objective
 on:
   workflow_dispatch:
-  push:
-    branches: [experiment/municipal-v13-aps-source-20261125]
-    paths:
-      - scripts/modeling/robust_v241.py
-      - tests/test_robust_v241.py
-      - .github/workflows/robust-v241.yml
 permissions:
   contents: read
   actions: read

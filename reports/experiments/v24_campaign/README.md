@@ -15,3 +15,7 @@ Tests implémentés: dimensions/valeurs finies, invariance aux autres requêtes,
 1. V24.1 : vérifier benchmark et CI, enregistrer les résultats y compris négatifs et vérifier la comparaison principale; si échec ne pas multiplier les valeurs de delta.
 2. V24.2 : si V24.1 est négative, prioriser la certification d'une source ex ante réellement indépendante ou un diagnostic de stabilité des choix sur dates réutilisées, sans rouvrir V19/V23 sans preuve nouvelle.
 3. Avant toute promotion, protocole gelé et validation finale distincte autorisée. Aucune promesse d'atteindre 4 pp.
+
+## V24.1 — Clôture mesurée
+
+[Résultats](V24.1-results.md) : quadratique standardisée 6,950427808889042 pp (nouveau minimum descriptif non robuste), pseudo-Huber 7,012165 pp, 4/4 tests ciblés. CI générale échouée sur dépendance optionnelle; correctif ciblé et couverture explicite du job expérimental. Aucun modèle promu. V25.1 prioritaire : audit de stabilité multi-modèles sur dates réutilisées, comparaison appariée et sensibilité à la suppression de blocs de dates sans nouvelle sélection. Ne pas rouvrir V23 sans preuve nouvelle.

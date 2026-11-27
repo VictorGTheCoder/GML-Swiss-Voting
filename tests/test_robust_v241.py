@@ -15,6 +15,7 @@ def sample():
 
 @pytest.mark.parametrize("objective", ["reg:squarederror", "reg:pseudohubererror"])
 def test_shape_constant_and_query_invariance(objective):
+    pytest.importorskip("xgboost")
     proto, x, y = sample()
     q = np.array([[1., 2.], [20., 21.]])
     a = scaled_heads(proto, x, y, q, objective)
@@ -26,6 +27,7 @@ def test_shape_constant_and_query_invariance(objective):
 
 
 def test_train_scale_equivariance():
+    pytest.importorskip("xgboost")
     proto, x, y = sample()
     q = x[:3]
     a = scaled_heads(proto, x, y, q, "reg:pseudohubererror")

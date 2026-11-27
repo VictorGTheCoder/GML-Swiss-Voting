@@ -1,0 +1,226 @@
+{
+  "version": "V24.1",
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "run": 46060624437,
+  "job": 140713719497,
+  "artifact": 15228766542,
+  "artifact_digest": "sha256:93b6c94bbb7605e9a1f431540a04d4cfa0644a020831915aab8e93cb152002d7",
+  "sha": "338576eb3d80c178d721db47e2cc913f0d6dd996",
+  "conclusion": "success",
+  "targeted_tests": 4,
+  "repository_checks": {
+    "run": 46060631754,
+    "conclusion": "failure",
+    "reason": "xgboost absent du profil minimal; 3 tests dépendants échouent sur les deux OS; job expérimentations réussi"
+  },
+  "scores": [
+    {
+      "variant": "reference",
+      "objects": 66,
+      "covered_objects": 59,
+      "mae_pp": 7.229527497606816,
+      "centered_mae_pp": 5.370058554693702,
+      "national_mae_pp": 3.775669209992063,
+      "canton_mae_pp": 5.703708259264074,
+      "gain_interval": [
+        0,
+        0
+      ],
+      "vs_v113_interval": [
+        -0.6800955676185603,
+        0.043876748289161265
+      ]
+    },
+    {
+      "variant": "v113_institution",
+      "objects": 66,
+      "covered_objects": 59,
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "gain_interval": [
+        -0.04387674828916126,
+        0.6800955676185607
+      ],
+      "vs_v113_interval": [
+        0,
+        0
+      ]
+    },
+    {
+      "variant": "institution_replay",
+      "objects": 66,
+      "covered_objects": 66,
+      "mae_pp": 6.955753873756503,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.78117144029708,
+      "canton_mae_pp": 5.500338667087431,
+      "gain_interval": [
+        -0.04387674828916063,
+        0.680095567618561
+      ],
+      "vs_v113_interval": [
+        -1.9339368816051114e-16,
+        1.186290527805233e-15
+      ]
+    },
+    {
+      "variant": "scaled_squared",
+      "objects": 66,
+      "covered_objects": 66,
+      "mae_pp": 6.950427808889042,
+      "centered_mae_pp": 5.289253543823442,
+      "national_mae_pp": 3.7723883363132598,
+      "canton_mae_pp": 5.493756152418616,
+      "gain_interval": [
+        -0.03620932070687321,
+        0.6865750589504487
+      ],
+      "vs_v113_interval": [
+        -0.0009797319220142492,
+        0.016584652304980557
+      ]
+    },
+    {
+      "variant": "scaled_huber",
+      "objects": 66,
+      "covered_objects": 66,
+      "mae_pp": 7.012164999774358,
+      "centered_mae_pp": 5.274147705343084,
+      "national_mae_pp": 3.817972689962006,
+      "canton_mae_pp": 5.569573210970787,
+      "gain_interval": [
+        -0.18195207006601694,
+        0.6804317962708013
+      ],
+      "vs_v113_interval": [
+        -0.19927864906320253,
+        0.06139746682606528
+      ]
+    }
+  ],
+  "fold_mae_pp": {
+    "2016-2018": {
+      "institution_replay": 7.5730560157,
+      "reference": 8.152475601,
+      "scaled_huber": 7.617128922,
+      "scaled_squared": 7.5718010491,
+      "v113_institution": 7.5730560157
+    },
+    "2019-2020": {
+      "institution_replay": 6.9750709305,
+      "reference": 7.1500595705,
+      "scaled_huber": 7.2382785394,
+      "scaled_squared": 6.9489150604,
+      "v113_institution": 6.9750709305
+    },
+    "2021-2022": {
+      "institution_replay": 6.174467668,
+      "reference": 6.1155763319,
+      "scaled_huber": 6.1429033271,
+      "scaled_squared": 6.1744676328,
+      "v113_institution": 6.174467668
+    }
+  },
+  "domain_mae_pp": {
+    "1": {
+      "institution_replay": 6.7836818411,
+      "reference": 6.4792925574,
+      "scaled_huber": 6.6266148156,
+      "scaled_squared": 6.7794893673,
+      "v113_institution": 6.7836818411
+    },
+    "2": {
+      "institution_replay": 5.802332172,
+      "reference": 5.8630062992,
+      "scaled_huber": 5.7551436149,
+      "scaled_squared": 5.7946774153,
+      "v113_institution": 5.802332172
+    },
+    "3": {
+      "institution_replay": 6.9152445706,
+      "reference": 7.1680352648,
+      "scaled_huber": 6.816951284,
+      "scaled_squared": 6.9107578098,
+      "v113_institution": 6.9152445706
+    },
+    "4": {
+      "institution_replay": 10.1520500803,
+      "reference": 12.6797406891,
+      "scaled_huber": 10.2327094791,
+      "scaled_squared": 10.1556390565,
+      "v113_institution": 10.1520500803
+    },
+    "5": {
+      "institution_replay": 10.0416046951,
+      "reference": 10.1693907323,
+      "scaled_huber": 9.8658189346,
+      "scaled_squared": 10.0412711485,
+      "v113_institution": 10.0416046951
+    },
+    "6": {
+      "institution_replay": 6.9801270745,
+      "reference": 7.7105377573,
+      "scaled_huber": 7.0380006164,
+      "scaled_squared": 6.9802969551,
+      "v113_institution": 6.9801270745
+    },
+    "7": {
+      "institution_replay": 6.8863623743,
+      "reference": 6.5839010403,
+      "scaled_huber": 6.7292434369,
+      "scaled_squared": 6.8864450089,
+      "v113_institution": 6.8863623743
+    },
+    "8": {
+      "institution_replay": 6.1048269459,
+      "reference": 6.2725889719,
+      "scaled_huber": 6.2945819699,
+      "scaled_squared": 6.10484027,
+      "v113_institution": 6.1048269459
+    },
+    "9": {
+      "institution_replay": 5.6255283968,
+      "reference": 5.6367797301,
+      "scaled_huber": 6.0367228347,
+      "scaled_squared": 5.5813494941,
+      "v113_institution": 5.6255283968
+    },
+    "10": {
+      "institution_replay": 6.6667452066,
+      "reference": 6.9000078832,
+      "scaled_huber": 6.805407795,
+      "scaled_squared": 6.6653724257,
+      "v113_institution": 6.6667452066
+    },
+    "11": {
+      "institution_replay": 7.6769308663,
+      "reference": 7.8350434359,
+      "scaled_huber": 7.6499123392,
+      "scaled_squared": 7.6769318263,
+      "v113_institution": 7.6769308663
+    },
+    "12": {
+      "institution_replay": 4.8108858897,
+      "reference": 4.8426383255,
+      "scaled_huber": 4.8098577635,
+      "scaled_squared": 4.8108862982,
+      "v113_institution": 4.8108858897
+    }
+  },
+  "source_coverage": {
+    "message_to_parliament_logdays": 277,
+    "parliament_to_vote_logdays": 306,
+    "parliamentary_initiative": 306,
+    "chamber_share_gap": 304,
+    "nr_binary_seat_fraction": 304,
+    "sr_binary_seat_fraction": 304
+  },
+  "source": "GitHub Actions job log; archive digest from GitHub metadata, ZIP not independently recomputed",
+  "decision": "scaled_squared descriptive best only; no promotion; pseudo-Huber rejected; no delta tuning"
+}

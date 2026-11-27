@@ -1,16 +1,120 @@
 {
   "version": "V24",
-  "active": "V24.1",
-  "status": "implemented_benchmark_unverified",
+  "active": null,
+  "status": "completed_exploratory_no_promotion",
   "parent_commit": "70ac10dfaafc4433377f015cedd87d31e031675d",
-  "best_exploratory": 6.955753873756506,
+  "best_exploratory": 6.950427808889042,
   "population": {
     "objects": 66,
     "dates": 23,
     "rows": 138868
   },
-  "completed": [],
-  "runs": [],
+  "completed": [
+    "V24.1"
+  ],
+  "runs": [
+    {
+      "run": 46060624437,
+      "job": 140713719497,
+      "artifact": 15228766542,
+      "artifact_digest": "sha256:93b6c94bbb7605e9a1f431540a04d4cfa0644a020831915aab8e93cb152002d7",
+      "sha": "338576eb3d80c178d721db47e2cc913f0d6dd996",
+      "conclusion": "success",
+      "targeted_tests": 4,
+      "repository_checks": {
+        "run": 46060631754,
+        "conclusion": "failure",
+        "reason": "xgboost absent du profil minimal; 3 tests dépendants échouent sur les deux OS; job expérimentations réussi"
+      },
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "vs_v113_interval": [
+            -0.6800955676185603,
+            0.043876748289161265
+          ]
+        },
+        {
+          "variant": "v113_institution",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.955753873756506,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.7811714402970824,
+          "canton_mae_pp": 5.500338667087431,
+          "gain_interval": [
+            -0.04387674828916126,
+            0.6800955676185607
+          ],
+          "vs_v113_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "institution_replay",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 6.955753873756503,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.78117144029708,
+          "canton_mae_pp": 5.500338667087431,
+          "gain_interval": [
+            -0.04387674828916063,
+            0.680095567618561
+          ],
+          "vs_v113_interval": [
+            -1.9339368816051114e-16,
+            1.186290527805233e-15
+          ]
+        },
+        {
+          "variant": "scaled_squared",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 6.950427808889042,
+          "centered_mae_pp": 5.289253543823442,
+          "national_mae_pp": 3.7723883363132598,
+          "canton_mae_pp": 5.493756152418616,
+          "gain_interval": [
+            -0.03620932070687321,
+            0.6865750589504487
+          ],
+          "vs_v113_interval": [
+            -0.0009797319220142492,
+            0.016584652304980557
+          ]
+        },
+        {
+          "variant": "scaled_huber",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.012164999774358,
+          "centered_mae_pp": 5.274147705343084,
+          "national_mae_pp": 3.817972689962006,
+          "canton_mae_pp": 5.569573210970787,
+          "gain_interval": [
+            -0.18195207006601694,
+            0.6804317962708013
+          ],
+          "vs_v113_interval": [
+            -0.19927864906320253,
+            0.06139746682606528
+          ]
+        }
+      ]
+    }
+  ],
   "configs": {
     "institution_replay": "native_squared",
     "scaled_squared": "reg:squarederror",
@@ -18,7 +122,8 @@
   },
   "admitted": 0,
   "next": [
-    "Verify benchmark and CI; report paired outcomes",
-    "If no gain, do not tune delta opportunistically; investigate independent signal or selection stability"
-  ]
+    "V25.1: audit de stabilité des comparaisons multi-modèles sur les dates de développement, sans sélection ni score prospectif revendiqué; vérifier recouvrement et provenance des artefacts avant exécution",
+    "Sources ex ante indépendantes: reprise seulement sur preuve nouvelle; aucune admission V23"
+  ],
+  "best_exploratory_variant": "V24.1 scaled_squared"
 }

@@ -89,3 +89,5 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 [V23.2–V23.3a](../v23_campaign/README.md) : schéma vérifié, 139 lignes, deux décisions historiques repérées, aucune admission. Source suspendue; V11.3 meilleur exploratoire inchangé.
 
 [V24](../v24_campaign/README.md) : perte pseudo-Huber sur têtes standardisées, contrôle quadratique préspécifié. Score en attente, meilleur V11.3 inchangé.
+
+[V24.1 résultats](../v24_campaign/V24.1-results.md) : nouveau minimum descriptif quadratique standardisée 6,950427808889042 pp, gain 0,005326 pp non robuste; pseudo-Huber négative. Aucun modèle promu, aucun test final. V25.1 audit de stabilité priorisé.
