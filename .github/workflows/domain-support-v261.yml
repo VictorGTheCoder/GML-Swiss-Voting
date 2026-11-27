@@ -1,11 +1,6 @@
 name: V26.1 domain support audit
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - '.github/workflows/domain-support-v261.yml'
-      - 'scripts/modeling/domain_support_v261.py'
-      - 'tests/test_domain_support_v261.py'
 permissions:
   contents: read
   actions: read

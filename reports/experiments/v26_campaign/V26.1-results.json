@@ -1,0 +1,583 @@
+{
+  "status": "descriptive_only",
+  "input_sha256": "791b0492730dc7295baa6bf838208ee0c75b019849b10680d437b435ce0d4fbd",
+  "objects": 66,
+  "dates": 23,
+  "domains": {
+    "1": {
+      "objects": 6,
+      "dates": 5,
+      "dates_by_fold": {
+        "2016-2018": 3,
+        "2021-2022": 2
+      },
+      "document_covered_v113": 6,
+      "scores": {
+        "reference": {
+          "mae_pp": 6.479292557433159,
+          "centered_mae_pp": 4.552653640463021,
+          "national_mae_pp": 3.406686067339805,
+          "canton_mae_pp": 4.828591624888741
+        },
+        "v113_institution": {
+          "mae_pp": 6.783681841077809,
+          "centered_mae_pp": 4.879897432512059,
+          "national_mae_pp": 3.270672109648927,
+          "canton_mae_pp": 5.058443170129922
+        },
+        "institution_replay": {
+          "mae_pp": 6.783681841077808,
+          "centered_mae_pp": 4.879897432512059,
+          "national_mae_pp": 3.2706721096489217,
+          "canton_mae_pp": 5.0584431701299195
+        },
+        "scaled_squared": {
+          "mae_pp": 6.7794893673391465,
+          "centered_mae_pp": 4.879897679613079,
+          "national_mae_pp": 3.258948260283909,
+          "canton_mae_pp": 5.053274201435473
+        },
+        "scaled_huber": {
+          "mae_pp": 6.626614815640232,
+          "centered_mae_pp": 4.813512718077905,
+          "national_mae_pp": 3.0447796128285076,
+          "canton_mae_pp": 4.901626375427537
+        }
+      },
+      "gain_vs_v81": -0.3001968099059873,
+      "global_mae_contribution": 0.6163172152126497,
+      "signed_excess_contribution_vs_4": 0.25268085157628606,
+      "leave_date_mae_range": [
+        6.148356512208486,
+        7.140417581603538
+      ]
+    },
+    "2": {
+      "objects": 3,
+      "dates": 3,
+      "dates_by_fold": {
+        "2019-2020": 1,
+        "2021-2022": 2
+      },
+      "document_covered_v113": 3,
+      "scores": {
+        "reference": {
+          "mae_pp": 5.8630062992345975,
+          "centered_mae_pp": 4.945384741958544,
+          "national_mae_pp": 1.8598661725410324,
+          "canton_mae_pp": 3.7616774811605143
+        },
+        "v113_institution": {
+          "mae_pp": 5.802332171990308,
+          "centered_mae_pp": 4.9931216841623245,
+          "national_mae_pp": 1.8598661725407564,
+          "canton_mae_pp": 3.7194606843108087
+        },
+        "institution_replay": {
+          "mae_pp": 5.802332171990308,
+          "centered_mae_pp": 4.993121684162323,
+          "national_mae_pp": 1.85986617254076,
+          "canton_mae_pp": 3.7194606843108082
+        },
+        "scaled_squared": {
+          "mae_pp": 5.79467741533337,
+          "centered_mae_pp": 4.987461162623237,
+          "national_mae_pp": 1.8598661725408936,
+          "canton_mae_pp": 3.71965212495793
+        },
+        "scaled_huber": {
+          "mae_pp": 5.755143614914359,
+          "centered_mae_pp": 4.937512629408011,
+          "national_mae_pp": 1.8598661725409802,
+          "canton_mae_pp": 3.6743229180730115
+        }
+      },
+      "gain_vs_v81": 0.06832888390122704,
+      "global_mae_contribution": 0.26339442796969864,
+      "signed_excess_contribution_vs_4": 0.08157624615151683,
+      "leave_date_mae_range": [
+        5.308628905034535,
+        6.195383630205984
+      ]
+    },
+    "3": {
+      "objects": 5,
+      "dates": 5,
+      "dates_by_fold": {
+        "2016-2018": 1,
+        "2019-2020": 3,
+        "2021-2022": 1
+      },
+      "document_covered_v113": 4,
+      "scores": {
+        "reference": {
+          "mae_pp": 7.168035264801203,
+          "centered_mae_pp": 5.5091606386395755,
+          "national_mae_pp": 3.596559789300694,
+          "canton_mae_pp": 4.974789135844945
+        },
+        "v113_institution": {
+          "mae_pp": 6.915244570612669,
+          "centered_mae_pp": 5.842671094922869,
+          "national_mae_pp": 2.832620500595701,
+          "canton_mae_pp": 4.617763418921803
+        },
+        "institution_replay": {
+          "mae_pp": 6.915244570612669,
+          "centered_mae_pp": 5.842671094922869,
+          "national_mae_pp": 2.8326205005956995,
+          "canton_mae_pp": 4.617763418921804
+        },
+        "scaled_squared": {
+          "mae_pp": 6.910757809800404,
+          "centered_mae_pp": 5.836730312431192,
+          "national_mae_pp": 2.8387468435253793,
+          "canton_mae_pp": 4.614703240471398
+        },
+        "scaled_huber": {
+          "mae_pp": 6.816951283995851,
+          "centered_mae_pp": 5.758009267941917,
+          "national_mae_pp": 2.44468161735121,
+          "canton_mae_pp": 4.580364342705975
+        }
+      },
+      "gain_vs_v81": 0.257277455000799,
+      "global_mae_contribution": 0.5235422583182124,
+      "signed_excess_contribution_vs_4": 0.2205119552879094,
+      "leave_date_mae_range": [
+        6.770213583881267,
+        6.998511107908784
+      ]
+    },
+    "4": {
+      "objects": 3,
+      "dates": 3,
+      "dates_by_fold": {
+        "2016-2018": 2,
+        "2019-2020": 1
+      },
+      "document_covered_v113": 3,
+      "scores": {
+        "reference": {
+          "mae_pp": 12.67974068909082,
+          "centered_mae_pp": 5.16717425602025,
+          "national_mae_pp": 9.521704131517339,
+          "canton_mae_pp": 11.932130444435375
+        },
+        "v113_institution": {
+          "mae_pp": 10.152050080308689,
+          "centered_mae_pp": 3.9804942377655457,
+          "national_mae_pp": 8.322800699929092,
+          "canton_mae_pp": 9.468529119873285
+        },
+        "institution_replay": {
+          "mae_pp": 10.152050080308689,
+          "centered_mae_pp": 3.980494237765545,
+          "national_mae_pp": 8.322800699929092,
+          "canton_mae_pp": 9.468529119873283
+        },
+        "scaled_squared": {
+          "mae_pp": 10.15563905650595,
+          "centered_mae_pp": 3.97346537419782,
+          "national_mae_pp": 8.329218981898872,
+          "canton_mae_pp": 9.472414497097054
+        },
+        "scaled_huber": {
+          "mae_pp": 10.232709479127223,
+          "centered_mae_pp": 4.085902660228147,
+          "national_mae_pp": 8.379356644413813,
+          "canton_mae_pp": 9.55700382954952
+        }
+      },
+      "gain_vs_v81": 2.5241016325848715,
+      "global_mae_contribution": 0.4616199571139068,
+      "signed_excess_contribution_vs_4": 0.279801775295725,
+      "leave_date_mae_range": [
+        7.212405567136797,
+        12.870991648812131
+      ]
+    },
+    "5": {
+      "objects": 6,
+      "dates": 5,
+      "dates_by_fold": {
+        "2016-2018": 3,
+        "2019-2020": 1,
+        "2021-2022": 1
+      },
+      "document_covered_v113": 5,
+      "scores": {
+        "reference": {
+          "mae_pp": 10.16939073227085,
+          "centered_mae_pp": 8.616623987335533,
+          "national_mae_pp": 4.763774793057326,
+          "canton_mae_pp": 8.552913589751101
+        },
+        "v113_institution": {
+          "mae_pp": 10.041604695055495,
+          "centered_mae_pp": 8.447440596626159,
+          "national_mae_pp": 4.763774793057449,
+          "canton_mae_pp": 8.110780690784912
+        },
+        "institution_replay": {
+          "mae_pp": 10.041604695055495,
+          "centered_mae_pp": 8.447440596626159,
+          "national_mae_pp": 4.763774793057447,
+          "canton_mae_pp": 8.110780690784914
+        },
+        "scaled_squared": {
+          "mae_pp": 10.041271148525256,
+          "centered_mae_pp": 8.447207887627096,
+          "national_mae_pp": 4.763774793057352,
+          "canton_mae_pp": 8.1107838585536
+        },
+        "scaled_huber": {
+          "mae_pp": 9.865818934643187,
+          "centered_mae_pp": 8.361303214019982,
+          "national_mae_pp": 4.763774793057326,
+          "canton_mae_pp": 7.951958900649804
+        }
+      },
+      "gain_vs_v81": 0.12811958374559396,
+      "global_mae_contribution": 0.9128428316841143,
+      "signed_excess_contribution_vs_4": 0.5492064680477506,
+      "leave_date_mae_range": [
+        9.678692833302767,
+        10.502402315297081
+      ]
+    },
+    "6": {
+      "objects": 7,
+      "dates": 7,
+      "dates_by_fold": {
+        "2016-2018": 2,
+        "2019-2020": 2,
+        "2021-2022": 3
+      },
+      "document_covered_v113": 6,
+      "scores": {
+        "reference": {
+          "mae_pp": 7.710537757347919,
+          "centered_mae_pp": 5.560306976677869,
+          "national_mae_pp": 4.928102567053215,
+          "canton_mae_pp": 6.861649294989616
+        },
+        "v113_institution": {
+          "mae_pp": 6.980127074517997,
+          "centered_mae_pp": 5.307808885451972,
+          "national_mae_pp": 4.2409536301763575,
+          "canton_mae_pp": 6.09313576302857
+        },
+        "institution_replay": {
+          "mae_pp": 6.980127074517996,
+          "centered_mae_pp": 5.307808885451972,
+          "national_mae_pp": 4.240953630176355,
+          "canton_mae_pp": 6.0931357630285685
+        },
+        "scaled_squared": {
+          "mae_pp": 6.980296955061396,
+          "centered_mae_pp": 5.306571758627632,
+          "national_mae_pp": 4.242867727356512,
+          "canton_mae_pp": 6.092539212595571
+        },
+        "scaled_huber": {
+          "mae_pp": 7.038000616371561,
+          "centered_mae_pp": 5.370260881094316,
+          "national_mae_pp": 4.183265660791006,
+          "canton_mae_pp": 6.102884606938919
+        }
+      },
+      "gain_vs_v81": 0.7302408022865228,
+      "global_mae_contribution": 0.7403345255368148,
+      "signed_excess_contribution_vs_4": 0.31609210129439047,
+      "leave_date_mae_range": [
+        6.011278196044651,
+        7.462962851692088
+      ]
+    },
+    "7": {
+      "objects": 2,
+      "dates": 2,
+      "dates_by_fold": {
+        "2016-2018": 2
+      },
+      "document_covered_v113": 2,
+      "scores": {
+        "reference": {
+          "mae_pp": 6.583901040269124,
+          "centered_mae_pp": 5.361392702264304,
+          "national_mae_pp": 4.670348349737541,
+          "canton_mae_pp": 5.552355477225756
+        },
+        "v113_institution": {
+          "mae_pp": 6.886362374315653,
+          "centered_mae_pp": 6.003271848473817,
+          "national_mae_pp": 4.670348349737388,
+          "canton_mae_pp": 5.648676918793761
+        },
+        "institution_replay": {
+          "mae_pp": 6.886362374315649,
+          "centered_mae_pp": 6.003271848473817,
+          "national_mae_pp": 4.6703483497373774,
+          "canton_mae_pp": 5.6486769187937576
+        },
+        "scaled_squared": {
+          "mae_pp": 6.886445008852705,
+          "centered_mae_pp": 6.003287328818384,
+          "national_mae_pp": 4.670348349737601,
+          "canton_mae_pp": 5.648727839095974
+        },
+        "scaled_huber": {
+          "mae_pp": 6.729243436928826,
+          "centered_mae_pp": 5.888765419753879,
+          "national_mae_pp": 4.6703483497374805,
+          "canton_mae_pp": 5.559019655387908
+        }
+      },
+      "gain_vs_v81": -0.30254396858358135,
+      "global_mae_contribution": 0.2086801517834153,
+      "signed_excess_contribution_vs_4": 0.0874680305712941,
+      "leave_date_mae_range": [
+        5.861002026736527,
+        7.911887990968884
+      ]
+    },
+    "8": {
+      "objects": 5,
+      "dates": 4,
+      "dates_by_fold": {
+        "2016-2018": 4
+      },
+      "document_covered_v113": 5,
+      "scores": {
+        "reference": {
+          "mae_pp": 6.272588971940873,
+          "centered_mae_pp": 4.909541379874727,
+          "national_mae_pp": 2.8976886155202863,
+          "canton_mae_pp": 4.950757645000279
+        },
+        "v113_institution": {
+          "mae_pp": 6.104826945936854,
+          "centered_mae_pp": 4.8329479875010435,
+          "national_mae_pp": 4.3171774814627994,
+          "canton_mae_pp": 5.542806929791032
+        },
+        "institution_replay": {
+          "mae_pp": 6.104826945936854,
+          "centered_mae_pp": 4.8329479875010435,
+          "national_mae_pp": 4.3171774814627994,
+          "canton_mae_pp": 5.542806929791032
+        },
+        "scaled_squared": {
+          "mae_pp": 6.1048402700166156,
+          "centered_mae_pp": 4.832948156676059,
+          "national_mae_pp": 4.32032278610448,
+          "canton_mae_pp": 5.543647746073104
+        },
+        "scaled_huber": {
+          "mae_pp": 6.294581969932066,
+          "centered_mae_pp": 4.799869063302198,
+          "national_mae_pp": 4.081057689433192,
+          "canton_mae_pp": 5.546294542752037
+        }
+      },
+      "gain_vs_v81": 0.16774870192425784,
+      "global_mae_contribution": 0.462487899243683,
+      "signed_excess_contribution_vs_4": 0.15945759621338,
+      "leave_date_mae_range": [
+        5.870650019298557,
+        6.348578709038394
+      ]
+    },
+    "9": {
+      "objects": 6,
+      "dates": 4,
+      "dates_by_fold": {
+        "2016-2018": 1,
+        "2019-2020": 2,
+        "2021-2022": 1
+      },
+      "document_covered_v113": 6,
+      "scores": {
+        "reference": {
+          "mae_pp": 5.636779730129002,
+          "centered_mae_pp": 4.992577991308825,
+          "national_mae_pp": 1.2614965665440476,
+          "canton_mae_pp": 3.4069106894182184
+        },
+        "v113_institution": {
+          "mae_pp": 5.625528396756525,
+          "centered_mae_pp": 4.762906390229402,
+          "national_mae_pp": 2.1399978680277876,
+          "canton_mae_pp": 3.668976272268155
+        },
+        "institution_replay": {
+          "mae_pp": 5.625528396756525,
+          "centered_mae_pp": 4.762906390229401,
+          "national_mae_pp": 2.1399978680277876,
+          "canton_mae_pp": 3.6689762722681554
+        },
+        "scaled_squared": {
+          "mae_pp": 5.5813494940897606,
+          "centered_mae_pp": 4.764626449822182,
+          "national_mae_pp": 2.064789632565675,
+          "canton_mae_pp": 3.608111070048325
+        },
+        "scaled_huber": {
+          "mae_pp": 6.036722834712033,
+          "centered_mae_pp": 4.733658196705863,
+          "national_mae_pp": 2.716842659627949,
+          "canton_mae_pp": 4.208537500673521
+        }
+      },
+      "gain_vs_v81": 0.0554302360392418,
+      "global_mae_contribution": 0.5073954085536146,
+      "signed_excess_contribution_vs_4": 0.14375904491725097,
+      "leave_date_mae_range": [
+        5.414934087764402,
+        5.844591831270067
+      ]
+    },
+    "10": {
+      "objects": 19,
+      "dates": 13,
+      "dates_by_fold": {
+        "2016-2018": 5,
+        "2019-2020": 2,
+        "2021-2022": 6
+      },
+      "document_covered_v113": 16,
+      "scores": {
+        "reference": {
+          "mae_pp": 6.90000788315144,
+          "centered_mae_pp": 5.060144159295041,
+          "national_mae_pp": 3.590652585019498,
+          "canton_mae_pp": 5.339986527938446
+        },
+        "v113_institution": {
+          "mae_pp": 6.666745206586818,
+          "centered_mae_pp": 4.9354273504265365,
+          "national_mae_pp": 3.6452435378663526,
+          "canton_mae_pp": 5.209470540508912
+        },
+        "institution_replay": {
+          "mae_pp": 6.666745206586818,
+          "centered_mae_pp": 4.935427350426536,
+          "national_mae_pp": 3.645243537866351,
+          "canton_mae_pp": 5.209470540508912
+        },
+        "scaled_squared": {
+          "mae_pp": 6.665372425705144,
+          "centered_mae_pp": 4.936673530972407,
+          "national_mae_pp": 3.6380275316559976,
+          "canton_mae_pp": 5.20761168880735
+        },
+        "scaled_huber": {
+          "mae_pp": 6.805407795002624,
+          "centered_mae_pp": 4.965448042928358,
+          "national_mae_pp": 3.8388019609095245,
+          "canton_mae_pp": 5.382282423980171
+        }
+      },
+      "gain_vs_v81": 0.23463545744629677,
+      "global_mae_contribution": 1.918819334672693,
+      "signed_excess_contribution_vs_4": 0.7673041831575413,
+      "leave_date_mae_range": [
+        6.373190272929821,
+        6.867649361578757
+      ]
+    },
+    "11": {
+      "objects": 1,
+      "dates": 1,
+      "dates_by_fold": {
+        "2021-2022": 1
+      },
+      "document_covered_v113": 1,
+      "scores": {
+        "reference": {
+          "mae_pp": 7.83504343588598,
+          "centered_mae_pp": 3.781773509311987,
+          "national_mae_pp": 8.51201733733079,
+          "canton_mae_pp": 7.870740914321759
+        },
+        "v113_institution": {
+          "mae_pp": 7.6769308663277664,
+          "centered_mae_pp": 4.04869286943678,
+          "national_mae_pp": 8.512017337330988,
+          "canton_mae_pp": 7.6831811196600714
+        },
+        "institution_replay": {
+          "mae_pp": 7.676930866327762,
+          "centered_mae_pp": 4.04869286943678,
+          "national_mae_pp": 8.51201733733098,
+          "canton_mae_pp": 7.683181119660066
+        },
+        "scaled_squared": {
+          "mae_pp": 7.676931826279803,
+          "centered_mae_pp": 4.048697372372447,
+          "national_mae_pp": 8.512017337330711,
+          "canton_mae_pp": 7.683179288215339
+        },
+        "scaled_huber": {
+          "mae_pp": 7.649912339240715,
+          "centered_mae_pp": 3.8272130884175866,
+          "national_mae_pp": 8.512017337330494,
+          "canton_mae_pp": 7.858235921084774
+        }
+      },
+      "gain_vs_v81": 0.15811160960617698,
+      "global_mae_contribution": 0.11631714888302733,
+      "signed_excess_contribution_vs_4": 0.05571108827696672,
+      "leave_date_mae_range": null
+    },
+    "12": {
+      "objects": 3,
+      "dates": 3,
+      "dates_by_fold": {
+        "2016-2018": 1,
+        "2021-2022": 2
+      },
+      "document_covered_v113": 2,
+      "scores": {
+        "reference": {
+          "mae_pp": 4.842638325542706,
+          "centered_mae_pp": 4.484032343813554,
+          "national_mae_pp": 1.8048797466667506,
+          "canton_mae_pp": 3.5127836805119004
+        },
+        "v113_institution": {
+          "mae_pp": 4.810885889737031,
+          "centered_mae_pp": 4.437032729222583,
+          "national_mae_pp": 1.8048797466664859,
+          "canton_mae_pp": 3.6713015014797072
+        },
+        "institution_replay": {
+          "mae_pp": 4.810885889737031,
+          "centered_mae_pp": 4.437032729222584,
+          "national_mae_pp": 1.8048797466664859,
+          "canton_mae_pp": 3.6713015014797086
+        },
+        "scaled_squared": {
+          "mae_pp": 4.810886298178675,
+          "centered_mae_pp": 4.437032801698397,
+          "national_mae_pp": 1.8048797466664823,
+          "canton_mae_pp": 3.6713016462003267
+        },
+        "scaled_huber": {
+          "mae_pp": 4.8098577635404665,
+          "centered_mae_pp": 4.414394447822547,
+          "national_mae_pp": 1.8048797466666062,
+          "canton_mae_pp": 3.64399568578426
+        }
+      },
+      "gain_vs_v81": 0.031752027364031044,
+      "global_mae_contribution": 0.21867664991721247,
+      "signed_excess_contribution_vs_4": 0.036858468099030664,
+      "leave_date_mae_range": [
+        4.501252483941667,
+        5.197870071124278
+      ]
+    }
+  }
+}

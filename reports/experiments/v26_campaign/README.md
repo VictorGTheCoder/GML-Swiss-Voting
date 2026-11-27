@@ -15,3 +15,7 @@ V24.1 rapporte 10,155639 pp pour le code 4 et 10,041271 pp pour le code 5. Le [c
 1. Vérifier V26.1 et CI corrective; mesurer le poids effectif des domaines avant de prioriser la collecte.
 2. V26.2: inventaire des covariables déjà utilisées et des publications originales SECO 2015–2022; contrôler dates, droits, rupture 2018, couvertures, empreintes. Abandonner si redondant ou non certifiable; ne pas rouvrir STRU sans nouvelle preuve.
 3. Si données admises, préspécifier ablation générale avec contrôles de disponibilité et transformations dans les plis d'entraînement seulement; sinon piste indépendante. Aucun test final sans autorisation distincte.
+
+## V26.1 clôturée
+
+[Résultats](V26.1-results.md) et [JSON](V26.1-results.json). 9/66 objets codes 4/5, 28.10 % de l'écart à 4 pp; code 10 plus représenté. CI 3/3. V26.2 reste en cours : [pilote SECO daté](V26.2-seco-pilot.json), un mois en quarantaine, aucune admission. Priorité à la couverture générale, pas de modèle spécialisé sur les erreurs observées.
