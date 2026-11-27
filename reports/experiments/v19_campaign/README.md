@@ -15,3 +15,7 @@ Sources : [catalogue OFS](https://opendata.swiss/en/dataset/historisiertes-gemei
 3. V19.3 : après audit, prioriser une source d'information objet indépendante ou une architecture non répétée, avec ablation préenregistrée, validation chronologique imbriquée, métriques et bootstrap. Pas d'entraînement sur sources en quarantaine. Éviter les recalibrations V18 et les mélanges V16.3.
 
 Aucun résultat V19 ni gain nouveau à ce stade.
+
+## Implémentation V19.1
+
+Le script et son workflow ont été ajoutés. Les deux réponses sont comparées sur un multiensemble des six champs identifiants/date (ordre des lignes ignoré, multiplicité conservée), avec contrôles d'origine, schéma et SHA-256. Les résultats sont uniquement agrégés ; aucune ligne de vote ni donnée candidate exportée. La différence observée sera un diagnostic de couverture des mutations, pas une certification des frontières. Huit assertions synthétiques prévues ; résultat CI et audit réseau à vérifier. Aucun score nouveau.

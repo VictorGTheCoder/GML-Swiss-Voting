@@ -1,6 +1,6 @@
 {
   "version": "V19",
-  "status": "audit_predeclared",
+  "status": "implemented_pending_ci",
   "parent_commit": "0808f2ae98889cc2f0d55433765aeab2296cc979",
   "best_exploratory": 6.955753873756506,
   "population": {
@@ -15,5 +15,7 @@
     "V19.2 historical-key diagnostic",
     "V19.3 independent source or architecture"
   ],
-  "target_rows_admitted": 0
+  "target_rows_admitted": 0,
+  "workflow": ".github/workflows/geography-v191.yml",
+  "audit": "experiments/municipal_v19/audit_mutations.py"
 }
