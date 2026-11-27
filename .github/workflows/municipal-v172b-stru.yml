@@ -1,10 +1,5 @@
 name: V17.2b STRU vintage binary audit
 on:
-  pull_request:
-    paths:
-      - 'experiments/municipal_v17/audit_stru_vintages.mjs'
-      - 'experiments/municipal_v17/stru_vintages.json'
-      - '.github/workflows/municipal-v172b-stru.yml'
   workflow_dispatch:
 permissions:
   contents: read

@@ -29,3 +29,7 @@ Suite de [V16](../v16_campaign/README.md), [V13](../v13_campaign/README.md), [V1
 ## V17.2b — archives historiques
 
 [Audit et protocole](V17.2b-stru-vintages.md) : deux éditions contemporaines OPEN-BY (2016 et 2018), une avec lien binaire explicite. Quatre autres dates de publications nationales confirmées sans cube historique certifié. 8 contrôles synthétiques réussis; acquisition via CI à vérifier. Zéro admission, aucun score. Priorité à la provenance et géographie avant couverture, sinon piste indépendante.
+
+## V17.2b clôturée / V17.2c — disponibilité et géographie
+
+[Résultats et protocole](V17.2b-results-v172c-protocol.md) : 1/2 binaires, 2016 HTTP 404, 2018 SHA vérifié et LAST-UPDATED cohérent avec 28.05.2019. 8/8 contrôles, CI 3/3. Plafond temporel 75768/138868 (54.56 %). Diagnostic des clés et notes géographiques préenregistré ; aucune admission, aucun nouveau score. V17.2c doit mesurer la disponibilité exacte et la couverture brute avant toute harmonisation. Ne pas relancer l'audit 2016 sans preuve nouvelle.

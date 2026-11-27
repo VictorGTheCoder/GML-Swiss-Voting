@@ -1,0 +1,36 @@
+name: V17.2c STRU historical geography and availability
+on:
+  pull_request:
+    paths:
+      - 'experiments/municipal_v17/audit_stru_geography.py'
+      - '.github/workflows/municipal-v172c-stru-geography.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: v172c-stru-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyarrow==19.0.1
+      - run: python experiments/municipal_v17/audit_stru_geography.py --self-test
+      - uses: actions/download-artifact@v4
+        with:
+          name: v113-procedure
+          run-id: 45444093555
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifacts/v113-reference
+      - run: python experiments/municipal_v17/audit_stru_geography.py --reference artifacts/v113-reference --output artifacts/v172c
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v172c-stru-geography
+          path: artifacts/v172c/manifest.json
+          if-no-files-found: error
