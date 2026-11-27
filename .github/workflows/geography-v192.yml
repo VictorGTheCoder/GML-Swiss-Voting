@@ -1,0 +1,36 @@
+name: V19.2 benchmark key mutation exposure
+on:
+  pull_request:
+    paths:
+      - 'experiments/municipal_v19/audit_key_overlap.py'
+      - '.github/workflows/geography-v192.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: v192-geography-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyarrow==19.0.1
+      - run: python experiments/municipal_v19/audit_key_overlap.py --self-test
+      - uses: actions/download-artifact@v4
+        with:
+          name: v113-procedure
+          run-id: 45444093555
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifacts/v113-reference
+      - run: python experiments/municipal_v19/audit_key_overlap.py --reference artifacts/v113-reference --output artifacts/v192/manifest.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v192-geography
+          path: artifacts/v192/manifest.json
+          if-no-files-found: error

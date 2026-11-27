@@ -1,6 +1,6 @@
 {
   "version": "V19",
-  "status": "implemented_pending_ci",
+  "status": "v192_implemented_pending_ci",
   "parent_commit": "0808f2ae98889cc2f0d55433765aeab2296cc979",
   "best_exploratory": 6.955753873756506,
   "population": {
@@ -8,14 +8,44 @@
     "dates": 23,
     "rows": 138868
   },
-  "active": "V19.1",
-  "completed": [],
+  "active": "V19.2",
+  "completed": [
+    {
+      "version": "V19.1",
+      "run": 45962942193,
+      "job": 140384798715,
+      "artifact": 15181174769,
+      "artifact_digest": "sha256:427deb0000c81be1e7b8b402be197a0d25792b2727723a01bdcea7fe96febde9",
+      "head": "aec5b6b25d0349cb25b8f03217c9738d171b206b",
+      "conclusion": "success",
+      "targeted_checks": 8,
+      "repository_ci": {
+        "run": 45962942094,
+        "successful_jobs": 3
+      },
+      "source_sha256": {
+        "without": "5b71b290e70937ff254c2c7753f920884aeaf10192870c038e82efdeefc463d5",
+        "with": "73111625aa5a799bcf638435c4b1fd372d66fc430beb44d4fbcb81f727b5db03"
+      },
+      "comparison": {
+        "rows_without": 414,
+        "rows_with": 420,
+        "mutation_ids_without": 233,
+        "mutation_ids_with": 233,
+        "added_rows": 6,
+        "missing_rows": 0,
+        "added_mutation_ids": 1,
+        "missing_mutation_ids": 0,
+        "equivalent_projected_multisets": false
+      },
+      "admitted": 0
+    }
+  ],
   "next": [
-    "V19.1 compare official mutation response variants",
-    "V19.2 historical-key diagnostic",
+    "V19.2 quantify numeric key overlap and timing; no historical identity certification",
     "V19.3 independent source or architecture"
   ],
   "target_rows_admitted": 0,
-  "workflow": ".github/workflows/geography-v191.yml",
-  "audit": "experiments/municipal_v19/audit_mutations.py"
+  "workflow": ".github/workflows/geography-v192.yml",
+  "audit": "experiments/municipal_v19/audit_key_overlap.py"
 }

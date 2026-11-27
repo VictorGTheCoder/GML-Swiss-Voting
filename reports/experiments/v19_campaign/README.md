@@ -19,3 +19,7 @@ Aucun résultat V19 ni gain nouveau à ce stade.
 ## Implémentation V19.1
 
 Le script et son workflow ont été ajoutés. Les deux réponses sont comparées sur un multiensemble des six champs identifiants/date (ordre des lignes ignoré, multiplicité conservée), avec contrôles d'origine, schéma et SHA-256. Les résultats sont uniquement agrégés ; aucune ligne de vote ni donnée candidate exportée. La différence observée sera un diagnostic de couverture des mutations, pas une certification des frontières. Huit assertions synthétiques prévues ; résultat CI et audit réseau à vérifier. Aucun score nouveau.
+
+## V19.1 mesurée / V19.2
+
+[Résultats et protocole](V19.1-results-v192-protocol.md) : 414 contre 420 lignes ; six lignes ajoutées, zéro retirée, 233 identifiants distincts dans chaque réponse. CI 3/3. V19.2 implémentée, diagnostic des clés et de la date uniquement, sans admission ni score nouveau. V19.3 ensuite prioritaire.
