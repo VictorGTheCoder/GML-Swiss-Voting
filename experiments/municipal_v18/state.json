@@ -9,13 +9,14 @@
     "rows": 138868
   },
   "next": [
-    "V18.2a vérifier le résultat réseau et l’identité des références imprimées ; aucune admission automatique",
-    "V18.2b si admissible, audit recouvrement texte légal et brochure, extension historique puis ablation appariée",
-    "V18.3 architecture indépendante uniquement après audit de non-redondance",
-    "Reprendre STRU/ElCom uniquement sur preuve nouvelle"
+    "V18.2b vérifier résultats PDF et pagination, sans admission automatique",
+    "V18.2c si preuve suffisante, étendre aux historiques et mesurer recouvrement avant ablation",
+    "V18.3 architecture indépendante après non-redondance si blocage",
+    "STRU/ElCom uniquement sur preuve nouvelle"
   ],
   "completed": [
-    "V18.1"
+    "V18.1",
+    "V18.2a"
   ],
   "evidence": {
     "run": 45926062218,
@@ -78,20 +79,29 @@
   ],
   "adaptive_scale_one_dates": 23,
   "active": {
-    "version": "V18.2a",
-    "status": "metadata_pilot_measured_network_pending",
-    "parent_commit": "f864f67d48e71ebdc4a7d58b33a0e2b4c9b7f849",
-    "summary": {
-      "objects": 12,
-      "dates": 3,
-      "affairs": 11,
-      "prior_publication_year": 9,
-      "exact_publication_date_required": 12,
-      "training_rows_admitted": 0,
+    "version": "V18.2b",
+    "status": "pdf_identity_audit_implemented_pending_ci",
+    "parent_commit": "863893b9546eaa80d6371d45a29d6c50bb63e2c0",
+    "metadata_evidence": {
+      "run": 45937853512,
+      "job": 140305093385,
+      "artifact": 15170759732,
+      "artifact_digest": "sha256:8f6f489d93db014d2ab607788d94c53c97795b5a2331bfd34a539cb6a78b098b",
+      "queries": 12,
+      "errors": 0,
+      "unique_candidates": 8,
+      "ambiguous": 4,
+      "all_matches": 18,
+      "remaining_matches": 14,
+      "unique_after_document_date": 11,
+      "repository_checks": {
+        "run": 45937853372,
+        "passed": 3,
+        "total": 3
+      },
       "targeted_checks": 11
     },
     "training_rows_admitted": 0,
-    "source_rights": "https://fedlex.data.admin.ch/",
-    "workflow": ".github/workflows/fedlex-v182a.yml"
+    "workflow": ".github/workflows/fedlex-v182b.yml"
   }
 }

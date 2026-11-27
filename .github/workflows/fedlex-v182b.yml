@@ -1,0 +1,31 @@
+name: V18.2b Fedlex original PDF identity audit
+on:
+  pull_request:
+    paths:
+      - 'data/external/fedlex_v182/pdf_candidates.json'
+      - 'experiments/municipal_v18/audit_fedlex_pdf.mjs'
+      - '.github/workflows/fedlex-v182b.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: v182b-fedlex-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  pdf-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node experiments/municipal_v18/audit_fedlex_pdf.mjs --self-test
+      - run: command -v pdftotext || (sudo apt-get update && sudo apt-get install -y poppler-utils)
+      - run: node experiments/municipal_v18/audit_fedlex_pdf.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v182b-fedlex-pdf-audit
+          path: artifacts/v182b/manifest.json
+          if-no-files-found: error

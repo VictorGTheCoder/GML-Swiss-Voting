@@ -15,3 +15,7 @@ Suite [V17](../v17_campaign/README.md), [V16](../v16_campaign/README.md), [V10](
 ## V18.2a — Actes juridiques originaux
 
 [Pilote et protocole](V18.2a-fedlex-protocol.md) : 12 références distinctes/3 dates, 11 affaires, 9 années de publication antérieures, 11 contrôles exécutés, zéro admission. Fedlex réutilisation explicitement annoncée ; identité exacte, dates et recouvrement à vérifier. CI parent 3/3. Priorité audit réseau puis V18.3 si bloqué. Aucun nouveau score.
+
+## V18.2a mesurée et V18.2b
+
+[Résultats et protocole](V18.2a-results-v182b-protocol.md) : 12/12 requêtes, 8 uniques/4 ambiguës ; contrôle des dates exactes parlementaires : 11 uniques/1 ambiguë, 14 candidats restants. Audit PDF implémenté, CI à vérifier, zéro admission. V18.3 ensuite si blocage. Aucun score nouveau.

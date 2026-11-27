@@ -57,3 +57,5 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 [V17](../v17_campaign/README.md) : sources ElCom et STRU suspendues, aucune admission. [V18](../v18_campaign/README.md) : calibration d'amplitude mesurée sans gain ; meilleur exploratoire V11.3 6,9558 pp inchangé. Aucun test final.
 
 [V18.2a](../v18_campaign/V18.2a-fedlex-protocol.md) : pilote des textes légaux originaux, 12 références/3 dates, 11 contrôles, aucun score ni admission. V11.3 reste meilleur exploratoire.
+
+[V18.2a résultats et V18.2b](../v18_campaign/V18.2a-results-v182b-protocol.md) : acquisition de métadonnées 12/12, vérification PDF en attente. Aucun score nouveau, aucun test final.
