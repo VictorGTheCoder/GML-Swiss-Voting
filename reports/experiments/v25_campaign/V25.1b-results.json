@@ -1,0 +1,41 @@
+{
+  "version": "V25.1b",
+  "status": "descriptive_only",
+  "run": 46074381004,
+  "job": 140758561669,
+  "artifact": 15233508966,
+  "artifact_digest": "sha256:2d73d4a6da66ba585d2df4004eafeb262998dbc96800a20023d2d87559716ac7",
+  "source_artifact": 15228766542,
+  "source_digest_verified_by_actions": "sha256:93b6c94bbb7605e9a1f431540a04d4cfa0644a020831915aab8e93cb152002d7",
+  "objects": 66,
+  "dates": 23,
+  "tests_passed": 2,
+  "leave_one_date": {
+    "cases": 23,
+    "positive": 23,
+    "min_gain": 0.0012606945271604886,
+    "max_gain": 0.006549958676747458
+  },
+  "leave_three_consecutive_dates": {
+    "cases": 21,
+    "positive": 21,
+    "min_gain": 0.0008669089059578639,
+    "max_gain": 0.00639130026083734
+  },
+  "bootstrap_gain_scaled_vs_v113": [
+    -0.0010042497243895265,
+    0.016317836290037004
+  ],
+  "bootstrap_gain_huber_vs_scaled": [
+    -0.21279175585601254,
+    0.060945996589950584
+  ],
+  "general_ci": {
+    "run": 46074380926,
+    "success": 1,
+    "total": 3,
+    "failure": "I001 import order in tests/test_stability_v251.py; corrected in follow-up"
+  },
+  "evidence": "Verified job logs and artifact metadata; ZIP contents not independently downloaded",
+  "best_exploratory": 6.950427808889042
+}

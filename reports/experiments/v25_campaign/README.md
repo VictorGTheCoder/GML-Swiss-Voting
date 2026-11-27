@@ -23,3 +23,7 @@ Sur les métriques objet du même artefact (66 objets/23 dates), vérifier ident
 1. V25.1b : vérifier le run et consigner les contrastes directs, y compris négatifs; étendre à d'autres familles uniquement si les clés d'objet et provenance sont compatibles.
 2. V26 : rechercher un apport ex ante indépendant pour les domaines codés 4/5 (>10 pp); ne pas rouvrir les sources suspendues sans preuve nouvelle. Prioriser certification ou historique élargi avec harmonisation, plutôt que petits réglages.
 3. Validation finale uniquement après gel et autorisation distincte. Pas de promotion sur les dates réutilisées.
+
+## V25.1b — Clôture mesurée (27 novembre 2026)
+
+[Run](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46074381004) et [artefact](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46074381004/artifacts/15233508966), [résultats exacts](V25.1b-results.json) repris des logs. Tests 2/2, téléchargement source avec digest vérifié par Actions. Gain de standardisation positif dans 23/23 exclusions d'une date (0,001261 à 0,006550 pp) et 21/21 exclusions de trois dates consécutives (0,000867 à 0,006391 pp). Bootstrap date 10000 : gain standardisation [-0,001004 ; 0,016318], gain Huber vs standardisée [-0,212792 ; 0,060946]. Les deux intervalles incluent zéro; aucun nouveau fit, pas de validation indépendante ni correction pour sélection multiple. V25 clôturée. CI générale 1/3 (I001 dans le test, corrigé, nouvelle CI à vérifier); workflow audit manuel pour éviter répétition. [V26](../v26_campaign/README.md) ouverte.

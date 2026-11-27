@@ -1,10 +1,11 @@
 {
   "version": "V25",
   "parent_commit": "64f0f3584b669f92d2e9f0927b6d1fd8891723b4",
-  "status": "in_progress",
-  "active": "V25.1b",
+  "status": "completed_descriptive_no_promotion",
+  "active": null,
   "completed": [
-    "V25.1a"
+    "V25.1a",
+    "V25.1b"
   ],
   "population": {
     "objects": 66,
@@ -15,10 +16,11 @@
   "best_exploratory_variant": "V24.1 scaled_squared",
   "admitted": 0,
   "results": [
-    "reports/experiments/v25_campaign/V25.1a-results.json"
+    "reports/experiments/v25_campaign/V25.1a-results.json",
+    "reports/experiments/v25_campaign/V25.1b-results.json"
   ],
   "next": [
-    "V25.1b verify date audit",
-    "V26 independent ex ante sources for domains 4/5"
+    "V26.1 domain support audit",
+    "V26.2 SECO as-of source feasibility"
   ]
 }

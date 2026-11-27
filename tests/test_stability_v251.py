@@ -1,6 +1,6 @@
-from scripts.modeling.stability_v251 import METRICS, NAMES, bootstrap, compare, read_panel
-
 import pytest
+
+from scripts.modeling.stability_v251 import METRICS, NAMES, bootstrap, compare, read_panel
 
 
 def test_macro_objects_not_equal_dates():

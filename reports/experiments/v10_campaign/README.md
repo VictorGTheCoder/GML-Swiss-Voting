@@ -111,3 +111,5 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 - [V25](../v25_campaign/README.md)
 
 Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans nouveau modèle, V25.1b en attente. Aucun test final.
+
+[V25.1b clôturée](../v25_campaign/V25.1b-results.json) : stabilité descriptive positive sur 44/44 retraits, IC incluant zéro; [V26](../v26_campaign/README.md) audit de support thématique et source SECO candidate. Meilleur exploratoire inchangé, aucun test final.

@@ -1,0 +1,19 @@
+{
+  "version": "V26",
+  "parent_commit": "9bfd44bcc28ce00f4a1805edbbee12a07142ae43",
+  "status": "in_progress",
+  "active": "V26.1",
+  "completed": [],
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "best_exploratory": 6.950427808889042,
+  "admitted": 0,
+  "next": [
+    "V26.1 verify domain support",
+    "V26.2 verify SECO source novelty and historical publications",
+    "matched ablation only if admitted"
+  ]
+}

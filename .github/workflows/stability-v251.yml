@@ -1,11 +1,6 @@
 name: V25.1 stability audit
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - '.github/workflows/stability-v251.yml'
-      - 'scripts/modeling/stability_v251.py'
-      - 'tests/test_stability_v251.py'
 permissions:
   contents: read
   actions: read

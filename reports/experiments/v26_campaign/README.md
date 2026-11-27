@@ -1,0 +1,17 @@
+# V26 — Support thématique et contexte économique daté
+
+Suite [V25](../v25_campaign/README.md) et [V10](../v10_campaign/README.md). V8.1 gelée 7,229527497606818 pp; V9 7,131910681945383; V24.1 scaled_squared 6,950427808889042 pp (minimum descriptif). 66 objets, 23 dates, 138868 lignes 2016–2022; aucune promotion ni test final.
+
+## V26.1 — Audit de support préspécifié
+
+V24.1 rapporte 10,155639 pp pour le code 4 et 10,041271 pp pour le code 5. Le [codebook Swissvotes 2025](https://swissvotes.ch/page/dataset/codebook-de.pdf), pages 6–7 vérifiées visuellement, identifie 4 = économie, 5 = agriculture (CC BY 4.0; [source](https://swissvotes.ch/page/dataset)). Vérifier encore la correspondance exacte object_domain_1/d1e1 avant interprétation définitive. Les codes de domaine et les scores ne sont pas utilisés comme nouvelles variables. Hypothèse diagnostique : la moyenne élevée peut venir d'un petit nombre de dates ou d'une couverture documentaire insuffisante. Sur les seules métriques agrégées historiques V24.1, mesurer pour tous les domaines les effectifs objets/dates, nombre de dates par pli, les quatre métriques, couverture documentaire de V11.3, gain vs V8.1, contribution additive au MAE global et part de l'excès signé par rapport à 4 pp. Contrôler clés et scores avec read_panel V25.1; refuser discordances de domaine/pli, aucun résultat 2023+. Rapporter les retraits d'une date par domaine sans réentraînement, pas de sélection de modèle. Aucun ciblage ni nouvelle donnée admise. Workflow et tests configurés, résultat à vérifier.
+
+## V26.2 — Piste indépendante SECO (audit de faisabilité)
+
+[Statistiques du marché du travail](https://www.seco.admin.ch/fr/statistiques-marche-travail) : séries par région et secteur. Le [communiqué du 7 juin 2018](https://www.admin.ch/fr/nsb?id=71024) atteste explicitement une rupture de comptabilisation en mars 2018; il faut conserver les versions publiées et éviter d'interpréter les variations autour de cette rupture comme un changement économique pur. Deux documents candidats de mars et août 2018: https://www.newsd.admin.ch/newsd/message/attachments/51887.pdf et https://www.newsd.admin.ch/newsd/message/attachments/53580.pdf. Ils restent en quarantaine, contenu binaire/édition originale/droits à vérifier. Hypothèse: une mesure mensuelle agrégée du contexte économique, distincte des caractéristiques structurelles statiques, peut apporter de l'information; nouveauté par rapport aux données du dépôt à vérifier avant acquisition complète. Aucun résultat électoral, aucune donnée individuelle, aucune valeur ajoutée au modèle. Prioriser les séries stables et les publications strictement antérieures, pas des données révisées rétrospectivement. Comparaison éventuelle sur l'ensemble apparié, jamais seulement sur les domaines choisis après observation des erreurs.
+
+## Backlog
+
+1. Vérifier V26.1 et CI corrective; mesurer le poids effectif des domaines avant de prioriser la collecte.
+2. V26.2: inventaire des covariables déjà utilisées et des publications originales SECO 2015–2022; contrôler dates, droits, rupture 2018, couvertures, empreintes. Abandonner si redondant ou non certifiable; ne pas rouvrir STRU sans nouvelle preuve.
+3. Si données admises, préspécifier ablation générale avec contrôles de disponibilité et transformations dans les plis d'entraînement seulement; sinon piste indépendante. Aucun test final sans autorisation distincte.
