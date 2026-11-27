@@ -1,7 +1,7 @@
 {
   "version": "V21",
-  "active": "V21.1",
-  "status": "implemented_unverified",
+  "active": null,
+  "status": "completed_no_gain",
   "parent_commit": "8003b9d7890d48d0f21be76fb050a8879b869436",
   "best_exploratory": 6.955753873756506,
   "population": {
@@ -14,11 +14,117 @@
     "session_count",
     "session_peers"
   ],
-  "completed": [],
-  "runs": [],
+  "completed": [
+    "V21.1"
+  ],
+  "runs": [
+    {
+      "run": 46021140943,
+      "artifact": 15207788688,
+      "artifact_digest": "sha256:619a9b194c17a6071bf45c9aa5a6296127948a06999bda19a997594e8b6a7347",
+      "sha": "3d1461f74129f33fbc56ed233e4e68490f551320",
+      "conclusion": "success",
+      "tests": "4/4",
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "peer_objects": 63,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "vs_v113_interval": [
+            -0.6800955676185603,
+            0.043876748289161265
+          ]
+        },
+        {
+          "variant": "v113_institution",
+          "objects": 66,
+          "covered_objects": 59,
+          "mae_pp": 6.955753873756506,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.7811714402970824,
+          "canton_mae_pp": 5.500338667087431,
+          "peer_objects": 63,
+          "gain_interval": [
+            -0.04387674828916126,
+            0.6800955676185607
+          ],
+          "vs_v113_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "institution_replay",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 6.955753873756503,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.78117144029708,
+          "canton_mae_pp": 5.500338667087431,
+          "peer_objects": 63,
+          "gain_interval": [
+            -0.04387674828916063,
+            0.680095567618561
+          ],
+          "vs_v113_interval": [
+            -1.9339368816051114e-16,
+            1.186290527805233e-15
+          ]
+        },
+        {
+          "variant": "session_count",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 6.961935056469609,
+          "centered_mae_pp": 5.300863875294359,
+          "national_mae_pp": 3.787586693775176,
+          "canton_mae_pp": 5.503774483240357,
+          "peer_objects": 63,
+          "gain_interval": [
+            -0.058256152840156866,
+            0.6821304221044615
+          ],
+          "vs_v113_interval": [
+            -0.032685746237916875,
+            0.021458684308260347
+          ]
+        },
+        {
+          "variant": "session_peers",
+          "objects": 66,
+          "covered_objects": 66,
+          "mae_pp": 7.2060289939887925,
+          "centered_mae_pp": 5.3230789952491495,
+          "national_mae_pp": 3.9286083631059925,
+          "canton_mae_pp": 5.710702553525929,
+          "peer_objects": 63,
+          "gain_interval": [
+            -0.3037462773478353,
+            0.42562856160895673
+          ],
+          "vs_v113_interval": [
+            -0.5906595849516902,
+            0.011450889126353277
+          ]
+        }
+      ],
+      "ci": {
+        "run": 46021155122,
+        "conclusion": "failure",
+        "reason": "I001 and F401, corrected without numerical changes"
+      }
+    }
+  ],
   "next": [
-    "verify CI and matched benchmark",
-    "compare peer context against count and exact replay",
-    "new provenance-certified independent source"
+    "V22.1 lexical supervised compression; no further session context tuning"
   ]
 }

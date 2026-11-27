@@ -1,13 +1,6 @@
 name: V21.1 ballot session context
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - experiment/municipal-v13-aps-source-20261125
-    paths:
-      - scripts/modeling/session_v211.py
-      - tests/test_session_v211.py
-      - .github/workflows/session-v211.yml
 permissions:
   contents: read
   actions: read

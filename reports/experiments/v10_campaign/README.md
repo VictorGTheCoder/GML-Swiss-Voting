@@ -79,3 +79,5 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 [V20.1 résultats](../v20_campaign/V20.1-results.md) : aucun gain des trois intercepts historiques, CI 3/3 ; [V20.2](../v20_campaign/V20.2-protocol.md) transfert contextuel préspécifié, score à vérifier. V11.3 6,9558 pp inchangée.
 
 [V20.2 résultats](../v20_campaign/V20.2-results.md) : aucun gain, 6,9816 pp ; clôture des résidus. [V21](../v21_campaign/README.md) contexte de session préspécifié, meilleur exploratoire inchangé.
+
+[V21.1 résultats](../v21_campaign/V21.1-results.md) : aucun gain de contexte ; [V22](../v22_campaign/README.md) compression supervisée préspécifiée. Meilleur V11.3 inchangé.

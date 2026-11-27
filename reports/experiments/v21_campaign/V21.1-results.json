@@ -1,0 +1,205 @@
+{
+  "scores": [
+    {
+      "variant": "reference",
+      "objects": 66,
+      "covered_objects": 59,
+      "mae_pp": 7.229527497606816,
+      "centered_mae_pp": 5.370058554693702,
+      "national_mae_pp": 3.775669209992063,
+      "canton_mae_pp": 5.703708259264074,
+      "peer_objects": 63,
+      "gain_interval": [
+        0,
+        0
+      ],
+      "vs_v113_interval": [
+        -0.6800955676185603,
+        0.043876748289161265
+      ]
+    },
+    {
+      "variant": "v113_institution",
+      "objects": 66,
+      "covered_objects": 59,
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "peer_objects": 63,
+      "gain_interval": [
+        -0.04387674828916126,
+        0.6800955676185607
+      ],
+      "vs_v113_interval": [
+        0,
+        0
+      ]
+    },
+    {
+      "variant": "institution_replay",
+      "objects": 66,
+      "covered_objects": 66,
+      "mae_pp": 6.955753873756503,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.78117144029708,
+      "canton_mae_pp": 5.500338667087431,
+      "peer_objects": 63,
+      "gain_interval": [
+        -0.04387674828916063,
+        0.680095567618561
+      ],
+      "vs_v113_interval": [
+        -1.9339368816051114e-16,
+        1.186290527805233e-15
+      ]
+    },
+    {
+      "variant": "session_count",
+      "objects": 66,
+      "covered_objects": 66,
+      "mae_pp": 6.961935056469609,
+      "centered_mae_pp": 5.300863875294359,
+      "national_mae_pp": 3.787586693775176,
+      "canton_mae_pp": 5.503774483240357,
+      "peer_objects": 63,
+      "gain_interval": [
+        -0.058256152840156866,
+        0.6821304221044615
+      ],
+      "vs_v113_interval": [
+        -0.032685746237916875,
+        0.021458684308260347
+      ]
+    },
+    {
+      "variant": "session_peers",
+      "objects": 66,
+      "covered_objects": 66,
+      "mae_pp": 7.2060289939887925,
+      "centered_mae_pp": 5.3230789952491495,
+      "national_mae_pp": 3.9286083631059925,
+      "canton_mae_pp": 5.710702553525929,
+      "peer_objects": 63,
+      "gain_interval": [
+        -0.3037462773478353,
+        0.42562856160895673
+      ],
+      "vs_v113_interval": [
+        -0.5906595849516902,
+        0.011450889126353277
+      ]
+    }
+  ],
+  "folds": {
+    "2016-2018": {
+      "institution_replay": 7.5730560157,
+      "reference": 8.152475601,
+      "session_count": 7.5727212228,
+      "session_peers": 8.1177496519,
+      "v113_institution": 7.5730560157
+    },
+    "2019-2020": {
+      "institution_replay": 6.9750709305,
+      "reference": 7.1500595705,
+      "session_count": 7.0135366182,
+      "session_peers": 6.925431154,
+      "v113_institution": 6.9750709305
+    },
+    "2021-2022": {
+      "institution_replay": 6.174467668,
+      "reference": 6.1155763319,
+      "session_count": 6.1726515677,
+      "session_peers": 6.2066770917,
+      "v113_institution": 6.174467668
+    }
+  },
+  "domains": {
+    "1": {
+      "institution_replay": 6.7836818411,
+      "reference": 6.4792925574,
+      "session_count": 6.8086338238,
+      "session_peers": 7.6915187029,
+      "v113_institution": 6.7836818411
+    },
+    "2": {
+      "institution_replay": 5.802332172,
+      "reference": 5.8630062992,
+      "session_count": 5.8374293702,
+      "session_peers": 6.1448511319,
+      "v113_institution": 5.802332172
+    },
+    "3": {
+      "institution_replay": 6.9152445706,
+      "reference": 7.1680352648,
+      "session_count": 7.0027300708,
+      "session_peers": 6.9950018211,
+      "v113_institution": 6.9152445706
+    },
+    "4": {
+      "institution_replay": 10.1520500803,
+      "reference": 12.6797406891,
+      "session_count": 10.0734258195,
+      "session_peers": 12.2196725097,
+      "v113_institution": 10.1520500803
+    },
+    "5": {
+      "institution_replay": 10.0416046951,
+      "reference": 10.1693907323,
+      "session_count": 10.0477109744,
+      "session_peers": 9.9832198565,
+      "v113_institution": 10.0416046951
+    },
+    "6": {
+      "institution_replay": 6.9801270745,
+      "reference": 7.7105377573,
+      "session_count": 7.0096245726,
+      "session_peers": 6.9793990226,
+      "v113_institution": 6.9801270745
+    },
+    "7": {
+      "institution_replay": 6.8863623743,
+      "reference": 6.5839010403,
+      "session_count": 6.8449180193,
+      "session_peers": 6.5874283556,
+      "v113_institution": 6.8863623743
+    },
+    "8": {
+      "institution_replay": 6.1048269459,
+      "reference": 6.2725889719,
+      "session_count": 6.0300391421,
+      "session_peers": 5.7398854808,
+      "v113_institution": 6.1048269459
+    },
+    "9": {
+      "institution_replay": 5.6255283968,
+      "reference": 5.6367797301,
+      "session_count": 5.6535128223,
+      "session_peers": 5.3904305289,
+      "v113_institution": 5.6255283968
+    },
+    "10": {
+      "institution_replay": 6.6667452066,
+      "reference": 6.9000078832,
+      "session_count": 6.6572089883,
+      "session_peers": 7.0631738788,
+      "v113_institution": 6.6667452066
+    },
+    "11": {
+      "institution_replay": 7.6769308663,
+      "reference": 7.8350434359,
+      "session_count": 7.702217344,
+      "session_peers": 7.7284028403,
+      "v113_institution": 7.6769308663
+    },
+    "12": {
+      "institution_replay": 4.8108858897,
+      "reference": 4.8426383255,
+      "session_count": 4.8619200675,
+      "session_peers": 4.8265117442,
+      "v113_institution": 4.8108858897
+    }
+  },
+  "run": 46021140943,
+  "artifact": 15207788688
+}

@@ -15,3 +15,7 @@ Hypothèse falsifiable : contexte améliore le contrôle institutionnel et le si
 1. Mesurer V21.1, comparer compte et pairs au replay ; ne pas ajuster si échec.
 2. Rechercher une source ex ante indépendante avec preuve de disponibilité et droits ; ne pas répéter les acquisitions en quarantaine sans nouvelle preuve.
 3. Si les sources restent bloquées, privilégier une hypothèse de représentation indépendante, puis robustesse chronologique avant toute demande d'évaluation finale distincte.
+
+## V21.1 — clôture
+
+[Résultats](V21.1-results.md) : 6,9619 pp (comptage), 7,2060 pp (pairs), replay exact 6,9558. 4 tests ciblés, CI générale lint corrigé. Aucun gain. [V22](../v22_campaign/README.md) ouverte.

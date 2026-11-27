@@ -1,0 +1,24 @@
+{
+  "version": "V22",
+  "active": "V22.1",
+  "status": "implemented_unverified",
+  "parent_commit": "3d1461f74129f33fbc56ed233e4e68490f551320",
+  "best_exploratory": 6.955753873756506,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "variants": [
+    "institution_replay",
+    "svd6",
+    "cross_cov6"
+  ],
+  "completed": [],
+  "runs": [],
+  "next": [
+    "verify CI and benchmark",
+    "compare matched ablation",
+    "independent source with certified provenance"
+  ]
+}
