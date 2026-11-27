@@ -1,6 +1,6 @@
 {
   "version": "V19",
-  "status": "v192_implemented_pending_ci",
+  "status": "v192_completed_v193a_pilot_metadata",
   "parent_commit": "0808f2ae98889cc2f0d55433765aeab2296cc979",
   "best_exploratory": 6.955753873756506,
   "population": {
@@ -8,7 +8,7 @@
     "dates": 23,
     "rows": 138868
   },
-  "active": "V19.2",
+  "active": "V19.3a",
   "completed": [
     {
       "version": "V19.1",
@@ -39,13 +39,68 @@
         "equivalent_projected_multisets": false
       },
       "admitted": 0
+    },
+    {
+      "version": "V19.2",
+      "head": "1d4d1958af1ec58daf1c0fe976d8f8aa90699e0a",
+      "run": 45970464102,
+      "job": 140409349600,
+      "artifact": 15184139096,
+      "artifact_digest": "sha256:f4a6de8ec2530be81366a5214531f25f503d6b6f0b4542db987ce8c1b0b35b5b",
+      "conclusion": "success",
+      "targeted_checks": 12,
+      "repository_ci": {
+        "run": 45970463994,
+        "successful_jobs": 3
+      },
+      "totals": {
+        "rows": 138868,
+        "without_exchange_any": 12870,
+        "without_exchange_before_or_same": 9170,
+        "without_exchange_after": 4001,
+        "with_exchange_any": 12870,
+        "with_exchange_before_or_same": 9170,
+        "with_exchange_after": 4001,
+        "added_records_any": 198,
+        "added_records_before_or_same": 78,
+        "added_records_after": 120
+      },
+      "reference_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+      "admitted": 0
     }
   ],
   "next": [
-    "V19.2 quantify numeric key overlap and timing; no historical identity certification",
-    "V19.3 independent source or architecture"
+    "V19.3a verify coverage of historical parliamentary deliberation documents and first publication; only object-level aggregate chronology, no person data; stop if inadequate",
+    "V19.3b matched ablation of procedure detail vs V11.3 delays; only admitted sources, rolling-origin train-only selection, same population and four metrics",
+    "Independent architecture if source blocked; no more amplitude or repeated geography audits"
   ],
   "target_rows_admitted": 0,
   "workflow": ".github/workflows/geography-v192.yml",
-  "audit": "experiments/municipal_v19/audit_key_overlap.py"
+  "audit": "experiments/municipal_v19/audit_key_overlap.py",
+  "pilot_v193a": {
+    "version": "V19.3a",
+    "status": "pilot_metadata_only",
+    "projects": [
+      {
+        "project": 1,
+        "act": "FF 2017 2217",
+        "council_days": 14,
+        "calendar_days": 12,
+        "cn_days": 7,
+        "ce_days": 7
+      },
+      {
+        "project": 2,
+        "act": "FF 2017 2205",
+        "council_days": 12,
+        "calendar_days": 10,
+        "cn_days": 5,
+        "ce_days": 7
+      }
+    ],
+    "source_families": 1,
+    "vote_dates": 1,
+    "target_rows_admitted": 0,
+    "targeted_checks": 8
+  }
 }

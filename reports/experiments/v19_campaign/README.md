@@ -23,3 +23,7 @@ Le script et son workflow ont été ajoutés. Les deux réponses sont comparées
 ## V19.1 mesurée / V19.2
 
 [Résultats et protocole](V19.1-results-v192-protocol.md) : 414 contre 420 lignes ; six lignes ajoutées, zéro retirée, 233 identifiants distincts dans chaque réponse. CI 3/3. V19.2 implémentée, diagnostic des clés et de la date uniquement, sans admission ni score nouveau. V19.3 ensuite prioritaire.
+
+## V19.2 clôturée / V19.3a
+
+[Résultats](V19.2-results.md) : 12870/138868 lignes en recouvrement numérique (9,27 %), aucune différence des totaux avec échanges, 198 lignes recouvrent les six enregistrements supplémentaires. 12/12 assertions, CI 3/3. [V19.3a](V19.3a-deliberations-pilot.md) : 2 projets liés, 1 date, 8 contrôles, zéro admission ; vérifier couverture et provenance avant ablation. Aucun score nouveau.

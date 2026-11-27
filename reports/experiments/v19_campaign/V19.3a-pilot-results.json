@@ -1,0 +1,26 @@
+{
+  "version": "V19.3a",
+  "status": "pilot_metadata_only",
+  "projects": [
+    {
+      "project": 1,
+      "act": "FF 2017 2217",
+      "council_days": 14,
+      "calendar_days": 12,
+      "cn_days": 7,
+      "ce_days": 7
+    },
+    {
+      "project": 2,
+      "act": "FF 2017 2205",
+      "council_days": 12,
+      "calendar_days": 10,
+      "cn_days": 5,
+      "ce_days": 7
+    }
+  ],
+  "source_families": 1,
+  "vote_dates": 1,
+  "target_rows_admitted": 0,
+  "targeted_checks": 8
+}
