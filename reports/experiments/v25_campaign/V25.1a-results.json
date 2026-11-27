@@ -1,0 +1,52 @@
+{
+  "version": "V25.1a",
+  "status": "completed_descriptive",
+  "source_sha": "64f0f3584b669f92d2e9f0927b6d1fd8891723b4",
+  "source": "reports/experiments/v24_campaign/V24.1-results.json",
+  "source_run": 46060624437,
+  "source_artifact": 15228766542,
+  "source_artifact_digest": "sha256:93b6c94bbb7605e9a1f431540a04d4cfa0644a020831915aab8e93cb152002d7",
+  "fold_counts": [
+    30,
+    12,
+    24
+  ],
+  "rows": [
+    {
+      "excluded": "2016-2018",
+      "objects": 36,
+      "scores": {
+        "reference": 6.4604040781,
+        "v113_institution": 6.441335422166667,
+        "scaled_squared": 6.432616775333333,
+        "scaled_huber": 6.508028397866667
+      }
+    },
+    {
+      "excluded": "2019-2020",
+      "objects": 54,
+      "scores": {
+        "reference": 7.247187036955556,
+        "v113_institution": 6.9514611945,
+        "scaled_squared": 6.950763975188888,
+        "scaled_huber": 6.9619175464888885
+      }
+    },
+    {
+      "excluded": "2021-2022",
+      "objects": 42,
+      "scores": {
+        "reference": 7.8660710208571425,
+        "v113_institution": 7.402203134214285,
+        "scaled_squared": 7.393833623757143,
+        "scaled_huber": 7.5088859555428575
+      }
+    }
+  ],
+  "decision": "scaled_squared reste minimum parmi ces quatre variantes après retrait de chacun des trois plis; gain minime, non indépendant",
+  "ci_parent": {
+    "run": 46067169689,
+    "conclusion": "success",
+    "jobs": 3
+  }
+}

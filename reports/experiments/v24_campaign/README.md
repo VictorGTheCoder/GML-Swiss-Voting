@@ -19,3 +19,7 @@ Tests implémentés: dimensions/valeurs finies, invariance aux autres requêtes,
 ## V24.1 — Clôture mesurée
 
 [Résultats](V24.1-results.md) : quadratique standardisée 6,950427808889042 pp (nouveau minimum descriptif non robuste), pseudo-Huber 7,012165 pp, 4/4 tests ciblés. CI générale échouée sur dépendance optionnelle; correctif ciblé et couverture explicite du job expérimental. Aucun modèle promu. V25.1 prioritaire : audit de stabilité multi-modèles sur dates réutilisées, comparaison appariée et sensibilité à la suppression de blocs de dates sans nouvelle sélection. Ne pas rouvrir V23 sans preuve nouvelle.
+
+## Suite V25
+
+[Audit de stabilité V25](../v25_campaign/README.md) : retrait des trois fenêtres mesuré, audit par dates configuré. CI corrective 3/3 réussie.

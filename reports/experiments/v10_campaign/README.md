@@ -91,3 +91,23 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 [V24](../v24_campaign/README.md) : perte pseudo-Huber sur têtes standardisées, contrôle quadratique préspécifié. Score en attente, meilleur V11.3 inchangé.
 
 [V24.1 résultats](../v24_campaign/V24.1-results.md) : nouveau minimum descriptif quadratique standardisée 6,950427808889042 pp, gain 0,005326 pp non robuste; pseudo-Huber négative. Aucun modèle promu, aucun test final. V25.1 audit de stabilité priorisé.
+
+## Index des campagnes suivantes
+
+- [V11](../v11_campaign/README.md)
+- [V12](../v12_campaign/README.md)
+- [V13](../v13_campaign/README.md)
+- [V14](../v14_campaign/README.md)
+- [V15](../v15_campaign/README.md)
+- [V16](../v16_campaign/README.md)
+- [V17](../v17_campaign/README.md)
+- [V18](../v18_campaign/README.md)
+- [V19](../v19_campaign/README.md)
+- [V20](../v20_campaign/README.md)
+- [V21](../v21_campaign/README.md)
+- [V22](../v22_campaign/README.md)
+- [V23](../v23_campaign/README.md)
+- [V24](../v24_campaign/README.md)
+- [V25](../v25_campaign/README.md)
+
+Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans nouveau modèle, V25.1b en attente. Aucun test final.
