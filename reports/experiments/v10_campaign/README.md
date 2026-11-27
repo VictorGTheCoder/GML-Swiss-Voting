@@ -51,3 +51,7 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 [V16.2 protocole](../v16_campaign/V16.2-protocol.md) : calibration du risque objet par bloc date, benchmark à vérifier, meilleur prédictif inchangé.
 
 [V16.2 résultats](../v16_campaign/V16.2-results.md) : diagnostic exact de couverture du risque par objet, 12 configurations, 8 tests réussis ; aucun gain prédictif, V16.3 prioritaire.
+
+## Campagnes V17–V18
+
+[V17](../v17_campaign/README.md) : sources ElCom et STRU suspendues, aucune admission. [V18](../v18_campaign/README.md) : calibration d'amplitude mesurée sans gain ; meilleur exploratoire V11.3 6,9558 pp inchangé. Aucun test final.

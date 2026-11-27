@@ -1,9 +1,5 @@
 name: V18.1 chronological amplitude calibration
 on:
-  pull_request:
-    paths:
-      - 'scripts/modeling/amplitude_v181.py'
-      - '.github/workflows/amplitude-v181.yml'
   workflow_dispatch:
 permissions:
   contents: read

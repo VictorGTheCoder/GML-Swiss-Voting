@@ -1,6 +1,6 @@
 {
   "version": "V18.1",
-  "status": "implemented_pending_benchmark",
+  "status": "completed_no_gain",
   "parent_commit": "34746647f85a24f5f77727e7533f91966b01304f",
   "best_exploratory": 6.955753873756506,
   "population": {
@@ -9,8 +9,71 @@
     "rows": 138868
   },
   "next": [
-    "verify V18.1 CI and scores",
-    "V18.2 independent ex-ante source",
-    "V18.3 nonduplicate aggregate contrast hypothesis"
-  ]
+    "V18.2 source ex ante indépendante: inventaire des lacunes et preuve primaire avant acquisition",
+    "V18.3 architecture indépendante seulement après audit de non-redondance; pas de nouvelle grille d'amplitude",
+    "Reprendre STRU/ElCom uniquement sur preuve nouvelle"
+  ],
+  "completed": [
+    "V18.1"
+  ],
+  "evidence": {
+    "run": 45926062218,
+    "job": 140267517689,
+    "artifact": 15165844596,
+    "artifact_digest": "sha256:83d59c9c242eec206e8101ac3a227f22c65dfb16db803d87aed5dccd8a90af48",
+    "source_commit": "e3c0c2d342f6add936449fbe5b87dcd21aa2b92a",
+    "repository_checks": {
+      "run": 45926062160,
+      "passed": 3,
+      "total": 3
+    },
+    "targeted_checks": 5
+  },
+  "results": [
+    {
+      "variant": "reference",
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "gain_interval": [
+        0,
+        0
+      ]
+    },
+    {
+      "variant": "fixed_075",
+      "mae_pp": 7.104609759119641,
+      "centered_mae_pp": 5.41946804172576,
+      "national_mae_pp": 3.781171440297074,
+      "canton_mae_pp": 5.554448294197658,
+      "gain_interval": [
+        -0.285793632229846,
+        -0.011825678682638672
+      ]
+    },
+    {
+      "variant": "fixed_125",
+      "mae_pp": 7.152782681551898,
+      "centered_mae_pp": 5.529074470119572,
+      "national_mae_pp": 3.781171440297085,
+      "canton_mae_pp": 5.744353551461543,
+      "gain_interval": [
+        -0.3657058934235383,
+        -0.029364620867653797
+      ]
+    },
+    {
+      "variant": "adaptive",
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "gain_interval": [
+        0,
+        0
+      ]
+    }
+  ],
+  "adaptive_scale_one_dates": 23
 }

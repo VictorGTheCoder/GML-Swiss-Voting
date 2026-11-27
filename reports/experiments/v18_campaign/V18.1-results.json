@@ -1,0 +1,184 @@
+{
+  "status": "complete",
+  "prediction_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+  "rows": 138868,
+  "objects": 66,
+  "dates": 23,
+  "coverage": 1,
+  "summary": [
+    {
+      "variant": "reference",
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "gain_interval": [
+        0,
+        0
+      ]
+    },
+    {
+      "variant": "fixed_075",
+      "mae_pp": 7.104609759119641,
+      "centered_mae_pp": 5.41946804172576,
+      "national_mae_pp": 3.781171440297074,
+      "canton_mae_pp": 5.554448294197658,
+      "gain_interval": [
+        -0.285793632229846,
+        -0.011825678682638672
+      ]
+    },
+    {
+      "variant": "fixed_125",
+      "mae_pp": 7.152782681551898,
+      "centered_mae_pp": 5.529074470119572,
+      "national_mae_pp": 3.781171440297085,
+      "canton_mae_pp": 5.744353551461543,
+      "gain_interval": [
+        -0.3657058934235383,
+        -0.029364620867653797
+      ]
+    },
+    {
+      "variant": "adaptive",
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "gain_interval": [
+        0,
+        0
+      ]
+    }
+  ],
+  "selection": [
+    {
+      "date": "2016-02-28",
+      "prior_dates": 0,
+      "scale": 1
+    },
+    {
+      "date": "2016-06-05",
+      "prior_dates": 1,
+      "scale": 1
+    },
+    {
+      "date": "2016-09-25",
+      "prior_dates": 2,
+      "scale": 1
+    },
+    {
+      "date": "2016-11-27",
+      "prior_dates": 3,
+      "scale": 1
+    },
+    {
+      "date": "2017-02-12",
+      "prior_dates": 4,
+      "scale": 1
+    },
+    {
+      "date": "2017-05-21",
+      "prior_dates": 5,
+      "scale": 1
+    },
+    {
+      "date": "2017-09-24",
+      "prior_dates": 6,
+      "scale": 1
+    },
+    {
+      "date": "2018-03-04",
+      "prior_dates": 7,
+      "scale": 1
+    },
+    {
+      "date": "2018-06-10",
+      "prior_dates": 8,
+      "scale": 1
+    },
+    {
+      "date": "2018-09-23",
+      "prior_dates": 9,
+      "scale": 1
+    },
+    {
+      "date": "2018-11-25",
+      "prior_dates": 10,
+      "scale": 1
+    },
+    {
+      "date": "2019-02-10",
+      "prior_dates": 11,
+      "scale": 1
+    },
+    {
+      "date": "2019-05-19",
+      "prior_dates": 12,
+      "scale": 1
+    },
+    {
+      "date": "2020-02-09",
+      "prior_dates": 13,
+      "scale": 1
+    },
+    {
+      "date": "2020-09-27",
+      "prior_dates": 14,
+      "scale": 1
+    },
+    {
+      "date": "2020-11-29",
+      "prior_dates": 15,
+      "scale": 1
+    },
+    {
+      "date": "2021-03-07",
+      "prior_dates": 16,
+      "scale": 1
+    },
+    {
+      "date": "2021-06-13",
+      "prior_dates": 17,
+      "scale": 1
+    },
+    {
+      "date": "2021-09-26",
+      "prior_dates": 18,
+      "scale": 1
+    },
+    {
+      "date": "2021-11-28",
+      "prior_dates": 19,
+      "scale": 1
+    },
+    {
+      "date": "2022-02-13",
+      "prior_dates": 20,
+      "scale": 1
+    },
+    {
+      "date": "2022-05-15",
+      "prior_dates": 21,
+      "scale": 1
+    },
+    {
+      "date": "2022-09-25",
+      "prior_dates": 22,
+      "scale": 1
+    }
+  ],
+  "evidence": {
+    "run": 45926062218,
+    "job": 140267517689,
+    "artifact": 15165844596,
+    "artifact_digest": "sha256:83d59c9c242eec206e8101ac3a227f22c65dfb16db803d87aed5dccd8a90af48",
+    "source_commit": "e3c0c2d342f6add936449fbe5b87dcd21aa2b92a",
+    "repository_checks": {
+      "run": 45926062160,
+      "passed": 3,
+      "total": 3
+    },
+    "targeted_checks": 5
+  }
+}

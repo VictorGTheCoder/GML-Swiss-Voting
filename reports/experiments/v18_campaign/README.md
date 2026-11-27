@@ -7,3 +7,7 @@ Suite [V17](../v17_campaign/README.md), [V16](../v16_campaign/README.md), [V10](
 1. V18.1 : [calibration globale d'amplitude](V18.1-protocol.md), protocole et implémentation, résultats à vérifier. Contrôle de niveau national, sélection strictement chronologique. Si négatif ne pas répéter sans nouvelle hypothèse.
 2. V18.2 : rechercher un signal d'objet pré-vote indépendant et vérifiable dans les périodes et thèmes difficiles, priorité à la disponibilité et aux droits avant ablation ; ne pas rouvrir STRU/ElCom sans preuve nouvelle.
 3. V18.3 : tester une architecture indépendante pour contrastes agrégés seulement si non redondante avec V10.4–7/V11.4/V13.5, validation rolling-origin et comparaison appariée. Aucune promotion.
+
+## V18.1 — Clôture mesurée
+
+[Résultats](V18.1-results.md) : contrôle et adaptatif 6,9558 pp, 23/23 échelles égales à 1 ; fixe 0,75 = 7,1046 pp, fixe 1,25 = 7,1528 pp. Cinq contrôles ciblés, CI générale 3/3. Aucun gain. Suspendre les recalibrations globales ; V18.2 puis V18.3 prioritaires. Aucun test final.
