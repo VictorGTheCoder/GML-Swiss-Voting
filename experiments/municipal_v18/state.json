@@ -9,15 +9,16 @@
     "rows": 138868
   },
   "next": [
-    "V18.3 mesurer l'ablation inter/intra-canton et vérifier les tests; arrêter les corrections d'amplitude si aucun gain",
-    "V19 rechercher une source indépendante avec preuve nouvelle ou architecture réellement distincte",
-    "Fedlex/STRU/ElCom suspendues, reprise seulement avec preuve indépendante de provenance et identité"
+    "V19.1 audit indépendant des mutations OFS, incluant échanges de territoire; aucune admission",
+    "V19.2 vérifier les jointures historiques et la stabilité des géographies avant toute nouvelle expérience prédictive",
+    "Sources suspendues: aucune reprise sans preuve indépendante"
   ],
   "completed": [
     "V18.1",
     "V18.2a",
     "V18.2b",
-    "V18.2b-r1"
+    "V18.2b-r1",
+    "V18.3"
   ],
   "evidence": {
     "run": 45926062218,
@@ -79,12 +80,7 @@
     }
   ],
   "adaptive_scale_one_dates": 23,
-  "active": {
-    "version": "V18.3",
-    "status": "implemented_pending_ci_and_benchmark",
-    "parent_commit": "481786083e84466244915a59a4760225c42488e3",
-    "workflow": ".github/workflows/two-scale-v183.yml"
-  },
+  "active": null,
   "fedlex": {
     "status": "suspended_identity_unverified",
     "prior": {
@@ -144,5 +140,272 @@
         "total": 3
       }
     }
+  },
+  "two_scale": {
+    "status": "complete",
+    "prediction_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+    "geography_sha256": "2a5c6f0e953601cc92cd523fa14c67b8ce549f2cbecdbb8ce68ae647e45f9289",
+    "rows": 138868,
+    "objects": 66,
+    "dates": 23,
+    "coverage": 1,
+    "grid": [
+      [
+        1,
+        1
+      ],
+      [
+        1.25,
+        0.75
+      ],
+      [
+        0.75,
+        1.25
+      ]
+    ],
+    "summary": [
+      {
+        "variant": "reference",
+        "mae_pp": 6.955753873756506,
+        "centered_mae_pp": 5.289917065218622,
+        "national_mae_pp": 3.7811714402970824,
+        "canton_mae_pp": 5.500338667087431,
+        "gain_interval": [
+          0,
+          0
+        ]
+      },
+      {
+        "variant": "between_up_within_down",
+        "mae_pp": 7.113022637074057,
+        "centered_mae_pp": 5.483102227307653,
+        "national_mae_pp": 3.7811714402970575,
+        "canton_mae_pp": 5.744521968968289,
+        "gain_interval": [
+          -0.25005703602510676,
+          -0.06591552538528488
+        ]
+      },
+      {
+        "variant": "between_down_within_up",
+        "mae_pp": 7.156143971310594,
+        "centered_mae_pp": 5.517032888251586,
+        "national_mae_pp": 3.78117144029705,
+        "canton_mae_pp": 5.554438750837203,
+        "gain_interval": [
+          -0.2866756834580078,
+          -0.11640151572791102
+        ]
+      },
+      {
+        "variant": "adaptive",
+        "mae_pp": 6.955753873756506,
+        "centered_mae_pp": 5.289917065218622,
+        "national_mae_pp": 3.7811714402970824,
+        "canton_mae_pp": 5.500338667087431,
+        "gain_interval": [
+          0,
+          0
+        ]
+      }
+    ],
+    "selection": [
+      {
+        "date": "2016-02-28",
+        "prior_dates": 0,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2016-06-05",
+        "prior_dates": 1,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2016-09-25",
+        "prior_dates": 2,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2016-11-27",
+        "prior_dates": 3,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2017-02-12",
+        "prior_dates": 4,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2017-05-21",
+        "prior_dates": 5,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2017-09-24",
+        "prior_dates": 6,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2018-03-04",
+        "prior_dates": 7,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2018-06-10",
+        "prior_dates": 8,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2018-09-23",
+        "prior_dates": 9,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2018-11-25",
+        "prior_dates": 10,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2019-02-10",
+        "prior_dates": 11,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2019-05-19",
+        "prior_dates": 12,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2020-02-09",
+        "prior_dates": 13,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2020-09-27",
+        "prior_dates": 14,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2020-11-29",
+        "prior_dates": 15,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2021-03-07",
+        "prior_dates": 16,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2021-06-13",
+        "prior_dates": 17,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2021-09-26",
+        "prior_dates": 18,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2021-11-28",
+        "prior_dates": 19,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2022-02-13",
+        "prior_dates": 20,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2022-05-15",
+        "prior_dates": 21,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2022-09-25",
+        "prior_dates": 22,
+        "scale": [
+          1,
+          1
+        ]
+      }
+    ],
+    "run": 45955320315,
+    "job": 140360354758,
+    "artifact": 15179100156,
+    "artifact_digest": "sha256:fc7cbb171dbac9dff2be7e7950efbb99c904fb485c5aebcc667a1a43439b9147",
+    "source_commit": "0808f2ae98889cc2f0d55433765aeab2296cc979",
+    "repository_checks": {
+      "run": 45955320251,
+      "passed": 3,
+      "total": 3
+    },
+    "self_test": "passed",
+    "decision": "no_gain_suspend_amplitude"
   }
 }

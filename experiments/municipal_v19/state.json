@@ -1,0 +1,19 @@
+{
+  "version": "V19",
+  "status": "audit_predeclared",
+  "parent_commit": "0808f2ae98889cc2f0d55433765aeab2296cc979",
+  "best_exploratory": 6.955753873756506,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "active": "V19.1",
+  "completed": [],
+  "next": [
+    "V19.1 compare official mutation response variants",
+    "V19.2 historical-key diagnostic",
+    "V19.3 independent source or architecture"
+  ],
+  "target_rows_admitted": 0
+}

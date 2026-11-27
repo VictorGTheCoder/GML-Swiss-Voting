@@ -27,3 +27,7 @@ Suite [V17](../v17_campaign/README.md), [V16](../v16_campaign/README.md), [V10](
 ## V18.2b-r1 — Clôture et V18.3
 
 [Résultats](V18.2b-r1-results.md) : 14/14 PDF téléchargés et hachés (5436838 octets), 0 pagination corroborée, zéro admission ; deux self-tests et CI 3/3 réussis. Fedlex suspendue, aucun nouvel essai réseau sans preuve indépendante. [V18.3](V18.3-protocol.md) : ablation des contrastes inter/intra-canton, quatre configurations, code et CI configurés, résultat à vérifier. Aucun nouveau score. V11.3 inchangée.
+
+## V18.3 — clôture mesurée
+
+[Résultats](V18.3-results.md) : contrôle et adaptatif 6,9558 pp, fixes 7,1130 et 7,1561 pp ; 23/23 choix identité. Self-test et CI 3/3 réussis. V18 clôturée, aucune promotion. [V19](../v19_campaign/README.md) : audit indépendant des mutations géographiques.

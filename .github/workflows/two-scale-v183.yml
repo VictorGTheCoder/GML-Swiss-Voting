@@ -1,9 +1,5 @@
 name: V18.3 two-scale contrast ablation
 on:
-  pull_request:
-    paths:
-      - 'scripts/modeling/two_scale_v183.py'
-      - '.github/workflows/two-scale-v183.yml'
   workflow_dispatch:
 permissions:
   contents: read

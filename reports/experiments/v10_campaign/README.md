@@ -65,3 +65,5 @@ Les résultats oracles, les données historiquement non certifiées, les échecs
 ## Suites de recherche
 
 [Index V11](../v11_campaign/README.md), [V18 et backlog courant](../v18_campaign/README.md). Les versions suivantes restent exploratoires et ne changent pas le modèle gelé.
+
+[V18.3 résultats](../v18_campaign/V18.3-results.md) : aucun gain, meilleur exploratoire V11.3 inchangé. [V19](../v19_campaign/README.md) ouverte pour audit des jointures géographiques. Aucun test final.
