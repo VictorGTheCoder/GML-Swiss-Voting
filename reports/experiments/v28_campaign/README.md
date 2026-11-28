@@ -70,3 +70,22 @@ L'audit automatisé V28.3a projette seulement les métadonnées de la population
 ## V28.3b — ablation factorielle implémentée, résultats en attente
 
 Même entraînement des six têtes standardisées V24.1, mêmes fenêtres, poids, texte, institutions et population. Une régression par tête et pli. Quatre bras préspécifiés : replay (national et marges), national seul, marges seules, structure seule (aucun ancrage sondage). Contrôle ligne à ligne du replay contre l'artefact V24.1; échec si écart >2e-6. Les bras sans national ne lisent pas la fusion pour la prédiction; garde contre des features nommées poll/survey dans les têtes. Cette ablation concerne le posttraitement uniquement et ne certifie pas les autres features ni leurs millésimes. Quatre métriques, couverture et bootstrap apparié vs replay, scores par objet/pli/domaine/date/commune/canton. Trois tests synthétiques ajoutés. Aucun résultat d'entraînement revendiqué avant exécution, aucun test final, aucune promotion.
+
+
+## V28.3b — résultats mesurés (28 novembre 2026)
+
+[Run](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46157947150) · [Artefact](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46157947150/artifacts/15268218502) · [Résultats et empreinte](V28.3b-results.json) · [CI générale](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46157947165). Trois tests ciblés réussis; 66 objets / 23 dates / 138 868 lignes (garde de population et replay ligne à ligne passée). Entraînements par pli : 240/270/282 objets, évaluations 30/12/24. La CI générale échoue uniquement au tri des imports I001 sur Linux et Windows, job municipal réussi; correction de tri sans changement algorithmique. Workflow passé en manuel pour ne pas répéter le calcul.
+
+| Bras | Objets ancrés | MAE commune | MAE centrée | MAE nationale | MAE canton | IC gain vs replay (pp) |
+|---|---:|---:|---:|---:|---:|---|
+| reference | 48/66 | 7.2295 | 5.3701 | 3.7757 | 5.7037 | [-0.6866; 0.0362] |
+| replay | 48/66 | 6.9504 | 5.2893 | 3.7724 | 5.4938 | [0.0000; 0.0000] |
+| national_only | 48/66 | 7.3449 | 5.6656 | 3.7724 | 5.7887 | [-0.6893; -0.1291] |
+| margins_only | 24/66 | 8.8741 | 5.2893 | 6.6826 | 7.7039 | [-3.2694; -0.6335] |
+| structural | 0/66 | 9.3216 | 5.6656 | 6.6826 | 7.9127 | [-3.8034; -1.0292] |
+
+Retrait national seul (marges conservées) : +1,9237 pp communale, +2,9102 pp nationale. Retrait des marges seules (national conservé) : +0,3945 pp communale; aucun changement national à précision numérique près. Retrait simultané : +2,3712 pp communale, +0,3764 pp centrée; IC gain vs replay entièrement négatif. Les marges effectives sont absentes des deux premiers plis; l'impact est concentré en 2021–2022 (replay 6,1745; structure 11,1043). Résultats par domaine et pli dans JSON, détails objet/commune/canton dans artefact. Le bras structure seul n'est pas un modèle entièrement certifié : seuls les ancrages de sondage ont été retirés. Aucun des écarts ne prouve une fuite. Le minimum descriptif 6,950427808889042 pp reste inchangé; IC vs V8.1 inclut zéro; dates de développement réutilisées, aucun test final, aucune promotion. Aucune donnée nouvelle admise.
+
+## V28.4 — protocole de certification prioritaire
+
+Pilote sur trois dates historiques, à choisir selon disponibilité des éditions contemporaines indépendamment des scores individuels : rapprocher les deux vagues effectivement utilisées de leurs éditions originales, vérifier date de publication antérieure au scrutin, identité objet et libellé des parts de oui, valeurs et dates de modification, puis URL/empreinte et conditions de réutilisation. Ne pas assimiler une absence de date de modification à une certification. Conserver un manifeste explicite des échecs. Si une couverture suffisante est établie, préspécifier une ablation avec seuls signaux certifiés et fallback; sinon suspendre et ouvrir V29 (niveau national structurel, après audit de V16.3). Aucune cible 2023+ ni promotion.

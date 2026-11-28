@@ -141,3 +141,5 @@ Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans n
 [V28.1 clôturée](../v28_campaign/V28.1-results.json) : audit descriptif 66 objets, 7 tests, CI 3/3 ; couverture SRG datée 41/66, erreur nationale 4,1427 vs 3,1651 pp en absence de date. V28.2a source officielle fög vérifiée visuellement mais en quarantaine (hash/licence). V28.3 audit d'utilisation effective des ancrages priorisé. Meilleur V24.1 inchangé; aucun test final.
 
 [V28.3a clôturée](../v28_campaign/V28.3a-results.json) : audit effectif, 48/66 objets nationaux et 24/66 par famille de marges, zéro millésime certifié; V28.3b ablation factorielle implémentée, résultats à vérifier. V24.1 reste minimum exploratoire, aucune promotion.
+
+[V28.3b clôturée](../v28_campaign/V28.3b-results.json) : replay 6,9504 pp, national seul 7,3449, marges seules 8,8741, structure seule 9,3216; 3 tests, CI générale I001 corrigée sans changement algorithmique. [V28.4](../v28_campaign/README.md#v284--protocole-de-certification-prioritaire) certification prioritaire des éditions historiques. Aucun test final, aucune promotion.

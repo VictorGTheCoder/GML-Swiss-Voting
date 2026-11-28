@@ -1,11 +1,6 @@
 name: V28.3b anchor ablation
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - '.github/workflows/anchor-ablation-v283b.yml'
-      - 'scripts/modeling/anchor_ablation_v283b.py'
-      - 'tests/test_anchor_ablation_v283b.py'
 permissions:
   contents: read
   actions: read
