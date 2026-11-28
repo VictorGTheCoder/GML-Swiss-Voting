@@ -135,3 +135,5 @@ Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans n
 [V27.1 clôturée](../v27_campaign/V27.1-results.json) : 7,263734 pp, +0,313306 vs V24.1. [V28](../v28_campaign/README.md) planifiée; meilleur inchangé.
 
 [V28.1 inventaire](../v28_campaign/V28.1-source-inventory.json) : 20 objets attentes, 54 médias, 21 candidats Tamedia datés; nouvelle édition fög 2018 en quarantaine. Audit de scores figés implémenté, résultat à vérifier; aucun fit ni admission.
+
+[V28.1 r1](../v28_campaign/README.md) : audit initial bloqué par le périmètre SRG mixte; couverture déclarée historique corrigée de 65 à 41/66, 48 lignes 2023+ exclues explicitement, 4 tests initiaux réussis. Correctif en vérification, meilleur exploratoire inchangé.

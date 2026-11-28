@@ -57,7 +57,7 @@
     "0-14": 21,
     "missing": 45
   },
-  "srg_declared_objects": 65,
+  "srg_declared_objects": 41,
   "srg_chart_updated_after_vote_rows": 16,
   "srg_historical_verified_rows": 0,
   "new_inputs_admitted": 0,
@@ -80,5 +80,13 @@
         "tone": -33
       }
     ]
+  },
+  "srg_direct_development_rows": 48,
+  "srg_direct_development_objects": 24,
+  "srg_out_of_period_rows_excluded": 48,
+  "correction": {
+    "previous_srg_declared_objects": 65,
+    "reason": "Raw SRG file mixes 2016–2022 and 2023+ metadata; counts now intersect the pinned historical catalogue. Frozen artifact join pending.",
+    "run": 46138204208
   }
 }

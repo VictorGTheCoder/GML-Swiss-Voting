@@ -1,6 +1,6 @@
 {
   "version": "V28",
-  "status": "audit_implemented_source_inventory_measured",
+  "status": "audit_failed_scope_fix_pending_ci",
   "active": "V28.1",
   "best_exploratory": 6.950427808889042,
   "population": {
@@ -9,7 +9,7 @@
     "rows": 138868
   },
   "backlog": [
-    "P1 V28.1 vérifier CI et métriques figées par disponibilité/fraîcheur; pas de refit.",
+    "P1 V28.1 r1 vérifier correctif de périmètre SRG, 48 lignes hors période exclues, jointure historique stricte et 7 tests; récupérer les métriques descriptives.",
     "P2 V28.2 certifier rapport fög du 15 février 2018 (PDF/hash/licence) et examiner couverture manquante; pas de sélection de modèle sur ce diagnostic.",
     "P3 poursuivre une expérience indépendante si certification bloquée; test final seulement après autorisation."
   ],
@@ -19,8 +19,25 @@
     "expectations_objects": 20,
     "media_objects": 54,
     "tamedia_dated_candidates_objects": 21,
-    "srg_declared_dates_objects": 65,
+    "srg_declared_dates_objects": 41,
     "srg_chart_updates_on_or_after_vote_rows": 16,
-    "srg_historical_verified_rows": 0
-  }
+    "srg_historical_verified_rows": 0,
+    "srg_direct_development_rows": 48,
+    "srg_direct_development_objects": 24,
+    "srg_out_of_period_rows_excluded": 48
+  },
+  "runs": [
+    {
+      "version": "V28.1",
+      "run": 46138204208,
+      "conclusion": "failure",
+      "tests": "4/4",
+      "reason": "SRG input also contains 2023+ publication metadata; strict roster rejected 48 rows.",
+      "repository_checks": {
+        "run": 46138204221,
+        "conclusion": "success"
+      },
+      "frozen_artifact": 15228766542
+    }
+  ]
 }

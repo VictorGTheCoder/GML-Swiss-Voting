@@ -23,6 +23,27 @@ REF = 7.229527497606818
 BEST = 6.950427808889042
 
 
+# Read only identity and publication/provenance metadata; no vote shares are needed.
+SOURCE_COLUMNS = {
+    "srg": KEYS + ["wave", "source_url", "published_at",
+                   "chart_updated_on_or_after_vote_date", "historical_version_verified"],
+    "pairs": ["vote_key", "last_published_date"],
+    "retrospective": ["vote_key"],
+    "tamedia_candidate": KEYS + ["stated_release_date"],
+    "expectation": KEYS + ["wave", "source_url"],
+    "media": KEYS + ["published_at"],
+}
+
+
+def development_srg(source):
+    """Explicitly exclude later SRG rows before joining to the historical roster."""
+    dates = pd.to_datetime(source.vote_date, format="%Y-%m-%d", errors="raise")
+    if dates.isna().any() or dates.lt(pd.Timestamp("2016-01-01")).any():
+        raise ValueError("Missing or unexpectedly early SRG vote date")
+    keep = dates.lt(pd.Timestamp("2023-01-01"))
+    return source.loc[keep].copy(), int((~keep).sum())
+
+
 def bucket(age):
     if pd.isna(age):
         return "absent_or_undated"
@@ -137,8 +158,10 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     sources = {
-        k: pd.read_csv(args.root / v, dtype=str) for k, v in FILES.items()
+        k: pd.read_csv(args.root / v, dtype=str, usecols=SOURCE_COLUMNS[k])
+        for k, v in FILES.items()
     }
+    sources["srg"], excluded_srg = development_srg(sources["srg"])
     detail = pd.read_csv(args.frozen, dtype={"vote_id": str, "vote_date": str})
     out, summary = audit(sources, detail)
     args.output.mkdir(parents=True, exist_ok=False)
@@ -149,6 +172,10 @@ def main():
         "frozen_sha256": sha(args.frozen),
         "source_sha256": {k: sha(args.root / v) for k, v in FILES.items()},
         "expectation_rows": len(sources["expectation"]),
+        "srg_development_rows": len(sources["srg"]),
+        "srg_development_objects": sources["srg"].vote_key.nunique(),
+        "srg_out_of_period_rows_excluded": excluded_srg,
+        "srg_declared_objects": int(out.srg_declared_days.notna().sum()),
         "srg_chart_later_updates": int(
             sources["srg"].chart_updated_on_or_after_vote_date.str.lower().eq("true").sum()
         ),
