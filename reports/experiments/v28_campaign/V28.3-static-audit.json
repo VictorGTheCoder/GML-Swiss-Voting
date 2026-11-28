@@ -1,0 +1,51 @@
+{
+  "status": "partial_measured_static_source_audit",
+  "parent": "fafec841fd49e9251647f04273986e0b5923d5dd",
+  "source_blobs": {
+    "direct": "189eec60cf9fff2f46c2afc4550c44fdf93c26c0",
+    "historical_v3": "83508cc221bcc2f0ad8673ca7936a5e67f3f988e",
+    "regional": "a3dc7f7a26458c82e160f742aeec071d236ed796",
+    "supplemental_pairs": "2e71506e0da74e865873d88c755a4767ba2d8d71"
+  },
+  "national": {
+    "direct_objects": 24,
+    "historical_v3_objects": 24,
+    "disjoint_union": 48,
+    "development_rows": 96,
+    "verified_rows": 0,
+    "direct_late_chart_rows": 16,
+    "direct_latest_late_objects": 7,
+    "excluded_direct_future_rows": 48
+  },
+  "regional": {
+    "rows": 135,
+    "objects": 24,
+    "verified_rows": 0,
+    "late_chart_rows": 45,
+    "latest_late_objects": 6
+  },
+  "supplemental_pairs": {
+    "objects": 17,
+    "overlap_with_original": 0,
+    "used_by_v8_reference": false
+  },
+  "settlement": {
+    "artifact": 14873834489,
+    "certified": false,
+    "counts_pending": true
+  },
+  "v241_best": 6.950427808889042,
+  "no_fit": true,
+  "new_admitted_inputs": 0,
+  "ci_parent": {
+    "run": 46147264175,
+    "jobs": 3,
+    "conclusion": "success"
+  },
+  "limitations": [
+    "Source-row metadata counts, not yet replay against exact artifact roster and cutoff.",
+    "No evidence that a late chart update changed numeric values.",
+    "Historical v3 page modification timestamps not conflated with chart dates.",
+    "Neither reference nor V24.1 uses the retrospective Tamedia or supplemental SRG fusion variants as its national anchor."
+  ]
+}

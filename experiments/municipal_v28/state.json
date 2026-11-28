@@ -1,7 +1,7 @@
 {
   "version": "V28",
-  "status": "audit_completed_source_candidate_quarantined",
-  "active": null,
+  "status": "effective_anchor_metadata_audit_partial",
+  "active": "V28.3a",
   "best_exploratory": 6.950427808889042,
   "population": {
     "objects": 66,
@@ -9,9 +9,10 @@
     "rows": 138868
   },
   "backlog": [
-    "P1 V28.3 audit indépendant de provenance des signaux nationaux réellement consommés par V24.1/V8.1: joindre l'origine des ancrages et les métadonnées historiques exactes, distinguer sources rétrospectives, dates déclarées et millésimes certifiés; aucune cible 2023+. Si une ablation de provenance est faisable, préspécifier une comparaison sur toutes les 66 clés avec fallback, sans sélectionner sur les strates.",
-    "P2 V28.2a source fög officielle visuellement vérifiée, hash et licence non certifiés; suspendre l'admission; ne relancer que si accès/licence ou couverture supplémentaire convaincante.",
-    "P3 autre expérience indépendante si audit bloqué; réserver le test final."
+    "P1 V28.3a terminer audit métadonnées avec artefact d'habitat, tests et CI; contrôler la couverture effective de 48 objets et les vagues sélectionnées.",
+    "P2 V28.3b ablation de provenance V24.1: replay exact puis retrait national et marges non certifiés, fallback structurel; quatre métriques et bootstrap apparié. Ne pas répéter les blends V16.3.",
+    "P3 V28.2a fög reste en quarantaine; reprendre uniquement sur preuve de licence/hash et couverture convaincante.",
+    "P4 piste indépendante si blocage, pas de test final."
   ],
   "source_inventory": {
     "roster_objects": 66,
@@ -53,6 +54,17 @@
       },
       "results": "reports/experiments/v28_campaign/V28.1-results.json",
       "no_fit": true
+    },
+    {
+      "version": "V28.3a",
+      "status": "static_audit_measured_workflow_pending",
+      "results": "reports/experiments/v28_campaign/V28.3-static-audit.json",
+      "no_fit": true,
+      "parent_ci": {
+        "run": 46147264175,
+        "conclusion": "success",
+        "jobs": 3
+      }
     }
   ],
   "source_candidate_audit": "reports/experiments/v28_campaign/V28.2a-source-audit.json"

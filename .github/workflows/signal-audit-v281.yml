@@ -1,11 +1,6 @@
 name: V28.1 national signal provenance audit
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - '.github/workflows/signal-audit-v281.yml'
-      - 'scripts/modeling/signal_audit_v281.py'
-      - 'tests/test_signal_audit_v281.py'
 concurrency:
   group: v281-${{ github.head_ref || github.ref }}
   cancel-in-progress: false
