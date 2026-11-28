@@ -44,3 +44,24 @@ def test_invalid_rate():
     for value in ("", "nan", "inf", -1, 101):
         with pytest.raises(ValueError):
             rate(value)
+
+
+def test_excel_historical_appenzell_labels():
+    names = dict(CANTONS)
+    names.update({15: "Appenzell A.Rh.", 16: "Appenzell I.Rh."})
+    frame = pd.DataFrame([["Quoten in %", "", ""], ["", "VK", "Aug."],
+                          ["Total", "A", 2.1]]
+                         + [[name, "B", i / 10] for i, name in names.items()])
+    result, _ = excel_month(frame, "2017-08")
+    assert result["15"] == {"rate_pp": 1.5, "source_label": "Appenzell A.Rh."}
+    assert result["16"]["rate_pp"] == 1.6
+
+
+def test_excel_rejects_unknown_appenzell_label():
+    names = dict(CANTONS)
+    names[15] = "Appenzell unbekannt"
+    frame = pd.DataFrame([["Quoten in %", "", ""], ["", "VK", "Aug."],
+                          ["Total", "A", 2.1]]
+                         + [[name, "B", i / 10] for i, name in names.items()])
+    with pytest.raises(ValueError, match="Appenzell unbekannt"):
+        excel_month(frame, "2017-08")

@@ -123,3 +123,5 @@ Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans n
 - V26.2c : [audit schéma et extension V26.2d](../v26_campaign/README.md#v262c-clôturée--v262d-extension-ciblée), 6/6 schémas vérifiés; trois millésimes supplémentaires en acquisition, aucune admission.
 
 [V26.2d résultats](../v26_campaign/V26.2d-results.json) : 9 archives au total, 7/23 dates et 20/66 objets potentiellement couverts; V26.2e extraction stricte préspécifiée, aucune admission ni score nouveau.
+
+[V26.2e résultats partiels](../v26_campaign/V26.2e-results.json) : 5/9 archives, 135 observations en quarantaine; quatre classeurs bloqués sur les deux Appenzell. Correctif r1 limité aux quatre échecs, résultat à vérifier. Aucun score nouveau ni admission.

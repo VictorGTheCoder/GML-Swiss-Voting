@@ -78,6 +78,9 @@ def excel_month(frame, period):
     rows = frame.fillna("").values.tolist()
     names = {v: str(k) for k, v in CANTONS.items()}
     names["Total"] = "CH"
+    # Exact official historical spellings, not fuzzy matching.
+    names.update({"Appenzell A.Rh.": "15", "Appenzell I.Rh.": "16",
+                  "Appenzell A. Rh.": "15", "Appenzell I. Rh.": "16"})
     headers = [(i, j) for i, row in enumerate(rows[:12])
                for j, value in enumerate(row)
                if label(value) in {period, MONTHS[month - 1]}]
@@ -89,11 +92,17 @@ def excel_month(frame, period):
     if len(units) != 1:
         raise ValueError("Missing percentage unit")
     result = {}
+    appenzell_labels = []
     for row in rows[i + 1:]:
         name = label(row[0])
+        if name.startswith("Appenzell"):
+            appenzell_labels.append(name)
         if name in names:
             add(result, names[name], {"rate_pp": rate(row[j]),
                                      "source_label": name})
+    if not KEYS <= set(result):
+        raise ValueError(f"Missing geographic keys: {sorted(KEYS - set(result))}; "
+                         f"Appenzell labels: {appenzell_labels!r}")
     return complete(result), units[0]
 
 
@@ -113,12 +122,18 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--audit", type=Path, action="append", required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--only-asset", type=int, action="append", default=[])
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError("Preserve prior audit")
     assets = [row for path in args.audit
               for row in json.loads(path.read_text(encoding="utf-8"))["assets"]]
     validate_catalog(assets)
+    if args.only_asset:
+        selected = set(args.only_asset)
+        if not selected <= {asset["id"] for asset in assets}:
+            raise ValueError("Unknown selected asset")
+        assets = [asset for asset in assets if asset["id"] in selected]
     results = []
     for asset in assets:
         entry = {k: asset[k] for k in ("id", "end", "published", "sha256")}

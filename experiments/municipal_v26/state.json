@@ -2,7 +2,7 @@
   "version": "V26",
   "parent_commit": "9bfd44bcc28ce00f4a1805edbbee12a07142ae43",
   "status": "in_progress",
-  "active": "V26.2e",
+  "active": "V26.2e-r1",
   "completed": [
     "V26.1",
     "V26.2b",
@@ -17,16 +17,17 @@
   "best_exploratory": 6.950427808889042,
   "admitted": 0,
   "next": [
-    "Verify V26.2e extraction of only the published month for 27 geographic keys per archive; verify actual status and coefficient metadata, no admission.",
-    "Extend missing dated releases including training periods only if feasible; inspect full runtime geographic features and check redundancy.",
-    "Matched chronological ablation only after certification; otherwise move to independent information source."
+    "Verify V26.2e-r1 on the four failed Excel assets only; retain five successful CSV outputs.",
+    "Certify historical CSV metadata and Excel precision coefficients; extend dated releases and training support only if feasible; check runtime feature inventory.",
+    "Matched chronological ablation after certification only; otherwise independent source."
   ],
   "results": [
     "reports/experiments/v26_campaign/V26.1-results.json",
     "reports/experiments/v26_campaign/V26.1-results.md",
     "reports/experiments/v26_campaign/V26.2b-results.json",
     "reports/experiments/v26_campaign/V26.2c-results.json",
-    "reports/experiments/v26_campaign/V26.2d-results.json"
+    "reports/experiments/v26_campaign/V26.2d-results.json",
+    "reports/experiments/v26_campaign/V26.2e-results.json"
   ],
   "v262": {
     "status": "six_formats_and_hashes_verified_quarantine",
@@ -90,9 +91,32 @@
       }
     },
     "extraction": {
-      "status": "predeclared_quarantine_only",
+      "status": "partial_5_of_9_quarantine_only",
       "workflow": ".github/workflows/seco-extract-v262e.yml",
-      "tests_implemented": 5
+      "tests_implemented": 5,
+      "evidence": {
+        "run": 46110089483,
+        "job": 140871472568,
+        "artifact": 15248618191,
+        "artifact_digest": "sha256:0958dd30350788b115681aa91106e23024fb342da656ee6da01384bee6acfc05",
+        "sha": "5a285d44dbc5556f875ff9af9adaffca5cf8e042",
+        "tests": 5,
+        "ci": 46110089447
+      },
+      "complete_archives": 5,
+      "extracted_records": 135,
+      "blocked_ids": [
+        3322654,
+        5328688,
+        8646904,
+        16344391
+      ],
+      "repair": {
+        "status": "predeclared",
+        "tests_implemented": 7,
+        "only_failed_assets": true,
+        "source": "https://ai.ch/themen/wirtschaft-und-arbeit/arbeit/aktuelles/arbeitslosenzahlen-ende-januar-2017"
+      }
     }
   }
 }
