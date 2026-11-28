@@ -1,11 +1,6 @@
 name: V28.3 effective anchor provenance
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - '.github/workflows/anchor-provenance-v283.yml'
-      - 'scripts/modeling/anchor_provenance_v283.py'
-      - 'tests/test_anchor_provenance_v283.py'
 permissions:
   contents: read
   actions: read

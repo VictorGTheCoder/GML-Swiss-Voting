@@ -1,7 +1,7 @@
 {
   "version": "V28",
-  "status": "effective_anchor_metadata_audit_partial",
-  "active": "V28.3a",
+  "status": "effective_anchor_audit_complete_ablation_implemented",
+  "active": "V28.3b",
   "best_exploratory": 6.950427808889042,
   "population": {
     "objects": 66,
@@ -9,8 +9,8 @@
     "rows": 138868
   },
   "backlog": [
-    "P1 V28.3a terminer audit métadonnées avec artefact d'habitat, tests et CI; contrôler la couverture effective de 48 objets et les vagues sélectionnées.",
-    "P2 V28.3b ablation de provenance V24.1: replay exact puis retrait national et marges non certifiés, fallback structurel; quatre métriques et bootstrap apparié. Ne pas répéter les blends V16.3.",
+    "P1 V28.3a terminé; 48/66 ancrages nationaux, 24/66 marges de chaque famille, aucun millésime certifié.",
+    "P2 V28.3b exécuter replay V24.1 et ablation factorielle national/marges, vérifier quatre métriques, IC et scores par objet; aucune promotion.",
     "P3 V28.2a fög reste en quarantaine; reprendre uniquement sur preuve de licence/hash et couverture convaincante.",
     "P4 piste indépendante si blocage, pas de test final."
   ],
@@ -65,6 +65,71 @@
         "conclusion": "success",
         "jobs": 3
       }
+    },
+    {
+      "version": "V28.3a",
+      "run": 46152899275,
+      "job": 141003168896,
+      "artifact": 15265469588,
+      "artifact_digest": "sha256:adfbfc9f0c4353837a63ea3667b04fd421f6b530f5c51e0f2037bbf187befe16",
+      "sha": "bae345762a4be15020d31820d1833a98404ce2c7",
+      "tests": "4/4",
+      "repository_checks": {
+        "run": 46152899057,
+        "conclusion": "success",
+        "jobs": 3
+      },
+      "audit": {
+        "national_objects": 48,
+        "national_selected_waves": 96,
+        "national_source_objects": {
+          "direct": 24,
+          "historical_v3": 24
+        },
+        "national_objects_any_late_chart": 12,
+        "national_objects_latest_late_chart": 7,
+        "national_objects_all_waves_verified": 0,
+        "national_selected_waves_verified": 0,
+        "structural_fallback_objects": 18,
+        "language": {
+          "objects": 24,
+          "selected_cells": 72,
+          "objects_latest_late_chart": 6,
+          "objects_all_cells_verified": 0
+        },
+        "settlement": {
+          "objects": 24,
+          "selected_cells": 72,
+          "objects_latest_late_chart": 7,
+          "objects_all_cells_verified": 0
+        },
+        "status": "metadata_only",
+        "objects": 66,
+        "dates": 23,
+        "excluded_direct_future_rows": 48,
+        "source_sha256": {
+          "data/external/polls/srg_gfs_polls.csv": "cf491f402341df2aa9e66fc5de384ae0d7c98fbc69ef3b2a6fa2a557d4d8a827",
+          "data/external/polls_historical_v3/polls.csv": "25ba86dd0aac4f4f2d5d2636bfcc541aa44a0f5f2e26b58a7943aac0b39671f3",
+          "data/external/polls_regional_v8/regional_polls.csv": "0e73fef346aacee32269dd25c84b4ca97266f8d0db033654a22d840142b6c1ec",
+          "reports/generated/v283_acq/settlement_polls.csv": "94b4ffe8380348cfed5808da17e67b8e166c30bcca46b1b3b4f8bfacb01c9d7f",
+          "reports/generated/v283_frozen/object_metrics.csv": "791b0492730dc7295baa6bf838208ee0c75b019849b10680d437b435ce0d4fbd"
+        },
+        "no_fit": true,
+        "new_admitted_inputs": 0
+      },
+      "results": "reports/experiments/v28_campaign/V28.3a-results.json",
+      "no_fit": true
+    },
+    {
+      "version": "V28.3b",
+      "status": "implemented_not_measured",
+      "variants": [
+        "replay",
+        "national_only",
+        "margins_only",
+        "structural"
+      ],
+      "tests_implemented": 3
     }
   ],
   "source_candidate_audit": "reports/experiments/v28_campaign/V28.2a-source-audit.json"
