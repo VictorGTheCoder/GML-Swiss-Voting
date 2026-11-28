@@ -1,7 +1,7 @@
 {
   "version": "V28",
-  "status": "audit_failed_scope_fix_pending_ci",
-  "active": "V28.1",
+  "status": "audit_completed_source_candidate_quarantined",
+  "active": null,
   "best_exploratory": 6.950427808889042,
   "population": {
     "objects": 66,
@@ -9,9 +9,9 @@
     "rows": 138868
   },
   "backlog": [
-    "P1 V28.1 r1 vérifier correctif de périmètre SRG, 48 lignes hors période exclues, jointure historique stricte et 7 tests; récupérer les métriques descriptives.",
-    "P2 V28.2 certifier rapport fög du 15 février 2018 (PDF/hash/licence) et examiner couverture manquante; pas de sélection de modèle sur ce diagnostic.",
-    "P3 poursuivre une expérience indépendante si certification bloquée; test final seulement après autorisation."
+    "P1 V28.3 audit indépendant de provenance des signaux nationaux réellement consommés par V24.1/V8.1: joindre l'origine des ancrages et les métadonnées historiques exactes, distinguer sources rétrospectives, dates déclarées et millésimes certifiés; aucune cible 2023+. Si une ablation de provenance est faisable, préspécifier une comparaison sur toutes les 66 clés avec fallback, sans sélectionner sur les strates.",
+    "P2 V28.2a source fög officielle visuellement vérifiée, hash et licence non certifiés; suspendre l'admission; ne relancer que si accès/licence ou couverture supplémentaire convaincante.",
+    "P3 autre expérience indépendante si audit bloqué; réserver le test final."
   ],
   "source_inventory": {
     "roster_objects": 66,
@@ -38,6 +38,22 @@
         "conclusion": "success"
       },
       "frozen_artifact": 15228766542
+    },
+    {
+      "version": "V28.1 r1",
+      "run": 46142663637,
+      "artifact": 15261997019,
+      "artifact_digest": "sha256:99fde8f37701c2270a644df308e24b2512f92c01693d93a39b6d70685b512f95",
+      "conclusion": "success",
+      "tests": "7/7",
+      "repository_checks": {
+        "run": 46142663630,
+        "conclusion": "success",
+        "jobs": 3
+      },
+      "results": "reports/experiments/v28_campaign/V28.1-results.json",
+      "no_fit": true
     }
-  ]
+  ],
+  "source_candidate_audit": "reports/experiments/v28_campaign/V28.2a-source-audit.json"
 }

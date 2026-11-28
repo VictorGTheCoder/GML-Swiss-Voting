@@ -1,0 +1,35 @@
+{
+  "version": "V28.2a",
+  "status": "official_source_visual_verified_quarantined",
+  "checked": "2026-11-28",
+  "source_url": "https://www.foeg.uzh.ch/dam/jcr%3A9cb6ed17-7787-47fe-9a0d-12a622a77b50/AbstMonitor_Zwischenbericht_II_Vorlagen_20180304.pdf",
+  "publisher": "fög / Universität Zürich",
+  "publication_date": "2018-02-15",
+  "vote_date": "2018-03-04",
+  "window_start": "2017-10-30",
+  "window_end": "2018-02-04",
+  "publication_age_days": 17,
+  "evidence_pages": [
+    1,
+    3
+  ],
+  "candidates": [
+    {
+      "label": "No Billag",
+      "articles": 1049,
+      "tone": -33
+    },
+    {
+      "label": "Finanzordnung",
+      "articles": 47,
+      "tone": 53
+    }
+  ],
+  "sum_articles": 1096,
+  "source_sha256": null,
+  "download_attempt": "curl exit 6: DNS could not resolve www.foeg.uzh.ch; web PDF text and screenshots pp. 1/3 independently checked",
+  "license": "© fög / Universität Zürich on p. 3; no explicit open license located for this edition, no PDF redistribution or training admission",
+  "admitted": 0,
+  "coverage_increment": 0,
+  "caveat": "Existing two candidates, not additional objects. Publisher-hosted report corroborates APS mirror; no byte identity or exact historical vintage certified."
+}

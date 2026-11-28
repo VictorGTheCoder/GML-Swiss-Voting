@@ -21,3 +21,32 @@ Audit automatisé V28.1 implémenté : lecture de l'artefact figé V24.1 (run 46
 [Run initial](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46138204208) : 4/4 tests ciblés réussis, artefact V24.1 téléchargé avec digest SHA-256 vérifié par GitHub (93b6c94bbb7605e9a1f431540a04d4cfa0644a020831915aab8e93cb152002d7), puis arrêt sur `Source key/date outside pinned population`. [CI générale réussie](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46138204221). Le fichier SRG direct est mixte : 96 lignes/48 objets au total, dont seulement 48 lignes/24 objets sur 2016–2022; les 48 autres lignes appartiennent à 2023+. Les 17 paires historiques ajoutent 17 objets distincts, soit **41/66** et non 65/66. Les 16 mises à jour tardives concernent les 48 lignes historiques; 0/48 millésimes directs certifiés. Autres couvertures inchangées (20 attentes, 54 médias, 21 candidats Tamedia). Vérification par clés du catalogue historique, à confirmer par jointure à l'artefact figé.
 
 Correctif : projection des colonnes de métadonnées uniquement pour toutes les sources (aucune part de vote en entrée de cet audit), exclusion explicite et comptée des dates SRG 2023+, conservation du refus de toute clé/date historique inconnue, dates manquantes rejetées. Trois tests de régression ajoutés. Le manifeste d'audit exposera le nombre de lignes exclues et la couverture SRG effective. Aucun changement de données source, de modèle ni des fenêtres de référence. Aucun fit; scores par strates non encore mesurés, prochain run à vérifier.
+
+
+## V28.1 r1 — audit terminé (28 novembre 2026)
+
+[Run](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46142663637) · [Artefact](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46142663637/artifacts/15261997019) · [CI](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46142663630) · [Manifeste exact](V28.1-results.json). 7/7 tests, CI 3/3; 66 objets / 23 dates, scores de référence et meilleur exploratoire contrôlés. Les 48 lignes SRG hors période sont exclues. 41 objets avec date SRG déclarée, 0/48 lignes directes historiques certifiées; 16 mises à jour tardives. Aucun nouvel entraînement.
+
+| Signal | Strate | Objets | Dates | MAE nationale | MAE centrée | MAE communale |
+|---|---|---:|---:|---:|---:|---:|
+| srg_declared | 0-14 | 41 | 13 | 4.1427 | 4.8245 | 6.7759 |
+| srg_declared | absent_or_undated | 25 | 11 | 3.1651 | 6.0514 | 7.2366 |
+| expectation_declared | 0-14 | 18 | 7 | 3.1902 | 4.9238 | 6.4600 |
+| expectation_declared | >30 | 2 | 2 | 0.7967 | 5.2739 | 5.2770 |
+| expectation_declared | absent_or_undated | 46 | 20 | 4.1296 | 5.4329 | 7.2151 |
+| media_declared | 0-14 | 26 | 7 | 3.5607 | 4.8366 | 6.3606 |
+| media_declared | 15-30 | 26 | 11 | 3.6778 | 5.6249 | 7.2709 |
+| media_declared | >30 | 2 | 1 | 3.7247 | 3.3812 | 5.6372 |
+| media_declared | absent_or_undated | 12 | 4 | 4.4438 | 5.8607 | 7.7529 |
+| tamedia_candidate | 0-14 | 21 | 9 | 3.6984 | 4.7683 | 6.5363 |
+| tamedia_candidate | absent_or_undated | 45 | 14 | 3.8069 | 5.5324 | 7.1437 |
+
+La couverture SRG datée ne correspond pas à une erreur nationale plus faible (4,1427 vs 3,1651 pp). Les attentes récentes (3,1902 vs 4,1296) et médias récents (3,5607 vs 4,4438) présentent des écarts descriptifs, mais les objets et dates diffèrent; les strates ne démontrent ni causalité ni effet d'acquisition. Les 2 objets attentes >30 jours sont insuffisants; un seul bloc date pour médias >30 jours. Les IC appariés par date du gain national V24.1 vs référence par strate sont dans le JSON, pas des IC d'effet de disponibilité. La MAE centrée reste importante; se limiter à la correction nationale ne suffit pas. Pas de sélection de modèle sur cet audit. V24.1 reste le minimum exploratoire 6,950427808889042 pp, sur dates réutilisées.
+
+## V28.2a — provenance fög (en quarantaine)
+
+[Source officielle et contrôle](V28.2a-source-audit.json). Les pages 1 et 3 de l'édition UZH du 15 février 2018 ont été vérifiées visuellement; les deux valeurs du miroir APS concordent, 1049/-33 et 47/+53. Fenêtre close le 4 février, 17 jours avant scrutin pour la publication. Ce n'est pas une augmentation de couverture. La tentative de téléchargement local a échoué (DNS, curl 6); pas de hash inventé. Mention © fög / Universität Zürich, aucune licence ouverte spécifique vérifiée; pas de redistribution du PDF ni admission. Suspendre cette acquisition isolée.
+
+## V28.3 — prochain audit préspécifié
+
+Identifier les sources d'ancrage réellement consommées par la référence et V24.1 plutôt que de confondre présence d'une source candidate et utilisation effective; rapprocher leurs identifiants exacts des preuves de publication, des versions rétrospectives et des millésimes certifiés. Si faisable, définir avant tout score une ablation de provenance avec fallback, sur mêmes clés et dates, sans fit sur la date cible. Pas de cibles 2023+, ni de promotion. Si la provenance effective est indéterminable, consigner les limites puis ouvrir une piste indépendante.
