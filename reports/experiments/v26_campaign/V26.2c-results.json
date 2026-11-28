@@ -1,0 +1,333 @@
+{
+  "status": "quarantine_only",
+  "schema_preview_count": 6,
+  "training_rows_admitted": 0,
+  "evidence": {
+    "run": 46100780572,
+    "job": 140842493318,
+    "artifact": 15245263063,
+    "artifact_digest": "sha256:d568ac78bdbbd15175cf85ae1bf990678a89d39f00deabb58d60f83fe0bdfdc9",
+    "sha": "7e30d846bd8b8ecbd6683d5f7f10cca935c27427",
+    "tests": 2,
+    "ci": 46100780543
+  },
+  "assets": [
+    {
+      "id": 3322654,
+      "format": "xls",
+      "sha256": "400f4fb4e416a4b16b32f1567d13a3e3c934a523ef75255ee4f8ad8d90ba7e15",
+      "status": "schema_preview_only",
+      "year_sheets": 43,
+      "latest_sheet": "2017",
+      "unit": "Quoten in % (Zahl der Erwerbspersonen gemäss Pooling SE2012-2014)",
+      "month_header": [
+        "",
+        "VK 1)",
+        "Jan.",
+        "Febr.",
+        "März",
+        "April",
+        "Mai",
+        "Juni",
+        "Juli",
+        "Aug.",
+        "Sept.",
+        "Okt.",
+        "Nov.",
+        "Dez."
+      ]
+    },
+    {
+      "id": 5328688,
+      "format": "xlsx",
+      "sha256": "d0190f2b97c06069d136c499198e54550787439edd64222e74274407cada6dc2",
+      "status": "schema_preview_only",
+      "year_sheets": 44,
+      "latest_sheet": "2018",
+      "unit": "Quoten in % (Zahl der Erwerbspersonen gemäss Pooling SE2012-2014)",
+      "month_header": [
+        "",
+        "VK 1)",
+        "Jan.",
+        "Febr.",
+        "März 2)",
+        "April",
+        "Mai",
+        "Juni",
+        "Juli",
+        "Aug.",
+        "Sept.",
+        "Okt.",
+        "Nov.",
+        "Dez."
+      ]
+    },
+    {
+      "id": 8646904,
+      "format": "xlsx",
+      "sha256": "01d839a16ed1356afaeeda7c74a798d955ad0683161d12e8f83c904216048803",
+      "status": "schema_preview_only",
+      "year_sheets": 45,
+      "latest_sheet": "2019",
+      "unit": "Quoten in % (Zahl der Erwerbspersonen gemäss Pooling SE2012-2014)",
+      "month_header": [
+        "",
+        "VK 1)",
+        "Jan.",
+        "Febr.",
+        "März",
+        "April",
+        "Mai",
+        "Juni",
+        "Juli",
+        "Aug.",
+        "Sept.",
+        "Okt.",
+        "Nov.",
+        "Dez."
+      ]
+    },
+    {
+      "id": 16344391,
+      "format": "xlsx",
+      "sha256": "2fe5981c18a8fa62539711a9b676915a29907552fb490c9273ad1bef116c80d7",
+      "status": "schema_preview_only",
+      "year_sheets": 46,
+      "latest_sheet": "2020",
+      "unit": "Quoten in % (Zahl der Erwerbspersonen gemäss Pooling SE2015-2017)",
+      "month_header": [
+        "",
+        "VK 2)",
+        "2020-01",
+        "2020-02",
+        "2020-03",
+        "2020-04",
+        "2020-05",
+        "2020-06",
+        "2020-07",
+        "2020-08",
+        "2020-09",
+        "2020-10",
+        "2020-11",
+        "2020-12"
+      ]
+    },
+    {
+      "id": 18064564,
+      "format": "csv",
+      "sha256": "095d5463b098b850536e92239bc7a19214e25684aaeeb6a56da405377539fab4",
+      "status": "schema_preview_only",
+      "header": [
+        "REGION",
+        "CANTON",
+        "PERIOD",
+        "VALUE",
+        "STATUS",
+        "OBS_COEF"
+      ],
+      "delimiter": ";",
+      "sample_first_period": "2021-12",
+      "sample_first_value": "",
+      "sample_first_status": "O"
+    },
+    {
+      "id": 23327987,
+      "format": "csv",
+      "sha256": "475cb5ff6007f62a5b7aee9c89db58d39a11664ccbbc2e16b0d71db6b8297da5",
+      "status": "schema_preview_only",
+      "header": [
+        "REGION",
+        "CANTON",
+        "PERIOD",
+        "VALUE",
+        "STATUS",
+        "OBS_COEF"
+      ],
+      "delimiter": ";",
+      "sample_first_period": "2022-08",
+      "sample_first_value": "1.98753213599669",
+      "sample_first_status": "A"
+    }
+  ],
+  "inventory": {
+    "status": "partial_inventory_no_exact_unemployment_column",
+    "path": "reports/datasets/municipal_v2_20261123/data_manifest.json",
+    "ref": "7e30d846bd8b8ecbd6683d5f7f10cca935c27427",
+    "baseline_numeric": [
+      "history_mean_yes",
+      "history_n_objects",
+      "log_population",
+      "statpop_share_foreign",
+      "statpop_share_0_19",
+      "statpop_share_20_39",
+      "statpop_share_40_64",
+      "statpop_share_65_plus",
+      "statpop_mean_age",
+      "party_share_plr",
+      "party_share_pdc",
+      "party_share_ps",
+      "party_share_udc",
+      "party_share_pev",
+      "party_share_verts",
+      "party_share_pvl",
+      "party_share_pbd",
+      "party_share_centre"
+    ],
+    "baseline_categorical": [
+      "canton",
+      "urban_rural",
+      "language_region",
+      "object_legal_form",
+      "object_domain_1",
+      "object_domain_2",
+      "object_domain_3"
+    ],
+    "object_numeric": [
+      "political_direction_plr",
+      "political_direction_pdc",
+      "political_direction_ps",
+      "political_direction_udc",
+      "political_direction_pev",
+      "political_direction_verts",
+      "political_direction_pvl",
+      "political_direction_pbd",
+      "political_direction_centre",
+      "political_direction_federal_council",
+      "political_direction_parliament",
+      "political_direction_national_council",
+      "political_direction_council_of_states",
+      "political_nr_yes_fraction",
+      "political_sr_yes_fraction",
+      "political_national_yes_electoral_share",
+      "political_national_no_electoral_share",
+      "political_national_binary_coverage",
+      "political_national_yes_fraction_known"
+    ],
+    "object_categorical": [
+      "political_recommendation_plr",
+      "political_recommendation_pdc",
+      "political_recommendation_ps",
+      "political_recommendation_udc",
+      "political_recommendation_pev",
+      "political_recommendation_verts",
+      "political_recommendation_pvl",
+      "political_recommendation_pbd",
+      "political_recommendation_centre",
+      "political_recommendation_federal_council",
+      "political_recommendation_parliament",
+      "political_recommendation_national_council",
+      "political_recommendation_council_of_states",
+      "political_domain_d1e2",
+      "political_domain_d1e3",
+      "political_domain_d2e2",
+      "political_domain_d2e3",
+      "political_domain_d3e2",
+      "political_domain_d3e3"
+    ],
+    "limitation": "Not yet a complete inventory of runtime geographic profiles, derived features or artifact manifests; redundancy empirical test pending."
+  },
+  "extension_metadata_only": {
+    "new_assets": [
+      18505947,
+      19444907,
+      21004569
+    ],
+    "candidate_dates": 7,
+    "total_dates": 23,
+    "coverage": [
+      {
+        "day": "2016-02-28",
+        "id": null
+      },
+      {
+        "day": "2016-06-05",
+        "id": null
+      },
+      {
+        "day": "2016-09-25",
+        "id": null
+      },
+      {
+        "day": "2016-11-27",
+        "id": null
+      },
+      {
+        "day": "2017-02-12",
+        "id": null
+      },
+      {
+        "day": "2017-05-21",
+        "id": null
+      },
+      {
+        "day": "2017-09-24",
+        "id": 3322654
+      },
+      {
+        "day": "2018-03-04",
+        "id": null
+      },
+      {
+        "day": "2018-06-10",
+        "id": 5328688
+      },
+      {
+        "day": "2018-09-23",
+        "id": null
+      },
+      {
+        "day": "2018-11-25",
+        "id": null
+      },
+      {
+        "day": "2019-02-10",
+        "id": null
+      },
+      {
+        "day": "2019-05-19",
+        "id": null
+      },
+      {
+        "day": "2020-02-09",
+        "id": null
+      },
+      {
+        "day": "2020-09-27",
+        "id": null
+      },
+      {
+        "day": "2020-11-29",
+        "id": 16344391
+      },
+      {
+        "day": "2021-03-07",
+        "id": null
+      },
+      {
+        "day": "2021-06-13",
+        "id": null
+      },
+      {
+        "day": "2021-09-26",
+        "id": 18505947
+      },
+      {
+        "day": "2021-11-28",
+        "id": 19444907
+      },
+      {
+        "day": "2022-02-13",
+        "id": 21004569
+      },
+      {
+        "day": "2022-05-15",
+        "id": null
+      },
+      {
+        "day": "2022-09-25",
+        "id": 23327987
+      }
+    ],
+    "admitted": 0
+  }
+}

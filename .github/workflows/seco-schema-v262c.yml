@@ -1,11 +1,6 @@
 name: V26.2c historical SECO schema
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - 'scripts/modeling/seco_schema_v262c.py'
-      - 'tests/test_seco_schema_v262c.py'
-      - '.github/workflows/seco-schema-v262c.yml'
 permissions:
   contents: read
 jobs:

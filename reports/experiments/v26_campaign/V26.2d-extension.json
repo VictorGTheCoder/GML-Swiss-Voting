@@ -1,0 +1,35 @@
+{
+  "status": "metadata_verified_binary_pending",
+  "assets": [
+    {
+      "id": 18505947,
+      "end": "2021-08-31",
+      "published": "2021-09-07",
+      "format": "csv",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/18505947",
+      "release": "https://statistik.admin.ch/de/news/2021-0214",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/18505947/master"
+    },
+    {
+      "id": 19444907,
+      "end": "2021-10-31",
+      "published": "2021-11-08",
+      "format": "csv",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/19444907",
+      "release": "https://statistik.admin.ch/de/news/2021-0216",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/19444907/master"
+    },
+    {
+      "id": 21004569,
+      "end": "2022-01-31",
+      "published": "2022-02-07",
+      "format": "csv",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/21004569",
+      "release": "https://statistik.admin.ch/de/news/2022-0317",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/21004569/master"
+    }
+  ]
+}
