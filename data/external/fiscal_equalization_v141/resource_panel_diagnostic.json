@@ -1,0 +1,18 @@
+{
+  "rows": 182,
+  "cantons": 26,
+  "years": 7,
+  "annual_pairs": 156,
+  "between_share": 0.9930349382895629,
+  "within_share": 0.00696506171043718,
+  "mean_abs_annual_change": 1.8269230769230778,
+  "median_abs_annual_change": 0.9000000000000057,
+  "median_range": 6.300000000000004,
+  "correlation_2016_2022": 0.9896434461865454,
+  "training_rows_admitted": 0,
+  "source_git_blob": "ca88a69cbacd1cc645ace1ff4178262acf9dbbbd",
+  "checks_passed": 5,
+  "legal_2022_pdf_mirror_matches": 26,
+  "legal_2022_pdf_mirror": "https://www.lexfind.ch/tolv/219588/fr",
+  "status": "diagnostic_only_no_admission"
+}

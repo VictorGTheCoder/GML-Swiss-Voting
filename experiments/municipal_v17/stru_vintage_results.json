@@ -1,0 +1,147 @@
+{
+  "version": "V17.2b",
+  "source_count": 2,
+  "header_verified": 1,
+  "admitted": 0,
+  "results": [
+    {
+      "year": 2016,
+      "published": "2017-05-11",
+      "asset": 3022184,
+      "metadata": "https://statistik.admin.ch/de/asset/3022184",
+      "publication": "https://statistik.admin.ch/de/news/2017-0455",
+      "license": "OPEN-BY",
+      "master_link_verified": false,
+      "scope_metadata": "Switzerland only; municipal dimension not verified",
+      "url": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/3022184/master",
+      "admitted": 0,
+      "http_status": 404,
+      "content_type": "application/json",
+      "status": "blocked",
+      "error": "Error: HTTP 404"
+    },
+    {
+      "year": 2018,
+      "published": "2019-05-28",
+      "asset": 8346718,
+      "metadata": "https://statistik.admin.ch/de/asset/8346718",
+      "license": "OPEN-BY",
+      "master_link_verified": true,
+      "scope_metadata": "Switzerland, cantons, districts, municipalities",
+      "url": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/8346718/master",
+      "admitted": 0,
+      "http_status": 200,
+      "content_type": "application/octet-stream",
+      "bytes": 20650139,
+      "sha256": "b341a57a0eb8c2d589f7232db5775a0bf69169ba03fa73688f0bfe4b4d129f36",
+      "header": {
+        "latest_year": 2018,
+        "year_dimensions": [
+          {
+            "name": "Jahr",
+            "count": 27
+          },
+          {
+            "name": "Année",
+            "count": 27
+          }
+        ],
+        "dimensions": [
+          {
+            "name": "Beobachtungseinheit",
+            "count": 22
+          },
+          {
+            "name": "Unité d'observation",
+            "count": 22
+          },
+          {
+            "name": "Kanton (-) / Bezirk (>>) / Gemeinde (......)",
+            "count": 2382
+          },
+          {
+            "name": "Canton (-) / District (>>) / Commune (......)",
+            "count": 2382
+          },
+          {
+            "name": "Betriebssystem",
+            "count": 4
+          },
+          {
+            "name": "Système d'exploitation",
+            "count": 4
+          },
+          {
+            "name": "Jahr",
+            "count": 27
+          },
+          {
+            "name": "Année",
+            "count": 27
+          }
+        ],
+        "geography_dimensions": [
+          {
+            "name": "Kanton (-) / Bezirk (>>) / Gemeinde (......)",
+            "count": 2382
+          },
+          {
+            "name": "Canton (-) / District (>>) / Commune (......)",
+            "count": 2382
+          }
+        ],
+        "update_metadata": [
+          {
+            "key": "CREATION-DATE",
+            "value": "\"20110621 15:59\""
+          },
+          {
+            "key": "MATRIX",
+            "value": "\"px-x-0702000000_104\""
+          },
+          {
+            "key": "LAST-UPDATED",
+            "value": "\"20190528 08:30\""
+          },
+          {
+            "key": "CONTACT",
+            "value": "\"Sektion Wirtschaftsstruktur und -analysen, 058 463 62 66, E-Mail: <a href=mailto:agrar@bfs.admin.ch>agrar@bfs.admin.ch</a>\""
+          },
+          {
+            "key": "CONTACT",
+            "value": "\"Section Structure et analyses économiques, 058 463 62 66, e-mail: <a href=mailto:agrar@bfs.admin.ch>agrar@bfs.admin.ch</a>\""
+          },
+          {
+            "key": "REFPERIOD",
+            "value": "\"2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996,1990,1985,1980,1975\""
+          },
+          {
+            "key": "REFPERIOD",
+            "value": "\"2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996,1990,1985,1980,1975\""
+          }
+        ],
+        "admitted": 0
+      },
+      "status": "header_verified_quarantine"
+    }
+  ],
+  "source_run": 45908472600,
+  "source_job": 140210826213,
+  "source_artifact": 15159381179,
+  "artifact_digest": "sha256:53e5a1bf6ff85c54b23cfaa44b6069a60b990dc167aa8bbf88c854eb422018d4",
+  "source_commit": "d08c6acd1c894a52c491d9c97357a9cd31720351",
+  "synthetic_checks": 8,
+  "repository_checks": {
+    "run": 45908472499,
+    "jobs": 3,
+    "conclusion": "success"
+  },
+  "temporal_coverage_bounds": {
+    "publication": "2019-05-28",
+    "rows_after_2019": 69456,
+    "maximum_possible_rows": 75768,
+    "reference_rows": 138868,
+    "maximum_possible_fraction": 0.545611659993663,
+    "explanation": "2019 dates not yet separated; bounds ignore municipality joins and missing values; no source admission"
+  }
+}

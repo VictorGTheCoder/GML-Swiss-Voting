@@ -1,0 +1,99 @@
+{
+  "status": "quarantine_only",
+  "assets": [
+    {
+      "id": 3322654,
+      "end": "2017-08-31",
+      "published": "2017-09-08",
+      "sha256": "400f4fb4e416a4b16b32f1567d13a3e3c934a523ef75255ee4f8ad8d90ba7e15",
+      "status": "blocked",
+      "error": "Missing geographic keys: ['15', '16']",
+      "records_count": 0
+    },
+    {
+      "id": 5328688,
+      "end": "2018-05-31",
+      "published": "2018-06-07",
+      "sha256": "d0190f2b97c06069d136c499198e54550787439edd64222e74274407cada6dc2",
+      "status": "blocked",
+      "error": "Missing geographic keys: ['15', '16']",
+      "records_count": 0
+    },
+    {
+      "id": 8646904,
+      "end": "2019-05-31",
+      "published": "2019-06-07",
+      "sha256": "01d839a16ed1356afaeeda7c74a798d955ad0683161d12e8f83c904216048803",
+      "status": "blocked",
+      "error": "Missing geographic keys: ['15', '16']",
+      "records_count": 0
+    },
+    {
+      "id": 16344391,
+      "end": "2020-10-31",
+      "published": "2020-11-09",
+      "sha256": "2fe5981c18a8fa62539711a9b676915a29907552fb490c9273ad1bef116c80d7",
+      "status": "blocked",
+      "error": "Missing geographic keys: ['15', '16']",
+      "records_count": 0
+    },
+    {
+      "id": 18064564,
+      "end": "2021-06-30",
+      "published": "2021-07-08",
+      "sha256": "095d5463b098b850536e92239bc7a19214e25684aaeeb6a56da405377539fab4",
+      "status": "extracted_quarantine",
+      "unit": null,
+      "records_count": 27
+    },
+    {
+      "id": 23327987,
+      "end": "2022-08-31",
+      "published": "2022-09-08",
+      "sha256": "475cb5ff6007f62a5b7aee9c89db58d39a11664ccbbc2e16b0d71db6b8297da5",
+      "status": "extracted_quarantine",
+      "unit": null,
+      "records_count": 27
+    },
+    {
+      "id": 18505947,
+      "end": "2021-08-31",
+      "published": "2021-09-07",
+      "sha256": "4f765fa05c30ac9819d9bf75768fd46529b15bb3e26299ce850014a049d65c71",
+      "status": "extracted_quarantine",
+      "unit": null,
+      "records_count": 27
+    },
+    {
+      "id": 19444907,
+      "end": "2021-10-31",
+      "published": "2021-11-08",
+      "sha256": "61531d822654b0b41edb4e2cf07568843c2a1dac42174ebffa5f6026d00322b5",
+      "status": "extracted_quarantine",
+      "unit": null,
+      "records_count": 27
+    },
+    {
+      "id": 21004569,
+      "end": "2022-01-31",
+      "published": "2022-02-07",
+      "sha256": "4726857a30977ca8e76f1a5a9e1962179bb36b7c473d0eb0b7c94950a93e01ae",
+      "status": "extracted_quarantine",
+      "unit": null,
+      "records_count": 27
+    }
+  ],
+  "complete_archives": 5,
+  "training_rows_admitted": 0,
+  "evidence": {
+    "run": 46110089483,
+    "job": 140871472568,
+    "artifact": 15248618191,
+    "artifact_digest": "sha256:0958dd30350788b115681aa91106e23024fb342da656ee6da01384bee6acfc05",
+    "sha": "5a285d44dbc5556f875ff9af9adaffca5cf8e042",
+    "tests": 5,
+    "ci": 46110089447
+  },
+  "extracted_records": 135,
+  "complete_fresh_dates": 4
+}

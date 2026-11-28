@@ -1,0 +1,634 @@
+{
+  "version": "V17.2c",
+  "status": "completed_source_audits_no_admission",
+  "parent_commit": "6ea59fd0977aca934b3cdfd3ca62d80d3091ce18",
+  "prior_ci": {
+    "run": 45908472499,
+    "jobs": 3,
+    "conclusion": "success"
+  },
+  "synthetic_checks": 9,
+  "source": "electricityprice@elcom",
+  "years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "admitted": 0,
+  "best_exploratory": {
+    "version": "V11.3",
+    "mae_pp": 6.955753873756506
+  },
+  "next": "V18.1 global contrast amplitude calibration on past OOF dates, no new data; STRU suspended until independent historical geography and vintage evidence",
+  "acquisition": {
+    "version": "V17.1a",
+    "source_run": 45887564938,
+    "source_artifact": 15149792981,
+    "artifact_digest": "sha256:b46731e259709df86d4b8d25998eb3f7316e0bc695fb0cb6fc6ba2831d8a2993",
+    "source_commit": "1466cbe588a40d1bb5d67d9b35739510d5967ce9",
+    "synthetic_checks": 9,
+    "years": [
+      {
+        "year": 2016,
+        "source_sha256": "14aefb82a18ca8933026c40f1b26517ac3546cd89df8070c07a20954e1238610",
+        "query_sha256": "4c471249d5c72f48b7355008c265f0c9ebf7342f267815ba7536e7c4233218f4",
+        "municipalities": 2321,
+        "multiple_operators": 189,
+        "multiple_rows": 189,
+        "admitted": 0,
+        "status": "quarantine"
+      },
+      {
+        "year": 2017,
+        "source_sha256": "47db83591ff1e02b226bbe2cfd4d5f00339d4808a4e04aa0b7344f2e6bed2e82",
+        "query_sha256": "4da654e9029db40e23d8c2b4b8f0d5c67a498b87702526718b7939b62e724489",
+        "municipalities": 2277,
+        "multiple_operators": 182,
+        "multiple_rows": 182,
+        "admitted": 0,
+        "status": "quarantine"
+      },
+      {
+        "year": 2018,
+        "source_sha256": "5e28e48350d1716c0be5552321661df761ce1eaafcd9420748c0e5fdcaf7ef2c",
+        "query_sha256": "ea34ce00cc36c0bd1304705433e22180ef0204833f363c7b8c744307a93b72e4",
+        "municipalities": 2255,
+        "multiple_operators": 162,
+        "multiple_rows": 162,
+        "admitted": 0,
+        "status": "quarantine"
+      },
+      {
+        "year": 2019,
+        "source_sha256": "3ceb09b7293b4f089a82f444214bbb18371d13e59089e13fd432d07f4b50c0b2",
+        "query_sha256": "79ca64f3a0629c8f4b77b1d4f0c98329a745726b25e9f13cd659ec436e85730d",
+        "municipalities": 2233,
+        "multiple_operators": 158,
+        "multiple_rows": 158,
+        "admitted": 0,
+        "status": "quarantine"
+      },
+      {
+        "year": 2020,
+        "source_sha256": "9c31da72e08747022181e13ee24288c3d3512ef15668e32125f1d9ee1222e7ec",
+        "query_sha256": "e54ca6189353924012368ad2b69cbbc18f2df520e4a0805d2125cb574f93e22f",
+        "municipalities": 2210,
+        "multiple_operators": 140,
+        "multiple_rows": 140,
+        "admitted": 0,
+        "status": "quarantine"
+      },
+      {
+        "year": 2021,
+        "source_sha256": "47bfeb00bbe71c916564575497598561ba520c9bf372bf2712ef9ae6a57940f5",
+        "query_sha256": "36d89eaa89d20d7d565ec850f1fcb080616b4a1eca6184d9485465f969580342",
+        "municipalities": 2201,
+        "multiple_operators": 152,
+        "multiple_rows": 152,
+        "admitted": 0,
+        "status": "quarantine"
+      },
+      {
+        "year": 2022,
+        "source_sha256": "bea9b1b8d1dde6be035f0e701b64891c321c942f1a61dcafa03dca08feb7c91f",
+        "query_sha256": "ee0670f3273d7ac1675a92fd7ef57a5c823e68d73335a0d41a45542263141fdf",
+        "municipalities": 2159,
+        "multiple_operators": 202,
+        "multiple_rows": 202,
+        "admitted": 0,
+        "status": "quarantine"
+      }
+    ],
+    "total_municipality_years": 15656,
+    "multiple_rows": 1185,
+    "single_rows": 14471,
+    "admitted": 0
+  },
+  "coverage_attempts": [
+    {
+      "run": 45894687664,
+      "job": 140165563585,
+      "commit": "ce37a10ed2aadcea1123d52f26323ae17733277a",
+      "conclusion": "failure",
+      "targeted_checks": 8,
+      "error": "Unexpected municipality ID in immutable reference; parquet SHA verified before projection, both ZIP digests verified"
+    },
+    {
+      "run": 45901600587,
+      "job": 140188446294,
+      "artifact": 15155508762,
+      "artifact_digest": "sha256:c37768092b2c2e19c436d69f4d0a7596807ffe072d1edaa453f88096b9d6e8f7",
+      "commit": "b3c7fe427b08b91a66d2d6ff9c93747841df125d",
+      "conclusion": "success",
+      "targeted_checks": 15,
+      "extraction": "Summary printed in verified CI log; artifact digest from API",
+      "summary": {
+        "version": "V17.1b",
+        "reference_rows": 138868,
+        "objects": 66,
+        "dates": 23,
+        "source_run": 45887564938,
+        "source_artifact": 15149792981,
+        "reference_id_normalization": {
+          "distinct_raw": 2105,
+          "distinct_normalized": 2105,
+          "zero_padded_distinct": 489
+        },
+        "reference_geography": "fixed_2026_not_harmonized_to_tariff_year",
+        "years": [
+          {
+            "year": 2016,
+            "reference_unique_ids": 2103,
+            "reference_rows": 27339,
+            "source_unique_ids": 2321,
+            "matched_ids": 2049,
+            "matched_single_ids": 1865,
+            "source_only_ids": 272,
+            "missing_ids": 54,
+            "raw_id_coverage": 0.9743223965763196,
+            "strict_id_coverage": 0.8868283404660009,
+            "strict_row_coverage": 0.8868283404660009,
+            "normalized_sha256": "8d71baa3984b40f4feb877077783d165764c77eef79497230d9070ca5487f0d9"
+          },
+          {
+            "year": 2017,
+            "reference_unique_ids": 2103,
+            "reference_rows": 14721,
+            "source_unique_ids": 2277,
+            "matched_ids": 2052,
+            "matched_single_ids": 1876,
+            "source_only_ids": 225,
+            "missing_ids": 51,
+            "raw_id_coverage": 0.9757489300998573,
+            "strict_id_coverage": 0.8920589633856396,
+            "strict_row_coverage": 0.8920589633856396,
+            "normalized_sha256": "01cff02b9345cac04ca6b7bcd965628c55381ef980d814a3a8590dcc6ccc84c5"
+          },
+          {
+            "year": 2018,
+            "reference_unique_ids": 2104,
+            "reference_rows": 21040,
+            "source_unique_ids": 2255,
+            "matched_ids": 2073,
+            "matched_single_ids": 1920,
+            "source_only_ids": 182,
+            "missing_ids": 31,
+            "raw_id_coverage": 0.9852661596958175,
+            "strict_id_coverage": 0.9125475285171103,
+            "strict_row_coverage": 0.9125475285171103,
+            "normalized_sha256": "b1759a4e23f4f104d65fd457884131f804716adc377d477e49562442d916e747"
+          },
+          {
+            "year": 2019,
+            "reference_unique_ids": 2104,
+            "reference_rows": 6312,
+            "source_unique_ids": 2233,
+            "matched_ids": 2078,
+            "matched_single_ids": 1927,
+            "source_only_ids": 155,
+            "missing_ids": 26,
+            "raw_id_coverage": 0.9876425855513308,
+            "strict_id_coverage": 0.9158745247148289,
+            "strict_row_coverage": 0.9158745247148289,
+            "normalized_sha256": "da1f6c23aa51b344eca66df811f701f838423859b3e01a9ccf544bcace8ddc56"
+          },
+          {
+            "year": 2020,
+            "reference_unique_ids": 2104,
+            "reference_rows": 18936,
+            "source_unique_ids": 2210,
+            "matched_ids": 2077,
+            "matched_single_ids": 1940,
+            "source_only_ids": 133,
+            "missing_ids": 27,
+            "raw_id_coverage": 0.9871673003802282,
+            "strict_id_coverage": 0.9220532319391636,
+            "strict_row_coverage": 0.9220532319391636,
+            "normalized_sha256": "35ebf61da1adfbd153005683a26d1ea11c035f1755e26235cde450a5f262a21c"
+          },
+          {
+            "year": 2021,
+            "reference_unique_ids": 2105,
+            "reference_rows": 27365,
+            "source_unique_ids": 2201,
+            "matched_ids": 2083,
+            "matched_single_ids": 1933,
+            "source_only_ids": 118,
+            "missing_ids": 22,
+            "raw_id_coverage": 0.9895486935866984,
+            "strict_id_coverage": 0.918289786223278,
+            "strict_row_coverage": 0.918289786223278,
+            "normalized_sha256": "c8ebe547f85e21fd634e72dbe95cd02ada51f29084bb50aa784771ba2c2c6192"
+          },
+          {
+            "year": 2022,
+            "reference_unique_ids": 2105,
+            "reference_rows": 23155,
+            "source_unique_ids": 2159,
+            "matched_ids": 2076,
+            "matched_single_ids": 1877,
+            "source_only_ids": 83,
+            "missing_ids": 29,
+            "raw_id_coverage": 0.9862232779097387,
+            "strict_id_coverage": 0.891686460807601,
+            "strict_row_coverage": 0.891686460807601,
+            "normalized_sha256": "9fdf28c7a6dc8678a4bea2c88fc20e1ae7ade6f0896a1472e83e6496cc126bdc"
+          }
+        ],
+        "years_strict_ge_90pct": 4,
+        "admitted": 0,
+        "boundary_certified": false,
+        "historical_vintage_certified": false
+      },
+      "matched_single_rows": 125594,
+      "strict_row_coverage": 0.9044128236886828,
+      "gate_passed": false
+    }
+  ],
+  "stru_candidate": {
+    "source": "OFS STRU",
+    "table": "px-x-0702000000_104",
+    "sources": [
+      "https://statistik.admin.ch/fr/asset/35187259",
+      "https://statistik.admin.ch/fr/asset/36581537",
+      "https://www.pxweb-admin-a.bfs.admin.ch/pxweb/de/px-x-0702000000_104/-/px-x-0702000000_104.px/"
+    ],
+    "status": "metadata_only_not_admitted",
+    "admitted": 0
+  },
+  "stru_vintages": {
+    "sources": [
+      {
+        "year": 2016,
+        "published": "2017-05-11",
+        "asset": 3022184,
+        "metadata": "https://statistik.admin.ch/de/asset/3022184",
+        "publication": "https://statistik.admin.ch/de/news/2017-0455",
+        "license": "OPEN-BY",
+        "master_link_verified": false,
+        "scope_metadata": "Switzerland only; municipal dimension not verified"
+      },
+      {
+        "year": 2018,
+        "published": "2019-05-28",
+        "asset": 8346718,
+        "metadata": "https://statistik.admin.ch/de/asset/8346718",
+        "license": "OPEN-BY",
+        "master_link_verified": true,
+        "scope_metadata": "Switzerland, cantons, districts, municipalities"
+      }
+    ],
+    "synthetic_checks": 8,
+    "admitted": 0,
+    "network_local": "curl exit 6 DNS",
+    "status": "one_verified_header_one_404_quarantine",
+    "binary_audit": {
+      "version": "V17.2b",
+      "source_count": 2,
+      "header_verified": 1,
+      "admitted": 0,
+      "results": [
+        {
+          "year": 2016,
+          "published": "2017-05-11",
+          "asset": 3022184,
+          "metadata": "https://statistik.admin.ch/de/asset/3022184",
+          "publication": "https://statistik.admin.ch/de/news/2017-0455",
+          "license": "OPEN-BY",
+          "master_link_verified": false,
+          "scope_metadata": "Switzerland only; municipal dimension not verified",
+          "url": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/3022184/master",
+          "admitted": 0,
+          "http_status": 404,
+          "content_type": "application/json",
+          "status": "blocked",
+          "error": "Error: HTTP 404"
+        },
+        {
+          "year": 2018,
+          "published": "2019-05-28",
+          "asset": 8346718,
+          "metadata": "https://statistik.admin.ch/de/asset/8346718",
+          "license": "OPEN-BY",
+          "master_link_verified": true,
+          "scope_metadata": "Switzerland, cantons, districts, municipalities",
+          "url": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/8346718/master",
+          "admitted": 0,
+          "http_status": 200,
+          "content_type": "application/octet-stream",
+          "bytes": 20650139,
+          "sha256": "b341a57a0eb8c2d589f7232db5775a0bf69169ba03fa73688f0bfe4b4d129f36",
+          "header": {
+            "latest_year": 2018,
+            "year_dimensions": [
+              {
+                "name": "Jahr",
+                "count": 27
+              },
+              {
+                "name": "Année",
+                "count": 27
+              }
+            ],
+            "dimensions": [
+              {
+                "name": "Beobachtungseinheit",
+                "count": 22
+              },
+              {
+                "name": "Unité d'observation",
+                "count": 22
+              },
+              {
+                "name": "Kanton (-) / Bezirk (>>) / Gemeinde (......)",
+                "count": 2382
+              },
+              {
+                "name": "Canton (-) / District (>>) / Commune (......)",
+                "count": 2382
+              },
+              {
+                "name": "Betriebssystem",
+                "count": 4
+              },
+              {
+                "name": "Système d'exploitation",
+                "count": 4
+              },
+              {
+                "name": "Jahr",
+                "count": 27
+              },
+              {
+                "name": "Année",
+                "count": 27
+              }
+            ],
+            "geography_dimensions": [
+              {
+                "name": "Kanton (-) / Bezirk (>>) / Gemeinde (......)",
+                "count": 2382
+              },
+              {
+                "name": "Canton (-) / District (>>) / Commune (......)",
+                "count": 2382
+              }
+            ],
+            "update_metadata": [
+              {
+                "key": "CREATION-DATE",
+                "value": "\"20110621 15:59\""
+              },
+              {
+                "key": "MATRIX",
+                "value": "\"px-x-0702000000_104\""
+              },
+              {
+                "key": "LAST-UPDATED",
+                "value": "\"20190528 08:30\""
+              },
+              {
+                "key": "CONTACT",
+                "value": "\"Sektion Wirtschaftsstruktur und -analysen, 058 463 62 66, E-Mail: <a href=mailto:agrar@bfs.admin.ch>agrar@bfs.admin.ch</a>\""
+              },
+              {
+                "key": "CONTACT",
+                "value": "\"Section Structure et analyses économiques, 058 463 62 66, e-mail: <a href=mailto:agrar@bfs.admin.ch>agrar@bfs.admin.ch</a>\""
+              },
+              {
+                "key": "REFPERIOD",
+                "value": "\"2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996,1990,1985,1980,1975\""
+              },
+              {
+                "key": "REFPERIOD",
+                "value": "\"2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996,1990,1985,1980,1975\""
+              }
+            ],
+            "admitted": 0
+          },
+          "status": "header_verified_quarantine"
+        }
+      ],
+      "source_run": 45908472600,
+      "source_job": 140210826213,
+      "source_artifact": 15159381179,
+      "artifact_digest": "sha256:53e5a1bf6ff85c54b23cfaa44b6069a60b990dc167aa8bbf88c854eb422018d4",
+      "source_commit": "d08c6acd1c894a52c491d9c97357a9cd31720351",
+      "synthetic_checks": 8,
+      "repository_checks": {
+        "run": 45908472499,
+        "jobs": 3,
+        "conclusion": "success"
+      },
+      "temporal_coverage_bounds": {
+        "publication": "2019-05-28",
+        "rows_after_2019": 69456,
+        "maximum_possible_rows": 75768,
+        "reference_rows": 138868,
+        "maximum_possible_fraction": 0.545611659993663,
+        "explanation": "2019 dates not yet separated; bounds ignore municipality joins and missing values; no source admission"
+      }
+    },
+    "geography_attempts": [
+      {
+        "run": 45914551546,
+        "job": 140230538659,
+        "commit": "738cfac23b97f863ff6cda5e7d90a8f7c8c6ba8c",
+        "conclusion": "failure",
+        "targeted_checks": 12,
+        "error": "Label/code disagreement on real PX header; exact benchmark artifact digest matched, archive hash guard passed before parser",
+        "repository_checks": {
+          "run": 45914551512,
+          "jobs": 3,
+          "conclusion": "success"
+        },
+        "decision": "Exclude conflicting labels and duplicate candidate IDs, report separately corroborated and single-channel candidates; no source admission, no gate relaxation."
+      },
+      {
+        "version": "V17.2c",
+        "archive_sha256": "b341a57a0eb8c2d589f7232db5775a0bf69169ba03fa73688f0bfe4b4d129f36",
+        "publication": "2019-05-28",
+        "geography": {
+          "dimension": "Kanton (-) / Bezirk (>>) / Gemeinde (......)",
+          "total_categories": 2382,
+          "code_dimension_present": true,
+          "unresolved_municipal_labels": 0,
+          "unresolved_examples": [],
+          "label_examples": [
+            "Schweiz",
+            "- Zürich",
+            ">> Bezirk Affoltern",
+            "......0001 Aeugst am Albis",
+            "......0002 Affoltern am Albis",
+            "......0003 Bonstetten",
+            "......0004 Hausen am Albis",
+            "......0005 Hedingen",
+            "......0006 Kappel am Albis",
+            "......0007 Knonau",
+            "......0008 Maschwanden",
+            "......0009 Mettmenstetten"
+          ],
+          "conflicting_labels": 2212,
+          "conflict_examples": [
+            {
+              "index": 3,
+              "label": "......0001 Aeugst am Albis",
+              "code": "4"
+            },
+            {
+              "index": 4,
+              "label": "......0002 Affoltern am Albis",
+              "code": "5"
+            },
+            {
+              "index": 5,
+              "label": "......0003 Bonstetten",
+              "code": "6"
+            },
+            {
+              "index": 6,
+              "label": "......0004 Hausen am Albis",
+              "code": "7"
+            },
+            {
+              "index": 7,
+              "label": "......0005 Hedingen",
+              "code": "8"
+            },
+            {
+              "index": 8,
+              "label": "......0006 Kappel am Albis",
+              "code": "9"
+            },
+            {
+              "index": 9,
+              "label": "......0007 Knonau",
+              "code": "10"
+            },
+            {
+              "index": 10,
+              "label": "......0008 Maschwanden",
+              "code": "11"
+            },
+            {
+              "index": 11,
+              "label": "......0009 Mettmenstetten",
+              "code": "12"
+            },
+            {
+              "index": 12,
+              "label": "......0010 Obfelden",
+              "code": "13"
+            },
+            {
+              "index": 13,
+              "label": "......0011 Ottenbach",
+              "code": "14"
+            },
+            {
+              "index": 14,
+              "label": "......0012 Rifferswil",
+              "code": "15"
+            }
+          ],
+          "duplicate_ids": 0,
+          "duplicate_id_examples": [],
+          "single_channel_ids": 0,
+          "code_examples": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "geography_metadata": [],
+          "corroborated_id_count": 0
+        },
+        "recognized_municipal_ids": 0,
+        "coverage": {
+          "rows": 138868,
+          "available_rows": 69456,
+          "available_objects": 33,
+          "available_dates": 10,
+          "raw_matched_rows": 0,
+          "raw_matched_fraction_of_available": 0,
+          "available_by_date": {
+            "2020-02-09": 4208,
+            "2020-09-27": 10520,
+            "2020-11-29": 4208,
+            "2021-03-07": 6315,
+            "2021-06-13": 10525,
+            "2021-09-26": 4210,
+            "2021-11-28": 6315,
+            "2022-02-13": 8420,
+            "2022-05-15": 6315,
+            "2022-09-25": 8420
+          },
+          "raw_matched_by_date": {},
+          "raw_matched_by_year": {},
+          "available_by_year": {
+            "2020": 18936,
+            "2021": 27365,
+            "2022": 23155
+          },
+          "boundary_certified": false,
+          "admitted": 0
+        },
+        "corroborated_coverage": {
+          "rows": 138868,
+          "available_rows": 69456,
+          "available_objects": 33,
+          "available_dates": 10,
+          "raw_matched_rows": 0,
+          "raw_matched_fraction_of_available": 0,
+          "available_by_date": {
+            "2020-02-09": 4208,
+            "2020-09-27": 10520,
+            "2020-11-29": 4208,
+            "2021-03-07": 6315,
+            "2021-06-13": 10525,
+            "2021-09-26": 4210,
+            "2021-11-28": 6315,
+            "2022-02-13": 8420,
+            "2022-05-15": 6315,
+            "2022-09-25": 8420
+          },
+          "raw_matched_by_date": {},
+          "raw_matched_by_year": {},
+          "available_by_year": {
+            "2020": 18936,
+            "2021": 27365,
+            "2022": 23155
+          },
+          "boundary_certified": false,
+          "admitted": 0
+        },
+        "status": "raw_identifier_diagnostic_only",
+        "warning": "Conflicts and duplicate candidate IDs excluded; single-channel IDs unverified. No boundary certification or values extracted.",
+        "run": 45920094969,
+        "job": 140248505682,
+        "artifact": 15163742344,
+        "artifact_digest": "sha256:3cb1e21387cc8fa1ffc1d1f3633bf8f05db0ce28e360f0ad3b67daf5e3b1028f",
+        "tested_commit": "34746647f85a24f5f77727e7533f91966b01304f",
+        "synthetic_checks": 17,
+        "repository_checks": {
+          "run": 45920094994,
+          "jobs": 3,
+          "conclusion": "success"
+        },
+        "decision": "suspended_no_admission; codes appear ordinal, not independently corroborated OFS identifiers; boundary unresolved, only 33/66 objects temporally eligible"
+      }
+    ]
+  }
+}

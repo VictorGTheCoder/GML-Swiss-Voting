@@ -1,0 +1,128 @@
+{
+  "version": "V19",
+  "status": "completed_source_suspended",
+  "parent_commit": "0808f2ae98889cc2f0d55433765aeab2296cc979",
+  "best_exploratory": 6.955753873756506,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "active": null,
+  "completed": [
+    {
+      "version": "V19.1",
+      "run": 45962942193,
+      "job": 140384798715,
+      "artifact": 15181174769,
+      "artifact_digest": "sha256:427deb0000c81be1e7b8b402be197a0d25792b2727723a01bdcea7fe96febde9",
+      "head": "aec5b6b25d0349cb25b8f03217c9738d171b206b",
+      "conclusion": "success",
+      "targeted_checks": 8,
+      "repository_ci": {
+        "run": 45962942094,
+        "successful_jobs": 3
+      },
+      "source_sha256": {
+        "without": "5b71b290e70937ff254c2c7753f920884aeaf10192870c038e82efdeefc463d5",
+        "with": "73111625aa5a799bcf638435c4b1fd372d66fc430beb44d4fbcb81f727b5db03"
+      },
+      "comparison": {
+        "rows_without": 414,
+        "rows_with": 420,
+        "mutation_ids_without": 233,
+        "mutation_ids_with": 233,
+        "added_rows": 6,
+        "missing_rows": 0,
+        "added_mutation_ids": 1,
+        "missing_mutation_ids": 0,
+        "equivalent_projected_multisets": false
+      },
+      "admitted": 0
+    },
+    {
+      "version": "V19.2",
+      "head": "1d4d1958af1ec58daf1c0fe976d8f8aa90699e0a",
+      "run": 45970464102,
+      "job": 140409349600,
+      "artifact": 15184139096,
+      "artifact_digest": "sha256:f4a6de8ec2530be81366a5214531f25f503d6b6f0b4542db987ce8c1b0b35b5b",
+      "conclusion": "success",
+      "targeted_checks": 12,
+      "repository_ci": {
+        "run": 45970463994,
+        "successful_jobs": 3
+      },
+      "totals": {
+        "rows": 138868,
+        "without_exchange_any": 12870,
+        "without_exchange_before_or_same": 9170,
+        "without_exchange_after": 4001,
+        "with_exchange_any": 12870,
+        "with_exchange_before_or_same": 9170,
+        "with_exchange_after": 4001,
+        "added_records_any": 198,
+        "added_records_before_or_same": 78,
+        "added_records_after": 120
+      },
+      "reference_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+      "admitted": 0
+    }
+  ],
+  "next": [
+    "V20.1: chronological additive residual hierarchy, no source admission",
+    "V19.3b only if new exact project identity and historical publication evidence"
+  ],
+  "target_rows_admitted": 0,
+  "workflow": ".github/workflows/geography-v192.yml",
+  "audit": "experiments/municipal_v19/audit_key_overlap.py",
+  "pilot_v193a": {
+    "version": "V19.3a",
+    "status": "pilot_metadata_only",
+    "projects": [
+      {
+        "project": 1,
+        "act": "FF 2017 2217",
+        "council_days": 14,
+        "calendar_days": 12,
+        "cn_days": 7,
+        "ce_days": 7
+      },
+      {
+        "project": 2,
+        "act": "FF 2017 2205",
+        "council_days": 12,
+        "calendar_days": 10,
+        "cn_days": 5,
+        "ce_days": 7
+      }
+    ],
+    "source_families": 1,
+    "vote_dates": 1,
+    "target_rows_admitted": 0,
+    "targeted_checks": 8
+  },
+  "structured_pilot": {
+    "status": "completed_no_admission",
+    "targeted_checks": 8,
+    "parent_ci": {
+      "run": 45978798798,
+      "conclusion": "success"
+    },
+    "cases": 3,
+    "source": "https://ws.parlament.ch/odata.svc/",
+    "admitted": 0,
+    "run": 45995815647,
+    "job": 140494810014,
+    "artifact": 15196056289,
+    "artifact_digest": "sha256:8d57570e58d759861845d5c2b452e366eed9baee0f813d68bfa73ff78856820f",
+    "repository_ci": {
+      "run": 45995825440,
+      "successful_jobs": 3
+    },
+    "metadata_sha256": "9a00f53df4d1f0769e3d72e90c1b4e82537e600cf496cc006481fbe74f2f25e6",
+    "collections": 4,
+    "count_queries": 6,
+    "project_level_date_queries": 3
+  }
+}

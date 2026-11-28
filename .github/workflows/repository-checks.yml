@@ -61,3 +61,4 @@ jobs:
           tests/test_prototype_profile_v3.py
           tests/test_enrichment_experiment_v3_review.py
           tests/test_poll_timing_sensitivity_v3.py
+          tests/test_robust_v241.py

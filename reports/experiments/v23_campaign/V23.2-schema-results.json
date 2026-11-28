@@ -1,0 +1,1036 @@
+{
+  "endpoint": "https://lindas.admin.ch/query",
+  "query": "PREFIX cube: <https://cube.link/>\nPREFIX sh: <http://www.w3.org/ns/shacl#>\nPREFIX schema: <http://schema.org/>\nSELECT DISTINCT ?cube ?kind ?field ?value WHERE {\n  VALUES ?cube { <https://politics.ld.admin.ch/political-rights/popular-initiative/1> <https://politics.ld.admin.ch/political-rights/referendum/1> }\n  {\n    ?cube cube:observationConstraint/sh:property ?shape .\n    ?shape sh:path ?field .\n    FILTER(isIRI(?field))\n    BIND(\"dimension\" AS ?kind)\n    OPTIONAL {\n      ?shape (schema:name|<https://schema.org/name>) ?value .\n      FILTER(LANG(?value) IN (\"\", \"de\", \"fr\", \"en\"))\n    }\n  } UNION {\n    VALUES ?field { <http://schema.org/license> <https://schema.org/license> <http://purl.org/dc/terms/license> <http://schema.org/datePublished> <https://schema.org/datePublished> <http://purl.org/dc/terms/issued> <http://schema.org/dateModified> <https://schema.org/dateModified> }\n    ?cube ?field ?value .\n    FILTER(isIRI(?value) || isLiteral(?value))\n    BIND(\"metadata\" AS ?kind)\n  }\n} ORDER BY ?cube ?kind ?field ?value LIMIT 300",
+  "retrieved_at": "2026-11-27T18:05:34.896Z",
+  "metadata_sha256": "710f760918245bacffac881c5e878c8fad0a5b2b9440929aeb34b865986f0814",
+  "response_bytes": 74405,
+  "rows": 139,
+  "truncated_possible": false,
+  "inventory": [
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "dimension_count": 25,
+      "metadata_fields": [
+        "http://schema.org/dateModified",
+        "http://schema.org/datePublished"
+      ]
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "dimension_count": 20,
+      "metadata_fields": [
+        "http://schema.org/dateModified",
+        "http://schema.org/datePublished"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://cube.link/observedBy",
+      "value": "Beobachtet von",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://cube.link/observedBy",
+      "value": "Observed by",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://cube.link/observedBy",
+      "value": "Observé par",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/abgeschrieben",
+      "value": "Abgeschrieben",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/abgeschrieben",
+      "value": "Abandoned",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/abgeschrieben",
+      "value": "Classée",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/abstimmungsNummerBk",
+      "value": "Abstimmungsnummer",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/abstimmungsNummerBk",
+      "value": "Vote number",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/abstimmungsNummerBk",
+      "value": "Numéro de votation",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/angenommen",
+      "value": "Von Volk und Ständen angenommen",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/angenommen",
+      "value": "Accepted by the People and the Cantons",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/angenommen",
+      "value": "Acceptée par le peuple et les cantons",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/botschaftBrNummer",
+      "value": "Botschaftnummer",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/botschaftBrNummer",
+      "value": "Dispatch number",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/botschaftBrNummer",
+      "value": "Numéro du message",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/botschaftBrNummer8stellig",
+      "value": "Botschaftsnummer 8-stellig",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/botschaftBrNummer8stellig",
+      "value": "Eight-digit dispatch number",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/botschaftBrNummer8stellig",
+      "value": "Numéro du message 8 chiffres",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/empfehlungBundesrat",
+      "value": "Empfehlung Bundesrat",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/empfehlungBundesrat",
+      "value": "Recommendation of the Federal Council",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/empfehlungBundesrat",
+      "value": "Recommandation du Conseil fédéral",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/empfehlungParlament",
+      "value": "Empfehlung Parlament",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/empfehlungParlament",
+      "value": "Recommendation of Parliament",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/empfehlungParlament",
+      "value": "Recommandation du Parlement",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/form",
+      "value": "Form",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/form",
+      "value": "Form",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/form",
+      "value": "Forme",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/gegenentwurfNummer",
+      "value": "Nummer Gegenentwurf",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/gegenentwurfNummer",
+      "value": "Counter-proposal number",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/gegenentwurfNummer",
+      "value": "Numéro du contre-projet",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/id",
+      "value": "id",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/id",
+      "value": "id",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/id",
+      "value": "id",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/phase",
+      "value": "Phase",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/phase",
+      "value": "Phase",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/phase",
+      "value": "Phase",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/region",
+      "value": "Region",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/region",
+      "value": "Region",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/region",
+      "value": "Région",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/sammelbeginn",
+      "value": "Sammelbeginn",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/sammelbeginn",
+      "value": "Start of signature collection",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/sammelbeginn",
+      "value": "Début de la récolte de signatures",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/sammelbeginnJahr",
+      "value": "Sammelbeginn Jahr",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/sammelbeginnJahr",
+      "value": "Year in which signature collection started",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/sammelbeginnJahr",
+      "value": "Année du début de la récolte des signatures",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/status",
+      "value": "Status",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/status",
+      "value": "Status",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/status",
+      "value": "État",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/titel",
+      "value": "Titel",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/titel",
+      "value": "Title",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/titel",
+      "value": "Titre",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/ungueltig",
+      "value": "Ungültig",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/ungueltig",
+      "value": "Invalid",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/ungueltig",
+      "value": "Nulle",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenEingereicht",
+      "value": "Eingereichte Unterschriften",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenEingereicht",
+      "value": "Submitted signatures",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenEingereicht",
+      "value": "Signatures déposées",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenGueltig",
+      "value": "Gültige Unterschriften",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenGueltig",
+      "value": "Valid signatures",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenGueltig",
+      "value": "Signatures valables",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenGueltigNachAuszaehlung",
+      "value": "Gültige Unterschriften nach Auszählung",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenGueltigNachAuszaehlung",
+      "value": "Valid signatures after counting",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenGueltigNachAuszaehlung",
+      "value": "Signatures valables après le décompte",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenUngueltig",
+      "value": "Ungültige Unterschriften",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenUngueltig",
+      "value": "Invalid signatures",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenUngueltig",
+      "value": "Signatures non valables",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenUngueltigAnteil",
+      "value": "Anteil ungültige Unterschriften",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenUngueltigAnteil",
+      "value": "Percentage of invalid signatures",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/unterschriftenUngueltigAnteil",
+      "value": "Pourcentage de signatures non valables",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/zurueckgezogen",
+      "value": "Zurückgezogen",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/zurueckgezogen",
+      "value": "Withdrawn",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/zurueckgezogen",
+      "value": "Retirée",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/zustandgekommen",
+      "value": "Zustandegekommen",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/zustandgekommen",
+      "value": "Successfully requested",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/popular-initiative/zustandgekommen",
+      "value": "Ayant abouti",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "metadata",
+      "field": "http://schema.org/dateModified",
+      "value": "2026-11-27T15:10:08Z",
+      "language": null
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/popular-initiative/1",
+      "kind": "metadata",
+      "field": "http://schema.org/datePublished",
+      "value": "2026-01-01",
+      "language": null
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://cube.link/observedBy",
+      "value": "Beobachtet von",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://cube.link/observedBy",
+      "value": "Observed by",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://cube.link/observedBy",
+      "value": "Observé par",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/abstimmungsNummerBk",
+      "value": "Abstimmungsnummer",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/abstimmungsNummerBk",
+      "value": "Vote number",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/abstimmungsNummerBk",
+      "value": "Numéro de votation",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/aenderung",
+      "value": "Änderung",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/aenderung",
+      "value": "Amendment",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/aenderung",
+      "value": "Modification",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/beschlussdatum",
+      "value": "Beschlussdatum",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/beschlussdatum",
+      "value": "Decision date",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/beschlussdatum",
+      "value": "Date de l'arrêt",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/beschlussdatumJahr",
+      "value": "Beschlussdatum Jahr",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/beschlussdatumJahr",
+      "value": "Year of decision date",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/beschlussdatumJahr",
+      "value": "Année de la date de l'arrêt",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/botschaftBrNummer",
+      "value": "Botschaftnummer",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/botschaftBrNummer",
+      "value": "Dispatch number",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/botschaftBrNummer",
+      "value": "Numéro du message",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/botschaftBrNummer8stellig",
+      "value": "Botschaftsnummer 8-stellig",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/botschaftBrNummer8stellig",
+      "value": "Eight-digit dispatch number",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/botschaftBrNummer8stellig",
+      "value": "Numéro du message 8 chiffres",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/id",
+      "value": "ID",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/id",
+      "value": "Id",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/id",
+      "value": "Id",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/laufendeReferendumsfrist",
+      "value": "Laufende Referendumsfrist",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/laufendeReferendumsfrist",
+      "value": "Ongoing referendum period",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/laufendeReferendumsfrist",
+      "value": "Délai référendaire en cours",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/phase",
+      "value": "Phase",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/phase",
+      "value": "Phase",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/phase",
+      "value": "Phase",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/region",
+      "value": "Region",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/region",
+      "value": "Region",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/region",
+      "value": "Région",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/status",
+      "value": "Status",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/status",
+      "value": "Status",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/status",
+      "value": "État",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/titel",
+      "value": "Titel",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/titel",
+      "value": "Title",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/titel",
+      "value": "Titre",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/typ",
+      "value": "Typ",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/typ",
+      "value": "Type",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/typ",
+      "value": "Type",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenEingereicht",
+      "value": "Eingereichte Unterschriften",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenEingereicht",
+      "value": "Submitted signatures",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenEingereicht",
+      "value": "Signatures deposees",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenGueltig",
+      "value": "Gültige Unterschriften",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenGueltig",
+      "value": "Valid signatures",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenGueltig",
+      "value": "Signatures valables",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenGueltigNachAuszaehlung",
+      "value": "Gültige Unterschriften nach Auszählung",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenGueltigNachAuszaehlung",
+      "value": "Valid signatures after counting",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenGueltigNachAuszaehlung",
+      "value": "Signatures valables après le décompte",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenUngueltig",
+      "value": "Ungültige Unterschriften",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenUngueltig",
+      "value": "Invalid signatures",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenUngueltig",
+      "value": "Signatures non valables",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenUngueltigAnteil",
+      "value": "Anteil ungültige Unterschriften",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenUngueltigAnteil",
+      "value": "Percentage of invalid signatures",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/unterschriftenUngueltigAnteil",
+      "value": "Pourcentage de signatures non valables",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/zustandegekommen",
+      "value": "Zustandegekommen",
+      "language": "de"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/zustandegekommen",
+      "value": "Successfully requested",
+      "language": "en"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "dimension",
+      "field": "https://politics.ld.admin.ch/political-rights/referendum/zustandegekommen",
+      "value": "Ayant abouti",
+      "language": "fr"
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "metadata",
+      "field": "http://schema.org/dateModified",
+      "value": "2026-11-27T15:02:50Z",
+      "language": null
+    },
+    {
+      "cube": "https://politics.ld.admin.ch/political-rights/referendum/1",
+      "kind": "metadata",
+      "field": "http://schema.org/datePublished",
+      "value": "2026-01-01",
+      "language": null
+    }
+  ],
+  "baseline_manifest_sha256": "b5675ef7fb6e4e81c0bbee994484eb8d59190ae5348e53863942f2e76faa3347",
+  "existing_source_fields": [
+    "br-pos",
+    "bv-pos",
+    "d1e2",
+    "d1e3",
+    "d2e2",
+    "d2e3",
+    "d3e2",
+    "d3e3",
+    "dat-message",
+    "dat-parl",
+    "ja-lager",
+    "nein-lager",
+    "nr-pos",
+    "nrja",
+    "nrnein",
+    "p-bdp",
+    "p-cvp",
+    "p-evp",
+    "p-fdp",
+    "p-glp",
+    "p-gps",
+    "p-mitte",
+    "p-sps",
+    "p-svp",
+    "pa-iv",
+    "sr-pos",
+    "srja",
+    "srnein"
+  ],
+  "novelty_status": "manual_review_required",
+  "observations_read": 0,
+  "admitted": 0
+}

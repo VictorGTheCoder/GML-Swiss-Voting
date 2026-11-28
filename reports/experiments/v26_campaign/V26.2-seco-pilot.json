@@ -1,0 +1,19 @@
+{
+  "status": "quarantine_not_admitted",
+  "source": "https://www.admin.ch/fr/nsb?id=69427",
+  "publisher": "SECO",
+  "period": "2017-12",
+  "publication_date": "2018-01-09",
+  "geography": "CH",
+  "registered_unemployed": 146654,
+  "unemployment_rate_pp": 3.3,
+  "verification": "official dated press release, numeric values transcribed; no original bytes/hash or license confirmation",
+  "break_notice": "https://www.admin.ch/fr/nsb?id=71024",
+  "admission_blockers": [
+    "single month, historical coverage unknown",
+    "source bytes and redistribution rights unverified",
+    "novelty versus manifest and fold-specific feature blocks unverified",
+    "March 2018 counting break"
+  ],
+  "policy": "strict publication date before target date; no backfill from later releases; no use in model yet"
+}

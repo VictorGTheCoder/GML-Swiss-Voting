@@ -1,0 +1,258 @@
+{
+  "status": "quarantine_not_admitted",
+  "source_run": 45937853512,
+  "source_artifact": 15170759732,
+  "source_artifact_digest": "sha256:8f6f489d93db014d2ab607788d94c53c97795b5a2331bfd34a539cb6a78b098b",
+  "metadata_candidates": 18,
+  "remaining_candidates": 14,
+  "unique_candidates": 11,
+  "candidates": [
+    {
+      "vote_date": "2016-02-28",
+      "affair": "13.085",
+      "family": "fga",
+      "year": 2015,
+      "page": 4403,
+      "needle": "pénalisation du mariage",
+      "source": "https://www.parlament.ch/fr/services/votations-populaires/votations-populaires-archives/votations-populaires-2016/votation-populaires-2016-02-28",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/1168",
+          "date": "2015-06-30",
+          "title": "Arrêté fédéral concernant l'initiative populaire «Pour le couple et la famille  Non à la pénalisation du mariage»",
+          "docDate": "2015-06-19"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": []
+    },
+    {
+      "vote_date": "2016-02-28",
+      "affair": "13.091",
+      "family": "fga",
+      "year": 2015,
+      "page": 2487,
+      "needle": "renvoi effectif des étrangers criminels",
+      "source": "https://www.parlament.ch/fr/services/votations-populaires/votations-populaires-archives/votations-populaires-2016/votation-populaires-2016-02-28",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/542",
+          "date": "2015-03-31",
+          "title": "Arrêté fédéral concernant l'initiative populaire «Pour le renvoi effectif des étrangers criminels (initiative de mise en uvre)»",
+          "docDate": "2015-03-20"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": []
+    },
+    {
+      "vote_date": "2016-02-28",
+      "affair": "15.021",
+      "family": "fga",
+      "year": 2015,
+      "page": 6513,
+      "needle": "spéculation sur les denrées alimentaires",
+      "source": "https://www.parlament.ch/fr/services/votations-populaires/votations-populaires-archives/votations-populaires-2016/votation-populaires-2016-02-28",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/493",
+          "date": "2015-03-24",
+          "title": "Message concernant l'initiative populaire «Pas de spéculation sur les denrées alimentaires» ",
+          "docDate": "2015-02-18"
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/494",
+          "date": "2015-03-24",
+          "title": "Arrêté fédéral concernant l'initiative populaire «Pas de spéculation sur les denrées alimentaires» ",
+          "docDate": "2015-02-18"
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/1695",
+          "date": "2015-10-06",
+          "title": "Arrêté fédéral concernant l'initiative populaire «Pas de spéculation sur les denrées alimentaires» ",
+          "docDate": "2015-09-25"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": []
+    },
+    {
+      "vote_date": "2016-02-28",
+      "affair": "13.077",
+      "family": "fga",
+      "year": 2014,
+      "page": 7083,
+      "needle": "transit routier dans la région alpine",
+      "source": "https://www.parlament.ch/fr/services/votations-populaires/votations-populaires-archives/votations-populaires-2016/votation-populaires-2016-02-28",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2014/1594",
+          "date": "2014-10-07",
+          "title": "Loi fédérale sur le transit routier dans la région alpine (LTRA) (Réfection du tunnel routier du Gothard)",
+          "docDate": "2014-09-26"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": []
+    },
+    {
+      "vote_date": "2017-09-24",
+      "affair": "15.050",
+      "family": "fga",
+      "year": 2017,
+      "page": 2207,
+      "needle": "sécurité alimentaire",
+      "source": "https://www.parlament.ch/fr/services/votations-populaires/votations-populaires-archives/votations-populaires-2017/votation-populaire-2017-09-24",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/464",
+          "date": "2017-03-28",
+          "title": "Arrêté fédéral sur la sécurité alimentaire (contre-projet direct à l'initiative populaire «Pour la sécurité alimentaire»)",
+          "docDate": "2017-03-14"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": [
+        "https://fedlex.data.admin.ch/eli/fga/2017/484"
+      ]
+    },
+    {
+      "vote_date": "2017-09-24",
+      "affair": "14.088",
+      "family": "fga",
+      "year": 2017,
+      "page": 2205,
+      "needle": "financement additionnel de l’AVS",
+      "source": "https://www.parlament.ch/fr/services/votations-populaires/votations-populaires-archives/votations-populaires-2017/votation-populaire-2017-09-24",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/463",
+          "date": "2017-03-28",
+          "title": "Arrêté fédéral sur le financement additionnel de l'AVS par le biais d'un relèvement de la taxe sur la valeur ajoutée",
+          "docDate": "2017-03-17"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": []
+    },
+    {
+      "vote_date": "2017-09-24",
+      "affair": "14.088",
+      "family": "fga",
+      "year": 2017,
+      "page": 2217,
+      "needle": "réforme de la prévoyance vieillesse 2020",
+      "source": "https://www.parlament.ch/fr/services/votations-populaires/votations-populaires-archives/votations-populaires-2017/votation-populaire-2017-09-24",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/469",
+          "date": "2017-03-28",
+          "title": "Loi fédéral sur la réforme de la prévoyance vieillesse 2020",
+          "docDate": "2017-03-17"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": [
+        "https://fedlex.data.admin.ch/eli/fga/2017/1078",
+        "https://fedlex.data.admin.ch/eli/fga/2017/1235"
+      ]
+    },
+    {
+      "vote_date": "2021-06-13",
+      "affair": "18.096",
+      "family": "fga",
+      "year": 2020,
+      "page": 7393,
+      "needle": "eau potable propre",
+      "source": "https://www.parlament.ch/fr/services/Pages/volksabstimmung-2021-06-13.aspx",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/1996",
+          "date": "2020-10-06",
+          "title": "Arrêté fédéral relatif à l'initiative populaire «Pour une eau potable propre et une alimentation saine  Pas de subventions pour l'utilisation de pesticides et l'utilisation d'antibiotiques à titre prophylactique»",
+          "docDate": "2020-09-25"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": []
+    },
+    {
+      "vote_date": "2021-06-13",
+      "affair": "19.025",
+      "family": "fga",
+      "year": 2020,
+      "page": 7395,
+      "needle": "Suisse libre de pesticides de synthèse",
+      "source": "https://www.parlament.ch/fr/services/Pages/volksabstimmung-2021-06-13.aspx",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/1997",
+          "date": "2020-10-06",
+          "title": "Arrêté fédéral relatif à l'initiative populaire «Pour une Suisse libre de pesticides de synthèse»",
+          "docDate": "2020-09-25"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": []
+    },
+    {
+      "vote_date": "2021-06-13",
+      "affair": "20.058",
+      "family": "oc",
+      "year": 2020,
+      "page": 3835,
+      "needle": "bases légales des ordonnances",
+      "source": "https://www.parlament.ch/fr/services/Pages/volksabstimmung-2021-06-13.aspx",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/oc/2020/711",
+          "date": "2020-09-25",
+          "title": "Loi fédérale sur les bases légales des ordonnances du Conseil fédéral visant à surmonter l'épidémie de COVID-19 (Loi COVID-19)",
+          "docDate": "2020-09-25"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": [
+        "https://fedlex.data.admin.ch/eli/oc/2020/980"
+      ]
+    },
+    {
+      "vote_date": "2021-06-13",
+      "affair": "17.071",
+      "family": "fga",
+      "year": 2020,
+      "page": 7607,
+      "needle": "réduction des émissions de gaz à effet de serre",
+      "source": "https://www.parlament.ch/fr/services/Pages/volksabstimmung-2021-06-13.aspx",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/2013",
+          "date": "2020-10-06",
+          "title": "Loi fédérale sur la réduction des émissions de gaz à effet de serre (Loi sur le CO<sub>2</sub>)",
+          "docDate": "2020-09-25"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": []
+    },
+    {
+      "vote_date": "2021-06-13",
+      "affair": "19.032",
+      "family": "fga",
+      "year": 2020,
+      "page": 7499,
+      "needle": "mesures policières de lutte contre le terrorisme",
+      "source": "https://www.parlament.ch/fr/services/Pages/volksabstimmung-2021-06-13.aspx",
+      "status": "candidate_not_admitted",
+      "provisional_matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/2004",
+          "date": "2020-10-06",
+          "title": "Loi fédérale sur les mesures policières de lutte contre le terrorisme (MPT)",
+          "docDate": "2020-09-25"
+        }
+      ],
+      "excluded_by_exact_parliament_document_date": []
+    }
+  ]
+}

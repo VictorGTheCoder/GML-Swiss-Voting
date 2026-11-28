@@ -1,0 +1,25 @@
+name: V18.2a Fedlex historical legal text metadata audit
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: v182a-fedlex-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  metadata-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node experiments/municipal_v18/audit_fedlex.mjs --self-test
+      - run: node experiments/municipal_v18/audit_fedlex.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v182a-fedlex-metadata
+          path: artifacts/v182a/manifest.json
+          if-no-files-found: error

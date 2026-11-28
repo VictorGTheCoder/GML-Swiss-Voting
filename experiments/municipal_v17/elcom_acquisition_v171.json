@@ -1,0 +1,84 @@
+{
+  "version": "V17.1a",
+  "source_run": 45887564938,
+  "source_artifact": 15149792981,
+  "artifact_digest": "sha256:b46731e259709df86d4b8d25998eb3f7316e0bc695fb0cb6fc6ba2831d8a2993",
+  "source_commit": "1466cbe588a40d1bb5d67d9b35739510d5967ce9",
+  "synthetic_checks": 9,
+  "years": [
+    {
+      "year": 2016,
+      "source_sha256": "14aefb82a18ca8933026c40f1b26517ac3546cd89df8070c07a20954e1238610",
+      "query_sha256": "4c471249d5c72f48b7355008c265f0c9ebf7342f267815ba7536e7c4233218f4",
+      "municipalities": 2321,
+      "multiple_operators": 189,
+      "multiple_rows": 189,
+      "admitted": 0,
+      "status": "quarantine"
+    },
+    {
+      "year": 2017,
+      "source_sha256": "47db83591ff1e02b226bbe2cfd4d5f00339d4808a4e04aa0b7344f2e6bed2e82",
+      "query_sha256": "4da654e9029db40e23d8c2b4b8f0d5c67a498b87702526718b7939b62e724489",
+      "municipalities": 2277,
+      "multiple_operators": 182,
+      "multiple_rows": 182,
+      "admitted": 0,
+      "status": "quarantine"
+    },
+    {
+      "year": 2018,
+      "source_sha256": "5e28e48350d1716c0be5552321661df761ce1eaafcd9420748c0e5fdcaf7ef2c",
+      "query_sha256": "ea34ce00cc36c0bd1304705433e22180ef0204833f363c7b8c744307a93b72e4",
+      "municipalities": 2255,
+      "multiple_operators": 162,
+      "multiple_rows": 162,
+      "admitted": 0,
+      "status": "quarantine"
+    },
+    {
+      "year": 2019,
+      "source_sha256": "3ceb09b7293b4f089a82f444214bbb18371d13e59089e13fd432d07f4b50c0b2",
+      "query_sha256": "79ca64f3a0629c8f4b77b1d4f0c98329a745726b25e9f13cd659ec436e85730d",
+      "municipalities": 2233,
+      "multiple_operators": 158,
+      "multiple_rows": 158,
+      "admitted": 0,
+      "status": "quarantine"
+    },
+    {
+      "year": 2020,
+      "source_sha256": "9c31da72e08747022181e13ee24288c3d3512ef15668e32125f1d9ee1222e7ec",
+      "query_sha256": "e54ca6189353924012368ad2b69cbbc18f2df520e4a0805d2125cb574f93e22f",
+      "municipalities": 2210,
+      "multiple_operators": 140,
+      "multiple_rows": 140,
+      "admitted": 0,
+      "status": "quarantine"
+    },
+    {
+      "year": 2021,
+      "source_sha256": "47bfeb00bbe71c916564575497598561ba520c9bf372bf2712ef9ae6a57940f5",
+      "query_sha256": "36d89eaa89d20d7d565ec850f1fcb080616b4a1eca6184d9485465f969580342",
+      "municipalities": 2201,
+      "multiple_operators": 152,
+      "multiple_rows": 152,
+      "admitted": 0,
+      "status": "quarantine"
+    },
+    {
+      "year": 2022,
+      "source_sha256": "bea9b1b8d1dde6be035f0e701b64891c321c942f1a61dcafa03dca08feb7c91f",
+      "query_sha256": "ee0670f3273d7ac1675a92fd7ef57a5c823e68d73335a0d41a45542263141fdf",
+      "municipalities": 2159,
+      "multiple_operators": 202,
+      "multiple_rows": 202,
+      "admitted": 0,
+      "status": "quarantine"
+    }
+  ],
+  "total_municipality_years": 15656,
+  "multiple_rows": 1185,
+  "single_rows": 14471,
+  "admitted": 0
+}

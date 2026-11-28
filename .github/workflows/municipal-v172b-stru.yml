@@ -1,0 +1,25 @@
+name: V17.2b STRU vintage binary audit
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: v172b-stru-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  vintage-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node experiments/municipal_v17/audit_stru_vintages.mjs --self-test
+      - run: node experiments/municipal_v17/audit_stru_vintages.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v172b-stru-vintage-audit
+          path: artifacts/v172b/manifest.json
+          if-no-files-found: error

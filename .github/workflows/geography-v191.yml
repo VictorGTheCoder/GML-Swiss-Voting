@@ -1,0 +1,23 @@
+name: V19.1 geographic mutation audit
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python experiments/municipal_v19/audit_mutations.py --self-test
+      - run: python experiments/municipal_v19/audit_mutations.py --output reports/generated/v191/manifest.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v191-mutations
+          path: reports/generated/v191/manifest.json
+          if-no-files-found: error
+          retention-days: 30

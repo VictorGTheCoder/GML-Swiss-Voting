@@ -1,0 +1,223 @@
+{
+  "campaign": "V14",
+  "status": "source_audit_deferred_primary_vintage_pending",
+  "active": null,
+  "best_observed": {
+    "version": "V11.3",
+    "mae_pp": 6.955753873756506
+  },
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868,
+    "period": "2016-2022"
+  },
+  "completed": [],
+  "pending": [
+    "V14.1",
+    "V14.2"
+  ],
+  "sources": [
+    {
+      "url": "https://www.efv.admin.ch/en/data-fiscal-equalization",
+      "status": "candidate_archive_publication_vintage_unverified"
+    },
+    {
+      "url": "https://www.efv.admin.ch/fr/documents-techniques-et-rapports",
+      "status": "candidate_methods"
+    }
+  ],
+  "training_rows_admitted": 0,
+  "source_diagnostic_run": 45709347921,
+  "prior_source_inventory_ref": "aea65e15f4897b5ef34b9eba4d1e250c92665253",
+  "v141": {
+    "status": "archive_inventory_complete_candidate_vintage_pending",
+    "candidate_rows": 182,
+    "years": 7,
+    "cantons": 26,
+    "compared_rows": 156,
+    "changed_rows": 32,
+    "year_stats": [
+      {
+        "year": 2016,
+        "rows": 26,
+        "compared": 26,
+        "changed": 0,
+        "max_change": 0
+      },
+      {
+        "year": 2017,
+        "rows": 26,
+        "compared": 26,
+        "changed": 0,
+        "max_change": 0
+      },
+      {
+        "year": 2018,
+        "rows": 26,
+        "compared": 26,
+        "changed": 10,
+        "max_change": 0.2
+      },
+      {
+        "year": 2019,
+        "rows": 26,
+        "compared": 26,
+        "changed": 0,
+        "max_change": 0
+      },
+      {
+        "year": 2020,
+        "rows": 26,
+        "compared": 26,
+        "changed": 0,
+        "max_change": 0
+      },
+      {
+        "year": 2021,
+        "rows": 26,
+        "compared": 26,
+        "changed": 22,
+        "max_change": 0.4
+      },
+      {
+        "year": 2022,
+        "rows": 26,
+        "compared": 0,
+        "changed": 0,
+        "max_change": null
+      }
+    ],
+    "source_month_only": true,
+    "source_hashes_pending": true,
+    "license_pending": true,
+    "missing_reference_year": null,
+    "training_rows_admitted": 0,
+    "previous_ci": {
+      "run": 45717992954,
+      "jobs": 3,
+      "conclusion": "success"
+    },
+    "publication_evidence_years": 7,
+    "publication_evidence_primary_years": 2,
+    "missing_original_pdf_2016": false,
+    "latest_verified_ci": {
+      "run": 45765482116,
+      "jobs": 3,
+      "conclusion": "success"
+    },
+    "archive_inventory": {
+      "status": "inventory_success_metadata_verified_vintage_and_license_pending",
+      "sources": 13,
+      "years": 7,
+      "local_download": "DNS failure; direct download failed; web binary unsupported",
+      "source_hashes_verified": 13,
+      "training_rows_admitted": 0,
+      "latest_prior_ci": 45732311992,
+      "source_hashes_scope": "downloaded runner bytes; verified metadata ZIP digest, not independently rehashed source binaries locally",
+      "downloaded": 13,
+      "source_bytes": 12020413,
+      "zip_members": 46,
+      "direct_worksheet_parts": 70,
+      "run": 45740122118,
+      "job": 139642769397,
+      "artifact": 15080861587,
+      "artifact_digest": "sha256:6d5a7de5577b803d144272062c643ed207a69241dddfeed85880039087101fb2",
+      "retrieved_at": "2026-11-26T02:06:17.683109+00:00",
+      "target_pdf_2016": {
+        "member": "Bericht_FDK_2016_Anhoerung.pdf",
+        "bytes": 1879436,
+        "crc32": "88937def",
+        "content_verified": true
+      },
+      "same_size_archive_direct_pairs": 6,
+      "publication_vintage_verified": false,
+      "license_verified": false,
+      "latest_verified_ci": 45740122013,
+      "next": "Pin archive SHA; inspect original 2016 report and selected canton-level workbook schema, verify publication evidence and reuse terms; compare nested/direct SHA for six pairs before extracting candidates."
+    },
+    "content_audit": {
+      "status": "completed_content_only_no_admission",
+      "run": 45752233594,
+      "job": 139682494080,
+      "artifact": 15085488973,
+      "artifact_digest": "sha256:8e88f0834e19c258bb8282f3452740ef9043f206f4f3918b4835e62630276b85",
+      "targeted_checks_passed": 5,
+      "pinned_sources": 13,
+      "identical_pairs": 6,
+      "workbook_schemas": 14,
+      "pdf_2016": {
+        "sha256": "39b78dcd806fb0abc6cac7fd4f78108c81a764ab5a7109d58e6f117a74949271",
+        "bytes": 1879436,
+        "cover_june_2015": true,
+        "table_checks": [
+          {
+            "page_1based": 27,
+            "candidate_vectors": 3,
+            "exact_vectors": 1
+          }
+        ],
+        "candidate_count": 26
+      },
+      "french_visual_matches": 26,
+      "french_source": "https://www.newsd.admin.ch/newsd/message/attachments/40273.pdf",
+      "training_rows_admitted": 0,
+      "publication_vintage_verified": false,
+      "license_verified": false
+    },
+    "next": "Priorité indépendante V13.2; V14.1 deferred until primary legal bytes and publication proof; V14.2 blocked. Compare certified source redundancy before modeling.",
+    "legal_crosscheck": {
+      "status": "partial_mirror_comparison_official_bytes_pending",
+      "compared_rows": 52,
+      "changed_rows": 22,
+      "year_stats": [
+        {
+          "year": 2021,
+          "compared": 26,
+          "changed": 22,
+          "max_abs_change": 0.4
+        },
+        {
+          "year": 2022,
+          "compared": 26,
+          "changed": 0,
+          "max_abs_change": 0
+        }
+      ],
+      "legal_reuse_evidence": "https://fedlex.data.admin.ch/",
+      "primary_verified": false,
+      "training_rows_admitted": 0,
+      "source": "OPFCC annex 8 section 4, historical ODAT mirrors; Fedlex official version links return JS shell",
+      "older_years_missing": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ]
+    },
+    "panel_diagnostic": {
+      "rows": 182,
+      "cantons": 26,
+      "years": 7,
+      "annual_pairs": 156,
+      "between_share": 0.9930349382895629,
+      "within_share": 0.00696506171043718,
+      "mean_abs_annual_change": 1.8269230769230778,
+      "median_abs_annual_change": 0.9000000000000057,
+      "median_range": 6.300000000000004,
+      "correlation_2016_2022": 0.9896434461865454,
+      "training_rows_admitted": 0,
+      "source_git_blob": "ca88a69cbacd1cc645ace1ff4178262acf9dbbbd",
+      "checks_passed": 5,
+      "legal_2022_pdf_mirror_matches": 26,
+      "legal_2022_pdf_mirror": "https://www.lexfind.ch/tolv/219588/fr",
+      "status": "diagnostic_only_no_admission"
+    }
+  },
+  "backlog_priority": [
+    "V13.2 independent source certification",
+    "V14.1 official legal manifestation and publication proof",
+    "V14.2 certified source redundancy audit"
+  ]
+}

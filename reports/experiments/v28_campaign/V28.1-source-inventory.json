@@ -1,0 +1,92 @@
+{
+  "status": "source_inventory_measured_no_fit",
+  "head": "646472b4f142f9a107f146d9d7f9ce24ef18ae8b",
+  "roster_objects": 66,
+  "roster_source": "retrospective list; exact date roster still to be checked against frozen metrics",
+  "sources": [
+    {
+      "path": "data/external/polls/srg_gfs_polls.csv",
+      "git_blob_sha": "189eec60cf9fff2f46c2afc4550c44fdf93c26c0",
+      "rows": 96,
+      "objects": 48
+    },
+    {
+      "path": "data/external/polls_v81/srg_missing_two_waves.csv",
+      "git_blob_sha": "2e71506e0da74e865873d88c755a4767ba2d8d71",
+      "rows": 17,
+      "objects": 17
+    },
+    {
+      "path": "data/external/polls_v81/leewas_latest_2016_2022.csv",
+      "git_blob_sha": "9dcd09a6f3dd7f4b23c6b1d7ab95f63e44423b26",
+      "rows": 66,
+      "objects": 66
+    },
+    {
+      "path": "data/external/polls_v132/candidates.csv",
+      "git_blob_sha": "a53e2a576c38272ecc97a326f3640d3eb0b3c931",
+      "rows": 60,
+      "objects": 21
+    },
+    {
+      "path": "data/external/expectations_v10/reviewed.csv",
+      "git_blob_sha": "c4c7cfbf31ddc24120d9c0863bf8873c7394605f",
+      "rows": 37,
+      "objects": 20
+    },
+    {
+      "path": "data/external/media_v10/reviewed.csv",
+      "git_blob_sha": "aa2e5c53d0f1a32aa146755f16d36bcf966179a7",
+      "rows": 54,
+      "objects": 54
+    }
+  ],
+  "expectation_exact_row_matches": 37,
+  "expectation_age": {
+    "0-14": 18,
+    ">30": 2,
+    "missing": 46
+  },
+  "media_age": {
+    "0-14": 26,
+    "15-30": 26,
+    ">30": 2,
+    "missing": 12
+  },
+  "tamedia_candidate_age": {
+    "0-14": 21,
+    "missing": 45
+  },
+  "srg_declared_objects": 41,
+  "srg_chart_updated_after_vote_rows": 16,
+  "srg_historical_verified_rows": 0,
+  "new_inputs_admitted": 0,
+  "new_candidate": {
+    "published": "2018-02-15",
+    "vote_date": "2018-03-04",
+    "observation_end": "2018-02-04",
+    "url": "https://anneepolitique.swiss/references/273398/download?filename=F%C3%B6g-Abstimmungsmonitor_175.3_20180304.pdf&inline=true&locale=fr",
+    "corroboration": "https://medien.srf.ch/-/stellungnahme-von-srf-zur-fog-studie-1",
+    "status": "candidate_only_pdf_screenshot_timeout_hash_and_license_unverified",
+    "rows": [
+      {
+        "vote_key": "6160",
+        "articles": 47,
+        "tone": 53
+      },
+      {
+        "vote_key": "6170",
+        "articles": 1049,
+        "tone": -33
+      }
+    ]
+  },
+  "srg_direct_development_rows": 48,
+  "srg_direct_development_objects": 24,
+  "srg_out_of_period_rows_excluded": 48,
+  "correction": {
+    "previous_srg_declared_objects": 65,
+    "reason": "Raw SRG file mixes 2016–2022 and 2023+ metadata; counts now intersect the pinned historical catalogue. Frozen artifact join pending.",
+    "run": 46138204208
+  }
+}

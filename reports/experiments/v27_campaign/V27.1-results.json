@@ -1,0 +1,77 @@
+{
+  "version": "V27.1",
+  "status": "completed_no_gain",
+  "run": 46128815743,
+  "job": 140929261978,
+  "artifact": 15256732307,
+  "digest": "sha256:c682b11755d0911c45fd174fe5ef71eaeeaeab0ffe5c4a4b95aa336b0e0ab772",
+  "sha": "737145426a8cbb95beb518d921ecd1d7b2200d06",
+  "ci_run": 46128815711,
+  "ci_jobs_passed": 3,
+  "targeted_tests_passed": 3,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "summary": [
+    {
+      "variant": "reference",
+      "mae_pp": 7.229527497606816,
+      "centered_mae_pp": 5.370058554693702,
+      "national_mae_pp": 3.775669209992063,
+      "canton_mae_pp": 5.703708259264074,
+      "covered_objects": 59
+    },
+    {
+      "variant": "v113_institution",
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "covered_objects": 59
+    },
+    {
+      "variant": "v241_scaled",
+      "mae_pp": 6.950427808889042,
+      "centered_mae_pp": 5.289253543823442,
+      "national_mae_pp": 3.7723883363132598,
+      "canton_mae_pp": 5.493756152418616,
+      "covered_objects": 59
+    },
+    {
+      "variant": "scaled_replay",
+      "mae_pp": 6.950427808889041,
+      "centered_mae_pp": 5.289253543823442,
+      "national_mae_pp": 3.772388336313257,
+      "canton_mae_pp": 5.493756152418615,
+      "covered_objects": 66
+    },
+    {
+      "variant": "shared_splits",
+      "mae_pp": 7.2637342273484515,
+      "centered_mae_pp": 5.329629854190798,
+      "national_mae_pp": 3.920877451510012,
+      "canton_mae_pp": 5.676038310684324,
+      "covered_objects": 66
+    }
+  ],
+  "gain_vs_v241_interval": [
+    -0.6387262360442022,
+    -0.048601365700273534
+  ],
+  "fold_means": {
+    "v241_scaled": [
+      7.5718010491,
+      6.9489150604,
+      6.1744676328
+    ],
+    "shared_splits": [
+      8.1565515556,
+      7.4495890779,
+      6.0547851417
+    ]
+  },
+  "best_exploratory": 6.950427808889042,
+  "artifact_verification": "Scores from successful job logs, GitHub metadata digest verified; ZIP not independently downloaded."
+}

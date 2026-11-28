@@ -1,0 +1,32 @@
+name: V13.5 geographic error diagnostic
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - run: pip install -r requirements-experiments.txt
+      - run: python -m pytest -q tests/test_geographic_budget_v135.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: v113-procedure
+          run-id: 45444093555
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v135_source
+      - run: python -m scripts.modeling.geographic_budget_v135 --source reports/generated/v135_source --output reports/generated/v135_results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v135-geographic-budget
+          path: reports/generated/v135_results/
+          retention-days: 30
+          if-no-files-found: error

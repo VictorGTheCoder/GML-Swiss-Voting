@@ -1,0 +1,38 @@
+name: V13.4 affine contrast diagnostic
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-experiments.txt
+      - run: pip install -r requirements-experiments.txt
+      - run: python -m pytest -q tests/test_affine_budget_v134.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: v113-procedure
+          run-id: 45444093555
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v134_source
+      - uses: actions/download-artifact@v4
+        with:
+          name: v133-error-budget
+          run-id: 45659936355
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v134_prior
+      - run: python -m scripts.modeling.affine_budget_v134 --source reports/generated/v134_source --prior reports/generated/v134_prior --output reports/generated/v134_results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v134-affine-budget
+          path: reports/generated/v134_results/
+          retention-days: 30
+          if-no-files-found: error

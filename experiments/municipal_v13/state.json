@@ -1,0 +1,1511 @@
+{
+  "campaign": "V13",
+  "status": "diagnostics_completed_sources_pending",
+  "active": null,
+  "base_v12": "c35595736b21b7d535e0ff7fbaf4b2c584f2bae3",
+  "best_observed": {
+    "version": "V11.3",
+    "mae_pp": 6.955753873756506
+  },
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868,
+    "period": "2016-2022"
+  },
+  "completed": [
+    "V13.1-cover-feasibility",
+    "V13.3",
+    "V13.4",
+    "V13.5",
+    "V16.1",
+    "V16.2",
+    "V16.3"
+  ],
+  "pending": [
+    "V17.1-independent-ex-ante-source",
+    "V15.1c-primary-identity-provenance-and-overlap",
+    "V13.2",
+    "V14.1-source-audit"
+  ],
+  "deferred": [
+    "V12.2",
+    "V13.1-full-admission"
+  ],
+  "v131": {
+    "status": "csv_http_403_report_audit_implemented",
+    "doi": "10.48620/98224",
+    "source_vintage": "2026-03-08",
+    "workflow": ".github/workflows/aps-audit-v131.yml",
+    "training_rows_admitted": 0,
+    "failed_run": {
+      "run": 45600074384,
+      "job": 139156363248,
+      "targeted_tests": 2,
+      "conclusion": "failure",
+      "reason": "HTTP 403",
+      "artifacts": 0
+    },
+    "repository_checks": {
+      "run": 45600097679,
+      "conclusion": "failure",
+      "reason": "DTZ007, corrected; municipal-experiments passed"
+    },
+    "fallback": {
+      "workflow": ".github/workflows/aps-report-audit-v131.yml",
+      "status": "cover_audit_completed_no_admission",
+      "example_url": "https://swissvotes.ch/vote/661.00/inserateanalyse.pdf",
+      "example_cover_date": "2022-09-15",
+      "example_vote_date": "2022-09-25",
+      "run": 45609354921,
+      "artifact": 15019741222,
+      "digest": "sha256:9ce1cf93a48994cab557b1fa06da120009ebdc6848036291866aab418d7db3f8",
+      "summary": {
+        "objects": 66,
+        "dates": 23,
+        "dated_candidate": 42,
+        "candidate_dates": 14,
+        "candidate_distinct_pdf_hashes": 20,
+        "cover_date_unverified": 9,
+        "cover_identity_unverified": 11,
+        "http_404": 4,
+        "training_rows_admitted": 0
+      },
+      "targeted_tests": 4,
+      "ci": {
+        "run": 45609360519,
+        "conclusion": "failure",
+        "reason": "F401 unused date; lazy PDF dependency to avoid collection failure; corrected, verification pending"
+      }
+    }
+  },
+  "v132": {
+    "status": "corroboration_audit_no_admission",
+    "objects": 21,
+    "dates": 9,
+    "latest_value_agreements": 21,
+    "early_waves": 39,
+    "training_rows_admitted": 0,
+    "strict_forecast_ready": false,
+    "rows": 60,
+    "latest_candidates": 21,
+    "latest_agreements": 21,
+    "multiwave_objects": 21,
+    "three_wave_objects": 18,
+    "multiwave_dates": 9,
+    "previous_repository_checks": {
+      "run": 45806555406,
+      "conclusion": "success",
+      "jobs": 3
+    },
+    "notes": "V13.2i: six contemporaneous corroborations; two fieldwork conflicts, no license certification, zero admission. Freeze inventory pending new evidence; prioritize independent dated institutional documentation audit.",
+    "repository_checks": {
+      "run": 45650868526,
+      "conclusion": "success",
+      "jobs": 3
+    },
+    "rows_at_least_11_days": 60,
+    "corroboration_v132i": {
+      "candidate_rows": 60,
+      "source_urls": 26,
+      "evidence_rows": 6,
+      "exact_value_and_release_matches": 6,
+      "fieldwork_end_matches": 2,
+      "fieldwork_end_conflicts": 2,
+      "fieldwork_end_not_reported": 2,
+      "verified_evidence_dates": 2,
+      "training_rows_admitted": 0
+    },
+    "negative_controls": 5
+  },
+  "v133": {
+    "status": "completed_scoring_only",
+    "source_run": 45444093555,
+    "source_artifact": 14945871233,
+    "source_digest": "sha256:56f659fab173c1d34c28ec6648aa656281b7215e30857a5d7973e09b6eb51d21",
+    "targeted_tests_implemented": 4,
+    "model_changed": false,
+    "run": 45659936355,
+    "artifact": 15044661153,
+    "digest": "sha256:1105a052b3989d196dfff77d4c0a2950b5510afc05eaeb03a6ea51bfe2f81f17",
+    "job": 139366759647,
+    "commit": "ce756d7bd2fb368315c996055ff6d34bfac69d3b",
+    "targeted_tests_passed": 4,
+    "repository_checks": {
+      "run": 45659950280,
+      "conclusion": "success",
+      "jobs": 3
+    },
+    "results": {
+      "status": "diagnostic_complete",
+      "prediction_model_changed": false,
+      "oracle_scoring_only": true,
+      "objects": 66,
+      "dates": 23,
+      "rows": 138868,
+      "prediction_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+      "summary": [
+        {
+          "variant": "reference",
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "median_offset_oracle_pp": 5.290908984308818,
+          "local_oracle_gain_pp": 1.9386185132979974,
+          "oracle_gain_interval": [
+            1.3447081262642306,
+            2.634663797586559
+          ],
+          "oracle_remaining_interval": [
+            4.882321025656458,
+            5.74980221502919
+          ],
+          "objects_oracle_over_4pp": 57
+        },
+        {
+          "variant": "institution_text",
+          "mae_pp": 6.955753873756504,
+          "centered_mae_pp": 5.289917065218622,
+          "median_offset_oracle_pp": 5.224621045388158,
+          "local_oracle_gain_pp": 1.731132828368345,
+          "oracle_gain_interval": [
+            1.2569404952951304,
+            2.264348752386349
+          ],
+          "oracle_remaining_interval": [
+            4.79018254474123,
+            5.703593054481961
+          ],
+          "objects_oracle_over_4pp": 55
+        }
+      ],
+      "oracle_difference_interval": [
+        -0.08874417950756087,
+        0.24249181804351505
+      ],
+      "local_distribution": [
+        {
+          "variant": "reference",
+          "municipalities": 2105,
+          "mae_quantiles_pp": [
+            5.204218804812021,
+            7.077581627592758,
+            9.306069224105256
+          ]
+        },
+        {
+          "variant": "institution_text",
+          "municipalities": 2105,
+          "mae_quantiles_pp": [
+            5.044715632145193,
+            6.799351193148373,
+            9.049506810208305
+          ]
+        }
+      ]
+    },
+    "domains": {
+      "mae_pp": {
+        "('institution_text', 1)": 6.7836818411,
+        "('institution_text', 2)": 5.802332172,
+        "('institution_text', 3)": 6.9152445706,
+        "('institution_text', 4)": 10.1520500803,
+        "('institution_text', 5)": 10.0416046951,
+        "('institution_text', 6)": 6.9801270745,
+        "('institution_text', 7)": 6.8863623743,
+        "('institution_text', 8)": 6.1048269459,
+        "('institution_text', 9)": 5.6255283968,
+        "('institution_text', 10)": 6.6667452066,
+        "('institution_text', 11)": 7.6769308663,
+        "('institution_text', 12)": 4.8108858897,
+        "('reference', 1)": 6.4792925574,
+        "('reference', 2)": 5.8630062992,
+        "('reference', 3)": 7.1680352648,
+        "('reference', 4)": 12.6797406891,
+        "('reference', 5)": 10.1693907323,
+        "('reference', 6)": 7.7105377573,
+        "('reference', 7)": 6.5839010403,
+        "('reference', 8)": 6.2725889719,
+        "('reference', 9)": 5.6367797301,
+        "('reference', 10)": 6.9000078832,
+        "('reference', 11)": 7.8350434359,
+        "('reference', 12)": 4.8426383255
+      },
+      "centered_mae_pp": {
+        "('institution_text', 1)": 4.8798974325,
+        "('institution_text', 2)": 4.9931216842,
+        "('institution_text', 3)": 5.8426710949,
+        "('institution_text', 4)": 3.9804942378,
+        "('institution_text', 5)": 8.4474405966,
+        "('institution_text', 6)": 5.3078088855,
+        "('institution_text', 7)": 6.0032718485,
+        "('institution_text', 8)": 4.8329479875,
+        "('institution_text', 9)": 4.7629063902,
+        "('institution_text', 10)": 4.9354273504,
+        "('institution_text', 11)": 4.0486928694,
+        "('institution_text', 12)": 4.4370327292,
+        "('reference', 1)": 4.5526536405,
+        "('reference', 2)": 4.945384742,
+        "('reference', 3)": 5.5091606386,
+        "('reference', 4)": 5.167174256,
+        "('reference', 5)": 8.6166239873,
+        "('reference', 6)": 5.5603069767,
+        "('reference', 7)": 5.3613927023,
+        "('reference', 8)": 4.9095413799,
+        "('reference', 9)": 4.9925779913,
+        "('reference', 10)": 5.0601441593,
+        "('reference', 11)": 3.7817735093,
+        "('reference', 12)": 4.4840323438
+      },
+      "median_offset_oracle_pp": {
+        "('institution_text', 1)": 4.8728276438,
+        "('institution_text', 2)": 4.9442672982,
+        "('institution_text', 3)": 5.7893959167,
+        "('institution_text', 4)": 3.9790899156,
+        "('institution_text', 5)": 8.0534278279,
+        "('institution_text', 6)": 5.231690693,
+        "('institution_text', 7)": 5.9629076452,
+        "('institution_text', 8)": 4.822682685,
+        "('institution_text', 9)": 4.7442599956,
+        "('institution_text', 10)": 4.8991712414,
+        "('institution_text', 11)": 4.0472470639,
+        "('institution_text', 12)": 4.43076025,
+        "('reference', 1)": 4.5373148011,
+        "('reference', 2)": 4.9003106573,
+        "('reference', 3)": 5.4217396718,
+        "('reference', 4)": 5.156307616,
+        "('reference', 5)": 8.1366026876,
+        "('reference', 6)": 5.4655436185,
+        "('reference', 7)": 5.3483592538,
+        "('reference', 8)": 4.9037943484,
+        "('reference', 9)": 4.9667081355,
+        "('reference', 10)": 5.0210318212,
+        "('reference', 11)": 3.7807605491,
+        "('reference', 12)": 4.4742751032
+      },
+      "local_oracle_gain_pp": {
+        "('institution_text', 1)": 1.9108541972,
+        "('institution_text', 2)": 0.8580648738,
+        "('institution_text', 3)": 1.1258486539,
+        "('institution_text', 4)": 6.1729601647,
+        "('institution_text', 5)": 1.9881768672,
+        "('institution_text', 6)": 1.7484363815,
+        "('institution_text', 7)": 0.9234547291,
+        "('institution_text', 8)": 1.2821442609,
+        "('institution_text', 9)": 0.8812684012,
+        "('institution_text', 10)": 1.7675739652,
+        "('institution_text', 11)": 3.6296838024,
+        "('institution_text', 12)": 0.3801256397,
+        "('reference', 1)": 1.9419777563,
+        "('reference', 2)": 0.9626956419,
+        "('reference', 3)": 1.746295593,
+        "('reference', 4)": 7.5234330731,
+        "('reference', 5)": 2.0327880447,
+        "('reference', 6)": 2.2449941388,
+        "('reference', 7)": 1.2355417864,
+        "('reference', 8)": 1.3687946236,
+        "('reference', 9)": 0.6700715947,
+        "('reference', 10)": 1.878976062,
+        "('reference', 11)": 4.0542828868,
+        "('reference', 12)": 0.3683632223
+      }
+    },
+    "decision": "Constant translation oracle remains above 4 pp; prioritize geographic contrast diagnosis and independent aggregate signals. No prediction gain or promotion."
+  },
+  "v134": {
+    "status": "completed_scoring_only",
+    "hypothesis": "Distinguish contrast amplitude versus shape using monotone affine scoring-only oracle; if independently verified geography permits, separate inter/intra-canton errors; no oracle coefficients in prediction.",
+    "source_run": 45444093555,
+    "prior_run": 45659936355,
+    "workflow": ".github/workflows/affine-budget-v134.yml",
+    "targeted_tests_implemented": 5,
+    "previous_repository_checks": {
+      "run": 45670689207,
+      "conclusion": "success"
+    },
+    "model_changed": false,
+    "protocol": "reports/experiments/v13_campaign/V13.4-protocol.md",
+    "run": 45681328564,
+    "job": 139442326784,
+    "artifact": 15053359430,
+    "digest": "sha256:b54b609856b9288b58fcb8b70b4b54553c3327fdf3585f767c89ee98a012916a",
+    "commit": "1b175014d1d5572dd0ef2408315744555e9263e6",
+    "targeted_tests_passed": 5,
+    "repository_checks": {
+      "run": 45681342451,
+      "conclusion": "success",
+      "jobs": 3
+    },
+    "results": {
+      "status": "diagnostic_complete",
+      "oracle_scoring_only": true,
+      "prediction_model_changed": false,
+      "objects": 66,
+      "dates": 23,
+      "rows": 138868,
+      "prediction_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+      "prior_diagnostic_sha256": "9f05449ff0621e40ca6318dc8f3befda1bfb3856413db9b8959cc09d40989110",
+      "summary": [
+        {
+          "variant": "reference",
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "median_offset_oracle_pp": 5.290908984308818,
+          "affine_oracle_pp": 4.9656314213732795,
+          "amplitude_oracle_gain_pp": 0.3252775629355391,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "affine_interval": [
+            4.596669720615225,
+            5.425850944956045
+          ],
+          "amplitude_gain_interval": [
+            0.20147352103414817,
+            0.45372676078582946
+          ],
+          "objects_affine_over_4pp": 52
+        },
+        {
+          "variant": "institution_text",
+          "mae_pp": 6.955753873756504,
+          "centered_mae_pp": 5.289917065218622,
+          "median_offset_oracle_pp": 5.224621045388158,
+          "affine_oracle_pp": 4.926608931349315,
+          "amplitude_oracle_gain_pp": 0.29801211403884476,
+          "national_mae_pp": 3.781171440297082,
+          "canton_mae_pp": 5.500338667087431,
+          "affine_interval": [
+            4.540237093583577,
+            5.376164856662036
+          ],
+          "amplitude_gain_interval": [
+            0.20242797910325186,
+            0.3916391222858473
+          ],
+          "objects_affine_over_4pp": 49
+        }
+      ],
+      "paired_affine_difference_interval": [
+        -0.09645999532231454,
+        0.1869285966062416
+      ]
+    },
+    "domains": {
+      "mae_pp": {
+        "('institution_text', 1)": 6.7836818411,
+        "('institution_text', 2)": 5.802332172,
+        "('institution_text', 3)": 6.9152445706,
+        "('institution_text', 4)": 10.1520500803,
+        "('institution_text', 5)": 10.0416046951,
+        "('institution_text', 6)": 6.9801270745,
+        "('institution_text', 7)": 6.8863623743,
+        "('institution_text', 8)": 6.1048269459,
+        "('institution_text', 9)": 5.6255283968,
+        "('institution_text', 10)": 6.6667452066,
+        "('institution_text', 11)": 7.6769308663,
+        "('institution_text', 12)": 4.8108858897,
+        "('reference', 1)": 6.4792925574,
+        "('reference', 2)": 5.8630062992,
+        "('reference', 3)": 7.1680352648,
+        "('reference', 4)": 12.6797406891,
+        "('reference', 5)": 10.1693907323,
+        "('reference', 6)": 7.7105377573,
+        "('reference', 7)": 6.5839010403,
+        "('reference', 8)": 6.2725889719,
+        "('reference', 9)": 5.6367797301,
+        "('reference', 10)": 6.9000078832,
+        "('reference', 11)": 7.8350434359,
+        "('reference', 12)": 4.8426383255
+      },
+      "centered_mae_pp": {
+        "('institution_text', 1)": 4.8798974325,
+        "('institution_text', 2)": 4.9931216842,
+        "('institution_text', 3)": 5.8426710949,
+        "('institution_text', 4)": 3.9804942378,
+        "('institution_text', 5)": 8.4474405966,
+        "('institution_text', 6)": 5.3078088855,
+        "('institution_text', 7)": 6.0032718485,
+        "('institution_text', 8)": 4.8329479875,
+        "('institution_text', 9)": 4.7629063902,
+        "('institution_text', 10)": 4.9354273504,
+        "('institution_text', 11)": 4.0486928694,
+        "('institution_text', 12)": 4.4370327292,
+        "('reference', 1)": 4.5526536405,
+        "('reference', 2)": 4.945384742,
+        "('reference', 3)": 5.5091606386,
+        "('reference', 4)": 5.167174256,
+        "('reference', 5)": 8.6166239873,
+        "('reference', 6)": 5.5603069767,
+        "('reference', 7)": 5.3613927023,
+        "('reference', 8)": 4.9095413799,
+        "('reference', 9)": 4.9925779913,
+        "('reference', 10)": 5.0601441593,
+        "('reference', 11)": 3.7817735093,
+        "('reference', 12)": 4.4840323438
+      },
+      "median_offset_oracle_pp": {
+        "('institution_text', 1)": 4.8728276438,
+        "('institution_text', 2)": 4.9442672982,
+        "('institution_text', 3)": 5.7893959167,
+        "('institution_text', 4)": 3.9790899156,
+        "('institution_text', 5)": 8.0534278279,
+        "('institution_text', 6)": 5.231690693,
+        "('institution_text', 7)": 5.9629076452,
+        "('institution_text', 8)": 4.822682685,
+        "('institution_text', 9)": 4.7442599956,
+        "('institution_text', 10)": 4.8991712414,
+        "('institution_text', 11)": 4.0472470639,
+        "('institution_text', 12)": 4.43076025,
+        "('reference', 1)": 4.5373148011,
+        "('reference', 2)": 4.9003106573,
+        "('reference', 3)": 5.4217396718,
+        "('reference', 4)": 5.156307616,
+        "('reference', 5)": 8.1366026876,
+        "('reference', 6)": 5.4655436185,
+        "('reference', 7)": 5.3483592538,
+        "('reference', 8)": 4.9037943484,
+        "('reference', 9)": 4.9667081355,
+        "('reference', 10)": 5.0210318212,
+        "('reference', 11)": 3.7807605491,
+        "('reference', 12)": 4.4742751032
+      },
+      "affine_oracle_pp": {
+        "('institution_text', 1)": 4.2372016258,
+        "('institution_text', 2)": 4.5832273196,
+        "('institution_text', 3)": 5.3506724915,
+        "('institution_text', 4)": 3.8257328959,
+        "('institution_text', 5)": 7.7892020996,
+        "('institution_text', 6)": 5.0854736182,
+        "('institution_text', 7)": 5.8297400909,
+        "('institution_text', 8)": 4.7469012343,
+        "('institution_text', 9)": 4.5396083923,
+        "('institution_text', 10)": 4.5300637278,
+        "('institution_text', 11)": 3.5235968942,
+        "('institution_text', 12)": 4.3975880854,
+        "('reference', 1)": 4.1289637437,
+        "('reference', 2)": 4.4787410103,
+        "('reference', 3)": 4.942351893,
+        "('reference', 4)": 4.5741819158,
+        "('reference', 5)": 8.0688417223,
+        "('reference', 6)": 5.1204531823,
+        "('reference', 7)": 5.3029230177,
+        "('reference', 8)": 4.839393962,
+        "('reference', 9)": 4.7734600555,
+        "('reference', 10)": 4.5832913167,
+        "('reference', 11)": 3.4044185872,
+        "('reference', 12)": 4.3002035706
+      },
+      "amplitude_oracle_gain_pp": {
+        "('institution_text', 1)": 0.635626018,
+        "('institution_text', 2)": 0.3610399786,
+        "('institution_text', 3)": 0.4387234252,
+        "('institution_text', 4)": 0.1533570196,
+        "('institution_text', 5)": 0.2642257283,
+        "('institution_text', 6)": 0.1462170748,
+        "('institution_text', 7)": 0.1331675543,
+        "('institution_text', 8)": 0.0757814507,
+        "('institution_text', 9)": 0.2046516033,
+        "('institution_text', 10)": 0.3691075136,
+        "('institution_text', 11)": 0.5236501697,
+        "('institution_text', 12)": 0.0331721646,
+        "('reference', 1)": 0.4083510574,
+        "('reference', 2)": 0.421569647,
+        "('reference', 3)": 0.4793877788,
+        "('reference', 4)": 0.5821257002,
+        "('reference', 5)": 0.0677609652,
+        "('reference', 6)": 0.3450904362,
+        "('reference', 7)": 0.0454362361,
+        "('reference', 8)": 0.0644003863,
+        "('reference', 9)": 0.19324808,
+        "('reference', 10)": 0.4377405045,
+        "('reference', 11)": 0.3763419619,
+        "('reference', 12)": 0.1740715326
+      }
+    },
+    "decision": "Affine oracle leaves 4.9266 pp (date bootstrap lower 4.5402); amplitude accounts for only 0.2980 pp beyond median shift. Prioritize genuinely independent aggregate data and historical documentation; no promotion."
+  },
+  "v135": {
+    "status": "completed_scoring_only",
+    "hypothesis": "Separate between-canton and within-canton residual structure via nested median offsets and exact L2 decomposition; no model fit",
+    "source_run": 45444093555,
+    "source_artifact": 14945871233,
+    "workflow": ".github/workflows/geographic-budget-v135.yml",
+    "protocol": "reports/experiments/v13_campaign/V13.5-protocol.md",
+    "targeted_tests_implemented": 5,
+    "previous_repository_checks": {
+      "run": 45691590687,
+      "conclusion": "success",
+      "jobs": 3
+    },
+    "model_changed": false,
+    "failed_attempt": {
+      "run": 45700042334,
+      "job": 139507459010,
+      "repository_checks": 45700052778,
+      "reason": "Strict floating-point inequality in synthetic unequal groups: 28.93244816772078 vs 28.93244816772077 pp; no real-data scoring reached.",
+      "ubuntu_tests": {
+        "passed": 683,
+        "failed": 1,
+        "skipped": 9
+      },
+      "fix": "Use absolute tolerance 1e-8 pp consistent with diagnostic invariant; scoring logic unchanged."
+    },
+    "run": 45709347921,
+    "job": 139539445816,
+    "artifact": 15066463183,
+    "digest": "sha256:e5b4ff0e0d0ab37ec41ff092a8b9ed5fec45d2d0ff8d263b11747bbeb5e5cc7a",
+    "commit": "aea65e15f4897b5ef34b9eba4d1e250c92665253",
+    "targeted_tests_passed": 5,
+    "repository_checks": {
+      "run": 45709353500,
+      "conclusion": "success",
+      "jobs": 3
+    },
+    "results": {
+      "status": "diagnostic_complete",
+      "oracle_scoring_only": true,
+      "prediction_model_changed": false,
+      "objects": 66,
+      "dates": 23,
+      "rows": 138868,
+      "geography_coverage": 1,
+      "prediction_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+      "geography_source_sha256": "231bc1806c6cfd2050795265d973d6c512211e8fb82e0a5a6c6e715348325207",
+      "summary": [
+        {
+          "variant": "reference",
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "median_offset_oracle_pp": 5.290908984308818,
+          "canton_offset_oracle_pp": 3.7681443912444634,
+          "canton_offset_gain_pp": 1.5227645930643554,
+          "mse_pp2": 89.09190549207575,
+          "global_bias_pp2": 37.99325462895091,
+          "between_canton_pp2": 24.32938269021752,
+          "within_canton_pp2": 26.769268172907317,
+          "remaining_interval": [
+            3.5980139780999503,
+            3.963012853667525
+          ],
+          "gain_interval": [
+            1.1972224766906272,
+            1.9130372429526168
+          ],
+          "objects_remaining_over_4pp": 18
+        },
+        {
+          "variant": "institution_text",
+          "mae_pp": 6.955753873756504,
+          "centered_mae_pp": 5.289917065218622,
+          "national_mae_pp": 3.7811714402970824,
+          "canton_mae_pp": 5.500338667087431,
+          "median_offset_oracle_pp": 5.224621045388158,
+          "canton_offset_oracle_pp": 3.7517194292930616,
+          "canton_offset_gain_pp": 1.472901616095097,
+          "mse_pp2": 81.06418792279477,
+          "global_bias_pp2": 31.7030077758795,
+          "between_canton_pp2": 22.71896093527782,
+          "within_canton_pp2": 26.642219211637464,
+          "remaining_interval": [
+            3.563628701816485,
+            3.957470477170177
+          ],
+          "gain_interval": [
+            1.1433568760300088,
+            1.8563128544078271
+          ],
+          "objects_remaining_over_4pp": 18
+        }
+      ],
+      "paired_remaining_difference_interval": [
+        -0.0397684590064579,
+        0.0813246976062275
+      ]
+    },
+    "domains": {
+      "mae_pp": {
+        "('institution_text', 1)": 6.7836818411,
+        "('institution_text', 2)": 5.802332172,
+        "('institution_text', 3)": 6.9152445706,
+        "('institution_text', 4)": 10.1520500803,
+        "('institution_text', 5)": 10.0416046951,
+        "('institution_text', 6)": 6.9801270745,
+        "('institution_text', 7)": 6.8863623743,
+        "('institution_text', 8)": 6.1048269459,
+        "('institution_text', 9)": 5.6255283968,
+        "('institution_text', 10)": 6.6667452066,
+        "('institution_text', 11)": 7.6769308663,
+        "('institution_text', 12)": 4.8108858897,
+        "('reference', 1)": 6.4792925574,
+        "('reference', 2)": 5.8630062992,
+        "('reference', 3)": 7.1680352648,
+        "('reference', 4)": 12.6797406891,
+        "('reference', 5)": 10.1693907323,
+        "('reference', 6)": 7.7105377573,
+        "('reference', 7)": 6.5839010403,
+        "('reference', 8)": 6.2725889719,
+        "('reference', 9)": 5.6367797301,
+        "('reference', 10)": 6.9000078832,
+        "('reference', 11)": 7.8350434359,
+        "('reference', 12)": 4.8426383255
+      },
+      "centered_mae_pp": {
+        "('institution_text', 1)": 4.8798974325,
+        "('institution_text', 2)": 4.9931216842,
+        "('institution_text', 3)": 5.8426710949,
+        "('institution_text', 4)": 3.9804942378,
+        "('institution_text', 5)": 8.4474405966,
+        "('institution_text', 6)": 5.3078088855,
+        "('institution_text', 7)": 6.0032718485,
+        "('institution_text', 8)": 4.8329479875,
+        "('institution_text', 9)": 4.7629063902,
+        "('institution_text', 10)": 4.9354273504,
+        "('institution_text', 11)": 4.0486928694,
+        "('institution_text', 12)": 4.4370327292,
+        "('reference', 1)": 4.5526536405,
+        "('reference', 2)": 4.945384742,
+        "('reference', 3)": 5.5091606386,
+        "('reference', 4)": 5.167174256,
+        "('reference', 5)": 8.6166239873,
+        "('reference', 6)": 5.5603069767,
+        "('reference', 7)": 5.3613927023,
+        "('reference', 8)": 4.9095413799,
+        "('reference', 9)": 4.9925779913,
+        "('reference', 10)": 5.0601441593,
+        "('reference', 11)": 3.7817735093,
+        "('reference', 12)": 4.4840323438
+      },
+      "national_mae_pp": {
+        "('institution_text', 1)": 3.2706721096,
+        "('institution_text', 2)": 1.8598661725,
+        "('institution_text', 3)": 2.8326205006,
+        "('institution_text', 4)": 8.3228006999,
+        "('institution_text', 5)": 4.7637747931,
+        "('institution_text', 6)": 4.2409536302,
+        "('institution_text', 7)": 4.6703483497,
+        "('institution_text', 8)": 4.3171774815,
+        "('institution_text', 9)": 2.139997868,
+        "('institution_text', 10)": 3.6452435379,
+        "('institution_text', 11)": 8.5120173373,
+        "('institution_text', 12)": 1.8048797467,
+        "('reference', 1)": 3.4066860673,
+        "('reference', 2)": 1.8598661725,
+        "('reference', 3)": 3.5965597893,
+        "('reference', 4)": 9.5217041315,
+        "('reference', 5)": 4.7637747931,
+        "('reference', 6)": 4.9281025671,
+        "('reference', 7)": 4.6703483497,
+        "('reference', 8)": 2.8976886155,
+        "('reference', 9)": 1.2614965665,
+        "('reference', 10)": 3.590652585,
+        "('reference', 11)": 8.5120173373,
+        "('reference', 12)": 1.8048797467
+      },
+      "canton_mae_pp": {
+        "('institution_text', 1)": 5.0584431701,
+        "('institution_text', 2)": 3.7194606843,
+        "('institution_text', 3)": 4.6177634189,
+        "('institution_text', 4)": 9.4685291199,
+        "('institution_text', 5)": 8.1107806908,
+        "('institution_text', 6)": 6.093135763,
+        "('institution_text', 7)": 5.6486769188,
+        "('institution_text', 8)": 5.5428069298,
+        "('institution_text', 9)": 3.6689762723,
+        "('institution_text', 10)": 5.2094705405,
+        "('institution_text', 11)": 7.6831811197,
+        "('institution_text', 12)": 3.6713015015,
+        "('reference', 1)": 4.8285916249,
+        "('reference', 2)": 3.7616774812,
+        "('reference', 3)": 4.9747891358,
+        "('reference', 4)": 11.9321304444,
+        "('reference', 5)": 8.5529135898,
+        "('reference', 6)": 6.861649295,
+        "('reference', 7)": 5.5523554772,
+        "('reference', 8)": 4.950757645,
+        "('reference', 9)": 3.4069106894,
+        "('reference', 10)": 5.3399865279,
+        "('reference', 11)": 7.8707409143,
+        "('reference', 12)": 3.5127836805
+      },
+      "median_offset_oracle_pp": {
+        "('institution_text', 1)": 4.8728276438,
+        "('institution_text', 2)": 4.9442672982,
+        "('institution_text', 3)": 5.7893959167,
+        "('institution_text', 4)": 3.9790899156,
+        "('institution_text', 5)": 8.0534278279,
+        "('institution_text', 6)": 5.231690693,
+        "('institution_text', 7)": 5.9629076452,
+        "('institution_text', 8)": 4.822682685,
+        "('institution_text', 9)": 4.7442599956,
+        "('institution_text', 10)": 4.8991712414,
+        "('institution_text', 11)": 4.0472470639,
+        "('institution_text', 12)": 4.43076025,
+        "('reference', 1)": 4.5373148011,
+        "('reference', 2)": 4.9003106573,
+        "('reference', 3)": 5.4217396718,
+        "('reference', 4)": 5.156307616,
+        "('reference', 5)": 8.1366026876,
+        "('reference', 6)": 5.4655436185,
+        "('reference', 7)": 5.3483592538,
+        "('reference', 8)": 4.9037943484,
+        "('reference', 9)": 4.9667081355,
+        "('reference', 10)": 5.0210318212,
+        "('reference', 11)": 3.7807605491,
+        "('reference', 12)": 4.4742751032
+      },
+      "canton_offset_oracle_pp": {
+        "('institution_text', 1)": 3.7430184045,
+        "('institution_text', 2)": 3.7848744676,
+        "('institution_text', 3)": 4.1250857468,
+        "('institution_text', 4)": 3.1296943398,
+        "('institution_text', 5)": 4.582586619,
+        "('institution_text', 6)": 3.3375965906,
+        "('institution_text', 7)": 3.9052404454,
+        "('institution_text', 8)": 3.6129126524,
+        "('institution_text', 9)": 3.8824954554,
+        "('institution_text', 10)": 3.6460365321,
+        "('institution_text', 11)": 3.6573949747,
+        "('institution_text', 12)": 3.6084783106,
+        "('reference', 1)": 3.4782405929,
+        "('reference', 2)": 3.7132798479,
+        "('reference', 3)": 4.1610067248,
+        "('reference', 4)": 3.4152308822,
+        "('reference', 5)": 4.5101520428,
+        "('reference', 6)": 3.4171567272,
+        "('reference', 7)": 4.0200403185,
+        "('reference', 8)": 3.6938731863,
+        "('reference', 9)": 3.9730063157,
+        "('reference', 10)": 3.6910913431,
+        "('reference', 11)": 3.3964236447,
+        "('reference', 12)": 3.5939558257
+      },
+      "canton_offset_gain_pp": {
+        "('institution_text', 1)": 1.1298092393,
+        "('institution_text', 2)": 1.1593928306,
+        "('institution_text', 3)": 1.6643101699,
+        "('institution_text', 4)": 0.8493955757,
+        "('institution_text', 5)": 3.4708412089,
+        "('institution_text', 6)": 1.8940941025,
+        "('institution_text', 7)": 2.0576671998,
+        "('institution_text', 8)": 1.2097700326,
+        "('institution_text', 9)": 0.8617645402,
+        "('institution_text', 10)": 1.2531347093,
+        "('institution_text', 11)": 0.3898520892,
+        "('institution_text', 12)": 0.8222819394,
+        "('reference', 1)": 1.0590742083,
+        "('reference', 2)": 1.1870308094,
+        "('reference', 3)": 1.260732947,
+        "('reference', 4)": 1.7410767338,
+        "('reference', 5)": 3.6264506447,
+        "('reference', 6)": 2.0483868913,
+        "('reference', 7)": 1.3283189354,
+        "('reference', 8)": 1.2099211621,
+        "('reference', 9)": 0.9937018198,
+        "('reference', 10)": 1.3299404781,
+        "('reference', 11)": 0.3843369044,
+        "('reference', 12)": 0.8803192775
+      },
+      "mse_pp2": {
+        "('institution_text', 1)": 72.6099154092,
+        "('institution_text', 2)": 60.7234696052,
+        "('institution_text', 3)": 80.8995355692,
+        "('institution_text', 4)": 146.3029625564,
+        "('institution_text', 5)": 167.5951524183,
+        "('institution_text', 6)": 78.3838524535,
+        "('institution_text', 7)": 81.415066453,
+        "('institution_text', 8)": 58.5956982725,
+        "('institution_text', 9)": 50.1992006448,
+        "('institution_text', 10)": 72.6164288126,
+        "('institution_text', 11)": 79.0499857481,
+        "('institution_text', 12)": 39.6586977032,
+        "('reference', 1)": 67.0508582726,
+        "('reference', 2)": 60.7653572064,
+        "('reference', 3)": 87.3368151927,
+        "('reference', 4)": 238.5933689232,
+        "('reference', 5)": 171.9383582158,
+        "('reference', 6)": 101.2493342414,
+        "('reference', 7)": 73.4836953293,
+        "('reference', 8)": 61.1821462371,
+        "('reference', 9)": 50.5335212888,
+        "('reference', 10)": 76.1118310368,
+        "('reference', 11)": 80.0773343741,
+        "('reference', 12)": 40.114498618
+      },
+      "global_bias_pp2": {
+        "('institution_text', 1)": 31.6529682769,
+        "('institution_text', 2)": 16.4244040168,
+        "('institution_text', 3)": 22.761995935,
+        "('institution_text', 4)": 118.5618998313,
+        "('institution_text', 5)": 51.4912205194,
+        "('institution_text', 6)": 30.483704449,
+        "('institution_text', 7)": 23.4613049227,
+        "('institution_text', 8)": 18.5611098483,
+        "('institution_text', 9)": 11.2513838823,
+        "('institution_text', 10)": 31.067568889,
+        "('institution_text', 11)": 49.2195783519,
+        "('institution_text', 12)": 4.8795694812,
+        "('reference', 1)": 31.1599598932,
+        "('reference', 2)": 16.3407611842,
+        "('reference', 3)": 36.2143303892,
+        "('reference', 4)": 192.8895448331,
+        "('reference', 5)": 47.2151349887,
+        "('reference', 6)": 48.3887041814,
+        "('reference', 7)": 25.4602088507,
+        "('reference', 8)": 19.6351741008,
+        "('reference', 9)": 9.4487751766,
+        "('reference', 10)": 32.3438388283,
+        "('reference', 11)": 54.0873656179,
+        "('reference', 12)": 5.1371647772
+      },
+      "between_canton_pp2": {
+        "('institution_text', 1)": 14.4367562461,
+        "('institution_text', 2)": 17.3861189056,
+        "('institution_text', 3)": 25.4153570219,
+        "('institution_text', 4)": 8.6351491872,
+        "('institution_text', 5)": 75.8085422188,
+        "('institution_text', 6)": 26.4865214239,
+        "('institution_text', 7)": 29.9918486499,
+        "('institution_text', 8)": 15.1280695406,
+        "('institution_text', 9)": 12.4404765957,
+        "('institution_text', 10)": 16.8254969133,
+        "('institution_text', 11)": 5.0089864841,
+        "('institution_text', 12)": 10.8243530566,
+        "('reference', 1)": 12.8086875253,
+        "('reference', 2)": 18.4933281408,
+        "('reference', 3)": 19.411984435,
+        "('reference', 4)": 22.8360847337,
+        "('reference', 5)": 84.5817576199,
+        "('reference', 6)": 30.5575890337,
+        "('reference', 7)": 18.4974768066,
+        "('reference', 8)": 15.9235175783,
+        "('reference', 9)": 13.6215358516,
+        "('reference', 10)": 18.408026449,
+        "('reference', 11)": 4.5994446674,
+        "('reference', 12)": 11.2505329455
+      },
+      "within_canton_pp2": {
+        "('institution_text', 1)": 26.5201908861,
+        "('institution_text', 2)": 26.9129466829,
+        "('institution_text', 3)": 32.7221826123,
+        "('institution_text', 4)": 19.1059135379,
+        "('institution_text', 5)": 40.2953896801,
+        "('institution_text', 6)": 21.4136265805,
+        "('institution_text', 7)": 27.9619128804,
+        "('institution_text', 8)": 24.9065188836,
+        "('institution_text', 9)": 26.5073401668,
+        "('institution_text', 10)": 24.7233630103,
+        "('institution_text', 11)": 24.8214209122,
+        "('institution_text', 12)": 23.9547751654,
+        "('reference', 1)": 23.0822108541,
+        "('reference', 2)": 25.9312678813,
+        "('reference', 3)": 31.7105003686,
+        "('reference', 4)": 22.8677393563,
+        "('reference', 5)": 40.1414656073,
+        "('reference', 6)": 22.3030410263,
+        "('reference', 7)": 29.526009672,
+        "('reference', 8)": 25.623454558,
+        "('reference', 9)": 27.4632102606,
+        "('reference', 10)": 25.3599657595,
+        "('reference', 11)": 21.3905240888,
+        "('reference', 12)": 23.7268008953
+      }
+    },
+    "decision": "Canton-offset oracle 3.7517 pp; no prediction gain; prioritize independent aggregate institutional source audit, no repetition of V10.5/V10.6 without new information."
+  },
+  "v151": {
+    "status": "suspended_publication_rights_unverified",
+    "results": {
+      "sample_objects": 7,
+      "sample_dates": 3,
+      "candidate_objects": 6,
+      "candidate_dates": 3,
+      "catalog_entries": 34,
+      "object_family_pairs": 17,
+      "provisional_distinct_families": 15,
+      "month_precision_entries": 10,
+      "excluded_catalog_entries": 9,
+      "primary_mirror_checks": 2,
+      "training_rows_admitted": 0,
+      "negative_controls_passed": 6
+    },
+    "previous_repository_checks": {
+      "run": 45824937943,
+      "conclusion": "success",
+      "jobs": 3
+    },
+    "next": "Suspend V15.1 until independent proof of historic publication and reuse rights. V16.1 measured date-level risk calibration; next V16.2 exact object-level date-block risk calibration on pinned artifact, then consider independent predictive experiments. No new inputs.",
+    "extension_v151b": {
+      "new_objects": 6,
+      "new_dates": 2,
+      "new_entries": 23,
+      "new_object_family_pairs": 13,
+      "new_distinct_families": 12,
+      "new_year_precision_pairs": 1,
+      "new_single_language_pairs": 3,
+      "combined_objects": 13,
+      "combined_dates": 5,
+      "combined_candidate_objects": 12,
+      "combined_entries": 57,
+      "combined_object_family_pairs": 30,
+      "combined_distinct_families": 27,
+      "evidence_families": 9,
+      "training_rows_admitted": 0,
+      "negative_controls_passed": 10
+    },
+    "identity_v151c": {
+      "status": "completed_quarantine",
+      "tests_passed": 8,
+      "results": [
+        {
+          "id": "ahv_financing",
+          "left": {
+            "status": "pdf",
+            "bytes": 858402,
+            "sha256": "1c20e3c042b3421fd86b128aed73a593727b2d176729622f3bd30160039be094",
+            "final_url": "https://swissvotes.ch/attachments/69b17672838a7df845336ca65d3c854e639edab41d0b9d0cd70f7a4c529c2821"
+          },
+          "right": {
+            "status": "pdf",
+            "bytes": 858402,
+            "sha256": "1c20e3c042b3421fd86b128aed73a593727b2d176729622f3bd30160039be094",
+            "final_url": "https://www.bsv.admin.ch/dam/de/sd-web/6f8MNYVSc5ZA/hintergrund-staf-berechnungen-ahv.pdf"
+          },
+          "comparison": "identical"
+        },
+        {
+          "id": "pmt_consultation",
+          "left": {
+            "status": "pdf",
+            "bytes": 288620,
+            "sha256": "af8db89dffb2b245e31e67be99b67902dbc051bbe0a51c7484982cba8d59130c",
+            "final_url": "https://swissvotes.ch/attachments/18dad3772fdecfa950fc795852f659c1dabebbe3106619e6e603313757aeec94"
+          },
+          "right": {
+            "status": "pdf",
+            "bytes": 288620,
+            "sha256": "af8db89dffb2b245e31e67be99b67902dbc051bbe0a51c7484982cba8d59130c",
+            "final_url": "https://www.newsd.admin.ch/newsd/message/attachments/76845.pdf"
+          },
+          "comparison": "identical"
+        },
+        {
+          "id": "agri_measures",
+          "left": {
+            "status": "pdf",
+            "bytes": 3934442,
+            "sha256": "22c100595e77e86abc52c01937878c4c56a29b98b9d584d7f149a190b4cfe4fe",
+            "final_url": "https://swissvotes.ch/attachments/e40fd7238e859857b7be77deab6b0682e5b80834e00d3468fe87ff1f7873f4ae"
+          },
+          "right": {
+            "status": "pdf",
+            "bytes": 3934442,
+            "sha256": "22c100595e77e86abc52c01937878c4c56a29b98b9d584d7f149a190b4cfe4fe",
+            "final_url": "https://swissvotes.ch/attachments/4db26cb1a67e0756048949eb5d4f6adb11f9cb07b84b05c4da1bc8b94aa6f4f1"
+          },
+          "comparison": "identical"
+        }
+      ],
+      "training_rows_admitted": 0,
+      "run": 45844866664,
+      "job": 139995784152,
+      "artifact": 15131196112,
+      "artifact_digest": "sha256:5df3a718c833ce54622428d4081eac2e4269a350e518ae4cafed838fd9058717",
+      "source_commit": "0f085e93e77d2ab66a1c17e6abbceb26f928d45c",
+      "repository_checks": {
+        "run": 45844866530,
+        "jobs": 3,
+        "conclusion": "success"
+      }
+    }
+  },
+  "v161": {
+    "status": "completed_exploratory_date_risk_only",
+    "source_git_blob": "2c783778458e32d5886af9fa710e59ca2aee5824",
+    "tests_passed": 6,
+    "results": [
+      {
+        "level": 0.8,
+        "mode": "fixed_initial_9",
+        "evaluation_dates": 14,
+        "covered_dates": 12,
+        "mean_upper_pp": 8.268699999999999
+      },
+      {
+        "level": 0.8,
+        "mode": "expanding",
+        "evaluation_dates": 14,
+        "covered_dates": 12,
+        "mean_upper_pp": 8.369414285714287
+      },
+      {
+        "level": 0.9,
+        "mode": "fixed_initial_9",
+        "evaluation_dates": 14,
+        "covered_dates": 14,
+        "mean_upper_pp": 11.2261
+      },
+      {
+        "level": 0.9,
+        "mode": "expanding",
+        "evaluation_dates": 14,
+        "covered_dates": 14,
+        "mean_upper_pp": 10.448500000000001
+      }
+    ],
+    "next": "V16.2 exact artifact-based object-level date-block uncertainty; no holdout or promotion"
+  },
+  "v162": {
+    "status": "completed_exploratory_object_risk_only",
+    "source_run": 45444093555,
+    "source_artifact": 14945871233,
+    "source_artifact_digest": "sha256:56f659fab173c1d34c28ec6648aa656281b7215e30857a5d7973e09b6eb51d21",
+    "configurations": 12,
+    "warmup_dates": 9,
+    "evaluation_dates": 14,
+    "prior_repository_checks": {
+      "run": 45855597203,
+      "jobs": 3,
+      "conclusion": "success"
+    },
+    "next": "V16.3 joint structural level and local refit; verify nonduplication, compare fixed-anchor control. No holdout.",
+    "run": 45863467736,
+    "job": 140060194811,
+    "artifact": 15140150018,
+    "artifact_digest": "sha256:8e8ec4e1eca30c8fde6adb7cda73cf7cb902d0300c7701639476113a1363b0d9",
+    "tested_commit": "1e780d4b87a5cca3636b616755f14637d9f95f70",
+    "tests_passed": 8,
+    "evaluation": [
+      {
+        "level": 0.8,
+        "mode": "expanding",
+        "method": "date_max",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 42,
+        "all_covered_dates": 14,
+        "covered_date_means": 14,
+        "mean_upper_pp_date": 12.200383407622578,
+        "mean_upper_pp_object": 12.11365258136021,
+        "object_coverage_ci": [
+          1,
+          1
+        ],
+        "simultaneous_date_coverage_ci": [
+          1,
+          1
+        ]
+      },
+      {
+        "level": 0.8,
+        "mode": "expanding",
+        "method": "date_mean",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 34,
+        "all_covered_dates": 9,
+        "covered_date_means": 12,
+        "mean_upper_pp_date": 8.369409538659088,
+        "mean_upper_pp_object": 8.346953732819301,
+        "object_coverage_ci": [
+          0.68,
+          0.9347826086956522
+        ],
+        "simultaneous_date_coverage_ci": [
+          0.35714285714285715,
+          0.8571428571428571
+        ]
+      },
+      {
+        "level": 0.8,
+        "mode": "expanding",
+        "method": "pooled_object",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 39,
+        "all_covered_dates": 11,
+        "covered_date_means": 14,
+        "mean_upper_pp_date": 10.051497651822999,
+        "mean_upper_pp_object": 10.016292342369113,
+        "object_coverage_ci": [
+          0.8604651162790697,
+          1
+        ],
+        "simultaneous_date_coverage_ci": [
+          0.5714285714285714,
+          1
+        ]
+      },
+      {
+        "level": 0.8,
+        "mode": "fixed",
+        "method": "date_max",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 42,
+        "all_covered_dates": 14,
+        "covered_date_means": 14,
+        "mean_upper_pp_date": 12.784550944325249,
+        "mean_upper_pp_object": 12.78455094432525,
+        "object_coverage_ci": [
+          1,
+          1
+        ],
+        "simultaneous_date_coverage_ci": [
+          1,
+          1
+        ]
+      },
+      {
+        "level": 0.8,
+        "mode": "fixed",
+        "method": "date_mean",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 33,
+        "all_covered_dates": 8,
+        "covered_date_means": 12,
+        "mean_upper_pp_date": 8.268717454959774,
+        "mean_upper_pp_object": 8.268717454959775,
+        "object_coverage_ci": [
+          0.6595744680851063,
+          0.9090909090909091
+        ],
+        "simultaneous_date_coverage_ci": [
+          0.2857142857142857,
+          0.7857142857142857
+        ]
+      },
+      {
+        "level": 0.8,
+        "mode": "fixed",
+        "method": "pooled_object",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 41,
+        "all_covered_dates": 13,
+        "covered_date_means": 14,
+        "mean_upper_pp_date": 10.830583246510567,
+        "mean_upper_pp_object": 10.830583246510566,
+        "object_coverage_ci": [
+          0.9302325581395349,
+          1
+        ],
+        "simultaneous_date_coverage_ci": [
+          0.7857142857142857,
+          1
+        ]
+      },
+      {
+        "level": 0.9,
+        "mode": "expanding",
+        "method": "date_max",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 42,
+        "all_covered_dates": 14,
+        "covered_date_means": 14,
+        "mean_upper_pp_date": 15.101086428766859,
+        "mean_upper_pp_object": 14.946650729804084,
+        "object_coverage_ci": [
+          1,
+          1
+        ],
+        "simultaneous_date_coverage_ci": [
+          1,
+          1
+        ]
+      },
+      {
+        "level": 0.9,
+        "mode": "expanding",
+        "method": "date_mean",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 38,
+        "all_covered_dates": 11,
+        "covered_date_means": 14,
+        "mean_upper_pp_date": 10.448505625454418,
+        "mean_upper_pp_object": 10.318905478175957,
+        "object_coverage_ci": [
+          0.8,
+          1
+        ],
+        "simultaneous_date_coverage_ci": [
+          0.5714285714285714,
+          1
+        ]
+      },
+      {
+        "level": 0.9,
+        "mode": "expanding",
+        "method": "pooled_object",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 42,
+        "all_covered_dates": 14,
+        "covered_date_means": 14,
+        "mean_upper_pp_date": 11.676896060074125,
+        "mean_upper_pp_object": 11.650790185647269,
+        "object_coverage_ci": [
+          1,
+          1
+        ],
+        "simultaneous_date_coverage_ci": [
+          1,
+          1
+        ]
+      },
+      {
+        "level": 0.9,
+        "mode": "fixed",
+        "method": "date_max",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 42,
+        "all_covered_dates": 14,
+        "covered_date_means": 14,
+        "mean_upper_pp_date": 16.027700622543502,
+        "mean_upper_pp_object": 16.027700622543506,
+        "object_coverage_ci": [
+          1,
+          1
+        ],
+        "simultaneous_date_coverage_ci": [
+          1,
+          1
+        ]
+      },
+      {
+        "level": 0.9,
+        "mode": "fixed",
+        "method": "date_mean",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 41,
+        "all_covered_dates": 13,
+        "covered_date_means": 14,
+        "mean_upper_pp_date": 11.22610650912517,
+        "mean_upper_pp_object": 11.226106509125165,
+        "object_coverage_ci": [
+          0.9302325581395349,
+          1
+        ],
+        "simultaneous_date_coverage_ci": [
+          0.7857142857142857,
+          1
+        ]
+      },
+      {
+        "level": 0.9,
+        "mode": "fixed",
+        "method": "pooled_object",
+        "dates": 14,
+        "objects": 42,
+        "covered_objects": 42,
+        "all_covered_dates": 14,
+        "covered_date_means": 14,
+        "mean_upper_pp_date": 12.784550944325249,
+        "mean_upper_pp_object": 12.78455094432525,
+        "object_coverage_ci": [
+          1,
+          1
+        ],
+        "simultaneous_date_coverage_ci": [
+          1,
+          1
+        ]
+      }
+    ],
+    "repository_checks": {
+      "run": 45863467627,
+      "jobs": [
+        {
+          "name": "municipal-experiments",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "tests (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "name": "tests (windows-latest)",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ],
+      "incident": "Ubuntu lint I001: two missing import separators; corrected without changing experiment logic."
+    },
+    "final_repository_checks": {
+      "run": 45863687181,
+      "jobs": 3,
+      "conclusion": "success"
+    }
+  },
+  "v163": {
+    "status": "completed_exploratory_no_gain",
+    "parent_commit": "56e85a1242d5219031ccd3903ca19084926447f0",
+    "control": "rolling_institution",
+    "variants": [
+      "rolling_institution",
+      "structural_only",
+      "structural_quarter",
+      "structural_adaptive"
+    ],
+    "prior_repository_checks": {
+      "run": 45863687181,
+      "jobs": 3,
+      "conclusion": "success"
+    },
+    "population": {
+      "objects": 66,
+      "dates": 23,
+      "rows": 138868
+    },
+    "next": "V17 independent historical source admission audit; no further level-only blend without new evidence.",
+    "run": 45872896363,
+    "job": 140092572301,
+    "artifact": 15143153808,
+    "artifact_digest": "sha256:deca3a9b3d5ffe6a3936ce50776fbc877b561b8f82ac32bc9d401479d1620149",
+    "tested_commit": "46035c995c78f25671f2241bb814738ff49b774b",
+    "tests_passed": 4,
+    "summary": [
+      {
+        "variant": "reference",
+        "objects": 66,
+        "covered_objects": 59,
+        "mae_pp": 7.229527497606816,
+        "centered_mae_pp": 5.370058554693702,
+        "national_mae_pp": 3.775669209992063,
+        "canton_mae_pp": 5.703708259264074,
+        "gain_interval": [
+          0,
+          0
+        ],
+        "vs_v113_interval": [
+          -0.6800955676185603,
+          0.043876748289161265
+        ]
+      },
+      {
+        "variant": "v108_tfidf",
+        "objects": 66,
+        "covered_objects": 59,
+        "mae_pp": 6.988599997055331,
+        "centered_mae_pp": 5.280965787730653,
+        "national_mae_pp": 3.846510449192281,
+        "canton_mae_pp": 5.536970110697117,
+        "gain_interval": [
+          -0.033474457237910864,
+          0.6263738724976635
+        ],
+        "vs_v113_interval": [
+          -0.18292698889263526,
+          0.09439308477954603
+        ]
+      },
+      {
+        "variant": "v113_institution",
+        "objects": 66,
+        "covered_objects": 59,
+        "mae_pp": 6.955753873756506,
+        "centered_mae_pp": 5.289917065218622,
+        "national_mae_pp": 3.7811714402970824,
+        "canton_mae_pp": 5.500338667087431,
+        "gain_interval": [
+          -0.04387674828916126,
+          0.6800955676185607
+        ],
+        "vs_v113_interval": [
+          0,
+          0
+        ]
+      },
+      {
+        "variant": "rolling_institution",
+        "objects": 66,
+        "covered_objects": 66,
+        "mae_pp": 7.0170061960082215,
+        "centered_mae_pp": 5.304041764308014,
+        "national_mae_pp": 3.811874651629404,
+        "canton_mae_pp": 5.596996072771663,
+        "gain_interval": [
+          -0.16402811185263727,
+          0.6448923399901377
+        ],
+        "vs_v113_interval": [
+          -0.21116690041810285,
+          0.059278750231554975
+        ]
+      },
+      {
+        "variant": "structural_only",
+        "objects": 66,
+        "covered_objects": 66,
+        "mae_pp": 8.78891694157177,
+        "centered_mae_pp": 5.304041764308015,
+        "national_mae_pp": 6.574661293744483,
+        "canton_mae_pp": 7.675411414922386,
+        "gain_interval": [
+          -2.821997848575143,
+          -0.29456867669932674
+        ],
+        "vs_v113_interval": [
+          -2.9651706370226285,
+          -0.7133737775758068
+        ]
+      },
+      {
+        "variant": "structural_quarter",
+        "objects": 66,
+        "covered_objects": 66,
+        "mae_pp": 7.041454825990948,
+        "centered_mae_pp": 5.304041764308014,
+        "national_mae_pp": 4.026762319534728,
+        "canton_mae_pp": 5.601352671384949,
+        "gain_interval": [
+          -0.26015563590643964,
+          0.6664995933102447
+        ],
+        "vs_v113_interval": [
+          -0.3506873223408832,
+          0.16949279832617817
+        ]
+      },
+      {
+        "variant": "structural_adaptive",
+        "objects": 66,
+        "covered_objects": 66,
+        "mae_pp": 7.007595691489697,
+        "centered_mae_pp": 5.304041764308014,
+        "national_mae_pp": 3.7909903409258856,
+        "canton_mae_pp": 5.575111946525399,
+        "gain_interval": [
+          -0.1602818879872377,
+          0.6560144214313635
+        ],
+        "vs_v113_interval": [
+          -0.20777141802617807,
+          0.07521350269655237
+        ]
+      }
+    ],
+    "diagnostics": {
+      "adaptive_vs_rolling_gain_pp": 0.009410504518524654,
+      "adaptive_vs_rolling_national_gain_pp": 0.020884310703518594,
+      "adaptive_vs_rolling_canton_gain_pp": 0.021884126246264124,
+      "adaptive_vs_v113_gain_pp": -0.051841817733190965,
+      "dates_improved": 6,
+      "dates_worse": 4,
+      "dates_tied": 13
+    },
+    "repository_checks": {
+      "run": 45872896266,
+      "success": 1,
+      "failure": 2,
+      "reason": "I001 import order only; Ubuntu and Windows full test steps skipped."
+    }
+  }
+}

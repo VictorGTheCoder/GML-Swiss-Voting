@@ -1,0 +1,241 @@
+{
+  "version": "V28.3b",
+  "status": "complete_exploratory",
+  "commit": "171977544ca0f25f396481312a62db7c7d87dcb0",
+  "run": 46157947150,
+  "job": 141018636605,
+  "artifact": 15268218502,
+  "artifact_digest": "sha256:43af0f551e7fc2bacf3556984ddab143cf92e97abfbe3609894875afa330074a",
+  "artifact_size_bytes": 7861070,
+  "targeted_tests": 3,
+  "repository_checks": {
+    "run": 46157947165,
+    "conclusion": "failure",
+    "jobs": {
+      "windows": "lint I001",
+      "ubuntu": "lint I001",
+      "municipal_experiments": "success"
+    }
+  },
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "training_objects_by_fold": [
+    240,
+    270,
+    282
+  ],
+  "evaluation_objects_by_fold": [
+    30,
+    12,
+    24
+  ],
+  "scope": "postprocessing only; replay rowwise gate passed (atol 2e-6); no new inputs; no final evaluation",
+  "summary": [
+    {
+      "variant": "reference",
+      "objects": 66,
+      "covered_objects": 48,
+      "mae_pp": 7.229527497606816,
+      "centered_mae_pp": 5.370058554693702,
+      "national_mae_pp": 3.775669209992063,
+      "canton_mae_pp": 5.703708259264074,
+      "gain_interval": [
+        0,
+        0
+      ],
+      "vs_replay_interval": [
+        -0.686575058950465,
+        0.03620932070685717
+      ]
+    },
+    {
+      "variant": "replay",
+      "objects": 66,
+      "covered_objects": 48,
+      "mae_pp": 6.950427808889041,
+      "centered_mae_pp": 5.289253543823442,
+      "national_mae_pp": 3.772388336313257,
+      "canton_mae_pp": 5.493756152418615,
+      "gain_interval": [
+        -0.03620932070685716,
+        0.6865750589504652
+      ],
+      "vs_replay_interval": [
+        0,
+        0
+      ]
+    },
+    {
+      "variant": "national_only",
+      "objects": 66,
+      "covered_objects": 48,
+      "mae_pp": 7.344937085893139,
+      "centered_mae_pp": 5.665644838641589,
+      "national_mae_pp": 3.772388336313277,
+      "canton_mae_pp": 5.788734781451499,
+      "gain_interval": [
+        -0.5958122302014277,
+        0.4248058936845163
+      ],
+      "vs_replay_interval": [
+        -0.689298700106872,
+        -0.12912288986665996
+      ]
+    },
+    {
+      "variant": "margins_only",
+      "objects": 66,
+      "covered_objects": 24,
+      "mae_pp": 8.874079281818661,
+      "centered_mae_pp": 5.289253543823442,
+      "national_mae_pp": 6.682627908889097,
+      "canton_mae_pp": 7.703868405740747,
+      "gain_interval": [
+        -3.1264546923922465,
+        -0.23437974059801844
+      ],
+      "vs_replay_interval": [
+        -3.269419904905111,
+        -0.6334807397849188
+      ]
+    },
+    {
+      "variant": "structural",
+      "objects": 66,
+      "covered_objects": 0,
+      "mae_pp": 9.321595094040534,
+      "centered_mae_pp": 5.665644838641589,
+      "national_mae_pp": 6.682627908889106,
+      "canton_mae_pp": 7.9127348817086505,
+      "gain_interval": [
+        -3.610396190031878,
+        -0.6072963346884175
+      ],
+      "vs_replay_interval": [
+        -3.8034222196847125,
+        -1.0291553214708895
+      ]
+    }
+  ],
+  "fold_mae_pp": {
+    "2016-2018": {
+      "margins_only": 8.692125352,
+      "national_only": 7.5718010491,
+      "reference": 8.152475601,
+      "replay": 7.5718010491,
+      "structural": 8.692125352
+    },
+    "2019-2020": {
+      "margins_only": 7.3298737866,
+      "national_only": 6.9489150604,
+      "reference": 7.1500595705,
+      "replay": 6.9489150604,
+      "structural": 7.3298737866
+    },
+    "2021-2022": {
+      "margins_only": 9.8736244418,
+      "national_only": 7.2593681446,
+      "reference": 6.1155763319,
+      "replay": 6.1744676328,
+      "structural": 11.1042929254
+    }
+  },
+  "domain_mae_pp": {
+    "1": {
+      "margins_only": 7.9099567449,
+      "national_only": 7.1967919588,
+      "reference": 6.4792925574,
+      "replay": 6.7794893673,
+      "structural": 8.2782336954
+    },
+    "2": {
+      "margins_only": 13.0191680072,
+      "national_only": 6.8475493773,
+      "reference": 5.8630062992,
+      "replay": 5.7946774153,
+      "structural": 13.2404914541
+    },
+    "3": {
+      "margins_only": 7.4695708474,
+      "national_only": 7.2605426585,
+      "reference": 7.1680352648,
+      "replay": 6.9107578098,
+      "structural": 7.7839496137
+    },
+    "4": {
+      "margins_only": 9.92952651,
+      "national_only": 10.1556390565,
+      "reference": 12.6797406891,
+      "replay": 10.1556390565,
+      "structural": 9.92952651
+    },
+    "5": {
+      "margins_only": 9.4077759144,
+      "national_only": 10.6801359261,
+      "reference": 10.1693907323,
+      "replay": 10.0412711485,
+      "structural": 10.011243785
+    },
+    "6": {
+      "margins_only": 11.3336391159,
+      "national_only": 6.9330685831,
+      "reference": 7.7105377573,
+      "replay": 6.9802969551,
+      "structural": 11.3573506193
+    },
+    "7": {
+      "margins_only": 7.2227036875,
+      "national_only": 6.8864450089,
+      "reference": 6.5839010403,
+      "replay": 6.8864450089,
+      "structural": 7.2227036875
+    },
+    "8": {
+      "margins_only": 8.31657715,
+      "national_only": 6.10484027,
+      "reference": 6.2725889719,
+      "replay": 6.10484027,
+      "structural": 8.31657715
+    },
+    "9": {
+      "margins_only": 7.0825995696,
+      "national_only": 6.4622594964,
+      "reference": 5.6367797301,
+      "replay": 5.5813494941,
+      "structural": 8.2523163468
+    },
+    "10": {
+      "margins_only": 8.2474537478,
+      "national_only": 7.1176988999,
+      "reference": 6.9000078832,
+      "replay": 6.6653724257,
+      "structural": 8.9073166642
+    },
+    "11": {
+      "margins_only": 12.6126833087,
+      "national_only": 7.4476524833,
+      "reference": 7.8350434359,
+      "replay": 7.6769318263,
+      "structural": 13.1156548148
+    },
+    "12": {
+      "margins_only": 9.4717433286,
+      "national_only": 5.3019805855,
+      "reference": 4.8426383255,
+      "replay": 4.8108862982,
+      "structural": 9.8867641288
+    }
+  },
+  "institution_source_coverage": {
+    "message_to_parliament_logdays": 277,
+    "parliament_to_vote_logdays": 306,
+    "parliamentary_initiative": 306,
+    "chamber_share_gap": 304,
+    "nr_binary_seat_fraction": 304,
+    "sr_binary_seat_fraction": 304
+  },
+  "decision": "No promotion. National and geographic anchors materially affect retrospective performance. Structural ablation is not strict certification of other inputs. Reused development dates; no prospective claim."
+}

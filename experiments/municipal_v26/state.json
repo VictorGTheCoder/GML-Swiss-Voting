@@ -1,0 +1,256 @@
+{
+  "version": "V26",
+  "parent_commit": "9bfd44bcc28ce00f4a1805edbbee12a07142ae43",
+  "status": "completed_audit_source_suspended",
+  "active": null,
+  "completed": [
+    "V26.1",
+    "V26.2b",
+    "V26.2c",
+    "V26.2d",
+    "V26.2e",
+    "V26.2f"
+  ],
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "best_exploratory": 6.950427808889042,
+  "admitted": 0,
+  "next": [
+    "SECO suspendu: 8/23 dates, 23/66 objets, périodes d'entraînement et métadonnées CSV non certifiées; reprendre seulement avec série de millésimes complète ou nouvelle preuve.",
+    "V27.1: benchmark indépendant des têtes vectorielles XGBoost, préspécifié; aucun test final."
+  ],
+  "results": [
+    "reports/experiments/v26_campaign/V26.1-results.json",
+    "reports/experiments/v26_campaign/V26.1-results.md",
+    "reports/experiments/v26_campaign/V26.2b-results.json",
+    "reports/experiments/v26_campaign/V26.2c-results.json",
+    "reports/experiments/v26_campaign/V26.2d-results.json",
+    "reports/experiments/v26_campaign/V26.2e-results.json",
+    "reports/experiments/v26_campaign/V26.2e-r1-results.json",
+    "reports/experiments/v26_campaign/V26.2f-candidates.json",
+    "reports/experiments/v26_campaign/V26.2f-source-audit.json",
+    "reports/experiments/v26_campaign/V26.2f-results.json"
+  ],
+  "v262": {
+    "status": "six_formats_and_hashes_verified_quarantine",
+    "assets": [
+      3322654,
+      5328688,
+      8646904,
+      16344391,
+      18064564,
+      23327987
+    ],
+    "source_metadata_verified": 6,
+    "local_download": "DNS resolution failed for dam-api.bfs.admin.ch",
+    "admitted": 0,
+    "tests_implemented": 3,
+    "workflow": ".github/workflows/seco-vintages-v262.yml",
+    "previous_ci": {
+      "run": 46085269378,
+      "conclusion": "success"
+    },
+    "format_checked": 6,
+    "fresh_candidate_dates": 4,
+    "fresh_candidate_objects": 11,
+    "evidence": {
+      "run": 46095750939,
+      "job": 140826576254,
+      "artifact": 15243308102,
+      "artifact_digest": "sha256:7bd83f447c85c05e95ac3137085e2c42eab029d80aa99d922c698c8aa1e0f5e6",
+      "sha": "e8329277d250fabfffc8db529a6f321b639d6179",
+      "tests": 3,
+      "ci": 46095750794
+    },
+    "schema": {
+      "status": "completed_quarantine_only",
+      "evidence": {
+        "run": 46100780572,
+        "job": 140842493318,
+        "artifact": 15245263063,
+        "artifact_digest": "sha256:d568ac78bdbbd15175cf85ae1bf990678a89d39f00deabb58d60f83fe0bdfdc9",
+        "sha": "7e30d846bd8b8ecbd6683d5f7f10cca935c27427",
+        "tests": 2,
+        "ci": 46100780543
+      },
+      "assets": 6
+    },
+    "extension": {
+      "status": "completed_quarantine_only",
+      "assets": 9,
+      "dates": 7,
+      "objects": 20,
+      "disjoint_dates": true,
+      "bytes": 6980283,
+      "evidence": {
+        "run": 46105368067,
+        "job": 140856810634,
+        "artifact": 15246918134,
+        "artifact_digest": "sha256:962d283fe08f7acd355a9eefe9fd51f6991be84cb7d7a75a60c525b64f9d8051",
+        "sha": "825399963ed4e789113529301249e91e8af01638",
+        "tests": 3,
+        "ci": 46105368017
+      }
+    },
+    "extraction": {
+      "status": "complete_9_of_9_quarantine_only",
+      "workflow": ".github/workflows/seco-extract-v262e.yml",
+      "tests_implemented": 5,
+      "evidence": {
+        "run": 46110089483,
+        "job": 140871472568,
+        "artifact": 15248618191,
+        "artifact_digest": "sha256:0958dd30350788b115681aa91106e23024fb342da656ee6da01384bee6acfc05",
+        "sha": "5a285d44dbc5556f875ff9af9adaffca5cf8e042",
+        "tests": 5,
+        "ci": 46110089447
+      },
+      "complete_archives": 9,
+      "extracted_records": 243,
+      "blocked_ids": [],
+      "repair": {
+        "status": "completed",
+        "tests_implemented": 7,
+        "only_failed_assets": true,
+        "source": "https://ai.ch/themen/wirtschaft-und-arbeit/arbeit/aktuelles/arbeitslosenzahlen-ende-januar-2017",
+        "evidence": {
+          "run": 46114490986,
+          "job": 140885143024,
+          "artifact": 15250719519,
+          "artifact_digest": "sha256:55e29d1ae369ffd12f23560049da1bfbb6da010d99658c40a6092240c42f9e71",
+          "sha": "cf55990336e183c54639db9101b8b500ba365b58",
+          "tests": 7,
+          "ci": 46114490968
+        }
+      },
+      "coverage_by_window": [
+        {
+          "start": "2016-01-01",
+          "end": "2018-12-31",
+          "dates": 11,
+          "complete": 2
+        },
+        {
+          "start": "2019-01-01",
+          "end": "2020-12-31",
+          "dates": 5,
+          "complete": 1
+        },
+        {
+          "start": "2021-01-01",
+          "end": "2022-12-31",
+          "dates": 7,
+          "complete": 4
+        }
+      ]
+    },
+    "next_sources": {
+      "status": "metadata_only",
+      "new_canton_assets": 1,
+      "national_candidates": 3,
+      "admitted": 0,
+      "audit": {
+        "status": "source_audit_partial_no_admission",
+        "previous_ci": {
+          "run": 46119543623,
+          "conclusion": "success"
+        },
+        "methodology": {
+          "published": "2016-07-08",
+          "retroactive_from": "2014-01-01",
+          "previous_denominator": "structural survey 2010",
+          "replacement": "SE2012-2014",
+          "national_old_population": 4322899,
+          "national_new_population": 4493249,
+          "source": "https://www.bs.ch/medienmitteilungen/wsu/2016-die-lage-auf-dem-basler-arbeitsmarkt-im-juni-2016"
+        },
+        "pdf_candidates": [
+          {
+            "period": "2016-01",
+            "published": "2016-02-09",
+            "vote": "2016-02-28",
+            "url": "https://www.seco.admin.ch/dam/seco/de/dokumente/Publikationen_Dienstleistungen/Publikationen_Formulare/Arbeit/Arbeitslosenversicherung/Die%20Lage%20auf%20dem%20Arbeitsmarkt/Lage_Arbeitsmarkt_2016/Lage_Arbeitsmarkt_Januar_2016.pdf.download.pdf/PRESSEDOK1601_D.pdf",
+            "status": "indexed_cover_only_binary_not_verified"
+          },
+          {
+            "period": "2016-08",
+            "published": "2016-09-09",
+            "vote": "2016-09-25",
+            "url": "https://www.seco.admin.ch/dam/seco/de/dokumente/Publikationen_Dienstleistungen/Publikationen_Formulare/Arbeit/Arbeitslosenversicherung/Die%20Lage%20auf%20dem%20Arbeitsmarkt/Lage_Arbeitsmarkt_2016/alz_08_2016.pdf.download.pdf/PRESSEDOK1608_D.pdf",
+            "status": "indexed_T2b_page_9_screenshot_404"
+          }
+        ],
+        "csv_metadata": {
+          "status": "not_certified",
+          "modern_reference": "https://statistik.admin.ch/de/asset/36650432",
+          "note": "Modern annex cannot certify historical status/precision codes without historical metadata."
+        },
+        "acquisition": {
+          "asset": 6029144,
+          "workflow": ".github/workflows/seco-extension-v262f.yml",
+          "status": "completed_quarantine_only",
+          "only_new_asset": true
+        },
+        "admitted": 0,
+        "trainings": 0
+      },
+      "result": {
+        "status": "completed_quarantine_only",
+        "evidence": {
+          "run": 46123836216,
+          "job": 140913909462,
+          "artifact": 15255021848,
+          "artifact_digest": "sha256:00b9959ffcc2ff76323b7eaed44f9aec33bcc21e91405987153eb6cecd24308c",
+          "sha": "291ef61d7de05d89cddc57827970d823c8768f74",
+          "tests": 10,
+          "ci": 46123836134,
+          "ci_jobs": "3/3 success"
+        },
+        "asset": {
+          "id": 6029144,
+          "period": "2018-08",
+          "published": "2018-09-07",
+          "bytes": 659867,
+          "sha256": "9228fe14f6257e3388db4333047ad97bbbdb1b8f420372c60e94696fea4daa06",
+          "records": 27,
+          "unit": "Quoten in % (Zahl der Erwerbspersonen gemäss Pooling SE2012-2014)"
+        },
+        "additional_dates": [
+          "2018-09-23"
+        ],
+        "additional_objects": 3,
+        "cumulative": {
+          "archives": 10,
+          "records": 270,
+          "bytes": 7640150,
+          "dates": 8,
+          "objects": 23,
+          "coverage_by_window": [
+            {
+              "window": "2016–2018",
+              "dates": 11,
+              "covered": 3
+            },
+            {
+              "window": "2019–2020",
+              "dates": 5,
+              "covered": 1
+            },
+            {
+              "window": "2021–2022",
+              "dates": 7,
+              "covered": 4
+            }
+          ]
+        },
+        "admitted": 0,
+        "trainings": 0,
+        "decision": "suspend_pending_historical_metadata_and_training_coverage",
+        "best_exploratory": 6.950427808889042
+      }
+    }
+  }
+}

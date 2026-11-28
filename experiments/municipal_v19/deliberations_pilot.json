@@ -1,0 +1,49 @@
+{
+  "source": "https://www.parlament.ch/centers/documents/de/verhandlungen-14-088-2017-09-24.pdf",
+  "catalog": "https://www.parlament.ch/fr/services/votations-populaires/cahiers-des-deliberations",
+  "affair": "14.088",
+  "vote_date": "2017-09-24",
+  "edition_date": "2017-08-11",
+  "evidence": "Parsed PDF cover and chronology, lines 0–156; screenshot failed because file > renderer size limit. Not proof of first publication or binary identity.",
+  "projects": [
+    {
+      "project": 1,
+      "act": "FF 2017 2217",
+      "events": [
+        "2015-09-14 CE",
+        "2015-09-15 CE",
+        "2015-09-16 CE",
+        "2016-09-26 CN",
+        "2016-09-28 CN",
+        "2016-09-29 CN",
+        "2016-12-13 CE",
+        "2017-02-28 CN",
+        "2017-03-07 CE",
+        "2017-03-13 CN",
+        "2017-03-16 CE",
+        "2017-03-16 CN",
+        "2017-03-17 CE",
+        "2017-03-17 CN"
+      ]
+    },
+    {
+      "project": 2,
+      "act": "FF 2017 2205",
+      "events": [
+        "2015-09-14 CE",
+        "2015-09-15 CE",
+        "2015-09-16 CE",
+        "2016-09-29 CN",
+        "2016-12-13 CE",
+        "2017-02-28 CN",
+        "2017-03-07 CE",
+        "2017-03-13 CN",
+        "2017-03-16 CE",
+        "2017-03-16 CN",
+        "2017-03-17 CE",
+        "2017-03-17 CN"
+      ]
+    }
+  ],
+  "admitted": 0
+}

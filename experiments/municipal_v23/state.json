@@ -1,0 +1,61 @@
+{
+  "version": "V23",
+  "active": "V23.3a",
+  "status": "historical_document_pilot_completed_admission_blocked",
+  "parent_commit": "a339081832ec9a0a2a8d1e2da85ea36ea239d78f",
+  "best_exploratory": 6.955753873756506,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "completed": [
+    "V23.1",
+    "V23.2",
+    "V23.3a"
+  ],
+  "runs": [
+    {
+      "version": "V23.1",
+      "run": 46039082230,
+      "artifact": 15217809237,
+      "artifact_digest": "sha256:e76acdaa2df48a356b83f1365dfe2355fe378be60ddc82c74965d9604c2d08b6",
+      "metadata_sha256": "c19c1af6426db9c4592e050460ce9ab55b444e7b5483402cc1d1d23e35384277",
+      "candidate_rows": 18,
+      "distinct_cubes": 6,
+      "observations_read": 0,
+      "admitted": 0,
+      "conclusion": "success",
+      "self_tests": 6,
+      "ci_run": 46039090307
+    },
+    {
+      "version": "V23.2",
+      "run": 46046806609,
+      "job": 140667979061,
+      "artifact": 15222317690,
+      "artifact_digest": "sha256:f4da834c97055fca94719623c6649b7535a65353323a8f8cd6c97bf26dfa3262",
+      "metadata_sha256": "710f760918245bacffac881c5e878c8fad0a5b2b9440929aeb34b865986f0814",
+      "baseline_manifest_sha256": "b5675ef7fb6e4e81c0bbee994484eb8d59190ae5348e53863942f2e76faa3347",
+      "rows": 139,
+      "response_bytes": 74405,
+      "dimensions": [
+        25,
+        20
+      ],
+      "licence_fields_returned": 0,
+      "date_published": "2026-01-01",
+      "self_tests": 10,
+      "ci_run": 46046814106,
+      "ci_jobs_success": 3,
+      "observations_read": 0,
+      "admitted": 0,
+      "conclusion": "success"
+    }
+  ],
+  "admitted": 0,
+  "next": [
+    "Priorité: comparer une nouvelle expérience indépendante sur données admises aux diagnostics V13.3–V13.5 et aux variantes V18/V22; préspécifier contrôle, ablation, population et garde-fous.",
+    "Source V23 suspendue: ne reprendre que si date de publication des décisions, licence, correspondance exacte aux objets du benchmark et couverture suffisante sont établies; pas de jointure des statuts ou résultats actuels."
+  ]
+}

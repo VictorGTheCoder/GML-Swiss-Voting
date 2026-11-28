@@ -1,0 +1,212 @@
+{
+  "status": "descriptive_only",
+  "no_fit": true,
+  "new_admitted_inputs": 0,
+  "objects": 66,
+  "dates": 23,
+  "reference": 7.229527497606818,
+  "best": 6.950427808889042,
+  "frozen_sha256": "791b0492730dc7295baa6bf838208ee0c75b019849b10680d437b435ce0d4fbd",
+  "source_sha256": {
+    "srg": "cf491f402341df2aa9e66fc5de384ae0d7c98fbc69ef3b2a6fa2a557d4d8a827",
+    "pairs": "fa828ed58f483ff8feb25444f110bb94cff5eea189de29b49e8d7e4b35120cb5",
+    "retrospective": "c93c253114c833eafe51eeec10acb1b9174bc0e8883c3ac104f74de5265bdc71",
+    "tamedia_candidate": "656abf5dd542d5b3345811bd4fdebe31f22a01317f06f421971da2849824fd68",
+    "expectation": "194af1f9dc25f9f616d33a358ae58ff3911a95b5b1a75d9aeec4dc0331c43689",
+    "media": "ab496596cfeb12194194d93ab0166e149a775fb18c3a8487f02ac28d76b49250"
+  },
+  "expectation_rows": 37,
+  "srg_development_rows": 48,
+  "srg_development_objects": 24,
+  "srg_out_of_period_rows_excluded": 48,
+  "srg_declared_objects": 41,
+  "srg_chart_later_updates": 16,
+  "srg_historical_version_verified": 0,
+  "summary": [
+    {
+      "signal": "srg_declared",
+      "bucket": "0-14",
+      "objects": 41,
+      "dates": 13,
+      "mae_pp": 6.775945452612827,
+      "centered_mae_pp": 4.8245250747513815,
+      "national_mae_pp": 4.142667730157826,
+      "canton_mae_pp": 5.483962204938306,
+      "national_reference": 4.257491490182175,
+      "national_paired_gain": 0.11482376002434903,
+      "paired_date_interval": [
+        -0.47374380711923797,
+        0.7817429418723219
+      ]
+    },
+    {
+      "signal": "srg_declared",
+      "bucket": "absent_or_undated",
+      "objects": 25,
+      "dates": 11,
+      "mae_pp": 7.236578873182035,
+      "centered_mae_pp": 6.051408233101622,
+      "national_mae_pp": 3.16513013040817,
+      "canton_mae_pp": 5.509818226286329,
+      "national_reference": 2.9854806704802797,
+      "national_paired_gain": -0.17964945992789008,
+      "paired_date_interval": [
+        -0.6736854747296137,
+        3.2455516096347685e-14
+      ]
+    },
+    {
+      "signal": "expectation_declared",
+      "bucket": "0-14",
+      "objects": 18,
+      "dates": 7,
+      "mae_pp": 6.460012690462294,
+      "centered_mae_pp": 4.92382060666711,
+      "national_mae_pp": 3.190238113098692,
+      "canton_mae_pp": 4.829305668213603,
+      "national_reference": 3.190238113098685,
+      "national_paired_gain": -7.360624455622479e-15,
+      "paired_date_interval": [
+        -6.064284876730299e-14,
+        7.76720396638814e-14
+      ]
+    },
+    {
+      "signal": "expectation_declared",
+      "bucket": ">30",
+      "objects": 2,
+      "dates": 2,
+      "mae_pp": 5.2769882558843335,
+      "centered_mae_pp": 5.273894972079108,
+      "national_mae_pp": 0.7966529576703492,
+      "canton_mae_pp": 3.582664632425307,
+      "national_reference": 0.796652957670474,
+      "national_paired_gain": 1.2484457911909885e-13,
+      "paired_date_interval": [
+        -3.7758685067501574e-13,
+        6.272760089132134e-13
+      ]
+    },
+    {
+      "signal": "expectation_declared",
+      "bucket": "absent_or_undated",
+      "objects": 46,
+      "dates": 20,
+      "mae_pp": 7.215087618404063,
+      "centered_mae_pp": 5.432916804960455,
+      "national_mae_pp": 4.129566048816478,
+      "canton_mae_pp": 5.836849451455072,
+      "national_reference": 4.134273389312149,
+      "national_paired_gain": 0.00470734049567265,
+      "paired_date_interval": [
+        -0.5393718801812512,
+        0.6050339370385724
+      ]
+    },
+    {
+      "signal": "media_declared",
+      "bucket": "0-14",
+      "objects": 26,
+      "dates": 7,
+      "mae_pp": 6.360626181495741,
+      "centered_mae_pp": 4.836617425485266,
+      "national_mae_pp": 3.560727060853846,
+      "canton_mae_pp": 5.069955600844969,
+      "national_reference": 3.4261086778346117,
+      "national_paired_gain": -0.13461838301923496,
+      "paired_date_interval": [
+        -0.3750083526964973,
+        9.879308019803783e-14
+      ]
+    },
+    {
+      "signal": "media_declared",
+      "bucket": "15-30",
+      "objects": 26,
+      "dates": 11,
+      "mae_pp": 7.270876495924473,
+      "centered_mae_pp": 5.624908044271673,
+      "national_mae_pp": 3.6778137937480477,
+      "canton_mae_pp": 5.446636558938612,
+      "national_reference": 4.154851533076161,
+      "national_paired_gain": 0.47703773932811333,
+      "paired_date_interval": [
+        -0.16499836598526924,
+        1.3228964771090348
+      ]
+    },
+    {
+      "signal": "media_declared",
+      "bucket": ">30",
+      "objects": 2,
+      "dates": 1,
+      "mae_pp": 5.637151405091497,
+      "centered_mae_pp": 3.3812374799177114,
+      "national_mae_pp": 3.724700955725091,
+      "canton_mae_pp": 4.399685679128691,
+      "national_reference": 3.724700955725141,
+      "national_paired_gain": 5.0182080713057076e-14,
+      "paired_date_interval": null
+    },
+    {
+      "signal": "media_declared",
+      "bucket": "absent_or_undated",
+      "objects": 12,
+      "dates": 4,
+      "mae_pp": 7.752905246964016,
+      "centered_mae_pp": 5.86071639323594,
+      "national_mae_pp": 4.4438471721313055,
+      "canton_mae_pp": 6.6964282122498595,
+      "national_reference": 3.719983372028816,
+      "national_paired_gain": -0.7238638001024897,
+      "paired_date_interval": [
+        -2.7772867447107124,
+        4.5939442726096655e-14
+      ]
+    },
+    {
+      "signal": "tamedia_candidate",
+      "bucket": "0-14",
+      "objects": 21,
+      "dates": 9,
+      "mae_pp": 6.536255132144926,
+      "centered_mae_pp": 4.768321895591367,
+      "national_mae_pp": 3.698372124341019,
+      "canton_mae_pp": 5.294267507673371,
+      "national_reference": 4.138997760410594,
+      "national_paired_gain": 0.44062563606957444,
+      "paired_date_interval": [
+        -0.6105288226059257,
+        1.4630459163332499
+      ]
+    },
+    {
+      "signal": "tamedia_candidate",
+      "bucket": "absent_or_undated",
+      "objects": 45,
+      "dates": 14,
+      "mae_pp": 7.143708391369629,
+      "centered_mae_pp": 5.532354979665077,
+      "national_mae_pp": 3.8069292352336372,
+      "canton_mae_pp": 5.586850853299733,
+      "national_reference": 3.6061158864634155,
+      "national_paired_gain": -0.20081334877022244,
+      "paired_date_interval": [
+        -0.39811580482273246,
+        -3.4742144998787493e-14
+      ]
+    }
+  ],
+  "caveat": "Declared date is not historical vintage certification; candidate not admitted.",
+  "run": 46142663637,
+  "artifact": 15261997019,
+  "artifact_digest": "sha256:99fde8f37701c2270a644df308e24b2512f92c01693d93a39b6d70685b512f95",
+  "evaluated_commit": "4a6c99d34f626c517c477f68ad906a1f95a56be8",
+  "tests": "7/7",
+  "repository_checks": {
+    "run": 46142663630,
+    "conclusion": "success",
+    "jobs": 3
+  },
+  "interpretation": "Strates descriptives, chevauchement des dates et composition différents. IC sur gain V24.1 vs référence, non sur effet causal de la disponibilité. Aucun fit; pas de nouvelle admission."
+}

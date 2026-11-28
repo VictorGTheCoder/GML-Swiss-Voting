@@ -1,0 +1,52 @@
+{
+  "version": "V28.3a",
+  "run": 46152899275,
+  "job": 141003168896,
+  "artifact": 15265469588,
+  "artifact_digest": "sha256:adfbfc9f0c4353837a63ea3667b04fd421f6b530f5c51e0f2037bbf187befe16",
+  "sha": "bae345762a4be15020d31820d1833a98404ce2c7",
+  "tests": "4/4",
+  "repository_checks": {
+    "run": 46152899057,
+    "conclusion": "success",
+    "jobs": 3
+  },
+  "audit": {
+    "national_objects": 48,
+    "national_selected_waves": 96,
+    "national_source_objects": {
+      "direct": 24,
+      "historical_v3": 24
+    },
+    "national_objects_any_late_chart": 12,
+    "national_objects_latest_late_chart": 7,
+    "national_objects_all_waves_verified": 0,
+    "national_selected_waves_verified": 0,
+    "structural_fallback_objects": 18,
+    "language": {
+      "objects": 24,
+      "selected_cells": 72,
+      "objects_latest_late_chart": 6,
+      "objects_all_cells_verified": 0
+    },
+    "settlement": {
+      "objects": 24,
+      "selected_cells": 72,
+      "objects_latest_late_chart": 7,
+      "objects_all_cells_verified": 0
+    },
+    "status": "metadata_only",
+    "objects": 66,
+    "dates": 23,
+    "excluded_direct_future_rows": 48,
+    "source_sha256": {
+      "data/external/polls/srg_gfs_polls.csv": "cf491f402341df2aa9e66fc5de384ae0d7c98fbc69ef3b2a6fa2a557d4d8a827",
+      "data/external/polls_historical_v3/polls.csv": "25ba86dd0aac4f4f2d5d2636bfcc541aa44a0f5f2e26b58a7943aac0b39671f3",
+      "data/external/polls_regional_v8/regional_polls.csv": "0e73fef346aacee32269dd25c84b4ca97266f8d0db033654a22d840142b6c1ec",
+      "reports/generated/v283_acq/settlement_polls.csv": "94b4ffe8380348cfed5808da17e67b8e166c30bcca46b1b3b4f8bfacb01c9d7f",
+      "reports/generated/v283_frozen/object_metrics.csv": "791b0492730dc7295baa6bf838208ee0c75b019849b10680d437b435ce0d4fbd"
+    },
+    "no_fit": true,
+    "new_admitted_inputs": 0
+  }
+}

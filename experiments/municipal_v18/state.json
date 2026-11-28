@@ -1,0 +1,411 @@
+{
+  "version": "V18.1",
+  "status": "completed_no_gain",
+  "parent_commit": "34746647f85a24f5f77727e7533f91966b01304f",
+  "best_exploratory": 6.955753873756506,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "next": [
+    "V19.1 audit indépendant des mutations OFS, incluant échanges de territoire; aucune admission",
+    "V19.2 vérifier les jointures historiques et la stabilité des géographies avant toute nouvelle expérience prédictive",
+    "Sources suspendues: aucune reprise sans preuve indépendante"
+  ],
+  "completed": [
+    "V18.1",
+    "V18.2a",
+    "V18.2b",
+    "V18.2b-r1",
+    "V18.3"
+  ],
+  "evidence": {
+    "run": 45926062218,
+    "job": 140267517689,
+    "artifact": 15165844596,
+    "artifact_digest": "sha256:83d59c9c242eec206e8101ac3a227f22c65dfb16db803d87aed5dccd8a90af48",
+    "source_commit": "e3c0c2d342f6add936449fbe5b87dcd21aa2b92a",
+    "repository_checks": {
+      "run": 45926062160,
+      "passed": 3,
+      "total": 3
+    },
+    "targeted_checks": 5
+  },
+  "results": [
+    {
+      "variant": "reference",
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "gain_interval": [
+        0,
+        0
+      ]
+    },
+    {
+      "variant": "fixed_075",
+      "mae_pp": 7.104609759119641,
+      "centered_mae_pp": 5.41946804172576,
+      "national_mae_pp": 3.781171440297074,
+      "canton_mae_pp": 5.554448294197658,
+      "gain_interval": [
+        -0.285793632229846,
+        -0.011825678682638672
+      ]
+    },
+    {
+      "variant": "fixed_125",
+      "mae_pp": 7.152782681551898,
+      "centered_mae_pp": 5.529074470119572,
+      "national_mae_pp": 3.781171440297085,
+      "canton_mae_pp": 5.744353551461543,
+      "gain_interval": [
+        -0.3657058934235383,
+        -0.029364620867653797
+      ]
+    },
+    {
+      "variant": "adaptive",
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "gain_interval": [
+        0,
+        0
+      ]
+    }
+  ],
+  "adaptive_scale_one_dates": 23,
+  "active": null,
+  "fedlex": {
+    "status": "suspended_identity_unverified",
+    "prior": {
+      "version": "V18.2b-r1",
+      "status": "host_allowlist_corrected_pending_ci",
+      "parent_commit": "224c51426fd3b324b2fd4f407e10a8c4d580db00",
+      "metadata_evidence": {
+        "run": 45937853512,
+        "job": 140305093385,
+        "artifact": 15170759732,
+        "artifact_digest": "sha256:8f6f489d93db014d2ab607788d94c53c97795b5a2331bfd34a539cb6a78b098b",
+        "queries": 12,
+        "errors": 0,
+        "unique_candidates": 8,
+        "ambiguous": 4,
+        "all_matches": 18,
+        "remaining_matches": 14,
+        "unique_after_document_date": 11,
+        "repository_checks": {
+          "run": 45937853372,
+          "passed": 3,
+          "total": 3
+        },
+        "targeted_checks": 11
+      },
+      "training_rows_admitted": 0,
+      "workflow": ".github/workflows/fedlex-v182b.yml",
+      "pdf_initial_evidence": {
+        "run": 45943555169,
+        "job": 140323018856,
+        "artifact": 15173981054,
+        "artifact_digest": "sha256:cbf7ea4f1709ddcb68b55cd261bad13a3d6d03c4e227f09d272607d88c148ab2",
+        "objects": 12,
+        "unverified_attempts": 14,
+        "unique_page_candidates": 0,
+        "repository_checks": {
+          "run": 45943555085,
+          "passed": 3,
+          "total": 3
+        }
+      }
+    },
+    "revision_evidence": {
+      "run": 45949680231,
+      "job": 140342384792,
+      "artifact": 15176132195,
+      "artifact_digest": "sha256:8934ecbd2aea9457d9452ab6ad83bd26ef6cc9158f55fbfe141b0490931dc53b",
+      "source_commit": "481786083e84466244915a59a4760225c42488e3",
+      "objects": 12,
+      "pdf_downloaded": 14,
+      "bytes": 5436838,
+      "printed_page_matches": 0,
+      "training_rows_admitted": 0,
+      "repository_checks": {
+        "run": 45949680232,
+        "passed": 3,
+        "total": 3
+      }
+    }
+  },
+  "two_scale": {
+    "status": "complete",
+    "prediction_sha256": "622654c965648400469066ac36ee5bb3b886f120d3124f0c786f533275e17089",
+    "geography_sha256": "2a5c6f0e953601cc92cd523fa14c67b8ce549f2cbecdbb8ce68ae647e45f9289",
+    "rows": 138868,
+    "objects": 66,
+    "dates": 23,
+    "coverage": 1,
+    "grid": [
+      [
+        1,
+        1
+      ],
+      [
+        1.25,
+        0.75
+      ],
+      [
+        0.75,
+        1.25
+      ]
+    ],
+    "summary": [
+      {
+        "variant": "reference",
+        "mae_pp": 6.955753873756506,
+        "centered_mae_pp": 5.289917065218622,
+        "national_mae_pp": 3.7811714402970824,
+        "canton_mae_pp": 5.500338667087431,
+        "gain_interval": [
+          0,
+          0
+        ]
+      },
+      {
+        "variant": "between_up_within_down",
+        "mae_pp": 7.113022637074057,
+        "centered_mae_pp": 5.483102227307653,
+        "national_mae_pp": 3.7811714402970575,
+        "canton_mae_pp": 5.744521968968289,
+        "gain_interval": [
+          -0.25005703602510676,
+          -0.06591552538528488
+        ]
+      },
+      {
+        "variant": "between_down_within_up",
+        "mae_pp": 7.156143971310594,
+        "centered_mae_pp": 5.517032888251586,
+        "national_mae_pp": 3.78117144029705,
+        "canton_mae_pp": 5.554438750837203,
+        "gain_interval": [
+          -0.2866756834580078,
+          -0.11640151572791102
+        ]
+      },
+      {
+        "variant": "adaptive",
+        "mae_pp": 6.955753873756506,
+        "centered_mae_pp": 5.289917065218622,
+        "national_mae_pp": 3.7811714402970824,
+        "canton_mae_pp": 5.500338667087431,
+        "gain_interval": [
+          0,
+          0
+        ]
+      }
+    ],
+    "selection": [
+      {
+        "date": "2016-02-28",
+        "prior_dates": 0,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2016-06-05",
+        "prior_dates": 1,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2016-09-25",
+        "prior_dates": 2,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2016-11-27",
+        "prior_dates": 3,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2017-02-12",
+        "prior_dates": 4,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2017-05-21",
+        "prior_dates": 5,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2017-09-24",
+        "prior_dates": 6,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2018-03-04",
+        "prior_dates": 7,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2018-06-10",
+        "prior_dates": 8,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2018-09-23",
+        "prior_dates": 9,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2018-11-25",
+        "prior_dates": 10,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2019-02-10",
+        "prior_dates": 11,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2019-05-19",
+        "prior_dates": 12,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2020-02-09",
+        "prior_dates": 13,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2020-09-27",
+        "prior_dates": 14,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2020-11-29",
+        "prior_dates": 15,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2021-03-07",
+        "prior_dates": 16,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2021-06-13",
+        "prior_dates": 17,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2021-09-26",
+        "prior_dates": 18,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2021-11-28",
+        "prior_dates": 19,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2022-02-13",
+        "prior_dates": 20,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2022-05-15",
+        "prior_dates": 21,
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "date": "2022-09-25",
+        "prior_dates": 22,
+        "scale": [
+          1,
+          1
+        ]
+      }
+    ],
+    "run": 45955320315,
+    "job": 140360354758,
+    "artifact": 15179100156,
+    "artifact_digest": "sha256:fc7cbb171dbac9dff2be7e7950efbb99c904fb485c5aebcc667a1a43439b9147",
+    "source_commit": "0808f2ae98889cc2f0d55433765aeab2296cc979",
+    "repository_checks": {
+      "run": 45955320251,
+      "passed": 3,
+      "total": 3
+    },
+    "self_test": "passed",
+    "decision": "no_gain_suspend_amplitude"
+  }
+}

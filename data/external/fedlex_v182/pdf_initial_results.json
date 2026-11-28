@@ -1,0 +1,244 @@
+{
+  "rows": [
+    {
+      "family": "fga",
+      "year": 2015,
+      "page": 4403,
+      "vote_date": "2016-02-28",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/1168",
+          "date": "2015-06-30",
+          "docDate": "2015-06-19",
+          "status": "not_verified",
+          "query_sha256": "b8869ddc90df699c81145cb7568ea3a4e03456b4edcc4687fa7f3310b561a076",
+          "response_sha256": "f86de63a702663f0d0dfa66abd19b5d47e3279adbb9f286f18722bd4d63cf61e",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2015,
+      "page": 2487,
+      "vote_date": "2016-02-28",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/542",
+          "date": "2015-03-31",
+          "docDate": "2015-03-20",
+          "status": "not_verified",
+          "query_sha256": "0fa81cfe98960c7f9109cee08ae193e66aeaa5254414e05223b5d227139151e8",
+          "response_sha256": "f9258b5e814c14a877b91d92d592e034c20dd43a7a4130e51effb40b4620a1f4",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2015,
+      "page": 6513,
+      "vote_date": "2016-02-28",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/493",
+          "date": "2015-03-24",
+          "docDate": "2015-02-18",
+          "status": "not_verified",
+          "query_sha256": "363cacf32e649a5539f3347f2c8490d836f8928207bdd327383172726fbbf798",
+          "response_sha256": "7e4f833a01e24f44a909df36b4adf7a2dc37e425fc3d394b7c3c7497194740a8",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/494",
+          "date": "2015-03-24",
+          "docDate": "2015-02-18",
+          "status": "not_verified",
+          "query_sha256": "b06d5050e8665251c64d38e3c889cb1d8efdbaf77acdd1a38d24fcce4632d0a9",
+          "response_sha256": "5d4c42086115f9bf8f15db9ebb8474ba0f8d31c3c9b2edf36a0d4400c539cfd9",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/1695",
+          "date": "2015-10-06",
+          "docDate": "2015-09-25",
+          "status": "not_verified",
+          "query_sha256": "0c2769481fb0f4b1c6ed79245dc079b0633b13f1979c11d9a2cb818fdf655d8d",
+          "response_sha256": "50b49b110f1ffe10fe676eea3a6a60158106e6d242ceb8a8a4307264d86b3d1e",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2014,
+      "page": 7083,
+      "vote_date": "2016-02-28",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2014/1594",
+          "date": "2014-10-07",
+          "docDate": "2014-09-26",
+          "status": "not_verified",
+          "query_sha256": "c22f076da676e1941a19b2877c02ebc1b74fb45a5416c02547c14dbdf4e42c46",
+          "response_sha256": "98722653540c6e64e1a9951b9440161f917bef9af0903c874f8a2a0f3aed3307",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2017,
+      "page": 2207,
+      "vote_date": "2017-09-24",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/464",
+          "date": "2017-03-28",
+          "docDate": "2017-03-14",
+          "status": "not_verified",
+          "query_sha256": "3d3d3987b0c1ac8fca44258652ad36c134680a9585ed8ffeb15db2eef5502609",
+          "response_sha256": "4c67cfe8e87b0658ee67c643eda1dac3aaed1cf9fcc05a2a077b5730950a1fae",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2017,
+      "page": 2205,
+      "vote_date": "2017-09-24",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/463",
+          "date": "2017-03-28",
+          "docDate": "2017-03-17",
+          "status": "not_verified",
+          "query_sha256": "ccea0c7d50740498f54f9b07c46f69cd597142142e935b3b022f52def98c510d",
+          "response_sha256": "5c410b0bb365af6bd91605c7f789563181718d5ff47f9c2724e4f7cbe038b7bb",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2017,
+      "page": 2217,
+      "vote_date": "2017-09-24",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/469",
+          "date": "2017-03-28",
+          "docDate": "2017-03-17",
+          "status": "not_verified",
+          "query_sha256": "89923b0883faaacfd712c67b2e9342695b1b21543472149b2ebce943b3e060d6",
+          "response_sha256": "c12c2aea0601c43a4133f0d9526a6984d9112e78fe35e75124301c90804d6029",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7393,
+      "vote_date": "2021-06-13",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/1996",
+          "date": "2020-10-06",
+          "docDate": "2020-09-25",
+          "status": "not_verified",
+          "query_sha256": "038b2d5fa9c6f7d48a1f3a05b31de62bde424017012b2e949359eeb093cf94bd",
+          "response_sha256": "a5c73815ab8cad224b5515541a41e600251aa9b84e03fcf81dd51e0000bfafcb",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7395,
+      "vote_date": "2021-06-13",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/1997",
+          "date": "2020-10-06",
+          "docDate": "2020-09-25",
+          "status": "not_verified",
+          "query_sha256": "8cac6f154cf40166ab5a86e4e955a95609e56997b6c04399bdb8a0174b45b009",
+          "response_sha256": "fa22eaf2101d6636fd1d3e24fea9c5cc91dd69d9d78e8037c3824991b59aae3a",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    },
+    {
+      "family": "oc",
+      "year": 2020,
+      "page": 3835,
+      "vote_date": "2021-06-13",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/oc/2020/711",
+          "date": "2020-09-25",
+          "docDate": "2020-09-25",
+          "status": "not_verified",
+          "query_sha256": "63b87b8182adc0b0a57e8a3d1ab211899aab147ee30a498e043b5f12659692a8",
+          "response_sha256": "6c3197202c39ad6f6176fc92e69eedbe900e661fb7b6617c7f915a42ababf674",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7607,
+      "vote_date": "2021-06-13",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/2013",
+          "date": "2020-10-06",
+          "docDate": "2020-09-25",
+          "status": "not_verified",
+          "query_sha256": "00ade21888e33512e9a678fd61dbced20cef79d21d171f92e432c62a557dc9e9",
+          "response_sha256": "2871906c00f232b991f7eecd44297d272177dcdf8744d08a4871ae4114d72999",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7499,
+      "vote_date": "2021-06-13",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/2004",
+          "date": "2020-10-06",
+          "docDate": "2020-09-25",
+          "status": "not_verified",
+          "query_sha256": "5fa399b69ee8f5a02c7c6ff18242036736e251ef11f16aeba6564096e92135bd",
+          "response_sha256": "558a465595a4d87fcba2bfcdf1d7e9ebc9fbaae5aa486263e4fc701518e79607",
+          "pdf_candidates": [],
+          "error": "PDF URL not unique"
+        }
+      ]
+    }
+  ],
+  "objects": 12,
+  "unique_page_candidates": 0,
+  "unverified_attempts": 14,
+  "training_rows_admitted": 0
+}

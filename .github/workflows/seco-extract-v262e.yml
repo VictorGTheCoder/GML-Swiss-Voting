@@ -1,0 +1,22 @@
+name: V26.2e r1 historical SECO spreadsheet recovery
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas==2.2.3 openpyxl==3.1.5 xlrd==2.0.2 pytest
+      - run: python -m pytest -q tests/test_seco_extract_v262e.py
+      - run: python -m scripts.modeling.seco_extract_v262e --audit reports/experiments/v26_campaign/V26.2b-results.json --audit reports/experiments/v26_campaign/V26.2d-results.json --only-asset 3322654 --only-asset 5328688 --only-asset 8646904 --only-asset 16344391 --output reports/generated/v262e_r1/audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v262e-r1-seco-spreadsheet-recovery
+          path: reports/generated/v262e_r1/
+          retention-days: 30

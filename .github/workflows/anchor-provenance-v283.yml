@@ -1,0 +1,40 @@
+name: V28.3 effective anchor provenance
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: v283-${{ github.head_ref || github.ref }}
+  cancel-in-progress: false
+jobs:
+  audit:
+    if: github.head_ref == 'experiment/municipal-v13-aps-source-20261125' || github.ref == 'refs/heads/experiment/municipal-v13-aps-source-20261125'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-experiments.txt
+      - run: python -m pytest -q tests/test_anchor_provenance_v283.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: v241-robust-heads
+          run-id: 46060624437
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v283_frozen
+      - uses: actions/download-artifact@v4
+        with:
+          name: poll-acquisition-v81
+          run-id: 45292731014
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v283_acq
+      - run: python -m scripts.modeling.anchor_provenance_v283 --frozen reports/generated/v283_frozen/object_metrics.csv --acquisition reports/generated/v283_acq --output reports/generated/v283_audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v283-anchor-provenance
+          path: reports/generated/v283_audit/
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,272 @@
+{
+  "version": "V28",
+  "status": "pilot_corroboration_measured_strict_certification_blocked",
+  "active": "V28.4b_or_V29",
+  "best_exploratory": 6.950427808889042,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "backlog": [
+    "P1 V28.4b : rechercher archives figées/rapports originaux gfs.bern, licences et preuve de millésime; V28.4a corrobore le oui national, pas tous les champs. Ne pas répéter les six articles.",
+    "P2 Comparaison des seuls signaux certifiés si gate satisfait; sinon V29 indépendant, pas de nouveaux blends V16.3.",
+    "P3 Si certification bloquée, ouvrir V29 pour amélioration du niveau national structurel sans sondages (diagnostic d'abord des expériences V16.3 et V28.3b; éviter redondance).",
+    "P4 fög V28.2a et SECO V26 restent en quarantaine; aucune promotion ni test final."
+  ],
+  "source_inventory": {
+    "roster_objects": 66,
+    "expectations_rows": 37,
+    "expectations_objects": 20,
+    "media_objects": 54,
+    "tamedia_dated_candidates_objects": 21,
+    "srg_declared_dates_objects": 41,
+    "srg_chart_updates_on_or_after_vote_rows": 16,
+    "srg_historical_verified_rows": 0,
+    "srg_direct_development_rows": 48,
+    "srg_direct_development_objects": 24,
+    "srg_out_of_period_rows_excluded": 48
+  },
+  "runs": [
+    {
+      "version": "V28.1",
+      "run": 46138204208,
+      "conclusion": "failure",
+      "tests": "4/4",
+      "reason": "SRG input also contains 2023+ publication metadata; strict roster rejected 48 rows.",
+      "repository_checks": {
+        "run": 46138204221,
+        "conclusion": "success"
+      },
+      "frozen_artifact": 15228766542
+    },
+    {
+      "version": "V28.1 r1",
+      "run": 46142663637,
+      "artifact": 15261997019,
+      "artifact_digest": "sha256:99fde8f37701c2270a644df308e24b2512f92c01693d93a39b6d70685b512f95",
+      "conclusion": "success",
+      "tests": "7/7",
+      "repository_checks": {
+        "run": 46142663630,
+        "conclusion": "success",
+        "jobs": 3
+      },
+      "results": "reports/experiments/v28_campaign/V28.1-results.json",
+      "no_fit": true
+    },
+    {
+      "version": "V28.3a",
+      "status": "static_audit_measured_workflow_pending",
+      "results": "reports/experiments/v28_campaign/V28.3-static-audit.json",
+      "no_fit": true,
+      "parent_ci": {
+        "run": 46147264175,
+        "conclusion": "success",
+        "jobs": 3
+      }
+    },
+    {
+      "version": "V28.3a",
+      "run": 46152899275,
+      "job": 141003168896,
+      "artifact": 15265469588,
+      "artifact_digest": "sha256:adfbfc9f0c4353837a63ea3667b04fd421f6b530f5c51e0f2037bbf187befe16",
+      "sha": "bae345762a4be15020d31820d1833a98404ce2c7",
+      "tests": "4/4",
+      "repository_checks": {
+        "run": 46152899057,
+        "conclusion": "success",
+        "jobs": 3
+      },
+      "audit": {
+        "national_objects": 48,
+        "national_selected_waves": 96,
+        "national_source_objects": {
+          "direct": 24,
+          "historical_v3": 24
+        },
+        "national_objects_any_late_chart": 12,
+        "national_objects_latest_late_chart": 7,
+        "national_objects_all_waves_verified": 0,
+        "national_selected_waves_verified": 0,
+        "structural_fallback_objects": 18,
+        "language": {
+          "objects": 24,
+          "selected_cells": 72,
+          "objects_latest_late_chart": 6,
+          "objects_all_cells_verified": 0
+        },
+        "settlement": {
+          "objects": 24,
+          "selected_cells": 72,
+          "objects_latest_late_chart": 7,
+          "objects_all_cells_verified": 0
+        },
+        "status": "metadata_only",
+        "objects": 66,
+        "dates": 23,
+        "excluded_direct_future_rows": 48,
+        "source_sha256": {
+          "data/external/polls/srg_gfs_polls.csv": "cf491f402341df2aa9e66fc5de384ae0d7c98fbc69ef3b2a6fa2a557d4d8a827",
+          "data/external/polls_historical_v3/polls.csv": "25ba86dd0aac4f4f2d5d2636bfcc541aa44a0f5f2e26b58a7943aac0b39671f3",
+          "data/external/polls_regional_v8/regional_polls.csv": "0e73fef346aacee32269dd25c84b4ca97266f8d0db033654a22d840142b6c1ec",
+          "reports/generated/v283_acq/settlement_polls.csv": "94b4ffe8380348cfed5808da17e67b8e166c30bcca46b1b3b4f8bfacb01c9d7f",
+          "reports/generated/v283_frozen/object_metrics.csv": "791b0492730dc7295baa6bf838208ee0c75b019849b10680d437b435ce0d4fbd"
+        },
+        "no_fit": true,
+        "new_admitted_inputs": 0
+      },
+      "results": "reports/experiments/v28_campaign/V28.3a-results.json",
+      "no_fit": true
+    },
+    {
+      "version": "V28.3b",
+      "status": "implemented_not_measured",
+      "variants": [
+        "replay",
+        "national_only",
+        "margins_only",
+        "structural"
+      ],
+      "tests_implemented": 3
+    },
+    {
+      "version": "V28.3b",
+      "conclusion": "success",
+      "run": 46157947150,
+      "job": 141018636605,
+      "artifact": 15268218502,
+      "artifact_digest": "sha256:43af0f551e7fc2bacf3556984ddab143cf92e97abfbe3609894875afa330074a",
+      "sha": "171977544ca0f25f396481312a62db7c7d87dcb0",
+      "tests": "3/3",
+      "repository_checks": {
+        "run": 46157947165,
+        "conclusion": "failure",
+        "jobs": {
+          "windows": "lint I001",
+          "ubuntu": "lint I001",
+          "municipal_experiments": "success"
+        }
+      },
+      "scores": [
+        {
+          "variant": "reference",
+          "objects": 66,
+          "covered_objects": 48,
+          "mae_pp": 7.229527497606816,
+          "centered_mae_pp": 5.370058554693702,
+          "national_mae_pp": 3.775669209992063,
+          "canton_mae_pp": 5.703708259264074,
+          "gain_interval": [
+            0,
+            0
+          ],
+          "vs_replay_interval": [
+            -0.686575058950465,
+            0.03620932070685717
+          ]
+        },
+        {
+          "variant": "replay",
+          "objects": 66,
+          "covered_objects": 48,
+          "mae_pp": 6.950427808889041,
+          "centered_mae_pp": 5.289253543823442,
+          "national_mae_pp": 3.772388336313257,
+          "canton_mae_pp": 5.493756152418615,
+          "gain_interval": [
+            -0.03620932070685716,
+            0.6865750589504652
+          ],
+          "vs_replay_interval": [
+            0,
+            0
+          ]
+        },
+        {
+          "variant": "national_only",
+          "objects": 66,
+          "covered_objects": 48,
+          "mae_pp": 7.344937085893139,
+          "centered_mae_pp": 5.665644838641589,
+          "national_mae_pp": 3.772388336313277,
+          "canton_mae_pp": 5.788734781451499,
+          "gain_interval": [
+            -0.5958122302014277,
+            0.4248058936845163
+          ],
+          "vs_replay_interval": [
+            -0.689298700106872,
+            -0.12912288986665996
+          ]
+        },
+        {
+          "variant": "margins_only",
+          "objects": 66,
+          "covered_objects": 24,
+          "mae_pp": 8.874079281818661,
+          "centered_mae_pp": 5.289253543823442,
+          "national_mae_pp": 6.682627908889097,
+          "canton_mae_pp": 7.703868405740747,
+          "gain_interval": [
+            -3.1264546923922465,
+            -0.23437974059801844
+          ],
+          "vs_replay_interval": [
+            -3.269419904905111,
+            -0.6334807397849188
+          ]
+        },
+        {
+          "variant": "structural",
+          "objects": 66,
+          "covered_objects": 0,
+          "mae_pp": 9.321595094040534,
+          "centered_mae_pp": 5.665644838641589,
+          "national_mae_pp": 6.682627908889106,
+          "canton_mae_pp": 7.9127348817086505,
+          "gain_interval": [
+            -3.610396190031878,
+            -0.6072963346884175
+          ],
+          "vs_replay_interval": [
+            -3.8034222196847125,
+            -1.0291553214708895
+          ]
+        }
+      ],
+      "results": "reports/experiments/v28_campaign/V28.3b-results.json",
+      "new_admitted_inputs": 0
+    },
+    {
+      "version": "V28.4",
+      "status": "predeclared_not_run",
+      "scope": "original historical editions of effective national survey anchors",
+      "pilot_dates": 3,
+      "gate": "Exact object/wave/field/date/source/version corroboration; no future targets; quarantine if unresolved"
+    },
+    {
+      "version": "V28.4a",
+      "status": "corroborated_not_certified",
+      "results": "reports/experiments/v28_campaign/V28.4a-source-corroboration.json",
+      "dates": 3,
+      "objects": 8,
+      "waves": 16,
+      "yes_matches": 16,
+      "publication_day_matches": 16,
+      "fieldwork_matches": 16,
+      "late_chart_rows": 4,
+      "late_chart_yes_matches": 4,
+      "strict_certified": 0,
+      "new_admitted_inputs": 0,
+      "tests_passed": 6,
+      "no_fit": true,
+      "parent_ci": {
+        "run": 46162741199,
+        "conclusion": "success"
+      }
+    }
+  ],
+  "source_candidate_audit": "reports/experiments/v28_campaign/V28.2a-source-audit.json"
+}

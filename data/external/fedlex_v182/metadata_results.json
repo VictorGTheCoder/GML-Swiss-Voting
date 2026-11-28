@@ -1,0 +1,255 @@
+{
+  "objects": 12,
+  "dates": 3,
+  "affairs": 11,
+  "prior_publication_year": 9,
+  "exact_publication_date_required": 12,
+  "training_rows_admitted": 0,
+  "targeted_checks": 11,
+  "retrieved": "2026-11-27T04:05:29.146Z",
+  "endpoint": "https://fedlex.data.admin.ch/sparqlendpoint",
+  "unique_candidates": 8,
+  "errors": 0,
+  "results": [
+    {
+      "family": "fga",
+      "year": 2015,
+      "page": 4403,
+      "vote_date": "2016-02-28",
+      "query_sha256": "bd68d7e33efc515d7c289d4008dc8c60ae15d7e65810776a9beda122793a091c",
+      "response_sha256": "be72ca3ccd0617d3845972af74c421651e0c92ab8ec9ea5096084e30bbab8e69",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/1168",
+          "date": "2015-06-30",
+          "title": "Arrêté fédéral concernant l'initiative populaire «Pour le couple et la famille  Non à la pénalisation du mariage»",
+          "docDate": "2015-06-19"
+        }
+      ],
+      "status": "unique_candidate_not_admitted"
+    },
+    {
+      "family": "fga",
+      "year": 2015,
+      "page": 2487,
+      "vote_date": "2016-02-28",
+      "query_sha256": "0130b4569904d806bb1a13d0938608106055c606a94521711187258e74bf32f7",
+      "response_sha256": "21b661aafd7381fd774399c055a9f6fed66a533187aca89ee968054da9b4d8f5",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/542",
+          "date": "2015-03-31",
+          "title": "Arrêté fédéral concernant l'initiative populaire «Pour le renvoi effectif des étrangers criminels (initiative de mise en uvre)»",
+          "docDate": "2015-03-20"
+        }
+      ],
+      "status": "unique_candidate_not_admitted"
+    },
+    {
+      "family": "fga",
+      "year": 2015,
+      "page": 6513,
+      "vote_date": "2016-02-28",
+      "query_sha256": "772756891e877bfc99b6d93e96855509cec5f58348f801f4a9fe6cbd7af12473",
+      "response_sha256": "a3ce3c2549b42e4a219e02e9e11b2e9bed945f51a04b47604c46fd68874a1f53",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/493",
+          "date": "2015-03-24",
+          "title": "Message concernant l'initiative populaire «Pas de spéculation sur les denrées alimentaires» ",
+          "docDate": "2015-02-18"
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/494",
+          "date": "2015-03-24",
+          "title": "Arrêté fédéral concernant l'initiative populaire «Pas de spéculation sur les denrées alimentaires» ",
+          "docDate": "2015-02-18"
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/1695",
+          "date": "2015-10-06",
+          "title": "Arrêté fédéral concernant l'initiative populaire «Pas de spéculation sur les denrées alimentaires» ",
+          "docDate": "2015-09-25"
+        }
+      ],
+      "status": "ambiguous"
+    },
+    {
+      "family": "fga",
+      "year": 2014,
+      "page": 7083,
+      "vote_date": "2016-02-28",
+      "query_sha256": "c12f5dd2645ccc6a82f483a7e6121f9c6894edb054cdab135a051b0633ecb115",
+      "response_sha256": "280d22211f187651ef41b76a418ad41abe6332cd5916011e7f72f6b1eb45fd33",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2014/1594",
+          "date": "2014-10-07",
+          "title": "Loi fédérale sur le transit routier dans la région alpine (LTRA) (Réfection du tunnel routier du Gothard)",
+          "docDate": "2014-09-26"
+        }
+      ],
+      "status": "unique_candidate_not_admitted"
+    },
+    {
+      "family": "fga",
+      "year": 2017,
+      "page": 2207,
+      "vote_date": "2017-09-24",
+      "query_sha256": "3f078b099b094366e3f87d381dc1aecf6f38f6aef94154f55ec856217a5b9776",
+      "response_sha256": "063db3022a2e631ffad5dae6e50f0e5fe2f1ff303ba5b3e28719df41a34deb9c",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/464",
+          "date": "2017-03-28",
+          "title": "Arrêté fédéral sur la sécurité alimentaire (contre-projet direct à l'initiative populaire «Pour la sécurité alimentaire»)",
+          "docDate": "2017-03-14"
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/484",
+          "date": "2017-03-28",
+          "title": "Initiative populaire fédérale «Pour la sécurité alimentaire». Retrait",
+          "docDate": null
+        }
+      ],
+      "status": "ambiguous"
+    },
+    {
+      "family": "fga",
+      "year": 2017,
+      "page": 2205,
+      "vote_date": "2017-09-24",
+      "query_sha256": "2c6fdb7f6d2d1044b5b8e1464a281ce03a3fa129f8267d9971a1d3050bb2248c",
+      "response_sha256": "e41932f915594c819a957b664c0f31c0428047a9e3aea40650413f032d6fe524",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/463",
+          "date": "2017-03-28",
+          "title": "Arrêté fédéral sur le financement additionnel de l'AVS par le biais d'un relèvement de la taxe sur la valeur ajoutée",
+          "docDate": "2017-03-17"
+        }
+      ],
+      "status": "unique_candidate_not_admitted"
+    },
+    {
+      "family": "fga",
+      "year": 2017,
+      "page": 2217,
+      "vote_date": "2017-09-24",
+      "query_sha256": "ce33a09d0b8ac35af98c24b261e99ab81741dfdcbc05909988d3be03828b8a24",
+      "response_sha256": "1ae18e84c27543c1f5f988cc210116f5edb4e933b13bee0d607fad50258382be",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/469",
+          "date": "2017-03-28",
+          "title": "Loi fédéral sur la réforme de la prévoyance vieillesse 2020",
+          "docDate": "2017-03-17"
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/1078",
+          "date": "2017-06-27",
+          "title": "Procédure de consultation. DFI. Ordonnance sur la réforme de la prévoyance vieillesse 2020",
+          "docDate": null
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/1235",
+          "date": "2017-07-18",
+          "title": "Référendum contre la loi fédérale du 17 mars 2017 sur la réforme de la prévoyance vieillesse 2020. Aboutissement",
+          "docDate": null
+        }
+      ],
+      "status": "ambiguous"
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7393,
+      "vote_date": "2021-06-13",
+      "query_sha256": "6ed5da699ed0a0f97c0727f492d15e99e132aeeb8192344f0aad49d9fa777c76",
+      "response_sha256": "6031ef171b1ce9100327673f8639f3eadcc05349b078bcf1837a2174ad3dd60d",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/1996",
+          "date": "2020-10-06",
+          "title": "Arrêté fédéral relatif à l'initiative populaire «Pour une eau potable propre et une alimentation saine  Pas de subventions pour l'utilisation de pesticides et l'utilisation d'antibiotiques à titre prophylactique»",
+          "docDate": "2020-09-25"
+        }
+      ],
+      "status": "unique_candidate_not_admitted"
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7395,
+      "vote_date": "2021-06-13",
+      "query_sha256": "928cd98e708a85ef9a69d2b5a10190f1935a74d2d26bfec84bac45a37de0a86d",
+      "response_sha256": "9f987cade802c6c8b88c8f5c3272baa83b57a4d7b76ecef3c010b1cf14e1fb79",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/1997",
+          "date": "2020-10-06",
+          "title": "Arrêté fédéral relatif à l'initiative populaire «Pour une Suisse libre de pesticides de synthèse»",
+          "docDate": "2020-09-25"
+        }
+      ],
+      "status": "unique_candidate_not_admitted"
+    },
+    {
+      "family": "oc",
+      "year": 2020,
+      "page": 3835,
+      "vote_date": "2021-06-13",
+      "query_sha256": "0a366d3fc8dad80b1f3f6f782c3cd3776d4f2b493fd0fa20521339c7363fa260",
+      "response_sha256": "157321057e2c5007481c8f294b1bfc2bf9d934780cb78414f7e40e76c5ed058f",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/oc/2020/711",
+          "date": "2020-09-25",
+          "title": "Loi fédérale sur les bases légales des ordonnances du Conseil fédéral visant à surmonter l'épidémie de COVID-19 (Loi COVID-19)",
+          "docDate": "2020-09-25"
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/oc/2020/980",
+          "date": "2020-12-18",
+          "title": "Loi fédérale sur les bases légales des ordonnances du Conseil fédéral visant à surmonter l'épidémie de COVID-19 (Loi COVID-19) (Culture, cas de rigueur, sport, assurance-chômage, amendes d'ordre)",
+          "docDate": "2020-12-18"
+        }
+      ],
+      "status": "ambiguous"
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7607,
+      "vote_date": "2021-06-13",
+      "query_sha256": "655d311bbc6ee7261a34b8a97fd091acbd383416c6f6d9525645639228533ac1",
+      "response_sha256": "bd29e547f41c5d919256fd5a96a9cc7c9a3229155e9f5fa655af53ba91b3583c",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/2013",
+          "date": "2020-10-06",
+          "title": "Loi fédérale sur la réduction des émissions de gaz à effet de serre (Loi sur le CO<sub>2</sub>)",
+          "docDate": "2020-09-25"
+        }
+      ],
+      "status": "unique_candidate_not_admitted"
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7499,
+      "vote_date": "2021-06-13",
+      "query_sha256": "8c49bf15c6b651589f9b0b038c594b62c275d6d95706b893cf25812ce6a20a74",
+      "response_sha256": "3b9744f12a036c96273deffcf22c0ad661f8c124d5986e2d2abb6a233c3aa051",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/2004",
+          "date": "2020-10-06",
+          "title": "Loi fédérale sur les mesures policières de lutte contre le terrorisme (MPT)",
+          "docDate": "2020-09-25"
+        }
+      ],
+      "status": "unique_candidate_not_admitted"
+    }
+  ]
+}

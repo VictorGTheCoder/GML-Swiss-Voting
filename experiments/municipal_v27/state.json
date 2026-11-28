@@ -1,0 +1,26 @@
+{
+  "version": "V27",
+  "status": "completed_no_gain",
+  "active": null,
+  "parent_commit": "291ef61d7de05d89cddc57827970d823c8768f74",
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "best_exploratory": 6.950427808889042,
+  "admitted": 0,
+  "configs": {
+    "scaled_replay": "independent standardized XGBoost",
+    "shared_splits": "multi_output_tree, hist, standardized targets, fixed parameters"
+  },
+  "primary_comparison": "shared_splits vs v241_scaled",
+  "next": [
+    "V28.1 audit des lacunes et de la fraîcheur des signaux nationaux ex ante; ne pas répéter les réglages d'arbres.",
+    "V28.2 acquisition ciblée uniquement sur lacunes certifiables et ablation appariée.",
+    "Test final distinct après gel et autorisation."
+  ],
+  "run": 46128815743,
+  "artifact": 15256732307,
+  "results": "reports/experiments/v27_campaign/V27.1-results.json"
+}

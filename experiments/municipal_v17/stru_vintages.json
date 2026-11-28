@@ -1,0 +1,21 @@
+[
+  {
+    "year": 2016,
+    "published": "2017-05-11",
+    "asset": 3022184,
+    "metadata": "https://statistik.admin.ch/de/asset/3022184",
+    "publication": "https://statistik.admin.ch/de/news/2017-0455",
+    "license": "OPEN-BY",
+    "master_link_verified": false,
+    "scope_metadata": "Switzerland only; municipal dimension not verified"
+  },
+  {
+    "year": 2018,
+    "published": "2019-05-28",
+    "asset": 8346718,
+    "metadata": "https://statistik.admin.ch/de/asset/8346718",
+    "license": "OPEN-BY",
+    "master_link_verified": true,
+    "scope_metadata": "Switzerland, cantons, districts, municipalities"
+  }
+]

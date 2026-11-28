@@ -1,0 +1,371 @@
+{
+  "revision": "V18.2b-r1",
+  "rows": [
+    {
+      "family": "fga",
+      "year": 2015,
+      "page": 4403,
+      "vote_date": "2016-02-28",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/1168",
+          "date": "2015-06-30",
+          "docDate": "2015-06-19",
+          "status": "page_unverified",
+          "query_sha256": "8be177d88e1fd9475c44153acb566c60b4581f864bf38cd815f4d0b7c392fb5e",
+          "response_sha256": "21e32a254cc7909c1e91ae738be981e052aff159e66190461819fec6b320cf44",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2015/1168/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2015-1168-fr-pdf-a.pdf"
+          ],
+          "pdf_sha256": "601c7deaf10b83b972ff55ae324ad545b286f6419904231273863737241f9c1e",
+          "bytes": 94244,
+          "first_page_text_sha256": "e3fae2338639bd2f936b1cd54e6ee04dadc0c07574950fb518e900307ab6bd7e",
+          "first_page_chars": 1440,
+          "printed_page_match": false
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2015,
+      "page": 2487,
+      "vote_date": "2016-02-28",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/542",
+          "date": "2015-03-31",
+          "docDate": "2015-03-20",
+          "status": "page_unverified",
+          "query_sha256": "ba6895627406502a884224e7b4d6fe83504f88bebc04176ece4652aff16275ea",
+          "response_sha256": "3e71062ccecd51d8eb63fa89d353f9af3efe543675752b248d6c9e22427f035e",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2015/542/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2015-542-fr-pdf-a.pdf"
+          ],
+          "pdf_sha256": "33016b1f5acaa0fec21d9e630843bd84eef5388eff24b22a118cd0a2cd8ca4ec",
+          "bytes": 122040,
+          "first_page_text_sha256": "1f083676fcc51330032ac33e6009de54da4a79ef819eab903bf42fd070d5e374",
+          "first_page_chars": 1198,
+          "printed_page_match": false
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2015,
+      "page": 6513,
+      "vote_date": "2016-02-28",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/493",
+          "date": "2015-03-24",
+          "docDate": "2015-02-18",
+          "status": "page_unverified",
+          "query_sha256": "1156ec30c2d54e4a82797e85df3e08dcb97e4ebb88949d786ea61acb697123b4",
+          "response_sha256": "1c8dc568e789a4e1c57c125b9a840b18c6bbd9e8bfd6d93a6b32b9814becb923",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2015/493/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2015-493-fr-pdf-a.pdf"
+          ],
+          "pdf_sha256": "5146ce7705f64970a94320739917404405b8c6206f79eb3da8d1efc0e6925190",
+          "bytes": 356938,
+          "first_page_text_sha256": "b91cc374d342416e2f878e2d41335dc8873cd17a7ea678302f9538e57151da43",
+          "first_page_chars": 823,
+          "printed_page_match": false
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/494",
+          "date": "2015-03-24",
+          "docDate": "2015-02-18",
+          "status": "page_unverified",
+          "query_sha256": "5d6c047d8a2747c5516a65c05f9d73d193fcf1bd49d592624fb5a93ea70fa8ad",
+          "response_sha256": "c1a90d5f69a48a6e9e9f7e8a93439545e7243af1f9a4424bda67174ebc3e2d72",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2015/494/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2015-494-fr-pdf-a.pdf"
+          ],
+          "pdf_sha256": "965478aaff333fe0f67191a3d0e18a15c1dc96f2cdebeecd7b988b8683114074",
+          "bytes": 95689,
+          "first_page_text_sha256": "765b1256ec251070c018b582d8ccdaee986f79721234f714ace9f1f803822ba5",
+          "first_page_chars": 1947,
+          "printed_page_match": false
+        },
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2015/1695",
+          "date": "2015-10-06",
+          "docDate": "2015-09-25",
+          "status": "page_unverified",
+          "query_sha256": "7070eeba56ef17538c0d25334bf5d5b63f4214925c82b9979db5d75d9b635c77",
+          "response_sha256": "b1dd21fc8852b4102bbd54bb00368f7320dbe625c8ad498c88724b335cf0a7c2",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2015/1695/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2015-1695-fr-pdf-a.pdf"
+          ],
+          "pdf_sha256": "c9092167b40db22fbf3da28f1b6def26d9625057d0f5cf4a7cb96d930726e28a",
+          "bytes": 97226,
+          "first_page_text_sha256": "bfd66f2835bb912d0d9b7e747e7d7d37c95b2e86555b09c2e1ef55b3b37cf938",
+          "first_page_chars": 1897,
+          "printed_page_match": false
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2014,
+      "page": 7083,
+      "vote_date": "2016-02-28",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2014/1594",
+          "date": "2014-10-07",
+          "docDate": "2014-09-26",
+          "status": "page_unverified",
+          "query_sha256": "1ec1d1c2a01e57125b451cdc253f0e703bc34d9e259b88fc1596857f40cb60ab",
+          "response_sha256": "20b9779e638ba988a951f7e88c983cfde5bc962b5bb07dd33f087fa6bd9b60ba",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2014/1594/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2014-1594-fr-pdf-a.pdf"
+          ],
+          "pdf_sha256": "32d7d8661a6ff8c63b2e3c62da180f452e7a317cdb5500362159c5748f363cd8",
+          "bytes": 98683,
+          "first_page_text_sha256": "0ce79430e8b3e85398dcefab906ada5cffe501a0229ec125a30a3ece0023b9c4",
+          "first_page_chars": 1423,
+          "printed_page_match": false
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2017,
+      "page": 2207,
+      "vote_date": "2017-09-24",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/464",
+          "date": "2017-03-28",
+          "docDate": "2017-03-14",
+          "status": "page_unverified",
+          "query_sha256": "42046bd7e025c07f14f95a294c906035a787dae4fe909c9e9314842409fb2ff8",
+          "response_sha256": "a98e235c7d234a3a7b74fc963cefa550817bf3e88fbc37dc9137252e5a5421a1",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2017/464/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2017-464-fr-pdf-a-1.pdf"
+          ],
+          "pdf_sha256": "b5861dbe679d8929e61d6c0d3b5753a44401715e018900e94c1f51ac75cc7370",
+          "bytes": 576317,
+          "first_page_text_sha256": "3948d1be18c5b8a7c48ac15c24ec81b67a33f545db16ad9c5dee71dd87db8a24",
+          "first_page_chars": 1577,
+          "printed_page_match": false
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2017,
+      "page": 2205,
+      "vote_date": "2017-09-24",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/463",
+          "date": "2017-03-28",
+          "docDate": "2017-03-17",
+          "status": "page_unverified",
+          "query_sha256": "8667012b786e0b3399fb80488e85ae1ab50e3d7bf3ae18fe8e78129af4801cae",
+          "response_sha256": "4fc89c719ad3fb4bfb2b48bad7714b1a5a1d559a34a0c1e70dcf5556e075c856",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2017/463/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2017-463-fr-pdf-a-1.pdf"
+          ],
+          "pdf_sha256": "a391c93a08dd236aabdffff0db7e77c34b5908d72390ebd4dfc5cd41c22c447c",
+          "bytes": 547789,
+          "first_page_text_sha256": "46e9d43f6e9e35ac1a6880fc8496acbc11e175d717e8eff54ae9b36f8eb671b6",
+          "first_page_chars": 1744,
+          "printed_page_match": false
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2017,
+      "page": 2217,
+      "vote_date": "2017-09-24",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2017/469",
+          "date": "2017-03-28",
+          "docDate": "2017-03-17",
+          "status": "page_unverified",
+          "query_sha256": "e878e095bd894b37fcc600e5a9e439112cc2316f1f1ce2aac449d29ab3c08a5f",
+          "response_sha256": "b1e3243c3be09429ab54c2e48fd9e137baf3adbc7450303e65d6e62a6ca19598",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2017/469/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2017-469-fr-pdf-a-1.pdf"
+          ],
+          "pdf_sha256": "975f8cd85ce8708cc908ed6f6d58e817ac04b51a0e91f427558577ed42b024fd",
+          "bytes": 581516,
+          "first_page_text_sha256": "ed878638c370bd6b8b78e6584d65f0dba150c8b1cfbe1a2374a2a5f02381bc11",
+          "first_page_chars": 1315,
+          "printed_page_match": false
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7393,
+      "vote_date": "2021-06-13",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/1996",
+          "date": "2020-10-06",
+          "docDate": "2020-09-25",
+          "status": "page_unverified",
+          "query_sha256": "edbfb0c704fbba5e50624a12da056f57ce31951c24df66aaffb20a7e7243ca72",
+          "response_sha256": "477c59f8c231828887037097ba1ddb2fb0fc279cc42484d6c9ea37f79d3414e8",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2020/1996/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2020-1996-fr-pdf-a-1.pdf"
+          ],
+          "pdf_sha256": "eaa7ff97c2beb15eb37bc9fc24b18c3f6e2b68d8b81c46e406111c75159b4481",
+          "bytes": 416736,
+          "first_page_text_sha256": "0c753f44a5786b5568d14ed9357955ae6e3b2fd2fd2ce5b4b49814a9d001f1b7",
+          "first_page_chars": 1649,
+          "printed_page_match": false
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7395,
+      "vote_date": "2021-06-13",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/1997",
+          "date": "2020-10-06",
+          "docDate": "2020-09-25",
+          "status": "page_unverified",
+          "query_sha256": "56b7d2f8a0ce6ea7c1d1442f2ff6775bd87c7a225e7cdf4ab64637b5542289ca",
+          "response_sha256": "1fc6734e5e74cf4a94bc4c98fda1185d506098d2c9a15e9aa88070f24011a8f8",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2020/1997/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2020-1997-fr-pdf-a.pdf"
+          ],
+          "pdf_sha256": "90356bb31f9ac94248cfe7e7444c7c616f26345db3335b0ddfa02d96f21a6b77",
+          "bytes": 370477,
+          "first_page_text_sha256": "a3ed6198552db3f6c47e5acd2f157aa88440ad2ab10ceab8859e8d84608b8d0d",
+          "first_page_chars": 1127,
+          "printed_page_match": false
+        }
+      ]
+    },
+    {
+      "family": "oc",
+      "year": 2020,
+      "page": 3835,
+      "vote_date": "2021-06-13",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/oc/2020/711",
+          "date": "2020-09-25",
+          "docDate": "2020-09-25",
+          "status": "page_unverified",
+          "query_sha256": "a6904e21ce99b9d50358eb952c1c577d1e1306fba36a076487e03aa97fdab917",
+          "response_sha256": "a2b6643a269a1b31397c6bf5b4bdcbb55723d70e7887678556044f91765b573f",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/oc/2020/711/fr/pdf-a/fedlex-data-admin-ch-eli-oc-2020-711-fr-pdf-a.pdf"
+          ],
+          "pdf_sha256": "91145bf93254beedf2db5fc045686b4517087e508ef74387870252fbb2143dc6",
+          "bytes": 504515,
+          "first_page_text_sha256": "2b8ec60d2f8a2a7ca7037cdb18fdf0aa0f35f0570e9068d6b3c1fda52bf11d97",
+          "first_page_chars": 1920,
+          "printed_page_match": false
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7607,
+      "vote_date": "2021-06-13",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/2013",
+          "date": "2020-10-06",
+          "docDate": "2020-09-25",
+          "status": "page_unverified",
+          "query_sha256": "09d80e9c2f8c7eb8db882c41cc142961191cdbfe89b7b5f8246cc5d9e89c2da3",
+          "response_sha256": "3f59aab72d6da3a9a0a019e1ba072c49fabc6887e80fa21c371a7fe7e554198c",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2020/2013/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2020-2013-fr-pdf-a.pdf"
+          ],
+          "pdf_sha256": "038fe69985e57f39bea52f07fd91077ceac784e6c19992fee8aa3bdb48b4e13a",
+          "bytes": 806840,
+          "first_page_text_sha256": "6ab12fc1200b0631e0c5179c99bc6662ab366c718b51e462a02759c2e056f03a",
+          "first_page_chars": 1537,
+          "printed_page_match": false
+        }
+      ]
+    },
+    {
+      "family": "fga",
+      "year": 2020,
+      "page": 7499,
+      "vote_date": "2021-06-13",
+      "matches": [
+        {
+          "act": "https://fedlex.data.admin.ch/eli/fga/2020/2004",
+          "date": "2020-10-06",
+          "docDate": "2020-09-25",
+          "status": "page_unverified",
+          "query_sha256": "07e7f9530f5887eab5d22e5c172bd28d74b48255e23904e3a364d169812fd05a",
+          "response_sha256": "5de9198e54e374cc4469bb2cb91ae853f11ddb64ac838dbba1076612c80f9b31",
+          "binding_count": 1,
+          "rejected_url_count": 0,
+          "rejected_hosts": [],
+          "pdf_candidates": [
+            "https://fedlex.data.admin.ch/filestore/fedlex.data.admin.ch/eli/fga/2020/2004/fr/pdf-a/fedlex-data-admin-ch-eli-fga-2020-2004-fr-pdf-a.pdf"
+          ],
+          "pdf_sha256": "fdb674fb7385962bee1183cb3949d6f3f7f7acd299f42f72f1293b5e5bc4d54e",
+          "bytes": 767828,
+          "first_page_text_sha256": "61053b28b79ce0bed90568c555cb79d1c31f133025d3fc95fc2413c8c4b2156b",
+          "first_page_chars": 964,
+          "printed_page_match": false
+        }
+      ]
+    }
+  ],
+  "objects": 12,
+  "unique_page_candidates": 0,
+  "unverified_attempts": 0,
+  "training_rows_admitted": 0
+}

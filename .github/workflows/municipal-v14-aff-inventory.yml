@@ -1,0 +1,23 @@
+name: V14 AFF source inventory
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: v14-aff-inventory-${{ github.head_ref || github.ref }}
+  cancel-in-progress: false
+jobs:
+  inventory:
+    if: github.head_ref == 'experiment/municipal-v13-aps-source-20261125' || github.ref == 'refs/heads/experiment/municipal-v13-aps-source-20261125'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run source inventory
+        run: python experiments/municipal_v14/inventory_aff.py data/external/fiscal_equalization_v141/archive_sources.json aff-inventory.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v14-aff-inventory-metadata
+          path: aff-inventory.json
+          if-no-files-found: error

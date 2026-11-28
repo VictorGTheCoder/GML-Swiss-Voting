@@ -1,0 +1,225 @@
+{
+  "version": "V22.1",
+  "status": "completed_exploratory_no_gain",
+  "commit": "a339081832ec9a0a2a8d1e2da85ea36ea239d78f",
+  "run": 46029786745,
+  "job": 140610398950,
+  "artifact": 15213263144,
+  "artifact_digest": "sha256:7b2107b5b5f9098935887abc1321e8969885d4d81de4520914f6ea57b332c22d",
+  "ci_run": 46029797910,
+  "ci_jobs_passed": 3,
+  "targeted_tests": 3,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "summary": [
+    {
+      "variant": "reference",
+      "objects": 66,
+      "covered_objects": 59,
+      "mae_pp": 7.229527497606816,
+      "centered_mae_pp": 5.370058554693702,
+      "national_mae_pp": 3.775669209992063,
+      "canton_mae_pp": 5.703708259264074,
+      "gain_interval": [
+        0,
+        0
+      ],
+      "vs_v113_interval": [
+        -0.6800955676185603,
+        0.043876748289161265
+      ]
+    },
+    {
+      "variant": "v113_institution",
+      "objects": 66,
+      "covered_objects": 59,
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "gain_interval": [
+        -0.04387674828916126,
+        0.6800955676185607
+      ],
+      "vs_v113_interval": [
+        0,
+        0
+      ]
+    },
+    {
+      "variant": "institution_replay",
+      "objects": 66,
+      "covered_objects": 66,
+      "mae_pp": 6.955753873756506,
+      "centered_mae_pp": 5.289917065218622,
+      "national_mae_pp": 3.7811714402970824,
+      "canton_mae_pp": 5.500338667087431,
+      "gain_interval": [
+        -0.04387674828916126,
+        0.6800955676185607
+      ],
+      "vs_v113_interval": [
+        0,
+        0
+      ]
+    },
+    {
+      "variant": "svd6",
+      "objects": 66,
+      "covered_objects": 66,
+      "mae_pp": 7.032347099706909,
+      "centered_mae_pp": 5.36058676580474,
+      "national_mae_pp": 3.6530499502798848,
+      "canton_mae_pp": 5.484573719628089,
+      "gain_interval": [
+        -0.039858706869425636,
+        0.4749225338491613
+      ],
+      "vs_v113_interval": [
+        -0.2540303621851634,
+        0.0637281833405335
+      ]
+    },
+    {
+      "variant": "cross_cov6",
+      "objects": 66,
+      "covered_objects": 66,
+      "mae_pp": 7.495862868715707,
+      "centered_mae_pp": 5.634483307718447,
+      "national_mae_pp": 3.9390228959163553,
+      "canton_mae_pp": 5.923584908067003,
+      "gain_interval": [
+        -0.9354257982795443,
+        0.4772747306586239
+      ],
+      "vs_v113_interval": [
+        -1.0404244326958696,
+        -0.06826517117918096
+      ]
+    }
+  ],
+  "fold_means": {
+    "2016-2018": {
+      "cross_cov6": 8.4309621169,
+      "institution_replay": 7.5730560157,
+      "reference": 8.152475601,
+      "svd6": 7.7514924583,
+      "v113_institution": 7.5730560157
+    },
+    "2019-2020": {
+      "cross_cov6": 7.5270689305,
+      "institution_replay": 6.9750709305,
+      "reference": 7.1500595705,
+      "svd6": 7.0375987425,
+      "v113_institution": 6.9750709305
+    },
+    "2021-2022": {
+      "cross_cov6": 6.3113857776,
+      "institution_replay": 6.174467668,
+      "reference": 6.1155763319,
+      "svd6": 6.1307895801,
+      "v113_institution": 6.174467668
+    }
+  },
+  "domain_means": {
+    "1": {
+      "cross_cov6": 7.4890661902,
+      "institution_replay": 6.7836818411,
+      "reference": 6.4792925574,
+      "svd6": 6.9556987649,
+      "v113_institution": 6.7836818411
+    },
+    "2": {
+      "cross_cov6": 7.1431238071,
+      "institution_replay": 5.802332172,
+      "reference": 5.8630062992,
+      "svd6": 5.905769941,
+      "v113_institution": 5.802332172
+    },
+    "3": {
+      "cross_cov6": 7.1738211145,
+      "institution_replay": 6.9152445706,
+      "reference": 7.1680352648,
+      "svd6": 6.8827251767,
+      "v113_institution": 6.9152445706
+    },
+    "4": {
+      "cross_cov6": 9.6727675233,
+      "institution_replay": 10.1520500803,
+      "reference": 12.6797406891,
+      "svd6": 10.5885010442,
+      "v113_institution": 10.1520500803
+    },
+    "5": {
+      "cross_cov6": 10.3746919283,
+      "institution_replay": 10.0416046951,
+      "reference": 10.1693907323,
+      "svd6": 10.1429251501,
+      "v113_institution": 10.0416046951
+    },
+    "6": {
+      "cross_cov6": 6.5803718102,
+      "institution_replay": 6.9801270745,
+      "reference": 7.7105377573,
+      "svd6": 7.0326103898,
+      "v113_institution": 6.9801270745
+    },
+    "7": {
+      "cross_cov6": 6.5854236991,
+      "institution_replay": 6.8863623743,
+      "reference": 6.5839010403,
+      "svd6": 6.9397752452,
+      "v113_institution": 6.8863623743
+    },
+    "8": {
+      "cross_cov6": 6.1927149087,
+      "institution_replay": 6.1048269459,
+      "reference": 6.2725889719,
+      "svd6": 5.5507579217,
+      "v113_institution": 6.1048269459
+    },
+    "9": {
+      "cross_cov6": 6.4287863838,
+      "institution_replay": 5.6255283968,
+      "reference": 5.6367797301,
+      "svd6": 5.8056324268,
+      "v113_institution": 5.6255283968
+    },
+    "10": {
+      "cross_cov6": 7.9090489305,
+      "institution_replay": 6.6667452066,
+      "reference": 6.9000078832,
+      "svd6": 6.8447713619,
+      "v113_institution": 6.6667452066
+    },
+    "11": {
+      "cross_cov6": 8.2198761271,
+      "institution_replay": 7.6769308663,
+      "reference": 7.8350434359,
+      "svd6": 7.6839252736,
+      "v113_institution": 7.6769308663
+    },
+    "12": {
+      "cross_cov6": 4.6553574462,
+      "institution_replay": 4.8108858897,
+      "reference": 4.8426383255,
+      "svd6": 4.7389125716,
+      "v113_institution": 4.8108858897
+    }
+  },
+  "source_coverage": {
+    "message_to_parliament_logdays": 277,
+    "parliament_to_vote_logdays": 306,
+    "parliamentary_initiative": 306,
+    "chamber_share_gap": 304,
+    "nr_binary_seat_fraction": 304,
+    "sr_binary_seat_fraction": 304
+  },
+  "strict_forecast_ready": false,
+  "comparison_targets_loaded": false,
+  "best_exploratory": 6.955753873756506,
+  "provenance": "Scores and diagnostics extracted from completed workflow job log; artifact digest from GitHub API, ZIP not independently rehashed."
+}
