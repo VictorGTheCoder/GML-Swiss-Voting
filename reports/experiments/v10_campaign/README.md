@@ -127,3 +127,5 @@ Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans n
 [V26.2e résultats partiels](../v26_campaign/V26.2e-results.json) : 5/9 archives, 135 observations en quarantaine; quatre classeurs bloqués sur les deux Appenzell. Correctif r1 limité aux quatre échecs, résultat à vérifier. Aucun score nouveau ni admission.
 
 [V26.2e r1 résultats cumulés](../v26_campaign/V26.2e-r1-results.json) : 9/9 archives, 243 observations en quarantaine, 7/23 dates. V26.2f : nouveau millésime et trois taux nationaux candidats, aucune admission. V24.1 inchangée.
+
+[V26.2f audit de provenance](../v26_campaign/V26.2f-source-audit.json) : deuxième rupture de dénominateur identifiée en juillet 2016, deux PDF candidats non certifiés et acquisition ciblée d'août 2018 en cours. Aucun nouveau score ni admission.
