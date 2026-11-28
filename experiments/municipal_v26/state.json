@@ -2,9 +2,10 @@
   "version": "V26",
   "parent_commit": "9bfd44bcc28ce00f4a1805edbbee12a07142ae43",
   "status": "in_progress",
-  "active": "V26.2",
+  "active": "V26.2c",
   "completed": [
-    "V26.1"
+    "V26.1",
+    "V26.2b"
   ],
   "population": {
     "objects": 66,
@@ -14,16 +15,17 @@
   "best_exploratory": 6.950427808889042,
   "admitted": 0,
   "next": [
-    "Verify V26.2 acquisition run and format/hash/coverage; inspect original schemas and actual feature manifest",
-    "Extend monthly catalog to cover training and benchmark dates, only if novelty and vintage verified",
-    "If blocked, independent source; no admission or model change"
+    "V26.2c inspect hash-pinned original table schemas and current baseline feature inventory; no admission",
+    "If novelty confirmed, extend exact historical monthly coverage including training periods, avoiding March 2018 break",
+    "Matched chronological ablation only after source certification; otherwise independent source"
   ],
   "results": [
     "reports/experiments/v26_campaign/V26.1-results.json",
-    "reports/experiments/v26_campaign/V26.1-results.md"
+    "reports/experiments/v26_campaign/V26.1-results.md",
+    "reports/experiments/v26_campaign/V26.2b-results.json"
   ],
   "v262": {
-    "status": "six_open_by_vintages_identified_acquisition_pending",
+    "status": "six_formats_and_hashes_verified_quarantine",
     "assets": [
       3322654,
       5328688,
@@ -40,6 +42,18 @@
     "previous_ci": {
       "run": 46085269378,
       "conclusion": "success"
+    },
+    "format_checked": 6,
+    "fresh_candidate_dates": 4,
+    "fresh_candidate_objects": 11,
+    "evidence": {
+      "run": 46095750939,
+      "job": 140826576254,
+      "artifact": 15243308102,
+      "artifact_digest": "sha256:7bd83f447c85c05e95ac3137085e2c42eab029d80aa99d922c698c8aa1e0f5e6",
+      "sha": "e8329277d250fabfffc8db529a6f321b639d6179",
+      "tests": 3,
+      "ci": 46095750794
     }
   }
 }

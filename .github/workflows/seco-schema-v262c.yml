@@ -1,0 +1,27 @@
+name: V26.2c historical SECO schema
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/modeling/seco_schema_v262c.py'
+      - 'tests/test_seco_schema_v262c.py'
+      - '.github/workflows/seco-schema-v262c.yml'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas==2.2.3 openpyxl==3.1.5 xlrd==2.0.2 pytest
+      - run: python -m pytest -q tests/test_seco_schema_v262c.py
+      - run: python -m scripts.modeling.seco_schema_v262c --audit reports/experiments/v26_campaign/V26.2b-results.json --output reports/generated/v262c_schema/audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v262c-seco-schema
+          path: reports/generated/v262c_schema/
+          retention-days: 30

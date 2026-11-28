@@ -1,12 +1,6 @@
 name: V26.2 historical SECO vintages
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - 'scripts/modeling/seco_vintages_v262.py'
-      - 'tests/test_seco_vintages_v262.py'
-      - 'reports/experiments/v26_campaign/V26.2-vintages.json'
-      - '.github/workflows/seco-vintages-v262.yml'
 permissions:
   contents: read
   actions: read
