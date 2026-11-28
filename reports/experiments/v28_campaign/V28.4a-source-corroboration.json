@@ -1,0 +1,282 @@
+{
+  "version": "V28.4a",
+  "status": "corroborated_not_certified",
+  "parent": "7330820ec0b36c1a37a78ef7721b022672a4853c",
+  "checked_on": "2026-11-28",
+  "selection": "Earliest historical V3 date, first and last direct dates with accessible dated text; no individual error selection.",
+  "scope": "National yes_total, publication calendar day, fieldwork bounds only (primary source); no target outcomes or fit. Secondary reporting of same poll is not independent survey.",
+  "source_blobs": {
+    "data/external/polls_historical_v3/polls.csv": "83508cc221bcc2f0ad8673ca7936a5e67f3f988e",
+    "data/external/polls/srg_gfs_polls.csv": "189eec60cf9fff2f46c2afc4550c44fdf93c26c0"
+  },
+  "sources": [
+    {
+      "vote_date": "2016-11-27",
+      "wave": 1,
+      "published": "2016-10-21",
+      "start": "2016-10-03",
+      "end": "2016-10-14",
+      "values": {
+        "6080": 57
+      },
+      "primary": "https://www.srf.ch/news/schweiz/atomausstiegs-initiative-57-prozent-fuer-atomausstiegs-initiative",
+      "secondary": "https://www.schweizerbauer.ch/artikel/politik-wirtschaft/agrarpolitik/mehrheit-fuer-atom-ausstieg-moeglich"
+    },
+    {
+      "vote_date": "2016-11-27",
+      "wave": 2,
+      "published": "2016-11-16",
+      "start": "2016-11-02",
+      "end": "2016-11-09",
+      "values": {
+        "6080": 48
+      },
+      "primary": "https://www.srf.ch/news/schweiz/srg-umfrage-atomausstiegs-initiative-ja-und-nein-halten-sich-die-waage",
+      "secondary": "https://www.watson.ch/859863201-zustimmung-zur-atomausstiegsinitiative-schwindet-gemaess-umfrage"
+    },
+    {
+      "vote_date": "2021-03-07",
+      "wave": 1,
+      "published": "2021-01-29",
+      "start": "2021-01-11",
+      "end": "2021-01-24",
+      "values": {
+        "6380": 56,
+        "6390": 52,
+        "6400": 51
+      },
+      "primary": "https://www.srf.ch/news/abstimmungen-die-umfrageergebnisse-zu-den-drei-eidgenoessischen-vorlagen",
+      "secondary": "https://www.watson.ch/schweiz/abstimmungen-2021/145035096-burka-verbot-e-id-freihandel-srg-umfrage-sieht-drei-jas"
+    },
+    {
+      "vote_date": "2021-03-07",
+      "wave": 2,
+      "published": "2021-02-24",
+      "start": "2021-02-10",
+      "end": "2021-02-18",
+      "values": {
+        "6380": 49,
+        "6390": 42,
+        "6400": 52
+      },
+      "primary": "https://www.srf.ch/news/srg-umfrage-die-umfrageergebnisse-auf-einen-blick",
+      "secondary": "https://www.watson.ch/schweiz/gesellschaft-politik/549169077-neuste-umfragen-ablehnung-von-e-id-ja-zu-freihandel-und-burka-verbot"
+    },
+    {
+      "vote_date": "2022-09-25",
+      "wave": 1,
+      "published": "2022-08-19",
+      "start": "2022-07-29",
+      "end": "2022-08-15",
+      "values": {
+        "6580": 51,
+        "6590": 65,
+        "6600": 64,
+        "6610": 49
+      },
+      "primary": "https://www.srf.ch/news/umfrage-zu-den-abstimmungen-klares-ja-zu-ahv-reform-knappes-ja-zu-massentierhaltungsvorlage",
+      "secondary": "https://www.swissinfo.ch/ger/umfrage-zeigt-mehrheiten-fuer-beide-vorlagen-zur-ahv/47837966"
+    },
+    {
+      "vote_date": "2022-09-25",
+      "wave": 2,
+      "published": "2022-09-14",
+      "start": "2022-08-31",
+      "end": "2022-09-07",
+      "values": {
+        "6580": 47,
+        "6590": 63,
+        "6600": 59,
+        "6610": 47
+      },
+      "primary": "https://www.srf.ch/news/srg-umfrage-auf-einen-blick-ja-zur-ahv-reform-nein-zur-massentierhaltungs-initiative",
+      "secondary": "https://www.swissinfo.ch/ger/politik/abstimmungen-september_das-nein-zur-ahv-reform-macht-boden-gut/47897274"
+    }
+  ],
+  "rows": [
+    {
+      "vote_date": "2016-11-27",
+      "vote_key": "6080",
+      "wave": 1,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2016-11-27",
+      "vote_key": "6080",
+      "wave": 2,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2021-03-07",
+      "vote_key": "6380",
+      "wave": 1,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": true,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2021-03-07",
+      "vote_key": "6390",
+      "wave": 1,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2021-03-07",
+      "vote_key": "6400",
+      "wave": 1,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2021-03-07",
+      "vote_key": "6380",
+      "wave": 2,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": true,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2021-03-07",
+      "vote_key": "6390",
+      "wave": 2,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2021-03-07",
+      "vote_key": "6400",
+      "wave": 2,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2022-09-25",
+      "vote_key": "6580",
+      "wave": 1,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2022-09-25",
+      "vote_key": "6590",
+      "wave": 1,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2022-09-25",
+      "vote_key": "6600",
+      "wave": 1,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2022-09-25",
+      "vote_key": "6610",
+      "wave": 1,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2022-09-25",
+      "vote_key": "6580",
+      "wave": 2,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2022-09-25",
+      "vote_key": "6590",
+      "wave": 2,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": true,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2022-09-25",
+      "vote_key": "6600",
+      "wave": 2,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": true,
+      "strict_certified": false
+    },
+    {
+      "vote_date": "2022-09-25",
+      "vote_key": "6610",
+      "wave": 2,
+      "yes_match": true,
+      "publication_day_match": true,
+      "fieldwork_match": true,
+      "late_chart": false,
+      "strict_certified": false
+    }
+  ],
+  "summary": {
+    "dates": 3,
+    "objects": 8,
+    "waves": 16,
+    "yes_matches": 16,
+    "publication_day_matches": 16,
+    "fieldwork_matches": 16,
+    "late_chart_rows": 4,
+    "late_chart_yes_matches": 4,
+    "strict_certified": 0,
+    "new_admitted_inputs": 0
+  },
+  "tests_passed": 6,
+  "limitations": [
+    "Current copies of dated articles are not captured historical editions.",
+    "curl exit 6 DNS on SRF article; no response hash or license confirmed; no copies redistributed.",
+    "No certification of no/undecided, intensity, geography, exact timestamp or chart vintages.",
+    "Secondary indexed Jan 2021 article gives Jan 1 rather than Jan 11 for fieldwork start; primary agrees; secondary timeout on open.",
+    "Suedostschweiz second-wave link 404; Watson/SRF alternative checked."
+  ],
+  "parent_ci": {
+    "run": 46162741199,
+    "conclusion": "success"
+  }
+}

@@ -143,3 +143,5 @@ Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans n
 [V28.3a clôturée](../v28_campaign/V28.3a-results.json) : audit effectif, 48/66 objets nationaux et 24/66 par famille de marges, zéro millésime certifié; V28.3b ablation factorielle implémentée, résultats à vérifier. V24.1 reste minimum exploratoire, aucune promotion.
 
 [V28.3b clôturée](../v28_campaign/V28.3b-results.json) : replay 6,9504 pp, national seul 7,3449, marges seules 8,8741, structure seule 9,3216; 3 tests, CI générale I001 corrigée sans changement algorithmique. [V28.4](../v28_campaign/README.md#v284--protocole-de-certification-prioritaire) certification prioritaire des éditions historiques. Aucun test final, aucune promotion.
+
+- 28.11.2026 — [V28.4a](../v28_campaign/README.md) : 16 vagues corroborées, 3 dates; aucune certification stricte, aucun fit.

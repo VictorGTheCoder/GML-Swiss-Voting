@@ -1,7 +1,7 @@
 {
   "version": "V28",
-  "status": "factorial_ablation_measured_provenance_followup_planned",
-  "active": "V28.4",
+  "status": "pilot_corroboration_measured_strict_certification_blocked",
+  "active": "V28.4b_or_V29",
   "best_exploratory": 6.950427808889042,
   "population": {
     "objects": 66,
@@ -9,8 +9,8 @@
     "rows": 138868
   },
   "backlog": [
-    "P1 V28.4 certification des éditions originales des sondages effectivement consommés (priorité aux 24 objets V3 et 24 directs; rechercher éditions contemporaines, identifier objet/vague/date et chiffres indépendants; pas de réutilisation d'une version révisée sans preuve). Pilote sur 3 dates historiques, métadonnées/empreintes/licence; aucune admission sans preuve.",
-    "P2 Si des sources certifiées sont récupérées, comparaison appariée sur mêmes clés avec fallback structurel; rapporter aussi couverture certifiée et contraste national/local. Ne pas sélectionner une variante sur la date évaluée.",
+    "P1 V28.4b : rechercher archives figées/rapports originaux gfs.bern, licences et preuve de millésime; V28.4a corrobore le oui national, pas tous les champs. Ne pas répéter les six articles.",
+    "P2 Comparaison des seuls signaux certifiés si gate satisfait; sinon V29 indépendant, pas de nouveaux blends V16.3.",
     "P3 Si certification bloquée, ouvrir V29 pour amélioration du niveau national structurel sans sondages (diagnostic d'abord des expériences V16.3 et V28.3b; éviter redondance).",
     "P4 fög V28.2a et SECO V26 restent en quarantaine; aucune promotion ni test final."
   ],
@@ -245,6 +245,27 @@
       "scope": "original historical editions of effective national survey anchors",
       "pilot_dates": 3,
       "gate": "Exact object/wave/field/date/source/version corroboration; no future targets; quarantine if unresolved"
+    },
+    {
+      "version": "V28.4a",
+      "status": "corroborated_not_certified",
+      "results": "reports/experiments/v28_campaign/V28.4a-source-corroboration.json",
+      "dates": 3,
+      "objects": 8,
+      "waves": 16,
+      "yes_matches": 16,
+      "publication_day_matches": 16,
+      "fieldwork_matches": 16,
+      "late_chart_rows": 4,
+      "late_chart_yes_matches": 4,
+      "strict_certified": 0,
+      "new_admitted_inputs": 0,
+      "tests_passed": 6,
+      "no_fit": true,
+      "parent_ci": {
+        "run": 46162741199,
+        "conclusion": "success"
+      }
     }
   ],
   "source_candidate_audit": "reports/experiments/v28_campaign/V28.2a-source-audit.json"
