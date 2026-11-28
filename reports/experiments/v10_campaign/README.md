@@ -131,3 +131,5 @@ Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans n
 [V26.2f audit de provenance](../v26_campaign/V26.2f-source-audit.json) : deuxième rupture de dénominateur identifiée en juillet 2016, deux PDF candidats non certifiés et acquisition ciblée d'août 2018 en cours. Aucun nouveau score ni admission.
 
 [V26.2f clôturée](../v26_campaign/V26.2f-results.json) : 10 archives, 270 observations en quarantaine, 8/23 dates ; SECO suspendu. [V27](../v27_campaign/README.md) partage des partitions des têtes XGBoost préspécifié, aucun score nouveau ni test final.
+
+[V27.1 clôturée](../v27_campaign/V27.1-results.json) : 7,263734 pp, +0,313306 vs V24.1. [V28](../v28_campaign/README.md) planifiée; meilleur inchangé.

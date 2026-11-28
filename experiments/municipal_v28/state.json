@@ -1,0 +1,16 @@
+{
+  "version": "V28",
+  "status": "planned",
+  "active": "V28.1",
+  "best_exploratory": 6.950427808889042,
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "backlog": [
+    "V28.1 audit des lacunes et de la fraîcheur des signaux nationaux ex ante; ne pas répéter les réglages d'arbres.",
+    "V28.2 acquisition ciblée uniquement sur lacunes certifiables et ablation appariée.",
+    "Test final distinct après gel et autorisation."
+  ]
+}

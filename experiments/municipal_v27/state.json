@@ -1,7 +1,7 @@
 {
   "version": "V27",
-  "status": "in_progress",
-  "active": "V27.1",
+  "status": "completed_no_gain",
+  "active": null,
   "parent_commit": "291ef61d7de05d89cddc57827970d823c8768f74",
   "population": {
     "objects": 66,
@@ -16,8 +16,11 @@
   },
   "primary_comparison": "shared_splits vs v241_scaled",
   "next": [
-    "Vérifier les tests, la reproduction de V24.1 et les quatre MAE sur population identique; rapporter IC apparié par date et résultats négatifs.",
-    "Si pas de gain, ne pas explorer aveuglément les paramètres; privilégier une source ex ante indépendante ou une hypothèse distincte.",
-    "Validation finale distincte autorisée uniquement après gel."
-  ]
+    "V28.1 audit des lacunes et de la fraîcheur des signaux nationaux ex ante; ne pas répéter les réglages d'arbres.",
+    "V28.2 acquisition ciblée uniquement sur lacunes certifiables et ablation appariée.",
+    "Test final distinct après gel et autorisation."
+  ],
+  "run": 46128815743,
+  "artifact": 15256732307,
+  "results": "reports/experiments/v27_campaign/V27.1-results.json"
 }

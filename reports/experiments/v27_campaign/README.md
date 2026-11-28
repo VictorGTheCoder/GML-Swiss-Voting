@@ -15,3 +15,17 @@ Trois tests synthétiques implémentés (dimensions, invariance requêtes, équi
 1. V27.1 : vérifier benchmark, reproduction et CI ; enregistrer résultats et limites (fonctionnalité expérimentale).
 2. Si pas de gain, ne pas multiplier les réglages ; rechercher un apport indépendant sur les objets ou une expérience à hypothèse distincte. SECO reste suspendu tant que les millésimes d'entraînement et métadonnées ne sont pas certifiés.
 3. Validation finale uniquement après gel et autorisation distincte. Aucun modèle promu.
+
+## V27.1 — Clôture mesurée, 28 novembre 2026
+
+[Run réussi](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46128815743), [artefact](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46128815743/artifacts/15256732307), [CI générale](https://github.com/VictorGTheCoder/GML-Swiss-Voting/actions/runs/46128815711), [résultats exacts](V27.1-results.json). 3/3 tests et 3/3 jobs CI. 66 objets, 23 dates, 138868 lignes. Reproduction ligne à ligne V24.1 acceptée. Scores issus des logs; digest ZIP annoncé par GitHub, non recalculé. 14 fichiers exportés (métriques objet/pli/date/domaine/commune/canton, prédictions).
+
+| Variante | Communale | Centrée | Nationale | Cantonale | Couverture (indicateur propre) |
+|---|---:|---:|---:|---:|---:|
+| reference | 7.229527 | 5.370059 | 3.775669 | 5.703708 | 59 |
+| v113_institution | 6.955754 | 5.289917 | 3.781171 | 5.500339 | 59 |
+| v241_scaled | 6.950428 | 5.289254 | 3.772388 | 5.493756 | 59 |
+| scaled_replay | 6.950428 | 5.289254 | 3.772388 | 5.493756 | 66 |
+| shared_splits | 7.263734 | 5.329630 | 3.920877 | 5.676038 | 66 |
+
+Partage des partitions: +0,313306 pp vs V24.1; intervalle du gain apparié par date [-0,638726; -0,048601]. Plis 2016–18 / 2019–20 / 2021–22: 8,1566 / 7,4496 / 6,0548 vs 7,5718 / 6,9489 / 6,1745. Domaines 4 et 5 dégradés (11,8758 vs 10,1556; 10,3579 vs 10,0413). Toutes les métriques globales empirent. Ne pas sélectionner selon le pli a posteriori. Couvertures différentes selon indicateur, population de scoring identique. Résultat négatif pour cette configuration seulement, non pour toutes les approches multitâches. Dates réutilisées; aucune validation indépendante, aucun modèle promu. Aucune donnée admise. Le snapshot global de préparation est filtré par les contrôles du benchmark avant fit/calibration/scoring; aucune cible 2023+ utilisée. V24.1 reste minimum descriptif. V27 clôturée. [V28](../v28_campaign/README.md) audit indépendant des lacunes nationales priorisé.
