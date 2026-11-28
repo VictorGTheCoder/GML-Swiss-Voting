@@ -129,3 +129,5 @@ Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans n
 [V26.2e r1 résultats cumulés](../v26_campaign/V26.2e-r1-results.json) : 9/9 archives, 243 observations en quarantaine, 7/23 dates. V26.2f : nouveau millésime et trois taux nationaux candidats, aucune admission. V24.1 inchangée.
 
 [V26.2f audit de provenance](../v26_campaign/V26.2f-source-audit.json) : deuxième rupture de dénominateur identifiée en juillet 2016, deux PDF candidats non certifiés et acquisition ciblée d'août 2018 en cours. Aucun nouveau score ni admission.
+
+[V26.2f clôturée](../v26_campaign/V26.2f-results.json) : 10 archives, 270 observations en quarantaine, 8/23 dates ; SECO suspendu. [V27](../v27_campaign/README.md) partage des partitions des têtes XGBoost préspécifié, aucun score nouveau ni test final.

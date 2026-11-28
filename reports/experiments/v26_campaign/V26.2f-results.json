@@ -1,0 +1,54 @@
+{
+  "status": "completed_quarantine_only",
+  "evidence": {
+    "run": 46123836216,
+    "job": 140913909462,
+    "artifact": 15255021848,
+    "artifact_digest": "sha256:00b9959ffcc2ff76323b7eaed44f9aec33bcc21e91405987153eb6cecd24308c",
+    "sha": "291ef61d7de05d89cddc57827970d823c8768f74",
+    "tests": 10,
+    "ci": 46123836134,
+    "ci_jobs": "3/3 success"
+  },
+  "asset": {
+    "id": 6029144,
+    "period": "2018-08",
+    "published": "2018-09-07",
+    "bytes": 659867,
+    "sha256": "9228fe14f6257e3388db4333047ad97bbbdb1b8f420372c60e94696fea4daa06",
+    "records": 27,
+    "unit": "Quoten in % (Zahl der Erwerbspersonen gemäss Pooling SE2012-2014)"
+  },
+  "additional_dates": [
+    "2018-09-23"
+  ],
+  "additional_objects": 3,
+  "cumulative": {
+    "archives": 10,
+    "records": 270,
+    "bytes": 7640150,
+    "dates": 8,
+    "objects": 23,
+    "coverage_by_window": [
+      {
+        "window": "2016–2018",
+        "dates": 11,
+        "covered": 3
+      },
+      {
+        "window": "2019–2020",
+        "dates": 5,
+        "covered": 1
+      },
+      {
+        "window": "2021–2022",
+        "dates": 7,
+        "covered": 4
+      }
+    ]
+  },
+  "admitted": 0,
+  "trainings": 0,
+  "decision": "suspend_pending_historical_metadata_and_training_coverage",
+  "best_exploratory": 6.950427808889042
+}

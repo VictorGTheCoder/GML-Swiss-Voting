@@ -1,14 +1,15 @@
 {
   "version": "V26",
   "parent_commit": "9bfd44bcc28ce00f4a1805edbbee12a07142ae43",
-  "status": "in_progress",
-  "active": "V26.2f",
+  "status": "completed_audit_source_suspended",
+  "active": null,
   "completed": [
     "V26.1",
     "V26.2b",
     "V26.2c",
     "V26.2d",
-    "V26.2e"
+    "V26.2e",
+    "V26.2f"
   ],
   "population": {
     "objects": 66,
@@ -18,9 +19,8 @@
   "best_exploratory": 6.950427808889042,
   "admitted": 0,
   "next": [
-    "V26.2f: vérifier le run d'acquisition/extraction de 6029144 uniquement; ne pas répéter les neuf archives.",
-    "Certifier les cinq CSV et les périodes d'entraînement: deux changements de dénominateur documentés (2016, 2019). Les PDF indexés 2016 restent en quarantaine (404 pour le contrôle visuel).",
-    "Si la couverture ne progresse pas substantiellement, suspendre SECO et ouvrir V27 indépendante; aucun entraînement sur couverture déséquilibrée. Aucun test final ni promotion."
+    "SECO suspendu: 8/23 dates, 23/66 objets, périodes d'entraînement et métadonnées CSV non certifiées; reprendre seulement avec série de millésimes complète ou nouvelle preuve.",
+    "V27.1: benchmark indépendant des têtes vectorielles XGBoost, préspécifié; aucun test final."
   ],
   "results": [
     "reports/experiments/v26_campaign/V26.1-results.json",
@@ -31,7 +31,8 @@
     "reports/experiments/v26_campaign/V26.2e-results.json",
     "reports/experiments/v26_campaign/V26.2e-r1-results.json",
     "reports/experiments/v26_campaign/V26.2f-candidates.json",
-    "reports/experiments/v26_campaign/V26.2f-source-audit.json"
+    "reports/experiments/v26_campaign/V26.2f-source-audit.json",
+    "reports/experiments/v26_campaign/V26.2f-results.json"
   ],
   "v262": {
     "status": "six_formats_and_hashes_verified_quarantine",
@@ -190,11 +191,65 @@
         "acquisition": {
           "asset": 6029144,
           "workflow": ".github/workflows/seco-extension-v262f.yml",
-          "status": "pending",
+          "status": "completed_quarantine_only",
           "only_new_asset": true
         },
         "admitted": 0,
         "trainings": 0
+      },
+      "result": {
+        "status": "completed_quarantine_only",
+        "evidence": {
+          "run": 46123836216,
+          "job": 140913909462,
+          "artifact": 15255021848,
+          "artifact_digest": "sha256:00b9959ffcc2ff76323b7eaed44f9aec33bcc21e91405987153eb6cecd24308c",
+          "sha": "291ef61d7de05d89cddc57827970d823c8768f74",
+          "tests": 10,
+          "ci": 46123836134,
+          "ci_jobs": "3/3 success"
+        },
+        "asset": {
+          "id": 6029144,
+          "period": "2018-08",
+          "published": "2018-09-07",
+          "bytes": 659867,
+          "sha256": "9228fe14f6257e3388db4333047ad97bbbdb1b8f420372c60e94696fea4daa06",
+          "records": 27,
+          "unit": "Quoten in % (Zahl der Erwerbspersonen gemäss Pooling SE2012-2014)"
+        },
+        "additional_dates": [
+          "2018-09-23"
+        ],
+        "additional_objects": 3,
+        "cumulative": {
+          "archives": 10,
+          "records": 270,
+          "bytes": 7640150,
+          "dates": 8,
+          "objects": 23,
+          "coverage_by_window": [
+            {
+              "window": "2016–2018",
+              "dates": 11,
+              "covered": 3
+            },
+            {
+              "window": "2019–2020",
+              "dates": 5,
+              "covered": 1
+            },
+            {
+              "window": "2021–2022",
+              "dates": 7,
+              "covered": 4
+            }
+          ]
+        },
+        "admitted": 0,
+        "trainings": 0,
+        "decision": "suspend_pending_historical_metadata_and_training_coverage",
+        "best_exploratory": 6.950427808889042
       }
     }
   }

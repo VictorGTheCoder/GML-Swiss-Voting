@@ -1,0 +1,23 @@
+{
+  "version": "V27",
+  "status": "in_progress",
+  "active": "V27.1",
+  "parent_commit": "291ef61d7de05d89cddc57827970d823c8768f74",
+  "population": {
+    "objects": 66,
+    "dates": 23,
+    "rows": 138868
+  },
+  "best_exploratory": 6.950427808889042,
+  "admitted": 0,
+  "configs": {
+    "scaled_replay": "independent standardized XGBoost",
+    "shared_splits": "multi_output_tree, hist, standardized targets, fixed parameters"
+  },
+  "primary_comparison": "shared_splits vs v241_scaled",
+  "next": [
+    "Vérifier les tests, la reproduction de V24.1 et les quatre MAE sur population identique; rapporter IC apparié par date et résultats négatifs.",
+    "Si pas de gain, ne pas explorer aveuglément les paramètres; privilégier une source ex ante indépendante ou une hypothèse distincte.",
+    "Validation finale distincte autorisée uniquement après gel."
+  ]
+}
