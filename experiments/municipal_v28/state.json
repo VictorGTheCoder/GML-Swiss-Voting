@@ -1,6 +1,6 @@
 {
   "version": "V28",
-  "status": "planned",
+  "status": "audit_implemented_source_inventory_measured",
   "active": "V28.1",
   "best_exploratory": 6.950427808889042,
   "population": {
@@ -9,8 +9,18 @@
     "rows": 138868
   },
   "backlog": [
-    "V28.1 audit des lacunes et de la fraîcheur des signaux nationaux ex ante; ne pas répéter les réglages d'arbres.",
-    "V28.2 acquisition ciblée uniquement sur lacunes certifiables et ablation appariée.",
-    "Test final distinct après gel et autorisation."
-  ]
+    "P1 V28.1 vérifier CI et métriques figées par disponibilité/fraîcheur; pas de refit.",
+    "P2 V28.2 certifier rapport fög du 15 février 2018 (PDF/hash/licence) et examiner couverture manquante; pas de sélection de modèle sur ce diagnostic.",
+    "P3 poursuivre une expérience indépendante si certification bloquée; test final seulement après autorisation."
+  ],
+  "source_inventory": {
+    "roster_objects": 66,
+    "expectations_rows": 37,
+    "expectations_objects": 20,
+    "media_objects": 54,
+    "tamedia_dated_candidates_objects": 21,
+    "srg_declared_dates_objects": 65,
+    "srg_chart_updates_on_or_after_vote_rows": 16,
+    "srg_historical_verified_rows": 0
+  }
 }

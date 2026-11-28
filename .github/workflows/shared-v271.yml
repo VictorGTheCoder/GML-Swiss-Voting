@@ -1,11 +1,6 @@
 name: V27.1 shared vector-leaf heads
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - '.github/workflows/shared-v271.yml'
-      - 'scripts/modeling/shared_v271.py'
-      - 'tests/test_shared_v271.py'
 concurrency:
   group: v271-${{ github.head_ref || github.ref }}
   cancel-in-progress: false

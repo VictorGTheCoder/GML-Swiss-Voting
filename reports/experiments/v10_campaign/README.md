@@ -133,3 +133,5 @@ Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans n
 [V26.2f clôturée](../v26_campaign/V26.2f-results.json) : 10 archives, 270 observations en quarantaine, 8/23 dates ; SECO suspendu. [V27](../v27_campaign/README.md) partage des partitions des têtes XGBoost préspécifié, aucun score nouveau ni test final.
 
 [V27.1 clôturée](../v27_campaign/V27.1-results.json) : 7,263734 pp, +0,313306 vs V24.1. [V28](../v28_campaign/README.md) planifiée; meilleur inchangé.
+
+[V28.1 inventaire](../v28_campaign/V28.1-source-inventory.json) : 20 objets attentes, 54 médias, 21 candidats Tamedia datés; nouvelle édition fög 2018 en quarantaine. Audit de scores figés implémenté, résultat à vérifier; aucun fit ni admission.
