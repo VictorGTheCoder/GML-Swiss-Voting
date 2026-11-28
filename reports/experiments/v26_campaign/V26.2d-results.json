@@ -1,0 +1,92 @@
+{
+  "status": "quarantine_only",
+  "catalog_sha256": "503f9acf4abb7026e482d3a9ad34ae8397174a19d731caf2bb68e3b6fe8f81dd",
+  "assets": [
+    {
+      "id": 18505947,
+      "end": "2021-08-31",
+      "published": "2021-09-07",
+      "format": "csv",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/18505947",
+      "release": "https://statistik.admin.ch/de/news/2021-0214",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/18505947/master",
+      "bytes": 759547,
+      "sha256": "4f765fa05c30ac9819d9bf75768fd46529b15bb3e26299ce850014a049d65c71",
+      "status": "format_checked_not_admitted"
+    },
+    {
+      "id": 19444907,
+      "end": "2021-10-31",
+      "published": "2021-11-08",
+      "format": "csv",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/19444907",
+      "release": "https://statistik.admin.ch/de/news/2021-0216",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/19444907/master",
+      "bytes": 760637,
+      "sha256": "61531d822654b0b41edb4e2cf07568843c2a1dac42174ebffa5f6026d00322b5",
+      "status": "format_checked_not_admitted"
+    },
+    {
+      "id": 21004569,
+      "end": "2022-01-31",
+      "published": "2022-02-07",
+      "format": "csv",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/21004569",
+      "release": "https://statistik.admin.ch/de/news/2022-0317",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/21004569/master",
+      "bytes": 763280,
+      "sha256": "4726857a30977ca8e76f1a5a9e1962179bb36b7c473d0eb0b7c94950a93e01ae",
+      "status": "format_checked_not_admitted"
+    }
+  ],
+  "format_checked": 3,
+  "objects": 66,
+  "dates": 23,
+  "fresh_candidate_dates": 3,
+  "fresh_candidate_objects": 9,
+  "date_asset": {
+    "2016-02-28": null,
+    "2016-06-05": null,
+    "2016-09-25": null,
+    "2016-11-27": null,
+    "2017-02-12": null,
+    "2017-05-21": null,
+    "2017-09-24": null,
+    "2018-03-04": null,
+    "2018-06-10": null,
+    "2018-09-23": null,
+    "2018-11-25": null,
+    "2019-02-10": null,
+    "2019-05-19": null,
+    "2020-02-09": null,
+    "2020-09-27": null,
+    "2020-11-29": null,
+    "2021-03-07": null,
+    "2021-06-13": null,
+    "2021-09-26": 18505947,
+    "2021-11-28": 19444907,
+    "2022-02-13": 21004569,
+    "2022-05-15": null,
+    "2022-09-25": null
+  },
+  "training_rows_admitted": 0,
+  "evidence": {
+    "run": 46105368067,
+    "job": 140856810634,
+    "artifact": 15246918134,
+    "artifact_digest": "sha256:962d283fe08f7acd355a9eefe9fd51f6991be84cb7d7a75a60c525b64f9d8051",
+    "sha": "825399963ed4e789113529301249e91e8af01638",
+    "tests": 3,
+    "ci": 46105368017
+  },
+  "union": {
+    "assets": 9,
+    "dates": 7,
+    "objects": 20,
+    "disjoint_dates": true,
+    "bytes": 6980283
+  }
+}

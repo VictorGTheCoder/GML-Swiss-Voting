@@ -121,3 +121,5 @@ Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans n
 [V26.2b résultats](../v26_campaign/V26.2b-results.json) : 6/6 fichiers acquis et empreintes vérifiées; couverture candidate 11/66 objets, 4/23 dates. V26.2c inspection des schémas préspécifiée, aucune admission, aucun nouveau score.
 
 - V26.2c : [audit schéma et extension V26.2d](../v26_campaign/README.md#v262c-clôturée--v262d-extension-ciblée), 6/6 schémas vérifiés; trois millésimes supplémentaires en acquisition, aucune admission.
+
+[V26.2d résultats](../v26_campaign/V26.2d-results.json) : 9 archives au total, 7/23 dates et 20/66 objets potentiellement couverts; V26.2e extraction stricte préspécifiée, aucune admission ni score nouveau.

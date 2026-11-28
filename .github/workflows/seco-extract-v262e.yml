@@ -1,0 +1,26 @@
+name: V26.2e historical SECO extraction
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/seco-extract-v262e.yml'
+      - 'scripts/modeling/seco_extract_v262e.py'
+permissions:
+  contents: read
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas==2.2.3 openpyxl==3.1.5 xlrd==2.0.2 pytest
+      - run: python -m pytest -q tests/test_seco_extract_v262e.py
+      - run: python -m scripts.modeling.seco_extract_v262e --audit reports/experiments/v26_campaign/V26.2b-results.json --audit reports/experiments/v26_campaign/V26.2d-results.json --output reports/generated/v262e/audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v262e-seco-extraction
+          path: reports/generated/v262e/
+          retention-days: 30

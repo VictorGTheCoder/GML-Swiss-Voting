@@ -1,10 +1,6 @@
 name: V26.2d historical SECO extension
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - '.github/workflows/seco-extension-v262d.yml'
-      - 'reports/experiments/v26_campaign/V26.2d-extension.json'
 permissions:
   contents: read
   actions: read
