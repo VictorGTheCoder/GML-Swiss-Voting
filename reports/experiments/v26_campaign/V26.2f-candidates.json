@@ -1,0 +1,47 @@
+{
+  "status": "metadata_verified_binary_pending",
+  "assets": [
+    {
+      "id": 6029144,
+      "end": "2018-08-31",
+      "published": "2018-09-07",
+      "format": "xlsx",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/6029144",
+      "release": "https://statistik.admin.ch/de/news/2018-0486",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/6029144/master"
+    }
+  ],
+  "national_fallback_candidates": [
+    {
+      "end": "2018-10-31",
+      "published": "2018-11-08",
+      "rate_pp": 2.4,
+      "source": "https://www.admin.ch/en/nsb?id=72829",
+      "vote_date": "2018-11-25"
+    },
+    {
+      "end": "2019-04-30",
+      "published": "2019-05-08",
+      "rate_pp": 2.4,
+      "source": "https://www.admin.ch/de/nsb?id=74947",
+      "vote_date": "2019-05-19"
+    },
+    {
+      "end": "2020-08-31",
+      "published": "2020-09-09",
+      "rate_pp": 3.3,
+      "source": "https://www.admin.ch/de/nsb?id=80317",
+      "vote_date": "2020-09-27"
+    }
+  ],
+  "methodology": {
+    "publication": "2019-07-09",
+    "retroactive_from": "2017-01-01",
+    "old_base": "SE2012-2014",
+    "new_base": "SE2015-2017",
+    "source": "https://www.vs.ch/web/sict/communiques/-/asset_publisher/keulquETrO13/content/id/5674596/maximized",
+    "corroboration": "https://dievolkswirtschaft.ch/fr/2019/12/oesch-haeubi-1-2-2020fr/"
+  },
+  "admitted": 0
+}

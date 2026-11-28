@@ -2,12 +2,13 @@
   "version": "V26",
   "parent_commit": "9bfd44bcc28ce00f4a1805edbbee12a07142ae43",
   "status": "in_progress",
-  "active": "V26.2e-r1",
+  "active": "V26.2f",
   "completed": [
     "V26.1",
     "V26.2b",
     "V26.2c",
-    "V26.2d"
+    "V26.2d",
+    "V26.2e"
   ],
   "population": {
     "objects": 66,
@@ -17,9 +18,9 @@
   "best_exploratory": 6.950427808889042,
   "admitted": 0,
   "next": [
-    "Verify V26.2e-r1 on the four failed Excel assets only; retain five successful CSV outputs.",
-    "Certify historical CSV metadata and Excel precision coefficients; extend dated releases and training support only if feasible; check runtime feature inventory.",
-    "Matched chronological ablation after certification only; otherwise independent source."
+    "V26.2f: audit CSV metadata and precision, acquire August 2018 canton vintage; locate contemporaneous monthly releases for earlier training dates. The three national-only press values are separate candidates; never fill missing cantons with national values.",
+    "Check runtime feature inventory and training support before any ablation; if inadequate, suspend SECO and open independent source V27.",
+    "No final test or promotion."
   ],
   "results": [
     "reports/experiments/v26_campaign/V26.1-results.json",
@@ -27,7 +28,9 @@
     "reports/experiments/v26_campaign/V26.2b-results.json",
     "reports/experiments/v26_campaign/V26.2c-results.json",
     "reports/experiments/v26_campaign/V26.2d-results.json",
-    "reports/experiments/v26_campaign/V26.2e-results.json"
+    "reports/experiments/v26_campaign/V26.2e-results.json",
+    "reports/experiments/v26_campaign/V26.2e-r1-results.json",
+    "reports/experiments/v26_campaign/V26.2f-candidates.json"
   ],
   "v262": {
     "status": "six_formats_and_hashes_verified_quarantine",
@@ -91,7 +94,7 @@
       }
     },
     "extraction": {
-      "status": "partial_5_of_9_quarantine_only",
+      "status": "complete_9_of_9_quarantine_only",
       "workflow": ".github/workflows/seco-extract-v262e.yml",
       "tests_implemented": 5,
       "evidence": {
@@ -103,20 +106,50 @@
         "tests": 5,
         "ci": 46110089447
       },
-      "complete_archives": 5,
-      "extracted_records": 135,
-      "blocked_ids": [
-        3322654,
-        5328688,
-        8646904,
-        16344391
-      ],
+      "complete_archives": 9,
+      "extracted_records": 243,
+      "blocked_ids": [],
       "repair": {
-        "status": "predeclared",
+        "status": "completed",
         "tests_implemented": 7,
         "only_failed_assets": true,
-        "source": "https://ai.ch/themen/wirtschaft-und-arbeit/arbeit/aktuelles/arbeitslosenzahlen-ende-januar-2017"
-      }
+        "source": "https://ai.ch/themen/wirtschaft-und-arbeit/arbeit/aktuelles/arbeitslosenzahlen-ende-januar-2017",
+        "evidence": {
+          "run": 46114490986,
+          "job": 140885143024,
+          "artifact": 15250719519,
+          "artifact_digest": "sha256:55e29d1ae369ffd12f23560049da1bfbb6da010d99658c40a6092240c42f9e71",
+          "sha": "cf55990336e183c54639db9101b8b500ba365b58",
+          "tests": 7,
+          "ci": 46114490968
+        }
+      },
+      "coverage_by_window": [
+        {
+          "start": "2016-01-01",
+          "end": "2018-12-31",
+          "dates": 11,
+          "complete": 2
+        },
+        {
+          "start": "2019-01-01",
+          "end": "2020-12-31",
+          "dates": 5,
+          "complete": 1
+        },
+        {
+          "start": "2021-01-01",
+          "end": "2022-12-31",
+          "dates": 7,
+          "complete": 4
+        }
+      ]
+    },
+    "next_sources": {
+      "status": "metadata_only",
+      "new_canton_assets": 1,
+      "national_candidates": 3,
+      "admitted": 0
     }
   }
 }
