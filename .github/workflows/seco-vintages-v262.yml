@@ -1,0 +1,35 @@
+name: V26.2 historical SECO vintages
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/modeling/seco_vintages_v262.py'
+      - 'tests/test_seco_vintages_v262.py'
+      - 'reports/experiments/v26_campaign/V26.2-vintages.json'
+      - '.github/workflows/seco-vintages-v262.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pytest
+      - run: python -m pytest -q tests/test_seco_vintages_v262.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: v241-robust-heads
+          run-id: 46060624437
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/generated/v262_roster
+      - run: python -m scripts.modeling.seco_vintages_v262 --catalog reports/experiments/v26_campaign/V26.2-vintages.json --roster reports/generated/v262_roster/object_metrics.csv --output reports/generated/v262_results/audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v262-seco-vintages
+          path: reports/generated/v262_results/
+          retention-days: 30

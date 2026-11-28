@@ -14,12 +14,32 @@
   "best_exploratory": 6.950427808889042,
   "admitted": 0,
   "next": [
-    "V26.2 inventory actual data manifest and historical release availability; quarantine pilot",
-    "Prioritize general coverage across objects, not theme-specific fitting",
-    "Matched ablation only if admitted; otherwise independent source"
+    "Verify V26.2 acquisition run and format/hash/coverage; inspect original schemas and actual feature manifest",
+    "Extend monthly catalog to cover training and benchmark dates, only if novelty and vintage verified",
+    "If blocked, independent source; no admission or model change"
   ],
   "results": [
     "reports/experiments/v26_campaign/V26.1-results.json",
     "reports/experiments/v26_campaign/V26.1-results.md"
-  ]
+  ],
+  "v262": {
+    "status": "six_open_by_vintages_identified_acquisition_pending",
+    "assets": [
+      3322654,
+      5328688,
+      8646904,
+      16344391,
+      18064564,
+      23327987
+    ],
+    "source_metadata_verified": 6,
+    "local_download": "DNS resolution failed for dam-api.bfs.admin.ch",
+    "admitted": 0,
+    "tests_implemented": 3,
+    "workflow": ".github/workflows/seco-vintages-v262.yml",
+    "previous_ci": {
+      "run": 46085269378,
+      "conclusion": "success"
+    }
+  }
 }

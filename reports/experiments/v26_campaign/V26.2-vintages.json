@@ -1,0 +1,67 @@
+{
+  "status": "quarantine_not_admitted",
+  "attribution": "OFS / SECO",
+  "assets": [
+    {
+      "id": 3322654,
+      "end": "2017-08-31",
+      "published": "2017-09-08",
+      "format": "xls",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/3322654",
+      "release": "https://statistik.admin.ch/de/news/2017-0563",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/3322654/master"
+    },
+    {
+      "id": 5328688,
+      "end": "2018-05-31",
+      "published": "2018-06-07",
+      "format": "xlsx",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/5328688",
+      "release": "https://statistik.admin.ch/de/news/2018-0483",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/5328688/master"
+    },
+    {
+      "id": 8646904,
+      "end": "2019-05-31",
+      "published": "2019-06-07",
+      "format": "xlsx",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/8646904",
+      "release": "https://statistik.admin.ch/de/news/2019-0127",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/8646904/master"
+    },
+    {
+      "id": 16344391,
+      "end": "2020-10-31",
+      "published": "2020-11-09",
+      "format": "xlsx",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/16344391",
+      "release": "https://statistik.admin.ch/de/news/2020-0482",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/16344391/master"
+    },
+    {
+      "id": 18064564,
+      "end": "2021-06-30",
+      "published": "2021-07-08",
+      "format": "csv",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/18064564",
+      "release": "https://statistik.admin.ch/de/news/2021-0212",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/18064564/master"
+    },
+    {
+      "id": 23327987,
+      "end": "2022-08-31",
+      "published": "2022-09-08",
+      "format": "csv",
+      "license": "OPEN-BY",
+      "source": "https://statistik.admin.ch/de/asset/23327987",
+      "release": "https://statistik.admin.ch/de/news/2022-0324",
+      "download": "https://dam-api.bfs.admin.ch/hub/api/dam/assets/23327987/master"
+    }
+  ],
+  "policy": "strict prior publication; max 45 days from period end for pilot; no retrospective backfill; no model inputs"
+}

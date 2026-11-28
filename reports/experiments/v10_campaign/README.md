@@ -115,3 +115,5 @@ Meilleur minimum descriptif V24.1 : 6,950427808889042 pp; V25.1a mesurée sans n
 [V25.1b clôturée](../v25_campaign/V25.1b-results.json) : stabilité descriptive positive sur 44/44 retraits, IC incluant zéro; [V26](../v26_campaign/README.md) audit de support thématique et source SECO candidate. Meilleur exploratoire inchangé, aucun test final.
 
 [V26.1 résultats](../v26_campaign/V26.1-results.md) : audit 66 objets, 4 tests et CI 3/3; codes 4/5 expliquent 28.10 % de l'écart à 4 pp. V26.2 pilote SECO en quarantaine; meilleur V24.1 inchangé.
+
+[V26.2b](../v26_campaign/README.md) : six millésimes cantonaux OPEN-BY identifiés, acquisition et couverture à vérifier; aucune donnée admise, aucun score nouveau.
